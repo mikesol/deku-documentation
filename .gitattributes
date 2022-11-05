@@ -1,0 +1,6 @@
+public/fonts/lexend.woff2 filter=lfs diff=lfs merge=lfs -text
+public/fonts/Inter-italic.var.woff2 filter=lfs diff=lfs merge=lfs -text
+public/fonts/Inter-roman.var.woff2 filter=lfs diff=lfs merge=lfs -text
+public/favicon.ico filter=lfs diff=lfs merge=lfs -text
+assets/blur-cyan.png filter=lfs diff=lfs merge=lfs -text
+assets/blur-indigo.png filter=lfs diff=lfs merge=lfs -text
