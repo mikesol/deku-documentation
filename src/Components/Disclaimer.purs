@@ -5,7 +5,10 @@ import Deku.Attribute ((!:=))
 import Deku.Core (Domable)
 import Deku.DOM as D
 
-disclaimer :: forall lock payload. { header :: Domable lock payload, message :: Domable lock payload } -> Domable lock payload
+disclaimer
+  :: forall lock payload
+   . { header :: Domable lock payload, message :: Domable lock payload }
+  -> Domable lock payload
 disclaimer { header, message } = D.div
   ( D.Class !:=
       "my-8 flex rounded-3xl p-6 bg-amber-50 dark:bg-slate-800/60 dark:ring-1 dark:ring-slate-300/10"

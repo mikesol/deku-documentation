@@ -45,7 +45,7 @@ banner = D.div
                           "mt-3 text-2xl tracking-tight text-slate-400"
                       )
                       [ text_
-                          "A UI framework for web apps that need to be fast."
+                          "A PureScript UI framework for building reactive games and web apps."
                       ]
                   , D.div
                       ( D.Class !:=
@@ -64,7 +64,8 @@ banner = D.div
                               [ D.Target !:= "_blank"
                               , D.Class !:=
                                   "rounded-full bg-slate-800 py-2 px-4 text-sm font-medium text-white hover:bg-slate-700 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/50 active:text-slate-400"
-                              , D.Href !:= "https://github.com/mikesol/purescript-deku"
+                              , D.Href !:=
+                                  "https://github.com/mikesol/purescript-deku"
                               ]
                           )
                           [ text_ "View on GitHub" ]
@@ -494,8 +495,12 @@ banner = D.div
                                   , D.br_ []
                                   ]
                               , D.pre
-                                  ( D.Class !:=
-                                      "prism-code language-javascript flex overflow-x-auto pb-6"
+                                  ( oneOf
+                                      [ D.Style !:=
+                                          "background:none;padding:0em;margin:0em;"
+                                      , D.Class !:=
+                                          "prism-code language-javascript flex overflow-x-auto pb-6"
+                                      ]
                                   )
                                   [ D.code (D.Class !:= "px-4")
                                       [ text_

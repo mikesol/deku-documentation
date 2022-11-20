@@ -1,0 +1,22 @@
+module Pages.AdvancedUsage.SSR.IntegrationWithVite where
+
+import Contracts (Section, section)
+import Deku.Control (text_)
+import Deku.Attribute ((!:=))
+import Deku.DOM as D
+import Pages.AdvancedUsage.SSR.IntegrationWithVite.TheBuildStep (theBuildStep)
+import Pages.AdvancedUsage.SSR.IntegrationWithVite.UsingACustomWatcher (usingACustomWatcher)
+
+integrationWithVite :: forall lock payload. Section lock payload
+integrationWithVite = section
+  { title: "IntegrationWithVite"
+  , topmatter:
+      [ D.p_
+          [ text_ "This section will be about "
+            , D.span (D.Class !:= "font-bold") [ text_ "IntegrationWithVite"]
+            , text_ "."
+          ]
+      ]
+  , subsections:
+      [ theBuildStep,usingACustomWatcher]
+  }
