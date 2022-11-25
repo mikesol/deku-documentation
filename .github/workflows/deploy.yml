@@ -50,9 +50,6 @@ jobs:
         run: pnpm i
       - name: Build
         run: pnpm build
-      - name: Deploy
-        if: ${{ github.ref == 'refs/heads/main' }}
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GH_TOKEN }}
-          publish_dir: ./dist
+      # as much as possible
+      - name: deploy to netlify
+        run: NETLIFY_SITE_ID=${{ secrets.NETLIFY_DEKU_SITE_ID }} NETLIFY_AUTH_TOKEN=${{ secrets.NETLIFY_AUTH_TOKEN }} netlify deploy --dir=examples/docs --prod
