@@ -1,10 +1,10 @@
 module Pages.CoreConcepts where
 
-import Contracts (Chapter(..))
+import Contracts (Chapter, chapter)
 import Pages.CoreConcepts.Collections (collections)
 import Pages.CoreConcepts.Components (components)
 import Pages.CoreConcepts.Effects (effects)
-import Pages.CoreConcepts.HelloWorld (helloWorld)
+import Pages.Introduction.HelloWorld (helloWorld)
 import Pages.CoreConcepts.MoreHooks (moreHooks)
 import Pages.CoreConcepts.Portals (portals)
 import Pages.CoreConcepts.Providers (providers)
@@ -12,11 +12,10 @@ import Pages.CoreConcepts.Pursx (pursx)
 import Pages.CoreConcepts.State (state)
 
 coreConcepts :: forall lock payload. Chapter lock payload
-coreConcepts = Chapter
+coreConcepts = chapter
   { title: "Core concepts"
   , pages:
-      [ helloWorld
-      , components
+      [ components
       , state
       , pursx
       , collections

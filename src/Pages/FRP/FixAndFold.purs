@@ -14,7 +14,7 @@ fixAndFold = page
   , topmatter:
           [ D.p (D.Class !:= "lead")
               [ text_ "This page will be about "
-                , D.span (D.Class !:= "font-bold") [ text_ "FixAndFold"]
+                , D.span (D.Class !:= "font-bold") [ text_ "Fix and fold"]
                 , text_ "."
               ]
           , D.p_

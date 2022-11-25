@@ -1,4 +1,4 @@
-module Pages.CoreConcepts.HelloWorld.RunningOurProgram.BundlingForProduction where
+module Pages.Introduction.HelloWorld.RunningOurProgram.BundlingForProduction where
 
 import Contracts (Subsection, subsection)
 import Deku.Control (text_)

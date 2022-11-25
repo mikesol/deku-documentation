@@ -15,9 +15,10 @@ import Pages.Docs (docs)
 pageLi
   :: forall lock payload
    . Boolean
+  -> String
   -> Page lock payload
   -> Domable lock payload
-pageLi headStyle (Page { title }) = D.li (D.Class !:= "relative")
+pageLi headStyle chapterPath (Page { title, path }) = D.li (D.Class !:= "relative")
   [ D.a
       ( oneOf
           [ D.Class !:=
@@ -26,7 +27,7 @@ pageLi headStyle (Page { title }) = D.li (D.Class !:= "relative")
                 else
                   "block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block dark:text-slate-400 dark:before:bg-slate-700 dark:hover:text-slate-300"
               )
-          , D.Href !:= "/"
+          , D.Href !:= let p = chapterPath <> path in if p == "/introduction/getting-started" then "/" else p
           ]
       )
       [ text_ title ]
@@ -36,7 +37,7 @@ chapterLi
   :: forall lock payload
    . Chapter lock payload
   -> Domable lock payload
-chapterLi (Chapter { title, pages }) = D.li_
+chapterLi (Chapter { title, path, pages }) = D.li_
   [ D.h2
       ( D.Class !:=
           "font-display font-medium text-slate-900 dark:text-white"
@@ -49,7 +50,7 @@ chapterLi (Chapter { title, pages }) = D.li_
               "mt-2 space-y-2 border-l-2 border-slate-100 dark:border-slate-800 lg:mt-4 lg:space-y-4 lg:border-slate-200"
           ]
       )
-      (mapWithIndex (\i v -> pageLi (i == 0) v) pages)
+      (mapWithIndex (\i v -> pageLi (i == 0) path v) pages)
   ]
 
 leftMatter :: Nut

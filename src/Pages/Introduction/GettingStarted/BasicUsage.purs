@@ -9,11 +9,11 @@ import Pages.Introduction.GettingStarted.BasicUsage.BuildingForProduction (build
 
 basicUsage :: forall lock payload. Section lock payload
 basicUsage = section
-  { title: "BasicUsage"
+  { title: "Basic usage"
   , topmatter:
       [ D.p_
           [ text_ "This section will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "BasicUsage"]
+            , D.span (D.Class !:= "font-bold") [ text_ "Basic usage"]
             , text_ "."
           ]
       ]

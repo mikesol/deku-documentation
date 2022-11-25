@@ -9,11 +9,11 @@ import Pages.FRP.FixAndFold.FixedPoints.WhatIsAFixedPoint (whatIsAFixedPoint)
 
 fixedPoints :: forall lock payload. Section lock payload
 fixedPoints = section
-  { title: "FixedPoints"
+  { title: "Fixed points"
   , topmatter:
       [ D.p_
           [ text_ "This section will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "FixedPoints"]
+            , D.span (D.Class !:= "font-bold") [ text_ "Fixed points"]
             , text_ "."
           ]
       ]

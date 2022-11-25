@@ -1,4 +1,4 @@
-module Pages.CoreConcepts.HelloWorld.RunningOurProgram.TheDevServer where
+module Pages.Introduction.HelloWorld.RunningOurProgram.TheDevServer where
 
 import Contracts (Subsection, subsection)
 import Deku.Control (text_)

@@ -12,10 +12,23 @@ newtype Docs lock paylaod = Docs (Array (Chapter lock paylaod))
 
 derive instance Newtype (Docs lock paylaod) _
 newtype Chapter lock payload = Chapter
-  { title :: String, pages :: Array (Page lock payload) }
+  { title :: String, path :: String, pages :: Array (Page lock payload) }
 
 derive instance Newtype (Chapter lock paylaod) _
 
+
+chapter
+  :: forall lock payload
+   . { title :: String
+     , pages :: Array (Page lock payload)
+     }
+  -> Chapter lock payload
+chapter i = Chapter
+  ( i `union`
+      { path: "/" <>
+          (intercalate "-" $ map toLower $ split (Pattern " ") i.title)
+      }
+  )
 type Page' lock payload r =
   { path :: String
   , title :: String

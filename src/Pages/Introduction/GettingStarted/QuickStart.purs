@@ -9,11 +9,11 @@ import Pages.Introduction.GettingStarted.QuickStart.UsingAnExistingProject (usin
 
 quickStart :: forall lock payload. Section lock payload
 quickStart = section
-  { title: "QuickStart"
+  { title: "Quick start"
   , topmatter:
       [ D.p_
           [ text_ "This section will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "QuickStart"]
+            , D.span (D.Class !:= "font-bold") [ text_ "Quick start"]
             , text_ "."
           ]
       ]

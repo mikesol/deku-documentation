@@ -14,7 +14,7 @@ moreHooks = page
   , topmatter:
           [ D.p (D.Class !:= "lead")
               [ text_ "This page will be about "
-                , D.span (D.Class !:= "font-bold") [ text_ "MoreHooks"]
+                , D.span (D.Class !:= "font-bold") [ text_ "More hooks"]
                 , text_ "."
               ]
           , D.p_

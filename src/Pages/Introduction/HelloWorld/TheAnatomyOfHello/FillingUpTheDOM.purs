@@ -1,4 +1,4 @@
-module Pages.CoreConcepts.HelloWorld.TheAnatomyOfHello.FillingUpTheDOM where
+module Pages.Introduction.HelloWorld.TheAnatomyOfHello.FillingUpTheDOM where
 
 import Contracts (Subsection, subsection)
 import Deku.Control (text_)

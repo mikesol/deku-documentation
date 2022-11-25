@@ -1,12 +1,12 @@
-module Pages.CoreConcepts.HelloWorld where
+module Pages.Introduction.HelloWorld where
 
 import Contracts (Page, page)
 import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.DOM as D
-import Pages.CoreConcepts.HelloWorld.SayingHello (sayingHello)
-import Pages.CoreConcepts.HelloWorld.TheAnatomyOfHello (theAnatomyOfHello)
-import Pages.CoreConcepts.HelloWorld.RunningOurProgram (runningOurProgram)
+import Pages.Introduction.HelloWorld.SayingHello (sayingHello)
+import Pages.Introduction.HelloWorld.TheAnatomyOfHello (theAnatomyOfHello)
+import Pages.Introduction.HelloWorld.RunningOurProgram (runningOurProgram)
 
 helloWorld :: forall lock payload. Page lock payload
 helloWorld = page

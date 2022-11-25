@@ -9,11 +9,11 @@ import Pages.Introduction.GettingStarted.GettingHelp.SubmitAnIssue (submitAnIssu
 
 gettingHelp :: forall lock payload. Section lock payload
 gettingHelp = section
-  { title: "GettingHelp"
+  { title: "Getting help"
   , topmatter:
       [ D.p_
           [ text_ "This section will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "GettingHelp"]
+            , D.span (D.Class !:= "font-bold") [ text_ "Getting help"]
             , text_ "."
           ]
       ]

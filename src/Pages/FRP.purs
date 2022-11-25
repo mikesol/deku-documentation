@@ -1,6 +1,6 @@
 module Pages.FRP where
 
-import Contracts (Chapter(..))
+import Contracts (Chapter, chapter)
 import Pages.FRP.Alternatives (alternatives)
 import Pages.FRP.Applicatives (applicatives)
 import Pages.FRP.Behaviors (behaviors)
@@ -13,7 +13,7 @@ import Pages.FRP.Sampling (sampling)
 
 
 frp :: forall lock payload. Chapter lock payload
-frp = Chapter
+frp = chapter
   { title: "Functional reactive programming"
   , pages:
       [ events
