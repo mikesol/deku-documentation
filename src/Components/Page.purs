@@ -152,7 +152,7 @@ page' chapter opts = D.div_
                                             ( oneOf
                                                 [ D.Class !:= "text-sky-500"
                                                 , D.Href !:=
-                                                    ("/#" <> section.id)
+                                                    ("#" <> section.id)
                                                 ]
                                             )
                                             [ text_ section.title ]
@@ -175,7 +175,7 @@ page' chapter opts = D.div_
                                                               [ D.Class !:=
                                                                   "hover:text-slate-600 dark:hover:text-slate-300"
                                                               , D.Href !:=
-                                                                  ( "/#" <>
+                                                                  ( "#" <>
                                                                       subsection.id
                                                                   )
                                                               ]
