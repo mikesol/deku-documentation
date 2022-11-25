@@ -50,6 +50,5 @@ jobs:
         run: pnpm i
       - name: Build
         run: pnpm build
-      # as much as possible
       - name: deploy to netlify
         run: NETLIFY_SITE_ID=${{ secrets.NETLIFY_DEKU_SITE_ID }} NETLIFY_AUTH_TOKEN=${{ secrets.NETLIFY_AUTH_TOKEN }} netlify deploy --dir=examples/docs --prod
