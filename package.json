@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build"
+    "build": "spago build && vite build"
   },
   "browserslist": "defaults, not ie <= 11",
   "dependencies": {
