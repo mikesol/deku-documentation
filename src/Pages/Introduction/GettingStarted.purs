@@ -10,7 +10,7 @@ import Pages.Introduction.GettingStarted.BasicUsage (basicUsage)
 
 gettingStarted :: forall lock payload. Page lock payload
 gettingStarted = page
-  { title: "GettingStarted"
+  { title: "Getting started"
   , topmatter:
           [ D.p (D.Class !:= "lead")
               [ text_ "This page will be about "

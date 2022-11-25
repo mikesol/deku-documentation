@@ -10,7 +10,7 @@ import Pages.CoreConcepts.HelloWorld.RunningOurProgram (runningOurProgram)
 
 helloWorld :: forall lock payload. Page lock payload
 helloWorld = page
-  { title: "HelloWorld"
+  { title: "Hello world"
   , topmatter:
           [ D.p (D.Class !:= "lead")
               [ text_ "This page will be about "

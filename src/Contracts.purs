@@ -3,14 +3,18 @@ module Contracts where
 import Prelude
 
 import Data.Array (intercalate)
+import Data.Newtype (class Newtype)
 import Data.String (Pattern(..), split, toLower)
 import Deku.Core (Domable)
 import Record (union)
 
 newtype Docs lock paylaod = Docs (Array (Chapter lock paylaod))
 
+derive instance Newtype (Docs lock paylaod) _
 newtype Chapter lock payload = Chapter
   { title :: String, pages :: Array (Page lock payload) }
+
+derive instance Newtype (Chapter lock paylaod) _
 
 type Page' lock payload r =
   { path :: String

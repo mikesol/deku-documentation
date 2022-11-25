@@ -8,4 +8,4 @@ import Effect (Effect)
 import Pages.FRP.Sampling (sampling)
 
 main :: Effect Unit
-main = runInBody (page "foo" sampling)
+main = runInBody (page "Functional reactive programming" sampling)

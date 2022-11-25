@@ -10,7 +10,7 @@ import Pages.CoreConcepts.MoreHooks.UseMemoized (useMemoized)
 
 moreHooks :: forall lock payload. Page lock payload
 moreHooks = page
-  { title: "MoreHooks"
+  { title: "More hooks"
   , topmatter:
           [ D.p (D.Class !:= "lead")
               [ text_ "This page will be about "

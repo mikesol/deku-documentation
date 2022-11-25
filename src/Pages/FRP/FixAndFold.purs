@@ -10,7 +10,7 @@ import Pages.FRP.FixAndFold.FoldingEvents (foldingEvents)
 
 fixAndFold :: forall lock payload. Page lock payload
 fixAndFold = page
-  { title: "FixAndFold"
+  { title: "Fix and fold"
   , topmatter:
           [ D.p (D.Class !:= "lead")
               [ text_ "This page will be about "

@@ -9,7 +9,7 @@ import Pages.AdvancedUsage.CustomElements.DefiningCustomElements (definingCustom
 
 customElements :: forall lock payload. Page lock payload
 customElements = page
-  { title: "CustomElements"
+  { title: "Custom elements"
   , topmatter:
           [ D.p (D.Class !:= "lead")
               [ text_ "This page will be about "
