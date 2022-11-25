@@ -6,10 +6,11 @@ import Deku.Control (text_)
 import Deku.DOM as D
 import Pages.FRP.Alternatives.Alt (alt)
 import Pages.FRP.Alternatives.Plus (plus)
+import Router.ADT (Route(..))
 
 alternatives :: forall lock payload. Page lock payload
 alternatives = page
-  { title: "Alternatives"
+  { route: Alternatives
   , topmatter:
           [ D.p (D.Class !:= "lead")
               [ text_ "This page will be about "

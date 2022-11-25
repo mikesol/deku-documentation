@@ -4,13 +4,14 @@ import Contracts (Page, page)
 import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.DOM as D
-import Pages.AdvancedUsage.SSR.RenderingAStaticSite (renderingAStaticSite)
 import Pages.AdvancedUsage.SSR.HydratingAStaticSite (hydratingAStaticSite)
 import Pages.AdvancedUsage.SSR.IntegrationWithVite (integrationWithVite)
+import Pages.AdvancedUsage.SSR.RenderingAStaticSite (renderingAStaticSite)
+import Router.ADT (Route(..))
 
 sSR :: forall lock payload. Page lock payload
 sSR = page
-  { title: "SSR"
+  { route: SSR
   , topmatter:
           [ D.p (D.Class !:= "lead")
               [ text_ "This page will be about "

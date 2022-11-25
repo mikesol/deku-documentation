@@ -4,13 +4,14 @@ import Contracts (Page, page)
 import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.DOM as D
-import Pages.CoreConcepts.MoreHooks.UseMailboxed (useMailboxed)
 import Pages.CoreConcepts.MoreHooks.UseHot (useHot)
+import Pages.CoreConcepts.MoreHooks.UseMailboxed (useMailboxed)
 import Pages.CoreConcepts.MoreHooks.UseMemoized (useMemoized)
+import Router.ADT (Route(..))
 
 moreHooks :: forall lock payload. Page lock payload
 moreHooks = page
-  { title: "More hooks"
+  { route: MoreHooks
   , topmatter:
           [ D.p (D.Class !:= "lead")
               [ text_ "This page will be about "

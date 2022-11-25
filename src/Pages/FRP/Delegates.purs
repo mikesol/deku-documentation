@@ -4,13 +4,14 @@ import Contracts (Page, page)
 import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.DOM as D
-import Pages.FRP.Delegates.Ring (ring)
-import Pages.FRP.Delegates.Monoid (monoid)
 import Pages.FRP.Delegates.HeytingAlgebra (heytingAlgebra)
+import Pages.FRP.Delegates.Monoid (monoid)
+import Pages.FRP.Delegates.Ring (ring)
+import Router.ADT (Route(..))
 
 delegates :: forall lock payload. Page lock payload
 delegates = page
-  { title: "Delegates"
+  { route: Delegates
   , topmatter:
           [ D.p (D.Class !:= "lead")
               [ text_ "This page will be about "

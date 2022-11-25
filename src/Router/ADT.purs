@@ -31,3 +31,26 @@ data Route
 derive instance Generic Route _
 instance Show Route where
   show = genericShow
+
+routeToTitle :: Route -> String
+routeToTitle GettingStarted = "Getting started"
+routeToTitle HelloWorld = "Hello world"
+routeToTitle Components = "Components"
+routeToTitle State = "State"
+routeToTitle Pursx = "Pursx"
+routeToTitle Collections = "Collections"
+routeToTitle Portals = "Portals"
+routeToTitle Providers = "Providers"
+routeToTitle Effects = "Effects"
+routeToTitle MoreHooks = "MoreHooks"
+routeToTitle Events = "Events"
+routeToTitle Applicatives = "Applicatives"
+routeToTitle Alternatives = "Alternatives"
+routeToTitle Filtering = "Filtering"
+routeToTitle Sampling = "Sampling"
+routeToTitle Delegates = "Delegates"
+routeToTitle Busses = "Busses"
+routeToTitle FixAndFold = "Fix and fold"
+routeToTitle Behaviors = "Behaviors"
+routeToTitle CustomElements = "Custom elements"
+routeToTitle SSR = "SSR"

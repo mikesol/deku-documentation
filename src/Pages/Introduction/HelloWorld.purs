@@ -4,13 +4,14 @@ import Contracts (Page, page)
 import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.DOM as D
+import Pages.Introduction.HelloWorld.RunningOurProgram (runningOurProgram)
 import Pages.Introduction.HelloWorld.SayingHello (sayingHello)
 import Pages.Introduction.HelloWorld.TheAnatomyOfHello (theAnatomyOfHello)
-import Pages.Introduction.HelloWorld.RunningOurProgram (runningOurProgram)
+import Router.ADT (Route(..))
 
 helloWorld :: forall lock payload. Page lock payload
 helloWorld = page
-  { title: "Hello world"
+  { route: HelloWorld
   , topmatter:
           [ D.p (D.Class !:= "lead")
               [ text_ "This page will be about "

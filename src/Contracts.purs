@@ -7,6 +7,7 @@ import Data.Newtype (class Newtype)
 import Data.String (Pattern(..), split, toLower)
 import Deku.Core (Domable)
 import Record (union)
+import Router.ADT (Route, routeToTitle)
 
 newtype Docs lock paylaod = Docs (Array (Chapter lock paylaod))
 
@@ -15,7 +16,6 @@ newtype Chapter lock payload = Chapter
   { title :: String, path :: String, pages :: Array (Page lock payload) }
 
 derive instance Newtype (Chapter lock paylaod) _
-
 
 chapter
   :: forall lock payload
@@ -29,9 +29,11 @@ chapter i = Chapter
           (intercalate "-" $ map toLower $ split (Pattern " ") i.title)
       }
   )
+
 type Page' lock payload r =
   { path :: String
   , title :: String
+  , route :: Route
   , topmatter :: Array (Domable lock payload)
   , sections :: Array (Section lock payload)
   | r
@@ -42,17 +44,20 @@ type FullPage lock payload = Page' lock payload (showBanner :: Boolean)
 
 page
   :: forall lock payload
-   . { title :: String
+   . { route :: Route
      , topmatter :: Array (Domable lock payload)
      , sections :: Array (Section lock payload)
      }
   -> Page lock payload
 page i = Page
   ( i `union`
-      { path: "/" <>
-          (intercalate "-" $ map toLower $ split (Pattern " ") i.title)
+      { title
+      , path: "/" <>
+          (intercalate "-" $ map toLower $ split (Pattern " ") title)
       }
   )
+  where
+  title = routeToTitle i.route
 
 newtype Section lock payload = Section
   { title :: String

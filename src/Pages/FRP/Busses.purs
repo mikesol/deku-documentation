@@ -5,12 +5,13 @@ import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.DOM as D
 import Pages.FRP.Busses.ASimpleBus (aSimpleBus)
-import Pages.FRP.Busses.TheVBus (theVBus)
 import Pages.FRP.Busses.BusFixIsomorphism (busFixIsomorphism)
+import Pages.FRP.Busses.TheVBus (theVBus)
+import Router.ADT (Route(..))
 
 busses :: forall lock payload. Page lock payload
 busses = page
-  { title: "Busses"
+  { route: Busses
   , topmatter:
           [ D.p (D.Class !:= "lead")
               [ text_ "This page will be about "

@@ -4,12 +4,13 @@ import Contracts (Page, page)
 import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.DOM as D
-import Pages.CoreConcepts.Portals.LocalPortals (localPortals)
 import Pages.CoreConcepts.Portals.GlobalPortals (globalPortals)
+import Pages.CoreConcepts.Portals.LocalPortals (localPortals)
+import Router.ADT (Route(..))
 
 portals :: forall lock payload. Page lock payload
 portals = page
-  { title: "Portals"
+  { route: Portals
   , topmatter:
           [ D.p (D.Class !:= "lead")
               [ text_ "This page will be about "

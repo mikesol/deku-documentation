@@ -7,10 +7,11 @@ import Deku.DOM as D
 import Pages.FRP.FixAndFold.FixedPoints (fixedPoints)
 import Pages.FRP.FixAndFold.FixingEvents (fixingEvents)
 import Pages.FRP.FixAndFold.FoldingEvents (foldingEvents)
+import Router.ADT (Route(..))
 
 fixAndFold :: forall lock payload. Page lock payload
 fixAndFold = page
-  { title: "Fix and fold"
+  { route: FixAndFold
   , topmatter:
           [ D.p (D.Class !:= "lead")
               [ text_ "This page will be about "

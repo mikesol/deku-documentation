@@ -5,14 +5,15 @@ import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.DOM as D
 import Pages.FRP.Events.Definition (definition)
+import Pages.FRP.Events.InteractiveEvents (interactiveEvents)
 import Pages.FRP.Events.OptimizedEvents (optimizedEvents)
 import Pages.FRP.Events.PureEvents (pureEvents)
 import Pages.FRP.Events.StandAloneEvents (standAloneEvents)
-import Pages.FRP.Events.InteractiveEvents (interactiveEvents)
+import Router.ADT (Route(..))
 
 events :: forall lock payload. Page lock payload
 events = page
-  { title: "Events"
+  { route: Events
   , topmatter:
           [ D.p (D.Class !:= "lead")
               [ text_ "This page will be about "

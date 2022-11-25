@@ -4,13 +4,14 @@ import Contracts (Page, page)
 import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.DOM as D
-import Pages.CoreConcepts.Collections.Monoids (monoids)
 import Pages.CoreConcepts.Collections.DynamicElements (dynamicElements)
 import Pages.CoreConcepts.Collections.FixedElements (fixedElements)
+import Pages.CoreConcepts.Collections.Monoids (monoids)
+import Router.ADT (Route(..))
 
 collections :: forall lock payload. Page lock payload
 collections = page
-  { title: "Collections"
+  { route: Collections
   , topmatter:
           [ D.p (D.Class !:= "lead")
               [ text_ "This page will be about "

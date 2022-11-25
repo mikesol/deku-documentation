@@ -5,12 +5,13 @@ import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.DOM as D
 import Pages.CoreConcepts.Pursx.ASimpleExample (aSimpleExample)
-import Pages.CoreConcepts.Pursx.DynamicElements (dynamicElements)
 import Pages.CoreConcepts.Pursx.DynamicAttributes (dynamicAttributes)
+import Pages.CoreConcepts.Pursx.DynamicElements (dynamicElements)
+import Router.ADT (Route(..))
 
 pursx :: forall lock payload. Page lock payload
 pursx = page
-  { title: "Pursx"
+  { route: Pursx
   , topmatter:
           [ D.p (D.Class !:= "lead")
               [ text_ "This page will be about "

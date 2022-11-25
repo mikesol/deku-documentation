@@ -5,12 +5,13 @@ import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.DOM as D
 import Pages.FRP.Applicatives.Applicative (applicative)
-import Pages.FRP.Applicatives.MonadsAndFlattening (monadsAndFlattening)
 import Pages.FRP.Applicatives.Functor (functor)
+import Pages.FRP.Applicatives.MonadsAndFlattening (monadsAndFlattening)
+import Router.ADT (Route(..))
 
 applicatives :: forall lock payload. Page lock payload
 applicatives = page
-  { title: "Applicatives"
+  { route: Applicatives
   , topmatter:
           [ D.p (D.Class !:= "lead")
               [ text_ "This page will be about "

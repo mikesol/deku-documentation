@@ -7,10 +7,11 @@ import Deku.DOM as D
 import Pages.FRP.Sampling.Gating (gating)
 import Pages.FRP.Sampling.SamplingOnAnEvent (samplingOnAnEvent)
 import Pages.FRP.Sampling.SamplingWithBehaviors (samplingWithBehaviors)
+import Router.ADT (Route(..))
 
 sampling :: forall lock payload. Page lock payload
 sampling = page
-  { title: "Sampling"
+  { route: Sampling
   , topmatter:
           [ D.p (D.Class !:= "lead")
               [ text_ "This page will be about "

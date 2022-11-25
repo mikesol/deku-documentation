@@ -4,13 +4,14 @@ import Contracts (Page, page)
 import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.DOM as D
-import Pages.Introduction.GettingStarted.QuickStart (quickStart)
-import Pages.Introduction.GettingStarted.GettingHelp (gettingHelp)
 import Pages.Introduction.GettingStarted.BasicUsage (basicUsage)
+import Pages.Introduction.GettingStarted.GettingHelp (gettingHelp)
+import Pages.Introduction.GettingStarted.QuickStart (quickStart)
+import Router.ADT (Route(..))
 
 gettingStarted :: forall lock payload. Page lock payload
 gettingStarted = page
-  { title: "Getting started"
+  { route:  GettingStarted
   , topmatter:
           [ D.p (D.Class !:= "lead")
               [ text_ "This page will be about "

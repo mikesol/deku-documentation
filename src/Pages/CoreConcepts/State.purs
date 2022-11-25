@@ -4,12 +4,13 @@ import Contracts (Page, page)
 import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.DOM as D
-import Pages.CoreConcepts.State.TheStateHook (theStateHook)
 import Pages.CoreConcepts.State.StateWithoutInitialValues (stateWithoutInitialValues)
+import Pages.CoreConcepts.State.TheStateHook (theStateHook)
+import Router.ADT (Route(..))
 
 state :: forall lock payload. Page lock payload
 state = page
-  { title: "State"
+  { route: State
   , topmatter:
           [ D.p (D.Class !:= "lead")
               [ text_ "This page will be about "

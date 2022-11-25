@@ -5,12 +5,13 @@ import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.DOM as D
 import Pages.CoreConcepts.Effects.Callbacks (callbacks)
-import Pages.CoreConcepts.Effects.Riders (riders)
 import Pages.CoreConcepts.Effects.Hydration (hydration)
+import Pages.CoreConcepts.Effects.Riders (riders)
+import Router.ADT (Route(..))
 
 effects :: forall lock payload. Page lock payload
 effects = page
-  { title: "Effects"
+  { route: Effects
   , topmatter:
           [ D.p (D.Class !:= "lead")
               [ text_ "This page will be about "

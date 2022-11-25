@@ -4,14 +4,15 @@ import Contracts (Page, page)
 import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.DOM as D
-import Pages.FRP.Behaviors.Definition (definition)
-import Pages.FRP.Behaviors.Calculus (calculus)
 import Pages.FRP.Behaviors.Applicative (applicative)
+import Pages.FRP.Behaviors.Calculus (calculus)
+import Pages.FRP.Behaviors.Definition (definition)
 import Pages.FRP.Behaviors.Delegates (delegates)
+import Router.ADT (Route(..))
 
 behaviors :: forall lock payload. Page lock payload
 behaviors = page
-  { title: "Behaviors"
+  { route: Behaviors
   , topmatter:
           [ D.p (D.Class !:= "lead")
               [ text_ "This page will be about "

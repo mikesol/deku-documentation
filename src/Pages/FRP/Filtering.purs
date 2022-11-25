@@ -5,12 +5,13 @@ import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.DOM as D
 import Pages.FRP.Filtering.Compact (compact)
-import Pages.FRP.Filtering.Partition (partition)
 import Pages.FRP.Filtering.Filter (filter)
+import Pages.FRP.Filtering.Partition (partition)
+import Router.ADT (Route(..))
 
 filtering :: forall lock payload. Page lock payload
 filtering = page
-  { title: "Filtering"
+  { route: Filtering
   , topmatter:
           [ D.p (D.Class !:= "lead")
               [ text_ "This page will be about "
