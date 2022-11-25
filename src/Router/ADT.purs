@@ -29,6 +29,7 @@ data Route
   | SSR
 
 derive instance Generic Route _
+derive instance Eq Route
 instance Show Route where
   show = genericShow
 

@@ -4,13 +4,13 @@ import Prelude
 
 import Contracts (Chapter(..), Page(..))
 import Data.Foldable (oneOf)
-import Data.FunctorWithIndex (mapWithIndex)
 import Data.Newtype (unwrap)
 import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.Core (Domable, Nut)
 import Deku.DOM as D
 import Pages.Docs (docs)
+import Router.ADT (Route)
 
 pageLi
   :: forall lock payload
@@ -35,9 +35,10 @@ pageLi headStyle chapterPath (Page { title, path }) = D.li (D.Class !:= "relativ
 
 chapterLi
   :: forall lock payload
-   . Chapter lock payload
+   . Route
+  -> Chapter lock payload
   -> Domable lock payload
-chapterLi (Chapter { title, path, pages }) = D.li_
+chapterLi route' (Chapter { title, path, pages }) = D.li_
   [ D.h2
       ( D.Class !:=
           "font-display font-medium text-slate-900 dark:text-white"
@@ -50,11 +51,11 @@ chapterLi (Chapter { title, path, pages }) = D.li_
               "mt-2 space-y-2 border-l-2 border-slate-100 dark:border-slate-800 lg:mt-4 lg:space-y-4 lg:border-slate-200"
           ]
       )
-      (mapWithIndex (\i v -> pageLi (i == 0) path v) pages)
+      (map (\v@(Page { route }) -> pageLi (route == route') path v) pages)
   ]
 
-leftMatter :: Nut
-leftMatter = D.div (D.Class !:= "hidden lg:relative lg:block lg:flex-none")
+leftMatter :: Route -> Nut
+leftMatter route = D.div (D.Class !:= "hidden lg:relative lg:block lg:flex-none")
   [ D.div
       ( D.Class !:=
           "absolute inset-y-0 right-0 w-[50vw] bg-slate-50 dark:hidden"
@@ -79,7 +80,7 @@ leftMatter = D.div (D.Class !:= "hidden lg:relative lg:block lg:flex-none")
               "text-base lg:text-sm w-64 pr-8 xl:w-72 xl:pr-16"
           )
           [ D.ul (oneOf [ D.Role !:= "list", D.Class !:= "space-y-9" ])
-              (chapterLi <$> unwrap docs)
+              (chapterLi route <$> unwrap docs)
           ]
       ]
   ]

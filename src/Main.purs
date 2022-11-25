@@ -50,27 +50,27 @@ main = do
   routing <- create
   runInBody
     ( flip switcher routing.event $ case _ of
-        GettingStarted -> titlePage introductionChapterTitle gettingStarted
-        HelloWorld -> page introductionChapterTitle helloWorld
-        Components -> page coreConceptsChapterTitle components
-        State -> page coreConceptsChapterTitle state
-        Pursx -> page coreConceptsChapterTitle pursx
-        Collections -> page coreConceptsChapterTitle collections
-        Portals -> page coreConceptsChapterTitle portals
-        Providers -> page coreConceptsChapterTitle providers
-        Effects -> page coreConceptsChapterTitle effects
-        MoreHooks -> page coreConceptsChapterTitle moreHooks
-        Events -> page coreConceptsChapterTitle events
-        Applicatives -> page frpChapterTitle applicatives
-        Alternatives -> page frpChapterTitle alternatives
-        Filtering -> page frpChapterTitle filtering
-        Sampling -> page frpChapterTitle sampling
-        Delegates -> page frpChapterTitle delegates
-        Busses -> page frpChapterTitle busses
-        FixAndFold -> page frpChapterTitle fixAndFold
-        Behaviors -> page frpChapterTitle behaviors
-        CustomElements -> page advancedUsageChapterTitle customElements
-        SSR -> page advancedUsageChapterTitle sSR
+        GettingStarted -> titlePage GettingStarted introductionChapterTitle gettingStarted
+        HelloWorld -> page HelloWorld introductionChapterTitle helloWorld
+        Components -> page Components coreConceptsChapterTitle components
+        State -> page State coreConceptsChapterTitle state
+        Pursx -> page Pursx coreConceptsChapterTitle pursx
+        Collections -> page Collections coreConceptsChapterTitle collections
+        Portals -> page Portals coreConceptsChapterTitle portals
+        Providers -> page Providers coreConceptsChapterTitle providers
+        Effects -> page Effects coreConceptsChapterTitle effects
+        MoreHooks -> page MoreHooks coreConceptsChapterTitle moreHooks
+        Events -> page Events coreConceptsChapterTitle events
+        Applicatives -> page Applicatives frpChapterTitle applicatives
+        Alternatives -> page  Alternatives frpChapterTitle alternatives
+        Filtering -> page Filtering frpChapterTitle filtering
+        Sampling -> page Sampling frpChapterTitle sampling
+        Delegates -> page Delegates frpChapterTitle delegates
+        Busses -> page Busses frpChapterTitle busses
+        FixAndFold -> page FixAndFold frpChapterTitle fixAndFold
+        Behaviors -> page Behaviors frpChapterTitle behaviors
+        CustomElements -> page CustomElements advancedUsageChapterTitle customElements
+        SSR -> page SSR advancedUsageChapterTitle sSR
     )
   psi <- makeInterface
   void $ matchesWith (parse route) (\_ new -> routing.push new) psi

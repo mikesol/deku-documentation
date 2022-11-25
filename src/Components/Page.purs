@@ -17,27 +17,31 @@ import Deku.Control (text_)
 import Deku.Core (Domable)
 import Deku.DOM as D
 import Record (union)
+import Router.ADT (Route)
 
 page
   :: forall lock payload
-   . String
+   . Route
+  -> String
   -> Page lock payload
   -> Domable lock payload
-page chapter (Page i) = page' chapter (i `union` { showBanner: false })
+page route chapter (Page i) = page' route chapter (i `union` { showBanner: false })
 
 titlePage
   :: forall lock payload
-   . String
+   . Route
+  -> String
   -> Page lock payload
   -> Domable lock payload
-titlePage chapter (Page i) = page' chapter (i `union` { showBanner: true })
+titlePage route chapter (Page i) = page' route chapter (i `union` { showBanner: true })
 
 page'
   :: forall lock payload
-   . String
+   . Route
+  -> String
   -> FullPage lock payload
   -> Domable lock payload
-page' chapter opts = D.div_
+page' route chapter opts = D.div_
   ( [ header ]
       <> [ guard opts.showBanner banner ]
       <>
@@ -47,7 +51,7 @@ page' chapter opts = D.div_
                     "relative mx-auto flex max-w-8xl justify-center sm:px-2 lg:px-8 xl:px-12"
                 ]
             )
-            [ leftMatter
+            [ leftMatter route
             , D.div
                 ( D.Class !:=
                     "min-w-0 max-w-2xl flex-auto px-4 py-16 lg:max-w-none lg:pr-0 lg:pl-8 xl:px-16"
