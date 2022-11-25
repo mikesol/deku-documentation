@@ -5,7 +5,7 @@ import Deku.Control (text_)
 import Deku.Attribute ((!:=))
 import Deku.DOM as D
 import Pages.FRP.Sampling.SamplingOnAnEvent.BiasingASideOfSampling (biasingASideOfSampling)
-import Pages.FRP.Sampling.SamplingOnAnEvent.SamplingApplicativesAndTemporality (samplingApplicativesAndTemporality)
+import Pages.FRP.Sampling.SamplingOnAnEvent.ApplicativesAndTemporality (applicativesAndTemporality)
 import Pages.FRP.Sampling.SamplingOnAnEvent.FlippingTheFunctionAndArgument (flippingTheFunctionAndArgument)
 
 samplingOnAnEvent :: forall lock payload. Section lock payload
@@ -19,5 +19,5 @@ samplingOnAnEvent = section
           ]
       ]
   , subsections:
-      [ biasingASideOfSampling,samplingApplicativesAndTemporality,flippingTheFunctionAndArgument]
+      [ biasingASideOfSampling,applicativesAndTemporality,flippingTheFunctionAndArgument]
   }
