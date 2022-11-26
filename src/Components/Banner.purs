@@ -14,10 +14,10 @@ import FRP.Event (Event)
 
 banner
   :: forall lock payload
-   . { showHeader :: Event Boolean }
+   . { showBanner :: Event Boolean }
   -> Domable lock payload
-banner { showHeader } = D.div
-  ( klass $ showHeader <#> not >>> flip guard "hidden " >>>
+banner { showBanner } = D.div
+  ( klass $ showBanner <#> not >>> flip guard "hidden " >>>
       ( _ <>
           "overflow-hidden bg-slate-900 dark:-mb-32 dark:mt-[-4.5rem] dark:pb-32 dark:pt-[4.5rem] dark:lg:mt-[-4.75rem] dark:lg:pt-[4.75rem]"
       )

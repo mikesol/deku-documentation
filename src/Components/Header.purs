@@ -7,13 +7,21 @@ import Data.Foldable (oneOf)
 import Deku.Attribute (xdata, (!:=))
 import Deku.Attributes (klass_)
 import Deku.Control (text_)
-import Deku.Core (Nut)
+import Deku.Core (Domable)
 import Deku.DOM as D
+import Effect (Effect)
+import Web.DOM as DOM
 
-header :: Nut
-header = D.header
-  ( D.Class !:=
-      "sticky top-0 z-50 flex flex-wrap items-center justify-between bg-white px-4 py-5 shadow-md shadow-slate-900/5 transition duration-500 dark:shadow-none sm:px-6 lg:px-8 dark:bg-transparent"
+header
+  :: forall lock payload
+   . { setHeaderElement :: DOM.Element -> Effect Unit }
+  -> Domable lock payload
+header { setHeaderElement } = D.header
+  ( oneOf
+      [ D.Self !:= setHeaderElement
+      , D.Class !:=
+          "sticky top-0 z-50 flex flex-wrap items-center justify-between bg-white px-4 py-5 shadow-md shadow-slate-900/5 transition duration-500 dark:shadow-none sm:px-6 lg:px-8 dark:bg-transparent"
+      ]
   )
   [ D.div (D.Class !:= "mr-6 flex lg:hidden")
       [ D.button
@@ -49,7 +57,9 @@ header = D.header
                 D.Href !:= "/"
               ]
           )
-          [ D.img (oneOf [D.Src !:= dekulogoURL, klass_ "w-20 object-contain"]) []
+          [ D.img
+              (oneOf [ D.Src !:= dekulogoURL, klass_ "w-20 object-contain" ])
+              []
           ]
       ]
   , D.div (D.Class !:= "-my-5 mr-6 sm:mr-8 md:mr-0")
