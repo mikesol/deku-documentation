@@ -2,43 +2,55 @@ module Components.LeftMatter where
 
 import Prelude
 
+import Components.Link (link)
 import Contracts (Chapter(..), Page(..))
+import Control.Alt ((<|>))
 import Data.Foldable (oneOf)
 import Data.Newtype (unwrap)
 import Deku.Attribute ((!:=))
+import Deku.Attributes (klass)
 import Deku.Control (text_)
 import Deku.Core (Domable, Nut)
 import Deku.DOM as D
+import FRP.Event (Event)
+import Navigation (PushState)
 import Pages.Docs (docs)
 import Router.ADT (Route)
 
 pageLi
   :: forall lock payload
-   . Boolean
-  -> String
+   . { pageIs :: Route -> Event Unit
+     , pageWas :: Route -> Event Unit
+     , pushState :: PushState
+     }
   -> Page lock payload
   -> Domable lock payload
-pageLi headStyle chapterPath (Page { title, path }) = D.li (D.Class !:= "relative")
-  [ D.a
+pageLi { pushState, pageIs, pageWas } (Page { route }) = D.li
+  (D.Class !:= "relative")
+  [ link pushState route
       ( oneOf
-          [ D.Class !:=
-              ( if headStyle then
-                  "block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full font-semibold text-sky-500 before:bg-sky-500"
-                else
-                  "block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block dark:text-slate-400 dark:before:bg-slate-700 dark:hover:text-slate-300"
-              )
-          , D.Href !:= let p = chapterPath <> path in if p == "/introduction/getting-started" then "/" else p
+          [ klass $
+              ( pure false <|> (pageIs route $> true) <|>
+                  (pageWas route $> false)
+              ) <#>
+                ( if _ then
+                    "block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full font-semibold text-sky-500 before:bg-sky-500"
+                  else
+                    "block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block dark:text-slate-400 dark:before:bg-slate-700 dark:hover:text-slate-300"
+                )
           ]
       )
-      [ text_ title ]
   ]
 
 chapterLi
   :: forall lock payload
-   . Route
+   . { pageIs :: Route -> Event Unit
+     , pageWas :: Route -> Event Unit
+     , pushState :: PushState
+     }
   -> Chapter lock payload
   -> Domable lock payload
-chapterLi route' (Chapter { title, path, pages }) = D.li_
+chapterLi opts (Chapter { title, pages }) = D.li_
   [ D.h2
       ( D.Class !:=
           "font-display font-medium text-slate-900 dark:text-white"
@@ -51,11 +63,17 @@ chapterLi route' (Chapter { title, path, pages }) = D.li_
               "mt-2 space-y-2 border-l-2 border-slate-100 dark:border-slate-800 lg:mt-4 lg:space-y-4 lg:border-slate-200"
           ]
       )
-      (map (\v@(Page { route }) -> pageLi (route == route') path v) pages)
+      (pageLi opts <$> pages)
   ]
 
-leftMatter :: Route -> Nut
-leftMatter route = D.div (D.Class !:= "hidden lg:relative lg:block lg:flex-none")
+leftMatter
+  :: { pageIs :: Route -> Event Unit
+     , pageWas :: Route -> Event Unit
+     , pushState :: PushState
+     }
+  -> Nut
+leftMatter opts = D.div
+  (D.Class !:= "hidden lg:relative lg:block lg:flex-none")
   [ D.div
       ( D.Class !:=
           "absolute inset-y-0 right-0 w-[50vw] bg-slate-50 dark:hidden"
@@ -80,7 +98,7 @@ leftMatter route = D.div (D.Class !:= "hidden lg:relative lg:block lg:flex-none"
               "text-base lg:text-sm w-64 pr-8 xl:w-72 xl:pr-16"
           )
           [ D.ul (oneOf [ D.Role !:= "list", D.Class !:= "space-y-9" ])
-              (chapterLi route <$> unwrap docs)
+              (chapterLi opts <$> unwrap docs)
           ]
       ]
   ]

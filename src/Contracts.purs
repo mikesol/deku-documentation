@@ -30,17 +30,13 @@ chapter i = Chapter
       }
   )
 
-type Page' lock payload r =
+newtype Page lock payload = Page
   { path :: String
   , title :: String
   , route :: Route
   , topmatter :: Array (Domable lock payload)
   , sections :: Array (Section lock payload)
-  | r
   }
-
-newtype Page lock payload = Page (Page' lock payload ())
-type FullPage lock payload = Page' lock payload (showBanner :: Boolean)
 
 page
   :: forall lock payload

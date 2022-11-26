@@ -17,8 +17,11 @@ to generate this file without the comments in this block.
   , "control"
   , "deku"
   , "effect"
+  , "filterable"
   , "foldable-traversable"
+  , "foreign"
   , "hyrule"
+  , "maybe"
   , "newtype"
   , "prelude"
   , "record"
@@ -27,6 +30,9 @@ to generate this file without the comments in this block.
   , "strings"
   , "transformers"
   , "tuples"
+  , "web-events"
+  , "web-html"
+  , "yoga-json"
   ]
 , packages = ./packages.dhall
 , sources = [ "src/**/*.purs", "test/**/*.purs" ]

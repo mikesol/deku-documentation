@@ -30,6 +30,7 @@ data Route
 
 derive instance Generic Route _
 derive instance Eq Route
+derive instance Ord Route
 instance Show Route where
   show = genericShow
 
@@ -43,7 +44,7 @@ routeToTitle Collections = "Collections"
 routeToTitle Portals = "Portals"
 routeToTitle Providers = "Providers"
 routeToTitle Effects = "Effects"
-routeToTitle MoreHooks = "MoreHooks"
+routeToTitle MoreHooks = "More hooks"
 routeToTitle Events = "Events"
 routeToTitle Applicatives = "Applicatives"
 routeToTitle Alternatives = "Alternatives"

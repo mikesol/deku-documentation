@@ -4,15 +4,23 @@ import Prelude
 
 import Assets (blurCyanURL, blurIndigoURL)
 import Data.Foldable (oneOf)
+import Data.Monoid (guard)
 import Deku.Attribute (xdata, (!:=))
+import Deku.Attributes (klass)
 import Deku.Control (text_)
-import Deku.Core (Nut)
+import Deku.Core (Domable)
 import Deku.DOM as D
+import FRP.Event (Event)
 
-banner :: Nut
-banner = D.div
-  ( D.Class !:=
-      "overflow-hidden bg-slate-900 dark:-mb-32 dark:mt-[-4.5rem] dark:pb-32 dark:pt-[4.5rem] dark:lg:mt-[-4.75rem] dark:lg:pt-[4.75rem]"
+banner
+  :: forall lock payload
+   . { showHeader :: Event Boolean }
+  -> Domable lock payload
+banner { showHeader } = D.div
+  ( klass $ showHeader <#> not >>> flip guard "hidden " >>>
+      ( _ <>
+          "overflow-hidden bg-slate-900 dark:-mb-32 dark:mt-[-4.5rem] dark:pb-32 dark:pt-[4.5rem] dark:lg:mt-[-4.75rem] dark:lg:pt-[4.75rem]"
+      )
   )
   [ D.div (D.Class !:= "py-16 sm:px-2 lg:relative lg:py-20 lg:px-0")
       [ D.div
