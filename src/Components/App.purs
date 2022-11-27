@@ -71,7 +71,8 @@ app
       )
         <#>
           if _ then "text-sky-500"
-          else "hover:text-slate-600 " <> darktxt <> " dark:hover:text-slate-300"
+          else "hover:text-slate-600 " <> darktxt <>
+            " dark:hover:text-slate-300"
 
     rightSideNavClass = rightSideNavClass' "dark:text-white"
     rightSideSubNavClass = rightSideNavClass' "dark:text-slate-400"

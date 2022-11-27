@@ -1,9 +1,8 @@
 module Pages.Introduction.GettingStarted.QuickStart.StartingANewProject where
 
-import Components.Code (jsCode)
-import Components.ProTip (proTip)
+import Components.Code (bashCode)
 import Contracts (Subsection, subsection)
-import Deku.Attribute ((!:=))
+import Deku.Attributes (klass_)
 import Deku.Control (text_)
 import Deku.DOM as D
 
@@ -12,36 +11,35 @@ startingANewProject = subsection
   { title: "Starting a new project"
   , matter:
       [ D.p_
-          [ text_
-              "Sit commodi iste iure molestias qui amet voluptatem sed quaerat. Nostrum aut pariatur. Sint ipsa praesentium dolor error cumque velit tenetur quaerat exercitationem. Consequatur et cum atque mollitia qui quia necessitatibus."
+          [ text_ "The easiest way to get up-and-running with Deku is to use "
+          , D.code_ [ text_ "create-deku-app" ]
+          , text_ "."
           ]
-      , jsCode
-          """// cache-advance.config.js
-export default {
-  strategy: 'predictive',
-  engine: {
-    cpus: 12,
-    backups: ['./storage/cache.wtf'],
-  },
-}"""
+      , bashCode "npx create-deku-app my-awesome-app"
       , D.p_
           [ text_
-              "Possimus saepe veritatis sint nobis et quam eos. Architecto consequatur odit perferendis fuga eveniet possimus rerum cumque. Ea deleniti voluptatum deserunt voluptatibus ut non iste. Provident nam asperiores vel laboriosam omnis ducimus enim nesciunt quaerat. Minus tempora cupiditate est quod."
+              "This will create a new Deku app in the directory "
+          , D.code_ [ text_ "my-awesome-app" ]
+          , text_
+              " using a template with "
+          , D.span (klass_ "line-through") [ text_ "very opinionated" ]
+          , text_ " sensible defaults."
           ]
-      , proTip
-          { header: text_ "You should know!"
-          , message: D.p_
-              [ text_
-                  "This is what a disclaimer message looks like. You might want to include inline "
-              , D.code_ [ text_ "code" ]
-              , text_
-                  " in it. Or maybe you’ll want to include a "
-              , D.a (D.Href !:= "/")
-                  [ text_ "link" ]
-              , text_
-                  " in it. I don’t think we should get too carried away with other scenarios like lists or tables — that would be silly."
-              ]
-          }
+      , D.p_
+          [ text_
+              "By just doing this, you already have a full-fledged Deku app at the tips of your fingers. You can fire it up like so."
+          ]
+      , bashCode "cd my-awesome-app && npx spago install && npm run dev"
+      , D.p_
+          [ text_
+              "Then, visit the link your terminal directs you to (usually "
+          , D.code_ [ text_ "http://localhost:5173" ]
+          , text_
+              ") to see your site in action. It should bear an uncanny resemblance to the "
+          , D.b_ [ text_ "Hello world" ]
+          , text_ " we'll see on the next page."
+          ]
+
       ]
   }
 

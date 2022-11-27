@@ -1,6 +1,7 @@
 module Pages.Introduction.GettingStarted.GettingHelp.JoinTheCommunity where
 
 import Contracts (Subsection, subsection)
+import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.DOM as D
 
@@ -10,15 +11,10 @@ joinTheCommunity = subsection
   , matter:
       [ D.p_
           [ text_
-              "Inventore et aut minus ut voluptatem nihil commodi doloribus consequatur. Facilis perferendis nihil sit aut aspernatur iure ut dolores et. Aspernatur odit dignissimos. Aut qui est sint sint."
-          ]
-      , D.p_
-          [ text_
-              "Facere aliquam qui. Dolorem officia ipsam adipisci qui molestiae. Error voluptatem reprehenderit ex."
-          ]
-      , D.p_
-          [ text_
-              "Consequatur enim quia maiores aperiam et ipsum dicta. Quam ut sit facere sit quae. Eligendi veritatis aut ut veritatis iste ut adipisci illo."
+              "Deku has a small but passionate community of framework users and developers that hang out on the "
+          , D.a (D.Href !:= "https://discord.gg/Tvt9uBpv5s") [ text_ "FRP" ]
+          , text_
+              " channel of the PureScript Discord. No question is too small, no Zelda-themed meme is too tangential. Come say hi!"
           ]
       ]
   }

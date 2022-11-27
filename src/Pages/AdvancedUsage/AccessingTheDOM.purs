@@ -23,5 +23,5 @@ accessingTheDOM = page
           ]
       ]
   , sections:
-      [theSelfAttribute, toplevelConsiderations ]
+      [ theSelfAttribute, toplevelConsiderations ]
   }

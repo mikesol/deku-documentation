@@ -1,18 +1,30 @@
 module Pages.Introduction.HelloWorld.TheAnatomyOfHello.RunningInTheBody where
 
+import Components.Code (psCode)
 import Contracts (Subsection, subsection)
-import Deku.Control (text_)
 import Deku.Attribute ((!:=))
+import Deku.Control (text_)
 import Deku.DOM as D
 
 runningInTheBody :: forall lock payload. Subsection lock payload
 runningInTheBody = subsection
   { title: "Running in the body"
   , matter:
-      [ D.p_
-          [ text_ "This subsection will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "Running in the body" ]
-          , text_ "."
+      [ psCode
+          """runInBody (...)"""
+      , D.p_
+          [ text_
+              "The most common way to run a Deku app is to embed it in the "
+          , D.a
+              ( D.Href !:=
+                  "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body"
+              )
+              [ text_ "body" ]
+          , text_
+              " of a webpage. This is not the only way, however. You can also embed a Deku app in a single element, and you can also not embed it at all and instead render it as a "
+          , D.code_ [ text_ "String" ]
+          , text_
+              " of HTML, for example when doing Static Stie Rendering (SSR). We'll go over these techniques later in the documentation, but for now, we'll stick to presenting our app in a web-page's body."
           ]
       ]
   }

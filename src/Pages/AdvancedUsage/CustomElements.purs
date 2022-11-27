@@ -14,7 +14,7 @@ customElements = page
   , topmatter:
       [ D.p (D.Class !:= "lead")
           [ text_ "This page will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "Custom elements" ]
+          , D.b_ [ text_ "Custom elements" ]
           , text_ "."
           ]
       , D.p_

@@ -13,13 +13,11 @@ helloWorld = page
   { route: HelloWorld
   , topmatter:
       [ D.p (D.Class !:= "lead")
-          [ text_ "This page will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "HelloWorld" ]
-          , text_ "."
+          [ text_ "Let's teach Deku to say hello."
           ]
       , D.p_
           [ text_
-              "Possimus saepe veritatis sint nobis et quam eos. Architecto consequatur odit perferendis fuga eveniet possimus rerum cumque. Ea deleniti voluptatum deserunt voluptatibus ut non iste."
+              "Hello world in Deku is a one-liner... after imports, and type declarations, and copious amounts of newlines that is. But even with all of that stuff, it's a ten-liner. And oh what lines! Let's see them in action."
           ]
       ]
   , sections:
