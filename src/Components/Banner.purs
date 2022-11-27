@@ -5,12 +5,40 @@ import Prelude
 import Assets (blurCyanURL, blurIndigoURL)
 import Data.Foldable (oneOf)
 import Data.Monoid (guard)
+import Data.Tuple.Nested ((/\))
 import Deku.Attribute (xdata, (!:=))
-import Deku.Attributes (klass)
-import Deku.Control (text_)
+import Deku.Attributes (klass, klass_)
+import Deku.Control (switcher, text_)
 import Deku.Core (Domable)
 import Deku.DOM as D
+import Deku.Do (useState)
+import Deku.Do as Deku
+import Deku.Listeners (click_)
+import Effect (Effect)
+import FRP.Dedup (dedup)
 import FRP.Event (Event)
+import Prism (forceHighlight)
+
+foreign import addConfetti :: Effect Unit
+
+data BannerExample = CodeExample | ButtonExample
+
+derive instance Eq BannerExample
+
+bannerExampleOuterSelected :: String
+bannerExampleOuterSelected =
+  "cursor-pointer flex h-6 rounded-full bg-gradient-to-r from-sky-400/30 via-sky-400 to-sky-400/30 p-px font-medium text-sky-300"
+
+bannerExampleInnerSelected :: String
+bannerExampleInnerSelected =
+  "flex items-center rounded-full px-2.5 bg-slate-800"
+
+bannerExampleOuterNotSelected :: String
+bannerExampleOuterNotSelected =
+  "cursor-pointer flex h-6 rounded-full text-slate-500"
+
+bannerExampleInnerNotSelected :: String
+bannerExampleInnerNotSelected = "flex items-center rounded-full px-2.5"
 
 banner
   :: forall lock payload
@@ -418,111 +446,183 @@ banner { showBanner } = D.div
                               "absolute -bottom-px left-11 right-20 h-px bg-gradient-to-r from-blue-400/0 via-blue-400 to-blue-400/0"
                           )
                           []
-                      , D.div (D.Class !:= "pl-4 pt-4")
-                          [ D.svg
-                              ( oneOf
-                                  [ D.AriaHidden !:= "true"
-                                  , D.ViewBox !:= "0 0 42 10"
-                                  , D.Fill !:= "none"
-                                  , D.Class !:=
-                                      "h-2.5 w-auto stroke-slate-500/30"
-                                  ]
-                              )
-                              [ D.circle
-                                  ( oneOf
-                                      [ D.Cx !:= "5"
-                                      , D.Cy !:= "5"
-                                      , D.R !:= "4.5"
-                                      ]
-                                  )
-                                  []
-                              , D.circle
-                                  ( oneOf
-                                      [ D.Cx !:= "21"
-                                      , D.Cy !:= "5"
-                                      , D.R !:= "4.5"
-                                      ]
-                                  )
-                                  []
-                              , D.circle
-                                  ( oneOf
-                                      [ D.Cx !:= "37"
-                                      , D.Cy !:= "5"
-                                      , D.R !:= "4.5"
-                                      ]
-                                  )
-                                  []
-                              ]
-                          , D.div
-                              (D.Class !:= "mt-4 flex space-x-2 text-xs")
-                              [ D.div
+                      , Deku.do
+                          setBannerExample /\ bannerExample <- useState
+                            CodeExample
+                          D.div (D.Class !:= "pl-4 pt-4")
+                            [ D.svg
+                                ( oneOf
+                                    [ D.AriaHidden !:= "true"
+                                    , D.ViewBox !:= "0 0 42 10"
+                                    , D.Fill !:= "none"
+                                    , D.Class !:=
+                                        "h-2.5 w-auto stroke-slate-500/30"
+                                    ]
+                                )
+                                [ D.circle
+                                    ( oneOf
+                                        [ D.Cx !:= "5"
+                                        , D.Cy !:= "5"
+                                        , D.R !:= "4.5"
+                                        ]
+                                    )
+                                    []
+                                , D.circle
+                                    ( oneOf
+                                        [ D.Cx !:= "21"
+                                        , D.Cy !:= "5"
+                                        , D.R !:= "4.5"
+                                        ]
+                                    )
+                                    []
+                                , D.circle
+                                    ( oneOf
+                                        [ D.Cx !:= "37"
+                                        , D.Cy !:= "5"
+                                        , D.R !:= "4.5"
+                                        ]
+                                    )
+                                    []
+                                ]
+                            , D.div
+                                (D.Class !:= "mt-4 flex space-x-2 text-xs")
+                                [ D.div
+                                    ( klass $ bannerExample <#> case _ of
+                                        CodeExample ->
+                                          bannerExampleOuterSelected
+                                        ButtonExample ->
+                                          bannerExampleOuterNotSelected
+                                    )
+                                    [ D.div
+                                        ( oneOf
+                                            [ klass $ bannerExample <#>
+                                                case _ of
+                                                  CodeExample ->
+                                                    bannerExampleInnerSelected
+                                                  ButtonExample ->
+                                                    bannerExampleInnerNotSelected
+                                            , click_ do
+                                                setBannerExample CodeExample
+                                            ]
+                                        )
+                                        [ text_ "MyButton.purs" ]
+                                    ]
+                                , D.div
+                                    ( klass $ (dedup bannerExample) <#>
+                                        case _ of
+                                          ButtonExample ->
+                                            bannerExampleOuterSelected
+                                          CodeExample ->
+                                            bannerExampleOuterNotSelected
+                                    )
+                                    [ D.div
+                                        ( oneOf
+                                            [ klass $ (dedup bannerExample) <#>
+                                                case _ of
+                                                  ButtonExample ->
+                                                    bannerExampleInnerSelected
+                                                  CodeExample ->
+                                                    bannerExampleInnerNotSelected
+                                            , click_
+                                                (setBannerExample ButtonExample)
+                                            ]
+                                        )
+                                        [ text_ "Result" ]
+                                    ]
+                                ]
+                            , flip switcher (dedup bannerExample) case _ of
+                                ButtonExample -> D.div
                                   ( D.Class !:=
-                                      "flex h-6 rounded-full bg-gradient-to-r from-sky-400/30 via-sky-400 to-sky-400/30 p-px font-medium text-sky-300"
+                                      "mt-6 flex items-start px-1 text-sm"
                                   )
                                   [ D.div
-                                      ( D.Class !:=
-                                          "flex items-center rounded-full px-2.5 bg-slate-800"
+                                      ( oneOf
+                                          [ --D.AriaHidden !:= "true",
+                                            D.Class !:=
+                                              "select-none border-r border-slate-300/5 pr-4 font-mono text-slate-600"
+                                          ]
                                       )
-                                      [ text_ "cache-advance.config.js" ]
+                                      [ text_ ""
+                                      , D.br_ []
+                                      , text_ ""
+                                      , D.br_ []
+                                      , text_ ""
+                                      , D.br_ []
+                                      , text_ ""
+                                      , D.br_ []
+                                      , text_ ""
+                                      , D.br_ []
+                                      , text_ ""
+                                      , D.br_ []
+                                      -- , text_ ""
+                                      -- , D.br_ []
+                                      ]
+                                  , D.div
+                                      ( klass_
+                                          "flex flex-row justify-center w-full"
+                                      )
+                                      [ D.button
+                                          ( oneOf
+                                              [ D.Class !:=
+                                                  "mt-8 rounded-full bg-sky-300 py-2 px-4 text-sm font-semibold text-slate-900 hover:bg-sky-200 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-300/50 active:bg-sky-500"
+                                              , click_ addConfetti
+                                              ]
+                                          )
+                                          [ text_ "Click me" ]
+                                      ]
                                   ]
-                              , D.div
+
+                                CodeExample -> D.div
                                   ( D.Class !:=
-                                      "flex h-6 rounded-full text-slate-500"
+                                      "mt-6 flex items-start px-1 text-sm"
                                   )
                                   [ D.div
-                                      ( D.Class !:=
-                                          "flex items-center rounded-full px-2.5"
+                                      ( oneOf
+                                          [ --D.AriaHidden !:= "true",
+                                            D.Class !:=
+                                              "select-none border-r border-slate-300/5 pr-4 font-mono text-slate-600"
+                                          ]
                                       )
-                                      [ text_ "package.json" ]
-                                  ]
-                              ]
-                          , D.div
-                              ( D.Class !:=
-                                  "mt-6 flex items-start px-1 text-sm"
-                              )
-                              [ D.div
-                                  ( oneOf
-                                      [ --D.AriaHidden !:= "true",
-                                        D.Class !:=
-                                          "select-none border-r border-slate-300/5 pr-4 font-mono text-slate-600"
+                                      [ text_ "01"
+                                      , D.br_ []
+                                      , text_ "02"
+                                      , D.br_ []
+                                      , text_ "03"
+                                      , D.br_ []
+                                      , text_ "04"
+                                      , D.br_ []
+                                      , text_ "05"
+                                      , D.br_ []
+                                      , text_ "06"
+                                      , D.br_ []
+                                      -- , text_ "07"
+                                      -- , D.br_ []
                                       ]
-                                  )
-                                  [ text_ "01"
-                                  , D.br_ []
-                                  , text_ "02"
-                                  , D.br_ []
-                                  , text_ "03"
-                                  , D.br_ []
-                                  , text_ "04"
-                                  , D.br_ []
-                                  , text_ "05"
-                                  , D.br_ []
-                                  , text_ "06"
-                                  , D.br_ []
-                                  , text_ "07"
-                                  , D.br_ []
-                                  ]
-                              , D.pre
-                                  ( oneOf
-                                      [ D.Style !:=
-                                          "background:none;padding:0em;margin:0em;"
-                                      , D.Class !:=
-                                          "prism-code language-javascript flex overflow-x-auto pb-6"
+                                  , D.pre
+                                      ( oneOf
+                                          [ D.Style !:=
+                                              "background:none;padding:0em;margin:0em;"
+                                          , D.Class !:=
+                                              "prism-code language-purescript flex overflow-x-auto pb-6"
+                                          ]
+                                      )
+                                      [ D.code
+                                          ( oneOf
+                                              [ D.Class !:= "px-4"
+                                              ]
+                                          )
+                                          [ text_
+                                              """myButton :: Nut
+myButton =
+  D.button
+    (buttonStyle <|> confettiClick)
+    [text_ "Click me" ]
+"""
+                                          ]
                                       ]
-                                  )
-                                  [ D.code (D.Class !:= "px-4")
-                                      [ text_
-                                          """export default {
-  strategy: 'predictive',
-  engine: {
-    cpus: 12,
-    backups: ['./storage/cache.wtf'],
-  },
-}"""
-                                      ]
+                                  , forceHighlight
                                   ]
-                              ]
-                          ]
+                            ]
                       ]
                   ]
               ]
