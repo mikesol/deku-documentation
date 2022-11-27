@@ -38,7 +38,7 @@ main = runInBody
     [ D.span
        (D.Style !:= "color:teal;")
        [ text_ "I exist" ]
-    , D.ul_ $ map (D.li_ <<< pure <<< text_) [ "A", "B", "C" ]
+    , D.ul_ $ map D.li__ [ "A", "B", "C" ]
     , D.div_
         [ D.h3
           (oneOf
@@ -57,7 +57,7 @@ main = runInBody
       , D.blockquote (klass_ "not-italic")
           [ D.div_
               [ D.span (D.Style !:= "color:teal;") [ text_ "I exist" ]
-              , D.ul_ $ map (D.li_ <<< pure <<< text_) [ "A", "B", "C" ]
+              , D.ul_ $ map D.li__ [ "A", "B", "C" ]
               , D.div_
                   [ D.h3
                       ( oneOf
