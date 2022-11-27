@@ -13,10 +13,10 @@ runningOurProgram = section
   , topmatter:
       [ D.p_
           [ text_ "This section will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "Running our program"]
-            , text_ "."
+          , D.span (D.Class !:= "font-bold") [ text_ "Running our program" ]
+          , text_ "."
           ]
       ]
   , subsections:
-      [ bundlingForProduction,theDevServer]
+      [ bundlingForProduction, theDevServer ]
   }

@@ -2,8 +2,7 @@ module Main
   ( ScrolledSection(..)
   , getScrolledSection
   , main
-  )
-  where
+  ) where
 
 import Prelude
 
@@ -57,9 +56,11 @@ getScrolledSection startingAt f = go ScrollCheckStart startingAt startingAt
       ScrolledCandidate i -> case checkDir of
         ScrollCheckDown -> pure i
         _ -> go ScrollCheckUp i (i + 1)
-      NotScrolled -> if n == 0 then pure 0 else case checkDir of
-        ScrollCheckUp -> pure n
-        _ -> go ScrollCheckDown n (head - 1) 
+      NotScrolled ->
+        if n == 0 then pure 0
+        else case checkDir of
+          ScrollCheckUp -> pure n
+          _ -> go ScrollCheckDown n (head - 1)
 
 main :: Effect Unit
 main = do

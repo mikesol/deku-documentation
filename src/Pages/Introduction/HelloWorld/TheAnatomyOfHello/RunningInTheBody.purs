@@ -7,12 +7,12 @@ import Deku.DOM as D
 
 runningInTheBody :: forall lock payload. Subsection lock payload
 runningInTheBody = subsection
-    { title: "Running in the body"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "Running in the body"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "Running in the body"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold") [ text_ "Running in the body" ]
+          , text_ "."
+          ]
+      ]
+  }

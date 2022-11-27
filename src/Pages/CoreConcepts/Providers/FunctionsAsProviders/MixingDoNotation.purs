@@ -7,12 +7,12 @@ import Deku.DOM as D
 
 mixingDoNotation :: forall lock payload. Subsection lock payload
 mixingDoNotation = subsection
-    { title: "Mixing do notation"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "Mixing do notation"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "Mixing do notation"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold") [ text_ "Mixing do notation" ]
+          , text_ "."
+          ]
+      ]
+  }

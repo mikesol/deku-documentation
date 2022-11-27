@@ -7,12 +7,13 @@ import Deku.DOM as D
 
 theGlobalPortalSyntax :: forall lock payload. Subsection lock payload
 theGlobalPortalSyntax = subsection
-    { title: "The global portal syntax"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "The global portal syntax"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "The global portal syntax"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold")
+              [ text_ "The global portal syntax" ]
+          , text_ "."
+          ]
+      ]
+  }

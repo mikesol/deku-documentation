@@ -7,12 +7,12 @@ import Deku.DOM as D
 
 integratingBehaviors :: forall lock payload. Subsection lock payload
 integratingBehaviors = subsection
-    { title: "Integrating behaviors"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "Integrating behaviors"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "Integrating behaviors"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold") [ text_ "Integrating behaviors" ]
+          , text_ "."
+          ]
+      ]
+  }

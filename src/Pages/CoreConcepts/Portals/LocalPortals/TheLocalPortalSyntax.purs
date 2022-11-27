@@ -7,12 +7,12 @@ import Deku.DOM as D
 
 theLocalPortalSyntax :: forall lock payload. Subsection lock payload
 theLocalPortalSyntax = subsection
-    { title: "The local portal syntax"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "The local portal syntax"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "The local portal syntax"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold") [ text_ "The local portal syntax" ]
+          , text_ "."
+          ]
+      ]
+  }

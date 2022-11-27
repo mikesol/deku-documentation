@@ -7,12 +7,13 @@ import Deku.DOM as D
 
 theGlobalPortalResult :: forall lock payload. Subsection lock payload
 theGlobalPortalResult = subsection
-    { title: "The global portal result"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "The global portal result"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "The global portal result"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold")
+              [ text_ "The global portal result" ]
+          , text_ "."
+          ]
+      ]
+  }

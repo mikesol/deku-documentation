@@ -7,12 +7,13 @@ import Deku.DOM as D
 
 whatIsAnEventWithoutTime :: forall lock payload. Subsection lock payload
 whatIsAnEventWithoutTime = subsection
-    { title: "What is an event without time?"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "What is an event without time?"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "What is an event without time?"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold")
+              [ text_ "What is an event without time?" ]
+          , text_ "."
+          ]
+      ]
+  }

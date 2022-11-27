@@ -14,10 +14,10 @@ alt = section
   , topmatter:
       [ D.p_
           [ text_ "This section will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "Alt"]
-            , text_ "."
+          , D.span (D.Class !:= "font-bold") [ text_ "Alt" ]
+          , text_ "."
           ]
       ]
   , subsections:
-      [ theOneOfFunction,performanceConsiderations,altAsAMuxer]
+      [ theOneOfFunction, performanceConsiderations, altAsAMuxer ]
   }

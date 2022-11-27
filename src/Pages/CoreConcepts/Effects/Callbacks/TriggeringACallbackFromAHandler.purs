@@ -7,12 +7,13 @@ import Deku.DOM as D
 
 triggeringACallbackFromAHandler :: forall lock payload. Subsection lock payload
 triggeringACallbackFromAHandler = subsection
-    { title: "Triggering a callback from a handler"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "Triggering a callback from a handler"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "Triggering a callback from a handler"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold")
+              [ text_ "Triggering a callback from a handler" ]
+          , text_ "."
+          ]
+      ]
+  }

@@ -1,8 +1,7 @@
 module FRP.Lag where
 
-
 import Data.Maybe (Maybe(..))
-import Data.Tuple.Nested((/\), type (/\))
+import Data.Tuple.Nested ((/\), type (/\))
 import FRP.Event (Event, mapAccum)
 
 lag :: forall a. Event a -> Event (Maybe a /\ a)

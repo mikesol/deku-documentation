@@ -13,10 +13,10 @@ functionsAsProviders = section
   , topmatter:
       [ D.p_
           [ text_ "This section will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "FunctionsAsProviders"]
-            , text_ "."
+          , D.span (D.Class !:= "font-bold") [ text_ "FunctionsAsProviders" ]
+          , text_ "."
           ]
       ]
   , subsections:
-      [ mixingDoNotation,usingFunctionsAsMonads]
+      [ mixingDoNotation, usingFunctionsAsMonads ]
   }

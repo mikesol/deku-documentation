@@ -7,12 +7,12 @@ import Deku.DOM as D
 
 nestedVBusses :: forall lock payload. Subsection lock payload
 nestedVBusses = subsection
-    { title: "Nested v-busses"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "Nested v-busses"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "Nested v-busses"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold") [ text_ "Nested v-busses" ]
+          , text_ "."
+          ]
+      ]
+  }

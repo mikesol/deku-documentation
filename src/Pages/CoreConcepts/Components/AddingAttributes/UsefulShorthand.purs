@@ -7,12 +7,12 @@ import Deku.DOM as D
 
 usefulShorthand :: forall lock payload. Subsection lock payload
 usefulShorthand = subsection
-    { title: "Useful shorthand"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "Useful shorthand"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "Useful shorthand"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold") [ text_ "Useful shorthand" ]
+          , text_ "."
+          ]
+      ]
+  }

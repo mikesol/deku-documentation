@@ -7,12 +7,12 @@ import Deku.DOM as D
 
 eventsAsMonoids :: forall lock payload. Subsection lock payload
 eventsAsMonoids = subsection
-    { title: "Events as monoids"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "Events as monoids"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "Events as monoids"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold") [ text_ "Events as monoids" ]
+          , text_ "."
+          ]
+      ]
+  }

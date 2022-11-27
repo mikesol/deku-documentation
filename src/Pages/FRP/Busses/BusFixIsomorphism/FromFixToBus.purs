@@ -7,12 +7,12 @@ import Deku.DOM as D
 
 fromFixToBus :: forall lock payload. Subsection lock payload
 fromFixToBus = subsection
-    { title: "From fix to bus"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "From fix to bus"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "From fix to bus"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold") [ text_ "From fix to bus" ]
+          , text_ "."
+          ]
+      ]
+  }

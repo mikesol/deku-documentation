@@ -7,12 +7,12 @@ import Deku.DOM as D
 
 bussesAndDekuHooks :: forall lock payload. Subsection lock payload
 bussesAndDekuHooks = subsection
-    { title: "Busses and deku hooks"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "Busses and deku hooks"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "Busses and deku hooks"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold") [ text_ "Busses and deku hooks" ]
+          , text_ "."
+          ]
+      ]
+  }

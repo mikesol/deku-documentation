@@ -13,10 +13,10 @@ samplingWithBehaviors = section
   , topmatter:
       [ D.p_
           [ text_ "This section will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "SamplingWithBehaviors"]
-            , text_ "."
+          , D.span (D.Class !:= "font-bold") [ text_ "SamplingWithBehaviors" ]
+          , text_ "."
           ]
       ]
   , subsections:
-      [ switchingBehaviorsUsingEvents,gettingEventsFromBehaviors]
+      [ switchingBehaviorsUsingEvents, gettingEventsFromBehaviors ]
   }

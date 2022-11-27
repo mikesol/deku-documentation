@@ -15,10 +15,14 @@ calculus = section
   , topmatter:
       [ D.p_
           [ text_ "This section will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "Calculus"]
-            , text_ "."
+          , D.span (D.Class !:= "font-bold") [ text_ "Calculus" ]
+          , text_ "."
           ]
       ]
   , subsections:
-      [ integratingBehaviors,behaviorsAsContinuousFunctionsOfTime,derivingBehaviors,solvingDifferentialEquations]
+      [ integratingBehaviors
+      , behaviorsAsContinuousFunctionsOfTime
+      , derivingBehaviors
+      , solvingDifferentialEquations
+      ]
   }

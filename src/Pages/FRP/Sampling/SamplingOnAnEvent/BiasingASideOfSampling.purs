@@ -7,12 +7,13 @@ import Deku.DOM as D
 
 biasingASideOfSampling :: forall lock payload. Subsection lock payload
 biasingASideOfSampling = subsection
-    { title: "Biasing a side of sampling"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "Biasing a side of sampling"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "Biasing a side of sampling"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold")
+              [ text_ "Biasing a side of sampling" ]
+          , text_ "."
+          ]
+      ]
+  }

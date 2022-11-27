@@ -7,12 +7,12 @@ import Deku.DOM as D
 
 cleanup :: forall lock payload. Subsection lock payload
 cleanup = subsection
-    { title: "Cleanup"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "Cleanup"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "Cleanup"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold") [ text_ "Cleanup" ]
+          , text_ "."
+          ]
+      ]
+  }

@@ -15,10 +15,14 @@ addingAttributes = section
   , topmatter:
       [ D.p_
           [ text_ "This section will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "AddingAttributes"]
-            , text_ "."
+          , D.span (D.Class !:= "font-bold") [ text_ "AddingAttributes" ]
+          , text_ "."
           ]
       ]
   , subsections:
-      [ usefulShorthand,aSingleAttribute,removingTheUnderscore,severalAttributes]
+      [ usefulShorthand
+      , aSingleAttribute
+      , removingTheUnderscore
+      , severalAttributes
+      ]
   }

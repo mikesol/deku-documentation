@@ -15,10 +15,13 @@ runningADevServer = subsection
               "Sit commodi iste iure molestias qui amet voluptatem sed quaerat. Nostrum aut pariatur. Sint ipsa praesentium dolor error cumque velit tenetur quaerat exercitationem. Consequatur et cum atque mollitia qui quia necessitatibus."
           ]
       , D.pre (D.Class !:= "prism-code language-shell")
-          [ D.code_ [text_ """import { foo } from "bar";
+          [ D.code_
+              [ text_
+                  """import { foo } from "bar";
 const x = foo;
 """
-          ]]
+              ]
+          ]
       , D.p_
           [ text_
               "Possimus saepe veritatis sint nobis et quam eos. Architecto consequatur odit perferendis fuga eveniet possimus rerum cumque. Ea deleniti voluptatum deserunt voluptatibus ut non iste. Provident nam asperiores vel laboriosam omnis ducimus enim nesciunt quaerat. Minus tempora cupiditate est quod."

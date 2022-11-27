@@ -7,12 +7,12 @@ import Deku.DOM as D
 
 whatsInD :: forall lock payload. Subsection lock payload
 whatsInD = subsection
-    { title: "What's in D?"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "What's in D?"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "What's in D?"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold") [ text_ "What's in D?" ]
+          , text_ "."
+          ]
+      ]
+  }

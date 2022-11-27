@@ -7,12 +7,13 @@ import Deku.DOM as D
 
 behaviorsAsApplicatives :: forall lock payload. Subsection lock payload
 behaviorsAsApplicatives = subsection
-    { title: "Behaviors as applicatives"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "Behaviors as applicatives"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "Behaviors as applicatives"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold")
+              [ text_ "Behaviors as applicatives" ]
+          , text_ "."
+          ]
+      ]
+  }

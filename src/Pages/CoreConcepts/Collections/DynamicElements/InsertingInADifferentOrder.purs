@@ -7,12 +7,13 @@ import Deku.DOM as D
 
 insertingInADifferentOrder :: forall lock payload. Subsection lock payload
 insertingInADifferentOrder = subsection
-    { title: "Inserting in a different order"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "Inserting in a different order"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "Inserting in a different order"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold")
+              [ text_ "Inserting in a different order" ]
+          , text_ "."
+          ]
+      ]
+  }

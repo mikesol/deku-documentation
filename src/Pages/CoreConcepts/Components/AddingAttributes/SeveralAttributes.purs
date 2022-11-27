@@ -7,12 +7,12 @@ import Deku.DOM as D
 
 severalAttributes :: forall lock payload. Subsection lock payload
 severalAttributes = subsection
-    { title: "Several attributes"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "Several attributes"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "Several attributes"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold") [ text_ "Several attributes" ]
+          , text_ "."
+          ]
+      ]
+  }

@@ -14,10 +14,10 @@ interactiveEvents = section
   , topmatter:
       [ D.p_
           [ text_ "This section will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "InteractiveEvents"]
-            , text_ "."
+          , D.span (D.Class !:= "font-bold") [ text_ "InteractiveEvents" ]
+          , text_ "."
           ]
       ]
   , subsections:
-      [ theCreateEffect,performanceNotes,lifetimeAndGarbageCollection]
+      [ theCreateEffect, performanceNotes, lifetimeAndGarbageCollection ]
   }

@@ -7,12 +7,12 @@ import Deku.DOM as D
 
 transformedEvents :: forall lock payload. Subsection lock payload
 transformedEvents = subsection
-    { title: "Transformed events"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "Transformed events"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "Transformed events"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold") [ text_ "Transformed events" ]
+          , text_ "."
+          ]
+      ]
+  }

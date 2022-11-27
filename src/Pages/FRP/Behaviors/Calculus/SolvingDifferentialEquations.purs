@@ -7,12 +7,13 @@ import Deku.DOM as D
 
 solvingDifferentialEquations :: forall lock payload. Subsection lock payload
 solvingDifferentialEquations = subsection
-    { title: "Solving differential equations"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "Solving differential equations"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "Solving differential equations"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold")
+              [ text_ "Solving differential equations" ]
+          , text_ "."
+          ]
+      ]
+  }

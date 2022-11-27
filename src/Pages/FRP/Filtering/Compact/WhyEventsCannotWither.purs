@@ -7,12 +7,13 @@ import Deku.DOM as D
 
 whyEventsCannotWither :: forall lock payload. Subsection lock payload
 whyEventsCannotWither = subsection
-    { title: "Why events cannot wither"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "Why events cannot wither"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "Why events cannot wither"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold")
+              [ text_ "Why events cannot wither" ]
+          , text_ "."
+          ]
+      ]
+  }

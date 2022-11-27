@@ -7,12 +7,13 @@ import Deku.DOM as D
 
 groupingElementsTogether :: forall lock payload. Subsection lock payload
 groupingElementsTogether = subsection
-    { title: "Grouping elements together"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "Grouping elements together"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "Grouping elements together"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold")
+              [ text_ "Grouping elements together" ]
+          , text_ "."
+          ]
+      ]
+  }

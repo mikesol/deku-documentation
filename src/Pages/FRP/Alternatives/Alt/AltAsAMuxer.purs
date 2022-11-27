@@ -7,12 +7,12 @@ import Deku.DOM as D
 
 altAsAMuxer :: forall lock payload. Subsection lock payload
 altAsAMuxer = subsection
-    { title: "Alt as a muxer"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "Alt as a muxer"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "Alt as a muxer"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold") [ text_ "Alt as a muxer" ]
+          , text_ "."
+          ]
+      ]
+  }

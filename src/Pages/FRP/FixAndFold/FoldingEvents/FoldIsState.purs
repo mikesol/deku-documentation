@@ -7,12 +7,12 @@ import Deku.DOM as D
 
 foldIsState :: forall lock payload. Subsection lock payload
 foldIsState = subsection
-    { title: "Fold is state"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "Fold is state"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "Fold is state"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold") [ text_ "Fold is state" ]
+          , text_ "."
+          ]
+      ]
+  }

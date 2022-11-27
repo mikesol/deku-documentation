@@ -7,12 +7,12 @@ import Deku.DOM as D
 
 partitioningAnEvent :: forall lock payload. Subsection lock payload
 partitioningAnEvent = subsection
-    { title: "Partitioning an event"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "Partitioning an event"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "Partitioning an event"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold") [ text_ "Partitioning an event" ]
+          , text_ "."
+          ]
+      ]
+  }

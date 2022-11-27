@@ -7,12 +7,12 @@ import Deku.DOM as D
 
 gotchyas :: forall lock payload. Subsection lock payload
 gotchyas = subsection
-    { title: "Gotchyas"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "Gotchyas"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "Gotchyas"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold") [ text_ "Gotchyas" ]
+          , text_ "."
+          ]
+      ]
+  }

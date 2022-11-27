@@ -7,12 +7,12 @@ import Deku.DOM as D
 
 plainOldHTML :: forall lock payload. Subsection lock payload
 plainOldHTML = subsection
-    { title: "Plain old HTML"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "Plain old HTML"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "Plain old HTML"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold") [ text_ "Plain old HTML" ]
+          , text_ "."
+          ]
+      ]
+  }

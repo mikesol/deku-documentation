@@ -7,12 +7,13 @@ import Deku.DOM as D
 
 contuationPassingStyle :: forall lock payload. Subsection lock payload
 contuationPassingStyle = subsection
-    { title: "Contuation passing style"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "Contuation passing style"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "Contuation passing style"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold")
+              [ text_ "Contuation passing style" ]
+          , text_ "."
+          ]
+      ]
+  }

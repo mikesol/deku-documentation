@@ -13,10 +13,10 @@ integrationWithVite = section
   , topmatter:
       [ D.p_
           [ text_ "This section will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "IntegrationWithVite"]
-            , text_ "."
+          , D.span (D.Class !:= "font-bold") [ text_ "IntegrationWithVite" ]
+          , text_ "."
           ]
       ]
   , subsections:
-      [ theBuildStep,usingACustomWatcher]
+      [ theBuildStep, usingACustomWatcher ]
   }

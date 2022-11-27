@@ -13,10 +13,10 @@ sayingHello = section
   , topmatter:
       [ D.p_
           [ text_ "This section will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "Saying hello"]
-            , text_ "."
+          , D.span (D.Class !:= "font-bold") [ text_ "Saying hello" ]
+          , text_ "."
           ]
       ]
   , subsections:
-      [ theCode,theResult]
+      [ theCode, theResult ]
   }

@@ -15,10 +15,14 @@ localPortals = section
   , topmatter:
       [ D.p_
           [ text_ "This section will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "LocalPortals"]
-            , text_ "."
+          , D.span (D.Class !:= "font-bold") [ text_ "LocalPortals" ]
+          , text_ "."
           ]
       ]
   , subsections:
-      [ theLocalPortalResult,performanceNotes,theLocalPortalSyntax,unlockingLevels]
+      [ theLocalPortalResult
+      , performanceNotes
+      , theLocalPortalSyntax
+      , unlockingLevels
+      ]
   }

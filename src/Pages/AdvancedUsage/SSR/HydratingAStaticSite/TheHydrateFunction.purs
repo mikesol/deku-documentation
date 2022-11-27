@@ -7,12 +7,12 @@ import Deku.DOM as D
 
 theHydrateFunction :: forall lock payload. Subsection lock payload
 theHydrateFunction = subsection
-    { title: "The hydrate function"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "The hydrate function"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "The hydrate function"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold") [ text_ "The hydrate function" ]
+          , text_ "."
+          ]
+      ]
+  }

@@ -7,12 +7,13 @@ import Deku.DOM as D
 
 switchingBehaviorsUsingEvents :: forall lock payload. Subsection lock payload
 switchingBehaviorsUsingEvents = subsection
-    { title: "Switching behaviors using events"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "Switching behaviors using events"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "Switching behaviors using events"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold")
+              [ text_ "Switching behaviors using events" ]
+          , text_ "."
+          ]
+      ]
+  }

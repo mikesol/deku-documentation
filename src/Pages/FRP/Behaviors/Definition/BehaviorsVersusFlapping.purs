@@ -7,12 +7,13 @@ import Deku.DOM as D
 
 behaviorsVersusFlapping :: forall lock payload. Subsection lock payload
 behaviorsVersusFlapping = subsection
-    { title: "Behaviors versus flapping"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "Behaviors versus flapping"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "Behaviors versus flapping"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold")
+              [ text_ "Behaviors versus flapping" ]
+          , text_ "."
+          ]
+      ]
+  }

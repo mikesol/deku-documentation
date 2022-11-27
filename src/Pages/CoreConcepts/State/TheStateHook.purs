@@ -14,10 +14,10 @@ theStateHook = section
   , topmatter:
       [ D.p_
           [ text_ "This section will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "TheStateHook"]
-            , text_ "."
+          , D.span (D.Class !:= "font-bold") [ text_ "TheStateHook" ]
+          , text_ "."
           ]
       ]
   , subsections:
-      [ usingTheHookInText,usingTheHookInAnAttribute,pushingToAHook]
+      [ usingTheHookInText, usingTheHookInAnAttribute, pushingToAHook ]
   }

@@ -7,12 +7,13 @@ import Deku.DOM as D
 
 componentsAsSemigroups :: forall lock payload. Subsection lock payload
 componentsAsSemigroups = subsection
-    { title: "Components as semigroups"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "Components as semigroups"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "Components as semigroups"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold")
+              [ text_ "Components as semigroups" ]
+          , text_ "."
+          ]
+      ]
+  }

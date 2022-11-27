@@ -7,12 +7,12 @@ import Deku.DOM as D
 
 pushingToAHook :: forall lock payload. Subsection lock payload
 pushingToAHook = subsection
-    { title: "Pushing to a hook"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "Pushing to a hook"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "Pushing to a hook"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold") [ text_ "Pushing to a hook" ]
+          , text_ "."
+          ]
+      ]
+  }

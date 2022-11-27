@@ -15,10 +15,14 @@ aSimpleBus = section
   , topmatter:
       [ D.p_
           [ text_ "This section will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "ASimpleBus"]
-            , text_ "."
+          , D.span (D.Class !:= "font-bold") [ text_ "ASimpleBus" ]
+          , text_ "."
           ]
       ]
   , subsections:
-      [ uncurrying,performanceConsiderations,bussesAsClosures,bussesAndDekuHooks]
+      [ uncurrying
+      , performanceConsiderations
+      , bussesAsClosures
+      , bussesAndDekuHooks
+      ]
   }

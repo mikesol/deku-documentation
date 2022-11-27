@@ -16,10 +16,15 @@ foldingEvents = section
   , topmatter:
       [ D.p_
           [ text_ "This section will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "FoldingEvents"]
-            , text_ "."
+          , D.span (D.Class !:= "font-bold") [ text_ "FoldingEvents" ]
+          , text_ "."
           ]
       ]
   , subsections:
-      [ aSimpleCounter,foldIsState,theFoldFunction,whenToFixAndWhenToFold,fromFixToFold]
+      [ aSimpleCounter
+      , foldIsState
+      , theFoldFunction
+      , whenToFixAndWhenToFold
+      , fromFixToFold
+      ]
   }

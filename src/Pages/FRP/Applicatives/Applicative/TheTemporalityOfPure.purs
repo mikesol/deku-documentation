@@ -7,12 +7,12 @@ import Deku.DOM as D
 
 theTemporalityOfPure :: forall lock payload. Subsection lock payload
 theTemporalityOfPure = subsection
-    { title: "The temporality of pure"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "The temporality of pure"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "The temporality of pure"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold") [ text_ "The temporality of pure" ]
+          , text_ "."
+          ]
+      ]
+  }

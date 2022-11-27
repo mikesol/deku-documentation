@@ -7,12 +7,12 @@ import Deku.DOM as D
 
 lawfullyAlternative :: forall lock payload. Subsection lock payload
 lawfullyAlternative = subsection
-    { title: "Lawfully alternative"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "Lawfully alternative"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "Lawfully alternative"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold") [ text_ "Lawfully alternative" ]
+          , text_ "."
+          ]
+      ]
+  }

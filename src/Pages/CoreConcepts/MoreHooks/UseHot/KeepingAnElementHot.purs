@@ -7,12 +7,12 @@ import Deku.DOM as D
 
 keepingAnElementHot :: forall lock payload. Subsection lock payload
 keepingAnElementHot = subsection
-    { title: "Keeping an element hot"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "Keeping an element hot"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "Keeping an element hot"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold") [ text_ "Keeping an element hot" ]
+          , text_ "."
+          ]
+      ]
+  }

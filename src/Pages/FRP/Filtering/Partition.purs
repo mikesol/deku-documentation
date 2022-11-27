@@ -14,10 +14,10 @@ partition = section
   , topmatter:
       [ D.p_
           [ text_ "This section will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "Partition"]
-            , text_ "."
+          , D.span (D.Class !:= "font-bold") [ text_ "Partition" ]
+          , text_ "."
           ]
       ]
   , subsections:
-      [ performanceConsiderations,partitioningAnEvent,multiPartitioning]
+      [ performanceConsiderations, partitioningAnEvent, multiPartitioning ]
   }

@@ -7,12 +7,12 @@ import Deku.DOM as D
 
 usingTheUnderscore :: forall lock payload. Subsection lock payload
 usingTheUnderscore = subsection
-    { title: "Using the underscore"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "Using the underscore"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "Using the underscore"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold") [ text_ "Using the underscore" ]
+          , text_ "."
+          ]
+      ]
+  }

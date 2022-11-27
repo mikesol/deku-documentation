@@ -13,10 +13,10 @@ filter = section
   , topmatter:
       [ D.p_
           [ text_ "This section will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "Filter"]
-            , text_ "."
+          , D.span (D.Class !:= "font-bold") [ text_ "Filter" ]
+          , text_ "."
           ]
       ]
   , subsections:
-      [ filteringAnEvent,performanceConsiderations]
+      [ filteringAnEvent, performanceConsiderations ]
   }

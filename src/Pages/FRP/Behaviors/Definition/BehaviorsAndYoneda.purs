@@ -7,12 +7,12 @@ import Deku.DOM as D
 
 behaviorsAndYoneda :: forall lock payload. Subsection lock payload
 behaviorsAndYoneda = subsection
-    { title: "Behaviors and Yoneda"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "Behaviors and Yoneda"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "Behaviors and Yoneda"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold") [ text_ "Behaviors and Yoneda" ]
+          , text_ "."
+          ]
+      ]
+  }

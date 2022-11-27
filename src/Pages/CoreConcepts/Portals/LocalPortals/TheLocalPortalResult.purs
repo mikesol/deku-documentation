@@ -7,12 +7,12 @@ import Deku.DOM as D
 
 theLocalPortalResult :: forall lock payload. Subsection lock payload
 theLocalPortalResult = subsection
-    { title: "The local portal result"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "The local portal result"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "The local portal result"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold") [ text_ "The local portal result" ]
+          , text_ "."
+          ]
+      ]
+  }

@@ -7,12 +7,12 @@ import Deku.DOM as D
 
 theMakeEventFunction :: forall lock payload. Subsection lock payload
 theMakeEventFunction = subsection
-    { title: "The makeEvent function"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "The makeEvent function"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "The makeEvent function"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold") [ text_ "The makeEvent function" ]
+          , text_ "."
+          ]
+      ]
+  }

@@ -7,12 +7,12 @@ import Deku.DOM as D
 
 howEffectsAreHandled :: forall lock payload. Subsection lock payload
 howEffectsAreHandled = subsection
-    { title: "How effects are handled"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "How effects are handled"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "How effects are handled"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold") [ text_ "How effects are handled" ]
+          , text_ "."
+          ]
+      ]
+  }

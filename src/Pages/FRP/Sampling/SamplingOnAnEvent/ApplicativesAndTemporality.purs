@@ -7,12 +7,13 @@ import Deku.DOM as D
 
 applicativesAndTemporality :: forall lock payload. Subsection lock payload
 applicativesAndTemporality = subsection
-    { title: "Applicatives and temporality"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "Applicatives and temporality"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "Applicatives and temporality"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold")
+              [ text_ "Applicatives and temporality" ]
+          , text_ "."
+          ]
+      ]
+  }

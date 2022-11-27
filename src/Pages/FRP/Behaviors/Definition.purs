@@ -14,10 +14,10 @@ definition = section
   , topmatter:
       [ D.p_
           [ text_ "This section will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "Definition"]
-            , text_ "."
+          , D.span (D.Class !:= "font-bold") [ text_ "Definition" ]
+          , text_ "."
           ]
       ]
   , subsections:
-      [ theBehaviorType,behaviorsVersusFlapping,behaviorsAndYoneda]
+      [ theBehaviorType, behaviorsVersusFlapping, behaviorsAndYoneda ]
   }

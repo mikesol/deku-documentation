@@ -11,7 +11,6 @@ import Pages.FRP.Filtering (filtering)
 import Pages.FRP.FixAndFold (fixAndFold)
 import Pages.FRP.Sampling (sampling)
 
-
 frp :: forall lock payload. Chapter lock payload
 frp = chapter
   { title: "Functional reactive programming"

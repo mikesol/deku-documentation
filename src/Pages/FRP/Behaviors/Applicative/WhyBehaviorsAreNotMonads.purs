@@ -7,12 +7,13 @@ import Deku.DOM as D
 
 whyBehaviorsAreNotMonads :: forall lock payload. Subsection lock payload
 whyBehaviorsAreNotMonads = subsection
-    { title: "Why behaviors aren't monads"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "Why behaviors aren't monads"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "Why behaviors aren't monads"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold")
+              [ text_ "Why behaviors aren't monads" ]
+          , text_ "."
+          ]
+      ]
+  }

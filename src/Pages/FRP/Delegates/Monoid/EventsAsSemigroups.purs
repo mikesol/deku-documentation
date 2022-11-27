@@ -7,12 +7,12 @@ import Deku.DOM as D
 
 eventsAsSemigroups :: forall lock payload. Subsection lock payload
 eventsAsSemigroups = subsection
-    { title: "Events as semigroups"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "Events as semigroups"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "Events as semigroups"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold") [ text_ "Events as semigroups" ]
+          , text_ "."
+          ]
+      ]
+  }

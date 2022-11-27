@@ -7,12 +7,12 @@ import Deku.DOM as D
 
 uncurrying :: forall lock payload. Subsection lock payload
 uncurrying = subsection
-    { title: "Uncurrying"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "Uncurrying"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "Uncurrying"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold") [ text_ "Uncurrying" ]
+          , text_ "."
+          ]
+      ]
+  }

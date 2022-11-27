@@ -7,12 +7,12 @@ import Deku.DOM as D
 
 addingSeveralElements :: forall lock payload. Subsection lock payload
 addingSeveralElements = subsection
-    { title: "Adding several elements"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "Adding several elements"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "Adding several elements"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold") [ text_ "Adding several elements" ]
+          , text_ "."
+          ]
+      ]
+  }

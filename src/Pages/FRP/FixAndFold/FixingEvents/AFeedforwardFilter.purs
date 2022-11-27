@@ -7,12 +7,12 @@ import Deku.DOM as D
 
 aFeedforwardFilter :: forall lock payload. Subsection lock payload
 aFeedforwardFilter = subsection
-    { title: "A feedforward filter"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "A feedforward filter"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "A feedforward filter"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold") [ text_ "A feedforward filter" ]
+          , text_ "."
+          ]
+      ]
+  }

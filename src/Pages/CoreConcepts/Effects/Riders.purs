@@ -13,10 +13,10 @@ riders = section
   , topmatter:
       [ D.p_
           [ text_ "This section will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "Riders"]
-            , text_ "."
+          , D.span (D.Class !:= "font-bold") [ text_ "Riders" ]
+          , text_ "."
           ]
       ]
   , subsections:
-      [ effectsOnTeardown,effectsOnInitialization]
+      [ effectsOnTeardown, effectsOnInitialization ]
   }

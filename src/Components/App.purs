@@ -204,10 +204,14 @@ app
                                                                 ( "#" <>
                                                                     subsection.id
                                                                 )
-                                                            , click_ (pure unit :: Effect Unit)
-                                                                -- ( setRightSideNavSelect
-                                                                --     j
-                                                                -- )
+                                                            , click_
+                                                                ( pure unit
+                                                                    :: Effect
+                                                                         Unit
+                                                                )
+                                                            -- ( setRightSideNavSelect
+                                                            --     j
+                                                            -- )
                                                             ]
                                                         )
                                                         [ text_
@@ -228,10 +232,13 @@ app
                                                             )
                                                         , D.Href !:=
                                                             ("#" <> section.id)
-                                                        , click_ (pure unit :: Effect Unit)
-                                                            -- ( setRightSideNavSelect
-                                                            --     i
-                                                            -- )
+                                                        , click_
+                                                            ( pure unit
+                                                                :: Effect Unit
+                                                            )
+                                                        -- ( setRightSideNavSelect
+                                                        --     i
+                                                        -- )
 
                                                         ]
                                                       )

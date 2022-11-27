@@ -7,12 +7,12 @@ import Deku.DOM as D
 
 theKeepLatestFunction :: forall lock payload. Subsection lock payload
 theKeepLatestFunction = subsection
-    { title: "The keepLatest function"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "The keepLatest function"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "The keepLatest function"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold") [ text_ "The keepLatest function" ]
+          , text_ "."
+          ]
+      ]
+  }

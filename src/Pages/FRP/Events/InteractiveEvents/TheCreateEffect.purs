@@ -7,12 +7,12 @@ import Deku.DOM as D
 
 theCreateEffect :: forall lock payload. Subsection lock payload
 theCreateEffect = subsection
-    { title: "The create effect"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "The create effect"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "The create effect"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold") [ text_ "The create effect" ]
+          , text_ "."
+          ]
+      ]
+  }

@@ -7,12 +7,12 @@ import Deku.DOM as D
 
 emptiness :: forall lock payload. Subsection lock payload
 emptiness = subsection
-    { title: "Emptiness"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "Emptiness"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "Emptiness"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold") [ text_ "Emptiness" ]
+          , text_ "."
+          ]
+      ]
+  }

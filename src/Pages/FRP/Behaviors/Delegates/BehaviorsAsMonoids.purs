@@ -7,12 +7,12 @@ import Deku.DOM as D
 
 behaviorsAsMonoids :: forall lock payload. Subsection lock payload
 behaviorsAsMonoids = subsection
-    { title: "Behaviors as monoids"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "Behaviors as monoids"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "Behaviors as monoids"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold") [ text_ "Behaviors as monoids" ]
+          , text_ "."
+          ]
+      ]
+  }

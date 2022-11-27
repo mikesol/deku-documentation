@@ -7,12 +7,13 @@ import Deku.DOM as D
 
 performanceConsiderations :: forall lock payload. Subsection lock payload
 performanceConsiderations = subsection
-    { title: "Performance considerations"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "Performance considerations"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "Performance considerations"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold")
+              [ text_ "Performance considerations" ]
+          , text_ "."
+          ]
+      ]
+  }

@@ -13,10 +13,11 @@ stateWithoutInitialValues = section
   , topmatter:
       [ D.p_
           [ text_ "This section will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "StateWithoutInitialValues"]
-            , text_ "."
+          , D.span (D.Class !:= "font-bold")
+              [ text_ "StateWithoutInitialValues" ]
+          , text_ "."
           ]
       ]
   , subsections:
-      [ emptyUntilFull,aNoteOnMemoization]
+      [ emptyUntilFull, aNoteOnMemoization ]
   }

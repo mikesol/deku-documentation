@@ -7,12 +7,12 @@ import Deku.DOM as D
 
 theRunSSRFunction :: forall lock payload. Subsection lock payload
 theRunSSRFunction = subsection
-    { title: "The runSSR function"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "The runSSR function"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "The runSSR function"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold") [ text_ "The runSSR function" ]
+          , text_ "."
+          ]
+      ]
+  }

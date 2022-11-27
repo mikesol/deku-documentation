@@ -7,12 +7,12 @@ import Deku.DOM as D
 
 theOneOfFunction :: forall lock payload. Subsection lock payload
 theOneOfFunction = subsection
-    { title: "The oneOf function"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "The oneOf function"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "The oneOf function"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold") [ text_ "The oneOf function" ]
+          , text_ "."
+          ]
+      ]
+  }

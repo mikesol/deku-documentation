@@ -7,12 +7,12 @@ import Deku.DOM as D
 
 behaviorsAsFunctors :: forall lock payload. Subsection lock payload
 behaviorsAsFunctors = subsection
-    { title: "Behaviors as Functors"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "Behaviors as Functors"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "Behaviors as Functors"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold") [ text_ "Behaviors as Functors" ]
+          , text_ "."
+          ]
+      ]
+  }

@@ -7,12 +7,12 @@ import Deku.DOM as D
 
 theMeaningOfMap :: forall lock payload. Subsection lock payload
 theMeaningOfMap = subsection
-    { title: "The meaning of map"
-    , matter:
-        [ D.p_
-            [ text_ "This subsection will be about "
-            , D.span (D.Class !:= "font-bold") [ text_ "The meaning of map"]
-            , text_ "."
-            ]
-        ]
-    }
+  { title: "The meaning of map"
+  , matter:
+      [ D.p_
+          [ text_ "This subsection will be about "
+          , D.span (D.Class !:= "font-bold") [ text_ "The meaning of map" ]
+          , text_ "."
+          ]
+      ]
+  }
