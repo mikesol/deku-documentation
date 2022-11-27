@@ -36,3 +36,6 @@ output-es
 .spago
 .psc-ide-port
 .purs-repl
+
+# vite
+/dist
