@@ -65,13 +65,16 @@ app
         SystemDarkModePreference -> dmPref
 
   let
-    rightSideNavClass i =
+    rightSideNavClass' darktxt i =
       ( pure (i == 0) <|> (rightSideNavSelect i $> true) <|>
           (rightSideNavDeselect i $> false)
       )
         <#>
           if _ then "text-sky-500"
-          else "hover:text-slate-600 dark:hover:text-slate-300"
+          else "hover:text-slate-600 " <> darktxt <> " dark:hover:text-slate-300"
+
+    rightSideNavClass = rightSideNavClass' "dark:text-white"
+    rightSideSubNavClass = rightSideNavClass' "dark:text-slate-400"
   D.div
     ( oneOf
         [ klass $ darkBoolean <#> if _ then "dark" else ""
@@ -223,7 +226,7 @@ app
                                                   [ D.a
                                                       ( oneOf
                                                           [ klass
-                                                              ( rightSideNavClass
+                                                              ( rightSideSubNavClass
                                                                   j
                                                               )
                                                           , D.Href !:=
