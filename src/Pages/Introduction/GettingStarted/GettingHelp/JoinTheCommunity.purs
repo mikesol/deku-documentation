@@ -1,5 +1,8 @@
 module Pages.Introduction.GettingStarted.GettingHelp.JoinTheCommunity where
 
+import Prelude
+
+
 import Contracts (Subsection, subsection)
 import Deku.Attribute ((!:=))
 import Deku.Control (text_)
@@ -8,7 +11,7 @@ import Deku.DOM as D
 joinTheCommunity :: forall lock payload. Subsection lock payload
 joinTheCommunity = subsection
   { title: "Join the community"
-  , matter:
+  , matter: pure
       [ D.p_
           [ text_
               "Deku has a small but passionate community of framework users and developers that hang out on the "

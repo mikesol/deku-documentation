@@ -2,12 +2,19 @@ module Contracts where
 
 import Prelude
 
+
+import Prelude
+
 import Data.Array (intercalate)
 import Data.Newtype (class Newtype)
 import Data.String (Pattern(..), split, toLower)
 import Deku.Core (Domable)
 import Record (union)
 import Router.ADT (Route, routeToTitle)
+
+newtype Env = Env {
+  routeLink :: forall lock payload. Route -> Domable lock payload
+}
 
 newtype Docs lock paylaod = Docs (Array (Chapter lock paylaod))
 
@@ -34,7 +41,7 @@ newtype Page lock payload = Page
   { path :: String
   , title :: String
   , route :: Route
-  , topmatter :: Array (Domable lock payload)
+  , topmatter :: Env -> Array (Domable lock payload)
   , sections :: Array (Section lock payload)
   }
 
@@ -43,7 +50,7 @@ derive instance Newtype (Page lock payload) _
 page
   :: forall lock payload
    . { route :: Route
-     , topmatter :: Array (Domable lock payload)
+     , topmatter :: Env -> Array (Domable lock payload)
      , sections :: Array (Section lock payload)
      }
   -> Page lock payload
@@ -60,14 +67,14 @@ page i = Page
 newtype Section lock payload = Section
   { title :: String
   , id :: String
-  , topmatter :: Array (Domable lock payload)
+  , topmatter :: Env -> Array (Domable lock payload)
   , subsections :: Array (Subsection lock payload)
   }
 
 section
   :: forall lock payload
    . { title :: String
-     , topmatter :: Array (Domable lock payload)
+     , topmatter :: Env -> Array (Domable lock payload)
      , subsections :: Array (Subsection lock payload)
      }
   -> Section lock payload
@@ -77,12 +84,12 @@ section i = Section
   )
 
 newtype Subsection lock payload = Subsection
-  { title :: String, id :: String, matter :: Array (Domable lock payload) }
+  { title :: String, id :: String, matter :: Env -> Array (Domable lock payload) }
 
 subsection
   :: forall lock payload
    . { title :: String
-     , matter :: Array (Domable lock payload)
+     , matter :: Env -> Array (Domable lock payload)
      }
   -> Subsection lock payload
 subsection i = Subsection

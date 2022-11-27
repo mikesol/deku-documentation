@@ -1,5 +1,8 @@
 module Pages.AdvancedUsage.CustomElements where
 
+import Prelude
+
+
 import Contracts (Page, page)
 import Deku.Attribute ((!:=))
 import Deku.Control (text_)
@@ -11,7 +14,7 @@ import Router.ADT (Route(..))
 customElements :: forall lock payload. Page lock payload
 customElements = page
   { route: CustomElements
-  , topmatter:
+  , topmatter: pure
       [ D.p (D.Class !:= "lead")
           [ text_ "This page will be about "
           , D.b_ [ text_ "Custom elements" ]

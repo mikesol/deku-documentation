@@ -1,5 +1,8 @@
 module Pages.Introduction.HelloWorld.TheAnatomyOfHello.ModuleDeclaration where
 
+import Prelude
+
+
 import Components.Code (psCode)
 import Contracts (Subsection, subsection)
 import Deku.Control (text_)
@@ -8,7 +11,7 @@ import Deku.DOM as D
 moduleDeclaration :: forall lock payload. Subsection lock payload
 moduleDeclaration = subsection
   { title: "Module declaration"
-  , matter:
+  , matter: pure
       [ psCode "module Main where"
       , D.p_
           [ text_ "All PureScript files "

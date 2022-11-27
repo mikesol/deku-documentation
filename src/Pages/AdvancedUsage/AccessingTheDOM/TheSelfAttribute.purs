@@ -1,5 +1,8 @@
 module Pages.AdvancedUsage.AccessingTheDOM.TheSelfAttribute where
 
+import Prelude
+
+
 import Contracts (Section, section)
 import Deku.Attribute ((!:=))
 import Deku.Control (text_)
@@ -11,7 +14,7 @@ import Pages.AdvancedUsage.AccessingTheDOM.TheSelfAttribute.SafetyWithSelf (safe
 theSelfAttribute :: forall lock payload. Section lock payload
 theSelfAttribute = section
   { title: "Defining custom elements"
-  , topmatter:
+  , topmatter: pure
       [ D.p_
           [ text_ "This section will be about "
           , D.span (D.Class !:= "font-bold")

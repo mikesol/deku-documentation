@@ -1,5 +1,8 @@
 module Pages.Introduction.GettingStarted.BasicUsage where
 
+import Prelude
+
+
 import Contracts (Section, section)
 import Deku.Control (text_)
 import Deku.Attribute ((!:=))
@@ -10,7 +13,7 @@ import Pages.Introduction.GettingStarted.BasicUsage.BuildingForProduction (build
 basicUsage :: forall lock payload. Section lock payload
 basicUsage = section
   { title: "Basic usage"
-  , topmatter:
+  , topmatter: pure
       [ D.p_
           [ text_ "This section will be about "
           , D.span (D.Class !:= "font-bold") [ text_ "Basic usage" ]

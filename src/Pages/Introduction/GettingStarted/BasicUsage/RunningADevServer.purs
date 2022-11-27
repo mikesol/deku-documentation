@@ -1,5 +1,8 @@
 module Pages.Introduction.GettingStarted.BasicUsage.RunningADevServer where
 
+import Prelude
+
+
 import Components.ProTip (proTip)
 import Contracts (Subsection, subsection)
 import Deku.Attribute ((!:=))
@@ -9,7 +12,7 @@ import Deku.DOM as D
 runningADevServer :: forall lock payload. Subsection lock payload
 runningADevServer = subsection
   { title: "Running a dev server"
-  , matter:
+  , matter: pure
       [ D.p_
           [ text_
               "Sit commodi iste iure molestias qui amet voluptatem sed quaerat. Nostrum aut pariatur. Sint ipsa praesentium dolor error cumque velit tenetur quaerat exercitationem. Consequatur et cum atque mollitia qui quia necessitatibus."

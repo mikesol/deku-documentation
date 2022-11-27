@@ -2,6 +2,9 @@ module Components.LeftMatter where
 
 import Prelude
 
+
+import Prelude
+
 import Components.Link (link)
 import Contracts (Chapter(..), Page(..))
 import Control.Alt ((<|>))

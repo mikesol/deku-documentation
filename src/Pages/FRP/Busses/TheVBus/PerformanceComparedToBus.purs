@@ -1,5 +1,8 @@
 module Pages.FRP.Busses.TheVBus.PerformanceComparedToBus where
 
+import Prelude
+
+
 import Contracts (Subsection, subsection)
 import Deku.Control (text_)
 import Deku.Attribute ((!:=))
@@ -8,7 +11,7 @@ import Deku.DOM as D
 performanceComparedToBus :: forall lock payload. Subsection lock payload
 performanceComparedToBus = subsection
   { title: "Performance compared to bus"
-  , matter:
+  , matter: pure
       [ D.p_
           [ text_ "This subsection will be about "
           , D.span (D.Class !:= "font-bold")

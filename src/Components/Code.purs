@@ -1,5 +1,8 @@
 module Components.Code where
 
+import Prelude
+
+
 import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.Core (Domable)

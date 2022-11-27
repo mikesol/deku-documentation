@@ -1,5 +1,8 @@
 module Pages.CoreConcepts.State.TheStateHook where
 
+import Prelude
+
+
 import Contracts (Section, section)
 import Deku.Attribute ((!:=))
 import Deku.Control (text_)
@@ -12,7 +15,7 @@ import Pages.CoreConcepts.State.TheStateHook.UsingTheHookToSwitchBetweenElements
 theStateHook :: forall lock payload. Section lock payload
 theStateHook = section
   { title: "The state hook"
-  , topmatter:
+  , topmatter: pure
       [ D.p_
           [ text_ "This section will be about "
           , D.span (D.Class !:= "font-bold") [ text_ "The state hook" ]

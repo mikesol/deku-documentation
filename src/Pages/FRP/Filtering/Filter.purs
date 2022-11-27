@@ -1,5 +1,8 @@
 module Pages.FRP.Filtering.Filter where
 
+import Prelude
+
+
 import Contracts (Section, section)
 import Deku.Control (text_)
 import Deku.Attribute ((!:=))
@@ -10,7 +13,7 @@ import Pages.FRP.Filtering.Filter.PerformanceConsiderations (performanceConsider
 filter :: forall lock payload. Section lock payload
 filter = section
   { title: "Filter"
-  , topmatter:
+  , topmatter: pure
       [ D.p_
           [ text_ "This section will be about "
           , D.span (D.Class !:= "font-bold") [ text_ "Filter" ]

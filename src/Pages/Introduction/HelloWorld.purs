@@ -1,5 +1,8 @@
 module Pages.Introduction.HelloWorld where
 
+import Prelude
+
+
 import Contracts (Page, page)
 import Deku.Attribute ((!:=))
 import Deku.Control (text_)
@@ -11,7 +14,7 @@ import Router.ADT (Route(..))
 helloWorld :: forall lock payload. Page lock payload
 helloWorld = page
   { route: HelloWorld
-  , topmatter:
+  , topmatter: pure
       [ D.p (D.Class !:= "lead")
           [ text_ "Let's teach Deku to say hello."
           ]

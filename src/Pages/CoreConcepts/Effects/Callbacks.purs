@@ -1,5 +1,8 @@
 module Pages.CoreConcepts.Effects.Callbacks where
 
+import Prelude
+
+
 import Contracts (Section, section)
 import Deku.Control (text_)
 import Deku.Attribute ((!:=))
@@ -10,7 +13,7 @@ import Pages.CoreConcepts.Effects.Callbacks.TriggeringACallbackFromAsynchronousC
 callbacks :: forall lock payload. Section lock payload
 callbacks = section
   { title: "Callbacks"
-  , topmatter:
+  , topmatter: pure
       [ D.p_
           [ text_ "This section will be about "
           , D.span (D.Class !:= "font-bold") [ text_ "Callbacks" ]

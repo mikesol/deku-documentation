@@ -1,5 +1,8 @@
 module Pages.CoreConcepts.Effects.Hydration where
 
+import Prelude
+
+
 import Contracts (Section, section)
 import Deku.Control (text_)
 import Deku.Attribute ((!:=))
@@ -11,7 +14,7 @@ import Pages.CoreConcepts.Effects.Hydration.AnAlternativeEffectModel (anAlternat
 hydration :: forall lock payload. Section lock payload
 hydration = section
   { title: "Hydration"
-  , topmatter:
+  , topmatter: pure
       [ D.p_
           [ text_ "This section will be about "
           , D.span (D.Class !:= "font-bold") [ text_ "Hydration" ]

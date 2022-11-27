@@ -1,5 +1,8 @@
 module Pages.CoreConcepts.Providers.FunctionsAsProviders where
 
+import Prelude
+
+
 import Contracts (Section, section)
 import Deku.Control (text_)
 import Deku.Attribute ((!:=))
@@ -10,7 +13,7 @@ import Pages.CoreConcepts.Providers.FunctionsAsProviders.UsingFunctionsAsMonads 
 functionsAsProviders :: forall lock payload. Section lock payload
 functionsAsProviders = section
   { title: "Functions as providers"
-  , topmatter:
+  , topmatter: pure
       [ D.p_
           [ text_ "This section will be about "
           , D.span (D.Class !:= "font-bold") [ text_ "Functions as providers" ]

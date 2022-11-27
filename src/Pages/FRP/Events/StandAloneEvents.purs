@@ -1,5 +1,8 @@
 module Pages.FRP.Events.StandAloneEvents where
 
+import Prelude
+
+
 import Contracts (Section, section)
 import Deku.Control (text_)
 import Deku.Attribute ((!:=))
@@ -11,7 +14,7 @@ import Pages.FRP.Events.StandAloneEvents.TheMakeEventFunction (theMakeEventFunct
 standAloneEvents :: forall lock payload. Section lock payload
 standAloneEvents = section
   { title: "Stand-alone events"
-  , topmatter:
+  , topmatter: pure
       [ D.p_
           [ text_ "This section will be about "
           , D.span (D.Class !:= "font-bold") [ text_ "Stand-alone events" ]

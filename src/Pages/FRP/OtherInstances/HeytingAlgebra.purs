@@ -1,5 +1,8 @@
 module Pages.FRP.OtherInstances.HeytingAlgebra where
 
+import Prelude
+
+
 import Contracts (Section, section)
 import Deku.Control (text_)
 import Deku.Attribute ((!:=))
@@ -9,7 +12,7 @@ import Pages.FRP.OtherInstances.HeytingAlgebra.BooleanLogicOnEvents (booleanLogi
 heytingAlgebra :: forall lock payload. Section lock payload
 heytingAlgebra = section
   { title: "HeytingAlgebra"
-  , topmatter:
+  , topmatter: pure
       [ D.p_
           [ text_ "This section will be about "
           , D.span (D.Class !:= "font-bold") [ text_ "HeytingAlgebra" ]

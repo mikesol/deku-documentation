@@ -1,5 +1,8 @@
 module Pages.CoreConcepts.Components where
 
+import Prelude
+
+
 import Contracts (Page, page)
 import Deku.Attribute ((!:=))
 import Deku.Control (text_)
@@ -12,15 +15,20 @@ import Router.ADT (Route(..))
 components :: forall lock payload. Page lock payload
 components = page
   { route: Components
-  , topmatter:
+  , topmatter: pure
       [ D.p (D.Class !:= "lead")
-          [ text_ "This page will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "Components" ]
-          , text_ "."
+          [ text_ "Learn how to make a static page with Deku."
           ]
       , D.p_
           [ text_
-              "Possimus saepe veritatis sint nobis et quam eos. Architecto consequatur odit perferendis fuga eveniet possimus rerum cumque. Ea deleniti voluptatum deserunt voluptatibus ut non iste."
+              "In the "
+          , D.b_ [ text_ "Hello world" ]
+          , text_ " example, we saw how "
+          , D.code_ [ text_ "text_ (\"Hello world\")" ]
+          , text_
+              " got transformed into something your eyeballs oggled or screenreader scraggled in the DOM. In Deku, as in most other frameworks from which Deku's ideas are liberally borrowed, we call these "
+          , D.b_ [ text_ "Components" ]
+          , text_ "."
           ]
       ]
   , sections:

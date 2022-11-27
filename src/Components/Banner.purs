@@ -2,6 +2,9 @@ module Components.Banner where
 
 import Prelude
 
+
+import Prelude
+
 import Assets (blurCyanURL, blurIndigoURL)
 import Control.Alt ((<|>))
 import Data.Foldable (oneOf)

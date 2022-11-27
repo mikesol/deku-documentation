@@ -2,6 +2,9 @@ module Router.ADT where
 
 import Prelude
 
+
+import Prelude
+
 import Data.Generic.Rep (class Generic)
 import Data.Maybe (Maybe(..))
 import Data.Show.Generic (genericShow)
@@ -33,6 +36,7 @@ data Route
 derive instance Generic Route _
 derive instance Eq Route
 derive instance Ord Route
+
 instance Show Route where
   show = genericShow
 

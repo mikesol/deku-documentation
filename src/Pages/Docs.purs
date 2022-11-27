@@ -1,5 +1,8 @@
 module Pages.Docs where
 
+import Prelude
+
+
 import Contracts (Docs(..))
 import Pages.AdvancedUsage (advancedUsage)
 import Pages.CoreConcepts (coreConcepts)

@@ -1,5 +1,8 @@
 module Pages.Introduction.HelloWorld.TheAnatomyOfHello.Imports where
 
+import Prelude
+
+
 import Components.Code (psCode)
 import Components.ProTip (proTip)
 import Contracts (Subsection, subsection)
@@ -9,7 +12,7 @@ import Deku.DOM as D
 imports :: forall lock payload. Subsection lock payload
 imports = subsection
   { title: "Imports"
-  , matter:
+  , matter: pure
       [ psCode
           """import Prelude
 

@@ -2,12 +2,17 @@ module Components.App where
 
 import Prelude
 
+
+import Prelude
+
+import Components.Link (link)
 import Components.Banner (banner)
 import Components.BottomNav (bottomNav)
 import Components.Header (header)
 import Components.LeftMatter (leftMatter)
-import Contracts (Page(..), Section(..), Subsection(..))
+import Contracts (Page(..), Section(..), Subsection(..), Env(..))
 import Control.Alt ((<|>))
+import Control.Plus (empty)
 import Control.Monad.State (evalState, get, put, runState)
 import DarkModePreference (DarkModePreference(..))
 import Data.Foldable (oneOf)
@@ -56,6 +61,7 @@ app
   , pageWas
   , pushState
   } = Deku.do
+  let env = Env { routeLink: \r -> link pushState r empty }
   setDark /\ dark <- useState LightMode
   let
     darkBoolean = (Tuple <$> darkModePreference <*> dark) <#> \(dmPref /\ dk) ->
@@ -131,7 +137,7 @@ app
                                 "prose prose-slate max-w-none dark:prose-invert dark:text-slate-400 prose-headings:scroll-mt-28 prose-headings:font-display prose-headings:font-normal lg:prose-headings:scroll-mt-[8.5rem] prose-lead:text-slate-500 dark:prose-lead:text-slate-400 prose-a:font-semibold dark:prose-a:text-sky-400 prose-a:no-underline prose-a:shadow-[inset_0_-2px_0_0_var(--tw-prose-background,#fff),inset_0_calc(-1*(var(--tw-prose-underline-size,4px)+2px))_0_0_var(--tw-prose-underline,theme(colors.sky.300))] hover:prose-a:[--tw-prose-underline-size:6px] dark:[--tw-prose-background:theme(colors.slate.900)] dark:prose-a:shadow-[inset_0_calc(-1*var(--tw-prose-underline-size,2px))_0_0_var(--tw-prose-underline,theme(colors.sky.800))] dark:hover:prose-a:[--tw-prose-underline-size:6px] prose-pre:rounded-xl prose-pre:bg-slate-900 prose-pre:shadow-lg dark:prose-pre:bg-slate-800/60 dark:prose-pre:shadow-none dark:prose-pre:ring-1 dark:prose-pre:ring-slate-300/10 dark:prose-hr:border-slate-800"
                             ]
                         )
-                        ( cp.topmatter <> join
+                        ( cp.topmatter env <> join
                             ( flip evalState 0
                                 ( traverse
                                     ( \(Section section) -> do
@@ -159,7 +165,7 @@ app
                                                                   subsection.title
                                                               ]
                                                           ] <>
-                                                            subsection.matter
+                                                            subsection.matter env
                                                         )
                                                 )
                                                 section.subsections
@@ -177,7 +183,7 @@ app
                                                 )
                                                 [ text_ section.title ]
 
-                                            ] <> section.topmatter <> join
+                                            ] <> section.topmatter env <> join
                                               (fst inner)
                                           )
                                     )

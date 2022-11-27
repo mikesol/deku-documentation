@@ -1,5 +1,8 @@
 module Pages.Introduction.GettingStarted where
 
+import Prelude
+
+
 import Contracts (Page, page)
 import Deku.Attribute ((!:=))
 import Deku.Attributes (klass_)
@@ -12,7 +15,7 @@ import Router.ADT (Route(..))
 gettingStarted :: forall lock payload. Page lock payload
 gettingStarted = page
   { route: GettingStarted
-  , topmatter:
+  , topmatter: pure
       [ D.p (D.Class !:= "lead")
           [ text_ "Hi 👋" ]
       , D.p_

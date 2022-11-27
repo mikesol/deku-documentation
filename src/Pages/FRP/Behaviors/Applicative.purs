@@ -1,5 +1,8 @@
 module Pages.FRP.Behaviors.Applicative where
 
+import Prelude
+
+
 import Contracts (Section, section)
 import Deku.Control (text_)
 import Deku.Attribute ((!:=))
@@ -11,7 +14,7 @@ import Pages.FRP.Behaviors.Applicative.BehaviorsAsFunctors (behaviorsAsFunctors)
 applicative :: forall lock payload. Section lock payload
 applicative = section
   { title: "Applicative"
-  , topmatter:
+  , topmatter: pure
       [ D.p_
           [ text_ "This section will be about "
           , D.span (D.Class !:= "font-bold") [ text_ "Applicative" ]

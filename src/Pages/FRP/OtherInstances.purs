@@ -1,5 +1,8 @@
 module Pages.FRP.OtherInstances where
 
+import Prelude
+
+
 import Contracts (Page, page)
 import Deku.Attribute ((!:=))
 import Deku.Control (text_)
@@ -12,7 +15,7 @@ import Router.ADT (Route(..))
 otherInstances :: forall lock payload. Page lock payload
 otherInstances = page
   { route: OtherInstances
-  , topmatter:
+  , topmatter: pure
       [ D.p (D.Class !:= "lead")
           [ text_ "This page will be about "
           , D.span (D.Class !:= "font-bold") [ text_ "Other instances" ]

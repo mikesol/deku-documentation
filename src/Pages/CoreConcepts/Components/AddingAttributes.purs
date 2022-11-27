@@ -1,5 +1,8 @@
 module Pages.CoreConcepts.Components.AddingAttributes where
 
+import Prelude
+
+
 import Contracts (Section, section)
 import Deku.Control (text_)
 import Deku.Attribute ((!:=))
@@ -12,7 +15,7 @@ import Pages.CoreConcepts.Components.AddingAttributes.SeveralAttributes (several
 addingAttributes :: forall lock payload. Section lock payload
 addingAttributes = section
   { title: "Adding attributes"
-  , topmatter:
+  , topmatter: pure
       [ D.p_
           [ text_ "This section will be about "
           , D.span (D.Class !:= "font-bold") [ text_ "Adding attributes" ]

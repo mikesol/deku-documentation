@@ -1,5 +1,8 @@
 module Pages.FRP.Events.InteractiveEvents where
 
+import Prelude
+
+
 import Contracts (Section, section)
 import Deku.Control (text_)
 import Deku.Attribute ((!:=))
@@ -11,7 +14,7 @@ import Pages.FRP.Events.InteractiveEvents.LifetimeAndGarbageCollection (lifetime
 interactiveEvents :: forall lock payload. Section lock payload
 interactiveEvents = section
   { title: "Interactive events"
-  , topmatter:
+  , topmatter: pure
       [ D.p_
           [ text_ "This section will be about "
           , D.span (D.Class !:= "font-bold") [ text_ "Interactive events" ]

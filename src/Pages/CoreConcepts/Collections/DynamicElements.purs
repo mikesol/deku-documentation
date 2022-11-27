@@ -1,5 +1,8 @@
 module Pages.CoreConcepts.Collections.DynamicElements where
 
+import Prelude
+
+
 import Contracts (Section, section)
 import Deku.Control (text_)
 import Deku.Attribute ((!:=))
@@ -12,7 +15,7 @@ import Pages.CoreConcepts.Collections.DynamicElements.RemovingElements (removing
 dynamicElements :: forall lock payload. Section lock payload
 dynamicElements = section
   { title: "Dynamic elements"
-  , topmatter:
+  , topmatter: pure
       [ D.p_
           [ text_ "This section will be about "
           , D.span (D.Class !:= "font-bold") [ text_ "Dynamic elements" ]

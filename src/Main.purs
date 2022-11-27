@@ -6,6 +6,9 @@ module Main
 
 import Prelude
 
+
+import Prelude
+
 import Components.App (app)
 import DarkModePreference (OnDark(..), OnLight(..), darkModeListener, prefersDarkMode)
 import Data.Compactable (compact)

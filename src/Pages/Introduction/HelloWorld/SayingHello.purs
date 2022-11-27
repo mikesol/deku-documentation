@@ -1,5 +1,8 @@
 module Pages.Introduction.HelloWorld.SayingHello where
 
+import Prelude
+
+
 import Contracts (Section, section)
 import Deku.Control (text_)
 import Deku.DOM as D
@@ -9,7 +12,7 @@ import Pages.Introduction.HelloWorld.SayingHello.TheResult (theResult)
 sayingHello :: forall lock payload. Section lock payload
 sayingHello = section
   { title: "Saying hello"
-  , topmatter:
+  , topmatter: pure
       [ D.p_
           [ text_
               "This section, like many that will come after it, first present some "

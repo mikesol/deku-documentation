@@ -1,5 +1,8 @@
 module Pages.FRP.Sampling.Gating where
 
+import Prelude
+
+
 import Contracts (Section, section)
 import Deku.Control (text_)
 import Deku.Attribute ((!:=))
@@ -9,7 +12,7 @@ import Pages.FRP.Sampling.Gating.GatingEventsOnBehaviors (gatingEventsOnBehavior
 gating :: forall lock payload. Section lock payload
 gating = section
   { title: "Gating"
-  , topmatter:
+  , topmatter: pure
       [ D.p_
           [ text_ "This section will be about "
           , D.span (D.Class !:= "font-bold") [ text_ "Gating" ]

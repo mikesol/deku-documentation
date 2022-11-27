@@ -1,5 +1,8 @@
 module Pages.CoreConcepts.Providers.RowPolymorphism.DifferencesWithTraditionalPolymorphism where
 
+import Prelude
+
+
 import Contracts (Subsection, subsection)
 import Deku.Control (text_)
 import Deku.Attribute ((!:=))
@@ -9,7 +12,7 @@ differencesWithTraditionalPolymorphism
   :: forall lock payload. Subsection lock payload
 differencesWithTraditionalPolymorphism = subsection
   { title: "Differences with traditional polymorphism"
-  , matter:
+  , matter: pure
       [ D.p_
           [ text_ "This subsection will be about "
           , D.span (D.Class !:= "font-bold")

@@ -1,5 +1,8 @@
 module Pages.CoreConcepts.Collections.FixedElements where
 
+import Prelude
+
+
 import Contracts (Section, section)
 import Deku.Control (text_)
 import Deku.Attribute ((!:=))
@@ -10,7 +13,7 @@ import Pages.CoreConcepts.Collections.FixedElements.GroupingElementsTogether (gr
 fixedElements :: forall lock payload. Section lock payload
 fixedElements = section
   { title: "Fixed elements"
-  , topmatter:
+  , topmatter: pure
       [ D.p_
           [ text_ "This section will be about "
           , D.span (D.Class !:= "font-bold") [ text_ "Fixed elements" ]

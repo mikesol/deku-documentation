@@ -1,5 +1,8 @@
 module Pages.FRP where
 
+import Prelude
+
+
 import Contracts (Chapter, chapter)
 import Pages.FRP.Alternatives (alternatives)
 import Pages.FRP.Applicatives (applicatives)

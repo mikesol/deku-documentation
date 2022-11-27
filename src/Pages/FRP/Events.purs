@@ -1,5 +1,8 @@
 module Pages.FRP.Events where
 
+import Prelude
+
+
 import Contracts (Page, page)
 import Deku.Attribute ((!:=))
 import Deku.Control (text_)
@@ -14,7 +17,7 @@ import Router.ADT (Route(..))
 events :: forall lock payload. Page lock payload
 events = page
   { route: Events
-  , topmatter:
+  , topmatter: pure
       [ D.p (D.Class !:= "lead")
           [ text_ "This page will be about "
           , D.span (D.Class !:= "font-bold") [ text_ "Events" ]

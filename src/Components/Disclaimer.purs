@@ -1,5 +1,8 @@
 module Components.Disclaimer where
 
+import Prelude
+
+
 import Data.Foldable (oneOf)
 import Deku.Attribute ((!:=))
 import Deku.Core (Domable)

@@ -1,5 +1,8 @@
 module Pages.Introduction.GettingStarted.BasicUsage.BuildingForProduction where
 
+import Prelude
+
+
 import Components.ProTip (proTip)
 import Contracts (Subsection, subsection)
 import Deku.Attribute ((!:=))
@@ -9,7 +12,7 @@ import Deku.DOM as D
 buildingForProduction :: forall lock payload. Subsection lock payload
 buildingForProduction = subsection
   { title: "Building for production"
-  , matter:
+  , matter: pure
       [ D.p_
           [ text_
               "Sit commodi iste iure molestias qui amet voluptatem sed quaerat. Nostrum aut pariatur. Sint ipsa praesentium dolor error cumque velit tenetur quaerat exercitationem. Consequatur et cum atque mollitia qui quia necessitatibus."

@@ -1,5 +1,8 @@
 module FRP.Lag where
 
+import Prelude
+
+
 import Data.Maybe (Maybe(..))
 import Data.Tuple.Nested ((/\), type (/\))
 import FRP.Event (Event, mapAccum)

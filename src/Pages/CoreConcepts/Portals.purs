@@ -1,5 +1,8 @@
 module Pages.CoreConcepts.Portals where
 
+import Prelude
+
+
 import Contracts (Page, page)
 import Deku.Attribute ((!:=))
 import Deku.Control (text_)
@@ -11,7 +14,7 @@ import Router.ADT (Route(..))
 portals :: forall lock payload. Page lock payload
 portals = page
   { route: Portals
-  , topmatter:
+  , topmatter: pure
       [ D.p (D.Class !:= "lead")
           [ text_ "This page will be about "
           , D.span (D.Class !:= "font-bold") [ text_ "Portals" ]

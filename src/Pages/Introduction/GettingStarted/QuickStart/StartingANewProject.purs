@@ -1,5 +1,8 @@
 module Pages.Introduction.GettingStarted.QuickStart.StartingANewProject where
 
+import Prelude
+
+
 import Components.Code (bashCode)
 import Contracts (Subsection, subsection)
 import Deku.Attributes (klass_)
@@ -9,7 +12,7 @@ import Deku.DOM as D
 startingANewProject :: forall lock payload. Subsection lock payload
 startingANewProject = subsection
   { title: "Starting a new project"
-  , matter:
+  , matter: pure
       [ D.p_
           [ text_ "The easiest way to get up-and-running with Deku is to use "
           , D.code_ [ text_ "create-deku-app" ]

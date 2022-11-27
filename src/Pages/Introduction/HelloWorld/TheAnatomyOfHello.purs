@@ -1,5 +1,8 @@
 module Pages.Introduction.HelloWorld.TheAnatomyOfHello where
 
+import Prelude
+
+
 import Contracts (Section, section)
 import Deku.Control (text_)
 import Deku.DOM as D
@@ -12,7 +15,7 @@ import Pages.Introduction.HelloWorld.TheAnatomyOfHello.TheMainFunction (theMainF
 theAnatomyOfHello :: forall lock payload. Section lock payload
 theAnatomyOfHello = section
   { title: "The anatomy of hello"
-  , topmatter:
+  , topmatter: pure
       [ D.p_
           [ text_ "There are a few things going on in our lil' "
           , D.i_ [ text_ "hello world" ]

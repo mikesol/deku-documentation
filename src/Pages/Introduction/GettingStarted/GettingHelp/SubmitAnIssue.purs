@@ -1,5 +1,8 @@
 module Pages.Introduction.GettingStarted.GettingHelp.SubmitAnIssue where
 
+import Prelude
+
+
 import Contracts (Subsection, subsection)
 import Deku.Attribute ((!:=))
 import Deku.Control (text_)
@@ -8,7 +11,7 @@ import Deku.DOM as D
 submitAnIssue :: forall lock payload. Subsection lock payload
 submitAnIssue = subsection
   { title: "Submit an issue"
-  , matter:
+  , matter: pure
       [ D.p_
           [ text_
               "If you spot an issue with the Deku framework itself or if you have feature requests, please open an issue on the "

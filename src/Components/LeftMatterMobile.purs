@@ -2,6 +2,9 @@ module Components.LeftMatterMobile where
 
 import Prelude
 
+
+import Prelude
+
 import Assets (dekulogoURL, dekulogodarkURL)
 import Components.Link (link, link')
 import Contracts (Chapter(..), Page(..))

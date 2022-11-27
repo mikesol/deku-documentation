@@ -1,5 +1,8 @@
 module Pages.CoreConcepts.Portals.GlobalPortals where
 
+import Prelude
+
+
 import Contracts (Section, section)
 import Deku.Control (text_)
 import Deku.Attribute ((!:=))
@@ -11,7 +14,7 @@ import Pages.CoreConcepts.Portals.GlobalPortals.TheGlobalPortalResult (theGlobal
 globalPortals :: forall lock payload. Section lock payload
 globalPortals = section
   { title: "Global portals"
-  , topmatter:
+  , topmatter: pure
       [ D.p_
           [ text_ "This section will be about "
           , D.span (D.Class !:= "font-bold") [ text_ "Global portals" ]

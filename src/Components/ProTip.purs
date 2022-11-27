@@ -1,5 +1,8 @@
 module Components.ProTip where
 
+import Prelude
+
+
 import Data.Foldable (oneOf)
 import Deku.Attribute ((!:=))
 import Deku.Core (Domable)

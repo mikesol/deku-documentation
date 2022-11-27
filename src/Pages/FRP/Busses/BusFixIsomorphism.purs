@@ -1,5 +1,8 @@
 module Pages.FRP.Busses.BusFixIsomorphism where
 
+import Prelude
+
+
 import Contracts (Section, section)
 import Deku.Control (text_)
 import Deku.Attribute ((!:=))
@@ -10,7 +13,7 @@ import Pages.FRP.Busses.BusFixIsomorphism.FromBusToFix (fromBusToFix)
 busFixIsomorphism :: forall lock payload. Section lock payload
 busFixIsomorphism = section
   { title: "Bus-fix isomorphism"
-  , topmatter:
+  , topmatter: pure
       [ D.p_
           [ text_ "This section will be about "
           , D.span (D.Class !:= "font-bold") [ text_ "Bus-fix isomorphism" ]
