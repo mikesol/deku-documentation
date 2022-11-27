@@ -39,7 +39,7 @@ main = runInBody
           ]
       , psCode
           """[ D.span_ [ ... ]
-, D.ul_ $ map (D.li_ <<< pure <<< text_) [ ... ]
+, D.ul_ $ map D.li__ [ ... ]
 , D.div_
   [ ...
   ]
@@ -87,8 +87,7 @@ main = runInBody
           , D.code_ [ text_ "li" ]
           , text_ " components."
           ]
-      , psCode
-          """D.ul_ $ map (D.li_ <<< pure <<< text_) [ "A", "B", "C" ]"""
+      , psCode """D.ul_ $ map D.li__ [ "A", "B", "C" ]"""
       , D.p_
           [ text_
               "Deku is designed to allow you to use garden-variety functional programming patterns, like mapping over arrays, to build your DOM. In fact, that's how this documentation is built: all of the text you're reading is stored in structures that Deku marshalls into the DOM."

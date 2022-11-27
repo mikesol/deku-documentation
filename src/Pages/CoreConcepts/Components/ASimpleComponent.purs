@@ -33,7 +33,7 @@ main :: Effect Unit
 main = runInBody
   ( D.div_
     [ D.span__ "I exist"
-    , D.ul_ $ map (D.li_ <<< pure <<< text_) [ "A", "B", "C" ]
+    , D.ul_ $ map D.li__ [ "A", "B", "C" ]
     , D.div_
         [ D.h3__ "foo"
         , D.i__ "bar"
@@ -46,7 +46,7 @@ main = runInBody
       , D.blockquote (klass_ "not-italic")
           [ D.div_
               [ D.span_ [ text_ "I exist" ]
-              , D.ul_ $ map (D.li_ <<< pure <<< text_) [ "A", "B", "C" ]
+              , D.ul_ $ map D.li__ [ "A", "B", "C" ]
               , D.div_
                   [ D.h3__ "foo"
                   , D.i__  "bar"
