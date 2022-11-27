@@ -24,5 +24,8 @@ sSR = page
           ]
       ]
   , sections:
-      [ renderingAStaticSite, hydratingAStaticSite, integrationWithVite ]
+      [ renderingAStaticSite
+      , hydratingAStaticSite
+      --, integrationWithVite 
+      ]
   }

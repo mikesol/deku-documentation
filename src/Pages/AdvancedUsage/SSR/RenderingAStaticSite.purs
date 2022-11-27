@@ -10,11 +10,11 @@ import Pages.AdvancedUsage.SSR.RenderingAStaticSite.HowEffectsAreHandled (howEff
 
 renderingAStaticSite :: forall lock payload. Section lock payload
 renderingAStaticSite = section
-  { title: "RenderingAStaticSite"
+  { title: "Rendering a static site"
   , topmatter:
       [ D.p_
           [ text_ "This section will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "RenderingAStaticSite" ]
+          , D.span (D.Class !:= "font-bold") [ text_ "Rendering a static site"]
           , text_ "."
           ]
       ]

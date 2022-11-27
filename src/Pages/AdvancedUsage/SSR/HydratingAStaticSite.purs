@@ -9,11 +9,11 @@ import Pages.AdvancedUsage.SSR.HydratingAStaticSite.Determinism (determinism)
 
 hydratingAStaticSite :: forall lock payload. Section lock payload
 hydratingAStaticSite = section
-  { title: "HydratingAStaticSite"
+  { title: "Hydrating a static site"
   , topmatter:
       [ D.p_
           [ text_ "This section will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "HydratingAStaticSite" ]
+          , D.span (D.Class !:= "font-bold") [ text_ "Hydrating a static site" ]
           , text_ "."
           ]
       ]
