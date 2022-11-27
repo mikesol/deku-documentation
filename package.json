@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "codesandbox": "spago build && vite dev",
+    "codesandbox": "pnpm i && spago build && vite dev",
     "dev": "vite dev",
     "build": "spago build && vite build"
   },
