@@ -38,6 +38,8 @@ newtype Page lock payload = Page
   , sections :: Array (Section lock payload)
   }
 
+derive instance Newtype (Page lock payload) _
+
 page
   :: forall lock payload
    . { route :: Route

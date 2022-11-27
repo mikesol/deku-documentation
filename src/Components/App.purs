@@ -26,7 +26,7 @@ import Deku.Listeners (click_)
 import Effect (Effect)
 import FRP.Event (Event)
 import Navigation (PushState)
-import Router.ADT (Route)
+import Router.ADT (Route, routeToNextRoute, routeToPrevRoute)
 import Router.Chapter (routeToChapter)
 import Web.DOM as DOM
 
@@ -78,7 +78,15 @@ app
         ]
     )
     [ D.div (oneOf [ klass_ "bg-white dark:bg-slate-900" ])
-        [ header { pushState, darkBoolean, dark, setDark, setHeaderElement, pageIs, pageWas }
+        [ header
+            { pushState
+            , darkBoolean
+            , dark
+            , setDark
+            , setHeaderElement
+            , pageIs
+            , pageWas
+            }
         , banner { showBanner }
         , D.div
             ( oneOf
@@ -174,8 +182,11 @@ app
                             )
                         )
                     ]
-                , bottomNav
-                    { link: "/docs/installation", title: "Installation" }
+                , flip switcher curPage \(Page cp) -> bottomNav
+                    { pushState
+                    , prevRoute: routeToPrevRoute cp.route
+                    , nextRoute: routeToNextRoute cp.route
+                    }
                 ]
             , D.div
                 ( D.Class !:=
