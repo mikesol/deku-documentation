@@ -1,3 +1,4 @@
 {
+    "hardReloadOnChange": true,
     "startScript": "codesandbox"
 }
