@@ -6,3 +6,4 @@ assets/blur-cyan.png filter=lfs diff=lfs merge=lfs -text
 assets/blur-indigo.png filter=lfs diff=lfs merge=lfs -text
 assets/dekulogo.jpg filter=lfs diff=lfs merge=lfs -text
 assets/dekulogo.png filter=lfs diff=lfs merge=lfs -text
+assets/dekulogodark.png filter=lfs diff=lfs merge=lfs -text

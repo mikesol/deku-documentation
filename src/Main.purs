@@ -7,6 +7,7 @@ module Main
 import Prelude
 
 import Components.App (app)
+import DarkModePreference (OnDark(..), OnLight(..), darkModeListener, prefersDarkMode)
 import Data.Compactable (compact)
 import Data.Foldable (traverse_)
 import Data.Generic.Rep (class Generic)
@@ -69,8 +70,9 @@ main = do
   currentRoute <- create
   headerElement <- create
   rightSideNav <- create
-  psi <- makeInterface
   rightSideNavSelectE <- create
+  darkModePreferenceE <- create
+  psi <- makeInterface
   initialListener <- eventListener (\_ -> pure unit)
   scrollListenerRef <- Ref.new initialListener
   let scrollType = EventType "scroll"
@@ -151,6 +153,7 @@ main = do
           , showBanner: dedup (eq GettingStarted <$> currentRoute.event)
           , setHeaderElement: headerElement.push
           , setRightSideNav: Just >>> rightSideNav.push
+          , darkModePreference: darkModePreferenceE.event
           }
     )
   dedupRoute <- create
@@ -162,4 +165,7 @@ main = do
   void $ matchesWith (parse route)
     (curry dedupRoute.push)
     psi
-
+  prefersDarkMode >>= darkModePreferenceE.push
+  void $ darkModeListener
+    (OnDark (darkModePreferenceE.push true))
+    (OnLight (darkModePreferenceE.push false))

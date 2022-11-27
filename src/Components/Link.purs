@@ -20,13 +20,14 @@ import Web.HTML (window)
 import Web.HTML.Window (scroll)
 import Yoga.JSON as JSON
 
-link
+link'
   :: forall lock payload
    . PushState
   -> Route
   -> Event (Attribute D.A_)
+  -> Array (Domable lock payload)
   -> Domable lock payload
-link pushState route attributes = D.a
+link' pushState route attributes children = D.a
   ( attributes <|> oneOf
       [ D.Href !:= url
       , click_ $ cb \e -> do
@@ -35,10 +36,21 @@ link pushState route attributes = D.a
           window >>= scroll 0 0
       ]
   )
-  [ text_ page.title ]
+  children
   where
   Chapter chapter = routeToChapter route
   Page page = routeToPage route
   url =
     if page.route == GettingStarted then "/"
     else chapter.path <> page.path
+
+link
+  :: forall lock payload
+   . PushState
+  -> Route
+  -> Event (Attribute D.A_)
+  -> Domable lock payload
+link pushState route attributes = link' pushState route attributes
+  [ text_ page.title ]
+  where
+  Page page = routeToPage route
