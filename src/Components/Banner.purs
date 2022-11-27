@@ -3,6 +3,7 @@ module Components.Banner where
 import Prelude
 
 import Assets (blurCyanURL, blurIndigoURL)
+import Control.Alt ((<|>))
 import Data.Foldable (oneOf)
 import Data.Monoid (guard)
 import Data.Tuple.Nested ((/\))
@@ -11,7 +12,7 @@ import Deku.Attributes (klass, klass_)
 import Deku.Control (switcher, text_)
 import Deku.Core (Domable)
 import Deku.DOM as D
-import Deku.Do (useState)
+import Deku.Do (useMemoized, useState)
 import Deku.Do as Deku
 import Deku.Listeners (click_)
 import Effect (Effect)
@@ -447,8 +448,8 @@ banner { showBanner } = D.div
                           )
                           []
                       , Deku.do
-                          setBannerExample /\ bannerExample <- useState
-                            CodeExample
+                          setBannerExample /\ bannerExample' <- useState CodeExample
+                          _ /\ bannerExample <- useMemoized (\_ -> showBanner $> CodeExample <|> dedup bannerExample')
                           D.div (D.Class !:= "pl-4 pt-4")
                             [ D.svg
                                 ( oneOf
@@ -508,7 +509,7 @@ banner { showBanner } = D.div
                                         [ text_ "MyButton.purs" ]
                                     ]
                                 , D.div
-                                    ( klass $ (dedup bannerExample) <#>
+                                    ( klass $ bannerExample <#>
                                         case _ of
                                           ButtonExample ->
                                             bannerExampleOuterSelected
@@ -517,7 +518,7 @@ banner { showBanner } = D.div
                                     )
                                     [ D.div
                                         ( oneOf
-                                            [ klass $ (dedup bannerExample) <#>
+                                            [ klass $ bannerExample <#>
                                                 case _ of
                                                   ButtonExample ->
                                                     bannerExampleInnerSelected
@@ -530,7 +531,7 @@ banner { showBanner } = D.div
                                         [ text_ "Result" ]
                                     ]
                                 ]
-                            , flip switcher (dedup bannerExample) case _ of
+                            , flip switcher bannerExample case _ of
                                 ButtonExample -> D.div
                                   ( D.Class !:=
                                       "mt-6 flex items-start px-1 text-sm"
