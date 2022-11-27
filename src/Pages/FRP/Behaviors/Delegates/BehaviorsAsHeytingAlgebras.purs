@@ -1,4 +1,4 @@
-module Pages.FRP.Behaviors.Delegates.BehaviorsAsHeytingAlgebras where
+module Pages.FRP.Behaviors.OtherInstances.BehaviorsAsHeytingAlgebras where
 
 import Contracts (Subsection, subsection)
 import Deku.Control (text_)

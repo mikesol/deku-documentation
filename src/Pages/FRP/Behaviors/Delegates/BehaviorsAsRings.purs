@@ -1,4 +1,4 @@
-module Pages.FRP.Behaviors.Delegates.BehaviorsAsRings where
+module Pages.FRP.Behaviors.OtherInstances.BehaviorsAsRings where
 
 import Contracts (Subsection, subsection)
 import Deku.Control (text_)

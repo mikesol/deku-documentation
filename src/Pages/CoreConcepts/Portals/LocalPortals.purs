@@ -11,18 +11,18 @@ import Pages.CoreConcepts.Portals.LocalPortals.UnlockingLevels (unlockingLevels)
 
 localPortals :: forall lock payload. Section lock payload
 localPortals = section
-  { title: "LocalPortals"
+  { title: "Local portals"
   , topmatter:
       [ D.p_
           [ text_ "This section will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "LocalPortals" ]
+          , D.span (D.Class !:= "font-bold") [ text_ "Local portals" ]
           , text_ "."
           ]
       ]
   , subsections:
-      [ theLocalPortalResult
-      , performanceNotes
-      , theLocalPortalSyntax
+      [ theLocalPortalSyntax
       , unlockingLevels
+      , theLocalPortalResult
+      , performanceNotes
       ]
   }

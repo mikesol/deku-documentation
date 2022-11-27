@@ -1,4 +1,4 @@
-module Pages.FRP.Delegates.HeytingAlgebra.BooleanLogicOnEvents where
+module Pages.FRP.OtherInstances.HeytingAlgebra.BooleanLogicOnEvents where
 
 import Contracts (Subsection, subsection)
 import Deku.Control (text_)

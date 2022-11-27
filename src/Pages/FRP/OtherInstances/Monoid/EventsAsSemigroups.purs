@@ -1,4 +1,4 @@
-module Pages.FRP.Delegates.Monoid.EventsAsSemigroups where
+module Pages.FRP.OtherInstances.Monoid.EventsAsSemigroups where
 
 import Contracts (Subsection, subsection)
 import Deku.Control (text_)

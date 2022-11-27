@@ -19,8 +19,8 @@ definition = section
           ]
       ]
   , subsections:
-      [ subscriptionAndUnsubscriptionEffects
-      , theTypeAndContract
+      [ theTypeAndContract
+      , subscriptionAndUnsubscriptionEffects
       , contuationPassingStyle
       ]
   }

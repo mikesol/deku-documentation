@@ -19,5 +19,5 @@ applicative = section
           ]
       ]
   , subsections:
-      [ whyBehaviorsAreNotMonads, behaviorsAsApplicatives, behaviorsAsFunctors ]
+      [ behaviorsAsFunctors, behaviorsAsApplicatives, whyBehaviorsAreNotMonads ]
   }

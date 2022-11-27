@@ -24,5 +24,5 @@ applicatives = page
           ]
       ]
   , sections:
-      [ applicative, monadsAndFlattening, functor ]
+      [ functor, applicative, monadsAndFlattening ]
   }

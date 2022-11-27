@@ -11,18 +11,18 @@ import Pages.FRP.Events.PureEvents.TheSTMonad (theSTMonad)
 
 pureEvents :: forall lock payload. Section lock payload
 pureEvents = section
-  { title: "PureEvents"
+  { title: "Pure events"
   , topmatter:
       [ D.p_
           [ text_ "This section will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "PureEvents" ]
+          , D.span (D.Class !:= "font-bold") [ text_ "Pure events" ]
           , text_ "."
           ]
       ]
   , subsections:
-      [ theCreatepureEffect
-      , whatIsAnEventWithoutTime
-      , theLemmingEvent
+      [ whatIsAnEventWithoutTime
+      , theCreatepureEffect
       , theSTMonad
+      , theLemmingEvent
       ]
   }

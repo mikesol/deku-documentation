@@ -10,14 +10,14 @@ import Pages.FRP.Events.StandAloneEvents.TheMakeEventFunction (theMakeEventFunct
 
 standAloneEvents :: forall lock payload. Section lock payload
 standAloneEvents = section
-  { title: "StandAloneEvents"
+  { title: "Stand-alone events"
   , topmatter:
       [ D.p_
           [ text_ "This section will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "StandAloneEvents" ]
+          , D.span (D.Class !:= "font-bold") [ text_ "Stand-alone events" ]
           , text_ "."
           ]
       ]
   , subsections:
-      [ multipleSubscriptions, unsubscribeEtiquette, theMakeEventFunction ]
+      [ theMakeEventFunction, unsubscribeEtiquette, multipleSubscriptions ]
   }

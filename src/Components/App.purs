@@ -26,7 +26,6 @@ import Deku.Listeners (click_)
 import Effect (Effect)
 import FRP.Event (Event)
 import Navigation (PushState)
-import Prism (forceHighlight)
 import Router.ADT (Route, routeToNextRoute, routeToPrevRoute)
 import Router.Chapter (routeToChapter)
 import Web.DOM as DOM

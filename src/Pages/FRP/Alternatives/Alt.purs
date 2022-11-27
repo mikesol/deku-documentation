@@ -19,5 +19,5 @@ alt = section
           ]
       ]
   , subsections:
-      [ theOneOfFunction, performanceConsiderations, altAsAMuxer ]
+      [ altAsAMuxer, theOneOfFunction, performanceConsiderations ]
   }

@@ -10,17 +10,17 @@ import Pages.CoreConcepts.Portals.GlobalPortals.TheGlobalPortalResult (theGlobal
 
 globalPortals :: forall lock payload. Section lock payload
 globalPortals = section
-  { title: "GlobalPortals"
+  { title: "Global portals"
   , topmatter:
       [ D.p_
           [ text_ "This section will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "GlobalPortals" ]
+          , D.span (D.Class !:= "font-bold") [ text_ "Global portals" ]
           , text_ "."
           ]
       ]
   , subsections:
       [ theGlobalPortalSyntax
-      , performanceConsiderations
       , theGlobalPortalResult
+      , performanceConsiderations
       ]
   }

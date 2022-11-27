@@ -1,21 +1,20 @@
-module Pages.FRP.Delegates where
+module Pages.AdvancedUsage.AccessingTheDOM where
 
 import Contracts (Page, page)
 import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.DOM as D
-import Pages.FRP.Delegates.HeytingAlgebra (heytingAlgebra)
-import Pages.FRP.Delegates.Monoid (monoid)
-import Pages.FRP.Delegates.Ring (ring)
+import Pages.AdvancedUsage.AccessingTheDOM.TheSelfAttribute (theSelfAttribute)
+import Pages.AdvancedUsage.AccessingTheDOM.ToplevelConsiderations (toplevelConsiderations)
 import Router.ADT (Route(..))
 
-delegates :: forall lock payload. Page lock payload
-delegates = page
-  { route: Delegates
+accessingTheDOM :: forall lock payload. Page lock payload
+accessingTheDOM = page
+  { route: AccessingTheDOM
   , topmatter:
       [ D.p (D.Class !:= "lead")
           [ text_ "This page will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "Delegates" ]
+          , D.span (D.Class !:= "font-bold") [ text_ "Custom elements" ]
           , text_ "."
           ]
       , D.p_
@@ -24,5 +23,5 @@ delegates = page
           ]
       ]
   , sections:
-      [ ring, monoid, heytingAlgebra ]
+      [theSelfAttribute, toplevelConsiderations ]
   }

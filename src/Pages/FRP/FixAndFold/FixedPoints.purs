@@ -18,5 +18,5 @@ fixedPoints = section
           ]
       ]
   , subsections:
-      [ theFixFunction, whatIsAFixedPoint ]
+      [ whatIsAFixedPoint, theFixFunction ]
   }

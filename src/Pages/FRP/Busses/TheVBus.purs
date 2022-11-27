@@ -10,14 +10,14 @@ import Pages.FRP.Busses.TheVBus.PerformanceComparedToBus (performanceComparedToB
 
 theVBus :: forall lock payload. Section lock payload
 theVBus = section
-  { title: "TheVBus"
+  { title: "The VBus"
   , topmatter:
       [ D.p_
           [ text_ "This section will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "TheVBus" ]
+          , D.span (D.Class !:= "font-bold") [ text_ "The VBus" ]
           , text_ "."
           ]
       ]
   , subsections:
-      [ nestedVBusses, settingUpAVBus, performanceComparedToBus ]
+      [ settingUpAVBus, nestedVBusses, performanceComparedToBus ]
   }

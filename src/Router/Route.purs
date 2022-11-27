@@ -24,10 +24,12 @@ route = root $ sum
   , "Alternatives": "functional-reactive-programming" / "alternatives" / noArgs
   , "Filtering": "functional-reactive-programming" / "filtering" / noArgs
   , "Sampling": "functional-reactive-programming" / "sampling" / noArgs
-  , "Delegates": "functional-reactive-programming" / "delegates" / noArgs
+  , "OtherInstances": "functional-reactive-programming" / "other-instances" /
+      noArgs
   , "Busses": "functional-reactive-programming" / "busses" / noArgs
   , "FixAndFold": "functional-reactive-programming" / "fix-and-fold" / noArgs
   , "Behaviors": "functional-reactive-programming" / "behaviors" / noArgs
   , "CustomElements": "advanced-usage" / "custom-elements" / noArgs
+  , "AccessingTheDOM": "advanced-usage" / "accessing-the-dom" / noArgs
   , "SSR": "advanced-usage" / "ssr" / noArgs
   }

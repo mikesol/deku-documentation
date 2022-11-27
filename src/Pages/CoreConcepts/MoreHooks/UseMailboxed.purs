@@ -9,11 +9,11 @@ import Pages.CoreConcepts.MoreHooks.UseMailboxed.AMailboxingApp (aMailboxingApp)
 
 useMailboxed :: forall lock payload. Section lock payload
 useMailboxed = section
-  { title: "UseMailboxed"
+  { title: "Use mailboxed"
   , topmatter:
       [ D.p_
           [ text_ "This section will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "UseMailboxed" ]
+          , D.span (D.Class !:= "font-bold") [ text_ "Use mailboxed" ]
           , text_ "."
           ]
       ]

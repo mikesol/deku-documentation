@@ -23,5 +23,5 @@ portals = page
           ]
       ]
   , sections:
-      [ localPortals, globalPortals ]
+      [ globalPortals, localPortals ]
   }

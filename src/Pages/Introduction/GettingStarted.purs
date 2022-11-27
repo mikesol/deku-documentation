@@ -24,5 +24,5 @@ gettingStarted = page
           ]
       ]
   , sections:
-      [ quickStart, gettingHelp, basicUsage ]
+      [ quickStart, basicUsage, gettingHelp ]
   }

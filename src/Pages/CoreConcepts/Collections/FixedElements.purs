@@ -9,11 +9,11 @@ import Pages.CoreConcepts.Collections.FixedElements.GroupingElementsTogether (gr
 
 fixedElements :: forall lock payload. Section lock payload
 fixedElements = section
-  { title: "FixedElements"
+  { title: "Fixed elements"
   , topmatter:
       [ D.p_
           [ text_ "This section will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "FixedElements" ]
+          , D.span (D.Class !:= "font-bold") [ text_ "Fixed elements" ]
           , text_ "."
           ]
       ]

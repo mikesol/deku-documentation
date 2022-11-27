@@ -10,11 +10,11 @@ import Pages.CoreConcepts.Components.ASimpleComponent.ArraysAllTheWayDown (array
 
 aSimpleComponent :: forall lock payload. Section lock payload
 aSimpleComponent = section
-  { title: "ASimpleComponent"
+  { title: "A simple component"
   , topmatter:
       [ D.p_
           [ text_ "This section will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "ASimpleComponent" ]
+          , D.span (D.Class !:= "font-bold") [ text_ "A simple component" ]
           , text_ "."
           ]
       ]

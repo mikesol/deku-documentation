@@ -1,6 +1,5 @@
 module Components.Code where
 
-
 import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.Core (Domable)

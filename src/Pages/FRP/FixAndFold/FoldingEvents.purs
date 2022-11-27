@@ -12,19 +12,19 @@ import Pages.FRP.FixAndFold.FoldingEvents.FromFixToFold (fromFixToFold)
 
 foldingEvents :: forall lock payload. Section lock payload
 foldingEvents = section
-  { title: "FoldingEvents"
+  { title: "Folding events"
   , topmatter:
       [ D.p_
           [ text_ "This section will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "FoldingEvents" ]
+          , D.span (D.Class !:= "font-bold") [ text_ "Folding events" ]
           , text_ "."
           ]
       ]
   , subsections:
-      [ aSimpleCounter
+      [ theFoldFunction
+      , aSimpleCounter
       , foldIsState
-      , theFoldFunction
-      , whenToFixAndWhenToFold
       , fromFixToFold
+      , whenToFixAndWhenToFold
       ]
   }

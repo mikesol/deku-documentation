@@ -1,4 +1,4 @@
-module Pages.CoreConcepts.Effects.Riders.EffectsOnInitialization where
+module Pages.CoreConcepts.Effects.LifecycleMethods.EffectsOnInitialization where
 
 import Contracts (Subsection, subsection)
 import Deku.Control (text_)

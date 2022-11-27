@@ -20,9 +20,9 @@ calculus = section
           ]
       ]
   , subsections:
-      [ integratingBehaviors
-      , behaviorsAsContinuousFunctionsOfTime
+      [ behaviorsAsContinuousFunctionsOfTime
       , derivingBehaviors
+      , integratingBehaviors
       , solvingDifferentialEquations
       ]
   }

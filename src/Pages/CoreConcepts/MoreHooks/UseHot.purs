@@ -9,11 +9,11 @@ import Pages.CoreConcepts.MoreHooks.UseHot.PerformanceConsiderations (performanc
 
 useHot :: forall lock payload. Section lock payload
 useHot = section
-  { title: "UseHot"
+  { title: "Use hot"
   , topmatter:
       [ D.p_
           [ text_ "This section will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "UseHot" ]
+          , D.span (D.Class !:= "font-bold") [ text_ "Use hot" ]
           , text_ "."
           ]
       ]

@@ -24,5 +24,5 @@ filtering = page
           ]
       ]
   , sections:
-      [ compact, partition, filter ]
+      [ filter, compact, partition ]
   }

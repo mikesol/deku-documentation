@@ -9,14 +9,14 @@ import Pages.CoreConcepts.Providers.FunctionsAsProviders.UsingFunctionsAsMonads 
 
 functionsAsProviders :: forall lock payload. Section lock payload
 functionsAsProviders = section
-  { title: "FunctionsAsProviders"
+  { title: "Functions as providers"
   , topmatter:
       [ D.p_
           [ text_ "This section will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "FunctionsAsProviders" ]
+          , D.span (D.Class !:= "font-bold") [ text_ "Functions as providers" ]
           , text_ "."
           ]
       ]
   , subsections:
-      [ mixingDoNotation, usingFunctionsAsMonads ]
+      [ usingFunctionsAsMonads, mixingDoNotation ]
   }

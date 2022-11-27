@@ -11,18 +11,18 @@ import Pages.CoreConcepts.Components.AddingAttributes.SeveralAttributes (several
 
 addingAttributes :: forall lock payload. Section lock payload
 addingAttributes = section
-  { title: "AddingAttributes"
+  { title: "Adding attributes"
   , topmatter:
       [ D.p_
           [ text_ "This section will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "AddingAttributes" ]
+          , D.span (D.Class !:= "font-bold") [ text_ "Adding attributes" ]
           , text_ "."
           ]
       ]
   , subsections:
-      [ usefulShorthand
+      [ removingTheUnderscore
       , aSingleAttribute
-      , removingTheUnderscore
       , severalAttributes
+      , usefulShorthand
       ]
   }

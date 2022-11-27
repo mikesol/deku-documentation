@@ -1,4 +1,4 @@
-module Pages.FRP.Delegates.Ring.EventsAsSemirings where
+module Pages.FRP.OtherInstances.Ring.EventsAsSemirings where
 
 import Contracts (Subsection, subsection)
 import Deku.Control (text_)

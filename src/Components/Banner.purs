@@ -448,8 +448,12 @@ banner { showBanner } = D.div
                           )
                           []
                       , Deku.do
-                          setBannerExample /\ bannerExample' <- useState CodeExample
-                          _ /\ bannerExample <- useMemoized (\_ -> showBanner $> CodeExample <|> dedup bannerExample')
+                          setBannerExample /\ bannerExample' <- useState
+                            CodeExample
+                          _ /\ bannerExample <- useMemoized
+                            ( \_ -> showBanner $> CodeExample <|> dedup
+                                bannerExample'
+                            )
                           D.div (D.Class !:= "pl-4 pt-4")
                             [ D.svg
                                 ( oneOf

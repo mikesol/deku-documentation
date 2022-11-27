@@ -1,4 +1,4 @@
-module Pages.CoreConcepts.Effects.Riders.EffectsOnTeardown where
+module Pages.CoreConcepts.Effects.LifecycleMethods.EffectsOnTeardown where
 
 import Contracts (Subsection, subsection)
 import Deku.Control (text_)

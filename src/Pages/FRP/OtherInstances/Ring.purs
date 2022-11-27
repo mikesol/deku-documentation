@@ -1,11 +1,11 @@
-module Pages.FRP.Delegates.Ring where
+module Pages.FRP.OtherInstances.Ring where
 
 import Contracts (Section, section)
 import Deku.Control (text_)
 import Deku.Attribute ((!:=))
 import Deku.DOM as D
-import Pages.FRP.Delegates.Ring.EventsAsSemirings (eventsAsSemirings)
-import Pages.FRP.Delegates.Ring.EventsAsRings (eventsAsRings)
+import Pages.FRP.OtherInstances.Ring.EventsAsSemirings (eventsAsSemirings)
+import Pages.FRP.OtherInstances.Ring.EventsAsRings (eventsAsRings)
 
 ring :: forall lock payload. Section lock payload
 ring = section

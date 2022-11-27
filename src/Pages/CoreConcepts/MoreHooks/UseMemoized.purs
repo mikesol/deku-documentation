@@ -9,11 +9,11 @@ import Pages.CoreConcepts.MoreHooks.UseMemoized.InitialEvents (initialEvents)
 
 useMemoized :: forall lock payload. Section lock payload
 useMemoized = section
-  { title: "UseMemoized"
+  { title: "Use memoized"
   , topmatter:
       [ D.p_
           [ text_ "This section will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "UseMemoized" ]
+          , D.span (D.Class !:= "font-bold") [ text_ "Use memoized" ]
           , text_ "."
           ]
       ]

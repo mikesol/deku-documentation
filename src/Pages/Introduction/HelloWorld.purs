@@ -4,7 +4,6 @@ import Contracts (Page, page)
 import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.DOM as D
-import Pages.Introduction.HelloWorld.RunningOurProgram (runningOurProgram)
 import Pages.Introduction.HelloWorld.SayingHello (sayingHello)
 import Pages.Introduction.HelloWorld.TheAnatomyOfHello (theAnatomyOfHello)
 import Router.ADT (Route(..))
@@ -24,5 +23,5 @@ helloWorld = page
           ]
       ]
   , sections:
-      [ sayingHello, theAnatomyOfHello, runningOurProgram ]
+      [ sayingHello, theAnatomyOfHello ]
   }

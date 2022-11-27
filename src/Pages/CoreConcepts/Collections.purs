@@ -24,5 +24,5 @@ collections = page
           ]
       ]
   , sections:
-      [ monoids, dynamicElements, fixedElements ]
+      [ fixedElements, monoids, dynamicElements ]
   }

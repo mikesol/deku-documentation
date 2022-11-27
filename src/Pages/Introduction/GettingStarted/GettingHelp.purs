@@ -22,5 +22,5 @@ gettingHelp = section
           ]
       ]
   , subsections:
-      [ joinTheCommunity, submitAnIssue ]
+      [ submitAnIssue, joinTheCommunity ]
   }

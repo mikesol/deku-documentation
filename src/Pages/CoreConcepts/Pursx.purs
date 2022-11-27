@@ -24,5 +24,5 @@ pursx = page
           ]
       ]
   , sections:
-      [ aSimpleExample, dynamicElements, dynamicAttributes ]
+      [ aSimpleExample, dynamicAttributes, dynamicElements ]
   }

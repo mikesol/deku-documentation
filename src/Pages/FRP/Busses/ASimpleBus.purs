@@ -11,18 +11,18 @@ import Pages.FRP.Busses.ASimpleBus.BussesAndDekuHooks (bussesAndDekuHooks)
 
 aSimpleBus :: forall lock payload. Section lock payload
 aSimpleBus = section
-  { title: "ASimpleBus"
+  { title: "A simple bus"
   , topmatter:
       [ D.p_
           [ text_ "This section will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "ASimpleBus" ]
+          , D.span (D.Class !:= "font-bold") [ text_ "A simple bus" ]
           , text_ "."
           ]
       ]
   , subsections:
-      [ uncurrying
+      [ bussesAsClosures
+      , uncurrying
       , performanceConsiderations
-      , bussesAsClosures
       , bussesAndDekuHooks
       ]
   }

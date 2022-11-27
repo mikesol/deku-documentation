@@ -18,5 +18,5 @@ plus = section
           ]
       ]
   , subsections:
-      [ lawfullyAlternative, emptiness ]
+      [ emptiness, lawfullyAlternative ]
   }

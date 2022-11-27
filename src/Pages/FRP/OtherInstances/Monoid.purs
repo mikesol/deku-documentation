@@ -1,11 +1,11 @@
-module Pages.FRP.Delegates.Monoid where
+module Pages.FRP.OtherInstances.Monoid where
 
 import Contracts (Section, section)
 import Deku.Control (text_)
 import Deku.Attribute ((!:=))
 import Deku.DOM as D
-import Pages.FRP.Delegates.Monoid.EventsAsMonoids (eventsAsMonoids)
-import Pages.FRP.Delegates.Monoid.EventsAsSemigroups (eventsAsSemigroups)
+import Pages.FRP.OtherInstances.Monoid.EventsAsMonoids (eventsAsMonoids)
+import Pages.FRP.OtherInstances.Monoid.EventsAsSemigroups (eventsAsSemigroups)
 
 monoid :: forall lock payload. Section lock payload
 monoid = section
@@ -18,5 +18,5 @@ monoid = section
           ]
       ]
   , subsections:
-      [ eventsAsMonoids, eventsAsSemigroups ]
+      [ eventsAsSemigroups, eventsAsMonoids ]
   }

@@ -24,5 +24,5 @@ components = page
           ]
       ]
   , sections:
-      [ addingAttributes, aSimpleComponent, addingEventHandlers ]
+      [ aSimpleComponent, addingAttributes, addingEventHandlers ]
   }

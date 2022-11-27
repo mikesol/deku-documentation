@@ -20,5 +20,5 @@ theAnatomyOfHello = section
           ]
       ]
   , subsections:
-      [ runningInTheBody, imports, fillingUpTheDOM, theMainFunction ]
+      [ imports, theMainFunction, runningInTheBody, fillingUpTheDOM ]
   }

@@ -9,11 +9,11 @@ import Pages.FRP.FixAndFold.FixingEvents.AFeedforwardFilter (aFeedforwardFilter)
 
 fixingEvents :: forall lock payload. Section lock payload
 fixingEvents = section
-  { title: "FixingEvents"
+  { title: "Fixing events"
   , topmatter:
       [ D.p_
           [ text_ "This section will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "FixingEvents" ]
+          , D.span (D.Class !:= "font-bold") [ text_ "Fixing events" ]
           , text_ "."
           ]
       ]

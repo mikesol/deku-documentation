@@ -7,7 +7,7 @@ import Deku.DOM as D
 import Pages.FRP.Behaviors.Applicative (applicative)
 import Pages.FRP.Behaviors.Calculus (calculus)
 import Pages.FRP.Behaviors.Definition (definition)
-import Pages.FRP.Behaviors.Delegates (delegates)
+import Pages.FRP.Behaviors.OtherInstances (otherInstances)
 import Router.ADT (Route(..))
 
 behaviors :: forall lock payload. Page lock payload
@@ -25,5 +25,5 @@ behaviors = page
           ]
       ]
   , sections:
-      [ definition, calculus, applicative, delegates ]
+      [ definition, applicative, otherInstances, calculus ]
   }

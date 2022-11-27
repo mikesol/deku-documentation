@@ -10,14 +10,14 @@ import Pages.CoreConcepts.Components.AddingEventHandlers.UsingAnEffect (usingAnE
 
 addingEventHandlers :: forall lock payload. Section lock payload
 addingEventHandlers = section
-  { title: "AddingEventHandlers"
+  { title: "Adding event handlers"
   , topmatter:
       [ D.p_
           [ text_ "This section will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "AddingEventHandlers" ]
+          , D.span (D.Class !:= "font-bold") [ text_ "Adding event handlers" ]
           , text_ "."
           ]
       ]
   , subsections:
-      [ usingTheOriginalEvent, returningABoolean, usingAnEffect ]
+      [ usingAnEffect, returningABoolean, usingTheOriginalEvent ]
   }

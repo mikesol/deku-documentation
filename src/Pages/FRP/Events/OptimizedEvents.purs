@@ -9,11 +9,11 @@ import Pages.FRP.Events.OptimizedEvents.OptimizedEventFunctions (optimizedEventF
 
 optimizedEvents :: forall lock payload. Section lock payload
 optimizedEvents = section
-  { title: "OptimizedEvents"
+  { title: "Optimized events"
   , topmatter:
       [ D.p_
           [ text_ "This section will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "OptimizedEvents" ]
+          , D.span (D.Class !:= "font-bold") [ text_ "Optimized events" ]
           , text_ "."
           ]
       ]

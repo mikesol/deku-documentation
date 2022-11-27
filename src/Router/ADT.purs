@@ -22,11 +22,12 @@ data Route
   | Alternatives
   | Filtering
   | Sampling
-  | Delegates
+  | OtherInstances
   | Busses
   | FixAndFold
   | Behaviors
   | CustomElements
+  | AccessingTheDOM
   | SSR
 
 derive instance Generic Route _
@@ -50,12 +51,13 @@ routeToNextRoute Events = Just Applicatives
 routeToNextRoute Applicatives = Just Alternatives
 routeToNextRoute Alternatives = Just Filtering
 routeToNextRoute Filtering = Just Sampling
-routeToNextRoute Sampling = Just Delegates
-routeToNextRoute Delegates = Just Busses
+routeToNextRoute Sampling = Just OtherInstances
+routeToNextRoute OtherInstances = Just Busses
 routeToNextRoute Busses = Just FixAndFold
 routeToNextRoute FixAndFold = Just Behaviors
 routeToNextRoute Behaviors = Just CustomElements
-routeToNextRoute CustomElements = Just SSR
+routeToNextRoute CustomElements = Just AccessingTheDOM
+routeToNextRoute AccessingTheDOM = Just SSR
 routeToNextRoute SSR = Nothing
 
 routeToPrevRoute :: Route -> (Maybe Route)
@@ -74,12 +76,13 @@ routeToPrevRoute Applicatives = Just Events
 routeToPrevRoute Alternatives = Just Applicatives
 routeToPrevRoute Filtering = Just Alternatives
 routeToPrevRoute Sampling = Just Filtering
-routeToPrevRoute Delegates = Just Sampling
-routeToPrevRoute Busses = Just Delegates
+routeToPrevRoute OtherInstances = Just Sampling
+routeToPrevRoute Busses = Just OtherInstances
 routeToPrevRoute FixAndFold = Just Busses
 routeToPrevRoute Behaviors = Just FixAndFold
 routeToPrevRoute CustomElements = Just Behaviors
-routeToPrevRoute SSR = Just CustomElements
+routeToPrevRoute AccessingTheDOM = Just CustomElements
+routeToPrevRoute SSR = Just AccessingTheDOM
 
 routeToTitle :: Route -> String
 routeToTitle GettingStarted = "Getting started"
@@ -97,9 +100,10 @@ routeToTitle Applicatives = "Applicatives"
 routeToTitle Alternatives = "Alternatives"
 routeToTitle Filtering = "Filtering"
 routeToTitle Sampling = "Sampling"
-routeToTitle Delegates = "Delegates"
+routeToTitle OtherInstances = "Other instances"
 routeToTitle Busses = "Busses"
 routeToTitle FixAndFold = "Fix and fold"
 routeToTitle Behaviors = "Behaviors"
 routeToTitle CustomElements = "Custom elements"
+routeToTitle AccessingTheDOM = "Accessing the DOM"
 routeToTitle SSR = "SSR"

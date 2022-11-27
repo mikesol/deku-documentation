@@ -1,17 +1,17 @@
-module Pages.FRP.Delegates.Ring.EventsAsRings where
+module Pages.AdvancedUsage.AccessingTheDOM.ToplevelConsiderations.Routing where
 
 import Contracts (Subsection, subsection)
 import Deku.Control (text_)
 import Deku.Attribute ((!:=))
 import Deku.DOM as D
 
-eventsAsRings :: forall lock payload. Subsection lock payload
-eventsAsRings = subsection
-  { title: "Events as rings"
+routing :: forall lock payload. Subsection lock payload
+routing = subsection
+  { title: "Routing"
   , matter:
       [ D.p_
           [ text_ "This subsection will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "Events as rings" ]
+          , D.span (D.Class !:= "font-bold") [ text_ "Routing" ]
           , text_ "."
           ]
       ]

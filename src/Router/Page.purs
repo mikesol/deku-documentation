@@ -1,6 +1,7 @@
 module Router.Page where
 
 import Contracts (Page)
+import Pages.AdvancedUsage.AccessingTheDOM (accessingTheDOM)
 import Pages.AdvancedUsage.CustomElements (customElements)
 import Pages.AdvancedUsage.SSR (sSR)
 import Pages.CoreConcepts.Collections (collections)
@@ -15,10 +16,10 @@ import Pages.FRP.Alternatives (alternatives)
 import Pages.FRP.Applicatives (applicatives)
 import Pages.FRP.Behaviors (behaviors)
 import Pages.FRP.Busses (busses)
-import Pages.FRP.Delegates (delegates)
 import Pages.FRP.Events (events)
 import Pages.FRP.Filtering (filtering)
 import Pages.FRP.FixAndFold (fixAndFold)
+import Pages.FRP.OtherInstances (otherInstances)
 import Pages.FRP.Sampling (sampling)
 import Pages.Introduction.GettingStarted (gettingStarted)
 import Pages.Introduction.HelloWorld (helloWorld)
@@ -40,9 +41,10 @@ routeToPage Applicatives = applicatives
 routeToPage Alternatives = alternatives
 routeToPage Filtering = filtering
 routeToPage Sampling = sampling
-routeToPage Delegates = delegates
+routeToPage OtherInstances = otherInstances
 routeToPage Busses = busses
 routeToPage FixAndFold = fixAndFold
 routeToPage Behaviors = behaviors
 routeToPage CustomElements = customElements
+routeToPage AccessingTheDOM = accessingTheDOM
 routeToPage SSR = sSR

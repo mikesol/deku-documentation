@@ -9,14 +9,15 @@ import Pages.AdvancedUsage.CustomElements.DefiningCustomElements.TheUnsafeCustom
 
 definingCustomElements :: forall lock payload. Section lock payload
 definingCustomElements = section
-  { title: "DefiningCustomElements"
+  { title: "Defining custom elements"
   , topmatter:
       [ D.p_
           [ text_ "This section will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "DefiningCustomElements" ]
+          , D.span (D.Class !:= "font-bold")
+              [ text_ "Defining custom elements" ]
           , text_ "."
           ]
       ]
   , subsections:
-      [ addingCustomElementsToTheDOM, theUnsafeCustomElementFunction ]
+      [ theUnsafeCustomElementFunction, addingCustomElementsToTheDOM ]
   }

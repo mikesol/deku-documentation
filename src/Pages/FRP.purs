@@ -5,7 +5,7 @@ import Pages.FRP.Alternatives (alternatives)
 import Pages.FRP.Applicatives (applicatives)
 import Pages.FRP.Behaviors (behaviors)
 import Pages.FRP.Busses (busses)
-import Pages.FRP.Delegates (delegates)
+import Pages.FRP.OtherInstances (otherInstances)
 import Pages.FRP.Events (events)
 import Pages.FRP.Filtering (filtering)
 import Pages.FRP.FixAndFold (fixAndFold)
@@ -20,9 +20,9 @@ frp = chapter
       , alternatives
       , filtering
       , sampling
-      , delegates
-      , busses
+      , otherInstances
       , fixAndFold
+      , busses
       , behaviors
       ]
   }

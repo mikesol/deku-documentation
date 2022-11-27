@@ -10,14 +10,14 @@ import Pages.CoreConcepts.Pursx.ASimpleExample.TypeSafety (typeSafety)
 
 aSimpleExample :: forall lock payload. Section lock payload
 aSimpleExample = section
-  { title: "ASimpleExample"
+  { title: "A simple example"
   , topmatter:
       [ D.p_
           [ text_ "This section will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "ASimpleExample" ]
+          , D.span (D.Class !:= "font-bold") [ text_ "A simple example" ]
           , text_ "."
           ]
       ]
   , subsections:
-      [ closingTagsAndTreeStructure, plainOldHTML, typeSafety ]
+      [ plainOldHTML, typeSafety, closingTagsAndTreeStructure ]
   }

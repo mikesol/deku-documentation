@@ -19,5 +19,5 @@ partition = section
           ]
       ]
   , subsections:
-      [ performanceConsiderations, partitioningAnEvent, multiPartitioning ]
+      [ partitioningAnEvent, {-multiPartitioning,-} performanceConsiderations ]
   }

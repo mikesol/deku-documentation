@@ -10,11 +10,11 @@ import Pages.CoreConcepts.Providers.RowPolymorphism.UsingTheUnderscore (usingThe
 
 rowPolymorphism :: forall lock payload. Section lock payload
 rowPolymorphism = section
-  { title: "RowPolymorphism"
+  { title: "Row polymorphism"
   , topmatter:
       [ D.p_
           [ text_ "This section will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "RowPolymorphism" ]
+          , D.span (D.Class !:= "font-bold") [ text_ "Row polymorphism" ]
           , text_ "."
           ]
       ]

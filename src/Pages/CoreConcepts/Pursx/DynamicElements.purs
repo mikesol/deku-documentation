@@ -9,11 +9,11 @@ import Pages.CoreConcepts.Pursx.DynamicElements.AddingASingleElement (addingASin
 
 dynamicElements :: forall lock payload. Section lock payload
 dynamicElements = section
-  { title: "DynamicElements"
+  { title: "Dynamic elements"
   , topmatter:
       [ D.p_
           [ text_ "This section will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "DynamicElements" ]
+          , D.span (D.Class !:= "font-bold") [ text_ "Dynamic elements" ]
           , text_ "."
           ]
       ]

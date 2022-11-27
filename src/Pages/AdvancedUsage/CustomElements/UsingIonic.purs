@@ -9,14 +9,14 @@ import Pages.AdvancedUsage.CustomElements.UsingIonic.DefiningIonicCustomElements
 
 usingIonic :: forall lock payload. Section lock payload
 usingIonic = section
-  { title: "UsingIonic"
+  { title: "An example using Ionic"
   , topmatter:
       [ D.p_
           [ text_ "This section will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "UsingIonic" ]
+          , D.span (D.Class !:= "font-bold") [ text_ "An example using Ionic" ]
           , text_ "."
           ]
       ]
   , subsections:
-      [ usingIonicCustomElements, definingIonicCustomElements ]
+      [ definingIonicCustomElements, usingIonicCustomElements ]
   }

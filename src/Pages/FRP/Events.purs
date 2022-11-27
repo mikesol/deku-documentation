@@ -27,9 +27,9 @@ events = page
       ]
   , sections:
       [ definition
-      , optimizedEvents
-      , pureEvents
-      , standAloneEvents
       , interactiveEvents
+      , standAloneEvents
+      , pureEvents
+      , optimizedEvents
       ]
   }

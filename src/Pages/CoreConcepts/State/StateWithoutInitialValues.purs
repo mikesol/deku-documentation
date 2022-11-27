@@ -9,12 +9,12 @@ import Pages.CoreConcepts.State.StateWithoutInitialValues.ANoteOnMemoization (aN
 
 stateWithoutInitialValues :: forall lock payload. Section lock payload
 stateWithoutInitialValues = section
-  { title: "StateWithoutInitialValues"
+  { title: "State without initial values"
   , topmatter:
       [ D.p_
           [ text_ "This section will be about "
           , D.span (D.Class !:= "font-bold")
-              [ text_ "StateWithoutInitialValues" ]
+              [ text_ "State without initial values" ]
           , text_ "."
           ]
       ]

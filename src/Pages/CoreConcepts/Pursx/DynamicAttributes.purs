@@ -9,11 +9,11 @@ import Pages.CoreConcepts.Pursx.DynamicAttributes.AddingSeveralAttributes (addin
 
 dynamicAttributes :: forall lock payload. Section lock payload
 dynamicAttributes = section
-  { title: "DynamicAttributes"
+  { title: "Dynamic attributes"
   , topmatter:
       [ D.p_
           [ text_ "This section will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "DynamicAttributes" ]
+          , D.span (D.Class !:= "font-bold") [ text_ "Dynamic attributes" ]
           , text_ "."
           ]
       ]

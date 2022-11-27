@@ -1,4 +1,4 @@
-module Pages.FRP.Behaviors.Delegates.BehaviorsAsMonoids where
+module Pages.FRP.Behaviors.OtherInstances.BehaviorsAsMonoids where
 
 import Contracts (Subsection, subsection)
 import Deku.Control (text_)
