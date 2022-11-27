@@ -12,7 +12,7 @@ import Deku.Attributes (klass, klass_)
 import Deku.Control (switcher, text_)
 import Deku.Core (Domable)
 import Deku.DOM as D
-import Deku.Do (useMemoized, useState)
+import Deku.Hooks (useMemoized, useState)
 import Deku.Do as Deku
 import Deku.Listeners (click_)
 import Effect (Effect)

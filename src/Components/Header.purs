@@ -14,7 +14,7 @@ import Deku.Attributes (klass, klass_)
 import Deku.Control (text_)
 import Deku.Core (Domable)
 import Deku.DOM as D
-import Deku.Do (useState)
+import Deku.Hooks (useState)
 import Deku.Do as Deku
 import Deku.Listeners (click, click_)
 import Effect (Effect)

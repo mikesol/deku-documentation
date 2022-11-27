@@ -24,9 +24,6 @@ aSimpleComponent = section
 
 import Prelude
 
-
-import Prelude
-
 import Deku.Control (text_)
 import Deku.DOM as D
 import Deku.Toplevel (runInBody)
@@ -35,26 +32,26 @@ import Effect (Effect)
 main :: Effect Unit
 main = runInBody
   ( D.div_
-    [ D.button_ [ text_ "I do nothing" ]
+    [ D.span__ "I exist"
     , D.ul_ $ map (D.li_ <<< pure <<< text_) [ "A", "B", "C" ]
     , D.div_
-        [ D.h3_ [ text_ "foo" ]
-        , D.i_ [ text_ "bar" ]
+        [ D.h3__ "foo"
+        , D.i__ "bar"
         , text_ " "
-        , D.b_ [ text_ "baz" ]
+        , D.b__ "baz"
         ]
     ]
   )"""
-      , text_ "And here's the result"
+      , text_ "And here's the result."
       , D.blockquote (klass_ "not-italic")
           [ D.div_
-              [ D.button_ [ text_ "I do nothing" ]
+              [ D.span_ [ text_ "I exist" ]
               , D.ul_ $ map (D.li_ <<< pure <<< text_) [ "A", "B", "C" ]
               , D.div_
-                  [ D.h3_ [ text_ "foo" ]
-                  , D.i_ [ text_ "bar" ]
+                  [ D.h3__ "foo"
+                  , D.i__  "bar"
                   , text_ " "
-                  , D.b_ [ text_ "baz" ]
+                  , D.b__ "baz"
                   ]
               ]
           ]

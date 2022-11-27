@@ -27,6 +27,7 @@ to generate this file without the comments in this block.
   , "newtype"
   , "ordered-collections"
   , "prelude"
+  , "qualified-do"
   , "record"
   , "refs"
   , "routing"

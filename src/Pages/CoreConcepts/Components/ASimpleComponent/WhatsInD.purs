@@ -37,6 +37,5 @@ whatsInD = subsection
           ". Basically, if it's in the DOM, it's in Deku, and if you can't find what you're looking for, you'll learn to add it in the "
       , routeLink CustomElements
       , text_ " section."
-
       ]
   }

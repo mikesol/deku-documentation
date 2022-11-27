@@ -4,22 +4,19 @@ import Prelude
 
 import Contracts (Section, section)
 import Deku.Control (text_)
-import Deku.Attribute ((!:=))
 import Deku.DOM as D
-import Pages.CoreConcepts.Components.AddingEventHandlers.UsingTheOriginalEvent (usingTheOriginalEvent)
-import Pages.CoreConcepts.Components.AddingEventHandlers.ReturningABoolean (returningABoolean)
+import Pages.CoreConcepts.Components.AddingEventHandlers.ShorthandListeners (shorthandListeners)
 import Pages.CoreConcepts.Components.AddingEventHandlers.UsingAnEffect (usingAnEffect)
+import Pages.CoreConcepts.Components.AddingEventHandlers.UsingTheOriginalEvent (usingTheOriginalEvent)
 
 addingEventHandlers :: forall lock payload. Section lock payload
 addingEventHandlers = section
   { title: "Adding event handlers"
   , topmatter: pure
       [ D.p_
-          [ text_ "This section will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "Adding event handlers" ]
-          , text_ "."
+          [ text_ "The web would be quite uneventful without events. Be they clicks or scrolls or hovers, Deku is your one-stop-shop for event planning!"
           ]
       ]
   , subsections:
-      [ usingAnEffect, returningABoolean, usingTheOriginalEvent ]
+      [ usingAnEffect, usingTheOriginalEvent, shorthandListeners ]
   }

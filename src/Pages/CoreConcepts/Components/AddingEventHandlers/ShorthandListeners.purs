@@ -1,0 +1,80 @@
+module Pages.CoreConcepts.Components.AddingEventHandlers.ShorthandListeners where
+
+import Prelude
+
+import Components.Code (psCode)
+import Components.Table (tableClass)
+import Contracts (Subsection, subsection)
+import Deku.Attributes (klass_)
+import Deku.Control (text_)
+import Deku.DOM as D
+import Deku.Listeners (slider_)
+import Effect.Class.Console (logShow)
+
+shorthandListeners :: forall lock payload. Subsection lock payload
+shorthandListeners = subsection
+  { title: "Shorthand event listeners"
+  , matter: pure
+      [ D.p_
+          [ text_
+              "Similar to attributes, some event listeners also have shorthand versions in Deku."
+          ]
+      , D.table tableClass
+          [ D.tr_
+              [ D.th tableClass [ text_ "Shorthand" ]
+              , D.th tableClass [ text_ "Longer version" ]
+              ]
+          , D.tr_
+              [ D.td tableClass [ D.code_ [ text_ "click_ $ log \"foo\"" ] ]
+              , D.td tableClass
+                  [ D.code_ [ text_ "D.OnClick !:= log \"foo\"" ] ]
+              ]
+          , D.tr_
+              [ D.td tableClass [ D.code_ [ text_ "slider_ logShow" ] ]
+              , D.td tableClass
+                  [ D.code_
+                      [ text_
+                          """(D.Xtype !:= "range") <|> (D.OnInput !:=
+    cb \e ->
+      for_
+        (target e >>= fromEventTarget)
+        (valueAsNumber >=> logShow))"""
+                      ]
+                  ]
+              ]
+          , D.tr_
+              [ D.td tableClass [ D.code_ [ text_ "textInput_ logShow" ] ]
+              , D.td tableClass
+                  [ D.code_
+                      [ text_
+                          """D.OnInput !:=
+  cb \e ->
+    for_
+      (target e >>= fromEventTarget)
+      (value >=> logShow)"""
+                      ]
+                  ]
+              ]
+          ]
+      , D.p__ "As an example, consider the following slider."
+      , psCode
+          """module <aom where
+
+import Prelude
+
+import Deku.DOM as D
+import Deku.Listeners (slider_)
+import Deku.Toplevel (runInBody)
+import Effect (Effect)
+import Effect.Class.Console (logShow)
+
+main :: Effect Unit
+main = runInBody
+  (D.input (slider_ logShow) [])"""
+      , D.p__
+          "If you open your Developer Console and move the slider below, you'll see it light up with numbers!"
+      , D.blockquote (klass_ "not-italic")
+          [ D.input (slider_ logShow) [] ]
+      , D.p__ "While these events are fun, the true power of Deku lies in its ability to use events to change aspects of the DOM. The next section explores how that is done."
+      ]
+  }
