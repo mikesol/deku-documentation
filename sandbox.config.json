@@ -1,4 +1,5 @@
 {
     "hardReloadOnChange": true,
-    "startScript": "codesandbox"
+    "startScript": "codesandbox",
+    "port": 5173
 }
