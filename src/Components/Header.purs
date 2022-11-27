@@ -88,7 +88,9 @@ header { setHeaderElement, darkBoolean, dark, setDark, pageIs, pageWas, pushStat
             ( oneOf
                 [ D.Xtype !:= "button"
                 , D.Class !:= "relative"
-                , click_ (setNavModalOpen true)
+                , click_ do
+                    setNavModalOpen true
+                    modalClick (setNavModalOpen false)
                 ]
             )
             [ D.svg
@@ -103,7 +105,7 @@ header { setHeaderElement, darkBoolean, dark, setDark, pageIs, pageWas, pushStat
                 )
                 [ D.path (D.D !:= "M4 7h16M4 12h16M4 17h16") [] ]
             ]
-        , leftMatterMobile { darkBoolean, setNavModalOpen, navModalOpen, pageIs, pageWas, pushState }
+        , leftMatterMobile { darkBoolean, navModalOpen, pageIs, pageWas, pushState }
         ]
     , D.div (D.Class !:= "relative flex flex-grow basis-0 items-center")
         [ link' pushState GettingStarted empty
