@@ -3,11 +3,11 @@ module Components.Header where
 import Prelude
 
 import Assets (dekulogoURL, dekulogodarkURL)
+import Components.LeftMatterMobile (leftMatterMobile)
 import Components.Link (link')
 import Control.Plus (empty)
 import DarkModePreference (DarkModePreference(..))
-import Data.Foldable (oneOf, traverse_)
-import Data.Maybe (Maybe(..))
+import Data.Foldable (oneOf)
 import Data.Tuple.Nested ((/\))
 import Deku.Attribute ((!:=), (:=))
 import Deku.Attributes (klass, klass_)
@@ -18,16 +18,12 @@ import Deku.Do (useState)
 import Deku.Do as Deku
 import Deku.Listeners (click, click_)
 import Effect (Effect)
-import Effect.Ref as Ref
 import FRP.Dedup (dedup)
 import FRP.Event (Event)
+import Modal (modalClick)
 import Navigation (PushState)
 import Router.ADT (Route(..))
 import Web.DOM as DOM
-import Web.Event.Event (EventType(..))
-import Web.Event.EventTarget (addEventListener, eventListener, removeEventListener)
-import Web.HTML (window)
-import Web.HTML.Window (toEventTarget)
 
 classBrightnessModeSelected :: String
 classBrightnessModeSelected =
@@ -59,10 +55,13 @@ header
      , setDark :: DarkModePreference -> Effect Unit
      , setHeaderElement :: DOM.Element -> Effect Unit
      , pushState :: PushState
+     , pageIs :: Route -> Event Unit
+     , pageWas :: Route -> Event Unit
      }
   -> Domable lock payload
-header { setHeaderElement, darkBoolean, dark, setDark, pushState } = Deku.do
+header { setHeaderElement, darkBoolean, dark, setDark, pageIs, pageWas, pushState } = Deku.do
   setDarkModeModalOpen /\ darkModeModalOpen <- useState false
+  setNavModalOpen /\ navModalOpen <- useState false
   let
     keepDarkModeMenuOption = (if _ then "" else "hidden ") >>>
       ( _ <>
@@ -89,7 +88,7 @@ header { setHeaderElement, darkBoolean, dark, setDark, pushState } = Deku.do
             ( oneOf
                 [ D.Xtype !:= "button"
                 , D.Class !:= "relative"
-                -- , D.AriaLabel !:= "Open navigation"
+                , click_ (setNavModalOpen true)
                 ]
             )
             [ D.svg
@@ -104,11 +103,7 @@ header { setHeaderElement, darkBoolean, dark, setDark, pushState } = Deku.do
                 )
                 [ D.path (D.D !:= "M4 7h16M4 12h16M4 17h16") [] ]
             ]
-        , D.div
-            ( D.Style !:=
-                "position:fixed;top:1px;left:1px;width:1px;height:0;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border-width:0;display:none"
-            )
-            []
+        , leftMatterMobile { darkBoolean, setNavModalOpen, navModalOpen, pageIs, pageWas, pushState }
         ]
     , D.div (D.Class !:= "relative flex flex-grow basis-0 items-center")
         [ link' pushState GettingStarted empty
@@ -182,17 +177,7 @@ header { setHeaderElement, darkBoolean, dark, setDark, pushState } = Deku.do
                         if _ then (pure unit)
                         else do
                           setDarkModeModalOpen true
-                          listenerRef <- Ref.new Nothing
-                          listener <- eventListener \_ -> do
-                            setDarkModeModalOpen false
-                            Ref.read listenerRef >>= traverse_
-                              ( \l -> toEventTarget <$> window >>=
-                                  removeEventListener (EventType "click") l true
-                              )
-                          toEventTarget <$> window >>= addEventListener
-                            (EventType "click")
-                            listener
-                            true
+                          modalClick (setDarkModeModalOpen false)
                     ]
                 )
                 [ D.svg

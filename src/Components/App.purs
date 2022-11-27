@@ -78,7 +78,7 @@ app
         ]
     )
     [ D.div (oneOf [ klass_ "bg-white dark:bg-slate-900" ])
-        [ header { pushState, darkBoolean, dark, setDark, setHeaderElement }
+        [ header { pushState, darkBoolean, dark, setDark, setHeaderElement, pageIs, pageWas }
         , banner { showBanner }
         , D.div
             ( oneOf
