@@ -35,7 +35,6 @@ app
      , setRightSideNav :: (Int /\ DOM.Element) -> Effect Unit
      , rightSideNavSelect :: Int -> Event Unit
      , rightSideNavDeselect :: Int -> Event Unit
-     , setNavRendered :: Unit -> Effect Unit
      , curPage :: Event (Page lock payload)
      , showBanner :: Event Boolean
      , pageIs :: Route -> Event Unit
@@ -49,7 +48,6 @@ app
   , setRightSideNav
   , rightSideNavSelect
   , rightSideNavDeselect
-  , setNavRendered
   , showBanner
   , pageIs
   , pageWas
@@ -235,19 +233,7 @@ app
                                                             --     i
                                                             -- )
 
-                                                        ] <> guard (i == 0)
-                                                          [ D.Self !:=
-                                                              \( _
-                                                                   :: DOM.Element
-                                                               ) -> do
-                                                                logShow
-                                                                  { setNavRendered:
-                                                                      true
-                                                                  }
-                                                                setNavRendered
-                                                                  unit
-
-                                                          ]
+                                                        ]
                                                       )
                                                   )
                                                   [ text_ section.title ]

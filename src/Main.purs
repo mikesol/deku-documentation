@@ -41,19 +41,25 @@ data ScrolledSection
   | ScrolledDefinite Int
   | NotScrolled
 
+data ScrollCheckDirection = ScrollCheckStart | ScrollCheckDown | ScrollCheckUp
+
 derive instance Generic ScrolledSection _
 instance Show ScrolledSection where
   show = genericShow
 
-getScrolledSection :: (Int -> Effect ScrolledSection) -> Effect Int
-getScrolledSection f = go 0 0
+getScrolledSection :: Int -> (Int -> Effect ScrolledSection) -> Effect Int
+getScrolledSection startingAt f = go ScrollCheckStart startingAt startingAt
   where
-  go n head = do
+  go checkDir n head = do
     scrolledSection <- f head
     case scrolledSection of
-      ScrolledCandidate i -> go i (head + 1)
       ScrolledDefinite i -> pure i
-      NotScrolled -> pure n
+      ScrolledCandidate i -> case checkDir of
+        ScrollCheckDown -> pure i
+        _ -> go ScrollCheckUp i (i + 1)
+      NotScrolled -> if n == 0 then pure 0 else case checkDir of
+        ScrollCheckUp -> pure n
+        _ -> go ScrollCheckDown n (head - 1) 
 
 main :: Effect Unit
 main = do
@@ -64,7 +70,6 @@ main = do
   rightSideNav <- create
   psi <- makeInterface
   rightSideNavSelectE <- create
-  navRendered <- create
   initialListener <- eventListener (\_ -> pure unit)
   scrollListenerRef <- Ref.new initialListener
   let scrollType = EventType "scroll"
@@ -91,14 +96,14 @@ main = do
       Nothing -> Map.empty
       Just (Tuple key val) -> Map.insert key val inMap
   void $ subscribe
-    ( { isNavRendered: _, header: _, mapOfElts: _ }
-        <$> navRendered.event
-        <*> headerElement.event
+    ( { header: _, mapOfElts: _ }
+        <$> headerElement.event
         <*> fold makeMap
           Map.empty
           rightSideNav.event
     )
     \{ header, mapOfElts } -> do
+      currentSectionRef <- Ref.new 0
       newListener <- eventListener \_ -> do
         let
           toVerify ce =
@@ -118,8 +123,9 @@ main = do
                 true -> ScrolledDefinite ce
                 false ->
                   if maxBy < minAy then ScrolledCandidate ce else NotScrolled
-
-        goHere <- getScrolledSection toVerify
+        wasHere <- Ref.read currentSectionRef
+        goHere <- getScrolledSection wasHere toVerify
+        Ref.write goHere currentSectionRef
         rightSideNavSelectE.push goHere
       changeListener newListener
   runInBody
@@ -139,7 +145,6 @@ main = do
           , pageWas
           , rightSideNavSelect
           , rightSideNavDeselect
-          , setNavRendered: navRendered.push
           , pushState: psi.pushState
           , curPage: routeToPage <$> currentRoute.event
           , showBanner: dedup (eq GettingStarted <$> currentRoute.event)
