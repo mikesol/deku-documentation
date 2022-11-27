@@ -2,8 +2,7 @@ module Pages.CoreConcepts.Components.ASimpleComponent.WhatsInD where
 
 import Prelude
 
-
-import Router.ADT (Route (..))
+import Router.ADT (Route(..))
 import Components.Code (psCode)
 import Contracts (Subsection, Env(..), subsection)
 import Deku.Control (text_)

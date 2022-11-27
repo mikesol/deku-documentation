@@ -2,7 +2,6 @@ module Pages.FRP.OtherInstances.Monoid where
 
 import Prelude
 
-
 import Contracts (Section, section)
 import Deku.Control (text_)
 import Deku.Attribute ((!:=))

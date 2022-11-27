@@ -2,7 +2,6 @@ module Components.Header where
 
 import Prelude
 
-
 import Prelude
 
 import Assets (dekulogoURL, dekulogodarkURL)

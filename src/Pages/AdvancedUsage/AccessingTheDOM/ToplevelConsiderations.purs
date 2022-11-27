@@ -2,7 +2,6 @@ module Pages.AdvancedUsage.AccessingTheDOM.ToplevelConsiderations where
 
 import Prelude
 
-
 import Contracts (Section, section)
 import Deku.Attribute ((!:=))
 import Deku.Control (text_)

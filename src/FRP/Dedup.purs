@@ -2,7 +2,6 @@ module FRP.Dedup where
 
 import Prelude
 
-
 import Prelude
 
 import Data.Compactable (compact)

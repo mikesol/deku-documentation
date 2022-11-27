@@ -2,7 +2,6 @@ module DarkModePreference where
 
 import Prelude
 
-
 import Prelude
 
 import Effect (Effect)

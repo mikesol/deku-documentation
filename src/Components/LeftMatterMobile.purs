@@ -2,7 +2,6 @@ module Components.LeftMatterMobile where
 
 import Prelude
 
-
 import Prelude
 
 import Assets (dekulogoURL, dekulogodarkURL)

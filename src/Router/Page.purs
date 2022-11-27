@@ -2,7 +2,6 @@ module Router.Page where
 
 import Prelude
 
-
 import Contracts (Page)
 import Pages.AdvancedUsage.AccessingTheDOM (accessingTheDOM)
 import Pages.AdvancedUsage.CustomElements (customElements)

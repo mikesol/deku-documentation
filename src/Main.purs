@@ -6,7 +6,6 @@ module Main
 
 import Prelude
 
-
 import Prelude
 
 import Components.App (app)

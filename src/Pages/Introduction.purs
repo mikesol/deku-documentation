@@ -2,7 +2,6 @@ module Pages.Introduction where
 
 import Prelude
 
-
 import Contracts (Chapter, chapter)
 import Pages.Introduction.GettingStarted (gettingStarted)
 import Pages.Introduction.HelloWorld (helloWorld)

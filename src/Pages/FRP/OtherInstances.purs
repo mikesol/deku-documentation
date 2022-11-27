@@ -2,7 +2,6 @@ module Pages.FRP.OtherInstances where
 
 import Prelude
 
-
 import Contracts (Page, page)
 import Deku.Attribute ((!:=))
 import Deku.Control (text_)

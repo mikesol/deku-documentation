@@ -2,7 +2,6 @@ module Modal where
 
 import Prelude
 
-
 import Prelude
 
 import Data.Foldable (traverse_)

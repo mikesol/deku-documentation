@@ -2,7 +2,6 @@ module Prism where
 
 import Prelude
 
-
 import Prelude
 
 import Data.Foldable (oneOf)

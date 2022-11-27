@@ -2,7 +2,6 @@ module Pages.Introduction.HelloWorld.SayingHello.TheCode where
 
 import Prelude
 
-
 import Components.Code (psCode)
 import Contracts (Subsection, subsection)
 import Deku.Control (text_)

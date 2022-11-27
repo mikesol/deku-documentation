@@ -2,7 +2,6 @@ module Pages.AdvancedUsage.SSR.RenderingAStaticSite.TheRunSSRFunction where
 
 import Prelude
 
-
 import Contracts (Subsection, subsection)
 import Deku.Control (text_)
 import Deku.Attribute ((!:=))

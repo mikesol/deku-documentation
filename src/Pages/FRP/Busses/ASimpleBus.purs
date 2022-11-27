@@ -2,7 +2,6 @@ module Pages.FRP.Busses.ASimpleBus where
 
 import Prelude
 
-
 import Contracts (Section, section)
 import Deku.Control (text_)
 import Deku.Attribute ((!:=))

@@ -2,7 +2,6 @@ module Pages.Introduction.HelloWorld.TheAnatomyOfHello.Imports where
 
 import Prelude
 
-
 import Components.Code (psCode)
 import Components.ProTip (proTip)
 import Contracts (Subsection, subsection)
@@ -53,16 +52,29 @@ import Effect (Effect)"""
                   [ D.code_ [ text_ "text_" ]
                   , text_ ": A way to write a text string to the DOM."
                   ]
-                , D.li_
+              , D.li_
                   [ D.code_ [ text_ "runInBody" ]
-                  , text_ ": Takes the current Deku program and inserts it into the body of a webpage."
+                  , text_
+                      ": Takes the current Deku program and inserts it into the body of a webpage."
                   ]
-                  ,D.li_
+              , D.li_
                   [ D.code_ [ text_ "Effect" ]
-                  , text_ ": The monad that a Deku program runs in. If you don't know what a monad is, you can think of it now as a computational context. ", D.code_ [text_ "Effect"], text_ " is a context where stuff can potentially go, which is the case of most web apps. I personally have never written any code with errors before, but I have friends that have, and they tell me it's not that bad."
+                  , text_
+                      ": The monad that a Deku program runs in. If you don't know what a monad is, you can think of it now as a computational context. "
+                  , D.code_ [ text_ "Effect" ]
+                  , text_
+                      " is a context where stuff can potentially go, which is the case of most web apps. I personally have never written any code with errors before, but I have friends that have, and they tell me it's not that bad."
                   ]
               ]
           ]
-        , D.p_ [text_ "Lastly, ", D.code_ [text_ "Effect Unit"], text_ " means that the computational context of ", D.code_ [text_ "Effect"], text_ " returns a dummy value of ", D.code_ [text_ "Unit"], text_ " if and when the program stops executing."]
+      , D.p_
+          [ text_ "Lastly, "
+          , D.code_ [ text_ "Effect Unit" ]
+          , text_ " means that the computational context of "
+          , D.code_ [ text_ "Effect" ]
+          , text_ " returns a dummy value of "
+          , D.code_ [ text_ "Unit" ]
+          , text_ " if and when the program stops executing."
+          ]
       ]
   }

@@ -2,7 +2,6 @@ module Router.ADT where
 
 import Prelude
 
-
 import Prelude
 
 import Data.Generic.Rep (class Generic)

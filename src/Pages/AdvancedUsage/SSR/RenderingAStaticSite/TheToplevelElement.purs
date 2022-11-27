@@ -2,7 +2,6 @@ module Pages.AdvancedUsage.SSR.RenderingAStaticSite.TheToplevelElement where
 
 import Prelude
 
-
 import Contracts (Subsection, subsection)
 import Deku.Control (text_)
 import Deku.Attribute ((!:=))

@@ -2,7 +2,6 @@ module Contracts where
 
 import Prelude
 
-
 import Prelude
 
 import Data.Array (intercalate)
@@ -12,9 +11,9 @@ import Deku.Core (Domable)
 import Record (union)
 import Router.ADT (Route, routeToTitle)
 
-newtype Env = Env {
-  routeLink :: forall lock payload. Route -> Domable lock payload
-}
+newtype Env = Env
+  { routeLink :: forall lock payload. Route -> Domable lock payload
+  }
 
 newtype Docs lock paylaod = Docs (Array (Chapter lock paylaod))
 
@@ -84,7 +83,10 @@ section i = Section
   )
 
 newtype Subsection lock payload = Subsection
-  { title :: String, id :: String, matter :: Env -> Array (Domable lock payload) }
+  { title :: String
+  , id :: String
+  , matter :: Env -> Array (Domable lock payload)
+  }
 
 subsection
   :: forall lock payload

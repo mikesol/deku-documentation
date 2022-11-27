@@ -2,7 +2,6 @@ module Pages.CoreConcepts.Components.ASimpleComponent where
 
 import Prelude
 
-
 import Prelude
 
 import Components.Code (psCode)

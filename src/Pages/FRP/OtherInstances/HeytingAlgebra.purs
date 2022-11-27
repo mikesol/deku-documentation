@@ -2,7 +2,6 @@ module Pages.FRP.OtherInstances.HeytingAlgebra where
 
 import Prelude
 
-
 import Contracts (Section, section)
 import Deku.Control (text_)
 import Deku.Attribute ((!:=))

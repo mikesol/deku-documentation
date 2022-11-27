@@ -2,7 +2,6 @@ module Pages.Introduction.GettingStarted where
 
 import Prelude
 
-
 import Contracts (Page, page)
 import Deku.Attribute ((!:=))
 import Deku.Attributes (klass_)

@@ -2,7 +2,6 @@ module Pages.Introduction.GettingStarted.GettingHelp.SubmitAnIssue where
 
 import Prelude
 
-
 import Contracts (Subsection, subsection)
 import Deku.Attribute ((!:=))
 import Deku.Control (text_)

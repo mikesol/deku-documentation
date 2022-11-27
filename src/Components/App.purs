@@ -2,7 +2,6 @@ module Components.App where
 
 import Prelude
 
-
 import Prelude
 
 import Components.Link (link)
@@ -165,7 +164,8 @@ app
                                                                   subsection.title
                                                               ]
                                                           ] <>
-                                                            subsection.matter env
+                                                            subsection.matter
+                                                              env
                                                         )
                                                 )
                                                 section.subsections

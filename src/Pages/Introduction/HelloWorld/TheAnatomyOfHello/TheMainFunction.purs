@@ -2,7 +2,6 @@ module Pages.Introduction.HelloWorld.TheAnatomyOfHello.TheMainFunction where
 
 import Prelude
 
-
 import Components.Code (psCode)
 import Contracts (Subsection, subsection)
 import Deku.Control (text_)
@@ -12,9 +11,10 @@ theMainFunction :: forall lock payload. Subsection lock payload
 theMainFunction = subsection
   { title: "The main function"
   , matter: pure
-      [psCode
+      [ psCode
           """main :: Effect Unit
-main = ...""", D.p_
+main = ..."""
+      , D.p_
           [ text_
               "In most PureScript programs (and most programs), a function or context called "
           , D.code_ [ text_ "main" ]

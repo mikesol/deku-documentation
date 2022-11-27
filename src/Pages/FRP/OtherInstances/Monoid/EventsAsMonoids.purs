@@ -2,7 +2,6 @@ module Pages.FRP.OtherInstances.Monoid.EventsAsMonoids where
 
 import Prelude
 
-
 import Contracts (Subsection, subsection)
 import Deku.Control (text_)
 import Deku.Attribute ((!:=))

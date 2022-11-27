@@ -2,7 +2,6 @@ module Pages.Introduction.HelloWorld.SayingHello.TheResult where
 
 import Prelude
 
-
 import Contracts (Subsection, subsection)
 import Deku.Attributes (klass_)
 import Deku.Control (text_)

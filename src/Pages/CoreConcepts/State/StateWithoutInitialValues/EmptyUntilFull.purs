@@ -2,7 +2,6 @@ module Pages.CoreConcepts.State.StateWithoutInitialValues.EmptyUntilFull where
 
 import Prelude
 
-
 import Contracts (Subsection, subsection)
 import Deku.Control (text_)
 import Deku.Attribute ((!:=))

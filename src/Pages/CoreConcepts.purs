@@ -2,7 +2,6 @@ module Pages.CoreConcepts where
 
 import Prelude
 
-
 import Contracts (Chapter, chapter)
 import Pages.CoreConcepts.Collections (collections)
 import Pages.CoreConcepts.Components (components)

@@ -2,7 +2,6 @@ module Pages.Introduction.HelloWorld.SayingHello where
 
 import Prelude
 
-
 import Contracts (Section, section)
 import Deku.Control (text_)
 import Deku.DOM as D

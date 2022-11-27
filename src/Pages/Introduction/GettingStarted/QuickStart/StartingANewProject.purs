@@ -2,7 +2,6 @@ module Pages.Introduction.GettingStarted.QuickStart.StartingANewProject where
 
 import Prelude
 
-
 import Components.Code (bashCode)
 import Contracts (Subsection, subsection)
 import Deku.Attributes (klass_)

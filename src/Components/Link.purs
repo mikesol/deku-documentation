@@ -2,7 +2,6 @@ module Components.Link where
 
 import Prelude
 
-
 import Prelude
 
 import Contracts (Chapter(..), Page(..))
