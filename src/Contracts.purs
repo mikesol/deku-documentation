@@ -2,8 +2,6 @@ module Contracts where
 
 import Prelude
 
-import Prelude
-
 import Data.Array (intercalate)
 import Data.Newtype (class Newtype)
 import Data.String (Pattern(..), split, toLower)

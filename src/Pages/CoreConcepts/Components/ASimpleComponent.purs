@@ -2,8 +2,6 @@ module Pages.CoreConcepts.Components.ASimpleComponent where
 
 import Prelude
 
-import Prelude
-
 import Components.Code (psCode)
 import Contracts (Section, section)
 import Deku.Attributes (klass_)

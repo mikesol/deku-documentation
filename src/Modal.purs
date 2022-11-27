@@ -2,8 +2,6 @@ module Modal where
 
 import Prelude
 
-import Prelude
-
 import Data.Foldable (traverse_)
 import Data.Maybe (Maybe(..))
 import Effect (Effect)

@@ -2,8 +2,6 @@ module FRP.Dedup where
 
 import Prelude
 
-import Prelude
-
 import Data.Compactable (compact)
 import Data.Maybe (Maybe(..))
 import Data.Tuple (Tuple(..))

@@ -2,8 +2,6 @@ module Components.BottomNav where
 
 import Prelude
 
-import Prelude
-
 import Components.Link (link')
 import Data.Foldable (oneOf)
 import Data.Maybe (Maybe, maybe)

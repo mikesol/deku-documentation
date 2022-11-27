@@ -1,7 +1,5 @@
 module Router.Route where
 
-import Prelude
-
 import Prelude hiding ((/))
 
 import Router.ADT (Route)

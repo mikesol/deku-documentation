@@ -2,8 +2,6 @@ module DarkModePreference where
 
 import Prelude
 
-import Prelude
-
 import Effect (Effect)
 
 data DarkModePreference = LightMode | DarkMode | SystemDarkModePreference

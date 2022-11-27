@@ -2,8 +2,6 @@ module Components.Header where
 
 import Prelude
 
-import Prelude
-
 import Assets (dekulogoURL, dekulogodarkURL)
 import Components.LeftMatterMobile (leftMatterMobile)
 import Components.Link (link')

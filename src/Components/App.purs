@@ -2,8 +2,6 @@ module Components.App where
 
 import Prelude
 
-import Prelude
-
 import Components.Link (link)
 import Components.Banner (banner)
 import Components.BottomNav (bottomNav)
