@@ -39,7 +39,7 @@ usingTheHookInAnAttribute = subsection
       [ D.p__
           "Hooks can be used to control both attributes and listeners. In the following example, two different hooks are used to control two different attributes of the same anchor tag."
       , psCode
-          ( """module Scratch where
+          ( """module Main where
 
 import Prelude
 
