@@ -69,7 +69,7 @@ app
 
   let
     rightSideNavClass' darktxt i =
-      ( pure (i == 0) <|> (rightSideNavSelect i $> true) <|>
+      ( (rightSideNavSelect i $> true) <|>
           (rightSideNavDeselect i $> false)
       )
         <#>
