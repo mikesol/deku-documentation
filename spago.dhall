@@ -28,6 +28,7 @@ to generate this file without the comments in this block.
   , "ordered-collections"
   , "prelude"
   , "qualified-do"
+  , "random"
   , "record"
   , "refs"
   , "routing"
