@@ -4,7 +4,6 @@ import Prelude
 
 import Contracts (Section, section)
 import Deku.Control (text_)
-import Deku.Attribute ((!:=))
 import Deku.DOM as D
 import Pages.CoreConcepts.State.StateWithoutInitialValues.EmptyUntilFull (emptyUntilFull)
 import Pages.CoreConcepts.State.StateWithoutInitialValues.ANoteOnMemoization (aNoteOnMemoization)
@@ -14,10 +13,7 @@ stateWithoutInitialValues = section
   { title: "State without initial values"
   , topmatter: pure
       [ D.p_
-          [ text_ "This section will be about "
-          , D.span (D.Class !:= "font-bold")
-              [ text_ "State without initial values" ]
-          , text_ "."
+          [ text_ "It's possible to have a state hook without an initial value. In that case, whatever the hook was controlling, be it text, an attribute, or a DOM, is simply omitted from the DOM."
           ]
       ]
   , subsections:

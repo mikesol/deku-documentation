@@ -2,7 +2,9 @@ module Pages.CoreConcepts.State.StateWithoutInitialValues.ANoteOnMemoization whe
 
 import Prelude
 
+import Components.Code (psCode)
 import Contracts (Env(..), Subsection, subsection)
+import Data.Foldable (oneOf)
 import Data.String (replaceAll, Pattern(..), Replacement(..))
 import Data.Tuple.Nested ((/\))
 import Deku.Attributes (klass_)
@@ -15,6 +17,9 @@ import Effect.Random (random)
 import QualifiedDo.Alt as Alt
 import Router.ADT (Route(..))
 
+-- bg-fuchsia-600
+-- hover:bg-fuchsia-700 
+-- focus:ring-fuchsia-500
 buttonClass :: String -> String
 buttonClass color =
   replaceAll (Pattern "COLOR") (Replacement color)
@@ -34,13 +39,13 @@ aNoteOnMemoization = subsection
           , text_
               " memoized, meaning that they do not store their most recent value. They simply pass through whatever comes down the pipe. This can lead to gotchyas if you're not careful. In the snippet below, for example, press button "
           , D.b__ "A"
-          , text_ " a few times before pressing button "
+          , text_ " a few times and then press "
           , D.b__ "B"
-          , text_ ", and then after pressing "
-          , D.b__ "B"
-          , text_ " once, press"
+          , text_ " "
+          , D.i__ "once and only once"
+          , text_ " (even if you don't think it's responding). Then press "
           , D.b__ "A"
-          , text_ " again. What do you think will happen?"
+          , text_ " again a few times. What do you think will happen?"
           ]
       , D.blockquote (klass_ "not-italic")
           [ Deku.do
@@ -75,12 +80,12 @@ aNoteOnMemoization = subsection
           ]
       , D.p_
           [ text_
-              "Because the hook simply passes through the values as it receives them, when "
-          , D.b__ "B"
-          , text_
-              " was pressed, and as there was no simultaneous value coming from "
+              "Because the hook simply passes through the values as it receives them, as there was no simultaneous value coming from "
           , D.b__ "A"
-          , text_ ", the guarded section didn't activate until "
+          , text_
+              " when "
+          , D.b__ "B"
+          , text_ " was pressed, the guarded section didn't activate until "
           , D.b__ "A"
           , text_
               " was pressed again. In effect, while the hook had an initial value for the first "
@@ -130,5 +135,35 @@ aNoteOnMemoization = subsection
                     ]
                 ]
           ]
+      , Deku.do
+          setRevealCode /\ revealCode <- useState false
+          D.div_
+            [ D.button
+                ( oneOf
+                    [ klass_ (buttonClass "fuchsia")
+                    , click $ revealCode <#> not >>> setRevealCode
+                    ]
+                )
+                [ text $ revealCode <#> if _ then "Hide code" else "Reveal code" ]
+            , guard revealCode
+                ( D.div_
+                    [ psCode
+                        """-- change this line
+setNumber /\ number <- useHot 0.42"""
+                    , D.p_
+                        [ text_ "Ok, so all you had to do was change "
+                        , D.code__ "useState"
+                        , text_ " to "
+                        , D.code__ "useHot"
+                        , text_
+                            ". That's it? That's the big secret? Why do I have to wait until the "
+                        , routeLink MoreHooks
+                        , text_ " section to learn about this?!?"
+                        ]
+                    , D.p__
+                        "Look, I get paid by the section, all right? A documentation writer's gotta make a living, after all. You'd have done the same thing..."
+                    ]
+                )
+            ]
       ]
   }
