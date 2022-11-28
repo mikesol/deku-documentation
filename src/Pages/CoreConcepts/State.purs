@@ -6,6 +6,7 @@ import Contracts (Page, page)
 import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.DOM as D
+import Pages.CoreConcepts.State.HookingIntoTheDOM (hookingIntoTheDOM)
 import Pages.CoreConcepts.State.StateWithoutInitialValues (stateWithoutInitialValues)
 import Pages.CoreConcepts.State.TheStateHook (theStateHook)
 import Router.ADT (Route(..))
@@ -37,5 +38,5 @@ state = page
           ]
       ]
   , sections:
-      [ theStateHook, stateWithoutInitialValues ]
+      [ theStateHook, hookingIntoTheDOM, stateWithoutInitialValues ]
   }

@@ -14,9 +14,7 @@ import Deku.Hooks (useState)
 import Deku.Listeners (click_)
 import Effect.Random (random)
 import Pages.CoreConcepts.State.TheStateHook.PushingToAHook (pushingToAHook)
-import Pages.CoreConcepts.State.TheStateHook.UsingTheHookInAnAttribute (usingTheHookInAnAttribute)
 import Pages.CoreConcepts.State.TheStateHook.UsingTheHookInText (usingTheHookInText)
-import Pages.CoreConcepts.State.TheStateHook.UsingTheHookToSwitchBetweenElements (usingTheHookToSwitchBetweenElements)
 import QualifiedDo.Alt as Alt
 buttonClass =
   """inline-flex items-center rounded-md
@@ -90,7 +88,5 @@ main = runInBody Deku.do
   , subsections:
       [ pushingToAHook
       , usingTheHookInText
-      , usingTheHookInAnAttribute
-      , usingTheHookToSwitchBetweenElements
       ]
   }

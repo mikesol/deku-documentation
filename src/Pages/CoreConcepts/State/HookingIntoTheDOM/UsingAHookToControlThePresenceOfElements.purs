@@ -1,4 +1,4 @@
-module Pages.CoreConcepts.State.TheStateHook.UsingTheHookToSwitchBetweenElements where
+module Pages.CoreConcepts.State.HookingIntoTheDOM.UsingAHookToControlThePresenceOfElements where
 
 import Prelude
 
@@ -7,10 +7,10 @@ import Deku.Control (text_)
 import Deku.Attribute ((!:=))
 import Deku.DOM as D
 
-usingTheHookToSwitchBetweenElements
+usingAHookToControlThePresenceOfElements
   :: forall lock payload. Subsection lock payload
-usingTheHookToSwitchBetweenElements = subsection
-  { title: "Using the hook to switch between elements"
+usingAHookToControlThePresenceOfElements = subsection
+  { title: "Using a hook to control elements' presence"
   , matter: pure
       [ D.p_
           [ text_ "This subsection will be about "
