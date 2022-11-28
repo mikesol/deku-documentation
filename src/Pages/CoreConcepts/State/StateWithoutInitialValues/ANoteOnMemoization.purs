@@ -24,7 +24,7 @@ aNoteOnMemoization = subsection
               "It is indeed possible to have hooks that always supply their most recent value, but it comes with a slight performance penalty. We'll see how this works in the "
           , routeLink MoreHooks
           , text_
-              " section. Note that the performance penalty is negligible for most real-world applciations. You won't feel any in the example below, which is a memoized version of the example above. If you absolutely must learn how to implement it "
+              " section. Note that the performance penalty is negligible for most real-world applciations. You won't feel any lag in the example below, which is a memoized version of the example above. If you absolutely must learn how to implement it "
           , D.i__ "now"
           , text_ ", you can click "
           , D.b__ "Reveal code"
