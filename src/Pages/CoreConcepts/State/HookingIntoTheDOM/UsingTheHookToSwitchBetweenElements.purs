@@ -47,7 +47,9 @@ usingTheHookToSwitchBetweenElements = subsection
   , matter: pure
       [ D.p_
           [ text_
-              "Yo ucan also use a hook to switch between elements. In the example below, a hook is used to switch between an image, a video, and an SVG."
+              "You can also use a hook to switch between elements. This is particularly useful for tabbed navigation. In the example below, a hook is used to switch between an image, a video, and an SVG. This is accomplished via the "
+          , D.code__ "<#~>"
+          , text_ " operator."
           ]
       , psCode
           ( """module Scratch where
@@ -206,6 +208,14 @@ main = runInBody Deku.do
                         [ text_ "SVG" ]
                     ]
                 ]
+          ]
+      , D.p_
+          [ text_
+              "If your DOM is mostly static and has a few switching elements within it, consider using multiple "
+          , D.code__ "<#~>"
+          , text_ " operators instead of one global "
+          , D.code__ "<#~>"
+          , text_ ", as it will generally result in faster rendering times."
           ]
       ]
   }
