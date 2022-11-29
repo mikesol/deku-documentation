@@ -14,9 +14,7 @@ pursxAlternatives = section
   { title: "Pursx alternatives"
   , topmatter: pure
       [ D.p_
-          [ text_ "This section will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "Dynamic elements" ]
-          , text_ "."
+          [ text_ "Pursx is great, but sometimes, you need a little more juice. This section shows two alternative methods to achieve similar results."
           ]
       ]
   , subsections:

@@ -17,7 +17,7 @@ jsCode code = D.pre (D.Class !:= "prism-code language-javascript")
   ]
 
 htmlCode :: forall lock payload. String -> Domable lock payload
-htmlCode code = D.pre (D.Class !:= "prism-code language-html")
+htmlCode code = D.pre (D.Class !:= "prism-code language-markup")
   [ D.code_
       [ text_ code
       ]
