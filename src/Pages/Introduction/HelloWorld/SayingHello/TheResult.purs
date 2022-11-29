@@ -2,8 +2,8 @@ module Pages.Introduction.HelloWorld.SayingHello.TheResult where
 
 import Prelude
 
+import Components.ExampleBlockquote (exampleBlockquote)
 import Contracts (Subsection, subsection)
-import Deku.Attributes (klass_)
 import Deku.Control (text_)
 import Deku.DOM as D
 
@@ -13,7 +13,7 @@ theResult = subsection
   , matter: pure
       [ D.p_
           [ text_ "And as promised, here's the result."
-          , D.blockquote (klass_ "not-italic")
+          , exampleBlockquote
               [ D.span_ [ text_ "Hello world" ] ]
           , text_ "You gotta start somewhere!"
           ]

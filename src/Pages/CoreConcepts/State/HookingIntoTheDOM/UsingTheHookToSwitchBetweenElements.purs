@@ -3,6 +3,7 @@ module Pages.CoreConcepts.State.HookingIntoTheDOM.UsingTheHookToSwitchBetweenEle
 import Prelude
 
 import Components.Code (psCode)
+import Components.ExampleBlockquote (exampleBlockquote)
 import Constants (tripleQ)
 import Contracts (Subsection, subsection)
 import Data.Foldable (oneOf)
@@ -147,7 +148,7 @@ main = runInBody Deku.do
         ]
     ]"""
           )
-      , D.blockquote (klass_ "not-italic")
+      , exampleBlockquote
           [ Deku.do
               setElement /\ element <- useState Image
               D.div_

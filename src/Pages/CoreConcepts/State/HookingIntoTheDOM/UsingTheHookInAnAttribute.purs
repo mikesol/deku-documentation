@@ -3,6 +3,7 @@ module Pages.CoreConcepts.State.HookingIntoTheDOM.UsingTheHookInAnAttribute wher
 import Prelude
 
 import Components.Code (psCode)
+import Components.ExampleBlockquote (exampleBlockquote)
 import Constants (tripleQ)
 import Contracts (Subsection, subsection)
 import Data.String (Pattern(..), Replacement(..), replaceAll)
@@ -94,7 +95,7 @@ main = runInBody Deku.do
         [ text_ "Switch style" ]
     ]"""
           )
-      , D.blockquote (klass_ "not-italic")
+      , exampleBlockquote
           [ Deku.do
               setHrefSwitch /\ hrefSwitch <- useState false
               setStyleSwitch /\ styleSwitch <- useState false

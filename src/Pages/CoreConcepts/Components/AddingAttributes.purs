@@ -3,6 +3,7 @@ module Pages.CoreConcepts.Components.AddingAttributes where
 import Prelude
 
 import Components.Code (psCode)
+import Components.ExampleBlockquote (exampleBlockquote)
 import Contracts (Section, section)
 import Data.Foldable (oneOf)
 import Deku.Attribute ((!:=))
@@ -54,7 +55,7 @@ main = runInBody
     ]
   )"""
       , text_ "And here's the result."
-      , D.blockquote (klass_ "not-italic")
+      , exampleBlockquote
           [ D.div_
               [ D.span (D.Style !:= "color:teal;") [ text_ "I exist" ]
               , D.ul_ $ map D.li__ [ "A", "B", "C" ]

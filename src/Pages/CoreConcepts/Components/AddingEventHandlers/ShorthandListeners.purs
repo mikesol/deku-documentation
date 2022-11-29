@@ -3,9 +3,9 @@ module Pages.CoreConcepts.Components.AddingEventHandlers.ShorthandListeners wher
 import Prelude
 
 import Components.Code (psCode)
+import Components.ExampleBlockquote (exampleBlockquote)
 import Components.Table (tableClass)
 import Contracts (Subsection, subsection)
-import Deku.Attributes (klass_)
 import Deku.Control (text_)
 import Deku.DOM as D
 import Deku.Listeners (slider_)
@@ -73,7 +73,7 @@ main = runInBody
   (D.input (slider_ logShow) [])"""
       , D.p__
           "If you open your Developer Console and move the slider below, you'll see it light up with numbers!"
-      , D.blockquote (klass_ "not-italic")
+      , exampleBlockquote
           [ D.input (slider_ logShow) [] ]
       , D.p__ "While these events are fun, the true power of Deku lies in its ability to use events to change aspects of the DOM. The next section explores how that is done."
       ]

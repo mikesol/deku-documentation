@@ -3,6 +3,7 @@ module Pages.CoreConcepts.State.HookingIntoTheDOM.UsingAHookToControlThePresence
 import Prelude
 
 import Components.Code (psCode)
+import Components.ExampleBlockquote (exampleBlockquote)
 import Contracts (Subsection, subsection)
 import Data.Tuple.Nested ((/\))
 import Deku.Attributes (klass_)
@@ -51,7 +52,7 @@ main = runInBody Deku.do
             if _ then "now you don't." else "Oops, come back!"
         ]
     ]"""
-      , D.blockquote (klass_ "not-italic")
+      , exampleBlockquote
           [ Deku.do
               setPresence /\ presence <- useState true
               D.div_

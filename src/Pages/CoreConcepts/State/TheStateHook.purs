@@ -3,6 +3,7 @@ module Pages.CoreConcepts.State.TheStateHook where
 import Prelude
 
 import Components.Code (psCode)
+import Components.ExampleBlockquote (exampleBlockquote)
 import Constants (tripleQ)
 import Contracts (Section, section)
 import Data.Tuple.Nested ((/\))
@@ -16,6 +17,7 @@ import Effect.Random (random)
 import Pages.CoreConcepts.State.TheStateHook.PushingToAHook (pushingToAHook)
 import Pages.CoreConcepts.State.TheStateHook.UsingTheHookInText (usingTheHookInText)
 import QualifiedDo.Alt as Alt
+
 buttonClass =
   """inline-flex items-center rounded-md
 border border-transparent bg-indigo-600 px-3 py-2
@@ -71,7 +73,7 @@ main = runInBody Deku.do
     ]"""
           )
       , D.p__ "Here's the result."
-      , D.blockquote (klass_ "not-italic")
+      , exampleBlockquote
           [ Deku.do
               setNumber /\ number <- useState 0.42
               D.div_

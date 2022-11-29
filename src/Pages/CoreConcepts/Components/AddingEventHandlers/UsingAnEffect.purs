@@ -3,6 +3,7 @@ module Pages.CoreConcepts.Components.AddingEventHandlers.UsingAnEffect where
 import Prelude
 
 import Components.Code (psCode)
+import Components.ExampleBlockquote (exampleBlockquote)
 import Contracts (Subsection, subsection)
 import Deku.Attribute ((!:=))
 import Deku.Attributes (klass_)
@@ -45,7 +46,7 @@ main = runInBody
       [ text_ "Click me!" ]
   )"""
       , D.p_ [ text_ "This yields the following result." ]
-      , D.blockquote (klass_ "not-italic")
+      , exampleBlockquote
           [ D.span
               Alt.do
                 D.OnClick !:= do

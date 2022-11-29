@@ -27,11 +27,14 @@ focus:ring-COLOR-500 focus:ring-offset-2"""
 main :: Effect Unit
 main = runInBody Deku.do
   setNumber /\ number <- useState 0.42
-  setPresence /\ presence <- useState true
+  setPresence /\ presence <- useState false
   D.div_
     [ D.div_
-        [ text $ number <#> show >>> ("Here's a random number: " <> _)
-        , D.button
+        [ text $ number <#> show >>>
+            ("Here's a random number: " <> _)
+        ]
+    , D.div_
+        [ D.button
             Alt.do
               klass_ $ buttonClass "pink"
               click_ $ random >>= setNumber
@@ -47,6 +50,7 @@ main = runInBody Deku.do
     , D.div_
         [ guard presence
             $ text
-            $ number <#> show >>> ("Here's the same (?) random number: " <> _)
+            $ number <#> show >>>
+                ("Here's the same (?) random number: " <> _)
         ]
     ]

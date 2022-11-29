@@ -3,13 +3,14 @@ module Pages.CoreConcepts.Components.AddingEventHandlers.UsingTheOriginalEvent w
 import Prelude
 
 import Components.Code (psCode)
+import Components.ExampleBlockquote (exampleBlockquote)
 import Contracts (Subsection, subsection)
-import Deku.Attributes (klass_)
+import Data.Newtype (unwrap)
 import Deku.Attribute ((!:=), cb)
+import Deku.Attributes (klass_)
 import Deku.Control (text_)
 import Deku.DOM as D
 import QualifiedDo.Alt as Alt
-import Data.Newtype (unwrap)
 import Web.Event.Event (type_)
 import Web.HTML (window)
 import Web.HTML.Window (alert)
@@ -49,7 +50,7 @@ main = runInBody
       [ text_ "Click me!" ]
   )"""
       , D.p_ [ text_ "This yields the following result." ]
-      , D.blockquote (klass_ "not-italic")
+      , exampleBlockquote
           [ D.span
               Alt.do
                 D.OnClick !:= cb \e -> do

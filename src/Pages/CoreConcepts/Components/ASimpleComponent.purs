@@ -3,8 +3,8 @@ module Pages.CoreConcepts.Components.ASimpleComponent where
 import Prelude
 
 import Components.Code (psCode)
+import Components.ExampleBlockquote (exampleBlockquote)
 import Contracts (Section, section)
-import Deku.Attributes (klass_)
 import Deku.Control (text_)
 import Deku.DOM as D
 import Pages.CoreConcepts.Components.ASimpleComponent.AddingText (addingText)
@@ -43,7 +43,7 @@ main = runInBody
     ]
   )"""
       , text_ "And here's the result."
-      , D.blockquote (klass_ "not-italic")
+      , exampleBlockquote
           [ D.div_
               [ D.span_ [ text_ "I exist" ]
               , D.ul_ $ map D.li__ [ "A", "B", "C" ]
