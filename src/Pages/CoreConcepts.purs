@@ -1,12 +1,10 @@
 module Pages.CoreConcepts where
 
-import Prelude
 
 import Contracts (Chapter, chapter)
 import Pages.CoreConcepts.Collections (collections)
 import Pages.CoreConcepts.Components (components)
 import Pages.CoreConcepts.Effects (effects)
-import Pages.Introduction.HelloWorld (helloWorld)
 import Pages.CoreConcepts.MoreHooks (moreHooks)
 import Pages.CoreConcepts.Portals (portals)
 import Pages.CoreConcepts.Providers (providers)
@@ -19,8 +17,8 @@ coreConcepts = chapter
   , pages:
       [ components
       , state
-      , pursx
       , collections
+      , pursx
       , portals
       , providers
       , effects

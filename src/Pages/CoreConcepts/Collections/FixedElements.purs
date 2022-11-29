@@ -11,14 +11,12 @@ import Pages.CoreConcepts.Collections.FixedElements.GroupingElementsTogether (gr
 
 fixedElements :: forall lock payload. Section lock payload
 fixedElements = section
-  { title: "Fixed elements"
+  { title: "Arrays of content"
   , topmatter: pure
       [ D.p_
-          [ text_ "This section will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "Fixed elements" ]
-          , text_ "."
+          [ text_ "Sometimes, you have a fixed array of content that you'd like to insert into a parent element. For these cases, there's the ", D.code__ "fixed", text_ " operator."
           ]
       ]
   , subsections:
-      [ groupsOfGroups, groupingElementsTogether ]
+      [ groupingElementsTogether, groupsOfGroups ]
   }
