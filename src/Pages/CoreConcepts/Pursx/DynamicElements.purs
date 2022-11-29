@@ -20,5 +20,5 @@ dynamicElements = section
           ]
       ]
   , subsections:
-      [ addingSeveralElements, addingASingleElement ]
+      [ addingASingleElement, addingSeveralElements ]
   }

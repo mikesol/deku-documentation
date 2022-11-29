@@ -4,7 +4,6 @@ import Prelude
 
 import Contracts (Section, section)
 import Deku.Control (text_)
-import Deku.Attribute ((!:=))
 import Deku.DOM as D
 import Pages.CoreConcepts.Pursx.DynamicAttributes.AddingAnAttribute (addingAnAttribute)
 import Pages.CoreConcepts.Pursx.DynamicAttributes.AddingSeveralAttributes (addingSeveralAttributes)
@@ -14,9 +13,7 @@ dynamicAttributes = section
   { title: "Dynamic attributes"
   , topmatter: pure
       [ D.p_
-          [ text_ "This section will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "Dynamic attributes" ]
-          , text_ "."
+          [ text_ "In addition to static DOM elements, Pursx also supports adding attributes. Let's modify the breadcrumbs example above with a hook that sets the presence or absence of a crumb based on a click listener."
           ]
       ]
   , subsections:

@@ -2,55 +2,84 @@ module Scratch where
 
 import Prelude
 
-import Data.String (replaceAll, Pattern(..), Replacement(..))
+import Control.Alt (alt, (<|>))
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass_)
-import Deku.Control (guard, text, text_)
+import Deku.Attribute (class Attr, Attribute)
+import Deku.Attributes (klass, klass_)
+import Deku.Control (text_)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState)
-import Deku.Listeners (click, click_)
+import Deku.Listeners (click_)
+import Deku.Pursx ((~~))
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
-import Effect.Random (random)
-import QualifiedDo.Alt as Alt
+import FRP.Event (Event)
+import Type.Proxy (Proxy(..))
 
-buttonClass :: String -> String
-buttonClass color =
-  replaceAll (Pattern "COLOR") (Replacement color)
-    """ml-4 inline-flex items-center rounded-md
-border border-transparent bg-COLOR-600 px-3 py-2
-text-sm font-medium leading-4 text-white shadow-sm
-hover:bg-COLOR-700 focus:outline-none focus:ring-2
-focus:ring-COLOR-500 focus:ring-offset-2"""
+
+myHtml =
+  ( Proxy      :: Proxy
+           """<nav class="flex" aria-label="Breadcrumb">
+  <ol role="list" class="flex space-x-4 rounded-md bg-white px-6 shadow">
+    <li ~homeAtts~>
+      <div class="flex items-center">
+        <span class="cursor-pointer text-gray-400 hover:text-gray-500">
+          <!-- Heroicon name: mini/home -->
+          <svg class="h-5 w-5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M9.293 2.293a1 1 0 011.414 0l7 7A1 1 0 0117 11h-1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-3a1 1 0 00-1-1H9a1 1 0 00-1 1v3a1 1 0 01-1 1H5a1 1 0 01-1-1v-6H3a1 1 0 01-.707-1.707l7-7z" clip-rule="evenodd" />
+          </svg>
+          <span class="sr-only cursor-pointer">Home</span>
+        </span>
+      </div>
+    </li>
+
+    <li ~projectsAtts~>
+      <div class="flex items-center">
+        <svg class="h-full w-6 flex-shrink-0 text-gray-200" viewBox="0 0 24 44" preserveAspectRatio="none" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M.293 0l22 22-22 22h1.414l22-22-22-22H.293z" />
+        </svg>
+        <span class="cursor-pointer ml-4 text-sm font-medium text-gray-500 hover:text-gray-700">Projects</span>
+      </div>
+    </li>
+
+    <li ~neroAtts~>
+      <div class="flex items-center">
+        <svg class="h-full w-6 flex-shrink-0 text-gray-200" viewBox="0 0 24 44" preserveAspectRatio="none" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M.293 0l22 22-22 22h1.414l22-22-22-22H.293z" />
+        </svg>
+        <span class="cursor-pointer ml-4 text-sm font-medium text-gray-500 hover:text-gray-700" aria-current="page">Project Nero</span>
+      </div>
+    </li>
+  </ol>
+</nav>"""
+  )
+
+type ClickEffect = forall element. Attr element D.OnClick (Effect Unit) => Event (Attribute element)
 
 main :: Effect Unit
 main = runInBody Deku.do
-  setNumber /\ number <- useState 0.42
-  setPresence /\ presence <- useState false
-  D.div_
-    [ D.div_
-        [ text $ number <#> show >>>
-            ("Here's a random number: " <> _)
-        ]
-    , D.div_
-        [ D.button
-            Alt.do
-              klass_ $ buttonClass "pink"
-              click_ $ random >>= setNumber
-            [ text_ "A"
-            ]
-        , D.button
-            Alt.do
-              klass_ $ buttonClass "green"
-              click $ presence <#> not >>> setPresence
-            [ text_ "B"
-            ]
-        ]
-    , D.div_
-        [ guard presence
-            $ text
-            $ number <#> show >>>
-                ("Here's the same (?) random number: " <> _)
-        ]
-    ]
+                  setProjects /\ projects <- useState true
+                  setNero /\ nero <- useState true
+                  let
+                    hideOnFalse e =
+                      klass $ e <#> (if _ then "" else "hidden ") >>>
+                        (_ <> "flex")
+                    toggleHome = click_ (setProjects false *> setNero false) :: ClickEffect
+                    toggleProjects = click_ (setProjects true *> setNero false) :: ClickEffect
+                    toggleNero = click_ (setProjects true *> setNero true) :: ClickEffect
+                    akls = alt (klass_ "cursor-pointer mr-4")
+                  D.div_
+                    [ D.div_
+                        [ D.a (akls toggleHome) [ text_ "Go home" ]
+                        , D.a (akls toggleProjects) [ text_ "Go to projects" ]
+                        , D.a (akls toggleNero) [ text_ "Go to nero" ]
+                        ]
+                    , D.div_
+                        [ myHtml ~~
+                            {homeAtts: toggleHome <|> klass_ "flex h-12"
+                                , projectsAtts: toggleProjects <|> hideOnFalse projects
+                            , neroAtts: toggleNero <|> hideOnFalse nero
+                            }
+                        ]
+                    ]
