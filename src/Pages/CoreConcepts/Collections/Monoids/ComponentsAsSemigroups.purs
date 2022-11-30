@@ -72,12 +72,12 @@ main = runInBody Deku.do
             Alt.do
               klass_ $ buttonClass "indigo"
               click_ $ setAstuce true
-            [ text_ "Nice" ]
+            [ text_ "Sage" ]
         , D.button
             Alt.do
               klass_ $ buttonClass "green"
               click_ $ setAstuce false
-            [ text_ "Naughty" ]
+            [ text_ "Pas sage" ]
         ]
     , D.div (klass_ "leading-3")
         [ D.p__ "Cher ami,"
@@ -127,12 +127,12 @@ main = runInBody Deku.do
                     Alt.do
                       klass_ $ buttonClass "indigo"
                       click_ $ setAstuce true
-                    [ text_ "Nice" ]
+                    [ text_ "Sage" ]
                 , D.button
                     Alt.do
                       klass_ $ buttonClass "green"
                       click_ $ setAstuce false
-                    [ text_ "Naughty" ]
+                    [ text_ "Pas sage" ]
                 ]
             , D.div (klass_ "leading-3")
                 [ D.p__ "Cher ami,"
