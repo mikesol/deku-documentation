@@ -32,7 +32,7 @@ focus:ring-COLOR-500 focus:ring-offset-2"""
 aNoteOnMemoization :: forall lock payload. Subsection lock payload
 aNoteOnMemoization = subsection
   { title: "Memoization and useHot"
-  , matter: \(Env { routeLink }) ->
+  , matter: pure
       [ D.p_
           [ text_ "It's important to know that the hooks above are "
           , D.i__ "not"
