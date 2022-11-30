@@ -2,25 +2,28 @@ module Scratch where
 
 import Prelude
 
+import Data.Foldable (for_, traverse_)
+import Data.Int (floor)
 import Data.String (Pattern(..), Replacement(..), replaceAll)
-import Data.Foldable (for_)
+import Data.Tuple (Tuple(..))
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute ((!:=))
+import Deku.Attribute (cb, (!:=))
 import Deku.Attributes (klass_)
 import Deku.Control (text_)
 import Deku.Core (dyn)
 import Deku.DOM as D
 import Deku.Do as Deku
-import Deku.Hooks (useDyn_, useHot', useState')
+import Deku.Hooks (useDyn, useHot', useState, useState')
 import Deku.Listeners (click, keyUp)
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
+import FRP.Event.Class ((<|*>))
+import QualifiedDo.Alt as Alt
 import Web.Event.Event (target)
 import Web.HTML (window)
-import Web.HTML.HTMLInputElement (fromEventTarget, value)
+import Web.HTML.HTMLInputElement (fromEventTarget, value, valueAsNumber)
 import Web.HTML.Window (alert)
 import Web.UIEvent.KeyboardEvent (code, toEvent)
-import QualifiedDo.Alt as Alt
 
 inputKls :: String
 inputKls =
@@ -30,7 +33,6 @@ border-2 mr-2
 border-solid
 focus:border-indigo-500 focus:ring-indigo-500
 sm:text-sm"""
-
 
 buttonClass :: String -> String
 buttonClass color =
@@ -43,6 +45,7 @@ focus:ring-COLOR-500 focus:ring-offset-2"""
 
 main :: Effect Unit
 main = runInBody Deku.do
+  setPos /\ pos <- useState 0
   setItem /\ item <- useState'
   setInput /\ input <- useHot'
   let
@@ -55,13 +58,24 @@ main = runInBody Deku.do
       D.div_
         [ D.input
             Alt.do
-                keyUp $ pure \evt -> do
-                    when (code evt == "Enter") $
-                      for_
-                        ((target >=> fromEventTarget) (toEvent evt))
-                        guardAgainstEmpty
-                D.SelfT !:= setInput
-                klass_ inputKls
+              keyUp $ pure \evt -> do
+                when (code evt == "Enter") $
+                  for_
+                    ((target >=> fromEventTarget) (toEvent evt))
+                    guardAgainstEmpty
+              D.SelfT !:= setInput
+              klass_ inputKls
+            []
+        , D.input
+            Alt.do
+              klass_ inputKls
+              D.Xtype !:= "number"
+              D.Min !:= "0"
+              D.Max !:= "10"
+              D.Value !:= "0"
+              D.OnChange !:= cb \evt ->
+                traverse_ (valueAsNumber >=> floor >>> setPos) $
+                  (target >=> fromEventTarget) evt
             []
         , D.button
             Alt.do
@@ -73,9 +87,17 @@ main = runInBody Deku.do
     [ top
     , dyn
         $ map
-            ( \t -> Deku.do
-                useDyn_
-                D.div_ [ text_ t ]
+            ( \(Tuple p t) -> Deku.do
+                { remove, sendTo } <- useDyn p
+                D.div_
+                  [ text_ t
+                  , D.button
+                      (click $ pure (sendTo 0))
+                      [ text_ "Prioritize" ]
+                  , D.button
+                      (click $ pure remove)
+                      [ text_ "Delete" ]
+                  ]
             )
-            item
+            (Tuple <$> pos <|*> item)
     ]
