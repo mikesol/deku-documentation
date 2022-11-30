@@ -122,6 +122,7 @@ main = runInBody Deku.do
       D.div_
         [ D.input
             Alt.do
+              D.Value !:= "Tasko primo"
               keyUp $ pure \evt -> do
                 when (code evt == "Enter") $
                   for_
@@ -219,6 +220,7 @@ interComponentCommunication = subsection
                   D.div_
                     [ D.input
                         Alt.do
+                          D.Value !:= "Tasko primo"
                           keyUp $ pure \evt -> do
                             when (code evt == "Enter") $
                               for_

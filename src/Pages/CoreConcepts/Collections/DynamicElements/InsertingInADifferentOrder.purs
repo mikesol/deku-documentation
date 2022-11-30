@@ -4,6 +4,7 @@ import Prelude
 
 import Components.Code (psCode)
 import Components.ExampleBlockquote (exampleBlockquote)
+import Components.ProTip (proTip)
 import Constants (tripleQ)
 import Contracts (Env(..), Subsection, subsection)
 import Data.Foldable (for_, traverse_)
@@ -119,6 +120,7 @@ main = runInBody Deku.do
       D.div_
         [ D.input
             Alt.do
+              D.Value !:= "Tasko primo"
               keyUp $ pure \evt -> do
                 when (code evt == "Enter") $
                   for_
@@ -184,6 +186,7 @@ insertingInADifferentOrder = subsection
                   D.div_
                     [ D.input
                         Alt.do
+                          D.Value !:= "Tasko primo"
                           keyUp $ pure \evt -> do
                             when (code evt == "Enter") $
                               for_
@@ -219,7 +222,10 @@ insertingInADifferentOrder = subsection
                         (Tuple <$> pos <|*> item)
                 ]
           ]
-      , D.p_
+      , proTip
+          { header:
+              D.span_ [ text_ "The ", D.code__ "<|*>", text_ " operator" ]
+          , message: D.div_
               [ text_ "In the example above, we see a new operator "
               , D.code__ "<|*>"
               , text_
@@ -227,5 +233,12 @@ insertingInADifferentOrder = subsection
               , routeLink Sampling
               , text_ ", which we'll go over later."
               ]
+          }
+      , D.p_
+          [ text_
+              "Note that, if the index overshoots or undershoots the collection's bounds, the element will go to the end or beginning of the collection respectively. We'll learn more about bound management in the "
+          , routeLink FixAndFold
+          , text_ " section."
+          ]
       ]
   }
