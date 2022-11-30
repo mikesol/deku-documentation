@@ -13,7 +13,6 @@ jsCode code = D.pre (D.Class !:= "prism-code language-javascript")
   [ D.code_
       [ text_ code
       ]
-  , forceHighlight
   ]
 
 htmlCode :: forall lock payload. String -> Domable lock payload
@@ -21,11 +20,17 @@ htmlCode code = D.pre (D.Class !:= "prism-code language-markup")
   [ D.code_
       [ text_ code
       ]
-  , forceHighlight
   ]
 
 psCode :: forall lock payload. String -> Domable lock payload
 psCode code = D.pre (D.Class !:= "prism-code language-purescript")
+  [ D.code_
+      [ text_ code
+      ]
+  ]
+
+psCode2 :: forall lock payload. String -> Domable lock payload
+psCode2 code = D.pre (D.Class !:= "prism-code language-purescript")
   [ D.code_
       [ text_ code
       ]
@@ -37,5 +42,4 @@ bashCode code = D.pre (D.Class !:= "prism-code language-bash")
   [ D.code_
       [ text_ code
       ]
-  , forceHighlight
   ]

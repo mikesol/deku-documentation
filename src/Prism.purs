@@ -8,6 +8,9 @@ import Deku.Attributes (klass_)
 import Deku.Core (Nut)
 import Deku.DOM as D
 import Effect (Effect)
+import Effect.Aff (Milliseconds(..), delay, launchAff_)
+import Effect.Class (liftEffect)
+import Effect.Console (log)
 import Web.DOM (Element)
 
 foreign import highlightAll :: Effect Unit
@@ -19,6 +22,18 @@ forceHighlight = D.div
       [ klass_ "hidden"
       , D.Self !:= \(_ :: Element) ->
           highlightAll
+      ]
+  )
+  []
+
+forceHighlightAff :: Nut
+forceHighlightAff = D.div
+  ( oneOf
+      [ klass_ "hidden"
+      , D.Self !:= \(_ :: Element) -> launchAff_ do
+         delay (Milliseconds 0.0)
+         liftEffect $ log "highlighting"
+         liftEffect highlightAll
       ]
   )
   []

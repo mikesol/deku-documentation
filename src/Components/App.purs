@@ -2,15 +2,15 @@ module Components.App where
 
 import Prelude
 
-import Components.Link (link)
 import Components.Banner (banner)
 import Components.BottomNav (bottomNav)
 import Components.Header (header)
 import Components.LeftMatter (leftMatter)
+import Components.Link (link)
 import Contracts (Page(..), Section(..), Subsection(..), Env(..))
 import Control.Alt ((<|>))
-import Control.Plus (empty)
 import Control.Monad.State (evalState, get, put, runState)
+import Control.Plus (empty)
 import DarkModePreference (DarkModePreference(..))
 import Data.Foldable (oneOf)
 import Data.Newtype (unwrap)
@@ -22,12 +22,13 @@ import Deku.Attributes (klass, klass_)
 import Deku.Control (switcher, text_)
 import Deku.Core (Domable)
 import Deku.DOM as D
-import Deku.Hooks (useState)
 import Deku.Do as Deku
+import Deku.Hooks (useState)
 import Deku.Listeners (click_)
 import Effect (Effect)
 import FRP.Event (Event)
 import Navigation (PushState)
+import Prism (forceHighlightAff)
 import Router.ADT (Route, routeToNextRoute, routeToPrevRoute)
 import Router.Chapter (routeToChapter)
 import Web.DOM as DOM
@@ -189,6 +190,7 @@ app
                                 )
                             )
                         )
+                    , forceHighlightAff
                     ]
                 , flip switcher curPage \(Page cp) -> bottomNav
                     { pushState
