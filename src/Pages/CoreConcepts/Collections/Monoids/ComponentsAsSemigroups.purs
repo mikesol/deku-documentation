@@ -33,7 +33,7 @@ componentsAsSemigroups = subsection
           [ text_ "Components can be appended together, and the result will be a component. This is the same as enclosing all of the components in a ", D.code__ "fixed", text_ " bloc. Let's see this in action with George Sand's famous letter to Alfred de Musset."
           ]
       , psCode
-          ( """module Scratch where
+          ( """module Main where
 
 import Prelude
 

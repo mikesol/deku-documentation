@@ -46,7 +46,7 @@ focus:ring-COLOR-500 focus:ring-offset-2"""
 
 example :: String
 example =
-  """module Scratch where
+  """module Main where
 
 import Prelude
 
