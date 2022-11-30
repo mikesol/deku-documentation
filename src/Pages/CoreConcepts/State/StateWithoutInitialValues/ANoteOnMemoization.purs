@@ -5,7 +5,7 @@ import Prelude
 import Components.Code (psCode)
 import Components.ExampleBlockquote (exampleBlockquote)
 import Constants (tripleQ)
-import Contracts (Env(..), Subsection, subsection)
+import Contracts (Subsection, subsection)
 import Data.String (replaceAll, Pattern(..), Replacement(..))
 import Data.Tuple.Nested ((/\))
 import Deku.Attributes (klass_)
