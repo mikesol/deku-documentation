@@ -5,10 +5,11 @@ import Prelude
 import Contracts (Section, section)
 import Deku.Control (text_)
 import Deku.DOM as D
-import Pages.CoreConcepts.Collections.DynamicElements.TheUseDynHook (theUseDynHook)
 import Pages.CoreConcepts.Collections.DynamicElements.InsertingInADifferentOrder (insertingInADifferentOrder)
+import Pages.CoreConcepts.Collections.DynamicElements.InterComponentCommunication (interComponentCommunication)
 import Pages.CoreConcepts.Collections.DynamicElements.MovingElements (movingElements)
 import Pages.CoreConcepts.Collections.DynamicElements.RemovingElements (removingElements)
+import Pages.CoreConcepts.Collections.DynamicElements.TheUseDynHook (theUseDynHook)
 
 dynamicElements :: forall lock payload. Section lock payload
 dynamicElements = section
@@ -23,5 +24,6 @@ dynamicElements = section
       , insertingInADifferentOrder
       , movingElements
       , removingElements
+      , interComponentCommunication
       ]
   }

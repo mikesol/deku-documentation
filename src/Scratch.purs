@@ -88,15 +88,14 @@ main = runInBody Deku.do
     , dyn
         $ map
             ( \(Tuple p t) -> Deku.do
-                { remove, sendTo } <- useDyn p
+                { sendTo } <- useDyn p
                 D.div_
                   [ text_ t
                   , D.button
-                      (click $ pure (sendTo 0))
+                      Alt.do
+                        klass_ $ "ml-2 " <> buttonClass "indigo"
+                        click $ pure (sendTo 0)
                       [ text_ "Prioritize" ]
-                  , D.button
-                      (click $ pure remove)
-                      [ text_ "Delete" ]
                   ]
             )
             (Tuple <$> pos <|*> item)
