@@ -34,7 +34,7 @@ typeSafety = subsection
           ]
         , D.p_ [text_ "By using a type to specify the HTML, Deku can verify it at ",D.i__ "compile time", text_ " instead of at runtime. That means you do not need to eat up precious CPU cycles in the browser ", D.i__ "and", text_ " you'll weed out errors earlier. If the HTML isn't valid, your program won't compile."]
         , D.p_ [text_ "Let's see a concrete example of this. Say I try to compile the following Deku program with malformed HTML."]
-        , psCode """module Scratch where
+        , psCode """module Main where
 
 import Prelude
 

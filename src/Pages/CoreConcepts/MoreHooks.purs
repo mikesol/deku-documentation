@@ -26,5 +26,5 @@ moreHooks = page
           ]
       ]
   , sections:
-      [ useHot, useMemoized, useMailboxed ]
+      [ {-useHot,-} useMemoized, useMailboxed ]
   }

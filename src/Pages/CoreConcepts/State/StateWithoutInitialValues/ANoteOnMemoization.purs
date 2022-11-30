@@ -6,7 +6,6 @@ import Components.Code (psCode)
 import Components.ExampleBlockquote (exampleBlockquote)
 import Constants (tripleQ)
 import Contracts (Env(..), Subsection, subsection)
-import Data.Foldable (oneOf)
 import Data.String (replaceAll, Pattern(..), Replacement(..))
 import Data.Tuple.Nested ((/\))
 import Deku.Attributes (klass_)
@@ -17,7 +16,6 @@ import Deku.Hooks (useHot, useState)
 import Deku.Listeners (click, click_)
 import Effect.Random (random)
 import QualifiedDo.Alt as Alt
-import Router.ADT (Route(..))
 
 -- bg-fuchsia-600
 -- hover:bg-fuchsia-700 
@@ -33,7 +31,7 @@ focus:ring-COLOR-500 focus:ring-offset-2"""
 
 aNoteOnMemoization :: forall lock payload. Subsection lock payload
 aNoteOnMemoization = subsection
-  { title: "A note on memoization"
+  { title: "Memoization and useHot"
   , matter: \(Env { routeLink }) ->
       [ D.p_
           [ text_ "It's important to know that the hooks above are "
@@ -53,7 +51,8 @@ aNoteOnMemoization = subsection
           , D.b__ "A"
           , text_ " again a few times. What do you think will happen?"
           ]
-      , psCode ("""module Main where
+      , psCode
+          ( """module Main where
 
 import Prelude
 
@@ -73,11 +72,16 @@ import QualifiedDo.Alt as Alt
 buttonClass :: String -> String
 buttonClass color =
   replaceAll (Pattern "COLOR") (Replacement color)
-    """ <> tripleQ <> """ml-4 inline-flex items-center rounded-md
+    """ <> tripleQ
+              <>
+                """ml-4 inline-flex items-center rounded-md
 border border-transparent bg-COLOR-600 px-3 py-2
 text-sm font-medium leading-4 text-white shadow-sm
 hover:bg-COLOR-700 focus:outline-none focus:ring-2
-focus:ring-COLOR-500 focus:ring-offset-2""" <> tripleQ <> """
+focus:ring-COLOR-500 focus:ring-offset-2"""
+              <> tripleQ
+              <>
+                """
 
 main :: Effect Unit
 main = runInBody Deku.do
@@ -108,7 +112,8 @@ main = runInBody Deku.do
             $ number <#> show >>>
                 ("Here's the same (?) random number: " <> _)
         ]
-    ]""")
+    ]"""
+          )
       , exampleBlockquote
           [ Deku.do
               setNumber /\ number <- useState 0.42
@@ -157,15 +162,16 @@ main = runInBody Deku.do
           ]
       , D.p_
           [ text_
-              "It is indeed possible to have hooks that always supply their most recent value, but it comes with a slight performance penalty. We'll see how this works in the "
-          , routeLink MoreHooks
-          , text_
-              " section. Note that the performance penalty is negligible for most real-world applciations. You won't feel any lag in the example below, which is a memoized version of the example above. If you absolutely must learn how to implement it "
-          , D.i__ "now"
-          , text_ ", you can click "
-          , D.b__ "Reveal code"
+              "It is indeed possible to have hooks that always supply their most recent value, but it comes with a slight performance penalty. Note that the performance penalty is negligible for most real-world applciations. You won't feel any lag in the example below, which is a memoized version of the example above. The only change is to use "
+          , D.code__ "useHot"
+          , text_ " instead of "
+          , D.code__ "useState"
           , text_ "."
           ]
+      , psCode
+          """-- change this line
+setNumber /\ number <- useHot 0.42"""
+      , D.p__ "And voilà the result."
       , exampleBlockquote
           [ Deku.do
               setNumber /\ number <- useHot 0.42
@@ -197,36 +203,11 @@ main = runInBody Deku.do
                     ]
                 ]
           ]
-      , Deku.do
-          setRevealCode /\ revealCode <- useState false
-          D.div_
-            [ D.button
-                ( oneOf
-                    [ klass_ (buttonClass "fuchsia")
-                    , click $ revealCode <#> not >>> setRevealCode
-                    ]
-                )
-                [ text $ revealCode <#> if _ then "Hide code" else "Reveal code"
-                ]
-            , guard revealCode
-                ( D.div_
-                    [ psCode
-                        """-- change this line
-setNumber /\ number <- useHot 0.42"""
-                    , D.p_
-                        [ text_ "Ok, so all you had to do was change "
-                        , D.code__ "useState"
-                        , text_ " to "
-                        , D.code__ "useHot"
-                        , text_
-                            ". That's it? That's the big secret? Why do I have to wait until the "
-                        , routeLink MoreHooks
-                        , text_ " section to learn about this?!?"
-                        ]
-                    , D.p__
-                        "Look, I get paid by the section, all right? A documentation writer's gotta make a living, after all. You'd have done the same thing..."
-                    ]
-                )
-            ]
+      , D.p_
+          [ text_
+              "As you work more with the framework, you'll get a sense of when "
+          , D.code__ "useHot"
+          , text_ " is necessary to achieve the outcome you want."
+          ]
       ]
   }

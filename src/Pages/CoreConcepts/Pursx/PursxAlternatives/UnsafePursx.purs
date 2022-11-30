@@ -22,7 +22,7 @@ unsafePursx = subsection
             , D.li__ "The example is too long and thus takes a long time to compile."
         ], D.p_ [text_ "In both of these cases, you can use ", D.b__ "unsafe Pursx", text_ ". Unsafe pursx works just like pursx except it operates off of strings rather than proxies. The syntax uses ", D.code__ "~!~", text_ " instead of ", D.code__ "~~", text_ ", but the functionality is exactly the same. Note that there's no validation of unsafe Pursx, which means that your app may explode, so make sure to run your html through a validator first!" ]
         , D.p__ "Here's an example of unsafe pursx."
-        , psCode """module Scratch where
+        , psCode """module Main where
 
 import Prelude
 

@@ -21,9 +21,19 @@ module.exports = {
       '9xl': ['8rem', { lineHeight: '1' }],
     },
     extend: {
+      backgroundImage: {
+        alexander: "url('/assets/alexanderBackground.png')"
+      },
+      colors: {
+        alexander: {
+          DEFAULT: '#d1f479',
+        },
+      },
       fontFamily: {
         sans: ['Inter', ...defaultTheme.fontFamily.sans],
         display: ['Lexend', ...defaultTheme.fontFamily.sans],
+        aldine: ['"Aldine 721"', ...defaultTheme.fontFamily.serif]
+
       },
       maxWidth: {
         '8xl': '88rem',

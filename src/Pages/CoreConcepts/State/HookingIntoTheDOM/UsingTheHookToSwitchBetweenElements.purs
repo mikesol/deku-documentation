@@ -53,7 +53,7 @@ usingTheHookToSwitchBetweenElements = subsection
           , text_ " operator."
           ]
       , psCode
-          ( """module Scratch where
+          ( """module Main where
 
 import Prelude
 
