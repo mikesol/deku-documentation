@@ -10,3 +10,7 @@ assets/dekulogodark.png filter=lfs diff=lfs merge=lfs -text
 public/fonts/lexend.txt filter=lfs diff=lfs merge=lfs -text
 public/fonts/Aldine721BT-Roman.woff filter=lfs diff=lfs merge=lfs -text
 public/fonts/Aldine721BT-Roman.woff2 filter=lfs diff=lfs merge=lfs -text
+assets/alexander.jpeg filter=lfs diff=lfs merge=lfs -text
+assets/alexander.png filter=lfs diff=lfs merge=lfs -text
+assets/alexanderBackground.png filter=lfs diff=lfs merge=lfs -text
+assets/stylesheet.css filter=lfs diff=lfs merge=lfs -text
