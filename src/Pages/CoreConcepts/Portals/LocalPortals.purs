@@ -16,15 +16,13 @@ localPortals = section
   { title: "Local portals"
   , topmatter: pure
       [ D.p_
-          [ text_ "This section will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "Local portals" ]
-          , text_ "."
+          [ text_ "Let's rewrite the example above using local portals."
           ]
       ]
   , subsections:
       [ theLocalPortalSyntax
       , unlockingLevels
-      , theLocalPortalResult
+      {-, theLocalPortalResult-}
       , performanceNotes
       ]
   }

@@ -450,8 +450,8 @@ banner { showBanner } = D.div
                       , Deku.do
                           setBannerExample /\ bannerExample' <- useState
                             CodeExample
-                          _ /\ bannerExample <- useMemoized
-                            ( \_ -> showBanner $> CodeExample <|> dedup
+                          bannerExample <- useMemoized
+                            ( showBanner $> CodeExample <|> dedup
                                 bannerExample'
                             )
                           D.div (D.Class !:= "pl-4 pt-4")
