@@ -1,6 +1,5 @@
 module Components.ExampleBlockquote where
 
-import Prelude
 
 import Deku.Attributes (klass_)
 import Deku.Core (Domable)

@@ -2,77 +2,80 @@ module Scratch where
 
 import Prelude
 
-import Data.Foldable (oneOf, traverse_)
-import Data.Int (floor)
-import Data.Tuple (Tuple(..))
+import Data.String (Pattern(..), Replacement(..), replaceAll)
+import Data.Foldable (for_)
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute (cb, (!:=))
+import Deku.Attribute ((!:=))
+import Deku.Attributes (klass_)
 import Deku.Control (text_)
-import Deku.Core (Nut, dyn)
+import Deku.Core (dyn)
 import Deku.DOM as D
 import Deku.Do as Deku
-import Deku.Hooks (useDyn, useState, useState')
+import Deku.Hooks (useDyn_, useHot', useState')
 import Deku.Listeners (click, keyUp)
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
 import Web.Event.Event (target)
-import Web.HTML.HTMLInputElement (fromEventTarget, value, valueAsNumber)
+import Web.HTML (window)
+import Web.HTML.HTMLInputElement (fromEventTarget, value)
+import Web.HTML.Window (alert)
 import Web.UIEvent.KeyboardEvent (code, toEvent)
+import QualifiedDo.Alt as Alt
 
-data MainUIAction
-  = AddTodo
-  | ChangeText String
+inputKls :: String
+inputKls =
+  """rounded-md
+border-gray-300 shadow-sm
+border-2 mr-2
+border-solid
+focus:border-indigo-500 focus:ring-indigo-500
+sm:text-sm"""
+
+
+buttonClass :: String -> String
+buttonClass color =
+  replaceAll (Pattern "COLOR") (Replacement color)
+    """mb-3 inline-flex items-center rounded-md
+border border-transparent bg-COLOR-600 px-3 py-2
+text-sm font-medium leading-4 text-white shadow-sm
+hover:bg-COLOR-700 focus:outline-none focus:ring-2
+focus:ring-COLOR-500 focus:ring-offset-2"""
 
 main :: Effect Unit
 main = runInBody Deku.do
-  setPos /\ pos <- useState 0
   setItem /\ item <- useState'
-  setInput /\ input <- useState'
+  setInput /\ input <- useHot'
   let
-    top :: Nut
+    guardAgainstEmpty e = do
+      v <- value e
+      if v == "" then
+        window >>= alert "Item cannot be empty"
+      else setItem v
     top =
       D.div_
         [ D.input
-            ( oneOf
-                [ keyUp $ pure \evt -> do
-                    when (code evt == "Enter") $ do
-                      traverse_ (value >=> setItem) $
-                        (target >=> fromEventTarget) (toEvent evt)
-                , D.SelfT !:= setInput
-                ]
-            )
-            []
-        , D.input
-            ( oneOf
-                [ D.Xtype !:= "number"
-                , D.Min !:= "0"
-                , D.Max !:= "10"
-                , D.OnChange !:= cb \evt ->
-                    traverse_ (valueAsNumber >=> floor >>> setPos) $
-                      (target >=> fromEventTarget) evt
-                ]
-            )
+            Alt.do
+                keyUp $ pure \evt -> do
+                    when (code evt == "Enter") $
+                      for_
+                        ((target >=> fromEventTarget) (toEvent evt))
+                        guardAgainstEmpty
+                D.SelfT !:= setInput
+                klass_ inputKls
             []
         , D.button
-            (click $ input <#> (value >=> setItem))
+            Alt.do
+              click $ input <#> guardAgainstEmpty
+              klass_ $ buttonClass "green"
             [ text_ "Add" ]
         ]
   D.div_
     [ top
     , dyn
         $ map
-            ( \(Tuple p t) -> Deku.do
-                { remove, sendTo } <- useDyn p
-                D.div_
-                  [ text_ t
-                  , D.button
-                      (click $ pure (sendTo 0))
-                      [ text_ "Prioritize" ]
-                  , D.button
-                      (click $ pure remove)
-                      [ text_ "Delete" ]
-                  ]
+            ( \t -> Deku.do
+                useDyn_
+                D.div_ [ text_ t ]
             )
-            (Tuple <$> pos <*> item)
+            item
     ]
-

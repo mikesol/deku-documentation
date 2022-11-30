@@ -102,7 +102,6 @@ removingElements = subsection
                         )
                         (sampleOnRightOp (Tuple <$> pos) item)
                 ]
-
           ]
       ]
   }

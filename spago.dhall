@@ -27,6 +27,7 @@ to generate this file without the comments in this block.
   , "foreign"
   , "functions"
   , "hyrule"
+  , "integers"
   , "language-cst-parser"
   , "lists"
   , "maybe"
@@ -51,6 +52,7 @@ to generate this file without the comments in this block.
   , "web-dom"
   , "web-events"
   , "web-html"
+  , "web-uievents"
   , "yoga-json"
   ]
 , packages = ./packages.dhall
