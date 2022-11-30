@@ -4,7 +4,6 @@ import Prelude
 
 import Components.Code (psCode)
 import Components.ExampleBlockquote (exampleBlockquote)
-import Components.ProTip (proTip)
 import Constants (tripleQ)
 import Contracts (Env(..), Subsection, subsection)
 import Data.Foldable (for_, traverse_)

@@ -4,9 +4,8 @@ import Prelude
 
 import Components.Code (psCode)
 import Components.ExampleBlockquote (exampleBlockquote)
-import Components.ProTip (proTip)
 import Constants (tripleQ)
-import Contracts (Env(..), Subsection, subsection)
+import Contracts (Subsection, subsection)
 import Data.Foldable (for_, traverse_)
 import Data.Int (floor)
 import Data.String (Pattern(..), Replacement(..), replaceAll)
@@ -22,7 +21,6 @@ import Deku.Hooks (useDyn, useHot', useState, useState')
 import Deku.Listeners (click, click_, keyUp)
 import FRP.Event.Class ((<|*>))
 import QualifiedDo.Alt as Alt
-import Router.ADT (Route(..))
 import Web.Event.Event (target)
 import Web.HTML (window)
 import Web.HTML.HTMLInputElement (fromEventTarget, value, valueAsNumber)

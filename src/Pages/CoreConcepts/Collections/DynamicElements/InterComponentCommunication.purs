@@ -1,11 +1,11 @@
-module Pages.CoreConcepts.Collections.DynamicElements.MovingElements where
+module Pages.CoreConcepts.Collections.DynamicElements.InterComponentCommunication where
 
 import Prelude
 
 import Components.Code (psCode)
 import Components.ExampleBlockquote (exampleBlockquote)
 import Constants (tripleQ)
-import Contracts (Subsection, subsection)
+import Contracts (Env(..), Subsection, subsection)
 import Data.Foldable (for_, traverse_)
 import Data.Int (floor)
 import Data.String (Pattern(..), Replacement(..), replaceAll)
@@ -15,12 +15,14 @@ import Deku.Attribute (cb, (!:=))
 import Deku.Attributes (klass_)
 import Deku.Control (text_)
 import Deku.Core (dyn)
+import Deku.Core as Core
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useDyn, useHot', useState, useState')
 import Deku.Listeners (click, click_, keyUp)
 import FRP.Event.Class ((<|*>))
 import QualifiedDo.Alt as Alt
+import Router.ADT (Route(..))
 import Web.Event.Event (target)
 import Web.HTML (window)
 import Web.HTML.HTMLInputElement (fromEventTarget, value, valueAsNumber)
@@ -47,10 +49,11 @@ focus:ring-COLOR-500 focus:ring-offset-2"""
 
 example :: String
 example =
-  """module Scratch where
+  """module Main where
 
 import Prelude
 
+import Deku.Core as Core
 import Data.Foldable (for_, traverse_)
 import Data.Int (floor)
 import Data.String (Pattern(..), Replacement(..), replaceAll)
@@ -107,6 +110,7 @@ main :: Effect Unit
 main = runInBody Deku.do
   setPos /\ pos <- useState 0
   setItem /\ item <- useState'
+  setRemoveAll /\ removeAll <- useState'
   setInput /\ input <- useHot'
   let
     guardAgainstEmpty e = do
@@ -146,8 +150,10 @@ main = runInBody Deku.do
     [ top
     , dyn
         $ map
-            ( \(Tuple p t) -> Deku.do
-                { sendTo } <- useDyn p
+            ( \(Tuple p t) -> Alt.do
+              removeAll $> Core.remove
+              Deku.do
+                { sendTo, remove } <- useDyn p
                 D.div_
                   [ text_ t
                   , D.button
@@ -155,25 +161,53 @@ main = runInBody Deku.do
                         klass_ $ "ml-2 " <> buttonClass "indigo"
                         click_ (sendTo 0)
                       [ text_ "Prioritize" ]
+                  , D.button
+                      Alt.do
+                        klass_ $ "ml-2 " <> buttonClass "pink"
+                        click_ remove
+                      [ text_ "Delete" ]
+                  , D.button
+                      Alt.do
+                        klass_ $ "ml-2 " <> buttonClass "fuchsia"
+                        click_ (setRemoveAll unit)
+                      [ text_ "Remove all" ]
                   ]
             )
             (Tuple <$> pos <|*> item)
     ]
 """
 
-movingElements :: forall lock payload. Subsection lock payload
-movingElements = subsection
-  { title: "Moving elements"
-  , matter: pure
+interComponentCommunication :: forall lock payload. Subsection lock payload
+interComponentCommunication = subsection
+  { title: "Inter-component communication"
+  , matter: \(Env { routeLink }) ->
       [ D.p_
           [ text_
-              "The ", D.code__ "useDyn_", text_ " and ", D.code__ "useDyn", text_ " hooks can be destructured to get some useful methods. In this section, we'll see how the ", D.code__ "sendTo", text_ " function moves an element of a dynamic list to a different position."
+              "Sometimes, you need to communicate between components in a dynamic structure. As we've seen in other examples, this possible by pushing to a hook at a higher level and subscribing to that hook at a lower level. However, because "
+          , D.code__ "sendTo"
+          , text_ " and "
+          , D.code__ "remove"
+          , text_ " are "
+          , D.code__ "Effect"
+          , text_ "s and not "
+          , D.code__ "Event"
+          , text_
+              "s, we can only use them in a listener. If we want to use them in conjunction with a hook, like for example using a hook to delete all items, we need to "
+          , D.code__ "alt"
+          , text_ " our component with an event that contains either "
+          , D.code__ "sendToPos"
+          , text_ " and "
+          , D.code__ "remove"
+          , text_ " from the module "
+          , D.code__ "Deku.Core"
+          , text_ "."
           ]
       , psCode example
       , exampleBlockquote
           [ Deku.do
               setPos /\ pos <- useState 0
               setItem /\ item <- useState'
+              setRemoveAll /\ removeAll <- useState'
               setInput /\ input <- useHot'
               let
                 guardAgainstEmpty e = do
@@ -213,22 +247,39 @@ movingElements = subsection
                 [ top
                 , dyn
                     $ map
-                        ( \(Tuple p t) -> Deku.do
-                            { sendTo } <- useDyn p
-                            D.div_
-                              [ text_ t
-                              , D.button
-                                  Alt.do
-                                    klass_ $ "ml-2 " <> buttonClass "indigo"
-                                    click_ (sendTo 0)
-                                  [ text_ "Prioritize" ]
-                              ]
+                        ( \(Tuple p t) -> Alt.do
+                            removeAll $> Core.remove
+                            Deku.do
+                              { sendTo, remove } <- useDyn p
+                              D.div_
+                                [ text_ t
+                                , D.button
+                                    Alt.do
+                                      klass_ $ "ml-2 " <> buttonClass "indigo"
+                                      click_ (sendTo 0)
+                                    [ text_ "Prioritize" ]
+                                , D.button
+                                    Alt.do
+                                      klass_ $ "ml-2 " <> buttonClass "pink"
+                                      click_ remove
+                                    [ text_ "Delete" ]
+                                , D.button
+                                    Alt.do
+                                      klass_ $ "ml-2 " <> buttonClass "fuchsia"
+                                      click_ (setRemoveAll unit)
+                                    [ text_ "Remove all" ]
+                                ]
                         )
                         (Tuple <$> pos <|*> item)
                 ]
           ]
       , D.p_
-              [ text_ "If the chosen position is larger than the length of the list, the element will be sent to the end."
-              ]
+          [ text_
+              "Using these patterns, you can implement 99.87% of DOM business logic. We'll get to the remaining bits in the "
+          , routeLink Portals
+          , text_ " and "
+          , routeLink CustomElements
+          , text_ " sections."
+          ]
       ]
   }
