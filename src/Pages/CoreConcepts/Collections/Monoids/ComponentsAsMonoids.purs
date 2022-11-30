@@ -70,7 +70,7 @@ componentsAsMonoids = subsection
           , D.code__ "blank"
           , text_
               ". Because it's a monoid, we can use all sorts of cool functions on Deku components, like "
-          , D.a (href_ "") [ D.code__ "interacalate" ]
+          , D.a (href_ "https://pursuit.purescript.org/packages/purescript-foldable-traversable/6.0.0/docs/Data.Foldable#v:intercalate") [ D.code__ "intercalate" ]
           , text_ "."
 
           ]
