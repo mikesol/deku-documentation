@@ -21,18 +21,11 @@ performanceNotes = subsection
           , text_ " the old one being cleaned up. That means that, if we clicked on "
           , D.b__ "Shuffle video"
           , text_
-              " 100 times, 100 \"zombie\" videos would be hanging out in JavaScript, eating up memory and CPU."
+              " 100 times, 100 \"zombie\" videos would be hanging out in JavaScript."
           ]
       , D.p_
           [ text_
-              "In a HTML5 game like a first-person shooter, if you use videos for VFX, you're likely creating 10s of VFX a second. In most cases, these won't be portals, in which case Deku's memory management system will handle them automatically. However, if they "
-          , D.i__ "are"
-          , text_
-              " portals, you want them to be cleaned up as soon as their parents go off screen. In these cases, make sure to use "
-          , D.code__ "portal1"
-          , text_ " instead of "
-          , D.code__ "globalPortal1"
-          , text_ "!"
+              "That being said, 100 zombies aren't that bad. In fact, we've tested portals with 10s of thousands of videos and the difference between global and local is negligible. That's because modern JavaScript engines are smart enough to have a very low memory profile for DOM nodes that are not used, and Deku's internal representation only consumes around ten bytes. We recommend only using local portals in extremely memory constrained environments, in older browsers, or when working with custom DOM elements that have significant memory requirements or DOM elements that are tied to large framework-allocated resources (ie canvases that are filled with thousands of ThreeJS meshes)."
           ]
 
       ]
