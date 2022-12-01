@@ -1,4 +1,4 @@
-module Pages.CoreConcepts.Effects.Callbacks.TriggeringACallbackFromAsynchronousCode where
+module Pages.CoreConcepts.Effects.Pusherss.TriggeringAPushersFromAsynchronousCode where
 
 import Prelude
 
@@ -7,15 +7,15 @@ import Deku.Control (text_)
 import Deku.Attribute ((!:=))
 import Deku.DOM as D
 
-triggeringACallbackFromAsynchronousCode
+triggeringAPushersFromAsynchronousCode
   :: forall lock payload. Subsection lock payload
-triggeringACallbackFromAsynchronousCode = subsection
-  { title: "Triggering a callback from asynchronous code"
+triggeringAPushersFromAsynchronousCode = subsection
+  { title: "Triggering a pushers from asynchronous code"
   , matter: pure
       [ D.p_
           [ text_ "This subsection will be about "
           , D.span (D.Class !:= "font-bold")
-              [ text_ "Triggering a callback from asynchronous code" ]
+              [ text_ "Triggering a pushers from asynchronous code" ]
           , text_ "."
           ]
       ]

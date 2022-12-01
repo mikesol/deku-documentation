@@ -6,7 +6,7 @@ import Contracts (Page, page)
 import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.DOM as D
-import Pages.CoreConcepts.Effects.rowPolymorphismAndProviders (callbacks)
+import Pages.CoreConcepts.Effects.Pushers (pushers)
 import Pages.CoreConcepts.Effects.Hydration (hydration)
 import Pages.CoreConcepts.Effects.LifecycleMethods (lifecycleMethods)
 import Router.ADT (Route(..))
@@ -16,15 +16,29 @@ effects = page
   { route: Effects
   , topmatter: pure
       [ D.p (D.Class !:= "lead")
-          [ text_ "This page will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "Effects" ]
-          , text_ "."
+          [ text_ "How Deku manages side effects."
           ]
       , D.p_
           [ text_
-              "Possimus saepe veritatis sint nobis et quam eos. Architecto consequatur odit perferendis fuga eveniet possimus rerum cumque. Ea deleniti voluptatum deserunt voluptatibus ut non iste."
+              "If you're familiar with React or Halogen, the word \"effect\" is often used to refer to one of two related concepts:"
+          ]
+      , D.ul_
+          [ D.li_
+              [ text_ "Lifecycle effects ("
+              , text_ "React"
+              , text_ " | "
+              , text_ "Halogen"
+              , text_ ")."
+              ]
+          , D.li_
+              [ text_ "Effect hooks ("
+              , text_ "React"
+              , text_ " | "
+              , text_ "Halogen"
+              , text_ ")."
+              ]
           ]
       ]
   , sections:
-      [ lifecycleMethods, callbacks, hydration ]
+      [ pushers, hydration, lifecycleMethods ]
   }
