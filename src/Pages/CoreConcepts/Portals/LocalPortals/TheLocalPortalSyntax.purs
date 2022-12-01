@@ -165,7 +165,7 @@ theLocalPortalSyntax = subsection
             ]
       , D.p_
           [ text_
-              "Aside from these differences, local portals look a lot like global ones. However, for a bit extra syntax, you get better performance. Let's see how in the next section."
+              "Aside from these differences, local portals look a lot like global ones. However, for a bit extra syntax, you get better performance. To understand why it's more performant, we'll use a slightly more involved example in the next section."
           ]
       ]
   }
