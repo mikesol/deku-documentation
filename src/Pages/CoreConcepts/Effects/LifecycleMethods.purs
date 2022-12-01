@@ -20,5 +20,5 @@ lifecycleMethods = section
           ]
       ]
   , subsections:
-      [ effectsOnTeardown, effectsOnInitialization ]
+      [ effectsOnInitialization, effectsOnTeardown ]
   }

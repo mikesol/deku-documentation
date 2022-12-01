@@ -6,7 +6,7 @@ import Contracts (Page, page)
 import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.DOM as D
-import Pages.CoreConcepts.Effects.Callbacks (callbacks)
+import Pages.CoreConcepts.Effects.rowPolymorphismAndProviders (callbacks)
 import Pages.CoreConcepts.Effects.Hydration (hydration)
 import Pages.CoreConcepts.Effects.LifecycleMethods (lifecycleMethods)
 import Router.ADT (Route(..))

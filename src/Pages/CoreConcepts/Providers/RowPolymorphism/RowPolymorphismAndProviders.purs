@@ -208,12 +208,12 @@ rowPolymorphismAndProviders = subsection
           [ text_ "Because "
           , D.code__ "libAwesome"
           , text_
-              " refers to additional nodes in the Deku tree, it must provide an environment to these nodes. However, because it cannot know what the type of this environment is, we're in a bind. Enter the "
+              " refers to additional nodes in the Deku tree, it must provide an environment to these nodes. However, because it cannot know the type of this environment, we're in a bind. Enter the "
           , D.code__ "Newtype"
           , text_ " constraint. "
           , D.code__ "Newtype"
           , text_
-              "s allow you to use recursive Row Polymorphism without committing to a concrete type upfront. That way, libraries are able to encode this recursion while remaining open-ended about the concrete type."
+              "s allow you to use recursive Row Polymorphism in a library without committing to a concrete type upfront. Armed with this knowledge, you'll be able to create all sorts of neat Deku libraries. I expect to see the market flooded with image carousel implementations any day now!"
           ]
       ]
   }
