@@ -66,9 +66,7 @@ portals = page
   { route: Portals
   , topmatter: pure
       [ D.p (D.Class !:= "lead")
-          [ text_ "Dealing with stateful DOM components "
-          , D.span (D.Class !:= "font-bold") [ text_ "Portals" ]
-          , text_ "."
+          [ text_ "Dealing with stateful DOM components."
           ]
       , D.p_
           [ text_

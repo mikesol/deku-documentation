@@ -110,7 +110,7 @@ main = runInBody Deku.do
         [ guard presence
             $ text
             $ number <#> show >>>
-                ("Here's the same (?) random number: " <> _)
+                ("Here's the same random number: " <> _)
         ]
     ]"""
           )
@@ -141,7 +141,7 @@ main = runInBody Deku.do
                     [ guard presence
                         $ text
                         $ number <#> show >>>
-                            ("Here's the same (?) random number: " <> _)
+                            ("Here's the same random number: " <> _)
                     ]
                 ]
           ]
@@ -199,7 +199,7 @@ setNumber /\ number <- useHot 0.42"""
                     [ guard presence
                         $ text
                         $ number <#> show >>>
-                            ("Here's the same (?) random number: " <> _)
+                            ("Here's the same random number: " <> _)
                     ]
                 ]
           ]
