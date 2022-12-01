@@ -27,6 +27,7 @@ to generate this file without the comments in this block.
   , "foreign"
   , "functions"
   , "hyrule"
+  , "identity"
   , "integers"
   , "language-cst-parser"
   , "lists"

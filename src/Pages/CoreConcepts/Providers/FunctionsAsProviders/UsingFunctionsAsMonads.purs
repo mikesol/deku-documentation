@@ -41,7 +41,9 @@ import FRP.Event (Event)
 import QualifiedDo.Alt as Alt
 
 type Env =
-  { isSignedIn :: Event Boolean, setIsSignedIn :: Boolean -> Effect Unit }
+  { isSignedIn :: Event Boolean
+  , setIsSignedIn :: Boolean -> Effect Unit
+  }
 
 buttonClass =
   """ <> tripleQ

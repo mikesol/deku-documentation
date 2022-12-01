@@ -2,42 +2,82 @@ module Scratch where
 
 import Prelude
 
-import Data.Tuple.Nested ((/\))
-import Deku.Control (guard, text, text_)
+import Control.Monad.Reader (ask, asks)
+import Data.Newtype (class Newtype, unwrap)
+import Deku.Control (text_)
+import Deku.Core (Domable)
 import Deku.DOM as D
-import Deku.Do as Deku
-import Deku.Hooks (useHot, useState, useState')
-import Deku.Listeners (click, click_)
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
-import FRP.Event (keepLatest)
+
+libAwesome
+  :: forall n r lock payload
+   . Newtype n
+       { libAwesome ::
+           { s1 :: String
+           , s2 :: String
+           , cont :: n -> Domable lock payload
+           }
+       | r
+       }
+  => n
+  -> Domable lock payload
+libAwesome = do
+  { libAwesome: { s1, s2, cont } } <- asks unwrap
+  c <- cont
+  pure $ D.div_
+    [ D.div__ ("Lib awesome says: " <> s1)
+    , D.div__ ("Lib awesome also says: " <> s2)
+    , c
+    ]
+
+libGreat
+  :: forall n r lock payload
+   . Newtype n
+       { libGreat ::
+           { x1 :: String }
+       | r
+       }
+  => n
+  -> Domable lock payload
+libGreat = do
+  { libGreat: { x1 } } <- asks unwrap
+  pure $ D.div_
+    [ D.div__ ("Lib great says: " <> x1)
+    ]
+
+newtype Env lock payload = Env
+  { libGreat ::
+      { x1 :: String }
+  , libAwesome ::
+      { s1 :: String
+      , s2 :: String
+      , cont :: Env lock payload -> Domable lock payload
+      }
+  , interjection :: String
+  }
+
+derive instance Newtype (Env lock payload) _
 
 main :: Effect Unit
 main = runInBody Deku.do
-  setIncrementer /\ incrementer <- useState'
-  setGoodbye /\ goodbye <- useState true
-  D.div_
-    [ D.a
-        ( click $ keepLatest $ incrementer <#>
-            \{ setNumber, number } -> number <#>
-              (add 1 >>> setNumber)
+  let
+    cont = do
+      lg <- libGreat
+      Env { interjection } <- ask
+      pure $ D.div_
+        ( [ D.div_ [ text_ interjection ]
+          , lg
+          ]
         )
-        [ text_ "Increment" ]
-    , D.div_ [ D.a (click_ (setGoodbye false)) [ text_ "Goodbye" ] ]
-    , D.div_
-        [ guard goodbye Deku.do
-            setNumber /\ number <- useHot 0
-            D.div_
-              [ D.div_
-                  [ text (number <#> show >>> ("n = " <> _))
-                  ]
-              , D.div_
-                  [ D.a
-                      ( click_
-                          (setIncrementer { setNumber, number })
-                      )
-                      [ text_ "Cede control" ]
-                  ]
-              ]
-        ]
-    ]
+  Env
+    { interjection: "Oh and..."
+    , libAwesome:
+        { s1: "I'm awesome!"
+        , s2: "Heck yeah!"
+        , cont
+        }
+    , libGreat: { x1: "I'm great!" }
+    } # do
+    awe <- libAwesome
+    pure $ D.div_ [ text_ "In all honesty...", awe ]
