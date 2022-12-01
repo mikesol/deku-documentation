@@ -8,7 +8,7 @@ import Data.Foldable (oneOf)
 import Data.Tuple.Nested ((/\))
 import Deku.Attribute ((!:=))
 import Deku.Attributes (klass_)
-import Deku.Control (globalPortal1, guard, portal, portal1, text_)
+import Deku.Control (guard, portal1, text_)
 import Deku.Control (text_)
 import Deku.Core (Domable, Nut)
 import Deku.DOM as D
@@ -70,7 +70,7 @@ import Data.Foldable (oneOf)
 import Data.Tuple.Nested ((/\))
 import Deku.Attribute ((!:=))
 import Deku.Attributes (klass_)
-import Deku.Control (globalPortal1, guard, text_)
+import Deku.Control (portal1, guard, text_)
 import Deku.Core (Domable, Nut)
 import Deku.DOM as D
 import Deku.Do as Deku
@@ -124,14 +124,14 @@ myVideo = D.video
 
 main :: Effect Unit
 main = runInBody Deku.do
-  vid <- globalPortal1 myVideo
-  setSquare /\ square <- useState TL
-  D.div (klass_ "grid grid-cols-2")
-    [ moveSpriteHere { video: vid, square, setSquare, at: TL }
-    , moveSpriteHere { video: vid, square, setSquare, at: TR }
-    , moveSpriteHere { video: vid, square, setSquare, at: BL }
-    , moveSpriteHere { video: vid, square, setSquare, at: BR }
-    ]"""
+  portal1 myVideo \(vid /\ _) -> Deku.do
+    setSquare /\ square <- useState TL
+    D.div (klass_ "grid grid-cols-2")
+      [ moveSpriteHere { video: vid, square, setSquare, at: TL }
+      , moveSpriteHere { video: vid, square, setSquare, at: TR }
+      , moveSpriteHere { video: vid, square, setSquare, at: BL }
+      , moveSpriteHere { video: vid, square, setSquare, at: BR }
+      ]"""
 
 theLocalPortalSyntax :: forall lock payload. Subsection lock payload
 theLocalPortalSyntax = subsection
@@ -139,16 +139,22 @@ theLocalPortalSyntax = subsection
   , matter: pure
       [ D.p_
           [ text_
-              "The local portal syntax looks a lot like the hooks syntax. We use a left-bind in a "
-          , D.code__ "Deku.do"
-          , text_
-              " bloc to create something that will be used later. But instead of creating a hook, we create a component. In the example below, look how "
-          , D.code__ "globalPortal1"
-          , text_
-              "is used to create a single component that is consumed by other components."
+              "Local portals look a lot like global portals with two important caveats."
+          , D.ol_
+              [ D.li_
+                  [ text_
+                      "They must be written as functions instead of using the "
+                  , D.code__ "do"
+                  , text_ " syntax with a left bind."
+                  ]
+              , D.li_
+                  [ text_
+                      "They output a additional parameter in addition to the component. We'll see what that parameter is a bit later, but for now we'll ignore it."
+                  ]
+              ]
           ]
       , psCode example
-      , D.p__ "And as y'all know, the result is the following."
+      , D.p__ "This yields a similar result as the one above."
       , portal1 myVideo \(vid /\ _) -> Deku.do
           setSquare /\ square <- useState TL
           D.div (klass_ "grid grid-cols-2")
@@ -159,25 +165,7 @@ theLocalPortalSyntax = subsection
             ]
       , D.p_
           [ text_
-              "While using a portal looks like using any ol' Deku node, don't let it fool you! Portals are created with a left bind, and as such are referentially opaque. That means that, when a portal is created, it represents "
-          , D.i__ "a single DOM node that exists"
-          , text_ ", as opposed to a template for a DOM node."
+              "Aside from these differences, local portals look a lot like global ones. However, for a bit extra syntax, you get better performance. Let's see how in the next section."
           ]
-      , D.p__
-          "Relating this concept to the example above, let's zoom in on the following line of code:"
-      , psCode "vid <- globalPortal1 myVideo"
-      , D.p_
-          [ text_ "The term "
-          , D.code__ "vid"
-          , text_
-              " is one single instantiation of our video. On the other hand, if we had passed "
-          , D.code__ "myVideo"
-          , text_ " to the "
-          , D.code__ "moveSpriteHere"
-          , text_
-              " function, we would be working with a referentially transparent object that acts as a blueprint for a node to construct as opposed to an actual node."
-          ]
-      , D.p__
-          "Because DOM nodes can only appear in one place in the DOM, when a portal is used multiple times, the behavior is undefined. For that reason, in your application logic, it is important to make sure that a portal only ever appears in at most one place."
       ]
   }
