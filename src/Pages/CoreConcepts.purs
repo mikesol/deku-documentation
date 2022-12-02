@@ -21,7 +21,7 @@ coreConcepts = chapter
       , pursx
       , portals
       , providers
-      , moreHooks
       , effects
+      , moreHooks
       ]
   }

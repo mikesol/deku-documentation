@@ -12,9 +12,7 @@ aMailboxingApp = subsection
   { title: "A mailboxing app"
   , matter: pure
       [ D.p_
-          [ text_ "This subsection will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "A mailboxing app" ]
-          , text_ "."
+          [ text_ "To show off the power of mailboxes, let's build a little mailboxing app! We'll have ten avatars you can send a message to. Make their day!"
           ]
       ]
   }
