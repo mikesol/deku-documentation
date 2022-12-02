@@ -6,15 +6,17 @@ import Components.Code (psCode)
 import Components.ExampleBlockquote (exampleBlockquote)
 import Constants (tripleQ)
 import Contracts (Subsection, subsection)
+import Control.Alt ((<|>))
 import Data.String (replaceAll, Pattern(..), Replacement(..))
 import Data.Tuple.Nested ((/\))
 import Deku.Attributes (klass_)
 import Deku.Control (guard, text, text_)
 import Deku.DOM as D
 import Deku.Do as Deku
-import Deku.Hooks (useHot, useState)
+import Deku.Hooks (useHot, useHot', useState, useState')
 import Deku.Listeners (click, click_)
 import Effect.Random (random)
+import FRP.Event.Effect (bindToEffect)
 import QualifiedDo.Alt as Alt
 
 -- bg-fuchsia-600
@@ -84,43 +86,45 @@ focus:ring-COLOR-500 focus:ring-offset-2"""
                 """
 
 main :: Effect Unit
-main = runInBody Deku.do
-  setNumber /\ number <- useState 0.42
-  setPresence /\ presence <- useState false
-  D.div_
-    [ D.div_
-        [ text $ number <#> show >>>
-            ("Here's a random number: " <> _)
-        ]
-    , D.div_
-        [ D.button
-            Alt.do
-              klass_ $ buttonClass "pink"
-              click_ $ random >>= setNumber
-            [ text_ "A"
-            ]
-        , D.button
-            Alt.do
-              klass_ $ buttonClass "green"
-              click $ presence <#> not >>> setPresence
-            [ text_ "B"
-            ]
-        ]
-    , D.div_
-        [ guard presence
-            $ text
-            $ number <#> show >>>
-                ("Here's the same random number: " <> _)
-        ]
-    ]"""
+main = do
+  n <- random
+  runInBody Deku.do
+    setNumber /\ number <- useState n
+    setPresence /\ presence <- useState false
+    D.div_
+      [ D.div_
+          [ text $ number <#> show >>>
+              ("Here's a random number: " <> _)
+          ]
+      , D.div_
+          [ D.button
+              Alt.do
+                klass_ $ buttonClass "pink"
+                click_ $ random >>= setNumber
+              [ text_ "A"
+              ]
+          , D.button
+              Alt.do
+                klass_ $ buttonClass "green"
+                click $ presence <#> not >>> setPresence
+              [ text_ "B"
+              ]
+          ]
+      , D.div_
+          [ guard presence
+              $ text
+              $ number <#> show >>>
+                  ("Here's the same random number: " <> _)
+          ]
+      ]"""
           )
       , exampleBlockquote
           [ Deku.do
-              setNumber /\ number <- useState 0.42
+              setNumber /\ number <- useState'
               setPresence /\ presence <- useState false
               D.div_
                 [ D.div_
-                    [ text $ number <#> show >>>
+                    [ text $ (bindToEffect (pure unit) (pure random) <|>  number) <#> show >>>
                         ("Here's a random number: " <> _)
                     ]
                 , D.div_
@@ -140,7 +144,7 @@ main = runInBody Deku.do
                 , D.div_
                     [ guard presence
                         $ text
-                        $ number <#> show >>>
+                        $ ( number) <#> show >>>
                             ("Here's the same random number: " <> _)
                     ]
                 ]
@@ -170,15 +174,15 @@ main = runInBody Deku.do
           ]
       , psCode
           """-- change this line
-setNumber /\ number <- useHot 0.42"""
+setNumber /\ number <- useHot n"""
       , D.p__ "And voilà the result."
       , exampleBlockquote
           [ Deku.do
-              setNumber /\ number <- useHot 0.42
+              setNumber /\ number <- useHot'
               setPresence /\ presence <- useState false
               D.div_
                 [ D.div_
-                    [ text $ number <#> show >>>
+                    [ text $ (bindToEffect (pure unit) (pure random) <|> number) <#> show >>>
                         ("Here's a random number: " <> _)
                     ]
                 , D.div_
@@ -198,7 +202,7 @@ setNumber /\ number <- useHot 0.42"""
                 , D.div_
                     [ guard presence
                         $ text
-                        $ number <#> show >>>
+                        $ (number) <#> show >>>
                             ("Here's the same random number: " <> _)
                     ]
                 ]

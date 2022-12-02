@@ -17,7 +17,7 @@ usingTheHookInText = subsection
           [ text_
               "Let's look at our hook again, this time focusing on the right side."
           ]
-      , psCode """setNumber /\ number <- useState 0.42"""
+      , psCode """setNumber /\ number <- useState n"""
       , D.p_
           [ text_ "The right side of our hook is of type "
           , D.code__ "Event Number"

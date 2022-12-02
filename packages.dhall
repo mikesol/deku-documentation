@@ -24,6 +24,13 @@ with hyrule =
     , repo = "https://github.com/natefaubion/purescript-tidy-codegen.git"
     , version = "v3.0.0"
     }
+  with pirates-charm =
+    { dependencies =
+      [ "hyrule"
+      ]
+    , repo = "https://github.com/mikesol/purescript-pirates-charm.git"
+    , version = "v0.0.1"
+    }
   with deku =
     { dependencies =
       [ "aff"

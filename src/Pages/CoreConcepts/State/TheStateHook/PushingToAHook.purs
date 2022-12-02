@@ -22,7 +22,7 @@ pushingToAHook = subsection
           ]
       , D.p_
           [ text_ "Let's have a look at the hook definition again." ]
-      , psCode """setNumber /\ number <- useState 0.42"""
+      , psCode """setNumber /\ number <- useState n"""
       , D.p_
           [ text_ "Hook pushers (aka setters) are always on the "
           , D.i__ "left"
