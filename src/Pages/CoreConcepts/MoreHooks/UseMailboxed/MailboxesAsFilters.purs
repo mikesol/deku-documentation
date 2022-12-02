@@ -25,7 +25,7 @@ import Router.ADT (Route(..))
 
 mailboxesAsFilters :: forall lock payload. Subsection lock payload
 mailboxesAsFilters = subsection
-  { title: "Mailboxes as filters"
+  { title: "Hello mailbox"
   , matter: \(Env { routeLink }) ->
       [ D.p_
           [ text_ "A mailbox is similar to the "
@@ -112,11 +112,6 @@ mailboxesAsFilters = subsection
                     )
                 ]
           ]
-      , D.p_
-          [text_ "While it's possible to achieve a similar outcome with "
-          , routeLink Filtering
-          , text_
-              ", it is much slower. So when woring with collections where you'll have to update a single addressable element in response to an event, use mailboxes!"
-          ]
+      
       ]
   }
