@@ -13,6 +13,7 @@
     "@tailwindcss/typography": "^0.5.7",
     "autoprefixer": "^10.4.12",
     "clsx": "^1.2.1",
+    "flowbite": "^1.5.4",
     "focus-visible": "^5.2.0",
     "inflection": "^2.0.0",
     "js-confetti": "^0.11.0",

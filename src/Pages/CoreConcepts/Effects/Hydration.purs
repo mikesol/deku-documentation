@@ -15,11 +15,9 @@ hydration = section
   { title: "Hydration"
   , topmatter: pure
       [ D.p_
-          [ text_ "This section will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "Hydration" ]
-          , text_ "."
+          [ text_ "In Deku, components traditionally manage side effects by hydrating their children. Let's look at that what that means and how to implement it in practice."
           ]
       ]
   , subsections:
-      [ anAlternativeEffectModel, injectingDependencies, cleanup ]
+      [ anAlternativeEffectModel, injectingDependencies {-, cleanup -} ]
   }

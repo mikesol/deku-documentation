@@ -16,9 +16,10 @@ bindingToEffects = section
   { title: "Binding to effects"
   , topmatter: pure
       [ D.p_
-          [ text_ "This section will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "Aff" ]
-          , text_ "Aff."
+          [ text_ "This section explores the dark arts of tying hooks to side effects. It is a vile, unsavory practice that you should only indulge in sparingly. It's meant for hotfixes and emergencies when you cannot discern the control flow of an application and need to tie business logic to event streams."
+          ]
+          ,  D.p_
+          [ text_ "Too much of this will make your app an unmaintainable mess, though, so when you have time to clean up that technical debt (ah, the lies we tell ourselves...), get rid of these methods!"
           ]
       ]
   , subsections:

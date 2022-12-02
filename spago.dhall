@@ -22,6 +22,7 @@ to generate this file without the comments in this block.
   , "dodo-printer"
   , "effect"
   , "either"
+  , "fetch"
   , "filterable"
   , "foldable-traversable"
   , "foreign"
@@ -29,6 +30,7 @@ to generate this file without the comments in this block.
   , "hyrule"
   , "identity"
   , "integers"
+  , "js-date"
   , "language-cst-parser"
   , "lists"
   , "maybe"
@@ -55,6 +57,7 @@ to generate this file without the comments in this block.
   , "web-events"
   , "web-html"
   , "web-uievents"
+  , "yoga-fetch"
   , "yoga-json"
   ]
 , packages = ./packages.dhall

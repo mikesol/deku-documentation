@@ -2,21 +2,95 @@ module Pages.CoreConcepts.Effects.Aff.TriggerAffWithCancellation where
 
 import Prelude
 
+import Components.Code (psCode)
+import Components.ExampleBlockquote (exampleBlockquote)
+import Constants (tripleQ)
 import Contracts (Subsection, subsection)
-import Deku.Control (text_)
+import Contracts (Subsection, subsection)
+import Data.Int (floor)
+import Data.JSDate (getTime, now)
+import Data.Tuple.Nested ((/\))
 import Deku.Attribute ((!:=))
+import Deku.Attribute ((!:=))
+import Deku.Attributes (klass_)
+import Deku.Control (blank, text, text_, (<#~>))
+import Deku.Control (text_)
 import Deku.DOM as D
+import Deku.DOM as D
+import Deku.Do as Deku
+import Deku.Hooks (useState, useState')
+import Deku.Listeners (click, click_)
+import Deku.Pursx ((~~))
+import Effect.Aff (Milliseconds(..), delay, launchAff, launchAff_)
+import Effect.Class (liftEffect)
+import Effect.Random (random)
+import FRP.Event.Aff (bindToAff, bindToAffWithCancellation)
+import FRP.Event.Effect (bindToEffect)
+import Fetch (Method(..), fetch)
+import QualifiedDo.Alt as Alt
+import Type.Proxy (Proxy(..))
 
 triggerAffWithCancellation
   :: forall lock payload. Subsection lock payload
 triggerAffWithCancellation = subsection
   { title: "The bindToAffWithCancellation function"
   , matter: pure
-      [ D.p_
-          [ text_ "This subsection will be about "
-          , D.span (D.Class !:= "font-bold")
-              [ text_ "Triggering a pushers from asynchronous code" ]
-          , text_ "."
+      [  D.p_
+          [ text_
+              "This variation does cancellation, so when a new aff comes down the pipe, the previous one is cancelled."
+          ]
+      , psCode
+          ( """Deku.do
+  setThunk /\ thunk <- useState'
+  D.div_
+    [ D.a
+        Alt.do
+          click_ (setThunk unit)
+          klass_ "cursor-pointer"
+        [ text_ "Current timestamp" ]
+    , text_ ": "
+    , text
+        ( show <$> bindToAffWithCancellation thunk
+            ( const do
+                { text } <- fetch "https://httpbin.org/post"
+                  { method: POST
+                  , body: """ <> tripleQ
+              <>
+                """
+          { "hello": "world" }
+          """
+              <> tripleQ
+              <>
+                """
+                  , headers: { "Content-Type": "application/json" }
+                  }
+                show <$> text
+            )
+        )
+    ]"""
+          )
+      , exampleBlockquote
+          [ Deku.do
+              setThunk /\ thunk <- useState'
+              D.div_
+                [ D.a
+                    Alt.do
+                      click_ (setThunk unit)
+                      klass_ "cursor-pointer"
+                    [ text_ "Click for a random http response" ]
+                , text_ ": "
+                , text
+                    ( show <$> bindToAffWithCancellation thunk
+                        ( const do
+                            { text } <- fetch "https://httpbin.org/post"
+                              { method: POST
+                              , body: """{"hello":"world"}"""
+                              , headers: { "Content-Type": "application/json" }
+                              }
+                            text
+                        )
+                    )
+                ]
           ]
       ]
   }

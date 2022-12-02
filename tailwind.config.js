@@ -22,7 +22,7 @@ module.exports = {
     },
     extend: {
       backgroundImage: {
-        alexander: "url('/assets/alexanderBackground.png')"
+        alexander: "url('/assets/alexanderBackground.png')",
       },
       colors: {
         alexander: {
@@ -32,13 +32,12 @@ module.exports = {
       fontFamily: {
         sans: ['Inter', ...defaultTheme.fontFamily.sans],
         display: ['Lexend', ...defaultTheme.fontFamily.sans],
-        aldine: ['"Aldine 721"', ...defaultTheme.fontFamily.serif]
-
+        aldine: ['"Aldine 721"', ...defaultTheme.fontFamily.serif],
       },
       maxWidth: {
         '8xl': '88rem',
       },
     },
   },
-  plugins: [require('@tailwindcss/typography')],
+  plugins: [require('@tailwindcss/typography'), require('flowbite/plugin')],
 }
