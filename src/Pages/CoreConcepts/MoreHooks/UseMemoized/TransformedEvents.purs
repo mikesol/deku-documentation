@@ -2,19 +2,115 @@ module Pages.CoreConcepts.MoreHooks.UseMemoized.TransformedEvents where
 
 import Prelude
 
+import Components.Code (psCode)
+import Components.ExampleBlockquote (exampleBlockquote)
+import Contracts (Section, section)
 import Contracts (Subsection, subsection)
-import Deku.Control (text_)
+import Data.Array (intercalate, replicate)
+import Data.Tuple (fst, snd)
+import Data.Tuple.Nested ((/\))
 import Deku.Attribute ((!:=))
+import Deku.Attribute ((!:=))
+import Deku.Attributes (klass_)
+import Deku.Control (text, text_)
+import Deku.Control (text_)
 import Deku.DOM as D
+import Deku.DOM as D
+import Deku.Do as Deku
+import Deku.Hooks (useMemoized, useState)
+import Deku.Listeners (click)
+import QualifiedDo.Alt as Alt
 
 transformedEvents :: forall lock payload. Subsection lock payload
 transformedEvents = subsection
-  { title: "Transformed events"
+  { title: "From an event"
   , matter: pure
       [ D.p_
-          [ text_ "This subsection will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "Transformed events" ]
-          , text_ "."
+          [ text_
+              "To make a more efficient version of the example above, we use the "
+          , D.code__ "useMemoized"
+          , text_ " hook."
+          ]
+      , psCode
+          """Deku.do
+  a <- useState true
+  b <- useState false
+  c <- useState true
+  d <- useState false
+  e <- useState true
+  composedEvent <- useMemoized $ { a: _, b: _, c: _, d: _, e: _ }
+    <$> snd a
+    <*> snd b
+    <*> snd c
+    <*> snd d
+    <*> snd e
+  D.div_
+    [ D.div_
+        ( map
+            ( \i -> D.a
+                Alt.do
+                  click $ snd i <#> not >>> fst i
+                  klass_ "cursor-pointer"
+                [ text_ "Click me " ]
+            )
+            [ a, b, c, d, e ]
+        )
+    , D.div_
+        ( replicate 10
+            ( D.div_
+                [ text $ composedEvent
+                    <#> \{ a, b, c, d, e } ->
+                      intercalate " " $ map show
+                        [ a, b, c, d, e ]
+                ]
+            )
+        )
+    ]
+"""
+      , D.p__ "Resulting in the following example:"
+      , exampleBlockquote
+          [ Deku.do
+              a <- useState true
+              b <- useState false
+              c <- useState true
+              d <- useState false
+              e <- useState true
+              composedEvent <- useMemoized $ { a: _, b: _, c: _, d: _, e: _ }
+                <$> snd a
+                <*> snd b
+                <*> snd c
+                <*> snd d
+                <*> snd e
+              D.div_
+                [ D.div_
+                    ( map
+                        ( \i -> D.a
+                            Alt.do
+                              click $ snd i <#> not >>> fst i
+                              klass_ "cursor-pointer"
+                            [ text_ "Click me " ]
+                        )
+                        [ a, b, c, d, e ]
+                    )
+                , D.div_
+                    ( replicate 10
+                        ( D.div_
+                            [ text $ composedEvent
+                                <#> \{ a, b, c, d, e } ->
+                                  intercalate " " $ map show
+                                    [ a, b, c, d, e ]
+                            ]
+                        )
+                    )
+                ]
+          ]
+      , D.p_
+          [ text_ "Now, each subscription to "
+          , D.code__ "composedEvent"
+          , text_ " will draw from the "
+          , D.i__ "same"
+          , text_
+              " event. This can help avoid lag, especially when working in a rendering loop that needs to execute at 60fps."
           ]
       ]
   }

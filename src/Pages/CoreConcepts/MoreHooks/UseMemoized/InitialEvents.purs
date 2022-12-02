@@ -9,7 +9,7 @@ import Deku.DOM as D
 
 initialEvents :: forall lock payload. Subsection lock payload
 initialEvents = subsection
-  { title: "Initial events"
+  { title: "Without an event"
   , matter: pure
       [ D.p_
           [ text_ "This subsection will be about "
