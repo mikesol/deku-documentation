@@ -21,5 +21,5 @@ hydration = section
           ]
       ]
   , subsections:
-      [ injectingDependencies, cleanup, anAlternativeEffectModel ]
+      [ anAlternativeEffectModel, injectingDependencies, cleanup ]
   }
