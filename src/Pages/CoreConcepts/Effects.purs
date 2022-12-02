@@ -6,8 +6,8 @@ import Contracts (Page, page)
 import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.DOM as D
-import Pages.CoreConcepts.Effects.Pushers (pushers)
 import Pages.CoreConcepts.Effects.Hydration (hydration)
+import Pages.CoreConcepts.Effects.Aff (aff)
 import Pages.CoreConcepts.Effects.LifecycleMethods (lifecycleMethods)
 import Router.ADT (Route(..))
 
@@ -40,5 +40,5 @@ effects = page
           ]
       ]
   , sections:
-      [ pushers, hydration, lifecycleMethods ]
+      [ hydration, aff, lifecycleMethods ]
   }
