@@ -21,6 +21,14 @@ import Deku.Hooks (useMemoized, useState)
 import Deku.Listeners (click)
 import QualifiedDo.Alt as Alt
 
+inputKls :: String
+inputKls =
+  """rounded-md
+border-gray-300 shadow-sm
+border-2 mr-2
+border-solid
+focus:border-indigo-500 focus:ring-indigo-500
+sm:text-sm"""
 transformedEvents :: forall lock payload. Subsection lock payload
 transformedEvents = subsection
   { title: "From an event"
