@@ -3,7 +3,6 @@ module Pages.CoreConcepts.Providers.RowPolymorphism where
 import Prelude
 
 import Contracts (Section, section)
-import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.DOM as D
 import Pages.CoreConcepts.Providers.RowPolymorphism.DifferencesWithTraditionalPolymorphism (differencesWithTraditionalPolymorphism)

@@ -7,7 +7,7 @@ import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.DOM as D
 import Pages.CoreConcepts.Effects.Hydration (hydration)
-import Pages.CoreConcepts.Effects.Aff (aff)
+import Pages.CoreConcepts.Effects.BindingToEffects (bindingToEffects)
 import Pages.CoreConcepts.Effects.LifecycleMethods (lifecycleMethods)
 import Router.ADT (Route(..))
 
@@ -40,5 +40,5 @@ effects = page
           ]
       ]
   , sections:
-      [ hydration, aff, lifecycleMethods ]
+      [ hydration, bindingToEffects, lifecycleMethods ]
   }
