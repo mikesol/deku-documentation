@@ -9,6 +9,7 @@ import Deku.Control (text_)
 import Deku.DOM as D
 import Pages.Introduction.GettingStarted.GettingHelp (gettingHelp)
 import Pages.Introduction.GettingStarted.QuickStart (quickStart)
+import Pages.Introduction.GettingStarted.WhyDeku (whyDeku)
 import Router.ADT (Route(..))
 
 gettingStarted :: forall lock payload. Page lock payload
@@ -26,5 +27,5 @@ gettingStarted = page
           ]
       ]
   , sections:
-      [ quickStart, {-basicUsage,-} gettingHelp ]
+      [ quickStart, {-basicUsage,-} whyDeku, gettingHelp ]
   }
