@@ -12,9 +12,7 @@ performanceNotes = subsection
   { title: "Performance notes"
   , matter: pure
       [ D.p_
-          [ text_ "This subsection will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "Performance notes" ]
-          , text_ "."
+          [ text_ "The performance of events created using ", D.code__ "create", text_ " scales linearly with the number of times the event is subscribed to. Any one unsubscribe has logarithmic performance."
           ]
       ]
   }
