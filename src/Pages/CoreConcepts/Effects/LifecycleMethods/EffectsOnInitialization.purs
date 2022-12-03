@@ -2,7 +2,6 @@ module Pages.CoreConcepts.Effects.LifecycleMethods.EffectsOnInitialization where
 
 import Prelude
 
-import Components.Code (psCode)
 import Components.Table (tableClass)
 import Contracts (Subsection, subsection)
 import Deku.Attribute ((!:=))
@@ -29,11 +28,8 @@ effectsOnInitialization = subsection
                       "The effect will run before the component mounts on the screen."
                   ]
               , D.td tableClass
-                  [ psCode
-                      """forall lock payload
-   . Effect Unit
-  -> Domable lock payload
-  -> Domable lock payload"""
+                  [ D.code__
+                      """forall lock payload. Effect Unit -> Domable lock payload -> Domable lock payload"""
                   ]
               ]
           , D.tr_
@@ -43,11 +39,8 @@ effectsOnInitialization = subsection
                       "The effect will run directly after the component mounts on the screen."
                   ]
               , D.td tableClass
-                  [ psCode
-                      """forall lock payload
-   . Effect Unit
-  -> Domable lock payload
-  -> Domable lock payload"""
+                  [ D.code__
+                      """forall lock payload. Effect Unit -> Domable lock payload -> Domable lock payload"""
                   ]
               ]
           ]

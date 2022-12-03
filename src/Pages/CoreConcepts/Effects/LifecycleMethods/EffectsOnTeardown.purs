@@ -2,7 +2,6 @@ module Pages.CoreConcepts.Effects.LifecycleMethods.EffectsOnTeardown where
 
 import Prelude
 
-import Components.Code (psCode)
 import Components.Table (tableClass)
 import Contracts (Subsection, subsection)
 import Deku.Attribute ((!:=))
@@ -29,11 +28,8 @@ effectsOnTeardown = subsection
                       "The effect will run directly after the component is removed from the screen."
                   ]
               , D.td tableClass
-                  [ psCode
-                      """forall lock payload
-   . Effect Unit
-  -> Domable lock payload
-  -> Domable lock payload"""
+                  [ D.code__
+                      """forall lock payload. Effect Unit -> Domable lock payload -> Domable lock payload"""
                   ]
               ]
           ]
