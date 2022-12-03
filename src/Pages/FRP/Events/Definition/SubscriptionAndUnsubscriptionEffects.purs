@@ -4,14 +4,11 @@ import Prelude
 
 import Components.Code (psCode)
 import Contracts (Subsection, subsection)
-import Control.Monad.Error.Class (throwError)
-import Data.Maybe (maybe)
 import Deku.Attribute ((!:=))
 import Deku.Attributes (klass_)
 import Deku.Control (text_)
 import Deku.DOM as D
 import Effect (Effect)
-import Effect.Exception (error)
 import Effect.Random (random)
 import Effect.Ref (new, read, write)
 import Effect.Timer (clearInterval, setInterval)
@@ -24,6 +21,7 @@ import Web.Event.Event (EventType(..))
 import Web.Event.EventTarget (addEventListener, eventListener)
 import Web.HTML (window)
 import Web.HTML.HTMLDocument (body, toDocument)
+import Web.HTML.HTMLDocument (toDocument)
 import Web.HTML.Window (document)
 
 type Event a = (a -> Effect Unit) -> Effect (Effect Unit)

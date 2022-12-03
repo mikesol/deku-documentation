@@ -65,9 +65,6 @@ export const addExpandButton = () => {
       if (sib) {
         const icon = document.createElement('button')
         icon.innerHTML = noCollapse ? '-' : '+'
-        icon.style.position = 'absolute'
-        icon.style.left = '-2em'
-        icon.style.top = '-1.5em'
         icon.setAttribute(
           'class',
           `inline-flex items-center rounded-md
@@ -89,9 +86,8 @@ export const addExpandButton = () => {
           }
         })
         const div = document.createElement('div')
-        div.style.height = '0'
-        div.style.width = '0'
-        div.style.position = 'relative'
+        div.style.position = 'absolute'
+        div.style.transform = 'translate(-26px, -22px)';
         div.appendChild(icon)
         obj.insertBefore(div, sib)
         obj.insertBefore(newSpan, div)
