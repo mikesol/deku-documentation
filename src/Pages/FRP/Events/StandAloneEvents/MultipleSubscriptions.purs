@@ -12,9 +12,19 @@ multipleSubscriptions = subsection
   { title: "Multiple subscriptions"
   , matter: pure
       [ D.p_
-          [ text_ "This subsection will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "Multiple subscriptions" ]
-          , text_ "."
+          [ text_ "Unlike the event created by "
+          , D.code__ "create"
+          , text_ ", each subscription to an event created by "
+          , D.code__ "makeEvent"
+          , text_ " results in a new effect chain being run on "
+          , D.i__ "each"
+          , text_
+              " subscription. To illustrate this, let's create a small app with five subscriptions to the same "
+          , D.code__ "setInterval"
+          , text_
+              " event. Even though the event is the same, each subscription will trigger a "
+          , D.i__ "different"
+          , text_ " side effect, which will cause the five results to diverge."
           ]
       ]
   }

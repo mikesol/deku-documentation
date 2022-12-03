@@ -15,9 +15,12 @@ standAloneEvents = section
   { title: "Stand-alone events"
   , topmatter: pure
       [ D.p_
-          [ text_ "This section will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "Stand-alone events" ]
-          , text_ "."
+          [ text_ "The event based on "
+          , D.code__ "setInterval"
+          , text_ " that we saw earlier on this page is an example of a "
+          , D.b__ "Stand-alone event"
+          , text_
+              ". These events do not have a pusher associated with them because all of the pushing happens within the event. They also manage their own unsubscribe effects."
           ]
       ]
   , subsections:
