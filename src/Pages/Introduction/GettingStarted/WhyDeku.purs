@@ -23,14 +23,14 @@ whyDeku = section
           ]
       , D.p_
           [ text_
-              "Additionally, this documentation was created with Deku and is available on "
+              "This documentation was created with Deku and is available on "
           , D.a
               ( href_ "https://github.com/mikesol/deku-documentation"
                   <|> (D.Target !:= "_blank")
               )
               [ text_ "GitHub" ]
           , text_
-              ". It is built with best practices in mind for anyone who groks things by reading code more than or in addition to reading docs!"
+              ". It was built with best practices in mind for anyone who groks things by reading code more than, or in addition to, reading the docs!"
           ]
       ]
   , subsections:

@@ -20,9 +20,6 @@ theCode = subsection
 
 import Prelude
 
-
-import Prelude
-
 import Deku.Control (text_)
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
