@@ -2,7 +2,7 @@ module Pages.CoreConcepts.Providers.FunctionsAsProviders.UsingFunctionsAsMonads 
 
 import Prelude
 
-import Components.Code (psCode)
+import Components.Code (psCode, psCodeNoCollapse)
 import Components.ExampleBlockquote (exampleBlockquote)
 import Constants (tripleQ)
 import Contracts (Subsection, subsection)
@@ -107,7 +107,7 @@ usingFunctionsAsMonads = subsection
               "As a motivating example, let's create a Deku app that simulates a pre- and post-authentication UI. In React, this would be accomplished with an authentication context and provider. In Deku, we'll just use a function! And we'll treat the function as a monad to make the flow more ergonomic."
           ]
       , D.p__ "Our basic authentication app is written thusly."
-      , psCode example
+      , psCodeNoCollapse example
       , D.p__ "And here it is for your authenticating pleasure!"
       , exampleBlockquote
           [ Deku.do

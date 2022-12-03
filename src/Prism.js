@@ -12,8 +12,8 @@ export const addExpandButton = () => {
   const collection = document.querySelectorAll('code.language-purescript')
   for (let i = 0; i < collection.length; i++) {
     const obj = collection[i]
+    const noCollapse = obj.className.includes('no-collapse')
     const x = Node.ELEMENT_NODE
-    // console.log(obj)
     let check = 0
     let startNode = null
     for (let i = 0; i < obj.childNodes.length; i++) {
@@ -58,14 +58,13 @@ export const addExpandButton = () => {
         }
         prevSib = sib
         sib = sib.nextSibling
-        // console.log(sib);
         newSpan.appendChild(prevSib)
       }
       newSpan.appendChild(prevSib)
-      newSpan.className = "hidden"
+      newSpan.className = noCollapse ? '' : 'hidden'
       if (sib) {
         const icon = document.createElement('button')
-        icon.innerHTML = '+'
+        icon.innerHTML = noCollapse ? '-' : '+'
         icon.style.position = 'absolute'
         icon.style.left = '-2em'
         icon.style.top = '-1.5em'
@@ -77,23 +76,23 @@ export const addExpandButton = () => {
         hover:bg-indigo-700 focus:outline-none focus:ring-2
         focus:ring-indigo-500 focus:ring-offset-2`
         )
-        let open = false;
+        let open = noCollapse
         icon.addEventListener('click', () => {
           if (open) {
-            open = false;
-            newSpan.className = "hidden";
-            icon.textContent = "+"
+            open = false
+            newSpan.className = 'hidden'
+            icon.textContent = '+'
           } else {
-            open = true;
-            newSpan.className = "";
-            icon.textContent = "-"
+            open = true
+            newSpan.className = ''
+            icon.textContent = '-'
           }
         })
         const div = document.createElement('div')
         div.style.height = '0'
         div.style.width = '0'
         div.style.position = 'relative'
-        div.appendChild(icon);
+        div.appendChild(icon)
         obj.insertBefore(div, sib)
         obj.insertBefore(newSpan, div)
       } else {
