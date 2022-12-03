@@ -15,8 +15,11 @@ definition = section
   { title: "Definition"
   , topmatter: pure
       [ D.p_
-          [ text_ "This section will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "Definition" ]
+          [ text_ "Before we start working with the "
+          , D.code__ "Event"
+          , text_
+              " type constructor, let's delve into the canonical definition of "
+          , D.code__ "Event"
           , text_ "."
           ]
       ]

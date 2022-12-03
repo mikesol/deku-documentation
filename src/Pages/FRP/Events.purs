@@ -2,6 +2,7 @@ module Pages.FRP.Events where
 
 import Prelude
 
+import Components.Code (psCode)
 import Contracts (Page, page)
 import Deku.Attribute ((!:=))
 import Deku.Control (text_)
@@ -18,13 +19,25 @@ events = page
   { route: Events
   , topmatter: pure
       [ D.p (D.Class !:= "lead")
-          [ text_ "This page will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "Events" ]
-          , text_ "."
+          [ text_ "The original FRP type. Always imitated, never duplicated."
           ]
       , D.p_
           [ text_
-              "Possimus saepe veritatis sint nobis et quam eos. Architecto consequatur odit perferendis fuga eveniet possimus rerum cumque. Ea deleniti voluptatum deserunt voluptatibus ut non iste."
+              "If you've been following these docs from the beginning, you've been working with events for several pages already. Every time you used a state hook, you created an event as well as a pusher to push values to that event."
+          ]
+      , psCode
+          """Deku.do
+  pusher /\ event <- useState 42"""
+      , D.p_
+          [ text_
+              "We've also seen that events can be mapped over, which is how we turned their raw data into things like text and attributes."
+          ]
+      , D.p_
+          [ text_
+              " To create robust web apps with Deku, however, it's important to go to the heart of the "
+          , D.code__ "Event"
+          , text_
+              " type constructor and understand its strengths and limitations. Armed with that knowledge, you'll be able to create truly reactive sites for the ages!"
           ]
       ]
   , sections:
