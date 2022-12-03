@@ -2,7 +2,7 @@ module Pages.CoreConcepts.Providers.RowPolymorphism.RowPolymorphismAndProviders 
 
 import Prelude
 
-import Components.Code (psCode)
+import Components.Code (psCode, psCodeNoCollapse)
 import Components.ExampleBlockquote (exampleBlockquote)
 import Contracts (Subsection, subsection)
 import Control.Monad.Reader (ask, asks)
@@ -168,7 +168,7 @@ rowPolymorphismAndProviders = subsection
               ]
           ]
       , D.p__ "Here's the code."
-      , psCode example
+      , psCodeNoCollapse example
       , D.p__ "And here's the result."
       , exampleBlockquote
           [ Deku.do
