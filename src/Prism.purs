@@ -15,13 +15,15 @@ import Web.DOM (Element)
 
 foreign import highlightAll :: Effect Unit
 foreign import highlightAllAsync :: Effect Unit
+foreign import addExpandButton :: Effect Unit
 
 forceHighlight :: Nut
 forceHighlight = D.div
   ( oneOf
       [ klass_ "hidden"
-      , D.Self !:= \(_ :: Element) ->
+      , D.Self !:= \(_ :: Element) -> do
           highlightAll
+          addExpandButton
       ]
   )
   []
@@ -32,8 +34,8 @@ forceHighlightAff = D.div
       [ klass_ "hidden"
       , D.Self !:= \(_ :: Element) -> launchAff_ do
          delay (Milliseconds 0.0)
-         liftEffect $ log "highlighting"
          liftEffect highlightAll
+         liftEffect addExpandButton
       ]
   )
   []
