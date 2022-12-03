@@ -58,7 +58,7 @@ shorthandListeners = subsection
           ]
       , D.p__ "As an example, consider the following slider."
       , psCode
-          """module <aom where
+          """module Main where
 
 import Prelude
 

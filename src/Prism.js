@@ -67,7 +67,6 @@ export const addExpandButton = () => {
         const icon = document.createElement('button')
         icon.innerHTML = '+'
         icon.style.position = 'absolute'
-        icon.style.zIndex = "10000"
         icon.style.left = '-2em'
         icon.style.top = '-1.5em'
         icon.setAttribute(
