@@ -23,7 +23,7 @@ import Effect.Random (random)
 import QualifiedDo.Alt as Alt
 import Type.Proxy (Proxy(..))
 
-example = """module Scratch where
+example = """module Main where
 
 import Prelude
 

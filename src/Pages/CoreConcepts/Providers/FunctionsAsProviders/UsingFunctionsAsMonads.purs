@@ -22,7 +22,7 @@ import QualifiedDo.Alt as Alt
 
 example :: String
 example =
-  """module Scratch where
+  """module Main where
 
 import Prelude
 

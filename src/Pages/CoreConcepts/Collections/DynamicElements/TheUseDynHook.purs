@@ -168,70 +168,70 @@ theUseDynHook = subsection
               , D.code__ "useDyn"
               , text_ "directive."
               ]
-          , D.p__ "Let's see some code!"
-          , psCode example
-          , D.p__ "And here's the result."
-          , exampleBlockquote
-              [ Deku.do
-                  setItem /\ item <- useState'
-                  setInput /\ input <- useHot'
-                  let
-                    guardAgainstEmpty e = do
-                      v <- value e
-                      if v == "" then
-                        window >>= alert "Item cannot be empty"
-                      else setItem v
-                    top =
-                      D.div_
-                        [ D.input
-                            Alt.do
-                              D.Value !:= "Tasko primo"
-                              keyUp $ pure \evt -> do
-                                when (code evt == "Enter") $
-                                  for_
-                                    ((target >=> fromEventTarget) (toEvent evt))
-                                    guardAgainstEmpty
-                              D.SelfT !:= setInput
-                              klass_ inputKls
-                            []
-                        , D.button
-                            Alt.do
-                              click $ input <#> guardAgainstEmpty
-                              klass_ $ buttonClass "green"
-                            [ text_ "Add" ]
-                        ]
+          ]
+      , D.p__ "Let's see some code!"
+      , psCode example
+      , D.p__ "And here's the result."
+      , exampleBlockquote
+          [ Deku.do
+              setItem /\ item <- useState'
+              setInput /\ input <- useHot'
+              let
+                guardAgainstEmpty e = do
+                  v <- value e
+                  if v == "" then
+                    window >>= alert "Item cannot be empty"
+                  else setItem v
+                top =
                   D.div_
-                    [ top
-                    , dyn
-                        $ map
-                            ( \t -> Deku.do
-                                useDyn_
-                                D.div_ [ text_ t ]
-                            )
-                            item
+                    [ D.input
+                        Alt.do
+                          D.Value !:= "Tasko primo"
+                          keyUp $ pure \evt -> do
+                            when (code evt == "Enter") $
+                              for_
+                                ((target >=> fromEventTarget) (toEvent evt))
+                                guardAgainstEmpty
+                          D.SelfT !:= setInput
+                          klass_ inputKls
+                        []
+                    , D.button
+                        Alt.do
+                          click $ input <#> guardAgainstEmpty
+                          klass_ $ buttonClass "green"
+                        [ text_ "Add" ]
                     ]
-              ]
-          , D.p_
-              [ text_ "As we learned in "
-              , routeLink State
-              , text_ ", the right side of a state hook is of type "
-              , D.code__ "Event a"
-              , text_ ", where "
-              , D.code__ "a"
-              , text_ " is whatever's being pushed to the pusher. Because "
-              , D.code__ "Event"
-              , text_ " is a functor, we can "
-              , D.code__ "map"
-              , text_
-                  " over it. So far, we've been doing simple transformations like mapping over "
-              , D.code__ "Event Int"
-              , text_ " to turn it into "
-              , D.code__ "Event String"
-              , text_ ". Here, we're mapping over an "
-              , D.code__ "Event"
-              , text_
-                  " to transform it into a Deku component. So instead of streaming text to a text node, we're streaming components to the DOM, but it's the same pattern!"
-              ]
+              D.div_
+                [ top
+                , dyn
+                    $ map
+                        ( \t -> Deku.do
+                            useDyn_
+                            D.div_ [ text_ t ]
+                        )
+                        item
+                ]
+          ]
+      , D.p_
+          [ text_ "As we learned in "
+          , routeLink State
+          , text_ ", the right side of a state hook is of type "
+          , D.code__ "Event a"
+          , text_ ", where "
+          , D.code__ "a"
+          , text_ " is whatever's being pushed to the pusher. Because "
+          , D.code__ "Event"
+          , text_ " is a functor, we can "
+          , D.code__ "map"
+          , text_
+              " over it. So far, we've been doing simple transformations like mapping over "
+          , D.code__ "Event Int"
+          , text_ " to turn it into "
+          , D.code__ "Event String"
+          , text_ ". Here, we're mapping over an "
+          , D.code__ "Event"
+          , text_
+              " to transform it into a Deku component. So instead of streaming text to a text node, we're streaming components to the DOM, but it's the same pattern!"
           ]
       ]
   }
