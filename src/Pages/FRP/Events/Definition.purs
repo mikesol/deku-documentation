@@ -26,6 +26,6 @@ definition = section
   , subsections:
       [ theTypeAndContract
       , subscriptionAndUnsubscriptionEffects
-      , contuationPassingStyle
+      -- , contuationPassingStyle
       ]
   }

@@ -12,10 +12,7 @@ contuationPassingStyle = subsection
   { title: "Contuation passing style"
   , matter: pure
       [ D.p_
-          [ text_ "This subsection will be about "
-          , D.span (D.Class !:= "font-bold")
-              [ text_ "Contuation passing style" ]
-          , text_ "."
+          [ text_ ""
           ]
       ]
   }
