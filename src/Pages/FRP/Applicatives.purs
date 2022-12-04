@@ -2,8 +2,11 @@ module Pages.FRP.Applicatives where
 
 import Prelude
 
+import Components.TargetedLink (targetedLink)
 import Contracts (Page, page)
+import Control.Alt ((<|>))
 import Deku.Attribute ((!:=))
+import Deku.Attributes (href_)
 import Deku.Control (text_)
 import Deku.DOM as D
 import Pages.FRP.Applicatives.Applicative (applicative)
@@ -16,13 +19,33 @@ applicatives = page
   { route: Applicatives
   , topmatter: pure
       [ D.p (D.Class !:= "lead")
-          [ text_ "This page will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "Applicatives" ]
-          , text_ "."
+          [ targetedLink "https://www.youtube.com/watch?v=4AyjKgz9tKg"
+              [ text_ "Conjunction junctor, what's your functor?" ]
           ]
       , D.p_
-          [ text_
-              "Possimus saepe veritatis sint nobis et quam eos. Architecto consequatur odit perferendis fuga eveniet possimus rerum cumque. Ea deleniti voluptatum deserunt voluptatibus ut non iste."
+          [ D.code__ "Event"
+          , text_ " is a "
+          , targetedLink
+              "https://pursuit.purescript.org/packages/purescript-prelude/docs/Data.Functor"
+              [ D.code__ "Functor" ]
+          , text_
+              ". It benefits from all the functorial goodness that functorness adorns unto type constructors like "
+          , D.code__ "Maybe"
+          , text_ " and "
+          , D.code__ "Array"
+          , text_ ". Equally if not more importantly, "
+          , D.code__ "Event"
+          , text_ " is an "
+          , targetedLink
+              "https://pursuit.purescript.org/packages/purescript-prelude/docs/Control.Applicative"
+
+              [ D.code__ "Applicative Functor" ]
+          , text_ ". But is it a "
+          , targetedLink
+              "https://pursuit.purescript.org/packages/purescript-prelude/docs/Control.Monad"
+
+              [ D.code__ "Monad" ]
+          , text_ "? To find out, read on!"
           ]
       ]
   , sections:

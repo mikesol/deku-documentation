@@ -33,6 +33,7 @@ module.exports = {
         sans: ['Inter', ...defaultTheme.fontFamily.sans],
         display: ['Lexend', ...defaultTheme.fontFamily.sans],
         aldine: ['"Aldine 721"', ...defaultTheme.fontFamily.serif],
+        pinyon: ['"Pinyon Script"'],
       },
       maxWidth: {
         '8xl': '88rem',

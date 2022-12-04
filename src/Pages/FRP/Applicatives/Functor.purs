@@ -14,9 +14,14 @@ functor = section
   { title: "Events as functors"
   , topmatter: pure
       [ D.p_
-          [ text_ "This section will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "Events as functors" ]
-          , text_ "."
+          [ text_ "As we've seen in Deku, to do anything interesting with an "
+          , D.code__ "Event"
+          , text_
+              " we need to map over it. In this section, we'll learn how to define "
+          , D.code__ "map"
+          , text_ " for "
+          , D.code__ "Event"
+          , text_ " and discuss its performance characteristics."
           ]
       ]
   , subsections:

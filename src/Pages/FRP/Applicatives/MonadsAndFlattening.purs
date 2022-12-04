@@ -20,5 +20,5 @@ monadsAndFlattening = section
           ]
       ]
   , subsections:
-      [ eventAsAMonad, theKeepLatestFunction ]
+      [ theKeepLatestFunction, eventAsAMonad ]
   }
