@@ -3,6 +3,7 @@ module Scratch where
 import Prelude
 
 import Control.Monad.ST.Internal (modify, new, read, run, write)
+import Control.Monad.ST.Uncurried (mkSTFn1, mkSTFn2, runSTFn1, runSTFn2)
 import Data.Maybe (Maybe(..))
 import Data.Tuple.Nested ((/\))
 import Deku.Attributes (klass_)
@@ -13,7 +14,7 @@ import Deku.Hooks (useState)
 import Deku.Listeners (click_)
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
-import FRP.Event (Event, createPure, fold, makeLemmingEvent, subscribePure)
+import FRP.Event (Event, Subscriber(..), createPure, fold, makeLemmingEventO, subscribePure)
 import QualifiedDo.Alt as Alt
 
 buttonClass =
@@ -28,12 +29,12 @@ main = runInBody Deku.do
   setInt /\ int <- useState 0
   let
     dedup :: forall a. Eq a => Event a -> Event a
-    dedup e = makeLemmingEvent \s k -> do
+    dedup e = makeLemmingEventO $ mkSTFn2 \(Subscriber subscribe) callback -> do
       rf <- new Nothing
-      u <- s e \i -> do
+      u <- runSTFn2 subscribe e $ mkSTFn1 \i -> do
         v <- read rf
         when (v /= Just i) do
-          k i
+          runSTFn1 callback i
           void $ write (Just i) rf
       pure u
   D.div_
@@ -65,4 +66,3 @@ so be sure to alternate between the buttons."""
             read rf
         ]
     ]
-

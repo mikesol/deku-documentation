@@ -94,9 +94,7 @@ so be sure to alternate between the buttons.""" <> tripleQ <> """
             push 3
             read rf
         ]
-    ]
-
-"""
+    ]"""
 
 theLemmingEvent :: forall lock payload. Subsection lock payload
 theLemmingEvent = subsection

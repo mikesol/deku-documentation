@@ -8,7 +8,7 @@ with hyrule =
       [ "st", "js-timers", "unsafe-reference"
       ]
     , repo = "https://github.com/mikesol/purescript-hyrule.git"
-    , version = "v2.3.4"
+    , version = "v2.3.5"
     }
   with tidy =
     { dependencies =
