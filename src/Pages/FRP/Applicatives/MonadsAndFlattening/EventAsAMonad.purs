@@ -48,7 +48,7 @@ eventAsAMonad = subsection
               " defined in terms of "
           , D.code__ "keepLatest"
           , text_
-              " is that the right event restarts the left event, dictating in effect its temporality. So the left side of the associativity law would read: "
+              " is that the right event restarts the left event, dictating its temporality. So the left side of the associativity law would read: "
           , D.code__ "f"
           , text_ " restarts"
           , D.code__ "x"
