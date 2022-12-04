@@ -79,7 +79,7 @@ main = runInBody Deku.do
               click_ $ setAstuce false
             [ text_ "Pas sage" ]
         ]
-    , D.div (klass_ "leading-3")
+    , D.div_
         [ D.p__ "Cher ami,"
             <> D.p__ "Je suis toute émue de vous dire que j'ai"
             <> guard astuce
@@ -134,7 +134,7 @@ main = runInBody Deku.do
                       click_ $ setAstuce false
                     [ text_ "Pas sage" ]
                 ]
-            , D.div (klass_ "leading-3")
+            , D.div_
                 [ D.p__ "Cher ami,"
                     <> D.p__ "Je suis toute émue de vous dire que j'ai"
                     <> guard astuce
