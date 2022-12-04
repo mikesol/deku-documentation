@@ -9,7 +9,7 @@ import Deku.DOM as D
 
 optimizedEventFunctions :: forall lock payload. Subsection lock payload
 optimizedEventFunctions = subsection
-  { title: "Optimized event functions"
+  { title: "Optimized stand-alone events"
   , matter: pure
       [ D.p_
           [ text_ "This subsection will be about "
