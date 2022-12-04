@@ -45,7 +45,10 @@ eventAsAMonad = subsection
               "We can stop already at associativity, which does not hold up. Another way to look at "
           , D.code__ "bind"
           , text_
-              " defined this way is that the right event restarts the left event, dictating in effect its temporality. So the left side of the associativity law would read: "
+              " defined in terms of "
+          , D.code__ "keepLatest"
+          , text_
+              " is that the right event restarts the left event, dictating in effect its temporality. So the left side of the associativity law would read: "
           , D.code__ "f"
           , text_ " restarts"
           , D.code__ "x"
