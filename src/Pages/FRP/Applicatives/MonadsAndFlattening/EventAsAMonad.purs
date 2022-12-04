@@ -61,12 +61,12 @@ eventAsAMonad = subsection
           , text_ " and "
           , D.code__ "f"
           , text_ " contribute to the restarting of "
-          , D.code__ "c"
+          , D.code__ "x"
           , text_ ". On the other side of the equation, "
           , D.code__ "f"
-          , text_ " never contributes to "
+          , text_ " never contributes to the restarting of "
           , D.code__ "x"
-          , text_ " restarting."
+          , text_ ". So the two sides of the identity diverge in behavior, making it unlawful."
           ]
       , D.p_
           [ text_
