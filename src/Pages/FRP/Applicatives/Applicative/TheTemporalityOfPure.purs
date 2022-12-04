@@ -153,7 +153,7 @@ import FRP.Event.Time (interval)
 main :: Effect Unit
 main = runInBody do
   let
-    alternate e a b = fold (flip (const not)) true e
+    alternate e a b = fold (pure <$> not) true e
       <#> if _ then a else b
   text
     $ intercalate (pure " ")
@@ -164,7 +164,7 @@ main = runInBody do
         ]"""
       , exampleBlockquote
           [ let
-              alternate e a b = fold (\b _ -> not b) true e <#>
+              alternate e a b = fold (pure <$> not) true e <#>
                 if _ then a else b
             in
               text
