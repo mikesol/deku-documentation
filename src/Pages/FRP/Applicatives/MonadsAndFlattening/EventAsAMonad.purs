@@ -89,7 +89,7 @@ eventAsAMonad = subsection
               " is not a monad for your own safety. We may change our minds about this in the future, but so far, no one seems to miss "
           , D.code__ "flatMap"
           , text_
-              " so the benefits of adding it don't seem to offset the cost of someone accidentally frying their CPU."
+              ", so the benefits of adding it don't seem to offset the cost of someone accidentally frying their CPU."
           ]
       ]
   }
