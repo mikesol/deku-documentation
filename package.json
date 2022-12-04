@@ -3,9 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "codesandbox": "pnpm i && spago build && vite dev",
     "dev": "vite dev",
-    "build": "spago build && vite build"
+    "build": "spago -x prod.dhall build && vite build"
   },
   "browserslist": "defaults, not ie <= 11",
   "dependencies": {

@@ -131,7 +131,7 @@ theLemmingEvent = subsection
               ( href_ "https://dev.to/mikesol/lifting-continuations-9og" <|>
                   (D.Target !:= "_blank")
               )
-              [ text_ "Li fting continuations" ]
+              [ text_ "Lifting continuations" ]
           , text_
               " that discusses the logic behind this implementation, but now, I expect you to unchallengingly trust me that this is the best possible implementation. Or, in other words, to be a lemming!"
           ]

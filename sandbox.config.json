@@ -1,6 +1,0 @@
-{
-    "hardReloadOnChange": true,
-    "startScript": "codesandbox",
-    "port": 5173,
-    "container": { "port": 3212, "startScript": "custom", "node": "14" }
-}
