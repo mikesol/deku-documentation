@@ -16,9 +16,10 @@ pureEvents = section
   { title: "Pure events"
   , topmatter: pure
       [ D.p_
-          [ text_ "This section will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "Pure events" ]
-          , text_ "."
+          [ text_ "Events happen in time, and they also trigger all sorts of side effects. They are anything decidedly impure! However, is there any context in which \"pure\" events make sense? What would these events look like?"
+          ],
+          D.p_
+          [ text_ "This section explores the notion of pure events, understanding what they are, where they're useful, and how they're used."
           ]
       ]
   , subsections:
