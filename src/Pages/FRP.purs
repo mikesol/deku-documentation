@@ -21,10 +21,10 @@ frp = chapter
       , applicatives
       , alternatives
       , filtering
-      , sampling
       , otherInstances
+      , behaviors
+      , sampling
       , fixAndFold
       , busses
-      , behaviors
       ]
   }
