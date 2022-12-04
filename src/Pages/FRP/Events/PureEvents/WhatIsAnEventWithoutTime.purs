@@ -55,9 +55,17 @@ whatIsAnEventWithoutTime = subsection
           , D.code__ "ST r"
           , text_
               " monad is outside the scope of this documentation, but you can read up on it on "
-          , D.a (href_ "https://pursuit.purescript.org/packages/purescript-st/" <|> (D.Target !:= "_blank")) [text_ "Pursuit"]
+          , D.a
+              ( href_ "https://pursuit.purescript.org/packages/purescript-st/"
+                  <|> (D.Target !:= "_blank")
+              )
+              [ text_ "Pursuit" ]
           , text_
-              ". For our purposes, it'll suffice to use it to define and execute events out of time."
+              ". For our purposes, it'll suffice to "
+          , D.a (href_ "#the-st-monad") [ text_ "go over its main properties" ]
+          , text_ " and to "
+          , D.a (href_ "#the-lemming-event") [ text_ "use it to define events" ]
+          , text_ "."
           ]
       ]
   }

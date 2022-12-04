@@ -4,17 +4,19 @@ import Prelude
 
 import Components.Code (psCode)
 import Components.ExampleBlockquote (exampleBlockquote)
-import Contracts (Subsection, subsection)
+import Contracts (Env(..), Subsection, subsection)
 import Control.Monad.ST.Internal (modify, new, read, run)
 import Deku.Attribute ((!:=))
+import Deku.Attributes (href_)
 import Deku.Control (text_)
 import Deku.DOM as D
 import FRP.Event (createPure, subscribePure)
+import Router.ADT (Route(..))
 
 theCreatepureEffect :: forall lock payload. Subsection lock payload
 theCreatepureEffect = subsection
   { title: "The createPure effect"
-  , matter: pure
+  , matter: \(Env { routeLink }) ->
       [ D.p_
           [ text_ "The "
           , D.code__ "createPure"
@@ -49,7 +51,7 @@ main = runInBody do
     { push, event } <- createPure
     rf <- new 0
     _ <- subscribePure event \n -> do
-      void $ modify (add 1) rf
+      void $ modify (add n) rf
     push 48
     push 49
     push 50
@@ -60,11 +62,25 @@ main = runInBody do
               { push, event } <- createPure
               rf <- new 0
               _ <- subscribePure event \n -> do
-                void $ modify (add 1) rf
+                void $ modify (add n) rf
               push 48
               push 49
               push 50
               read rf
+          ]
+      , D.p_
+          [ text_ "Like we saw in "
+          , D.a (href_ "#subscription-and-unsubscription-effects")
+              [ text_ "Subscription and unsubscription effects" ]
+          , text_
+              ", the control logic is \"backwards\" the heart of the logic is in the subscription whereas the values piped into the logic happen later on."
+          ]
+      , D.p_
+          [ text_
+              "In practice, you'll almost never need to create a pure event-based content unless you are running simulations or skimming off the pure bits of an otherwise effectful event-based system. In Deku, this is how "
+          , routeLink SSR
+          , text_
+              " is done, which is why many custom event in Deku codebases are written in ST. That way, they can be rendered as an HTML string in order to make a static site."
           ]
       ]
   }
