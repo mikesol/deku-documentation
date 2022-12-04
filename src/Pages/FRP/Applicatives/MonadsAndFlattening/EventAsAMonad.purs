@@ -66,7 +66,7 @@ eventAsAMonad = subsection
           , D.code__ "f"
           , text_ " never contributes to the restarting of "
           , D.code__ "x"
-          , text_ ". So the two sides of the identity diverge in behavior, making it unlawful."
+          , text_ ". So the two sides of the equation diverge in behavior, making it unlawful."
           ]
       , D.p_
           [ text_
