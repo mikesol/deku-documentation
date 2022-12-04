@@ -176,7 +176,7 @@ optimizedEventFunctions = subsection
           [ text_
               "You'll see that the optimized version has less thunks - there is one less "
           , D.code__ "do"
-          , text_ " bloc, and the callback does not need a thunk anymore."
+          , text_ " bloc, the subscribe function is optimized out completely, and the callback does not need a thunk anymore."
           ]
       , D.h4__ "Unoptimized"
       , jsCode
