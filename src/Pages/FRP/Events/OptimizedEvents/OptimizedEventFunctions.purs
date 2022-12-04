@@ -172,10 +172,12 @@ optimizedEventFunctions = subsection
                     ]
                 ]
           ]
-      , D.p__
-          "You'll see that the optimized version has less thunks - there is one less "
-      , D.code__ "do"
-      , text_ " bloc, and the callback does not need a thunk anymore."
+      , D.p_
+          [ text_
+              "You'll see that the optimized version has less thunks - there is one less "
+          , D.code__ "do"
+          , text_ " bloc, and the callback does not need a thunk anymore."
+          ]
       , D.h4__ "Unoptimized"
       , jsCode
           """var dedup = function (dictEq) {
