@@ -79,10 +79,12 @@ theBehaviorType = subsection
               "The value being measured may require some sort of effectful lookup like making a network request; and"
           , D.li__
               "The behavior may never return a result, in which case our event is muted."
+          , D.li__
+              "The behavior may return multiple values by calling the callback of the resultant event multiple times."
           ]
       , D.p_
           [ text_
-              "This corresponds to the way observing actually work in the real world. For example, if we send a specialist to observe a daycare, it will take them time to make the observation, and there's a non-trivial chance they won't make it out in one piece."
+              "This corresponds to the way observing actually work in the real world. For example, if we send a specialist to observe a daycare, it will take them time to make an observation, they might make several, and there's a non-trivial chance they won't make it out in one piece."
           ]
       , D.p_
           [ text_
