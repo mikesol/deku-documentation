@@ -15,9 +15,7 @@ applicative = section
   { title: "Applicative"
   , topmatter: pure
       [ D.p_
-          [ text_ "This section will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "Applicative" ]
-          , text_ "."
+          [ text_ "Behaviors are applicative functors. Let's see what that means in practice, starting at functors and stopping just shy of monads."
           ]
       ]
   , subsections:

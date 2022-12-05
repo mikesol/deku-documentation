@@ -15,11 +15,9 @@ definition = section
   { title: "Definition"
   , topmatter: pure
       [ D.p_
-          [ text_ "This section will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "Definition" ]
-          , text_ "."
+          [ text_ "This section will look at how behaviors are defined, explore the nuance of the defintiion, and present a small example of a Behavior being used in the browser."
           ]
       ]
   , subsections:
-      [ theBehaviorType, behaviorsVersusFlapping, behaviorsAndYoneda ]
+      [ theBehaviorType, behaviorsVersusFlapping{-, behaviorsAndYoneda-} ]
   }
