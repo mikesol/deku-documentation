@@ -10,7 +10,7 @@ import Pages.FRP.OtherInstances.HeytingAlgebra.BooleanLogicOnEvents (booleanLogi
 
 heytingAlgebra :: forall lock payload. Section lock payload
 heytingAlgebra = section
-  { title: "HeytingAlgebra"
+  { title: "Heyting algebra"
   , topmatter: pure
       [ D.p_
           [ text_ "This section will be about "
