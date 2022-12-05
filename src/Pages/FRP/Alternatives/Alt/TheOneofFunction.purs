@@ -2,19 +2,81 @@ module Pages.FRP.Alternatives.Alt.TheOneOfFunction where
 
 import Prelude
 
+import Components.Code (psCode)
+import Components.ExampleBlockquote (exampleBlockquote)
 import Contracts (Subsection, subsection)
-import Deku.Control (text_)
+import Control.Alt ((<|>))
+import Data.Foldable (oneOf)
+import Data.Tuple.Nested ((/\))
 import Deku.Attribute ((!:=))
+import Deku.Control (text, text_)
 import Deku.DOM as D
+import FRP.Event (delay)
+import FRP.Event.Time (interval)
 
 theOneOfFunction :: forall lock payload. Subsection lock payload
 theOneOfFunction = subsection
   { title: "The oneOf function"
   , matter: pure
       [ D.p_
-          [ text_ "This subsection will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "The oneOf function" ]
-          , text_ "."
+          [ text_
+              "Alting lots of events can get tedios. Too many tie fighters! To make life easier, there's the "
+          , D.code__ "oneOf"
+          , text_
+              " function that will alt a bunch of events. Surveys consistently reveal that this is the technique most often used when coders create a text-only version of "
+          , D.b__ "Harder, Better, Faster, Stronger"
+          , text_ " in the browser."
+          ]
+      , psCode
+          """module Main where
+
+import Prelude
+
+import Control.Alt ((<|>))
+import Data.Foldable (oneOf)
+import Data.Tuple.Nested ((/\))
+import Deku.Control (text)
+import Deku.Toplevel (runInBody)
+import Effect (Effect)
+import FRP.Event (delay)
+import FRP.Event.Time (interval)
+
+main :: Effect Unit
+main = runInBody do
+  let
+    ms = 967
+    lyrics =
+      [ "Work it" /\ 0
+      , "Make it" /\ 1
+      , "Do it" /\ 2
+      , "Makes us" /\ 3
+      , "Harder" /\ 8
+      , "Better" /\ 9
+      , "Faster" /\ 10
+      , "Stronger" /\ 11
+      ]
+    loop = 16 * ms
+    beat (w /\ t) =
+      delay (t * ms) (pure w <|> (interval loop $> w))
+  text (oneOf (beat <$> lyrics))"""
+      , exampleBlockquote
+          [ do
+              let
+                ms = 967
+                lyrics =
+                  [ "Work it" /\ 0
+                  , "Make it" /\ 1
+                  , "Do it" /\ 2
+                  , "Makes us" /\ 3
+                  , "Harder" /\ 8
+                  , "Better" /\ 9
+                  , "Faster" /\ 10
+                  , "Stronger" /\ 11
+                  ]
+                loop = 16 * ms
+                beat (w /\ t) =
+                  delay (t * ms) (pure w <|> (interval loop $> w))
+              text (oneOf (beat <$> lyrics))
           ]
       ]
   }

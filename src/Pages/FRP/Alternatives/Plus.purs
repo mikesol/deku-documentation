@@ -14,9 +14,15 @@ plus = section
   { title: "Plus"
   , topmatter: pure
       [ D.p_
-          [ text_ "This section will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "Plus" ]
-          , text_ "."
+          [ text_ "The "
+          , D.code__ "Plus"
+          , text_
+              " typeclass allows us to define an empty element for a collection. We've already sort-of seen this, as we need an empty element for "
+          , D.code__ "oneOf"
+          , text_
+              " to work on an empty array. Let's build some intuition about what the empty "
+          , D.code__ "Event"
+          , text_ " is and how it is lawful."
           ]
       ]
   , subsections:

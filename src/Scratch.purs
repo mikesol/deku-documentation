@@ -3,19 +3,28 @@ module Scratch where
 import Prelude
 
 import Control.Alt ((<|>))
+import Data.Foldable (oneOf)
+import Data.Tuple.Nested ((/\))
 import Deku.Control (text)
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
-import FRP.Event (fold, keepLatest)
+import FRP.Event (delay)
 import FRP.Event.Time (interval)
 
 main :: Effect Unit
 main = runInBody do
-  let count = fold (flip (const (add 1))) 0
-  text
-    ( show <$> keepLatest
-        ( interval 1000 $>
-            (pure 0 <|> count (interval 400))
-        )
-    )
-
+  let
+    ms = 1000
+    lyrics =
+      [ "Work it" /\ 0
+      , "Make it" /\ 1
+      , "Do it" /\ 2
+      , "Makes us" /\ 3
+      , "Harder" /\ 8
+      , "Better" /\ 9
+      , "Faster" /\ 10
+      , "Stronger" /\ 11
+      ]
+    loop = 16 * ms
+    beat (w /\ t) = delay (t * ms) (pure w <|> (interval loop $> w))
+  text (oneOf (map beat lyrics))
