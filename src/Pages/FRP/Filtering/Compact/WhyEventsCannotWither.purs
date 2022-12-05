@@ -2,9 +2,10 @@ module Pages.FRP.Filtering.Compact.WhyEventsCannotWither where
 
 import Prelude
 
+import Components.TargetedLink (targetedLink)
 import Contracts (Subsection, subsection)
-import Deku.Control (text_)
 import Deku.Attribute ((!:=))
+import Deku.Control (text_)
 import Deku.DOM as D
 
 whyEventsCannotWither :: forall lock payload. Subsection lock payload
@@ -12,10 +13,15 @@ whyEventsCannotWither = subsection
   { title: "Why events cannot wither"
   , matter: pure
       [ D.p_
-          [ text_ "This subsection will be about "
-          , D.span (D.Class !:= "font-bold")
-              [ text_ "Why events cannot wither" ]
-          , text_ "."
+          [ text_ "The "
+          , targetedLink
+              "https://pursuit.purescript.org/packages/purescript-filterable/docs/Data.Witherable#t:Witherable"
+              [ D.code__ "Witherable" ]
+          , text_
+              " typeclass from PureScript's filterable package is an amazing class that allows you to accumulate an arbitrary effect every time something is partitioned. This is very useful for doing things like logging when performing a partition. Types that are Filterable, Compactable, and Witherable achieve the holy trifecta of filtering, which confers unto them a special glow that makes them more pleasant to work with. Unfortunately, for events, this simply isn't possible 😞"
+          ]
+      , D.p_
+          [ text_ "Alas, there is no way to take an effect applied to each event emission and hoist it to a higher context. If that were the case, we would need to time travel to all future events, retrieve their effects, time travel back, and incorporate them into the enclosing applicative. While the PureScript core team is ardently working on time travel as a stepping stone to dependent types, they haven't figured it out yet, so events cannot wither. But do not let this deter you from using them!"
           ]
       ]
   }

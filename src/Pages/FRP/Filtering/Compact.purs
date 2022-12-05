@@ -14,8 +14,13 @@ compact = section
   { title: "Compact"
   , topmatter: pure
       [ D.p_
-          [ text_ "This section will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "Compact" ]
+          [ text_
+              "Events are compactable as well, which is extremely useful for sketching out systems that occassionally fail before developing robust error handling. The "
+          , D.code__ "compact"
+          , text_ " function for "
+          , D.code__ "Event"
+          , text_ " is defined as "
+          , D.code__ "filterMap identity"
           , text_ "."
           ]
       ]

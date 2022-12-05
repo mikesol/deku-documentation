@@ -14,9 +14,7 @@ filter = section
   { title: "Filter"
   , topmatter: pure
       [ D.p_
-          [ text_ "This section will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "Filter" ]
-          , text_ "."
+          [  D.code__ "Event",text_ " implements ", D.code__ "Filterable", text_ ", meaning that you can use the same functions you use to filter arrays and lists on events."
           ]
       ]
   , subsections:

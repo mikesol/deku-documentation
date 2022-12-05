@@ -16,15 +16,13 @@ filtering = page
   { route: Filtering
   , topmatter: pure
       [ D.p (D.Class !:= "lead")
-          [ text_ "This page will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "Filtering" ]
-          , text_ "."
+          [ text_ "How to make events less eventful."
           ]
       , D.p_
           [ text_
-              "Possimus saepe veritatis sint nobis et quam eos. Architecto consequatur odit perferendis fuga eveniet possimus rerum cumque. Ea deleniti voluptatum deserunt voluptatibus ut non iste."
+              "If you're implementing any sort of client-side search bar or content-picker, filtering is a must. This section will show you how to filter events."
           ]
       ]
   , sections:
-      [ filter, compact, partition ]
+      [ filter, compact {-, partition-} ]
   }

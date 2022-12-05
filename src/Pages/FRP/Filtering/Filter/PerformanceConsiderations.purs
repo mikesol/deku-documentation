@@ -12,10 +12,7 @@ performanceConsiderations = subsection
   { title: "Performance considerations"
   , matter: pure
       [ D.p_
-          [ text_ "This subsection will be about "
-          , D.span (D.Class !:= "font-bold")
-              [ text_ "Performance considerations" ]
-          , text_ "."
+          [ text_ "If you use the same filter multiple times, it creates a new subscription for each filter. Consider coupling filter with ", D.code__ "useMemoized", text_ " to make things faster if needed."
           ]
       ]
   }
