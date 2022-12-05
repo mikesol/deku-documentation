@@ -24,7 +24,7 @@ whyBehaviorsAreNotMonads = subsection
           ]
       , D.p_
           [ text_
-              "Monads, on the other hand, would require us to do something with a behavior of behaviors. We'd have to say \"at any given point of time, this behavior yields a behavior, which then yields a value.\" This makees working with behaviors quite tricky. Instead, we opt for continuous functions of time (instead of continuous functions of continuous functions of time) because they are easier to reason about."
+              "Monads, on the other hand, would require us to do something with a behavior of behaviors. We'd have to say \"at any given point of time, this behavior yields a behavior, which then yields a value.\" This would make working with behaviors quite tricky. Instead, we opt for continuous functions of time (instead of continuous functions of continuous functions of time) because they are easier to reason about."
           ]
       ]
   }
