@@ -14,6 +14,23 @@ import Deku.DOM as D
 import FRP.Event (fold, keepLatest, makeLemmingEvent)
 import FRP.Event.Time (interval)
 
+ugh m f = keepLatest (f <$> m)
+
+flatMap e =
+  makeLemmingEvent \s k -> do
+    cancelInner <- Ref.new []
+    cancelOuter <-
+      s e \inner -> do
+        -- in rare cases, cancelOuter may itself provoke an emission
+        -- of the outer event, in which case this function would run
+        -- to avoid that, we use a `safeToIgnore` flag
+        c <- s inner k
+        void $ Ref.modify (append [ c ]) cancelInner
+    pure do
+      ci <- Ref.read cancelInner
+      sequence_ ci
+      cancelOuter
+
 theKeepLatestFunction :: forall lock payload. Subsection lock payload
 theKeepLatestFunction = subsection
   { title: "The keepLatest function"
@@ -84,6 +101,26 @@ main = runInBody do
                     (interval 1600 $> (pure 0 <|> count (interval 600)))
                 )
           ]
+      -- , exampleBlockquote
+      -- [ do
+      --     let count = fold (pure <$> add 1) 0
+      --     text
+      --       ( show <$> ((interval 1600 `ugh` (const $ count (interval 1150)) )  )
+      --       )
+      -- ], exampleBlockquote
+      -- [ do
+      --     let count = fold (pure <$> add 1) 0
+      --     text
+      --       ( show <$> ((interval 1600 `ugh` (const (interval 1150)) ) `ugh` (const (count (interval 350))) )
+      --       )
+      -- ]
+      -- , exampleBlockquote
+      -- [ do
+      --     let count = fold (pure <$> add 1) 0
+      --     text
+      --       ( show <$> (interval 1600 `ugh` (\_ -> (interval 1150) `ugh` (const (count (interval 350))) ))
+      --       )
+      -- ]
       , D.p_
           [ text_ "The result is a "
           , targetedLink "https://en.wikipedia.org/wiki/Tresillo_(rhythm)"

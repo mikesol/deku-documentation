@@ -42,45 +42,27 @@ eventAsAMonad = subsection
           ]
       , D.p_
           [ text_
-              "We can stop already at associativity, which does not hold up. Another way to look at "
-          , D.code__ "bind"
-          , text_
-              " defined in terms of "
-          , D.code__ "keepLatest"
-          , text_
-              " is that the right event restarts the left event, dictating its temporality. So the left side of the associativity law would read: "
-          , D.code__ "f"
-          , text_ " restarts"
+              "While identity holds, associativity does not. This is because, on the left side, "
+              
           , D.code__ "x"
-          , text_ " and"
-          , D.code__ "g"
-          , text_ " restarts"
+          , D.i__ " distributes "
+          , text_ " to "
           , D.code__ "f"
-          , text_ ", which means that "
-          , D.code__ "g"
           , text_ " and "
+          , D.code__ "g"
+          , text_ " whereas on the right side it "
+          , D.i__ " adds "
+          , text_ " to "
           , D.code__ "f"
-          , text_ " contribute to the restarting of "
-          , D.code__ "x"
-          , text_ ". On the other side of the equation, "
-          , D.code__ "f"
-          , text_ " never contributes to the restarting of "
-          , D.code__ "x"
-          , text_ ". So the two sides of the equation diverge in behavior, making it unlawful."
-          ]
-      , D.p_
-          [ text_
-              "The only viable monad definition would be one that doesn't have restarting - namely, one where each new outer event triggers an inner event but doesn't clean up the old one. This is often called "
-          , D.code__ "flatMap"
-          , text_ " in FRP frameworks. So, at least in theory, "
-          , D.code__ "Event"
-          , text_ " "
-          , D.i__ "can"
-          , text_
-              " be a monad. But, by convention, it's not. This is a deliberate choice of several frameworks, including "
-          , D.code__ "purescript-hyrule"
-          , text_
-              ", to make it hard for people to accidentally create situations where, after lots of binds, 1000s of events are spewing every second because the previous ones haven't been cleaned up."
+          , text_ " which then adds to "
+          , D.code__ "g"
+          , text_ ". The result is that the left side would have more events because "
+          , D.code__ " f "
+          , text_ " and "
+          , D.code__ "g"
+          , text_ " would both be contributing impulses, whereas on the right side, only "
+          , D.code__ "g"
+          , text_ " is contributing impulses. The only way to make "
           ]
       , D.p_
           [ text_ "So there's your answer - "
