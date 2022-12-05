@@ -21,7 +21,7 @@ import FRP.Event.AnimationFrame (animationFrame)
 
 integratingBehaviors :: forall lock payload. Subsection lock payload
 integratingBehaviors = subsection
-  { title: "Derivatives of behaviors"
+  { title: "Integrating behaviors"
   , matter: pure
       [ D.p_
           [ text_ "We can use the function "
