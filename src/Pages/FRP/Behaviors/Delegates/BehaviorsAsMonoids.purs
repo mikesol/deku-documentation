@@ -3,18 +3,19 @@ module Pages.FRP.Behaviors.OtherInstances.BehaviorsAsMonoids where
 import Prelude
 
 import Contracts (Subsection, subsection)
-import Deku.Control (text_)
-import Deku.Attribute ((!:=))
 import Deku.DOM as D
+import Deku.Pursx ((~~))
+import Type.Proxy (Proxy(..))
 
 behaviorsAsMonoids :: forall lock payload. Subsection lock payload
 behaviorsAsMonoids = subsection
   { title: "Behaviors as monoids"
   , matter: pure
       [ D.p_
-          [ text_ "This subsection will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "Behaviors as monoids" ]
-          , text_ "."
+          [ ( Proxy
+            :: _
+                 "<p><code>Behavior</code>s, can be <code>append</code>ed if the underlying type is a <code>Semigroup</code>, and <code>mempty</code> will generate a pure <code>Behavior</code> around <code>mempty</code> of the underlying <code>Monoid</code>.</p>"
+        ) ~~ {}
           ]
       ]
   }

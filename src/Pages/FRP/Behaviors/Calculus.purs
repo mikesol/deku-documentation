@@ -16,14 +16,14 @@ calculus = section
   { title: "Calculus"
   , topmatter: pure
       [ D.p_
-          [ text_ "This section will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "Calculus" ]
-          , text_ "."
+          [ text_
+              "Because behaviors are continuous functions of time, one can perform classic time-domain operations on them like derivation and integration. You can even solve differential equations using behaviors. Let's see how!"
           ]
       ]
   , subsections:
-      [ behaviorsAsContinuousFunctionsOfTime
-      , derivingBehaviors
+      [ --behaviorsAsContinuousFunctionsOfTime
+        --, 
+        derivingBehaviors
       , integratingBehaviors
       , solvingDifferentialEquations
       ]

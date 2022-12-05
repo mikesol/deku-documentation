@@ -6,16 +6,17 @@ import Contracts (Subsection, subsection)
 import Deku.Control (text_)
 import Deku.Attribute ((!:=))
 import Deku.DOM as D
-
+import Contracts (Subsection, subsection)
+import Deku.DOM as D
+import Deku.Pursx ((~~))
+import Type.Proxy (Proxy(..))
 behaviorsAsHeytingAlgebras :: forall lock payload. Subsection lock payload
 behaviorsAsHeytingAlgebras = subsection
   { title: "Behaviors as Heyting Algebras"
   , matter: pure
-      [ D.p_
-          [ text_ "This subsection will be about "
-          , D.span (D.Class !:= "font-bold")
-              [ text_ "Behaviors as Heyting Algebras" ]
-          , text_ "."
-          ]
+      [( Proxy
+            :: _
+                 "<p><code>Behavior</code>s, can act as a wrapper around arbitrary Heyting algebras so that you can <code>not</code>, <code>or</code>, and/or <code>and</code> them with reckless abandon.</p>"
+        ) ~~ {}
       ]
   }

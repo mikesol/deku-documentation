@@ -3,22 +3,24 @@ module Pages.FRP.Behaviors.OtherInstances where
 import Prelude
 
 import Contracts (Section, section)
-import Deku.Control (text_)
 import Deku.Attribute ((!:=))
+import Deku.Control (text_)
 import Deku.DOM as D
+import Deku.Pursx ((~~))
+import Pages.FRP.Behaviors.OtherInstances.BehaviorsAsHeytingAlgebras (behaviorsAsHeytingAlgebras)
 import Pages.FRP.Behaviors.OtherInstances.BehaviorsAsMonoids (behaviorsAsMonoids)
 import Pages.FRP.Behaviors.OtherInstances.BehaviorsAsRings (behaviorsAsRings)
-import Pages.FRP.Behaviors.OtherInstances.BehaviorsAsHeytingAlgebras (behaviorsAsHeytingAlgebras)
+import Type.Proxy (Proxy(..))
 
 otherInstances :: forall lock payload. Section lock payload
 otherInstances = section
   { title: "Other instances"
   , topmatter: pure
-      [ D.p_
-          [ text_ "This section will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "Other instances" ]
-          , text_ "."
-          ]
+      [ ( Proxy
+            :: _
+                 "<p>Like <code>Event</code>s, <code>Behavior</code>s come supercharged with several instances that make working with them easier.</p>"
+        ) ~~ {}
+
       ]
   , subsections:
       [ behaviorsAsMonoids, behaviorsAsHeytingAlgebras, behaviorsAsRings ]
