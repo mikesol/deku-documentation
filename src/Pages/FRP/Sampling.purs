@@ -26,5 +26,5 @@ sampling = page
           ]
       ]
   , sections:
-      [ gating, samplingOnAnEvent, samplingWithBehaviors ]
+      [ samplingOnAnEvent, samplingWithBehaviors, gating ]
   }

@@ -9,7 +9,7 @@ import Deku.DOM as D
 
 applicativesAndTemporality :: forall lock payload. Subsection lock payload
 applicativesAndTemporality = subsection
-  { title: "Applicatives and temporality"
+  { title: "How sampling works"
   , matter: pure
       [ D.p_
           [ text_ "This subsection will be about "

@@ -12,7 +12,7 @@ import Pages.FRP.Sampling.SamplingOnAnEvent.FlippingTheFunctionAndArgument (flip
 
 samplingOnAnEvent :: forall lock payload. Section lock payload
 samplingOnAnEvent = section
-  { title: "SamplingOnAnEvent"
+  { title: "Sampling an event"
   , topmatter: pure
       [ D.p_
           [ text_ "This section will be about "
@@ -21,8 +21,9 @@ samplingOnAnEvent = section
           ]
       ]
   , subsections:
-      [ biasingASideOfSampling
-      , applicativesAndTemporality
+      [ applicativesAndTemporality
       , flippingTheFunctionAndArgument
+      , biasingASideOfSampling
+
       ]
   }

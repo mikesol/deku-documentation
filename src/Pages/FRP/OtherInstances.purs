@@ -16,13 +16,11 @@ otherInstances = page
   { route: OtherInstances
   , topmatter: pure
       [ D.p (D.Class !:= "lead")
-          [ text_ "This page will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "Other instances" ]
-          , text_ "."
+          [ text_ "Because who likes to lift2 over add when you can just add?"
           ]
       , D.p_
           [ text_
-              "Possimus saepe veritatis sint nobis et quam eos. Architecto consequatur odit perferendis fuga eveniet possimus rerum cumque. Ea deleniti voluptatum deserunt voluptatibus ut non iste."
+              "One of the annoying bits of working with any functorial type is that, for basic operations, you constantly have to ", D.code__ "map", text_ " and ", D.code__ "lift2", text_ ". This gets un-fun after a while, so it's a common convention to add sensible instances of typeclasses related to the type ", D.code__ "a", text_ " in ", D.code__ "f a", text_ " provided that there's an unambiguous interpretation of what they mean. Thankfully, in the case of ", D.code__ "Event", text_ ", this is possible for many core typeclasses."
           ]
       ]
   , sections:

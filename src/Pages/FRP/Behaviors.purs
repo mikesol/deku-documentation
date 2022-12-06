@@ -27,5 +27,5 @@ behaviors = page
           ]
       ]
   , sections:
-      [ definition, applicative, otherInstances, calculus ]
+      [ definition, applicative, calculus, otherInstances ]
   }

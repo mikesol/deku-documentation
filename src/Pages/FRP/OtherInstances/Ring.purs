@@ -14,9 +14,7 @@ ring = section
   { title: "Ring"
   , topmatter: pure
       [ D.p_
-          [ text_ "This section will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "Ring" ]
-          , text_ "."
+          [ text_ "You can add, multiply, and subtract events like they were numbers thanks to the ", D.code__ "Ring", text_ " instance. Let's see how in this section."
           ]
       ]
   , subsections:

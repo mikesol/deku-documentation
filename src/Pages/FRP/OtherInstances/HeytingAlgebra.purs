@@ -13,9 +13,10 @@ heytingAlgebra = section
   { title: "Heyting algebra"
   , topmatter: pure
       [ D.p_
-          [ text_ "This section will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "HeytingAlgebra" ]
-          , text_ "."
+          [ D.code__ "Event"
+          , text_ " also implements "
+          , D.code__ "HeytigAlgebra"
+          , text_ " for your truth-table needs."
           ]
       ]
   , subsections:

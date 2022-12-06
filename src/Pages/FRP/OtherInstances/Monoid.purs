@@ -14,8 +14,18 @@ monoid = section
   { title: "Monoid"
   , topmatter: pure
       [ D.p_
-          [ text_ "This section will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "Monoid" ]
+          [ text_ "Events can be considered "
+          , D.code__ "Monoid"
+          , text_ "s if the underlying type is a "
+          , D.code__ "Monoid"
+          , text_ ". This follows the classic pattern of equating "
+          , D.code__ "<>"
+          , text_ " with "
+          , D.code__ "<*>"
+          , text_ " and "
+          , D.code__ "mempty"
+          , text_ " with "
+          , D.code__ "pure"
           , text_ "."
           ]
       ]
