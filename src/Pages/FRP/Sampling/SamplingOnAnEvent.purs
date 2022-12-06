@@ -2,12 +2,13 @@ module Pages.FRP.Sampling.SamplingOnAnEvent where
 
 import Prelude
 
+import Components.TargetedLink (targetedLink)
 import Contracts (Section, section)
-import Deku.Control (text_)
 import Deku.Attribute ((!:=))
+import Deku.Control (text_)
 import Deku.DOM as D
-import Pages.FRP.Sampling.SamplingOnAnEvent.BiasingASideOfSampling (biasingASideOfSampling)
 import Pages.FRP.Sampling.SamplingOnAnEvent.ApplicativesAndTemporality (applicativesAndTemporality)
+import Pages.FRP.Sampling.SamplingOnAnEvent.BiasingASideOfSampling (biasingASideOfSampling)
 import Pages.FRP.Sampling.SamplingOnAnEvent.FlippingTheFunctionAndArgument (flippingTheFunctionAndArgument)
 
 samplingOnAnEvent :: forall lock payload. Section lock payload
@@ -15,9 +16,11 @@ samplingOnAnEvent = section
   { title: "Sampling an event"
   , topmatter: pure
       [ D.p_
-          [ text_ "This section will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "SamplingOnAnEvent" ]
-          , text_ "."
+          [ text_
+              "This section will look at the basic mechanisms for sampling, exploring the various functions available in "
+          , targetedLink "https://github.com/mikesol/purescript-hyrule"
+              [ D.code__ "purescript-hyrule" ]
+          , text_ " as well as some important corner cases to be aware of."
           ]
       ]
   , subsections:
