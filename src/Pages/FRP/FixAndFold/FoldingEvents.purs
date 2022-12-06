@@ -25,8 +25,8 @@ foldingEvents = section
   , subsections:
       [ theFoldFunction
       , aSimpleCounter
-      , foldIsState
-      , fromFixToFold
+      --, foldIsState
+      --, fromFixToFold
       , whenToFixAndWhenToFold
       ]
   }

@@ -16,15 +16,25 @@ fixAndFold = page
   { route: FixAndFold
   , topmatter: pure
       [ D.p (D.Class !:= "lead")
-          [ text_ "This page will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "Fix and fold" ]
-          , text_ "."
+          [ text_ "Behold the crown jewel of functional reactive programming!"
           ]
       , D.p_
           [ text_
-              "Possimus saepe veritatis sint nobis et quam eos. Architecto consequatur odit perferendis fuga eveniet possimus rerum cumque. Ea deleniti voluptatum deserunt voluptatibus ut non iste."
+              "We've seen the "
+          , D.code__ "fold"
+          , text_
+              " function over and over in this documentation, and yet we haven't been able to define it yet. To get there, we needed a thorough understanding of "
+          , D.code__ "Event"
+          , text_
+              "s, their instances, and how sampling works. Armed with that knowledge, we'll be able to precisely define what "
+          , D.code__ "fold"
+          , text_ " is, and even more generally, what "
+          , D.code__ "fix"
+          , text_ " is for an "
+          , D.code__ "Event"
+          , text_ "."
           ]
       ]
   , sections:
-      [ fixedPoints, fixingEvents, foldingEvents ]
+      [ fixedPoints, {-fixingEvents,-} foldingEvents ]
   }
