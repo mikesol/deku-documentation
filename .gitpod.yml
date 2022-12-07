@@ -5,3 +5,6 @@
 tasks:
   - init: pnpm install && pnpm run gitpod
     command: pnpm run dev
+ports:
+  - port: 5173
+    onOpen: open-preview
