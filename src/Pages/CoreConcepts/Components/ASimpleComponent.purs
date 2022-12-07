@@ -4,17 +4,19 @@ import Prelude
 
 import Components.Code (psCode)
 import Components.ExampleBlockquote (exampleBlockquote)
-import Contracts (Section, section)
+import Components.TargetedLink (targetedLink)
+import Contracts (Env(..), Section, section)
 import Deku.Control (text_)
 import Deku.DOM as D
 import Pages.CoreConcepts.Components.ASimpleComponent.AddingText (addingText)
 import Pages.CoreConcepts.Components.ASimpleComponent.ArraysAllTheWayDown (arraysAllTheWayDown)
 import Pages.CoreConcepts.Components.ASimpleComponent.WhatsInD (whatsInD)
+import Router.ADT (Route(..))
 
 aSimpleComponent :: forall lock payload. Section lock payload
 aSimpleComponent = section
   { title: "A simple component"
-  , topmatter: pure
+  , topmatter: \(Env { routeLink }) ->
       [ D.p_
           [ text_
               "Let's start by making a simple comonent. It will result in a few different DOM elements, and we'll build upon it throughout this page. Here's the code."
@@ -49,10 +51,49 @@ main = runInBody
               , D.ul_ $ map D.li__ [ "A", "B", "C" ]
               , D.div_
                   [ D.h3__ "foo"
-                  , D.i__  "bar"
+                  , D.i__ "bar"
                   , text_ " "
                   , D.b__ "baz"
                   ]
+              ]
+          ]
+      , D.p_
+          [ text_
+              "Before we proceed, it's important to establish a bit of Deku terminology that will come up often in this documentation."
+          ]
+      , D.ol_
+          [ D.li_
+              [ text_ "An "
+              , D.b__ "element"
+              , text_ " is a DOM element in the "
+              , targetedLink
+                  "https://developer.mozilla.org/en-US/docs/Web/API/Element"
+                  [ text_ "MDN Documentation on Elements" ]
+              , text_
+                  " sense of the term. We will learn how to hook into the raw DOM in the "
+              , routeLink AccessingTheDOM
+              , text_ " section."
+              ]
+          , D.li_
+              [ text_ "A "
+              , D.b__ "component"
+              , text_ " is a PureScript term with type "
+              , D.code__ "forall lock payload. Document lock payload"
+              , text_
+                  ". It's the type produced by "
+              , D.code__ "D.div_"
+              , text_ ", "
+              , D.code__ "D.span_"
+              , text_
+                  " and the other DOM-building instructions above. But the concept of a "
+              , D.b__ "component"
+              , text_
+                  " is broader than a one-to-one relationship with DOM elements - it can also represent the absence of DOM elements (using "
+              , D.code__ "blank"
+              , text_
+                  ", which we'll learn about later) or multiple DOM elements using "
+              , D.code__ "dyn"
+              , text_ " (which we'll also learn about later)."
               ]
           ]
       ]

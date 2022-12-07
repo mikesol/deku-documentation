@@ -132,13 +132,9 @@ main = runInBody Deku.do
         ]
   D.div_
     [ top
-    , dyn
-        $ map
-            ( \t -> Deku.do
-                useDyn_
-                D.div_ [ text_ t ]
-            )
-            item
+    , dyn $ item <#> \t -> Deku.do
+        useDyn_
+        D.div_ [ text_ t ]
     ]
 """
 

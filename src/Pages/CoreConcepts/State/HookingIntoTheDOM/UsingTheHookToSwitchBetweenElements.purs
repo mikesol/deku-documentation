@@ -95,10 +95,10 @@ pic = "https://picsum.photos/150"
 
 main :: Effect Unit
 main = runInBody Deku.do
-  setElement /\ element <- useState Image
+  setImageType /\ imageType <- useState Image
   D.div_
     [ D.div_
-        [ element <#~>
+        [ imageType <#~>
             case _ of
               Image -> D.img (D.Src !:= pic) []
               Video -> D.video
@@ -133,27 +133,27 @@ main = runInBody Deku.do
         [ D.button
             Alt.do
               klass_ $ buttonClass "amber"
-              click_ $ setElement Image
+              click_ $ setImageType Image
             [ text_ "Image" ]
         , D.button
             Alt.do
               klass_ $ buttonClass "cyan"
-              click_ $ setElement Video
+              click_ $ setImageType Video
             [ text_ "Video" ]
         , D.button
             Alt.do
               klass_ $ buttonClass "green"
-              click_ $ setElement SVG
+              click_ $ setImageType SVG
             [ text_ "SVG" ]
         ]
     ]"""
           )
       , exampleBlockquote
           [ Deku.do
-              setElement /\ element <- useState Image
+              setImageType /\ imageType <- useState Image
               D.div_
                 [ D.div_
-                    [ element <#~>
+                    [ imageType <#~>
                         case _ of
                           Image -> D.img (D.Src !:= "https://picsum.photos/150")
                             []
@@ -195,17 +195,17 @@ main = runInBody Deku.do
                     [ D.button
                         Alt.do
                           klass_ $ buttonClass "amber"
-                          click_ $ setElement Image
+                          click_ $ setImageType Image
                         [ text_ "Image" ]
                     , D.button
                         Alt.do
                           klass_ $ buttonClass "cyan"
-                          click_ $ setElement Video
+                          click_ $ setImageType Video
                         [ text_ "Video" ]
                     , D.button
                         Alt.do
                           klass_ $ buttonClass "green"
-                          click_ $ setElement SVG
+                          click_ $ setImageType SVG
                         [ text_ "SVG" ]
                     ]
                 ]

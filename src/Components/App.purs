@@ -29,8 +29,9 @@ import Effect (Effect)
 import FRP.Event (Event)
 import Navigation (PushState)
 import Prism (forceHighlightAff)
-import Router.ADT (Route(..), routeToNextRoute, routeToPrevRoute)
+import Router.ADT (Route(..))
 import Router.Chapter (routeToChapter)
+import Router.RouteOrder (routeToNextRoute, routeToPrevRoute)
 import Web.DOM as DOM
 
 app
