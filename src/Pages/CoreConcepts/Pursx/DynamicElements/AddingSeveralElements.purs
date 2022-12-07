@@ -151,7 +151,7 @@ main = runInBody  Deku.do
 
 addingSeveralElements :: forall lock payload. Subsection lock payload
 addingSeveralElements = subsection
-  { title: "Adding several elements"
+  { title: "Adding several DOM elements as a component"
   , matter: pure
       [ D.p_
           [ text_ "To add several elements, one can use ", D.code__ "fixed", text_ " or appending."

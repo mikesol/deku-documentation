@@ -153,7 +153,7 @@ main = runInBody  Deku.do
 
 addingASingleElement :: forall lock payload. Subsection lock payload
 addingASingleElement = subsection
-  { title: "Adding a single element"
+  { title: "Adding a single DOM element as a component"
   , matter: pure
       [ D.p_
           [ text_ "One natural case for adding elements to Pursx is when dealing with components that are easy to group together. For example, we can rewrite our breadcrumbs example to reuse the ", D.code__ "li", text_ " element."

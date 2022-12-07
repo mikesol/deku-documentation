@@ -15,13 +15,13 @@ import Deku.DOM as D
 
 groupingElementsTogether :: forall lock payload. Subsection lock payload
 groupingElementsTogether = subsection
-  { title: "Grouping elements together"
+  { title: "Grouping components together"
   , matter: pure
       [ D.p_
-          [ text_ "To group elements together, you can use "
+          [ text_ "To group components together, you can use "
           , D.code__ "fixed"
           , text_
-              " before an array of elements. The elements will render into the correct position in the parent element."
+              " before an array of components. The components will render into the correct position in the parent components."
           ]
       , D.p_
           [ text_
