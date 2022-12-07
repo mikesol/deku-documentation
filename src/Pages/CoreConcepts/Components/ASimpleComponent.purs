@@ -79,8 +79,17 @@ main = runInBody
               , D.b__ "component"
               , text_ " is a PureScript term with type "
               , D.code__ "forall lock payload. Document lock payload"
+              , text_ ". Because that's tedious to write out, there's also an alias for this called  "
+              , D.code__ "Nut"
+              , text_ " defined in the module"
+              , D.code__ "Deku.Core"
+              , text_ " and named affectionately after "
+              , targetedLink "https://zelda.fandom.com/wiki/Deku_Nut" [text_ "Deku nuts"]
               , text_
-                  ". It's the type produced by "
+                  ". "
+              , D.code__ "Nut"
+              , text_
+                  " is the type produced by "
               , D.code__ "D.div_"
               , text_ ", "
               , D.code__ "D.span_"

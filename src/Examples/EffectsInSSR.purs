@@ -1,4 +1,4 @@
-module Scratch where
+module Examples.EffectsInSSR where
 
 import Prelude
 
