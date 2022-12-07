@@ -7,6 +7,7 @@ module Main
 import Prelude
 
 import Components.App (app)
+import Control.Alt ((<|>))
 import DarkModePreference (OnDark(..), OnLight(..), darkModeListener, prefersDarkMode)
 import Data.Compactable (compact)
 import Data.Foldable (traverse_)
@@ -162,7 +163,7 @@ main = do
     traverse_ previousRouteMailbox.push old
     currentRouteMailbox.push new
     currentRoute.push new
-  void $ matchesWith (parse route)
+  void $ matchesWith (map (\e -> e <|> pure FourOhFour) (parse route))
     (curry dedupRoute.push)
     psi
   prefersDarkMode >>= darkModePreferenceE.push

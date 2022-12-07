@@ -23,6 +23,7 @@ import Pages.FRP.Filtering (filtering)
 import Pages.FRP.FixAndFold (fixAndFold)
 import Pages.FRP.OtherInstances (otherInstances)
 import Pages.FRP.Sampling (sampling)
+import Pages.FourOhFour (fourOhFour)
 import Pages.Introduction.GettingStarted (gettingStarted)
 import Pages.Introduction.HelloWorld (helloWorld)
 import Router.ADT (Route(..))
@@ -50,3 +51,4 @@ routeToPage Behaviors = behaviors
 routeToPage CustomElements = customElements
 routeToPage AccessingTheDOM = accessingTheDOM
 routeToPage SSR = sSR
+routeToPage FourOhFour = fourOhFour

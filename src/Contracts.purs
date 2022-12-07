@@ -11,6 +11,7 @@ import Router.ADT (Route, routeToTitle)
 
 newtype Env = Env
   { routeLink :: forall lock payload. Route -> Domable lock payload
+  , routeLinkWithText :: forall lock payload. Route -> String -> Domable lock payload
   }
 
 newtype Docs lock paylaod = Docs (Array (Chapter lock paylaod))

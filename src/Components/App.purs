@@ -6,7 +6,7 @@ import Components.Banner (banner)
 import Components.BottomNav (bottomNav)
 import Components.Header (header)
 import Components.LeftMatter (leftMatter)
-import Components.Link (link)
+import Components.Link (link, linkWithString)
 import Contracts (Page(..), Section(..), Subsection(..), Env(..))
 import Control.Alt ((<|>))
 import Control.Monad.State (evalState, get, put, runState)
@@ -19,7 +19,7 @@ import Data.Tuple (Tuple(..), fst, snd)
 import Data.Tuple.Nested (type (/\), (/\))
 import Deku.Attribute ((!:=))
 import Deku.Attributes (klass, klass_)
-import Deku.Control (switcher, text_)
+import Deku.Control (blank, guard, switcher, text_)
 import Deku.Core (Domable)
 import Deku.DOM as D
 import Deku.Do as Deku
@@ -29,7 +29,7 @@ import Effect (Effect)
 import FRP.Event (Event)
 import Navigation (PushState)
 import Prism (forceHighlightAff)
-import Router.ADT (Route, routeToNextRoute, routeToPrevRoute)
+import Router.ADT (Route(..), routeToNextRoute, routeToPrevRoute)
 import Router.Chapter (routeToChapter)
 import Web.DOM as DOM
 
@@ -59,7 +59,11 @@ app
   , pageWas
   , pushState
   } = Deku.do
-  let env = Env { routeLink: \r -> link pushState r empty }
+  let
+    env = Env
+      { routeLink: \r -> link pushState r empty
+      , routeLinkWithText: \r s -> linkWithString pushState r s empty
+      }
   setDark /\ dark <- useState LightMode
   let
     darkBoolean = (Tuple <$> darkModePreference <*> dark) <#> \(dmPref /\ dk) ->
@@ -113,22 +117,24 @@ app
                             [ D.Class !:= "mb-9 space-y-1"
                             ]
                         )
-                        [ D.p
-                            ( oneOf
-                                [ D.Class !:=
-                                    "font-display text-sm font-medium text-sky-500"
-                                ]
-                            )
-                            [ text_ (unwrap (routeToChapter cp.route)).title ]
-                        , D.h1
-                            ( oneOf
-                                [ D.Id !:= "getting-started"
-                                , D.Class !:=
-                                    "font-display text-3xl tracking-tight text-slate-900 dark:text-white"
-                                ]
-                            )
-                            [ text_ cp.title ]
-                        ]
+                        ( (if cp.route == FourOhFour then [] else [ D.p
+                              ( oneOf
+                                  [ D.Class !:=
+                                      "font-display text-sm font-medium text-sky-500"
+                                  ]
+                              )
+                              [ text_ (unwrap (routeToChapter cp.route)).title ]
+                          ]) <>
+                            [ D.h1
+                                ( oneOf
+                                    [ D.Id !:= "getting-started"
+                                    , D.Class !:=
+                                        "font-display text-3xl tracking-tight text-slate-900 dark:text-white"
+                                    ]
+                                )
+                                [ text_ cp.title ]
+                            ]
+                        )
                     , D.div
                         ( oneOf
                             [ D.Class !:=
@@ -202,99 +208,101 @@ app
                 ( D.Class !:=
                     "hidden xl:sticky xl:top-[4.5rem] xl:-mr-6 xl:block xl:h-[calc(100vh-4.5rem)] xl:flex-none xl:overflow-y-auto xl:py-16 xl:pr-6"
                 )
-                [ flip switcher curPage \(Page cp) -> D.nav
-                    ( oneOf [ D.Class !:= "w-56" ]
-                    )
-                    [ D.h2
-                        ( oneOf
-                            [ D.Id !:= "on-this-page-title"
-                            , D.Class !:=
-                                "font-display text-sm font-medium text-slate-900 dark:text-white"
-                            ]
-                        )
-                        [ text_ "On this page" ]
-                    , D.ol
-                        ( oneOf
-                            [ D.Role !:= "list"
-                            , D.Class !:= "mt-4 space-y-3 text-sm"
-                            ]
-                        )
-                        ( flip evalState 0
-                            $ traverse
-                                ( \(Section section) -> do
-                                    i <- get
-                                    let
-                                      inner = flip runState (i + 1)
-                                        ( traverse
-                                            ( \(Subsection subsection) -> do
-                                                j <- get
-                                                put (j + 1)
-                                                pure $ D.li_
-                                                  [ D.a
-                                                      ( oneOf
-                                                          [ klass
-                                                              ( rightSideSubNavClass
-                                                                  j
-                                                              )
-                                                          , D.Href !:=
-                                                              ( "#" <>
-                                                                  subsection.id
-                                                              )
-                                                          , click_
-                                                              ( pure unit
-                                                                  :: Effect
-                                                                       Unit
-                                                              )
-                                                          -- ( setRightSideNavSelect
-                                                          --     j
-                                                          -- )
-                                                          ]
-                                                      )
-                                                      [ text_
-                                                          subsection.title
-                                                      ]
-                                                  ]
-                                            )
-                                            section.subsections
-                                        )
-                                    put (snd inner)
-                                    pure $ D.li_
-                                      ( [ D.h3_
-                                            [ D.a
-                                                ( oneOf
-                                                    ( [ klass
-                                                          ( rightSideNavClass
-                                                              i
-                                                          )
-                                                      , D.Href !:=
-                                                          ("#" <> section.id)
-                                                      , click_
-                                                          ( pure unit
-                                                              :: Effect Unit
-                                                          )
-                                                      -- ( setRightSideNavSelect
-                                                      --     i
-                                                      -- )
+                [ flip switcher curPage \(Page cp) ->
+                    if cp.route == FourOhFour then blank
+                    else D.nav
+                      ( oneOf [ D.Class !:= "w-56" ]
+                      )
+                      [ D.h2
+                          ( oneOf
+                              [ D.Id !:= "on-this-page-title"
+                              , D.Class !:=
+                                  "font-display text-sm font-medium text-slate-900 dark:text-white"
+                              ]
+                          )
+                          [ text_ "On this page" ]
+                      , D.ol
+                          ( oneOf
+                              [ D.Role !:= "list"
+                              , D.Class !:= "mt-4 space-y-3 text-sm"
+                              ]
+                          )
+                          ( flip evalState 0
+                              $ traverse
+                                  ( \(Section section) -> do
+                                      i <- get
+                                      let
+                                        inner = flip runState (i + 1)
+                                          ( traverse
+                                              ( \(Subsection subsection) -> do
+                                                  j <- get
+                                                  put (j + 1)
+                                                  pure $ D.li_
+                                                    [ D.a
+                                                        ( oneOf
+                                                            [ klass
+                                                                ( rightSideSubNavClass
+                                                                    j
+                                                                )
+                                                            , D.Href !:=
+                                                                ( "#" <>
+                                                                    subsection.id
+                                                                )
+                                                            , click_
+                                                                ( pure unit
+                                                                    :: Effect
+                                                                         Unit
+                                                                )
+                                                            -- ( setRightSideNavSelect
+                                                            --     j
+                                                            -- )
+                                                            ]
+                                                        )
+                                                        [ text_
+                                                            subsection.title
+                                                        ]
+                                                    ]
+                                              )
+                                              section.subsections
+                                          )
+                                      put (snd inner)
+                                      pure $ D.li_
+                                        ( [ D.h3_
+                                              [ D.a
+                                                  ( oneOf
+                                                      ( [ klass
+                                                            ( rightSideNavClass
+                                                                i
+                                                            )
+                                                        , D.Href !:=
+                                                            ("#" <> section.id)
+                                                        , click_
+                                                            ( pure unit
+                                                                :: Effect Unit
+                                                            )
+                                                        -- ( setRightSideNavSelect
+                                                        --     i
+                                                        -- )
 
-                                                      ]
-                                                    )
-                                                )
-                                                [ text_ section.title ]
-                                            ]
-                                        , D.ol
-                                            ( oneOf
-                                                [ D.Role !:= "list"
-                                                , D.Class !:=
-                                                    "mt-2 space-y-3 pl-5 text-slate-500 dark:text-slate-400"
-                                                ]
-                                            )
-                                            (fst inner)
-                                        ]
-                                      )
-                                )
-                                cp.sections
-                        )
-                    ]
+                                                        ]
+                                                      )
+                                                  )
+                                                  [ text_ section.title ]
+                                              ]
+                                          , D.ol
+                                              ( oneOf
+                                                  [ D.Role !:= "list"
+                                                  , D.Class !:=
+                                                      "mt-2 space-y-3 pl-5 text-slate-500 dark:text-slate-400"
+                                                  ]
+                                              )
+                                              (fst inner)
+                                          ]
+                                        )
+                                  )
+                                  cp.sections
+                          )
+                      ]
                 ]
             ]
         ]

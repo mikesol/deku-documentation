@@ -29,6 +29,7 @@ data Route
   | CustomElements
   | AccessingTheDOM
   | SSR
+  | FourOhFour
 
 derive instance Generic Route _
 derive instance Eq Route
@@ -60,6 +61,7 @@ routeToNextRoute Behaviors = Just CustomElements
 routeToNextRoute CustomElements = Just AccessingTheDOM
 routeToNextRoute AccessingTheDOM = Just SSR
 routeToNextRoute SSR = Nothing
+routeToNextRoute FourOhFour = Nothing
 
 routeToPrevRoute :: Route -> (Maybe Route)
 routeToPrevRoute GettingStarted = Nothing
@@ -84,6 +86,7 @@ routeToPrevRoute Behaviors = Just FixAndFold
 routeToPrevRoute CustomElements = Just Behaviors
 routeToPrevRoute AccessingTheDOM = Just CustomElements
 routeToPrevRoute SSR = Just AccessingTheDOM
+routeToPrevRoute FourOhFour = Nothing
 
 routeToTitle :: Route -> String
 routeToTitle GettingStarted = "Getting started"
@@ -108,3 +111,4 @@ routeToTitle Behaviors = "Behaviors"
 routeToTitle CustomElements = "Custom elements"
 routeToTitle AccessingTheDOM = "Accessing the DOM"
 routeToTitle SSR = "SSR"
+routeToTitle FourOhFour = "The Diamond Club Penthouse"

@@ -32,3 +32,4 @@ routeToChapter Behaviors = frp
 routeToChapter CustomElements = advancedUsage
 routeToChapter AccessingTheDOM = advancedUsage
 routeToChapter SSR = advancedUsage
+routeToChapter FourOhFour = introduction

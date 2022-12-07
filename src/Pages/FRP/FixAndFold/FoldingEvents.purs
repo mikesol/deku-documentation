@@ -17,9 +17,17 @@ foldingEvents = section
   { title: "Folding events"
   , topmatter: pure
       [ D.p_
-          [ text_ "This section will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "Folding events" ]
-          , text_ "."
+          [ text_ "One special category of "
+          , D.code__ "fix"
+          , text_ "ing is "
+          , D.code__ "fold"
+          , text_ "ing. In this section, we'll define the "
+          , D.code__ "fold"
+          , text_ " function from "
+          , D.code__ "fix"
+          , text_ ", build a simple counter using "
+          , D.code__ "fold"
+          , text_ ", and discuss when to use one versus the other."
           ]
       ]
   , subsections:
