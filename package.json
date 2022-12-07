@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "vite dev",
+    "gitpod": "spago build",
     "build": "spago -x prod.dhall build && vite build"
   },
   "browserslist": "defaults, not ie <= 11",
