@@ -2,7 +2,7 @@ module Pages.CoreConcepts.State.HookingIntoTheDOM.UsingTheHookToSwitchBetweenEle
 
 import Prelude
 
-import Components.Code (psCode)
+import Components.Code (psCode, psCodeNoCollapse)
 import Components.ExampleBlockquote (exampleBlockquote)
 import Constants (tripleQ)
 import Contracts (Subsection, subsection)
@@ -52,7 +52,7 @@ usingTheHookToSwitchBetweenElements = subsection
           , D.code__ "<#~>"
           , text_ " operator."
           ]
-      , psCode
+      , psCodeNoCollapse
           ( """module Main where
 
 import Prelude
