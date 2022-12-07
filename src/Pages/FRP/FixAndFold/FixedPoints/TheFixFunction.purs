@@ -72,12 +72,10 @@ main = runInBody Deku.do
         [ text_ "Previous word: "
         , text
             ( pure "None" <|>
-                ( show <$>
-                    ( compact $ snd <$> fix
-                        ( \e -> sampleOnRight
-                            (pure Nothing <|> (fst <$> e))
-                            ((Tuple <<< Just) <$> word)
-                        )
+                ( compact $ snd <$> fix
+                    ( \e -> sampleOnRight
+                        (pure Nothing <|> (fst <$> e))
+                        ((Tuple <<< Just) <$> word)
                     )
                 )
             )
@@ -193,12 +191,10 @@ theFixFunction = subsection
                     [ text_ "Previous word: "
                     , text
                         ( pure "None" <|>
-                            ( show <$>
-                                ( compact $ snd <$> fix
-                                    ( \e -> sampleOnRight
-                                        (pure Nothing <|> (fst <$> e))
-                                        ((Tuple <<< Just) <$> word)
-                                    )
+                            ( compact $ snd <$> fix
+                                ( \e -> sampleOnRight
+                                    (pure Nothing <|> (fst <$> e))
+                                    ((Tuple <<< Just) <$> word)
                                 )
                             )
                         )
@@ -311,10 +307,13 @@ fixedEvent = fix
                 , D.div_ $ [ 0, 1, 2, 3, 4 ] <#> \n -> D.div_
                     [ text_ $ "Word with a lag of " <> show n <> ": "
                     , text
-                        ( pure "None" <|> lag n word)
+                        (pure "None" <|> lag n word)
                     ]
                 ]
           ]
-          , D.p_ [text_ "Using this technique, you can create powerful state machines that articulate arbitrary relationships between items in the past. So long as there is a sampling function that stops the fixed point from turning into an infinite loop, you can articulate any stateful behavior you so choose."]
+      , D.p_
+          [ text_
+              "Using this technique, you can create powerful state machines that articulate arbitrary relationships between items in the past. So long as there is a sampling function that stops the fixed point from turning into an infinite loop, you can articulate any stateful behavior you so choose."
+          ]
       ]
   }

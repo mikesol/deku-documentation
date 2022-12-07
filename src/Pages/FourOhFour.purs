@@ -10,10 +10,7 @@ fourOhFour :: forall lock payload. Page lock payload
 fourOhFour = page
   { route: FourOhFour
   , topmatter: \(Env { routeLinkWithText }) ->
-      [ D.p (D.Class !:= "lead")
-          [ text_ "Welcome to the Diamond Club Penthouse!"
-          ]
-      , D.p_
+      [ D.p_
           [ text_
               "This is the secret part of the documentation reserved for our exclusive Diamond Club Members. If you are a Diamond Club Member, you know the combination of clicks, swipes, and computer shakes needed to unlock the content on this page. Otherwise, if you are not a Diamond Club Member, you've stolen this link from someone who is. Shame on you. Here's the "
           , routeLinkWithText GettingStarted "🚪"

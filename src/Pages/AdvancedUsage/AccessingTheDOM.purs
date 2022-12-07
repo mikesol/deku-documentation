@@ -15,13 +15,14 @@ accessingTheDOM = page
   { route: AccessingTheDOM
   , topmatter: pure
       [ D.p (D.Class !:= "lead")
-          [ text_ "This page will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "Custom elements" ]
-          , text_ "."
+          [ text_ "Raw-as-raw-gets DOM components"
           ]
       , D.p_
           [ text_
-              "Possimus saepe veritatis sint nobis et quam eos. Architecto consequatur odit perferendis fuga eveniet possimus rerum cumque. Ea deleniti voluptatum deserunt voluptatibus ut non iste."
+              "Sometimes, we need direct access to a DOM element. For example, when dealing with forms, we need a way to get the contents of an "
+          , D.code__ "input"
+          , text_
+              " element on submit. This section goes over how to access the DOM on a per-element basis and also how to work with global DOM APIs at the top-level of your application."
           ]
       ]
   , sections:

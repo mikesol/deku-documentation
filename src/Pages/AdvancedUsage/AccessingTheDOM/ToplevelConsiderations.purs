@@ -21,5 +21,5 @@ toplevelConsiderations = section
           ]
       ]
   , subsections:
-      [ routing, globalHandlers ]
+      [ globalHandlers, routing ]
   }

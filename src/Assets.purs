@@ -6,3 +6,5 @@ foreign import dekulogoURL :: String
 foreign import dekulogodarkURL :: String
 foreign import alexanderURL :: String
 foreign import alexanderBackgroundURL :: String
+foreign import belugaURL :: String
+foreign import beluMomURL :: String

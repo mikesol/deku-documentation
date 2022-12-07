@@ -14,10 +14,7 @@ definingCustomElements = section
   { title: "Defining custom elements"
   , topmatter: pure
       [ D.p_
-          [ text_ "This section will be about "
-          , D.span (D.Class !:= "font-bold")
-              [ text_ "Defining custom elements" ]
-          , text_ "."
+          [ text_ "In this section, we'll see how to take an element already in the DOM and give it a new alias through Deku."
           ]
       ]
   , subsections:

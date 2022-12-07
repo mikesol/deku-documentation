@@ -12,13 +12,10 @@ import Pages.AdvancedUsage.AccessingTheDOM.TheSelfAttribute.SafetyWithSelf (safe
 
 theSelfAttribute :: forall lock payload. Section lock payload
 theSelfAttribute = section
-  { title: "Defining custom elements"
+  { title: "The Self attribute"
   , topmatter: pure
       [ D.p_
-          [ text_ "This section will be about "
-          , D.span (D.Class !:= "font-bold")
-              [ text_ "Defining custom elements" ]
-          , text_ "."
+          [ text_ "All Deku elements can get a reference to themself via the ", D.code__ "Self", text_ " attribute. This section covers how to wield that power for good and not for evil."
           ]
       ]
   , subsections:

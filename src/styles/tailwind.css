@@ -4,3 +4,8 @@
 @import './prism.css';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+.discord-author-avatar img {
+    margin-top: 0em;
+    margin-bottom: 0em;
+}

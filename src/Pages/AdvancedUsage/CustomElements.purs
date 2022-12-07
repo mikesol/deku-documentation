@@ -2,6 +2,7 @@ module Pages.AdvancedUsage.CustomElements where
 
 import Prelude
 
+import Components.TargetedLink (targetedLink)
 import Contracts (Page, page)
 import Deku.Attribute ((!:=))
 import Deku.Control (text_)
@@ -15,13 +16,11 @@ customElements = page
   { route: CustomElements
   , topmatter: pure
       [ D.p (D.Class !:= "lead")
-          [ text_ "This page will be about "
-          , D.b_ [ text_ "Custom elements" ]
-          , text_ "."
+          [ text_ "How to bend Deku to do your bidding."
           ]
       , D.p_
           [ text_
-              "Possimus saepe veritatis sint nobis et quam eos. Architecto consequatur odit perferendis fuga eveniet possimus rerum cumque. Ea deleniti voluptatum deserunt voluptatibus ut non iste."
+              "Sometimes, Deku's representation of DOM elements doesn't fit with how you need them to be used. In some cases, the DOM's components are not enough. When you need a bit more out of your DOM, Deku provides a backdoor to define whatever component you want while adding a modicum of type safety to the affair."
           ]
       ]
   , sections:
