@@ -34,17 +34,7 @@ typeSafety = subsection
           ]
         , D.p_ [text_ "By using a type to specify the HTML, Deku can verify it at ",D.i__ "compile time", text_ " instead of at runtime. That means you do not need to eat up precious CPU cycles in the browser ", D.i__ "and", text_ " you'll weed out errors earlier. If the HTML isn't valid, your program won't compile."]
         , D.p_ [text_ "Let's see a concrete example of this. Say I try to compile the following Deku program with malformed HTML."]
-        , psCode """module Main where
-
-import Prelude
-
-import Deku.Pursx ((~~))
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
-import Type.Proxy (Proxy(..))
-
-
-main :: Effect Unit
+        , psCode """main :: Effect Unit
 main = runInBody ((Proxy :: Proxy
     "<h1><span>hi<span></h1>") ~~ {})"""
         , D.p_ [text_ "The compiler complains with the following message."]

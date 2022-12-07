@@ -22,7 +22,7 @@ import FRP.Event (Event)
 import Type.Proxy (Proxy(..))
 
 myHtml =
-  ( Proxy      :: Proxy
+  ( Proxy :: Proxy
            """<nav class="flex" aria-label="Breadcrumb">
   <ol role="list" class="flex space-x-4 rounded-md bg-white px-6 shadow">
     <li ~homeAtts~>

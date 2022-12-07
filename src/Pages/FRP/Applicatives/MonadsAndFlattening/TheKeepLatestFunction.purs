@@ -43,7 +43,6 @@ theKeepLatestFunction = subsection
           , text_ " is "
           , D.code__ "keepLatest"
           , text_ "."
-
           ]
       , psCode "keepLatest :: forall a. Event (Event a) -> Event a"
       , D.p_
