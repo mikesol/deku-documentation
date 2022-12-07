@@ -62,7 +62,7 @@ focus:ring-indigo-500 focus:ring-offset-2 mr-6"""
                 """ :: String
 
 main :: Effect Unit
-main =
+main = do
   n <- random
   runInBody Deku.do
     setNumber /\ number <- useState n
