@@ -16,13 +16,11 @@ sSR = page
   { route: SSR
   , topmatter: pure
       [ D.p (D.Class !:= "lead")
-          [ text_ "This page will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "SSR" ]
-          , text_ "."
+          [ text_ "Server-side rendering or Static site rendering? Choose two!"
           ]
       , D.p_
           [ text_
-              "Possimus saepe veritatis sint nobis et quam eos. Architecto consequatur odit perferendis fuga eveniet possimus rerum cumque. Ea deleniti voluptatum deserunt voluptatibus ut non iste."
+              "Deku has support for rendering any deku app as a static site. For games, this is not that helpful, but for documentation or landing pages this can make the loading experience snappier. This page goes over how to use Deku SSR."
           ]
       ]
   , sections:

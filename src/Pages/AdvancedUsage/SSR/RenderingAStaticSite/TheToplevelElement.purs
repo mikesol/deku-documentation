@@ -9,12 +9,15 @@ import Deku.DOM as D
 
 theToplevelElement :: forall lock payload. Subsection lock payload
 theToplevelElement = subsection
-  { title: "The toplevel element"
+  { title: "Toplevel element"
   , matter: pure
       [ D.p_
-          [ text_ "This subsection will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "The toplevel element" ]
-          , text_ "."
+          [ text_ "The "
+          , D.code__ "runSSR"
+          , text_
+              " function automatically places the generated Deku code in the body of an HTML document. To change the toplevel HTML element, call "
+          , D.code__ "runSSR'"
+          , text_ " with the desired toplevel tagname as the first argument."
           ]
       ]
   }

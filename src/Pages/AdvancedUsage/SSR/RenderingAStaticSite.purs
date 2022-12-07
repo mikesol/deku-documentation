@@ -4,7 +4,6 @@ import Prelude
 
 import Contracts (Section, section)
 import Deku.Control (text_)
-import Deku.Attribute ((!:=))
 import Deku.DOM as D
 import Pages.AdvancedUsage.SSR.RenderingAStaticSite.TheRunSSRFunction (theRunSSRFunction)
 import Pages.AdvancedUsage.SSR.RenderingAStaticSite.TheToplevelElement (theToplevelElement)
@@ -15,9 +14,8 @@ renderingAStaticSite = section
   { title: "Rendering a static site"
   , topmatter: pure
       [ D.p_
-          [ text_ "This section will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "Rendering a static site" ]
-          , text_ "."
+          [ text_
+              "Rendering a static site in Deku can be done using the same components you've seen all throughout this documentation. It only requires a different toplevel handler."
           ]
       ]
   , subsections:

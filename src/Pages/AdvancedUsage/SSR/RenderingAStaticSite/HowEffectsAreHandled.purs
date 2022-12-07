@@ -2,19 +2,94 @@ module Pages.AdvancedUsage.SSR.RenderingAStaticSite.HowEffectsAreHandled where
 
 import Prelude
 
+import Components.Code (htmlCode, psCodeNoCollapse)
+import Components.ExampleBlockquote (exampleBlockquote)
 import Contracts (Subsection, subsection)
-import Deku.Control (text_)
+import Control.Monad.ST (run)
+import Data.Tuple.Nested ((/\))
 import Deku.Attribute ((!:=))
+import Deku.Attributes (klass_)
+import Deku.Control (guard, text_)
+import Deku.Core (Domable)
 import Deku.DOM as D
+import Deku.Do as Deku
+import Deku.Hooks (useState')
+import Deku.Listeners (click)
+import Deku.Toplevel (runSSR)
+import QualifiedDo.Alt as Alt
+
+myApp :: forall lock payload. String -> Domable lock payload
+myApp s = Deku.do
+  setImage /\ image <- useState'
+  D.div_
+    [ D.h4__ "Hi!"
+    , D.a
+        Alt.do
+          klass_ "cursor-pointer"
+          click Alt.do
+            pure (setImage unit)
+            image $> pure unit
+        [ text_ "Click to reveal an image." ]
+    , guard (image $> true) (D.img (D.Src !:= "https://picsum.photos/150") [])
+    , htmlCode s
+    ]
 
 howEffectsAreHandled :: forall lock payload. Subsection lock payload
 howEffectsAreHandled = subsection
   { title: "How effects are handled"
   , matter: pure
       [ D.p_
-          [ text_ "This subsection will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "How effects are handled" ]
-          , text_ "."
+          [ text_
+              "The Deku SSR engine is smart enough to drop all effectful elements like click listeners and all parts of the DOM that are created using effects, like for example an image that is only created when a click event occurs."
           ]
+      , psCodeNoCollapse
+          """module Main where
+
+import Prelude
+
+import Effect (Effect)
+import Components.Code (htmlCode)
+import Control.Monad.ST (run)
+import Data.Tuple.Nested ((/\))
+import Deku.Attribute ((!:=))
+import Deku.Attributes (klass_)
+import Deku.Control (guard, text_)
+import Deku.Core (Domable)
+import Deku.DOM as D
+import Deku.Do as Deku
+import Deku.Hooks (useState')
+import Deku.Listeners (click)
+import Deku.Toplevel (runInBody, runSSR)
+import QualifiedDo.Alt as Alt
+
+myApp :: forall lock payload. String -> Domable lock payload
+myApp s = Deku.do
+  setImage /\ image <- useState'
+  D.div_
+    [ D.h4__ "Hi!"
+    , D.a
+        Alt.do
+          klass_ "cursor-pointer"
+          click Alt.do
+            pure (setImage unit)
+            image $> pure unit
+        [ text_ "Click to reveal an image." ]
+    , guard (image $> true)
+        (D.img (D.Src !:= "https://picsum.photos/150") [])
+    , htmlCode s
+    ]
+
+main :: Effect Unit
+main = runInBody do
+  myApp
+    (run (runSSR (myApp "innnceeeppption")))
+"""
+      , exampleBlockquote
+          [ do
+              myApp
+                (run (runSSR (myApp "innnceeeppption")))
+          ]
+
       ]
   }
+
