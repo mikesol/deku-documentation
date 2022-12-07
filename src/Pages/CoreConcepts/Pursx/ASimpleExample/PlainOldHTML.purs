@@ -13,9 +13,10 @@ plainOldHTML = subsection
   { title: "Plain old HTML"
   , matter: pure
       [ D.p_
-          [ text_ "Here is the Deku code that produces the example seen above."]
-          , psCode
-              ( """module Main where
+          [ text_ "Here is the Deku code that produces the example seen above."
+          ]
+      , psCode
+          ( """module Main where
 
 import Prelude
 
@@ -27,8 +28,8 @@ import Type.Proxy (Proxy(..))
 
 myHtml = Proxy :: Proxy
    """ <> tripleQ
-                  <>
-                    """<nav class="flex" aria-label="Breadcrumb">
+              <>
+                """<nav class="flex" aria-label="Breadcrumb">
   <ol role="list" class="flex space-x-4 rounded-md bg-white px-6 shadow">
     <li class="flex">
       <div class="flex items-center">
@@ -61,20 +62,25 @@ myHtml = Proxy :: Proxy
     </li>
   </ol>
 </nav>"""
-                  <> tripleQ
-                  <>
-                    """
+              <> tripleQ
+              <>
+                """
 
 main :: Effect Unit
 main = runInBody (myHtml ~~ {})"""
-              )
-          , D.p__ "Just so that you don't miss it, after the large block of HTML, here's the actual Deku bit."
-          , psCode """main :: Effect Unit
+          )
+      , D.p__
+          "Just so that you don't miss it, after the large block of HTML, here's the actual Deku bit."
+      , psCode
+          """main :: Effect Unit
 main = runInBody (myHtml ~~ {})"""
-          , D.p_ [text_ "All you have to do is take your HTML string, add "
+      , D.p_
+          [ text_ "All you have to do is take your HTML string, add "
           , D.code__ "~~ {}"
-          , text_ " after it, and you get your HTML in the DOM prest-o change-o. In addition to being low-code, this is the most performant Deku gets. It literally takes the code and sets it as the "
+          , text_
+              " after it, and you get your HTML in the DOM prest-o change-o. In addition to being low-code, this is the most performant Deku gets. It literally takes the code and sets it as the "
           , D.code__ "innerHTML"
-          , text_ " of some containing element."]
+          , text_ " of some containing element."
+          ]
       ]
   }

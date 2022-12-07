@@ -60,6 +60,6 @@ mixingDoNotation = subsection
   useState unit \(setHook /\ hook) ->
     D.button (klass_ "button" <|> (click $ hook <#> setHook))
       [ "hi" ]"""
-      , D.p_ [text_ "It's up to you what to ", D.code__ "do", text_ "!"]
+      , D.p_ [ text_ "It's up to you what to ", D.code__ "do", text_ "!" ]
       ]
   }

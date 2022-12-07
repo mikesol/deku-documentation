@@ -49,7 +49,8 @@ usefulShorthand = subsection
           , text_
               " that you can use to author CSS, which is easier to debug than string-based styles."
           ]
-      , psCode """import Deku.CSS as CSS
+      , psCode
+          """import Deku.CSS as CSS
 import CSS (color, red, display, block)
 
 myStyleString = CSS.render do

@@ -149,7 +149,13 @@ app = do
           , D.code__ "Env"
           , text_ " context passed down through the stack."
           ]
-      , D.p_ [text_ "If you're a seasoned functional programmer, you've likely used this pattern in many applications. It's also called the ", D.code__ "Reader", text_ " monad. Many functional UI frameworks (including React) have special mechanics to achieve this, but in Deku, the framework is set up in such a way to encourage time-tested functional patterns."]
+      , D.p_
+          [ text_
+              "If you're a seasoned functional programmer, you've likely used this pattern in many applications. It's also called the "
+          , D.code__ "Reader"
+          , text_
+              " monad. Many functional UI frameworks (including React) have special mechanics to achieve this, but in Deku, the framework is set up in such a way to encourage time-tested functional patterns."
+          ]
       ]
   }
 

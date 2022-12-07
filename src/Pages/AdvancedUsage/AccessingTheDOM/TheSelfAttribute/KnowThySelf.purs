@@ -33,7 +33,8 @@ knowThySelf = subsection
           , text_
               " an element's attributes and children are added, so make sure to defer your computation until the next browser tick if you want these things to be present, like in the example below."
           ]
-          , psCode """module Main where
+      , psCode
+          """module Main where
 
 import Prelude
 

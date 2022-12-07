@@ -16,7 +16,7 @@ import Web.HTML.HTMLInputElement (value)
 
 inputKls :: String
 inputKls =
-   """rounded-md
+  """rounded-md
 border-gray-300 shadow-sm
 border-2 mr-2
 border-solid

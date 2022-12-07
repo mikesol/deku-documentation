@@ -1,6 +1,5 @@
 module Pages.CoreConcepts.Portals.GlobalPortals.PerformanceConsiderations where
 
-
 import Contracts (Env(..), Subsection, subsection)
 import Deku.Control (text_)
 import Deku.DOM as D

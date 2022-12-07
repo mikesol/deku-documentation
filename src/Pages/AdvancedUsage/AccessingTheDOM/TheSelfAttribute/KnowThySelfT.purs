@@ -18,7 +18,8 @@ import QualifiedDo.Alt as Alt
 import Web.HTML.HTMLInputElement (value)
 
 example :: String
-example = """module Main where
+example =
+  """module Main where
 
 import Prelude
 
@@ -36,12 +37,17 @@ import Web.HTML.HTMLInputElement (value)
 
 inputKls :: String
 inputKls =
-  """ <> tripleQ <> """rounded-md
+  """ <> tripleQ
+    <>
+      """rounded-md
 border-gray-300 shadow-sm
 border-2 mr-2
 border-solid
 focus:border-indigo-500 focus:ring-indigo-500
-sm:text-sm""" <> tripleQ <> """
+sm:text-sm"""
+    <> tripleQ
+    <>
+      """
 
 main :: Effect Unit
 main = runInBody Deku.do

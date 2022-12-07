@@ -58,6 +58,18 @@ main = runInBody do
               [ text_ "Par-tay!" ]
           ]
       , D.p__ "The alternating of the two streams creates the strobe effect."
-      , proTip { header: text_ "Order of alting", message: D.div_ [ text_ "The ", D.code__ "<|>", text_ " operator ", D.i__ "always", text_ "muxes from right to left for simultaneous events. For example, ", D.code__ "pure 0 <|> pure 1", text_ " will emit 0 and then 1."]}
+      , proTip
+          { header: text_ "Order of alting"
+          , message: D.div_
+              [ text_ "The "
+              , D.code__ "<|>"
+              , text_ " operator "
+              , D.i__ "always"
+              , text_
+                  "muxes from right to left for simultaneous events. For example, "
+              , D.code__ "pure 0 <|> pure 1"
+              , text_ " will emit 0 and then 1."
+              ]
+          }
       ]
   }

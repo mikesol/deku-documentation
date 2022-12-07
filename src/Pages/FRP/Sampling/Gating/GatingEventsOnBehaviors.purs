@@ -38,7 +38,8 @@ gateBy f ps xs = compact (sampleBy (\p x -> if f p x then Just x else Nothing) p
           , D.code__ "Behavior"
           , text_ "."
           ]
-          , psCode """module Main where
+      , psCode
+          """module Main where
 
 import Prelude
 

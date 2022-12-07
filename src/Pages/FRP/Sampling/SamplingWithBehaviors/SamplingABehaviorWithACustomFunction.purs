@@ -66,7 +66,9 @@ samplingABehaviorWithACustomFunction = subsection
   , matter: pure
       [ D.p_
           [ text_
-              "Last but not least, we can sample an event with an arbitrary function using ", D.code__ "sampleBy", text_ "."
+              "Last but not least, we can sample an event with an arbitrary function using "
+          , D.code__ "sampleBy"
+          , text_ "."
           ]
       , psCode example
       , exampleBlockquoteWithHeight "h-96"
@@ -82,7 +84,7 @@ samplingABehaviorWithACustomFunction = subsection
                                     , responseFormat = ResponseFormat.json
                                     }
                                 )
-                              pure $ f 
+                              pure $ f
                                 case result of
                                   Left err -> (AX.printError err)
                                   Right response ->

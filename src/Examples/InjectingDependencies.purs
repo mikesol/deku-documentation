@@ -32,6 +32,7 @@ data UIState
   = Beginning
   | Loading
   | Image { url :: String, watcherCount :: Int }
+
 main :: Effect Unit
 main = runInBody Deku.do
   let

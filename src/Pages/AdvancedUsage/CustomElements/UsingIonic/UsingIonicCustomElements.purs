@@ -65,7 +65,8 @@ usingIonicCustomElements = subsection
           [ text_
               "We can define our Discord elements the same way we defined our custom anchor element above."
           ]
-          , psCodeNoCollapse """module Main where
+      , psCodeNoCollapse
+          """module Main where
 
 import Prelude
 

@@ -21,7 +21,9 @@ usingAHookToControlThePresenceOfElements = subsection
   , matter: pure
       [ D.p_
           [ text_
-              "You can also use a boolean hook to control the presence or absence of an object via the ", D.code__ "guard", text_ " function."
+              "You can also use a boolean hook to control the presence or absence of an object via the "
+          , D.code__ "guard"
+          , text_ " function."
           ]
       , psCode
           """module Main where
@@ -66,7 +68,14 @@ main = runInBody Deku.do
                     ]
                 ]
           ]
-        , D.p_ [text_ "In case you ever want to typeset an empty element (meaning an element that does not appear in the DOM at all), you can use ", D.code__ "blank", text_ ". In fact, the definition of ", D.code__ "guard", text_ " above is just the following." ]
-        , psCode """guard eb d = eb <#~> if _ then d else blank"""
+      , D.p_
+          [ text_
+              "In case you ever want to typeset an empty element (meaning an element that does not appear in the DOM at all), you can use "
+          , D.code__ "blank"
+          , text_ ". In fact, the definition of "
+          , D.code__ "guard"
+          , text_ " above is just the following."
+          ]
+      , psCode """guard eb d = eb <#~> if _ then d else blank"""
       ]
   }

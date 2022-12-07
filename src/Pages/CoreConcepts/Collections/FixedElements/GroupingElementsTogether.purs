@@ -31,7 +31,8 @@ groupingElementsTogether = subsection
           , D.i__ "e i e i o"
           , text_ " so as to avoid needless code duplication. "
           ]
-      , psCode """module Main where
+      , psCode
+          """module Main where
 
 import Prelude
 

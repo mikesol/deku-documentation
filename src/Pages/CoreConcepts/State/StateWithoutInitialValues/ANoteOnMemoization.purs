@@ -124,8 +124,9 @@ main = do
               setPresence /\ presence <- useState false
               D.div_
                 [ D.div_
-                    [ text $ (bindToEffect (pure unit) (pure random) <|>  number) <#> show >>>
-                        ("Here's a random number: " <> _)
+                    [ text $ (bindToEffect (pure unit) (pure random) <|> number)
+                        <#> show >>>
+                          ("Here's a random number: " <> _)
                     ]
                 , D.div_
                     [ D.button
@@ -144,7 +145,7 @@ main = do
                 , D.div_
                     [ guard presence
                         $ text
-                        $ ( number) <#> show >>>
+                        $ (number) <#> show >>>
                             ("Here's the same random number: " <> _)
                     ]
                 ]
@@ -182,8 +183,9 @@ setNumber /\ number <- useHot n"""
               setPresence /\ presence <- useState false
               D.div_
                 [ D.div_
-                    [ text $ (bindToEffect (pure unit) (pure random) <|> number) <#> show >>>
-                        ("Here's a random number: " <> _)
+                    [ text $ (bindToEffect (pure unit) (pure random) <|> number)
+                        <#> show >>>
+                          ("Here's a random number: " <> _)
                     ]
                 , D.div_
                     [ D.button

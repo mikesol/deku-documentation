@@ -33,9 +33,9 @@ forceHighlightAff = D.div
   ( oneOf
       [ klass_ "hidden"
       , D.Self !:= \(_ :: Element) -> launchAff_ do
-         delay (Milliseconds 0.0)
-         liftEffect highlightAll
-         liftEffect addExpandButton
+          delay (Milliseconds 0.0)
+          liftEffect highlightAll
+          liftEffect addExpandButton
       ]
   )
   []

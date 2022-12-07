@@ -4,4 +4,4 @@ import Prelude
 
 import Effect (Effect)
 
-foreign import swal :: { title :: String, text :: String  } -> Effect Unit
+foreign import swal :: { title :: String, text :: String } -> Effect Unit

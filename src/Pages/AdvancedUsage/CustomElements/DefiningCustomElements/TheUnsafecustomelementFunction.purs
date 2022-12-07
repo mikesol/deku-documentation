@@ -29,7 +29,9 @@ theUnsafeCustomElementFunction = subsection
               "As Deku has the whole DOM covered, there's not a single tag we can think of that isn't Deku-ified. So this method is only useful to create custom aliases for tags that have different behaviors "
           , D.i__ "or"
           , text_ " to add new tags if Deku is out of line with the DOM spec."
-          ], psCodeNoCollapse """module Main where
+          ]
+      , psCodeNoCollapse
+          """module Main where
 
 import Prelude
 

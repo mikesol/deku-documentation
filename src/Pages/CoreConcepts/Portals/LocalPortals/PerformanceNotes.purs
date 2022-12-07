@@ -18,7 +18,8 @@ performanceNotes = subsection
           , text_
               " for the inner portal, every time the video was shuffled, a new portal would have been created "
           , D.i__ "without"
-          , text_ " the old one being cleaned up. That means that, if we clicked on "
+          , text_
+              " the old one being cleaned up. That means that, if we clicked on "
           , D.b__ "Shuffle video"
           , text_
               " 100 times, 100 \"zombie\" videos would be hanging out in JavaScript."

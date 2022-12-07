@@ -1,6 +1,5 @@
 module Pages.CoreConcepts.State.TheStateHook.UsingTheHookInText where
 
-
 import Components.Code (psCode)
 import Components.Disclaimer (disclaimer)
 import Contracts (Env(..), Subsection, subsection)

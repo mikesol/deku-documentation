@@ -13,7 +13,8 @@ effectsOnTeardown = subsection
   { title: "Effects on teardown"
   , matter: pure
       [ D.p_
-          [ text_ "There's only one effect for component teardown. This effect runs after the component is completely unmounted. It is useful for logging and debugging in addition to situations where you want to be extra-careful in doing idempotent cleanup, for example closing audio contexts."
+          [ text_
+              "There's only one effect for component teardown. This effect runs after the component is completely unmounted. It is useful for logging and debugging in addition to situations where you want to be extra-careful in doing idempotent cleanup, for example closing audio contexts."
           ]
       , D.table tableClass
           [ D.tr_

@@ -25,7 +25,8 @@ hover:bg-indigo-700 focus:outline-none focus:ring-2
 focus:ring-indigo-500 focus:ring-offset-2 mr-6""" :: String
 
 example :: String
-example = """module Main where
+example =
+  """module Main where
 
 import Prelude
 
@@ -42,11 +43,16 @@ import FRP.Event (fold)
 import QualifiedDo.Alt as Alt
 
 buttonClass =
-  """ <> tripleQ <> """inline-flex items-center rounded-md
+  """ <> tripleQ
+    <>
+      """inline-flex items-center rounded-md
 border border-transparent bg-indigo-600 px-3 py-2
 text-sm font-medium leading-4 text-white shadow-sm
 hover:bg-indigo-700 focus:outline-none focus:ring-2
-focus:ring-indigo-500 focus:ring-offset-2 mr-6""" <> tripleQ <> """ :: String
+focus:ring-indigo-500 focus:ring-offset-2 mr-6"""
+    <> tripleQ
+    <>
+      """ :: String
 
 main ∷ Effect Unit
 main = runInBody Deku.do
@@ -82,7 +88,7 @@ aSimpleCounter = subsection
           , text_
               " method is a little classier, as you'll be able to brag to your friends that you're using fixed points. Your friends may appear indifferent, but they'll secretly envy you."
           ]
-          , psCode example
+      , psCode example
       , exampleBlockquote
           [ Deku.do
               setCount /\ count <- useState 0

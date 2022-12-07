@@ -16,7 +16,8 @@ import Effect (Effect)
 import Type.Proxy (Proxy(..))
 
 liHtml =
-  ( Proxy :: Proxy
+  ( Proxy
+      :: Proxy
            """<li ~atts~>
       <div class="flex items-center">
         <svg class="h-full w-6 flex-shrink-0 text-gray-200" viewBox="0 0 24 44" preserveAspectRatio="none" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -28,7 +29,8 @@ liHtml =
   )
 
 myHtml =
-  ( Proxy :: Proxy
+  ( Proxy
+      :: Proxy
            """<nav class="flex" aria-label="Breadcrumb">
   <ol role="list" class="flex space-x-4 rounded-md bg-white px-6 shadow">
     <li ~homeAtts~>
@@ -50,17 +52,20 @@ myHtml =
   )
 
 main :: Effect Unit
-main = runInBody  Deku.do
+main = runInBody Deku.do
   setProjects /\ projects <- useState true
   setNero /\ nero <- useState true
   let
     hideOnFalse e =
       klass $ e <#> (if _ then "" else "hidden ") >>>
         (_ <> "flex")
+
     toggleHome :: D.OnClickEffect
     toggleHome = click_ (setProjects false *> setNero false)
+
     toggleProjs :: D.OnClickEffect
     toggleProjs = click_ (setProjects true *> setNero false)
+
     toggleNero :: D.OnClickEffect
     toggleNero = click_ (setProjects true *> setNero true)
   D.div_

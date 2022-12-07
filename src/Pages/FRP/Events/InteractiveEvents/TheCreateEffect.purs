@@ -72,6 +72,11 @@ theCreateEffect = subsection
           [ text_
               "Note how, when you run the program, the word \"fum\" does not print to the console. This is because the unsubscriber is called before \"fum\" is pushed to the event."
           ]
-      , D.p_ [text_ "In Deku, the state hooks are literally just calling ", D.code__ "create", text_ " under the hood and passing those down into a DSL representing the DOM. And we have the guile to call those two lines of code a framework... 😤"]
+      , D.p_
+          [ text_ "In Deku, the state hooks are literally just calling "
+          , D.code__ "create"
+          , text_
+              " under the hood and passing those down into a DSL representing the DOM. And we have the guile to call those two lines of code a framework... 😤"
+          ]
       ]
   }

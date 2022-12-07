@@ -14,7 +14,8 @@ lifecycleMethods = section
   { title: "Lifecycle methods"
   , topmatter: pure
       [ D.p_
-          [ text_ "Deku provides lifecycle methods for times when applications need to run logic on component monuting or dismounting. This can be useful when you're porting an app from React (which you will no doubt do after reading this documentation) and need to emulate their conventions until you switch them for the objectively better Deku ones."
+          [ text_
+              "Deku provides lifecycle methods for times when applications need to run logic on component monuting or dismounting. This can be useful when you're porting an app from React (which you will no doubt do after reading this documentation) and need to emulate their conventions until you switch them for the objectively better Deku ones."
           ]
       ]
   , subsections:

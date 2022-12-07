@@ -19,7 +19,9 @@ eventsAsMonoids = subsection
       [ D.p_
           [ text_
               "We can take a walk down monad lane using monoidal events with minimal mapping!"
-          ], psCode """module Main where
+          ]
+      , psCode
+          """module Main where
 
 import Prelude
 

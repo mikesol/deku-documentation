@@ -24,7 +24,6 @@ doAuth f = do
   eff false
   pure $ write false onOff
 
-
 main :: Effect Unit
 main = do
   authEvent <- create

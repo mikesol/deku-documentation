@@ -21,7 +21,8 @@ closingTagsAndTreeStructure = subsection
               ". Tools like Dreamweaver trailing slashes as a default, but you may need to run your HTML through a formatter if they're not present."
           ]
       , D.p_
-          [ text_ "At the moment, Pursx only supports a single element. If you have multiple elements, make sure to wrap them in a "
+          [ text_
+              "At the moment, Pursx only supports a single element. If you have multiple elements, make sure to wrap them in a "
           , D.code__ "div"
           , text_
               " or another suitable container. In the future, we may ease this requirement in order to support a series of elements."

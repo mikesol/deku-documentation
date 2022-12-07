@@ -15,7 +15,8 @@ alt = section
   { title: "Alt"
   , topmatter: pure
       [ D.p_
-          [ text_ "Alt is a way to combine two or more event streams, or to \"mux\" them in streaming lingo. We'll start with an example of simple muxing, followed by multiplexed muxing and finishing with some performance considerations to keep in mind."
+          [ text_
+              "Alt is a way to combine two or more event streams, or to \"mux\" them in streaming lingo. We'll start with an example of simple muxing, followed by multiplexed muxing and finishing with some performance considerations to keep in mind."
           ]
       ]
   , subsections:

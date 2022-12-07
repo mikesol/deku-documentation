@@ -75,7 +75,8 @@ linkWithString
   -> String
   -> Event (Attribute D.A_)
   -> Domable lock payload
-linkWithString pushState route title attributes = link' pushState route attributes
+linkWithString pushState route title attributes = link' pushState route
+  attributes
   [ text_ title ]
   where
   Page page = routeToPage route

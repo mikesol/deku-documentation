@@ -13,7 +13,8 @@ effectsOnInitialization = subsection
   { title: "Effects on initialization"
   , matter: pure
       [ D.p_
-          [ text_ "The following two effects exist on component initialization. These are mostly useful for logging, debugging, and analytics, for example counting how many times a component is displayed on the screen."
+          [ text_
+              "The following two effects exist on component initialization. These are mostly useful for logging, debugging, and analytics, for example counting how many times a component is displayed on the screen."
           ]
       , D.table tableClass
           [ D.tr_

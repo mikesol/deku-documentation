@@ -34,7 +34,7 @@ triggerAffInParallel :: forall lock payload. Subsection lock payload
 triggerAffInParallel = subsection
   { title: "The bindToAffParallel function"
   , matter: pure
-      [  D.p_
+      [ D.p_
           [ text_
               "Use this method to bind affs to all events without preserving order. This will keep your UI snappier but things may arrive out of order!"
           ]

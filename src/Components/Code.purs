@@ -31,7 +31,8 @@ psCode code = D.pre (D.Class !:= "prism-code language-purescript")
   ]
 
 psCodeNoCollapse :: forall lock payload. String -> Domable lock payload
-psCodeNoCollapse code = D.pre (D.Class !:= "prism-code no-collapse language-purescript")
+psCodeNoCollapse code = D.pre
+  (D.Class !:= "prism-code no-collapse language-purescript")
   [ D.code (klass_ "no-collapse")
       [ text_ code
       ]

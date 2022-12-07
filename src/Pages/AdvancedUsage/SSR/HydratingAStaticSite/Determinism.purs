@@ -29,9 +29,14 @@ determinism = subsection
           , bindToEffect (pure unit) (const random) <#~> \n -> do
               let
                 o
-                  | n < 0.25 = targetedLink "https://www.online-literature.com/tolstoy/anna_karenina/1/" [text_ "..."]
-                  | n < 0.5 = targetedLink "https://youtu.be/LZtkDf8VRbw?t=26" [text_ "..."]
-                  | n < 0.75 = targetedLink  "https://open.spotify.com/track/2Uy2EvsTSmLUK5WACUz7Rl" [text_ "..."]
+                  | n < 0.25 = targetedLink
+                      "https://www.online-literature.com/tolstoy/anna_karenina/1/"
+                      [ text_ "..." ]
+                  | n < 0.5 = targetedLink "https://youtu.be/LZtkDf8VRbw?t=26"
+                      [ text_ "..." ]
+                  | n < 0.75 = targetedLink
+                      "https://open.spotify.com/track/2Uy2EvsTSmLUK5WACUz7Rl"
+                      [ text_ "..." ]
                   | otherwise = routeLinkWithText GettingStarted "..."
               o
           ]

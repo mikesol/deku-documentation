@@ -35,7 +35,7 @@ triggerAffWithCancellation
 triggerAffWithCancellation = subsection
   { title: "The bindToAffWithCancellation function"
   , matter: pure
-      [  D.p_
+      [ D.p_
           [ text_
               "This variation does cancellation, so when a new aff comes down the pipe, the previous one is cancelled."
           ]

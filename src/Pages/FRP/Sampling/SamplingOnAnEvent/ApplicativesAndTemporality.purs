@@ -129,7 +129,8 @@ type SampleOnRight a =
           , routeLink Behaviors
           , text_ " section."
           ]
-          , psCode """step :: forall a. a -> Event a -> Behavior a
+      , psCode
+          """step :: forall a. a -> Event a -> Behavior a
 step a e = sampleOnRight (pure a <|> e)"""
       ]
   }

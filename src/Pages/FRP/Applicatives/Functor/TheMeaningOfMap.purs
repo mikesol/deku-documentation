@@ -42,6 +42,11 @@ instance Functor Event where
           , D.i__ "left"
           , text_
               " side of a profunctor (in our case, a function) instead of the right side."
-          ],D.p_ [text_ "To fulfill the functor laws, ", D.code__ "map", text_ " applies the function to each value emitted by the event."]
+          ]
+      , D.p_
+          [ text_ "To fulfill the functor laws, "
+          , D.code__ "map"
+          , text_ " applies the function to each value emitted by the event."
+          ]
       ]
   }

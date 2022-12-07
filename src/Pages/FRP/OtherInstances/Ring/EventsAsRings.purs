@@ -30,7 +30,8 @@ eventsAsRings = subsection
           , D.code__ "sub"
           , text_ " them."
           ]
-          , psCode """module Main where
+      , psCode
+          """module Main where
 
 import Prelude
 

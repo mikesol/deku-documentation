@@ -26,7 +26,8 @@ data HtmlNode
   | HtmlComment String
 
 derive instance genericRepHtmlNode :: Generic HtmlNode _
-instance showHtmlNode :: Show HtmlNode where show = defer \_ -> genericShow
+instance showHtmlNode :: Show HtmlNode where
+  show = defer \_ -> genericShow
 
 type Element =
   { name :: String
@@ -37,7 +38,8 @@ type Element =
 data HtmlAttribute = HtmlAttribute String String
 
 derive instance genericRepHtmlAttribute :: Generic HtmlAttribute _
-instance showHtmlAttribute :: Show HtmlAttribute where show = genericShow
+instance showHtmlAttribute :: Show HtmlAttribute where
+  show = genericShow
 
 mkElement :: String -> List HtmlAttribute -> List HtmlNode -> Element
 mkElement =
@@ -64,8 +66,23 @@ openingParser = do
 
 selfClosingTags :: Array String
 selfClosingTags =
-  [ "br", "img", "hr", "meta", "input", "embed", "area", "base", "col"
-  , "keygen", "link", "param", "source", "command", "link", "track", "wbr"
+  [ "br"
+  , "img"
+  , "hr"
+  , "meta"
+  , "input"
+  , "embed"
+  , "area"
+  , "base"
+  , "col"
+  , "keygen"
+  , "link"
+  , "param"
+  , "source"
+  , "command"
+  , "link"
+  , "track"
+  , "wbr"
   ]
 
 isSelfClosingElement :: Element -> Boolean
@@ -73,22 +90,24 @@ isSelfClosingElement ele = ele.name `Array.elem` selfClosingTags
 
 closingOrChildrenParser :: Element -> Parser Element
 closingOrChildrenParser element = defer \_ ->
-  if isSelfClosingElement element
-  then whiteSpace *> optional (string "/") *> string ">" *> pure element
+  if isSelfClosingElement element then whiteSpace *> optional (string "/")
+    *> string ">"
+    *> pure element
   else childrenParser
   where
-    childrenParser = do
-      _ <- whiteSpace *> string ">"
-      children <- manyTill nodeParser
-                 (string ("</" <> element.name <> ">"))
-      pure $ element { children = children }
+  childrenParser = do
+    _ <- whiteSpace *> string ">"
+    children <- manyTill nodeParser
+      (string ("</" <> element.name <> ">"))
+    pure $ element { children = children }
 
 elementParser :: Parser HtmlNode
 elementParser = defer \_ -> do
   skipSpaces
-  openingParser >>=
-    closingOrChildrenParser >>=
-    pure <<< HtmlElement
+  openingParser
+    >>= closingOrChildrenParser
+    >>=
+      pure <<< HtmlElement
 
 textParser :: Parser HtmlNode
 textParser = HtmlText <$> regex "[^<]+"
@@ -101,9 +120,10 @@ commentParser = do
 
 nodeParser :: Parser HtmlNode
 nodeParser = defer \_ ->
-  try textParser <|>
-  try commentParser <|>
-  elementParser
+  try textParser
+    <|> try commentParser
+    <|>
+      elementParser
 
 parse :: String -> Either ParseError (List HtmlNode)
 parse input =

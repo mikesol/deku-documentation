@@ -15,7 +15,10 @@ theSelfAttribute = section
   { title: "The Self attribute"
   , topmatter: pure
       [ D.p_
-          [ text_ "All Deku elements can get a reference to themself via the ", D.code__ "Self", text_ " attribute. This section covers how to wield that power for good and not for evil."
+          [ text_ "All Deku elements can get a reference to themself via the "
+          , D.code__ "Self"
+          , text_
+              " attribute. This section covers how to wield that power for good and not for evil."
           ]
       ]
   , subsections:

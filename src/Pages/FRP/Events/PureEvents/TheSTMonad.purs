@@ -56,7 +56,10 @@ theSTMonad = subsection
               "When working with events, it is often useful to create references to terms in order to use them later. For example, one way to implement a "
           , D.code__ "dedup"
           , text_
-              " function is to store a reference to a previous value, compare it to a new value, and only emit the new value if it is different than the old value. In these cases, the ", D.code__ "ST r", text_ " monad gives us everything we need and nothing extra to implement a stateful-yet-pure system."
+              " function is to store a reference to a previous value, compare it to a new value, and only emit the new value if it is different than the old value. In these cases, the "
+          , D.code__ "ST r"
+          , text_
+              " monad gives us everything we need and nothing extra to implement a stateful-yet-pure system."
           ]
       ]
   }

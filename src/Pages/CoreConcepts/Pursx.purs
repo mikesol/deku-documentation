@@ -17,8 +17,10 @@ import Pages.CoreConcepts.Pursx.PursxAlternatives (pursxAlternatives)
 import Router.ADT (Route(..))
 import Type.Proxy (Proxy(..))
 
-myHtml = ( Proxy    :: Proxy
-    """<div class="bg-white">
+myHtml =
+  ( Proxy
+      :: Proxy
+           """<div class="bg-white">
   <div class="mx-auto max-w-7xl py-12 px-4 text-center sm:px-6 lg:py-16 lg:px-8">
     <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
       <span class="block">Ready to dive in?</span>
@@ -34,7 +36,7 @@ myHtml = ( Proxy    :: Proxy
     </div>
   </div>
 </div>"""
-        )
+  )
 
 pursx :: forall lock payload. Page lock payload
 pursx = page
@@ -49,11 +51,23 @@ pursx = page
           ]
       , htmlCode (reflectSymbol myHtml)
       , D.p__ "This renders in the DOM like so."
-      , D.div (klass_ "border-solid border-2 border-slate-200 dark:border-white-200") [myHtml ~~ {}]
-      , D.p__ "I could meticulously rewrite the entire thing in Deku, at which point my designer would complain to our boss:"
-      , D.blockquote__ "This guy is so obsessed with using their pet functional programming language that they spent two hours rewriting HTML snippets in some esoteric format that none of us understand. Can't we just hire a JavaScript developer?"
-      , D.p_ [text_ "After having been fired from several companies for this exact reason, I developed ", D.b__ "Pursx", text_ ", which solves this and many other problems. In this section, you too will learn how to use Pursx "
-      , text_ " (and, by extension, how to keep your job)."]
+      , D.div
+          ( klass_
+              "border-solid border-2 border-slate-200 dark:border-white-200"
+          )
+          [ myHtml ~~ {} ]
+      , D.p__
+          "I could meticulously rewrite the entire thing in Deku, at which point my designer would complain to our boss:"
+      , D.blockquote__
+          "This guy is so obsessed with using their pet functional programming language that they spent two hours rewriting HTML snippets in some esoteric format that none of us understand. Can't we just hire a JavaScript developer?"
+      , D.p_
+          [ text_
+              "After having been fired from several companies for this exact reason, I developed "
+          , D.b__ "Pursx"
+          , text_
+              ", which solves this and many other problems. In this section, you too will learn how to use Pursx "
+          , text_ " (and, by extension, how to keep your job)."
+          ]
       ]
   , sections:
       [ aSimpleExample, dynamicAttributes, dynamicElements, pursxAlternatives ]

@@ -14,9 +14,10 @@ import Pages.CoreConcepts.Pursx.ASimpleExample.PlainOldHTML (plainOldHTML)
 import Pages.CoreConcepts.Pursx.ASimpleExample.TypeSafety (typeSafety)
 import Type.Proxy (Proxy(..))
 
-
-myHtml = ( Proxy    :: Proxy
-    """<nav class="flex" aria-label="Breadcrumb">
+myHtml =
+  ( Proxy
+      :: Proxy
+           """<nav class="flex" aria-label="Breadcrumb">
   <ol role="list" class="flex space-x-4 rounded-md bg-white px-6 shadow">
     <li class="flex">
       <div class="flex items-center">
@@ -49,7 +50,8 @@ myHtml = ( Proxy    :: Proxy
     </li>
   </ol>
 </nav>"""
-        )
+  )
+
 aSimpleExample :: forall lock payload. Section lock payload
 aSimpleExample = section
   { title: "A simple example"
@@ -60,8 +62,13 @@ aSimpleExample = section
           ]
       , htmlCode (reflectSymbol myHtml)
       , D.p__ "This renders in the DOM like so."
-      , D.div (klass_ "border-solid border-2 border-slate-200 dark:border-white-200 flex justify-center") [myHtml ~~ {}]
-      , D.p__ "By the end of this page, we'll have our breadcrumbs hooked up to stateful logic. We'll start by seeing how to render the example above in Deku."
+      , D.div
+          ( klass_
+              "border-solid border-2 border-slate-200 dark:border-white-200 flex justify-center"
+          )
+          [ myHtml ~~ {} ]
+      , D.p__
+          "By the end of this page, we'll have our breadcrumbs hooked up to stateful logic. We'll start by seeing how to render the example above in Deku."
       ]
   , subsections:
       [ plainOldHTML, typeSafety, closingTagsAndTreeStructure ]

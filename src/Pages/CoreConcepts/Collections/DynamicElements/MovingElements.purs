@@ -168,7 +168,15 @@ movingElements = subsection
   , matter: pure
       [ D.p_
           [ text_
-              "The ", D.code__ "useDyn_", text_ " and ", D.code__ "useDyn", text_ " hooks can be destructured to get some useful methods. In this section, we'll see how the ", D.code__ "sendTo", text_ " function moves an element of a dynamic list to a different position."
+              "The "
+          , D.code__ "useDyn_"
+          , text_ " and "
+          , D.code__ "useDyn"
+          , text_
+              " hooks can be destructured to get some useful methods. In this section, we'll see how the "
+          , D.code__ "sendTo"
+          , text_
+              " function moves an element of a dynamic list to a different position."
           ]
       , psCode example
       , exampleBlockquote
@@ -230,7 +238,8 @@ movingElements = subsection
                 ]
           ]
       , D.p_
-              [ text_ "If the chosen position is larger than the length of the list, the element will be sent to the end."
-              ]
+          [ text_
+              "If the chosen position is larger than the length of the list, the element will be sent to the end."
+          ]
       ]
   }

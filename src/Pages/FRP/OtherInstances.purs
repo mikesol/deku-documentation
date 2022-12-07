@@ -20,7 +20,19 @@ otherInstances = page
           ]
       , D.p_
           [ text_
-              "One of the annoying bits of working with any functorial type is that, for basic operations, you constantly have to ", D.code__ "map", text_ " and ", D.code__ "lift2", text_ ". This gets un-fun after a while, so it's a common convention to add sensible instances of typeclasses related to the type ", D.code__ "a", text_ " in ", D.code__ "f a", text_ " provided that there's an unambiguous interpretation of what they mean. Thankfully, in the case of ", D.code__ "Event", text_ ", this is possible for many core typeclasses."
+              "One of the annoying bits of working with any functorial type is that, for basic operations, you constantly have to "
+          , D.code__ "map"
+          , text_ " and "
+          , D.code__ "lift2"
+          , text_
+              ". This gets un-fun after a while, so it's a common convention to add sensible instances of typeclasses related to the type "
+          , D.code__ "a"
+          , text_ " in "
+          , D.code__ "f a"
+          , text_
+              " provided that there's an unambiguous interpretation of what they mean. Thankfully, in the case of "
+          , D.code__ "Event"
+          , text_ ", this is possible for many core typeclasses."
           ]
       ]
   , sections:

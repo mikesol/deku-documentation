@@ -27,18 +27,17 @@ import Web.UIEvent.KeyboardEvent (code, toEvent)
 
 inputKls :: String
 inputKls =
- """rounded-md
+  """rounded-md
 border-gray-300 shadow-sm
 border-2 mr-2
 border-solid
 focus:border-indigo-500 focus:ring-indigo-500
 sm:text-sm"""
 
-
 buttonClass :: String -> String
 buttonClass color =
   replaceAll (Pattern "COLOR") (Replacement color)
-      """mb-3 inline-flex items-center rounded-md
+    """mb-3 inline-flex items-center rounded-md
 border border-transparent bg-COLOR-600 px-3 py-2
 text-sm font-medium leading-4 text-white shadow-sm
 hover:bg-COLOR-700 focus:outline-none focus:ring-2

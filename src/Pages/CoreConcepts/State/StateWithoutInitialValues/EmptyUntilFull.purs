@@ -22,6 +22,7 @@ border border-transparent bg-indigo-600 px-3 py-2
 text-sm font-medium leading-4 text-white shadow-sm
 hover:bg-indigo-700 focus:outline-none focus:ring-2
 focus:ring-indigo-500 focus:ring-offset-2 mr-6""" :: String
+
 emptyUntilFull :: forall lock payload. Subsection lock payload
 emptyUntilFull = subsection
   { title: "Empty until full"
@@ -84,6 +85,7 @@ main = runInBody Deku.do
                     show >>> ("Here's a random number: " <> _)
                 ]
           ]
-          , D.p__ "The only difference with the initial example is that the text element is rendered to the DOM after the first value has been provided."
+      , D.p__
+          "The only difference with the initial example is that the text element is rendered to the DOM after the first value has been provided."
       ]
   }

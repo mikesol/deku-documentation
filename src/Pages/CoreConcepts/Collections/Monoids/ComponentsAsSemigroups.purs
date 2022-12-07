@@ -30,7 +30,11 @@ componentsAsSemigroups = subsection
   { title: "Components as semigroups"
   , matter: pure
       [ D.p_
-          [ text_ "Components can be appended together, and the result will be a component. This is the same as enclosing all of the components in a ", D.code__ "fixed", text_ " bloc. Let's see this in action with George Sand's famous letter to Alfred de Musset."
+          [ text_
+              "Components can be appended together, and the result will be a component. This is the same as enclosing all of the components in a "
+          , D.code__ "fixed"
+          , text_
+              " bloc. Let's see this in action with George Sand's famous letter to Alfred de Musset."
           ]
       , psCode
           ( """module Main where
@@ -119,7 +123,7 @@ main = runInBody Deku.do
         ]
     ]"""
           )
-      , Deku.do 
+      , Deku.do
           setAstuce /\ astuce <- useState true
           exampleBlockquote
             [ D.div (klass_ "space-x-2")

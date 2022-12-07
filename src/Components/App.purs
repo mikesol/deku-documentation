@@ -118,14 +118,19 @@ app
                             [ D.Class !:= "mb-9 space-y-1"
                             ]
                         )
-                        ( (if cp.route == FourOhFour then [] else [ D.p
-                              ( oneOf
-                                  [ D.Class !:=
-                                      "font-display text-sm font-medium text-sky-500"
+                        ( ( if cp.route == FourOhFour then []
+                            else
+                              [ D.p
+                                  ( oneOf
+                                      [ D.Class !:=
+                                          "font-display text-sm font-medium text-sky-500"
+                                      ]
+                                  )
+                                  [ text_
+                                      (unwrap (routeToChapter cp.route)).title
                                   ]
-                              )
-                              [ text_ (unwrap (routeToChapter cp.route)).title ]
-                          ]) <>
+                              ]
+                          ) <>
                             [ D.h1
                                 ( oneOf
                                     [ D.Id !:= "getting-started"

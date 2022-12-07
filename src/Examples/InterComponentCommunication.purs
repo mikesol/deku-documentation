@@ -38,7 +38,7 @@ sm:text-sm"""
 buttonClass :: String -> String
 buttonClass color =
   replaceAll (Pattern "COLOR") (Replacement color)
-      """mb-3 inline-flex items-center rounded-md
+    """mb-3 inline-flex items-center rounded-md
 border border-transparent bg-COLOR-600 px-3 py-2
 text-sm font-medium leading-4 text-white shadow-sm
 hover:bg-COLOR-700 focus:outline-none focus:ring-2
@@ -90,27 +90,27 @@ main = runInBody Deku.do
     , dyn
         $ map
             ( \(Tuple p t) -> Alt.do
-              removeAll $> Core.remove
-              Deku.do
-                { sendTo, remove } <- useDyn p
-                D.div_
-                  [ text_ t
-                  , D.button
-                      Alt.do
-                        klass_ $ "ml-2 " <> buttonClass "indigo"
-                        click_ (sendTo 0)
-                      [ text_ "Prioritize" ]
-                  , D.button
-                      Alt.do
-                        klass_ $ "ml-2 " <> buttonClass "pink"
-                        click_ remove
-                      [ text_ "Delete" ]
-                  , D.button
-                      Alt.do
-                        klass_ $ "ml-2 " <> buttonClass "fuchsia"
-                        click_ (setRemoveAll unit)
-                      [ text_ "Remove all" ]
-                  ]
+                removeAll $> Core.remove
+                Deku.do
+                  { sendTo, remove } <- useDyn p
+                  D.div_
+                    [ text_ t
+                    , D.button
+                        Alt.do
+                          klass_ $ "ml-2 " <> buttonClass "indigo"
+                          click_ (sendTo 0)
+                        [ text_ "Prioritize" ]
+                    , D.button
+                        Alt.do
+                          klass_ $ "ml-2 " <> buttonClass "pink"
+                          click_ remove
+                        [ text_ "Delete" ]
+                    , D.button
+                        Alt.do
+                          klass_ $ "ml-2 " <> buttonClass "fuchsia"
+                          click_ (setRemoveAll unit)
+                        [ text_ "Remove all" ]
+                    ]
             )
             (Tuple <$> pos <|*> item)
     ]

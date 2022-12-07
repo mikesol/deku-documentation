@@ -10,13 +10,13 @@ import Effect (Effect)
 main :: Effect Unit
 main = runInBody
   ( D.div_
-    [ D.span__ "I exist"
-    , D.ul_ $ map D.li__ [ "A", "B", "C" ]
-    , D.div_
-        [ D.h3__ "foo"
-        , D.i__ "bar"
-        , text_ " "
-        , D.b__ "baz"
-        ]
-    ]
+      [ D.span__ "I exist"
+      , D.ul_ $ map D.li__ [ "A", "B", "C" ]
+      , D.div_
+          [ D.h3__ "foo"
+          , D.i__ "bar"
+          , text_ " "
+          , D.b__ "baz"
+          ]
+      ]
   )

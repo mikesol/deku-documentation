@@ -12,7 +12,8 @@ hookingIntoTheDOM :: forall lock payload. Section lock payload
 hookingIntoTheDOM = section
   { title: "Hooking into the DOM"
   , topmatter: pure
-      [ D.p__ "In addition to animating text, hooks can be used to control DOM attributes and DOM elements as well."
+      [ D.p__
+          "In addition to animating text, hooks can be used to control DOM attributes and DOM elements as well."
       ]
   , subsections:
       [ usingTheHookInAnAttribute

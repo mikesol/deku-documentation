@@ -194,7 +194,10 @@ main = runInBody Deku.do
           , D.code__ "badness"
           , text_ ". But by the time it starts listening to "
           , D.code__ "badness"
-          , text_ ", the click event has already fired, so the inner listener does not evaluate the statement ", D.code__ "(_ > Worse)" , text_ ". To provide the nested "
+          , text_
+              ", the click event has already fired, so the inner listener does not evaluate the statement "
+          , D.code__ "(_ > Worse)"
+          , text_ ". To provide the nested "
           , D.code__ "flatten"
           , text_ " with the most recent event, we use "
           , D.code__ "useHot"

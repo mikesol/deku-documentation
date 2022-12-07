@@ -22,7 +22,8 @@ import FRP.Event (Event)
 import Type.Proxy (Proxy(..))
 
 myHtml =
-  ( Proxy :: Proxy
+  ( Proxy
+      :: Proxy
            """<nav class="flex" aria-label="Breadcrumb">
   <ol role="list" class="flex space-x-4 rounded-md bg-white px-6 shadow">
     <li ~homeAtts~>
@@ -65,7 +66,8 @@ addingSeveralAttributes = subsection
       [ D.p_
           [ text_
               "A more natural way to implement the breadcrumbs would be to embed the click lsitener directly in the crumbs in addition to the anchor elements. We can do this by adding multiple attributes."
-          , psCode ("""module Main where
+          , psCode
+              ( """module Main where
 
 import Prelude
 
@@ -87,7 +89,9 @@ import Type.Proxy (Proxy(..))
 
 myHtml =
   ( Proxy :: Proxy
-        """ <> tripleQ <>   """<nav class="flex" aria-label="Breadcrumb">
+        """ <> tripleQ
+                  <>
+                    """<nav class="flex" aria-label="Breadcrumb">
   <ol role="list" class="flex space-x-4 rounded-md bg-white px-6 shadow">
     <li ~homeAtts~>
       <div class="flex items-center">
@@ -119,7 +123,10 @@ myHtml =
       </div>
     </li>
   </ol>
-</nav>""" <> tripleQ <> """
+</nav>"""
+                  <> tripleQ
+                  <>
+                    """
   )
 
 main :: Effect Unit
@@ -152,7 +159,8 @@ main = runInBody Deku.do
         ]
     ]
 
-""")
+"""
+              )
           , D.p__ "Here's the result."
           , exampleBlockquote
               [ Deku.do
@@ -162,29 +170,65 @@ main = runInBody Deku.do
                     hideOnFalse e =
                       klass $ e <#> (if _ then "" else "hidden ") >>>
                         (_ <> "flex")
-                    toggleHome :: forall element24. Attr element24 D.OnClick (Effect Unit) => Event (Attribute element24)
+
+                    toggleHome
+                      :: forall element24
+                       . Attr element24 D.OnClick (Effect Unit)
+                      => Event (Attribute element24)
                     toggleHome = click_ (setProjects false *> setNero false)
-                    toggleProjs :: forall element24 . Attr element24 D.OnClick  (Effect Unit) => Event (Attribute element24)
+
+                    toggleProjs
+                      :: forall element24
+                       . Attr element24 D.OnClick (Effect Unit)
+                      => Event (Attribute element24)
                     toggleProjs = click_ (setProjects true *> setNero false)
-                    toggleNero :: forall element24 . Attr element24 D.OnClick  (Effect Unit) => Event (Attribute element24)
+
+                    toggleNero
+                      :: forall element24
+                       . Attr element24 D.OnClick (Effect Unit)
+                      => Event (Attribute element24)
                     toggleNero = click_ (setProjects true *> setNero true)
                   D.div_
                     [ D.div_
-                        [ D.a (klass_ "cursor-pointer mr-4" <|> toggleHome) [ text_ "Go home" ]
-                        , D.a (klass_ "cursor-pointer mr-4" <|> toggleProjs) [ text_ "Go to projects" ]
-                        , D.a (klass_ "cursor-pointer" <|> toggleNero) [ text_ "Go to nero" ]
+                        [ D.a (klass_ "cursor-pointer mr-4" <|> toggleHome)
+                            [ text_ "Go home" ]
+                        , D.a (klass_ "cursor-pointer mr-4" <|> toggleProjs)
+                            [ text_ "Go to projects" ]
+                        , D.a (klass_ "cursor-pointer" <|> toggleNero)
+                            [ text_ "Go to nero" ]
                         ]
                     , D.div_
                         [ myHtml ~~
-                            {homeAtts: toggleHome <|> klass_ "flex h-12"
-                                , projectsAtts: toggleProjs <|> hideOnFalse projects
+                            { homeAtts: toggleHome <|> klass_ "flex h-12"
+                            , projectsAtts: toggleProjs <|> hideOnFalse projects
                             , neroAtts: toggleNero <|> hideOnFalse nero
                             }
                         ]
                     ]
               ]
-              , D.p_ [text_ "By using the tie fighter ", D.code__ "<|>", text_ ", we were able to compose the breadcrumb's class and its click listener together, just like if we were working with a plain ol' Deku component. This allows you to freely mix attribute code for Pursx and the more PureScript-y components."]
-          , disclaimer { header: D.span_ [text_ "No ", D.code__ "let", text_ " polymorphism"], message: D.p_ [ text_ "PureScript lacks ", D.code__ "let", text_ " polymorphism, meaning that effects like ", D.code__ "toggleHome", text_ " and ", D.code__ "toggleNero", text_ " need an explicit polymorphic signature when used for different DOM elements. Otherwise, they would be specialized to their first call site, which in this case is an ", D.code__ "a", text_ " tag. That's why we use explicit signatures for the toggle effects."  ]}
+          , D.p_
+              [ text_ "By using the tie fighter "
+              , D.code__ "<|>"
+              , text_
+                  ", we were able to compose the breadcrumb's class and its click listener together, just like if we were working with a plain ol' Deku component. This allows you to freely mix attribute code for Pursx and the more PureScript-y components."
+              ]
+          , disclaimer
+              { header: D.span_
+                  [ text_ "No ", D.code__ "let", text_ " polymorphism" ]
+              , message: D.p_
+                  [ text_ "PureScript lacks "
+                  , D.code__ "let"
+                  , text_ " polymorphism, meaning that effects like "
+                  , D.code__ "toggleHome"
+                  , text_ " and "
+                  , D.code__ "toggleNero"
+                  , text_
+                      " need an explicit polymorphic signature when used for different DOM elements. Otherwise, they would be specialized to their first call site, which in this case is an "
+                  , D.code__ "a"
+                  , text_
+                      " tag. That's why we use explicit signatures for the toggle effects."
+                  ]
+              }
           ]
       ]
   }

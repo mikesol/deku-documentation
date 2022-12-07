@@ -12,7 +12,10 @@ performanceConsiderations = subsection
   { title: "Performance considerations"
   , matter: pure
       [ D.p_
-          [ text_ "If you use the same filter multiple times, it creates a new subscription for each filter. Consider coupling filter with ", D.code__ "useMemoized", text_ " to make things faster if needed."
+          [ text_
+              "If you use the same filter multiple times, it creates a new subscription for each filter. Consider coupling filter with "
+          , D.code__ "useMemoized"
+          , text_ " to make things faster if needed."
           ]
       ]
   }

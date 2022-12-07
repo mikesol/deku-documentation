@@ -18,7 +18,8 @@ import Deku.Pursx ((~~))
 import Type.Proxy (Proxy(..))
 
 myHtml =
-  ( Proxy      :: Proxy
+  ( Proxy
+      :: Proxy
            """<nav class="flex" aria-label="Breadcrumb">
   <ol role="list" class="flex space-x-4 rounded-md bg-white px-6 shadow">
     <li class="flex h-12">
@@ -61,7 +62,8 @@ addingAnAttribute = subsection
       [ D.p_
           [ text_
               "We'll start by adding a single listener that sets the breadcrumbs' visibiltiy based on interactions with an anchor tag. Here's the code."
-          , psCode ("""module Main where
+          , psCode
+              ( """module Main where
 
 import Prelude
 
@@ -80,7 +82,9 @@ import Type.Proxy (Proxy(..))
 
 myHtml =
   ( Proxy      :: Proxy
-        """ <> tripleQ <>   """<nav class="flex" aria-label="Breadcrumb">
+        """ <> tripleQ
+                  <>
+                    """<nav class="flex" aria-label="Breadcrumb">
   <ol role="list" class="flex space-x-4 rounded-md bg-white px-6 shadow">
     <li class="flex">
       <div class="flex items-center">
@@ -112,7 +116,10 @@ myHtml =
       </div>
     </li>
   </ol>
-</nav>""" <> tripleQ <> """
+</nav>"""
+                  <> tripleQ
+                  <>
+                    """
   )
 
 main :: Effect Unit
@@ -144,7 +151,8 @@ main = runInBody Deku.do
         ]
     ]
 
-""")
+"""
+              )
           , D.p__ "Here's the result."
           , exampleBlockquote
               [ Deku.do
@@ -155,9 +163,12 @@ main = runInBody Deku.do
                       klass $ e <#> (if _ then "" else "hidden ") >>>
                         (_ <> "flex")
                     point = klass_ "cursor-pointer mr-4"
-                    toggleHome = point <|> click_ (setProjects false *> setNero false)
-                    toggleProjects = point <|> click_ (setProjects true *> setNero false)
-                    toggleNero = point <|> click_ (setProjects true *> setNero true)
+                    toggleHome = point <|> click_
+                      (setProjects false *> setNero false)
+                    toggleProjects = point <|> click_
+                      (setProjects true *> setNero false)
+                    toggleNero = point <|> click_
+                      (setProjects true *> setNero true)
                   D.div_
                     [ D.div_
                         [ D.a toggleHome [ text_ "Go home" ]
@@ -172,7 +183,15 @@ main = runInBody Deku.do
                         ]
                     ]
               ]
-              , D.p_ [text_ "To specify an attribute in Pursx, we pick an identifier for the attribute and enclose it in tildes. For example, the attribute for the ", D.b__ "Project Nero", text_ " list element is ", D.code__ "~neroHidden~", text_ ". Then, when creating the Pursx, we add a field to the record with the name of that attribute followed by whatever attribute we wish to add. In this case, we're adding a class that hides or shows the breadcrumb."]
+          , D.p_
+              [ text_
+                  "To specify an attribute in Pursx, we pick an identifier for the attribute and enclose it in tildes. For example, the attribute for the "
+              , D.b__ "Project Nero"
+              , text_ " list element is "
+              , D.code__ "~neroHidden~"
+              , text_
+                  ". Then, when creating the Pursx, we add a field to the record with the name of that attribute followed by whatever attribute we wish to add. In this case, we're adding a class that hides or shows the breadcrumb."
+              ]
           ]
       ]
   }

@@ -46,8 +46,10 @@ initialEvents = subsection
           , text_
               ". This hook provides the opportunity to map over the internal event, and it is the result of the mapped computation that is memoized."
           ]
-          , D.p__ "In the example below, this method is used to memoize a squaring operation so that the result is computed only once."
-      , psCode """Deku.do
+      , D.p__
+          "In the example below, this method is used to memoize a squaring operation so that the result is computed only once."
+      , psCode
+          """Deku.do
   setNumber /\ number <- useMemoized'
     (alt (pure 0) <<< map (_ `pow` 2))
   D.div_

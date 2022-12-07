@@ -80,9 +80,24 @@ portals = page
             , moveSpriteHere { iframe: myIframe, square, setSquare, at: BL }
             , moveSpriteHere { iframe: myIframe, square, setSquare, at: BR }
             ]
-      , D.p__ "There's one issue, though. Can you spot it? Look closely at the video as it moves from tile to tile. Each time you move it, the video restarts! But we don't want that, we want the video to be continuous as it's jumping from place to place."
-      , D.p_ [text_ "In games and other multimedia sites, it's common to use ", D.code__ "video", text_ ", ", D.code__ "audio", text_ ", and ", D.code__ "canvas", text_ " elements that are stateful. It's often the case that these elements stay put in the DOM, so we don't worry about their statefulness. But in cases where we need to move them around, we want to preserve their state. This is where ", D.b__ "Portals", text_ " come in."]
-      , D.p_ [text_ "Let's redo the example above with portals. As you click on the squares, you'll see that the video continues uninterrupted."]
+      , D.p__
+          "There's one issue, though. Can you spot it? Look closely at the video as it moves from tile to tile. Each time you move it, the video restarts! But we don't want that, we want the video to be continuous as it's jumping from place to place."
+      , D.p_
+          [ text_ "In games and other multimedia sites, it's common to use "
+          , D.code__ "video"
+          , text_ ", "
+          , D.code__ "audio"
+          , text_ ", and "
+          , D.code__ "canvas"
+          , text_
+              " elements that are stateful. It's often the case that these elements stay put in the DOM, so we don't worry about their statefulness. But in cases where we need to move them around, we want to preserve their state. This is where "
+          , D.b__ "Portals"
+          , text_ " come in."
+          ]
+      , D.p_
+          [ text_
+              "Let's redo the example above with portals. As you click on the squares, you'll see that the video continues uninterrupted."
+          ]
       , Deku.do
           ifr <- globalPortal1 myIframe
           setSquare /\ square <- useState TL
@@ -92,7 +107,8 @@ portals = page
             , moveSpriteHere { iframe: ifr, square, setSquare, at: BL }
             , moveSpriteHere { iframe: ifr, square, setSquare, at: BR }
             ]
-        , D.p__ "The rest of this section will explore various ways to make portals in Deku."
+      , D.p__
+          "The rest of this section will explore various ways to make portals in Deku."
       ]
   , sections:
       [ globalPortals, localPortals ]

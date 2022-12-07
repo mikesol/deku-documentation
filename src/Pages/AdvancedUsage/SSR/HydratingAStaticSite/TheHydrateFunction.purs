@@ -12,9 +12,15 @@ theHydrateFunction = subsection
   { title: "The hydrate function"
   , matter: pure
       [ D.p_
-          [ text_ "The ", D.code__ "hydrate", text_ " function has the same signature as ", D.code__ "runInBody", text_ " except that it expects a SSR-generated Deku site to already be present in the body. Here's an example of how that flow typically works (and by typically, I mean in the three known sites that use Deku SSR... soon to be four after you try it out!)."
+          [ text_ "The "
+          , D.code__ "hydrate"
+          , text_ " function has the same signature as "
+          , D.code__ "runInBody"
+          , text_
+              " except that it expects a SSR-generated Deku site to already be present in the body. Here's an example of how that flow typically works (and by typically, I mean in the three known sites that use Deku SSR... soon to be four after you try it out!)."
           ]
-      , psCode """-- MyApp.purs
+      , psCode
+          """-- MyApp.purs
 -- some imports, then
 myApp :: Nut
 myApp = D.div_
@@ -29,5 +35,6 @@ main = writeToFile (run (runSSR myApp))
 -- some imports, then
 main :: Effect Unit
 main = hydrate myApp
-"""]
+"""
+      ]
   }

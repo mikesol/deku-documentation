@@ -14,7 +14,8 @@ addingEventHandlers = section
   { title: "Adding event handlers"
   , topmatter: pure
       [ D.p_
-          [ text_ "The web would be quite uneventful without events. Be they clicks or scrolls or hovers, Deku is your one-stop-shop for event planning!"
+          [ text_
+              "The web would be quite uneventful without events. Be they clicks or scrolls or hovers, Deku is your one-stop-shop for event planning!"
           ]
       ]
   , subsections:

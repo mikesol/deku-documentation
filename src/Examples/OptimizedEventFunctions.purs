@@ -18,7 +18,7 @@ import FRP.Event (Event, Subscriber(..), createPure, fold, makeLemmingEventO, su
 import QualifiedDo.Alt as Alt
 
 buttonClass =
-      """inline-flex items-center rounded-md
+  """inline-flex items-center rounded-md
 border border-transparent bg-indigo-600 px-3 py-2
 text-sm font-medium leading-4 text-white shadow-sm
 hover:bg-indigo-700 focus:outline-none focus:ring-2
@@ -39,7 +39,7 @@ main = runInBody Deku.do
       pure u
   D.div_
     [ D.div__
-      """Press the buttons below to add values to the sum.
+        """Press the buttons below to add values to the sum.
 But beware! Duplicate presses will be ignored,
 so be sure to alternate between the buttons."""
     , D.div_ $ [ 10, 100, 1000 ] <#> \n ->

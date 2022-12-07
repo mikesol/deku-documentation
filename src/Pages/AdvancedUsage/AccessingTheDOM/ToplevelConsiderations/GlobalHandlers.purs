@@ -111,9 +111,13 @@ main = do
               "Note that, for the Deku DOM to catch the initial auth event, it must be created "
           , D.i__ "before"
           , text_
-              " the authentication handler is activated, otherwise it will miss the first event. An alternative to this is to create a ", D.code__ "burning", text_ " event, which memoizes its value for all future subscriptions."
+              " the authentication handler is activated, otherwise it will miss the first event. An alternative to this is to create a "
+          , D.code__ "burning"
+          , text_
+              " event, which memoizes its value for all future subscriptions."
           ]
-          , psCode """main = do
+      , psCode
+          """main = do
   authEvent <- create
   myAuth <- burning false authEvent.event
   _ <- doAuth authEvent.push

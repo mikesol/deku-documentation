@@ -13,7 +13,8 @@ dynamicElements = section
   { title: "Dynamic elements"
   , topmatter: pure
       [ D.p_
-          [ text_ "Now that we've added dynamic attributes, let's add dynamic elements in our Pursx."
+          [ text_
+              "Now that we've added dynamic attributes, let's add dynamic elements in our Pursx."
           ]
       ]
   , subsections:

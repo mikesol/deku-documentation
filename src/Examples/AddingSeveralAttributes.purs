@@ -15,10 +15,10 @@ import Deku.Toplevel (runInBody)
 import Effect (Effect)
 import Type.Proxy (Proxy(..))
 
-
 myHtml =
-  ( Proxy :: Proxy
-       """<nav class="flex" aria-label="Breadcrumb">
+  ( Proxy
+      :: Proxy
+           """<nav class="flex" aria-label="Breadcrumb">
   <ol role="list" class="flex space-x-4 rounded-md bg-white px-6 shadow">
     <li ~homeAtts~>
       <div class="flex items-center">
@@ -61,10 +61,13 @@ main = runInBody Deku.do
     hideOnFalse e =
       klass $ e <#> (if _ then "" else "hidden ") >>>
         (_ <> "flex")
+
     toggleHome :: D.OnClickEffect
     toggleHome = click_ (setProjects false *> setNero false)
+
     toggleProjs :: D.OnClickEffect
     toggleProjs = click_ (setProjects true *> setNero false)
+
     toggleNero :: D.OnClickEffect
     toggleNero = click_ (setProjects true *> setNero true)
     akls = alt (klass_ "cursor-pointer mr-4")

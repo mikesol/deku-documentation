@@ -112,6 +112,6 @@ mailboxesAsFilters = subsection
                     )
                 ]
           ]
-      
+
       ]
   }

@@ -148,6 +148,9 @@ myFunction = fix (\f a -> if a > 100 then 100 else f (a + 1))
           , text_
               " until it produces its value, a cofree comonad never ends, an event potentially keeps emitting, etc."
           ]
-          , D.p_ [text_ "This power comes at a price, however. Repeated application of anything in computing runs the risk of going into an infinite loop if you're not careful. So, to avoid overflow, there has to be some reasonable end condition that applies in all cases."]
+      , D.p_
+          [ text_
+              "This power comes at a price, however. Repeated application of anything in computing runs the risk of going into an infinite loop if you're not careful. So, to avoid overflow, there has to be some reasonable end condition that applies in all cases."
+          ]
       ]
   }

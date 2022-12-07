@@ -13,9 +13,9 @@ behaviorsAsMonoids = subsection
   , matter: pure
       [ D.p_
           [ ( Proxy
-            :: _
-                 "<p><code>Behavior</code>s, can be <code>append</code>ed if the underlying type is a <code>Semigroup</code>, and <code>mempty</code> will generate a pure <code>Behavior</code> around <code>mempty</code> of the underlying <code>Monoid</code>.</p>"
-        ) ~~ {}
+                :: _
+                     "<p><code>Behavior</code>s, can be <code>append</code>ed if the underlying type is a <code>Semigroup</code>, and <code>mempty</code> will generate a pure <code>Behavior</code> around <code>mempty</code> of the underlying <code>Monoid</code>.</p>"
+            ) ~~ {}
           ]
       ]
   }

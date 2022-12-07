@@ -139,7 +139,8 @@ theTemporalityOfPure = subsection
           , D.code__ "lift2 append"
           , text_ "."
           ]
-          , psCode """module Main where
+      , psCode
+          """module Main where
 
 import Prelude
 

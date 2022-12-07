@@ -18,23 +18,23 @@ main :: Effect Unit
 main = runInBody do
   text
     ( sampleBy (flip (<>))
-      ( behavior
-          ( \e -> bindToAffWithCancellation e
-              ( \f -> do
-                  result <- AX.request
-                    ( AX.defaultRequest
-                        { url = "https://randomuser.me/api/"
-                        , method = Left GET
-                        , responseFormat = ResponseFormat.json
-                        }
-                    )
-                  pure $ f 
-                    case result of
-                      Left err -> (AX.printError err)
-                      Right response ->
-                        (stringifyWithIndent 2 response.body)
-              )
-          )
-      )
-      (interval 7562 $> "Here's a random user: ")
-  )
+        ( behavior
+            ( \e -> bindToAffWithCancellation e
+                ( \f -> do
+                    result <- AX.request
+                      ( AX.defaultRequest
+                          { url = "https://randomuser.me/api/"
+                          , method = Left GET
+                          , responseFormat = ResponseFormat.json
+                          }
+                      )
+                    pure $ f
+                      case result of
+                        Left err -> (AX.printError err)
+                        Right response ->
+                          (stringifyWithIndent 2 response.body)
+                )
+            )
+        )
+        (interval 7562 $> "Here's a random user: ")
+    )

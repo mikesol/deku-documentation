@@ -15,15 +15,15 @@ pageOrder = join $ map (unwrap >>> _.pages >>> map (unwrap >>> _.route))
 
 pageOrderMinusOne = drop 1 pageOrder
 
-routeToNextRouteMap :: Map Route Route 
+routeToNextRouteMap :: Map Route Route
 routeToNextRouteMap = fromFoldable (zip pageOrder pageOrderMinusOne)
 
-routeToPrevRouteMap :: Map Route Route 
+routeToPrevRouteMap :: Map Route Route
 routeToPrevRouteMap = fromFoldable (zip pageOrderMinusOne pageOrder)
 
-routeToNextRoute :: Route -> Maybe Route 
+routeToNextRoute :: Route -> Maybe Route
 routeToNextRoute FourOhFour = Nothing
-routeToNextRoute a =  lookup a routeToNextRouteMap
+routeToNextRoute a = lookup a routeToNextRouteMap
 
 routeToPrevRoute :: Route -> Maybe Route
 routeToPrevRoute FourOhFour = Nothing
