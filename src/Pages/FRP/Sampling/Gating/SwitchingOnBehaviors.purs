@@ -2,9 +2,9 @@ module Pages.FRP.Sampling.Gating.SwitchingOnBehaviors where
 
 import Prelude
 
-import Components.Code (psCode, psCodeWithLink)
+import Components.Code (psCodeWithLink)
 import Components.ExampleBlockquote (exampleBlockquote)
-import Contracts (Env(..), Subsection, subsection)
+import Contracts (Subsection, subsection)
 import Data.DateTime.Instant (unInstant)
 import Data.Newtype (unwrap)
 import Data.Number ((%))
@@ -15,12 +15,11 @@ import Examples as Examples
 import FRP.Behavior (behavior, sample_, switcher)
 import FRP.Event.Effect (bindToEffect)
 import FRP.Event.Time (interval)
-import Router.ADT (Route(..))
 
 switchingOnBehaviors :: forall lock payload. Subsection lock payload
 switchingOnBehaviors = subsection
   { title: "Switching on behaviors"
-  , matter: \(Env { routeLink }) ->
+  , matter: pure
       [ D.p_
           [ text_
               "A close cousin of gating is switching, which alternates between behaviors based on an event. In the random number generator below, you'll see the distribution of the behavior shrink or expand via the switcher."

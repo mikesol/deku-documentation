@@ -10,7 +10,6 @@ import Contracts (Subsection, subsection)
 import Data.Argonaut.Core (stringifyWithIndent)
 import Data.Either (Either(..))
 import Deku.Control (text, text_)
-import Deku.Control (text_)
 import Deku.DOM as D
 import Examples as Examples
 import FRP.Behavior (behavior, sample)
