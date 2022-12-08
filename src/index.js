@@ -72,150 +72,151 @@ import * as RemovingElements from '../output/Examples.RemovingElements/index.js'
 import * as UnsafeCustomElement from '../output/Examples.UnsafeCustomElement/index.js'
 import * as EventsAsSemigroups from '../output/Examples.EventsAsSemigroups/index.js'
 import * as AltAsAMuxer from '../output/Examples.AltAsAMuxer/index.js'
-import.meta.env.START === 'filteringAnEvent'
+const toStart = import.meta.env.START
+toStart === 'FilteringAnEvent'
   ? FilteringAnEvent.main()
-  : import.meta.env.START === 'usingTheOriginalEvent'
+  : toStart === 'UsingTheOriginalEvent'
   ? UsingTheOriginalEvent.main()
-  : import.meta.env.START === 'eventsAsSemirings'
+  : toStart === 'EventsAsSemirings'
   ? EventsAsSemirings.main()
-  : import.meta.env.START === 'usingTheHookToSwitchBetweenElements'
+  : toStart === 'UsingTheHookToSwitchBetweenElements'
   ? UsingTheHookToSwitchBetweenElements.main()
-  : import.meta.env.START === 'rowPolymorphismAndProviders'
+  : toStart === 'RowPolymorphismAndProviders'
   ? RowPolymorphismAndProviders.main()
-  : import.meta.env.START === 'addingAttributes'
+  : toStart === 'AddingAttributes'
   ? AddingAttributes.main()
-  : import.meta.env.START === 'biasingASideOfSampling'
+  : toStart === 'BiasingASideOfSampling'
   ? BiasingASideOfSampling.main()
-  : import.meta.env.START === 'theCreatePureEffect'
+  : toStart === 'TheCreatePureEffect'
   ? TheCreatePureEffect.main()
-  : import.meta.env.START === 'samplingABehaviorAndDiscardingTheEvent'
+  : toStart === 'SamplingABehaviorAndDiscardingTheEvent'
   ? SamplingABehaviorAndDiscardingTheEvent.main()
-  : import.meta.env.START === 'behaviorsVersusFlapping'
+  : toStart === 'BehaviorsVersusFlapping'
   ? BehaviorsVersusFlapping.main()
-  : import.meta.env.START === 'injectingDependencies'
+  : toStart === 'InjectingDependencies'
   ? InjectingDependencies.main()
-  : import.meta.env.START === 'compactingEvents'
+  : toStart === 'CompactingEvents'
   ? CompactingEvents.main()
-  : import.meta.env.START === 'emptyUntilFull'
+  : toStart === 'EmptyUntilFull'
   ? EmptyUntilFull.main()
-  : import.meta.env.START === 'addingSeveralElements'
+  : toStart === 'AddingSeveralElements'
   ? AddingSeveralElements.main()
-  : import.meta.env.START === 'runSSR'
+  : toStart === 'RunSSR'
   ? RunSSR.main()
-  : import.meta.env.START === 'aSimpleComponent'
+  : toStart === 'ASimpleComponent'
   ? ASimpleComponent.main()
-  : import.meta.env.START === 'theLemmingEvent'
+  : toStart === 'TheLemmingEvent'
   ? TheLemmingEvent.main()
-  : import.meta.env.START === 'componentsAsSemigroups'
+  : toStart === 'ComponentsAsSemigroups'
   ? ComponentsAsSemigroups.main()
-  : import.meta.env.START === 'groupsOfGroups'
+  : toStart === 'GroupsOfGroups'
   ? GroupsOfGroups.main()
-  : import.meta.env.START === 'theOneOfFunction'
+  : toStart === 'TheOneOfFunction'
   ? TheOneOfFunction.main()
-  : import.meta.env.START === 'theGlobalPortalSyntax'
+  : toStart === 'TheGlobalPortalSyntax'
   ? TheGlobalPortalSyntax.main()
-  : import.meta.env.START === 'gatingEventsOnBehaviors'
+  : toStart === 'GatingEventsOnBehaviors'
   ? GatingEventsOnBehaviors.main()
-  : import.meta.env.START === 'effectsInSSR'
+  : toStart === 'EffectsInSSR'
   ? EffectsInSSR.main()
-  : import.meta.env.START === 'usingFunctionsAsMonads'
+  : toStart === 'UsingFunctionsAsMonads'
   ? UsingFunctionsAsMonads.main()
-  : import.meta.env.START === 'theKeepLatestFunction'
+  : toStart === 'TheKeepLatestFunction'
   ? TheKeepLatestFunction.main()
-  : import.meta.env.START === 'aSimpleCounter'
+  : toStart === 'ASimpleCounter'
   ? ASimpleCounter.main()
-  : import.meta.env.START === 'globalHandlers'
+  : toStart === 'GlobalHandlers'
   ? GlobalHandlers.main()
-  : import.meta.env.START === 'eventsAsRings'
+  : toStart === 'EventsAsRings'
   ? EventsAsRings.main()
-  : import.meta.env.START === 'samplingABehaviorWithAnEvent'
+  : toStart === 'SamplingABehaviorWithAnEvent'
   ? SamplingABehaviorWithAnEvent.main()
-  : import.meta.env.START === 'knowThySelfT'
+  : toStart === 'KnowThySelfT'
   ? KnowThySelfT.main()
-  : import.meta.env.START === 'shorthandListeners'
+  : toStart === 'ShorthandListeners'
   ? ShorthandListeners.main()
-  : import.meta.env.START === 'aNoteOnMemoization'
+  : toStart === 'ANoteOnMemoization'
   ? ANoteOnMemoization.main()
-  : import.meta.env.START === 'optimizedEventCreation'
+  : toStart === 'OptimizedEventCreation'
   ? OptimizedEventCreation.main()
-  : import.meta.env.START === 'theFixFunction'
+  : toStart === 'TheFixFunction'
   ? TheFixFunction.main()
-  : import.meta.env.START === 'theTemporalityOfPure'
+  : toStart === 'TheTemporalityOfPure'
   ? TheTemporalityOfPure.main()
-  : import.meta.env.START === 'addingAnAttribute'
+  : toStart === 'AddingAnAttribute'
   ? AddingAnAttribute.main()
-  : import.meta.env.START === 'addingCustomElements'
+  : toStart === 'AddingCustomElements'
   ? AddingCustomElements.main()
-  : import.meta.env.START === 'optimizedEventFunctions'
+  : toStart === 'OptimizedEventFunctions'
   ? OptimizedEventFunctions.main()
-  : import.meta.env.START === 'componentsAsMonoids'
+  : toStart === 'ComponentsAsMonoids'
   ? ComponentsAsMonoids.main()
-  : import.meta.env.START === 'plainOldHtml'
+  : toStart === 'PlainOldHtml'
   ? PlainOldHtml.main()
-  : import.meta.env.START === 'usingAnEffect'
+  : toStart === 'UsingAnEffect'
   ? UsingAnEffect.main()
-  : import.meta.env.START === 'knowThySelf'
+  : toStart === 'KnowThySelf'
   ? KnowThySelf.main()
-  : import.meta.env.START === 'unsafePursx'
+  : toStart === 'UnsafePursx'
   ? UnsafePursx.main()
-  : import.meta.env.START === 'addingASingleElement'
+  : toStart === 'AddingASingleElement'
   ? AddingASingleElement.main()
-  : import.meta.env.START === 'theLocalPortalSyntax'
+  : toStart === 'TheLocalPortalSyntax'
   ? TheLocalPortalSyntax.main()
-  : import.meta.env.START === 'booleanLogicOnEvents'
+  : toStart === 'BooleanLogicOnEvents'
   ? BooleanLogicOnEvents.main()
-  : import.meta.env.START === 'howSamplingWorks'
+  : toStart === 'HowSamplingWorks'
   ? HowSamplingWorks.main()
-  : import.meta.env.START === 'unlockingLevels'
+  : toStart === 'UnlockingLevels'
   ? UnlockingLevels.main()
-  : import.meta.env.START === 'useDyn'
+  : toStart === 'UseDyn'
   ? UseDyn.main()
-  : import.meta.env.START === 'integratingBehaviors'
+  : toStart === 'IntegratingBehaviors'
   ? IntegratingBehaviors.main()
-  : import.meta.env.START === 'helloWorldCode'
+  : toStart === 'HelloWorldCode'
   ? HelloWorldCode.main()
-  : import.meta.env.START === 'insertingInADifferentOrder'
+  : toStart === 'InsertingInADifferentOrder'
   ? InsertingInADifferentOrder.main()
-  : import.meta.env.START === 'multipleSubscriptions'
+  : toStart === 'MultipleSubscriptions'
   ? MultipleSubscriptions.main()
-  : import.meta.env.START === 'theStateHook'
+  : toStart === 'TheStateHook'
   ? TheStateHook.main()
-  : import.meta.env.START === 'interComponentCommunication'
+  : toStart === 'InterComponentCommunication'
   ? InterComponentCommunication.main()
-  : import.meta.env.START === 'eventsAsMonoids'
+  : toStart === 'EventsAsMonoids'
   ? EventsAsMonoids.main()
-  : import.meta.env.START === 'derivingBehaviors'
+  : toStart === 'DerivingBehaviors'
   ? DerivingBehaviors.main()
-  : import.meta.env.START === 'solvingDifferentialEquations'
+  : toStart === 'SolvingDifferentialEquations'
   ? SolvingDifferentialEquations.main()
-  : import.meta.env.START === 'usingTheHookInAnAttribute'
+  : toStart === 'UsingTheHookInAnAttribute'
   ? UsingTheHookInAnAttribute.main()
-  : import.meta.env.START === 'passingAroundHooks'
+  : toStart === 'PassingAroundHooks'
   ? PassingAroundHooks.main()
-  : import.meta.env.START === 'switchingOnBehaviors'
+  : toStart === 'SwitchingOnBehaviors'
   ? SwitchingOnBehaviors.main()
-  : import.meta.env.START === 'groupingComponents'
+  : toStart === 'GroupingComponents'
   ? GroupingComponents.main()
-  : import.meta.env.START === 'flippingTheFunctionAndArgument'
+  : toStart === 'FlippingTheFunctionAndArgument'
   ? FlippingTheFunctionAndArgument.main()
-  : import.meta.env.START === 'movingElements'
+  : toStart === 'MovingElements'
   ? MovingElements.main()
-  : import.meta.env.START === 'mockDiscord'
+  : toStart === 'MockDiscord'
   ? MockDiscord.main()
-  : import.meta.env.START === 'addingSeveralAttributes'
+  : toStart === 'AddingSeveralAttributes'
   ? AddingSeveralAttributes.main()
-  : import.meta.env.START === 'samplingABehaviorWithACustomFunction'
+  : toStart === 'SamplingABehaviorWithACustomFunction'
   ? SamplingABehaviorWithACustomFunction.main()
-  : import.meta.env.START === 'whenToFixAndWhenToFold'
+  : toStart === 'WhenToFixAndWhenToFold'
   ? WhenToFixAndWhenToFold.main()
-  : import.meta.env.START === 'usingAHookToControlPresence'
+  : toStart === 'UsingAHookToControlPresence'
   ? UsingAHookToControlPresence.main()
-  : import.meta.env.START === 'removingElements'
+  : toStart === 'RemovingElements'
   ? RemovingElements.main()
-  : import.meta.env.START === 'unsafeCustomElement'
+  : toStart === 'UnsafeCustomElement'
   ? UnsafeCustomElement.main()
-  : import.meta.env.START === 'eventsAsSemigroups'
+  : toStart === 'EventsAsSemigroups'
   ? EventsAsSemigroups.main()
-  : import.meta.env.START === 'altAsAMuxer'
+  : toStart === 'AltAsAMuxer'
   ? AltAsAMuxer.main()
   : main()

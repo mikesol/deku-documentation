@@ -87,7 +87,7 @@ export const addExpandButton = () => {
         })
         const div = document.createElement('div')
         div.style.position = 'absolute'
-        div.style.transform = 'translate(-26px, -22px)';
+        div.style.transform = 'translate(-26px, -22px)'
         div.appendChild(icon)
         obj.insertBefore(div, sib)
         obj.insertBefore(newSpan, div)

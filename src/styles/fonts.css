@@ -24,7 +24,7 @@
 @font-face {
   font-family: 'Aldine 721';
   src: url('./fonts/Aldine721BT-Roman.woff2') format('woff2'),
-      url('./fonts/Aldine721BT-Roman.woff') format('woff');
+    url('./fonts/Aldine721BT-Roman.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -33,7 +33,7 @@
 @font-face {
   font-family: 'Pinyon Script';
   src: url('./fonts/PinyonScript-Regular.woff2') format('woff2'),
-      url('./fonts/PinyonScript-Regular.woff') format('woff');
+    url('./fonts/PinyonScript-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;

@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "vite dev",
     "gitpod": "spago build",
+    "format": "purs-tidy format-in-place src/**/*.purs && prettier --write ./src/",
     "build": "spago -x prod.dhall build && vite build"
   },
   "browserslist": "defaults, not ie <= 11",
