@@ -16,7 +16,7 @@ sayingHello = section
           [ text_
               "This section, like many that will come after it, first presents some "
           , D.code_ [ text_ "code" ]
-          , text_ " and then present the "
+          , text_ " and then presents the "
           , D.b_ [ text_ "result" ]
           , text_
               " of the code rendered in a blockquote. In some cases, we may present code without rendering or vice versa. But for the most part, we'll try to always pair up code with a working example."
