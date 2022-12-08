@@ -2,13 +2,14 @@ module Pages.FRP.Behaviors.Definition.BehaviorsVersusFlapping where
 
 import Prelude
 
-import Components.Code (psCode)
+import Components.Code (psCodeWithLink)
 import Components.ExampleBlockquote (exampleBlockquote)
 import Contracts (Subsection, subsection)
 import Data.Functor (mapFlipped)
 import Deku.Control (text, text_)
 import Deku.DOM as D
 import Effect.Random (random)
+import Examples as Examples
 import FRP.Behavior (behavior, sample)
 import FRP.Event.Effect (bindToEffect)
 import FRP.Event.Time (interval)
@@ -21,28 +22,7 @@ behaviorsVersusFlapping = subsection
           [ text_
               "Let's see a behavior in the wild. Our behavior will observe a random phenomenon, and we'll consult it on a regular interval."
           ]
-      , psCode
-          """module Main where
-
-import Prelude
-
-import Deku.Control (text)
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
-import Data.Functor (mapFlipped)
-import Effect.Random (random)
-import FRP.Behavior (behavior, sample)
-import FRP.Event.Effect (bindToEffect)
-import FRP.Event.Time (interval)
-
-main :: Effect Unit
-main = runInBody do
-  text
-    ( show <$> sample
-        (behavior (flip bindToEffect (mapFlipped random)))
-        (interval 250 $> add 42.0)
-    )
-"""
+      , psCodeWithLink Examples.BehaviorsVersusFlapping
       , exampleBlockquote
           [ text
               ( show <$> sample

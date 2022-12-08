@@ -1,4 +1,4 @@
-module Examples.TheFixFunction where
+module Examples.ALagUsingFix where
 
 import Prelude
 

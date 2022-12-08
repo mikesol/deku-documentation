@@ -2,9 +2,8 @@ module Pages.FRP.FixAndFold.FixedPoints.TheFixFunction where
 
 import Prelude
 
-import Components.Code (psCode)
+import Components.Code (psCode, psCodeWithLink)
 import Components.ExampleBlockquote (exampleBlockquote)
-import Constants (tripleQ)
 import Contracts (Env(..), Subsection, subsection)
 import Control.Alt ((<|>))
 import Data.Compactable (compact)
@@ -18,131 +17,9 @@ import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState')
 import Deku.Listeners (click_)
+import Examples as Examples
 import FRP.Event (fix, sampleOnRight)
 import Router.ADT (Route(..))
-
-example :: String
-example =
-  """module Main where
-
-import Prelude
-
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
-import Control.Alt ((<|>))
-import Data.Compactable (compact)
-import Data.Maybe (Maybe(..))
-import Data.String (Pattern(..), Replacement(..), replaceAll)
-import Data.Tuple (Tuple(..), fst, snd)
-import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass_)
-import Deku.Control (text, text_)
-import Deku.DOM as D
-import Deku.Do as Deku
-import Deku.Hooks (useState')
-import Deku.Listeners (click_)
-import FRP.Event (fix, sampleOnRight)
-
-buttonClass :: String -> String
-buttonClass color =
-  replaceAll (Pattern "COLOR") (Replacement color)
-    """ <> tripleQ
-    <>
-      """mb-3 inline-flex items-center rounded-md
-border border-transparent bg-COLOR-600 px-3 py-2
-text-sm font-medium leading-4 text-white shadow-sm
-hover:bg-COLOR-700 focus:outline-none focus:ring-2
-focus:ring-COLOR-500 focus:ring-offset-2 mr-4"""
-    <> tripleQ
-    <>
-      """
-
-main :: Effect Unit
-main = runInBody Deku.do
-  setWord /\ word <- useState'
-  D.div_
-    [ D.div_ $
-        [ "Hickory" /\ "green"
-        , "Dickory" /\ "pink"
-        , "Dock" /\ "indigo"
-        ] <#> \(w /\ k) -> D.button
-          (klass_ (buttonClass k) <|> click_ (setWord w))
-          [ text_ w ]
-    , D.div_
-        [ text_ "Previous word: "
-        , text
-            ( pure "None" <|>
-                ( compact $ snd <$> fix
-                    ( \e -> sampleOnRight
-                        (pure Nothing <|> (fst <$> e))
-                        ((Tuple <<< Just) <$> word)
-                    )
-                )
-            )
-        ]
-    ]"""
-
-example2 :: String
-example2 =
-  """module Main where
-
-import Prelude
-
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
-import Control.Alt ((<|>))
-import Data.Compactable (compact)
-import Data.Maybe (Maybe(..))
-import Data.String (Pattern(..), Replacement(..), replaceAll)
-import Data.Tuple (Tuple(..), fst, snd)
-import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass_)
-import Deku.Control (text, text_)
-import Deku.DOM as D
-import Deku.Do as Deku
-import Deku.Hooks (useState')
-import Deku.Listeners (click_)
-import FRP.Event (fix, sampleOnRight)
-
-buttonClass :: String -> String
-buttonClass color =
-  replaceAll (Pattern "COLOR") (Replacement color)
-    """ <> tripleQ
-    <>
-      """mb-3 inline-flex items-center rounded-md
-border border-transparent bg-COLOR-600 px-3 py-2
-text-sm font-medium leading-4 text-white shadow-sm
-hover:bg-COLOR-700 focus:outline-none focus:ring-2
-focus:ring-COLOR-500 focus:ring-offset-2 mr-4"""
-    <> tripleQ
-    <>
-      """
-
-main :: Effect Unit
-main = runInBody Deku.do
-  setWord /\ word <- useState'
-  let
-    lag n e
-      | n <= 0 = e
-      | otherwise =
-          compact $ snd <$> fix
-            ( \ev -> sampleOnRight
-                (pure Nothing <|> (fst <$> ev))
-                ((Tuple <<< Just) <$> lag (n - 1) e)
-            )
-  D.div_
-    [ D.div_ $
-        [ "Hickory" /\ "green"
-        , "Dickory" /\ "pink"
-        , "Dock" /\ "indigo"
-        ] <#> \(w /\ k) -> D.button
-          (klass_ (buttonClass k) <|> click_ (setWord w))
-          [ text_ w ]
-    , D.div_ $ [ 0, 1, 2, 3, 4 ] <#> \n -> D.div_
-        [ text_ $ "Word with a lag of " <> show n <> ": "
-        , text (pure "None" <|> lag n word)
-        ]
-    ]"""
 
 buttonClass :: String -> String
 buttonClass color =
@@ -175,7 +52,7 @@ theFixFunction = subsection
           , text_
               ". We'll create a mechanism that lags by one event. That is, the first thing you click on will not change the value, and from then on, whenever you click, the previous value will be displayed."
           ]
-      , psCode example
+      , psCodeWithLink Examples.ALagUsingFix
       , exampleBlockquote
           [ Deku.do
               setWord /\ word <- useState'
@@ -283,7 +160,7 @@ fixedEvent = fix
           ]
       , D.p__
           "To extend the example, we can use our fixed function as a building block to create lags of arbitrary depth."
-      , psCode example2
+      , psCodeWithLink Examples.SeveralLagsUsingFix
       , exampleBlockquote
           [ Deku.do
               setWord /\ word <- useState'

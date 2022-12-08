@@ -36,11 +36,11 @@ foreign import knowThySelfTURL :: String
 foreign import shorthandListenersURL :: String
 foreign import aNoteOnMemoizationURL :: String
 foreign import optimizedEventCreationURL :: String
-foreign import theFixFunctionURL :: String
 foreign import theTemporalityOfPureURL :: String
 foreign import addingCustomElementsURL :: String
 foreign import optimizedEventFunctionsURL :: String
 foreign import componentsAsMonoidsURL :: String
+foreign import aLagUsingFixURL :: String
 foreign import addingASingleElementToPursxURL :: String
 foreign import plainOldHtmlURL :: String
 foreign import usingAnEffectURL :: String
@@ -72,6 +72,7 @@ foreign import whenToFixAndWhenToFoldURL :: String
 foreign import usingAHookToControlPresenceURL :: String
 foreign import removingElementsURL :: String
 foreign import unsafeCustomElementURL :: String
+foreign import severalLagsUsingFixURL :: String
 foreign import eventsAsSemigroupsURL :: String
 foreign import altAsAMuxerURL :: String
 newtype Examples = Examples {
@@ -110,11 +111,11 @@ newtype Examples = Examples {
  shorthandListeners :: String,
  aNoteOnMemoization :: String,
  optimizedEventCreation :: String,
- theFixFunction :: String,
  theTemporalityOfPure :: String,
  addingCustomElements :: String,
  optimizedEventFunctions :: String,
  componentsAsMonoids :: String,
+ aLagUsingFix :: String,
  addingASingleElementToPursx :: String,
  plainOldHtml :: String,
  usingAnEffect :: String,
@@ -146,6 +147,7 @@ newtype Examples = Examples {
  usingAHookToControlPresence :: String,
  removingElements :: String,
  unsafeCustomElement :: String,
+ severalLagsUsingFix :: String,
  eventsAsSemigroups :: String,
  altAsAMuxer :: String
 }
@@ -187,11 +189,11 @@ examples = Examples {
  shorthandListeners: shorthandListenersURL,
  aNoteOnMemoization: aNoteOnMemoizationURL,
  optimizedEventCreation: optimizedEventCreationURL,
- theFixFunction: theFixFunctionURL,
  theTemporalityOfPure: theTemporalityOfPureURL,
  addingCustomElements: addingCustomElementsURL,
  optimizedEventFunctions: optimizedEventFunctionsURL,
  componentsAsMonoids: componentsAsMonoidsURL,
+ aLagUsingFix: aLagUsingFixURL,
  addingASingleElementToPursx: addingASingleElementToPursxURL,
  plainOldHtml: plainOldHtmlURL,
  usingAnEffect: usingAnEffectURL,
@@ -223,10 +225,11 @@ examples = Examples {
  usingAHookToControlPresence: usingAHookToControlPresenceURL,
  removingElements: removingElementsURL,
  unsafeCustomElement: unsafeCustomElementURL,
+ severalLagsUsingFix: severalLagsUsingFixURL,
  eventsAsSemigroups: eventsAsSemigroupsURL,
  altAsAMuxer: altAsAMuxerURL
  }
-data ExampleADT = FilteringAnEvent | UsingTheOriginalEvent | EventsAsSemirings | UsingTheHookToSwitchBetweenElements | RowPolymorphismAndProviders | AddingAttributes | BiasingASideOfSampling | TheCreatePureEffect | SamplingABehaviorAndDiscardingTheEvent | BehaviorsVersusFlapping | InjectingDependencies | CompactingEvents | EmptyUntilFull | RunSSR | ASimpleComponent | AddingSeveralElementsToPursx | TheLemmingEvent | AddingAnAttributeToPursx | ComponentsAsSemigroups | GroupsOfGroups | TheOneOfFunction | TheGlobalPortalSyntax | GatingEventsOnBehaviors | EffectsInSSR | UsingFunctionsAsMonads | TheKeepLatestFunction | ASimpleCounter | GlobalHandlers | EventsAsRings | AddingSeveralAttributesToPursx | SamplingABehaviorWithAnEvent | KnowThySelfT | ShorthandListeners | ANoteOnMemoization | OptimizedEventCreation | TheFixFunction | TheTemporalityOfPure | AddingCustomElements | OptimizedEventFunctions | ComponentsAsMonoids | AddingASingleElementToPursx | PlainOldHtml | UsingAnEffect | KnowThySelf | UnsafePursx | TheLocalPortalSyntax | BooleanLogicOnEvents | HowSamplingWorks | UnlockingLevels | UseDyn | IntegratingBehaviors | HelloWorldCode | InsertingInADifferentOrder | MultipleSubscriptions | TheStateHook | InterComponentCommunication | EventsAsMonoids | DerivingBehaviors | SolvingDifferentialEquations | UsingTheHookInAnAttribute | PassingAroundHooks | SwitchingOnBehaviors | GroupingComponents | FlippingTheFunctionAndArgument | MovingElements | MockDiscord | SamplingABehaviorWithACustomFunction | WhenToFixAndWhenToFold | UsingAHookToControlPresence | RemovingElements | UnsafeCustomElement | EventsAsSemigroups | AltAsAMuxer 
+data ExampleADT = FilteringAnEvent | UsingTheOriginalEvent | EventsAsSemirings | UsingTheHookToSwitchBetweenElements | RowPolymorphismAndProviders | AddingAttributes | BiasingASideOfSampling | TheCreatePureEffect | SamplingABehaviorAndDiscardingTheEvent | BehaviorsVersusFlapping | InjectingDependencies | CompactingEvents | EmptyUntilFull | RunSSR | ASimpleComponent | AddingSeveralElementsToPursx | TheLemmingEvent | AddingAnAttributeToPursx | ComponentsAsSemigroups | GroupsOfGroups | TheOneOfFunction | TheGlobalPortalSyntax | GatingEventsOnBehaviors | EffectsInSSR | UsingFunctionsAsMonads | TheKeepLatestFunction | ASimpleCounter | GlobalHandlers | EventsAsRings | AddingSeveralAttributesToPursx | SamplingABehaviorWithAnEvent | KnowThySelfT | ShorthandListeners | ANoteOnMemoization | OptimizedEventCreation | TheTemporalityOfPure | AddingCustomElements | OptimizedEventFunctions | ComponentsAsMonoids | ALagUsingFix | AddingASingleElementToPursx | PlainOldHtml | UsingAnEffect | KnowThySelf | UnsafePursx | TheLocalPortalSyntax | BooleanLogicOnEvents | HowSamplingWorks | UnlockingLevels | UseDyn | IntegratingBehaviors | HelloWorldCode | InsertingInADifferentOrder | MultipleSubscriptions | TheStateHook | InterComponentCommunication | EventsAsMonoids | DerivingBehaviors | SolvingDifferentialEquations | UsingTheHookInAnAttribute | PassingAroundHooks | SwitchingOnBehaviors | GroupingComponents | FlippingTheFunctionAndArgument | MovingElements | MockDiscord | SamplingABehaviorWithACustomFunction | WhenToFixAndWhenToFold | UsingAHookToControlPresence | RemovingElements | UnsafeCustomElement | SeveralLagsUsingFix | EventsAsSemigroups | AltAsAMuxer 
 exampleToString :: ExampleADT -> String
 exampleToString FilteringAnEvent = (unwrap examples).filteringAnEvent
 exampleToString UsingTheOriginalEvent = (unwrap examples).usingTheOriginalEvent
@@ -263,11 +266,11 @@ exampleToString KnowThySelfT = (unwrap examples).knowThySelfT
 exampleToString ShorthandListeners = (unwrap examples).shorthandListeners
 exampleToString ANoteOnMemoization = (unwrap examples).aNoteOnMemoization
 exampleToString OptimizedEventCreation = (unwrap examples).optimizedEventCreation
-exampleToString TheFixFunction = (unwrap examples).theFixFunction
 exampleToString TheTemporalityOfPure = (unwrap examples).theTemporalityOfPure
 exampleToString AddingCustomElements = (unwrap examples).addingCustomElements
 exampleToString OptimizedEventFunctions = (unwrap examples).optimizedEventFunctions
 exampleToString ComponentsAsMonoids = (unwrap examples).componentsAsMonoids
+exampleToString ALagUsingFix = (unwrap examples).aLagUsingFix
 exampleToString AddingASingleElementToPursx = (unwrap examples).addingASingleElementToPursx
 exampleToString PlainOldHtml = (unwrap examples).plainOldHtml
 exampleToString UsingAnEffect = (unwrap examples).usingAnEffect
@@ -299,6 +302,7 @@ exampleToString WhenToFixAndWhenToFold = (unwrap examples).whenToFixAndWhenToFol
 exampleToString UsingAHookToControlPresence = (unwrap examples).usingAHookToControlPresence
 exampleToString RemovingElements = (unwrap examples).removingElements
 exampleToString UnsafeCustomElement = (unwrap examples).unsafeCustomElement
+exampleToString SeveralLagsUsingFix = (unwrap examples).severalLagsUsingFix
 exampleToString EventsAsSemigroups = (unwrap examples).eventsAsSemigroups
 exampleToString AltAsAMuxer = (unwrap examples).altAsAMuxer
 exampleToSlug :: ExampleADT -> String
@@ -337,11 +341,11 @@ exampleToSlug KnowThySelfT = "KnowThySelfT"
 exampleToSlug ShorthandListeners = "ShorthandListeners"
 exampleToSlug ANoteOnMemoization = "ANoteOnMemoization"
 exampleToSlug OptimizedEventCreation = "OptimizedEventCreation"
-exampleToSlug TheFixFunction = "TheFixFunction"
 exampleToSlug TheTemporalityOfPure = "TheTemporalityOfPure"
 exampleToSlug AddingCustomElements = "AddingCustomElements"
 exampleToSlug OptimizedEventFunctions = "OptimizedEventFunctions"
 exampleToSlug ComponentsAsMonoids = "ComponentsAsMonoids"
+exampleToSlug ALagUsingFix = "ALagUsingFix"
 exampleToSlug AddingASingleElementToPursx = "AddingASingleElementToPursx"
 exampleToSlug PlainOldHtml = "PlainOldHtml"
 exampleToSlug UsingAnEffect = "UsingAnEffect"
@@ -373,5 +377,6 @@ exampleToSlug WhenToFixAndWhenToFold = "WhenToFixAndWhenToFold"
 exampleToSlug UsingAHookToControlPresence = "UsingAHookToControlPresence"
 exampleToSlug RemovingElements = "RemovingElements"
 exampleToSlug UnsafeCustomElement = "UnsafeCustomElement"
+exampleToSlug SeveralLagsUsingFix = "SeveralLagsUsingFix"
 exampleToSlug EventsAsSemigroups = "EventsAsSemigroups"
 exampleToSlug AltAsAMuxer = "AltAsAMuxer"

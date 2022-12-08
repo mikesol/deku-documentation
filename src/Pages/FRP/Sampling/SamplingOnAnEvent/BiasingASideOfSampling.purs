@@ -2,67 +2,19 @@ module Pages.FRP.Sampling.SamplingOnAnEvent.BiasingASideOfSampling where
 
 import Prelude
 
-import Components.Code (psCode)
+import Components.Code (psCodeWithLink)
 import Components.ExampleBlockquote (exampleBlockquote)
 import Contracts (Subsection, subsection)
-import Contracts (Subsection, subsection)
 import Data.Tuple.Nested ((/\))
 import Deku.Attributes (klass_)
 import Deku.Control (text, text_)
-import Deku.Control (text_)
 import Deku.Core (fixed)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState')
 import Deku.Listeners (slider_)
+import Examples as Examples
 import FRP.Event.Class ((<**|>), (<*|>), (<|**>), (<|*>))
-
-example :: String
-example =
-  """module Main where
-
-import Prelude
-
-import Data.Tuple.Nested ((/\))
-import Deku.Attribute ((!:=))
-import Deku.Attributes (klass_)
-import Deku.Control (text, text_)
-import Deku.Core (fixed)
-import Deku.DOM as D
-import Deku.Do as Deku
-import Deku.Hooks (useState')
-import Deku.Listeners (slider_)
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
-import FRP.Event.Class ((<|**>), (<|*>), (<**|>), (<*|>))
-
-main :: Effect Unit
-main = runInBody Deku.do
-  setSlider /\ slider <- useState'
-  fixed
-    [ D.div (klass_ "flex justify-around")
-        [ D.input (slider_ setSlider) [] ]
-    , text
-        ( slider <|**>
-            ((\a b -> show b <> " " <> show a) <$> slider)
-        )
-    , D.br_ []
-    , text
-        ( slider <**|>
-            ((\a b -> show b <> " " <> show a) <$> slider)
-        )
-    , D.br_ []
-    , text
-        ( ((\a b -> show a <> " " <> show b) <$> slider)
-            <|*> slider
-        )
-    , D.br_ []
-    , text
-        ( ((\a b -> show a <> " " <> show b) <$> slider)
-            <*|> slider
-        )
-    ]
-"""
 
 biasingASideOfSampling :: forall lock payload. Subsection lock payload
 biasingASideOfSampling = subsection
@@ -85,7 +37,7 @@ biasingASideOfSampling = subsection
           , D.i__ "single"
           , text_ " slider."
           ]
-      , psCode example
+      , psCodeWithLink Examples.BiasingASideOfSampling
       , exampleBlockquote
           [ Deku.do
               setSlider /\ slider <- useState'

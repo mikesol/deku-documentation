@@ -2,44 +2,16 @@ module Pages.FRP.Events.OptimizedEvents.OptimizedEventCreation where
 
 import Prelude
 
-import Components.Code (jsCode, psCode)
+import Components.Code (jsCode, psCodeWithLink)
 import Components.ExampleBlockquote (exampleBlockquote)
 import Components.ProTip (proTip)
-import Components.Table (tableClass)
-import Contracts (Subsection, subsection)
 import Contracts (Subsection, subsection)
 import Control.Monad.ST.Internal (modify, new, read, run)
 import Control.Monad.ST.Uncurried (mkSTFn1, runSTFn1, runSTFn2)
 import Deku.Control (text_)
 import Deku.DOM as D
+import Examples as Examples
 import FRP.Event (createPureO, subscribePureO)
-
-example :: String
-example =
-  """module Main where
-
-import Prelude
-
-import Control.Monad.ST.Internal (modify, new, read, run)
-import Control.Monad.ST.Uncurried (mkSTFn1, runSTFn1, runSTFn2)
-import Deku.Control (text_)
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
-import FRP.Event (createPureO, subscribePureO)
-
-main :: Effect Unit
-main = runInBody do
-  text_ $ show $ run do
-    { push, event } <- createPureO
-    rf <- new 0
-    _ <- runSTFn2 subscribePureO event $ mkSTFn1 \n -> do
-      void $ modify (add n) rf
-    runSTFn1 push 48
-    runSTFn1 push 49
-    runSTFn1 push 50
-    read rf
-
-"""
 
 optimizedEventCreation :: forall lock payload. Subsection lock payload
 optimizedEventCreation = subsection
@@ -50,7 +22,7 @@ optimizedEventCreation = subsection
           , D.code__ "createPure"
           , text_
               " example as above, but we'll used the optimized event creation functions."
-          , psCode example
+          , psCodeWithLink Examples.OptimizedEventCreation
           , exampleBlockquote
               [ text_ $ show $ run do
                   { push, event } <- createPureO

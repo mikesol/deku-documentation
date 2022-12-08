@@ -2,13 +2,14 @@ module Pages.FRP.Applicatives.Applicative.TheTemporalityOfPure where
 
 import Prelude
 
-import Components.Code (psCode)
+import Components.Code (psCodeWithLink)
 import Components.ExampleBlockquote (exampleBlockquote)
 import Contracts (Env(..), Subsection, subsection)
 import Data.Array (intercalate)
 import Deku.Attributes (klass_)
 import Deku.Control (text, text_)
 import Deku.DOM as D
+import Examples as Examples
 import FRP.Event (fold)
 import FRP.Event.Time (interval)
 import Router.ADT (Route(..))
@@ -139,30 +140,7 @@ theTemporalityOfPure = subsection
           , D.code__ "lift2 append"
           , text_ "."
           ]
-      , psCode
-          """module Main where
-
-import Prelude
-
-import Data.Array (intercalate)
-import Deku.Control (text)
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
-import FRP.Event (fold)
-import FRP.Event.Time (interval)
-
-main :: Effect Unit
-main = runInBody do
-  let
-    alternate e a b = fold (pure <$> not) true e
-      <#> if _ then a else b
-  text
-    $ intercalate (pure " ")
-        [ alternate (interval 804) "Functional" "Imperative"
-        , pure "programming"
-        , alternate (interval 1222) "is" "isn't"
-        , alternate (interval 568) "fun!" "boring!"
-        ]"""
+      , psCodeWithLink Examples.TheTemporalityOfPure
       , exampleBlockquote
           [ let
               alternate e a b = fold (pure <$> not) true e <#>

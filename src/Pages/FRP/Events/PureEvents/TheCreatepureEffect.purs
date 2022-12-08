@@ -2,14 +2,14 @@ module Pages.FRP.Events.PureEvents.TheCreatepureEffect where
 
 import Prelude
 
-import Components.Code (psCode)
+import Components.Code (psCode, psCodeWithLink)
 import Components.ExampleBlockquote (exampleBlockquote)
 import Contracts (Env(..), Subsection, subsection)
 import Control.Monad.ST.Internal (modify, new, read, run)
-import Deku.Attribute ((!:=))
 import Deku.Attributes (href_)
 import Deku.Control (text_)
 import Deku.DOM as D
+import Examples as Examples
 import FRP.Event (createPure, subscribePure)
 import Router.ADT (Route(..))
 
@@ -33,30 +33,7 @@ theCreatepureEffect = subsection
     }"""
       , D.p__
           "It is used to create an event along with a pusher to which you can push values. Because it is interpreted in a pure context, we can use it to create a micro event-based system within our app, run the system, and collect the results without violating any laws of purity, like in the following example."
-      , psCode
-          """module Main where
-
-import Prelude
-
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
-
-import Control.Monad.ST.Internal (modify, new, read, run)
-import Deku.Control (text_)
-import FRP.Event (createPure, subscribePure)
-
-main :: Effect Unit
-main = runInBody do
-  text_ $ show $ run do
-    { push, event } <- createPure
-    rf <- new 0
-    _ <- subscribePure event \n -> do
-      void $ modify (add n) rf
-    push 48
-    push 49
-    push 50
-    read rf
-"""
+      , psCodeWithLink Examples.TheCreatePureEffect
       , exampleBlockquote
           [ text_ $ show $ run do
               { push, event } <- createPure

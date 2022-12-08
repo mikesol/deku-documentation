@@ -2,34 +2,16 @@ module Pages.FRP.Applicatives.MonadsAndFlattening.TheKeepLatestFunction where
 
 import Prelude
 
-import Components.Code (psCode)
+import Components.Code (psCode, psCodeWithLink)
 import Components.ExampleBlockquote (exampleBlockquote)
 import Components.TargetedLink (targetedLink)
 import Contracts (Subsection, subsection)
 import Control.Alt ((<|>))
-import Control.Monad.ST.Internal as Ref
-import Data.Foldable (sequence_)
 import Deku.Control (text, text_)
 import Deku.DOM as D
-import FRP.Event (fold, keepLatest, makeLemmingEvent)
+import Examples as Examples
+import FRP.Event (fold, keepLatest)
 import FRP.Event.Time (interval)
-
-ugh m f = keepLatest (f <$> m)
-
-flatMap e =
-  makeLemmingEvent \s k -> do
-    cancelInner <- Ref.new []
-    cancelOuter <-
-      s e \inner -> do
-        -- in rare cases, cancelOuter may itself provoke an emission
-        -- of the outer event, in which case this function would run
-        -- to avoid that, we use a `safeToIgnore` flag
-        c <- s inner k
-        void $ Ref.modify (append [ c ]) cancelInner
-    pure do
-      ci <- Ref.read cancelInner
-      sequence_ ci
-      cancelOuter
 
 theKeepLatestFunction :: forall lock payload. Subsection lock payload
 theKeepLatestFunction = subsection
@@ -69,29 +51,7 @@ theKeepLatestFunction = subsection
           , text_
               " yet because we don't have enough tools and terms to, but you may already be able to guess what it does from its usage on this page!"
           ]
-      , psCode
-          """module Main where
-
-import Prelude
-
-import Control.Alt ((<|>))
-import Deku.Control (text)
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
-import FRP.Event (fold, keepLatest)
-import FRP.Event.Time (interval)
-
-main :: Effect Unit
-main = runInBody do
-  let count = fold (pure <$> add 1) 0
-  text
-    ( show <$> keepLatest
-        ( interval 1600 $>
-            (pure 0 <|> count (interval 600))
-        )
-    )
-
-"""
+      , psCodeWithLink Examples.TheKeepLatestFunction
       , exampleBlockquote
           [ do
               let count = fold (pure <$> add 1) 0
@@ -100,26 +60,6 @@ main = runInBody do
                     (interval 1600 $> (pure 0 <|> count (interval 600)))
                 )
           ]
-      -- , exampleBlockquote
-      -- [ do
-      --     let count = fold (pure <$> add 1) 0
-      --     text
-      --       ( show <$> ((interval 1600 `ugh` (const $ count (interval 1150)) )  )
-      --       )
-      -- ], exampleBlockquote
-      -- [ do
-      --     let count = fold (pure <$> add 1) 0
-      --     text
-      --       ( show <$> ((interval 1600 `ugh` (const (interval 1150)) ) `ugh` (const (count (interval 350))) )
-      --       )
-      -- ]
-      -- , exampleBlockquote
-      -- [ do
-      --     let count = fold (pure <$> add 1) 0
-      --     text
-      --       ( show <$> (interval 1600 `ugh` (\_ -> (interval 1150) `ugh` (const (count (interval 350))) ))
-      --       )
-      -- ]
       , D.p_
           [ text_ "The result is a "
           , targetedLink "https://en.wikipedia.org/wiki/Tresillo_(rhythm)"

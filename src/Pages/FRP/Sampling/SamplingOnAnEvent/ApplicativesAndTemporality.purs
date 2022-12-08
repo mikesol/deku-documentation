@@ -2,7 +2,7 @@ module Pages.FRP.Sampling.SamplingOnAnEvent.ApplicativesAndTemporality where
 
 import Prelude
 
-import Components.Code (psCode)
+import Components.Code (psCode, psCodeWithLink)
 import Components.ExampleBlockquote (exampleBlockquote)
 import Contracts (Env(..), Subsection, subsection)
 import Data.Tuple.Nested ((/\))
@@ -13,42 +13,9 @@ import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState')
 import Deku.Listeners (slider_)
+import Examples as Examples
 import FRP.Event.Class ((<|**>))
 import Router.ADT (Route(..))
-
-example :: String
-example =
-  """module Main where
-
-import Prelude
-
-import Data.Tuple.Nested ((/\))
-import Deku.Attribute ((!:=))
-import Deku.Attributes (klass_)
-import Deku.Control (text, text_)
-import Deku.Core (fixed)
-import Deku.DOM as D
-import Deku.Do as Deku
-import Deku.Hooks (useState')
-import Deku.Listeners (slider_)
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
-import FRP.Event.Class ((<|**>))
-
-main :: Effect Unit
-main = runInBody Deku.do
-  setSlider1 /\ slider1 <- useState'
-  setSlider2 /\ slider2 <- useState'
-  fixed
-    [ D.div (klass_ "flex justify-around")
-        [ D.input (slider_ setSlider1) []
-        , D.input (slider_ setSlider2) []
-        ]
-    , text
-        ( slider1 <|**>
-            ((\a b -> show b <> " " <> show a) <$> slider2)
-        )
-    ]"""
 
 applicativesAndTemporality :: forall lock payload. Subsection lock payload
 applicativesAndTemporality = subsection
@@ -86,7 +53,7 @@ applicativesAndTemporality = subsection
           ]
       , D.p__
           "To see this in action, let's concoct an example with two sliders. Both sliders do not emit an initial value, meaning they need to be moved in order for a value to be registered. Because of this, the system will only start producing values once both sliders have been moved, but it will only respond to the right slider. To see this, move the right (nothing), then the left (still nothing), then the right (bam!)."
-      , psCode example
+      , psCodeWithLink Examples.HowSamplingWorks
       , exampleBlockquote
           [ Deku.do
               setSlider1 /\ slider1 <- useState'

@@ -2,15 +2,15 @@ module Pages.FRP.Alternatives.Alt.AltAsAMuxer where
 
 import Prelude
 
-import Components.Code (psCode)
+import Components.Code (psCodeWithLink)
 import Components.ExampleBlockquote (exampleBlockquote)
 import Components.ProTip (proTip)
 import Contracts (Subsection, subsection)
 import Control.Alt ((<|>))
-import Deku.Attribute ((!:=))
-import Deku.Attributes (klass, klass_)
+import Deku.Attributes (klass)
 import Deku.Control (text_)
 import Deku.DOM as D
+import Examples as Exampes
 import FRP.Event.Time (interval)
 
 altAsAMuxer :: forall lock payload. Subsection lock payload
@@ -27,27 +27,7 @@ altAsAMuxer = subsection
           , text_
               " to mux together two streams controlling the background of a div. The result will be a rave in your browser... sort of..."
           ]
-      , psCode
-          """module Main where
-
-import Prelude
-
-import Control.Alt ((<|>))
-import Deku.Attributes (klass)
-import Deku.Control (text_)
-import Deku.DOM as D
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
-import FRP.Event.Time (interval)
-
-main :: Effect Unit
-main = runInBody do
-  D.div
-    ( klass
-        ((interval 200 $> "bg-pink-300")
-           <|> (interval 165 $> "bg-green-300"))
-    )
-    [ text_ "Par-tay!" ]"""
+      , psCodeWithLink Exampes.AltAsAMuxer
       , exampleBlockquote
           [ D.div
               ( klass

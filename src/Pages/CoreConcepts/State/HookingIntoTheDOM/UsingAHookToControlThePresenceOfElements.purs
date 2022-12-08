@@ -2,7 +2,7 @@ module Pages.CoreConcepts.State.HookingIntoTheDOM.UsingAHookToControlThePresence
 
 import Prelude
 
-import Components.Code (psCode)
+import Components.Code (psCode, psCodeWithLink)
 import Components.ExampleBlockquote (exampleBlockquote)
 import Contracts (Subsection, subsection)
 import Data.Tuple.Nested ((/\))
@@ -12,6 +12,7 @@ import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState)
 import Deku.Listeners (click)
+import Examples as Examples
 import QualifiedDo.Alt as Alt
 
 usingAHookToControlThePresenceOfElements
@@ -25,35 +26,7 @@ usingAHookToControlThePresenceOfElements = subsection
           , D.code__ "guard"
           , text_ " function."
           ]
-      , psCode
-          """module Main where
-
-import Prelude
-
-import Data.Tuple.Nested ((/\))
-import Deku.Control (guard, text, text_)
-import Deku.DOM as D
-import Deku.Do as Deku
-import Deku.Hooks (useState)
-import Deku.Attributes (klass_)
-import Deku.Listeners (click)
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
-import QualifiedDo.Alt as Alt
-
-main :: Effect Unit
-main = runInBody Deku.do
-  setPresence /\ presence <- useState true
-  D.div_
-    [ guard presence (text_ "Now you see me, ")
-    , D.a
-        Alt.do
-          klass_ "cursor-pointer"
-          click $ presence <#> not >>> setPresence
-        [ text $ presence <#>
-            if _ then "now you don't." else "Oops, come back!"
-        ]
-    ]"""
+      , psCodeWithLink Examples.UsingAHookToControlPresence
       , exampleBlockquote
           [ Deku.do
               setPresence /\ presence <- useState true
