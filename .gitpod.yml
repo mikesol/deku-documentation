@@ -8,3 +8,7 @@ tasks:
 ports:
   - port: 5173
     onOpen: open-preview
+vscode:
+  extensions:
+    - nwolverson.language-purescript
+    - nwolverson.ide-purescript
