@@ -5,6 +5,7 @@ import Prelude
 import Components.Code (psCode)
 import Components.ExampleBlockquote (exampleBlockquote)
 import Components.ProTip (proTip)
+import Components.TargetedLink (targetedLink)
 import Constants (tripleQ)
 import Contracts (Subsection, subsection)
 import Data.Tuple.Nested ((/\))
@@ -94,7 +95,15 @@ triggerAff = subsection
                   "Up until now, the side-effects we have seen have all been synchronous. In PureScript, we also have "
               , D.code__ "Aff"
               , text_
-                  " for asynchronous effects. You can think of them as promises with super powers. "
+                  " for asynchronous effects. You can think of them as "
+              , targetedLink
+                  "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise"
+                  [ D.code__ "Promises" ]
+              , text_ " that are meant to be broken (see "
+              , targetedLink
+                  "https://pursuit.purescript.org/packages/purescript-aff/5.1.2/docs/Effect.Aff#t:Canceler"
+                  [ D.code__ "Canceler" ]
+              , text_ "). "
               , D.code__ "liftEffect"
               , text_ " converts an "
               , D.code__ "Effect"
