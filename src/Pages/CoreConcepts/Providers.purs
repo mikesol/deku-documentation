@@ -20,7 +20,7 @@ providers = page
           ]
       , D.p_
           [ text_
-              "Once you start building your game or web app with Deku, you'll immediately have all sorts of global information, like authentication status, that you'll need to pass from the top-level of your application to sub-sub-sub-sub components. Additionally, you'll need for components to be able to communicate to each other. For example, a component five-levels deep may need to initiate a top-level navigation that completely changes the UI."
+              "Once you start building your game or web app with Deku, you'll get to the point where you have global information, like authentication status, that you'll need to pass from the top-level of your application to sub-sub-sub-sub components. Additionally, you'll need components to be able to communicate with each other. For example, a component five-levels deep may need to initiate a top-level navigation that completely changes the UI."
           ]
       , D.p_
           [ text_

@@ -2,6 +2,7 @@ module Pages.Introduction.GettingStarted.WhyDeku where
 
 import Prelude
 
+import Components.TargetedLink (targetedLink)
 import Contracts (Section, section)
 import Control.Alt ((<|>))
 import Deku.Attribute ((!:=))
@@ -15,7 +16,7 @@ whyDeku = section
   , topmatter: pure
       [ D.p_
           [ text_
-              "Deku was originally created and used for HTML5-based musical instruments. It has since been used to create several games and interactive websites."
+              "Deku was originally created to develop HTML5-based musical instruments. It has since been used to create several games and interactive websites."
           ]
       , D.p_
           [ text_
@@ -30,7 +31,12 @@ whyDeku = section
               )
               [ text_ "GitHub" ]
           , text_
-              ". It was built with best practices in mind for anyone who groks things by reading code more than, or in addition to, reading the docs!"
+              ". It was built with best practices in mind and is a useful reference for building larger applications, as is the "
+          , targetedLink "https://deku-realworld.netlify.app"
+              [ text_ "Deku Real World" ]
+          , text_ " "
+          , targetedLink "https://github.com/mikesol/purescript-deku-realworld" [text_ " project"]
+          , text_ "."
           ]
       ]
   , subsections:

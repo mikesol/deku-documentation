@@ -13,16 +13,16 @@ import Pages.CoreConcepts.Collections.DynamicElements.TheUseDynHook (theUseDynHo
 
 dynamicElements :: forall lock payload. Section lock payload
 dynamicElements = section
-  { title: "Dynamic elements"
+  { title: "Dynamic components"
   , topmatter: pure
       [ D.p_
           [ text_
-              "Sometimes, instead of dealing with a dynamic collection of elements you have a fixed collection. Classic examples of this include todo lists and a list of chats in a chat app. Deku provides the "
+              "Sometimes, instead of dealing with a fixed collection of components, you have a dynamic collection. Classic examples of this include todo lists and contact lists in a chat app. Deku provides the "
           , D.code__ "useDyn"
           , text_
-              " hook to facilitate this. In the following section, we'll build intuition for "
+              " hook to facilitate the rendering of dynamic collections. In the following section, we'll build intuition for "
           , D.code__ "useDyn"
-          , text_ "through a small Todo app."
+          , text_ " through a small Todo app."
           ]
       ]
   , subsections:

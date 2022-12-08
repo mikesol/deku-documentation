@@ -19,7 +19,7 @@ state = page
           [ text_ "Learn how to use State Hooks in Deku."
           ]
       , D.p__
-          "In 2018, Sophie Alpert and Dan Abramov introduced React Hooks, a revolutionary way to manage state-based logic in component-based UI frameworks. Their mouths agape, the world of framework builders fell into three categories."
+          "In 2018, Sophie Alpert and Dan Abramov introduced React Hooks, a revolutionary way to manage stateful logic in component-based UI frameworks. Their mouths agape, the world of framework builders fell into three categories."
       , D.ol_
           [ D.li__
               "Those who bemoaned having invented something hooks-like several years earlier only to see Facebook take the credit."

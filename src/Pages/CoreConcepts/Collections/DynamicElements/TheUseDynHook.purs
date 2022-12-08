@@ -48,7 +48,7 @@ theUseDynHook = subsection
   { title: "The useDyn hook"
   , matter: \(Env { routeLink }) ->
       [ D.p_
-          [ text_ "To render dynamic elements you'll need to do two things."
+          [ text_ "To render dynamic components you'll need to do two things."
           ]
       , D.ol_
           [ D.li_

@@ -119,7 +119,7 @@ addingASingleElement = subsection
           ]
       , D.p_
           [ text_
-              "To add an element dynamically, we use the same method as adding a dynamic attribute. Just place it between tildes anywhere in the DOM!"
+              "To add an element dynamically, we use the same method as adding a dynamic attribute. Just place it between tildes wherever you need it!"
           ]
 
       ]

@@ -24,7 +24,7 @@ severalAttributes = subsection
           , text_
               " infix operator. Because no one likes lots of tie fighters, one can also write "
           , D.code_ [ text_ "oneOf" ]
-          , text_ " followed by an array of attributes to "
+          , text_ " followed by an array of attributes in order to "
           , D.code_ [ text_ "alt" ]
           , text_ " them together. Another nice snytax is "
           , D.code_ [ text_ "Alt.do" ]
@@ -36,7 +36,7 @@ severalAttributes = subsection
                   "https://pursuit.purescript.org/packages/purescript-qualified-do/2.2.0/docs/QualifiedDo.Alt"
               [ D.code_ [ text_ "qualified-do" ] ]
           , text_
-              " package. They all do the same thing, and they're all shown below."
+              " package. All of these methods do the same thing, and they're all shown below."
           ]
       , psCode
           """-- using alt

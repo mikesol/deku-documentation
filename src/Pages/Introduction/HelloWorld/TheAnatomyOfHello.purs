@@ -16,10 +16,10 @@ theAnatomyOfHello = section
   { title: "The anatomy of hello"
   , topmatter: pure
       [ D.p_
-          [ text_ "There are a few things going on in our lil' "
-          , D.i_ [ text_ "hello world" ]
+          [ text_ "There are a few things going on in our "
+          , D.b_ [ text_ "Hello world" ]
           , text_
-              " that we'll see over and over again. Soon, we'll start omitting some bits like import statements in the interest of saving space, so it's best we get acquainted with them now!"
+              " that we'll see over and over again. Soon, we'll start collapsing some bits like import statements in the interest of saving space, so it's best we get acquainted with them now!"
           ]
       ]
   , subsections:

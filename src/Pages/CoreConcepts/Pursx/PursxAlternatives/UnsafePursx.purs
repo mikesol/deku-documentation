@@ -13,7 +13,7 @@ import Type.Proxy (Proxy(..))
 
 unsafePursx :: forall lock payload. Subsection lock payload
 unsafePursx = subsection
-  { title: "Unsafe pursx"
+  { title: "Unsafe Pursx"
   , matter: pure
       [ D.p_
           [ text_
@@ -26,10 +26,10 @@ unsafePursx = subsection
               "The example is too long and thus takes a long time to compile."
           ]
       , D.p_
-          [ text_ "In both of these cases, you can use "
+          [ text_ "In both of these cases, you can use ⚠️"
           , D.b__ "unsafe Pursx"
           , text_
-              ". Unsafe pursx works just like pursx except it operates off of strings rather than proxies. The syntax uses "
+              "⚠️. Unsafe pursx works just like pursx except it operates off of strings rather than proxies. The syntax uses "
           , D.code__ "~!~"
           , text_ " instead of "
           , D.code__ "~~"

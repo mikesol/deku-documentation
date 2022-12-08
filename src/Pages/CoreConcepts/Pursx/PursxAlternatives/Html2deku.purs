@@ -25,6 +25,6 @@ html2deku = subsection
           ]
       , HTML2Deku.html2deku
       , D.p__
-          "Depending on who's responding to server requests on any given day, the website is anywhere from 90% to 98% accurate in its conversion. If you anticipate writing a logic-heavy app that will use lots of PureScript primitives, it's a good idea to convert it to Deku syntax early on."
+          "Depending on who's responding to server requests on any given day, the website is anywhere from 90% to 98% accurate in its conversion. If you anticipate writing a logic-heavy app that will use lots of PureScript primitives, it's a good idea to convert its HTML to Deku syntax early on."
       ]
   }

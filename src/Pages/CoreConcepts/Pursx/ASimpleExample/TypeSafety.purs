@@ -19,9 +19,13 @@ typeSafety = subsection
           , D.code__ "String"
           , text_ "\" sense of the term. Instead, it's of type "
           , D.code__ "Proxy html"
-          , text_ ", where"
+          , text_ ", where "
           , D.code__ "html"
-          , text_ " is whatever your symbol is. That is, the "
+          , text_ " is a "
+          , D.code__ "Symbol"
+          , text_ " (aka a type-level "
+          , D.code__ "String"
+          , text_ ") containing your HTML. That is, the "
           , D.code__ "Proxy"
           , text_ " type constructor is parameterized by your HTML, much as "
           , D.code__ "Array"
@@ -34,7 +38,7 @@ typeSafety = subsection
           , text_ "."
           ]
       , D.p_
-          [ text_ "By using a type to specify the HTML, Deku can verify it at "
+          [ text_ "By using a type to specify the HTML, Deku can validate it at "
           , D.i__ "compile time"
           , text_
               " instead of at runtime. That means you do not need to eat up precious CPU cycles in the browser "
@@ -62,7 +66,7 @@ main = runInBody ((Proxy :: Proxy
 """
       , D.p_
           [ text_
-              "While the message could be better by identifying line numbers and whatnot (we're working on this...), it identifies the HTML tag mismatch that needs to be corrected. Once we correct it, the program compiles!"
+              "While the message could be better by identifying line numbers (we're working on this...), it identifies the HTML tag mismatch that needs to be corrected. Once we correct it, the program compiles!"
           ]
       ]
   }

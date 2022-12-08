@@ -36,11 +36,11 @@ useMemoized = section
           , text_ " and "
           , D.code__ "useHot"
           , text_
-              "), the subscriptions to the events are mutulaized. That means that the same source acts as the source for all downstream consumers."
+              "), the subscriptions to the events are mutualized. That means that the same source acts as the source for all downstream consumers."
           ]
       , D.p_
           [ text_
-              "If you start working with events by composing them together, then subscriptions to the composed versions "
+              "If you start working with events by composing them together, then subscriptions to the composed events "
           , D.i__ "will not"
           , text_
               " be memoized. As an example, take the following snippet of code:"

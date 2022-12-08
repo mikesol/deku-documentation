@@ -64,7 +64,7 @@ addingSeveralAttributes = subsection
   , matter: pure
       [ D.p_
           [ text_
-              "A more natural way to implement the breadcrumbs would be to embed the click lsitener directly in the crumbs in addition to the anchor elements. We can do this by adding multiple attributes."
+              "A more natural way to implement the breadcrumbs would be to embed the click lsitener directly in the crumbs in addition to the anchor elements. We can do this by adding multiple attributes to an element in Pursx."
           , psCodeWithLink Examples.AddingSeveralAttributesToPursx
           , D.p__ "Here's the result."
           , exampleBlockquote
@@ -115,7 +115,7 @@ addingSeveralAttributes = subsection
               [ text_ "By using the tie fighter "
               , D.code__ "<|>"
               , text_
-                  ", we were able to compose the breadcrumb's class and its click listener together, just like if we were working with a plain ol' Deku component. This allows you to freely mix attribute code for Pursx and the more PureScript-y components."
+                  ", we were able to compose the breadcrumb's class and its click listener together, just like if we were working with attributes in a Deku component. This allows you to mix Pursx code and Deku components."
               ]
           , disclaimer
               { header: D.span_

@@ -88,7 +88,7 @@ aNoteOnMemoization = subsection
           ]
       , D.p_
           [ text_
-              "Because the hook simply passes through the values as it receives them, as there was no simultaneous value coming from "
+              "Because the hook simply passes through values as it receives them, as there was no simultaneous value coming from "
           , D.b__ "A"
           , text_
               " when "
@@ -96,10 +96,10 @@ aNoteOnMemoization = subsection
           , text_ " was pressed, the guarded section didn't activate until "
           , D.b__ "A"
           , text_
-              " was pressed again. In effect, while the hook had an initial value for the first "
+              " was pressed again. In effect, while the hook had an initial value ", D.code__ "n", text_ " for the first "
           , D.code__ "text"
           , text_
-              "bloc, it lacked an initial value for any bloc that was created afterwards. You can think of initial values to hooks as being relevant only at the moment of creation. Every subsequent usage of them is \"valueless\" until initialized."
+              "component, it lacked an initial value for any component that was created afterwards. You can think of initial values to hooks as being relevant only at the moment of creation."
           ]
       , D.p_
           [ text_

@@ -90,7 +90,7 @@ portals = page
           , text_ ", and "
           , D.code__ "canvas"
           , text_
-              " elements that are stateful. It's often the case that these elements stay put in the DOM, so we don't worry about their statefulness. But in cases where we need to move them around, we want to preserve their state. This is where "
+              " elements that are stateful. These elements often stay put in the DOM, so we don't need to manage their statefulness. But in cases where we need to move them around, we want to preserve their state. This is where "
           , D.b__ "Portals"
           , text_ " come in."
           ]

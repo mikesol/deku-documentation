@@ -18,7 +18,7 @@ moduleDeclaration = subsection
           , text_
               " start with a module declaration, and it's customary to call this module "
           , D.code_ [ text_ "Main" ]
-          , text_ " in a file called"
+          , text_ " in a file called "
           , D.code_ [ text_ "Main.purs" ]
           , text_ "."
           ]

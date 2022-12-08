@@ -69,13 +69,13 @@ theGlobalPortalSyntax = subsection
               "The global portal syntax looks a lot like the hooks syntax. We use a left-bind in a "
           , D.code__ "Deku.do"
           , text_
-              " bloc to create something that will be used later. But instead of creating a hook, we create a component. In the example below, look how "
+              " bloc to create a value that will be used later. But instead of creating a hook, we create a component. In the example below, look how "
           , D.code__ "globalPortal1"
           , text_
               "is used to create a single component that is consumed by other components."
           ]
       , psCodeWithLink Examples.TheGlobalPortalSyntax
-      , D.p__ "And as y'all know, the result is the following."
+      , D.p__ "And, as y'all know, the result is the following."
       , Deku.do
           vid <- globalPortal1 myVideo
           setSquare /\ square <- useState TL
@@ -87,7 +87,14 @@ theGlobalPortalSyntax = subsection
             ]
       , D.p_
           [ text_
-              "While using a portal looks like using any ol' Deku node, don't let it fool you! Portals are created with a left bind, and as such are referentially opaque. That means that, when a portal is created, it represents "
+              "While using a portal looks like using a vanilla Deku node, don't let it fool you! These two snippets are different: "
+          ]
+      , psCode
+          """let a = Deku.div_ [ text_ "hi" ]
+a <- globalPortal1 (Deku.div_ [ text_ "hi" ])"""
+      , D.p_
+          [ text_
+              "Portals are created with a left bind, and as such are referentially opaque. That means that, when a portal is created, it represents "
           , D.i__ "a single DOM node that exists"
           , text_ ", as opposed to a template for a DOM node."
           ]

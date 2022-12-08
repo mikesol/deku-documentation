@@ -14,7 +14,7 @@ theCode = subsection
   , matter: pure
       [ D.p_
           [ text_
-              "Here it is, what you've all been eagerly waiting for. Helloooo world!"
+              "Here it is, the moment you've all been waiting for. Let's say hello to the world!"
           ]
       , psCodeNoCollapseWithLink Examples.HelloWorldCode
       ]

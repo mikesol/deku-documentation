@@ -13,7 +13,7 @@ plainOldHTML = subsection
   { title: "Plain old HTML"
   , matter: pure
       [ D.p_
-          [ text_ "Here is the Deku code that produces the example seen above."
+          [ text_ "Here is the Deku code that produces the breadcrumb example above."
           ]
       , psCodeNoCollapseWithLink Examples.PlainOldHtml
       , D.p__

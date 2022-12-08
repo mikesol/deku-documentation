@@ -16,7 +16,7 @@ usefulShorthand = subsection
   , matter: pure
       [ D.p_
           [ text_
-              "An ever-increasing library of convenient shorthand is being added to Deku all the time for various attributes and combinations of attributes. Here is what's currently available."
+              "An ever-expanding library of shorthand functions is present in Deku to help you succinctly articulate various attributes and combinations of attributes. Here is what's currently available."
           ]
       , D.table tableClass
           [ D.tr_

@@ -22,7 +22,7 @@ addingAttributes = section
   , topmatter: pure
       [ D.p_
           [ text_
-              "Of course, what fun would HTML be without some attributes? Let's fix that and make our DOM nice and stylish! We'll use the same example as before, but spiced up with some attributes."
+              "What fun would HTML be without any attributes? Un-fun, like the example above. Let's fix that and make our DOM nice and stylish! We'll use the same example as before, but spiced up with attributes."
           ]
       , psCodeWithLink Examples.AddingAttributes
       , text_ "And here's the result."

@@ -126,9 +126,7 @@ insertingInADifferentOrder = subsection
           }
       , D.p_
           [ text_
-              "Note that, if the index overshoots or undershoots the collection's bounds, the element will go to the end or beginning of the collection respectively. We'll learn more about bound management in the "
-          , routeLink FixAndFold
-          , text_ " section."
+              "Note that, if the index overshoots or undershoots the collection's bounds, the element will go to the end or beginning of the collection respectively."
           ]
       ]
   }

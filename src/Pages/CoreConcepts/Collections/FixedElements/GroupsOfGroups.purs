@@ -47,10 +47,10 @@ groupsOfGroups = subsection
           [ text_ "Because "
           , D.code__ "fixed"
           , text_
-              " does not create a DOM element for its content, one may wonder how multiple nested "
+              " does not create a DOM element for its content, one may wonder how nested "
           , D.code__ "fixed"
           , text_
-              " are handled. In Deku, they are always flattened into the lower-most logical parent element. So if there is a fixed in a fixed in a fixed, the inner-most fixed has the same parent as the top-most fixed."
+              " calls are handled. In Deku, they are always flattened into the lower-most logical parent element. So if there is a fixed in a fixed in a fixed, the inner-most fixed has the same parent as the top-most fixed."
           ]
       , D.p_
           [ text_ "Here's an example of nested "

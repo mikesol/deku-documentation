@@ -2,8 +2,8 @@ module Pages.CoreConcepts.State.TheStateHook.UsingTheHookInText where
 
 import Components.Code (psCode)
 import Components.Disclaimer (disclaimer)
+import Components.TargetedLink (targetedLink)
 import Contracts (Env(..), Subsection, subsection)
-import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.DOM as D
 import Router.ADT (Route(..))
@@ -70,7 +70,7 @@ usingTheHookInText = subsection
           , text_ " "
           , D.i__ "maps"
           , text_
-              " over the event, transforming its contents to some other type (in this case, "
+              " over the event, turning its contents into some other type (in this case, "
           , D.code__ "String"
           , text_
               "). At this point, it's worth mentioning that if operators like "
@@ -81,10 +81,10 @@ usingTheHookInText = subsection
           , D.code__ "/\\"
           , text_
               " are unfamiliar to you, fear not! The PureScript documentation website "
-          , D.a (D.Href !:= "https://pursuit.purescript.org")
+          , targetedLink "https://pursuit.purescript.org"
               [ text_ "Pursuit" ]
           , text_
-              " is your friend and has helpfully indexed all of these functions (and more) via the search bar."
+              " is your friend. You can search for all of these functions (and more) via the search bar."
           ]
       ]
   }

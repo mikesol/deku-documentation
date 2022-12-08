@@ -121,7 +121,7 @@ usingTheHookToSwitchBetweenElements = subsection
           , D.code__ "<#~>"
           , text_ " operators instead of one global "
           , D.code__ "<#~>"
-          , text_ ", as it will generally result in faster rendering times."
+          , text_ ", as it will generally result in better performance."
           ]
       ]
   }

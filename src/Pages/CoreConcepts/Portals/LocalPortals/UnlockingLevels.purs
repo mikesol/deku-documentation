@@ -100,10 +100,9 @@ unlockingLevels = subsection
 
       , D.p_
           [ text_
-              "Portals from a higher scope, on the other hand, can be used in a lower scope because, by definition, for the lower scope to exist, the higher scope must still exist. However, to use portals at lower scopes, you need to pass them through a type-checking function that validates they can be used. This function is the right side of the tuple in the closure passed to"
+              "Portals from a higher scope, on the other hand, can be used in a lower scope because, by definition, for the lower scope to exist, the higher scope must still exist. However, to use portals at lower scopes, you need to pass them through a function that validates their type. This function is the right side of the tuple in the closure passed to"
           , D.code__ "portal1"
-          , text_
-              ". This function is optimized out of builds at compile time by the PureScript backend optimizer, so there is no runtime penalty when called."
+          , text_ "."
           ]
       , D.p_
           [ text_

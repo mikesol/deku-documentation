@@ -15,7 +15,7 @@ moreHooks = page
   { route: MoreHooks
   , topmatter: pure
       [ D.p (D.Class !:= "lead")
-          [ text_ "Specialized hooks for faster rendering"
+          [ text_ "Specialized hooks for faster rendering."
           ]
       , D.p_
           [ text_

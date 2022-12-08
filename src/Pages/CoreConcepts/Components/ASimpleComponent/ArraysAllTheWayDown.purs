@@ -14,8 +14,10 @@ arraysAllTheWayDown = subsection
   , matter: pure
       [ D.p_
           [ text_
-              "Let's revisit the previous example, but we'll expand it array-by-array to show how the Deku DOM is organized by arrays. The example starts with a single enclosing "
+              "Let's revisit the previous example, but we'll expand it array-by-array to show how the Deku DOM is organized. The example starts with a single enclosing "
           , D.code_ [ text_ "div" ]
+          , text_ " created by the instruction "
+          , D.code_ [ text_ "D.div_" ]
           , text_ "."
           ]
       , psCode
@@ -46,7 +48,7 @@ main = runInBody
 ]"""
       , D.p_
           [ text_
-              "You can have as many nested elements as you want: Deku makes no checks for sensibility. While a "
+              "You can have as many nested elements as you want. Deku makes no effort to check that your DOM's sensible. While a "
           , D.code_ [ text_ "span" ]
           , text_ " in a "
           , D.code_ [ text_ "button" ]

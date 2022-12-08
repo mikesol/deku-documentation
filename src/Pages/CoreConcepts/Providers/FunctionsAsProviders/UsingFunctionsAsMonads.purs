@@ -37,7 +37,7 @@ usingFunctionsAsMonads = subsection
           ]
       , D.p_
           [ text_
-              "Like React Contexts and Providers, we can dip into the provider in any component without explicitly passing values through the application. This is because "
+              "Like React Contexts and Providers, we can dip into the provider from any component without explicitly passing values through the application. This is because "
           , D.code__ "AppMonad"
           , text_ " expands to the signature "
           , D.code__ "forall lock payload. Function Env (Domable lock payload)"
@@ -51,7 +51,7 @@ usingFunctionsAsMonads = subsection
           , text_
               " is a monad, which means that its context gets passed down the monadic stack automatically through "
           , D.code__ "bind"
-          , text_ "s in the "
+          , text_ "s in "
           , D.code__ "do"
           , text_ " notation. Take the following extract from the code above."
           ]

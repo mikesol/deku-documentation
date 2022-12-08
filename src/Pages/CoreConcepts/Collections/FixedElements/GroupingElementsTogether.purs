@@ -19,10 +19,10 @@ groupingElementsTogether = subsection
   { title: "Grouping components together"
   , matter: pure
       [ D.p_
-          [ text_ "To group components together, you can use "
+          [ text_ "To group components together, you can pass an array of components to the "
           , D.code__ "fixed"
           , text_
-              " before an array of components. The components will render into the correct position in the parent components."
+              " function. The components will render into the correct position in the parent component."
           ]
       , D.p_
           [ text_
@@ -73,7 +73,7 @@ groupingElementsTogether = subsection
           [ text_ "With "
           , D.code__ "fixed"
           , text_
-              ", you don't need to do any extra accounting when subbing arrays in and out of the DOM. Deku automatically manages node insertion and deletion so that fixed elements are always inserted in the right place."
+              ", you don't need to do any extra accounting when subbing arrays in and out of the DOM. Deku automatically manages node insertion and deletion so that fixed elements always show up in the right place."
           ]
       ]
   }

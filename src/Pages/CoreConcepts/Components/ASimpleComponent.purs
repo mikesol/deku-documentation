@@ -20,7 +20,7 @@ aSimpleComponent = section
   , topmatter: \(Env { routeLink }) ->
       [ D.p_
           [ text_
-              "Let's start by making a simple comonent. It will result in a few different DOM elements, and we'll build upon it throughout this page. Here's the code."
+              "Let's start by making a simple comonent. It will result in a few different DOM elements being rendered, and we'll build upon it throughout this page. Here's the code."
           ]
       , psCodeWithLink Examples.ASimpleComponent
       , text_ "And here's the result."
@@ -38,7 +38,7 @@ aSimpleComponent = section
           ]
       , D.p_
           [ text_
-              "Before we proceed, it's important to establish a bit of Deku terminology that will come up often in this documentation."
+              "Before we proceed, it's important to establish a bit of Deku terminology that will come in handy as you shred through this documentation."
           ]
       , D.ol_
           [ D.li_
@@ -78,10 +78,10 @@ aSimpleComponent = section
                   " and the other DOM-building instructions above. But the concept of a "
               , D.b__ "component"
               , text_
-                  " is broader than a one-to-one relationship with DOM elements - it can also represent the absence of DOM elements (using "
+                  " is broader than a one-to-one relationship with DOM elements - it can also represent the absence of DOM elements using "
               , D.code__ "blank"
               , text_
-                  ", which we'll learn about later) or multiple DOM elements using "
+                  " (which we'll learn about later) or multiple DOM elements using "
               , D.code__ "dyn"
               , text_ " (which we'll also learn about later)."
               ]

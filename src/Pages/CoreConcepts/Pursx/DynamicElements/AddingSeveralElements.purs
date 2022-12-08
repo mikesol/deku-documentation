@@ -61,7 +61,9 @@ addingSeveralElements = subsection
       [ D.p_
           [ text_ "To add several elements, one can use "
           , D.code__ "fixed"
-          , text_ " or appending."
+          , text_ " or "
+          , D.code__ "<>"
+          , text_ "."
           ]
       , psCodeWithLink Examples.AddingSeveralElementsToPursx
       , exampleBlockquote

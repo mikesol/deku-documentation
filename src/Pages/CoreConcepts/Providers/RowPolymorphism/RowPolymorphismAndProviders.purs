@@ -113,10 +113,11 @@ rowPolymorphismAndProviders = subsection
           , text_ " and "
           , D.code__ "libAwesome"
           , text_
-              " are able to exist in the Deku tree without knowing anything about the environment into which they're inserted "
-          , D.i__ "except"
-          , text_
-              " that which concerns their own dependencies. So long as their dependencies are present, they compile."
+              " are able to exist in the Deku tree without knowing much about the environment into which they're inserted aside from the fact that it's a "
+          , D.code__ "Record"
+          , text_ " in a "
+          , D.code__ "newtype"
+          , text_ ". So long as their dependencies are present, they compile."
           ]
       , D.p_
           [ text_ "Because "
@@ -127,7 +128,7 @@ rowPolymorphismAndProviders = subsection
           , text_ " constraint. "
           , D.code__ "Newtype"
           , text_
-              "s allow you to use recursive Row Polymorphism in a library without committing to a concrete type upfront. Armed with this knowledge, you'll be able to create all sorts of neat Deku libraries. I expect to see the market flooded with image carousel implementations any day now!"
+              "s allow you to use recursive Row Polymorphism in a library without committing to a concrete type upfront. Armed with this knowledge, you'll be able to create all sorts of neat Deku libraries. I expect to see the market flooded with Deku image carousel implementations any day now!"
           ]
       ]
   }

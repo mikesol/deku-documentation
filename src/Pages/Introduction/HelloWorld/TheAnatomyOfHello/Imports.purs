@@ -29,10 +29,10 @@ import Effect (Effect)"""
           , text_ " format, meaning that "
           , D.i_ [ text_ "everything" ]
           , text_
-              " from the Prelude winds up getting imported. This is because the things in the Prelude are all on the "
-          , D.b_ [ text_ "Greatest Hits of Functional Programming" ]
+              " from the Prelude winds up getting imported. This is because the Prelude's content is a veritable "
+          , D.i_ [ text_ "Greatest Hits of Functional Programming" ]
           , text_
-              " and you'll likely need much of its content."
+              " and you'll likely need much of it to get stuff done."
           ]
       , proTip
           { header: text_ "Prelude etiquette"
@@ -41,7 +41,7 @@ import Effect (Effect)"""
                   "Try not to define something using a word that's already used in the Prelude. For example, the word "
               , D.code_ [ text_ "map" ]
               , text_
-                  " has such a strong connotation in PureScript's Prelude that it is recommended to avoid defining your own term with that name, even if the language technically allows you."
+                  " has such a strong connotation in PureScript's Prelude that it's usually a good idea to avoid defining something with that name, even if the language technically allows you."
               ]
           }
       , D.p_
@@ -60,10 +60,10 @@ import Effect (Effect)"""
               , D.li_
                   [ D.code_ [ text_ "Effect" ]
                   , text_
-                      ": The monad that a Deku program runs in. If you don't know what a monad is, you can think of it now as a computational context. "
+                      ": The monad that a Deku program runs in. If you don't know what a monad is, you can think of it as a computational context. "
                   , D.code_ [ text_ "Effect" ]
                   , text_
-                      " is a context where stuff can potentially go, which is the case of most web apps. I personally have never written any code with errors before, but I have friends that have, and they tell me it's not that bad."
+                      " is a context that accounts for various side effects like changing the dom and/or JavaScript errors arising, which is a danger in most web apps. I personally have never written any code with errors before, but some of my friends have, and they tell me it's not that bad."
                   ]
               ]
           ]

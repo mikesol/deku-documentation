@@ -3,8 +3,8 @@ module Pages.CoreConcepts.Providers.RowPolymorphism.RowsAndRecordsInPureScript w
 import Prelude
 
 import Components.Code (psCode)
+import Components.TargetedLink (targetedLink)
 import Contracts (Subsection, subsection)
-import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.DOM as D
 
@@ -27,7 +27,7 @@ rowsAndRecordsInPureScript = subsection
       , psCode "{ foo :: Int, bar :: Boolean }"
       , D.p_
           [ text_
-              "Records are backed by rows. Rows, indicated by parentheses instead of curly brackets, are special type of kind constructor that allows you to represent sum and product types of arbitrary arity. For example, if one has a row with the following definition: "
+              "Records are backed by rows. Rows, indicated by parentheses instead of curly brackets, are ", targetedLink "https://en.wikipedia.org/wiki/Kind_(type_theory)" [D.code__ "kind"] , text_ " constructors that allow you to represent sum and product types of arbitrary arity. For example, if one has a row with the following definition: "
           ]
       , psCode "(foo :: Int, bar :: Boolean)"
       , D.p_
@@ -35,7 +35,7 @@ rowsAndRecordsInPureScript = subsection
               "This could be used to encode a record (a product of these terms, meaning all must be present) "
           , D.i__ "or"
           , text_
-              " a variant (a sum of these terms, meaning only one is present). Other types can be encoded as well. From a theoreticaly perspective, rows are so powerful because they represent a potential indexing of the entire domain of a language, from the empty row:"
+              " a variant (a sum of these terms, meaning only one is present). Other types can be encoded as well. From a theoretical perspective, rows are so powerful because they represent a potential indexing of the entire domain of a language, from the empty row:"
           ]
       , psCode "()"
       , D.p_ [ text_ "To the row of all types:" ]

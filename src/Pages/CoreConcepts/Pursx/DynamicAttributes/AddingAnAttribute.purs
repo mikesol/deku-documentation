@@ -60,7 +60,7 @@ addingAnAttribute = subsection
   , matter: pure
       [ D.p_
           [ text_
-              "We'll start by adding a single listener that sets the breadcrumbs' visibiltiy based on interactions with an anchor tag. Here's the code."
+              "First, let's add a single listener that sets the breadcrumbs' visibiltiy based on interactions with an anchor tag. Here's the code."
           , psCodeWithLink Examples.AddingAnAttributeToPursx
           , D.p__ "Here's the result."
           , exampleBlockquote
@@ -99,7 +99,7 @@ addingAnAttribute = subsection
               , text_ " list element is "
               , D.code__ "~neroHidden~"
               , text_
-                  ". Then, when creating the Pursx, we add a field to the record with the name of that attribute followed by whatever attribute we wish to add. In this case, we're adding a class that hides or shows the breadcrumb."
+                  ". Then, when creating the Pursx, we add a field to the record with the name of that identifier followed by whatever attribute we wish to add. In this case, we're adding a class that hides or shows the breadcrumb."
               ]
           ]
       ]

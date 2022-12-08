@@ -14,12 +14,12 @@ sayingHello = section
   , topmatter: pure
       [ D.p_
           [ text_
-              "This section, like many that will come after it, first present some "
-          , D.i_ [ text_ "code" ]
+              "This section, like many that will come after it, first presents some "
+          , D.code_ [ text_ "code" ]
           , text_ " and then present the "
-          , D.i_ [ text_ "result" ]
+          , D.b_ [ text_ "result" ]
           , text_
-              " of the code rendered in a blockquote. In rare cases, we may present code without rendering or vice versa. But for the most part, we'll try to always pair up code with a working example."
+              " of the code rendered in a blockquote. In some cases, we may present code without rendering or vice versa. But for the most part, we'll try to always pair up code with a working example."
           ]
       ]
   , subsections:

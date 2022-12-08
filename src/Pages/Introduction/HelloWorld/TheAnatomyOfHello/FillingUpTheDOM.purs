@@ -22,7 +22,7 @@ fillingUpTheDOM = subsection
               " function which takes a string and turns it into an abstract representation of a text node. "
           , D.code_ [ text_ "runInBody" ]
           , text_
-              "of one-section-ago fame, is what interprets this instruction as something that should be rendered on a webpage."
+              " interprets this instruction as something that should be rendered on a webpage."
           ]
       ]
   }

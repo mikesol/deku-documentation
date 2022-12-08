@@ -13,7 +13,7 @@ theResult = subsection
   { title: "The result"
   , matter: pure
       [ D.p_
-          [ text_ "And as promised, here's the result."
+          [ text_ "As promised, here's the result."
           , exampleBlockquote
               [ D.span_ [ text_ "Hello world" ] ]
           , text_ "You gotta start somewhere!"
@@ -21,13 +21,12 @@ theResult = subsection
               { header: text_ "Code snippets"
               , message: D.div_
                   [ text_
-                      "The code snippets in this documentation aren't just there to be purty. Dig in! You can open them on Gitpod, view them on GitHub, or "
+                      "The code snippets in this documentation aren't just there to be purty. Dig in! You can open them on Gitpod, view them on Github, or run the command above the snippet (you can click on the clipboard to copy it) from the documentation project's root directory after having cloned it from Github via"
                   , D.code__
                       "git clone https://github.com/mikesol/deku-documentation"
-                  , text_ ", "
+                  , text_ ". After cloning, make sure to run "
                   , D.code__ "pnpm install"
-                  , text_
-                      " and then run the command above the snippet (you can click on the clipboard to copy it)."
+                  , text_ " to get all the dependencies."
                   ]
               }
           ]

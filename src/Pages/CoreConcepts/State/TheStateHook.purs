@@ -4,6 +4,8 @@ import Prelude
 
 import Components.Code (psCodeWithLink)
 import Components.ExampleBlockquote (exampleBlockquote)
+import Components.ProTip (proTip)
+import Components.TargetedLink (targetedLink)
 import Contracts (Section, section)
 import Control.Alt ((<|>))
 import Data.Tuple.Nested ((/\))
@@ -32,7 +34,7 @@ theStateHook = section
   { title: "The state hook"
   , topmatter: pure
       [ D.p__
-          "Deku's state hooks are friendly lil' critters that fit comfortably on a single line and pack a lot of power. Let's see one now!"
+          "Deku's state hooks fit comfortably on a single line and pack a lot of power. Let's see one now!"
       , psCodeWithLink Examples.TheStateHook
       , D.p__ "Here's the result."
       , exampleBlockquote
@@ -48,6 +50,24 @@ theStateHook = section
                     show >>> ("Here's a random number: " <> _)
                 ]
           ]
+      , proTip
+          { header: text_ "Deku.do"
+          , message: D.div_
+              [ text_ "In Haskell-family languages, a "
+              , D.code__ "do"
+              , text_
+                  " block is a way to write nested function calls as a sequence of instructions. This is why Haskell and its progeny are often collectively referred to as "
+              , targetedLink
+                  "https://stackoverflow.com/questions/6622524/why-is-haskell-sometimes-referred-to-as-best-imperative-language"
+                  [ text_ "the best imperative language" ]
+              , text_ ". Different types of instructions use different "
+              , D.code__ "do"
+              , text_
+                  " blocks, and when you're working with Deku hooks, that block is "
+              , D.code__ "Deku.do"
+              , text_ "."
+              ]
+          }
       ]
   , subsections:
       [ pushingToAHook

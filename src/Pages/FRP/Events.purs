@@ -23,14 +23,14 @@ events = page
           ]
       , D.p_
           [ text_
-              "If you've been following these docs from the beginning, you've been working with events for several pages already. Every time you used a state hook, you created an event as well as a pusher to push values to that event."
+              "If you've been following these docs from the beginning, you've been working with events for several pages already. Every time you used a state hook, you created an event as well as a pusher to that event."
           ]
       , psCode
           """Deku.do
   pusher /\ event <- useState 42"""
       , D.p_
           [ text_
-              "We've also seen that events can be mapped over, which is how we turned their raw data into things like text and attributes."
+              "We've also seen that events can be mapped over, which is how we turned their raw data into assets like text and attributes."
           ]
       , D.p_
           [ text_
