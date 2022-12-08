@@ -26,7 +26,7 @@ behaviors = page
           , text_ " are continuous functions of time. "
           , D.code__ "Events"
           , text_
-              " are discrete functions of time. Sounds like a marriage made in heaven! Or at least in PureScript. On this page, we'll start by defining the behavior, exploring some of its useful typeclass instances and using it to model various time-domain equations."
+              " are discrete functions of time. Sounds like a marriage made in heaven! Or at least in PureScript. On this page, we'll start by defining the ", D.code__ "Behavior", text_ ", exploring some of its useful typeclass instances and using it to model various time-domain equations."
           ]
       ]
   , sections:
