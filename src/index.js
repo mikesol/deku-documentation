@@ -12,10 +12,11 @@ import * as BehaviorsVersusFlapping from '../output/Examples.BehaviorsVersusFlap
 import * as InjectingDependencies from '../output/Examples.InjectingDependencies/index.js'
 import * as CompactingEvents from '../output/Examples.CompactingEvents/index.js'
 import * as EmptyUntilFull from '../output/Examples.EmptyUntilFull/index.js'
-import * as AddingSeveralElements from '../output/Examples.AddingSeveralElements/index.js'
 import * as RunSSR from '../output/Examples.RunSSR/index.js'
 import * as ASimpleComponent from '../output/Examples.ASimpleComponent/index.js'
+import * as AddingSeveralElementsToPursx from '../output/Examples.AddingSeveralElementsToPursx/index.js'
 import * as TheLemmingEvent from '../output/Examples.TheLemmingEvent/index.js'
+import * as AddingAnAttributeToPursx from '../output/Examples.AddingAnAttributeToPursx/index.js'
 import * as ComponentsAsSemigroups from '../output/Examples.ComponentsAsSemigroups/index.js'
 import * as GroupsOfGroups from '../output/Examples.GroupsOfGroups/index.js'
 import * as TheOneOfFunction from '../output/Examples.TheOneOfFunction/index.js'
@@ -27,6 +28,7 @@ import * as TheKeepLatestFunction from '../output/Examples.TheKeepLatestFunction
 import * as ASimpleCounter from '../output/Examples.ASimpleCounter/index.js'
 import * as GlobalHandlers from '../output/Examples.GlobalHandlers/index.js'
 import * as EventsAsRings from '../output/Examples.EventsAsRings/index.js'
+import * as AddingSeveralAttributesToPursx from '../output/Examples.AddingSeveralAttributesToPursx/index.js'
 import * as SamplingABehaviorWithAnEvent from '../output/Examples.SamplingABehaviorWithAnEvent/index.js'
 import * as KnowThySelfT from '../output/Examples.KnowThySelfT/index.js'
 import * as ShorthandListeners from '../output/Examples.ShorthandListeners/index.js'
@@ -34,15 +36,14 @@ import * as ANoteOnMemoization from '../output/Examples.ANoteOnMemoization/index
 import * as OptimizedEventCreation from '../output/Examples.OptimizedEventCreation/index.js'
 import * as TheFixFunction from '../output/Examples.TheFixFunction/index.js'
 import * as TheTemporalityOfPure from '../output/Examples.TheTemporalityOfPure/index.js'
-import * as AddingAnAttribute from '../output/Examples.AddingAnAttribute/index.js'
 import * as AddingCustomElements from '../output/Examples.AddingCustomElements/index.js'
 import * as OptimizedEventFunctions from '../output/Examples.OptimizedEventFunctions/index.js'
 import * as ComponentsAsMonoids from '../output/Examples.ComponentsAsMonoids/index.js'
+import * as AddingASingleElementToPursx from '../output/Examples.AddingASingleElementToPursx/index.js'
 import * as PlainOldHtml from '../output/Examples.PlainOldHtml/index.js'
 import * as UsingAnEffect from '../output/Examples.UsingAnEffect/index.js'
 import * as KnowThySelf from '../output/Examples.KnowThySelf/index.js'
 import * as UnsafePursx from '../output/Examples.UnsafePursx/index.js'
-import * as AddingASingleElement from '../output/Examples.AddingASingleElement/index.js'
 import * as TheLocalPortalSyntax from '../output/Examples.TheLocalPortalSyntax/index.js'
 import * as BooleanLogicOnEvents from '../output/Examples.BooleanLogicOnEvents/index.js'
 import * as HowSamplingWorks from '../output/Examples.HowSamplingWorks/index.js'
@@ -64,7 +65,6 @@ import * as GroupingComponents from '../output/Examples.GroupingComponents/index
 import * as FlippingTheFunctionAndArgument from '../output/Examples.FlippingTheFunctionAndArgument/index.js'
 import * as MovingElements from '../output/Examples.MovingElements/index.js'
 import * as MockDiscord from '../output/Examples.MockDiscord/index.js'
-import * as AddingSeveralAttributes from '../output/Examples.AddingSeveralAttributes/index.js'
 import * as SamplingABehaviorWithACustomFunction from '../output/Examples.SamplingABehaviorWithACustomFunction/index.js'
 import * as WhenToFixAndWhenToFold from '../output/Examples.WhenToFixAndWhenToFold/index.js'
 import * as UsingAHookToControlPresence from '../output/Examples.UsingAHookToControlPresence/index.js'
@@ -99,14 +99,16 @@ toStart === 'FilteringAnEvent'
   ? CompactingEvents.main()
   : toStart === 'EmptyUntilFull'
   ? EmptyUntilFull.main()
-  : toStart === 'AddingSeveralElements'
-  ? AddingSeveralElements.main()
   : toStart === 'RunSSR'
   ? RunSSR.main()
   : toStart === 'ASimpleComponent'
   ? ASimpleComponent.main()
+  : toStart === 'AddingSeveralElementsToPursx'
+  ? AddingSeveralElementsToPursx.main()
   : toStart === 'TheLemmingEvent'
   ? TheLemmingEvent.main()
+  : toStart === 'AddingAnAttributeToPursx'
+  ? AddingAnAttributeToPursx.main()
   : toStart === 'ComponentsAsSemigroups'
   ? ComponentsAsSemigroups.main()
   : toStart === 'GroupsOfGroups'
@@ -129,6 +131,8 @@ toStart === 'FilteringAnEvent'
   ? GlobalHandlers.main()
   : toStart === 'EventsAsRings'
   ? EventsAsRings.main()
+  : toStart === 'AddingSeveralAttributesToPursx'
+  ? AddingSeveralAttributesToPursx.main()
   : toStart === 'SamplingABehaviorWithAnEvent'
   ? SamplingABehaviorWithAnEvent.main()
   : toStart === 'KnowThySelfT'
@@ -143,14 +147,14 @@ toStart === 'FilteringAnEvent'
   ? TheFixFunction.main()
   : toStart === 'TheTemporalityOfPure'
   ? TheTemporalityOfPure.main()
-  : toStart === 'AddingAnAttribute'
-  ? AddingAnAttribute.main()
   : toStart === 'AddingCustomElements'
   ? AddingCustomElements.main()
   : toStart === 'OptimizedEventFunctions'
   ? OptimizedEventFunctions.main()
   : toStart === 'ComponentsAsMonoids'
   ? ComponentsAsMonoids.main()
+  : toStart === 'AddingASingleElementToPursx'
+  ? AddingASingleElementToPursx.main()
   : toStart === 'PlainOldHtml'
   ? PlainOldHtml.main()
   : toStart === 'UsingAnEffect'
@@ -159,8 +163,6 @@ toStart === 'FilteringAnEvent'
   ? KnowThySelf.main()
   : toStart === 'UnsafePursx'
   ? UnsafePursx.main()
-  : toStart === 'AddingASingleElement'
-  ? AddingASingleElement.main()
   : toStart === 'TheLocalPortalSyntax'
   ? TheLocalPortalSyntax.main()
   : toStart === 'BooleanLogicOnEvents'
@@ -203,8 +205,6 @@ toStart === 'FilteringAnEvent'
   ? MovingElements.main()
   : toStart === 'MockDiscord'
   ? MockDiscord.main()
-  : toStart === 'AddingSeveralAttributes'
-  ? AddingSeveralAttributes.main()
   : toStart === 'SamplingABehaviorWithACustomFunction'
   ? SamplingABehaviorWithACustomFunction.main()
   : toStart === 'WhenToFixAndWhenToFold'

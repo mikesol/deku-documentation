@@ -2,14 +2,14 @@ module Pages.AdvancedUsage.CustomElements.DefiningCustomElements.TheUnsafeCustom
 
 import Prelude
 
-import Components.Code (psCode, psCodeNoCollapse)
+import Components.Code (psCodeNoCollapseWithLink)
 import Components.ExampleBlockquote (exampleBlockquote)
 import Contracts (Subsection, subsection)
 import Control.Plus (empty)
-import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.DOM (unsafeCustomElement)
 import Deku.DOM as D
+import Examples as Examples
 import Type.Proxy (Proxy(..))
 
 data MyNiftyAnchor_
@@ -30,24 +30,7 @@ theUnsafeCustomElementFunction = subsection
           , D.i__ "or"
           , text_ " to add new tags if Deku is out of line with the DOM spec."
           ]
-      , psCodeNoCollapse
-          """module Main where
-
-import Prelude
-
-import Control.Plus (empty)
-import Deku.Control (text_)
-import Deku.DOM (unsafeCustomElement)
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
-import Type.Proxy (Proxy(..))
-
-data MyNiftyAnchor_
-
-main :: Effect Unit
-main = runInBody do
-  unsafeCustomElement "a" (Proxy :: _ MyNiftyAnchor_) empty
-    [ text_ "hi" ]"""
+      , psCodeNoCollapseWithLink Examples.UnsafeCustomElement
       , exampleBlockquote
           [ unsafeCustomElement "a" (Proxy :: _ MyNiftyAnchor_) empty
               [ text_ "hi" ]

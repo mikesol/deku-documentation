@@ -14,10 +14,11 @@ foreign import behaviorsVersusFlappingURL :: String
 foreign import injectingDependenciesURL :: String
 foreign import compactingEventsURL :: String
 foreign import emptyUntilFullURL :: String
-foreign import addingSeveralElementsURL :: String
 foreign import runSSRURL :: String
 foreign import aSimpleComponentURL :: String
+foreign import addingSeveralElementsToPursxURL :: String
 foreign import theLemmingEventURL :: String
+foreign import addingAnAttributeToPursxURL :: String
 foreign import componentsAsSemigroupsURL :: String
 foreign import groupsOfGroupsURL :: String
 foreign import theOneOfFunctionURL :: String
@@ -29,6 +30,7 @@ foreign import theKeepLatestFunctionURL :: String
 foreign import aSimpleCounterURL :: String
 foreign import globalHandlersURL :: String
 foreign import eventsAsRingsURL :: String
+foreign import addingSeveralAttributesToPursxURL :: String
 foreign import samplingABehaviorWithAnEventURL :: String
 foreign import knowThySelfTURL :: String
 foreign import shorthandListenersURL :: String
@@ -36,15 +38,14 @@ foreign import aNoteOnMemoizationURL :: String
 foreign import optimizedEventCreationURL :: String
 foreign import theFixFunctionURL :: String
 foreign import theTemporalityOfPureURL :: String
-foreign import addingAnAttributeURL :: String
 foreign import addingCustomElementsURL :: String
 foreign import optimizedEventFunctionsURL :: String
 foreign import componentsAsMonoidsURL :: String
+foreign import addingASingleElementToPursxURL :: String
 foreign import plainOldHtmlURL :: String
 foreign import usingAnEffectURL :: String
 foreign import knowThySelfURL :: String
 foreign import unsafePursxURL :: String
-foreign import addingASingleElementURL :: String
 foreign import theLocalPortalSyntaxURL :: String
 foreign import booleanLogicOnEventsURL :: String
 foreign import howSamplingWorksURL :: String
@@ -66,7 +67,6 @@ foreign import groupingComponentsURL :: String
 foreign import flippingTheFunctionAndArgumentURL :: String
 foreign import movingElementsURL :: String
 foreign import mockDiscordURL :: String
-foreign import addingSeveralAttributesURL :: String
 foreign import samplingABehaviorWithACustomFunctionURL :: String
 foreign import whenToFixAndWhenToFoldURL :: String
 foreign import usingAHookToControlPresenceURL :: String
@@ -88,10 +88,11 @@ newtype Examples = Examples {
  injectingDependencies :: String,
  compactingEvents :: String,
  emptyUntilFull :: String,
- addingSeveralElements :: String,
  runSSR :: String,
  aSimpleComponent :: String,
+ addingSeveralElementsToPursx :: String,
  theLemmingEvent :: String,
+ addingAnAttributeToPursx :: String,
  componentsAsSemigroups :: String,
  groupsOfGroups :: String,
  theOneOfFunction :: String,
@@ -103,6 +104,7 @@ newtype Examples = Examples {
  aSimpleCounter :: String,
  globalHandlers :: String,
  eventsAsRings :: String,
+ addingSeveralAttributesToPursx :: String,
  samplingABehaviorWithAnEvent :: String,
  knowThySelfT :: String,
  shorthandListeners :: String,
@@ -110,15 +112,14 @@ newtype Examples = Examples {
  optimizedEventCreation :: String,
  theFixFunction :: String,
  theTemporalityOfPure :: String,
- addingAnAttribute :: String,
  addingCustomElements :: String,
  optimizedEventFunctions :: String,
  componentsAsMonoids :: String,
+ addingASingleElementToPursx :: String,
  plainOldHtml :: String,
  usingAnEffect :: String,
  knowThySelf :: String,
  unsafePursx :: String,
- addingASingleElement :: String,
  theLocalPortalSyntax :: String,
  booleanLogicOnEvents :: String,
  howSamplingWorks :: String,
@@ -140,7 +141,6 @@ newtype Examples = Examples {
  flippingTheFunctionAndArgument :: String,
  movingElements :: String,
  mockDiscord :: String,
- addingSeveralAttributes :: String,
  samplingABehaviorWithACustomFunction :: String,
  whenToFixAndWhenToFold :: String,
  usingAHookToControlPresence :: String,
@@ -165,10 +165,11 @@ examples = Examples {
  injectingDependencies: injectingDependenciesURL,
  compactingEvents: compactingEventsURL,
  emptyUntilFull: emptyUntilFullURL,
- addingSeveralElements: addingSeveralElementsURL,
  runSSR: runSSRURL,
  aSimpleComponent: aSimpleComponentURL,
+ addingSeveralElementsToPursx: addingSeveralElementsToPursxURL,
  theLemmingEvent: theLemmingEventURL,
+ addingAnAttributeToPursx: addingAnAttributeToPursxURL,
  componentsAsSemigroups: componentsAsSemigroupsURL,
  groupsOfGroups: groupsOfGroupsURL,
  theOneOfFunction: theOneOfFunctionURL,
@@ -180,6 +181,7 @@ examples = Examples {
  aSimpleCounter: aSimpleCounterURL,
  globalHandlers: globalHandlersURL,
  eventsAsRings: eventsAsRingsURL,
+ addingSeveralAttributesToPursx: addingSeveralAttributesToPursxURL,
  samplingABehaviorWithAnEvent: samplingABehaviorWithAnEventURL,
  knowThySelfT: knowThySelfTURL,
  shorthandListeners: shorthandListenersURL,
@@ -187,15 +189,14 @@ examples = Examples {
  optimizedEventCreation: optimizedEventCreationURL,
  theFixFunction: theFixFunctionURL,
  theTemporalityOfPure: theTemporalityOfPureURL,
- addingAnAttribute: addingAnAttributeURL,
  addingCustomElements: addingCustomElementsURL,
  optimizedEventFunctions: optimizedEventFunctionsURL,
  componentsAsMonoids: componentsAsMonoidsURL,
+ addingASingleElementToPursx: addingASingleElementToPursxURL,
  plainOldHtml: plainOldHtmlURL,
  usingAnEffect: usingAnEffectURL,
  knowThySelf: knowThySelfURL,
  unsafePursx: unsafePursxURL,
- addingASingleElement: addingASingleElementURL,
  theLocalPortalSyntax: theLocalPortalSyntaxURL,
  booleanLogicOnEvents: booleanLogicOnEventsURL,
  howSamplingWorks: howSamplingWorksURL,
@@ -217,7 +218,6 @@ examples = Examples {
  flippingTheFunctionAndArgument: flippingTheFunctionAndArgumentURL,
  movingElements: movingElementsURL,
  mockDiscord: mockDiscordURL,
- addingSeveralAttributes: addingSeveralAttributesURL,
  samplingABehaviorWithACustomFunction: samplingABehaviorWithACustomFunctionURL,
  whenToFixAndWhenToFold: whenToFixAndWhenToFoldURL,
  usingAHookToControlPresence: usingAHookToControlPresenceURL,
@@ -226,7 +226,7 @@ examples = Examples {
  eventsAsSemigroups: eventsAsSemigroupsURL,
  altAsAMuxer: altAsAMuxerURL
  }
-data ExampleADT = FilteringAnEvent | UsingTheOriginalEvent | EventsAsSemirings | UsingTheHookToSwitchBetweenElements | RowPolymorphismAndProviders | AddingAttributes | BiasingASideOfSampling | TheCreatePureEffect | SamplingABehaviorAndDiscardingTheEvent | BehaviorsVersusFlapping | InjectingDependencies | CompactingEvents | EmptyUntilFull | AddingSeveralElements | RunSSR | ASimpleComponent | TheLemmingEvent | ComponentsAsSemigroups | GroupsOfGroups | TheOneOfFunction | TheGlobalPortalSyntax | GatingEventsOnBehaviors | EffectsInSSR | UsingFunctionsAsMonads | TheKeepLatestFunction | ASimpleCounter | GlobalHandlers | EventsAsRings | SamplingABehaviorWithAnEvent | KnowThySelfT | ShorthandListeners | ANoteOnMemoization | OptimizedEventCreation | TheFixFunction | TheTemporalityOfPure | AddingAnAttribute | AddingCustomElements | OptimizedEventFunctions | ComponentsAsMonoids | PlainOldHtml | UsingAnEffect | KnowThySelf | UnsafePursx | AddingASingleElement | TheLocalPortalSyntax | BooleanLogicOnEvents | HowSamplingWorks | UnlockingLevels | UseDyn | IntegratingBehaviors | HelloWorldCode | InsertingInADifferentOrder | MultipleSubscriptions | TheStateHook | InterComponentCommunication | EventsAsMonoids | DerivingBehaviors | SolvingDifferentialEquations | UsingTheHookInAnAttribute | PassingAroundHooks | SwitchingOnBehaviors | GroupingComponents | FlippingTheFunctionAndArgument | MovingElements | MockDiscord | AddingSeveralAttributes | SamplingABehaviorWithACustomFunction | WhenToFixAndWhenToFold | UsingAHookToControlPresence | RemovingElements | UnsafeCustomElement | EventsAsSemigroups | AltAsAMuxer 
+data ExampleADT = FilteringAnEvent | UsingTheOriginalEvent | EventsAsSemirings | UsingTheHookToSwitchBetweenElements | RowPolymorphismAndProviders | AddingAttributes | BiasingASideOfSampling | TheCreatePureEffect | SamplingABehaviorAndDiscardingTheEvent | BehaviorsVersusFlapping | InjectingDependencies | CompactingEvents | EmptyUntilFull | RunSSR | ASimpleComponent | AddingSeveralElementsToPursx | TheLemmingEvent | AddingAnAttributeToPursx | ComponentsAsSemigroups | GroupsOfGroups | TheOneOfFunction | TheGlobalPortalSyntax | GatingEventsOnBehaviors | EffectsInSSR | UsingFunctionsAsMonads | TheKeepLatestFunction | ASimpleCounter | GlobalHandlers | EventsAsRings | AddingSeveralAttributesToPursx | SamplingABehaviorWithAnEvent | KnowThySelfT | ShorthandListeners | ANoteOnMemoization | OptimizedEventCreation | TheFixFunction | TheTemporalityOfPure | AddingCustomElements | OptimizedEventFunctions | ComponentsAsMonoids | AddingASingleElementToPursx | PlainOldHtml | UsingAnEffect | KnowThySelf | UnsafePursx | TheLocalPortalSyntax | BooleanLogicOnEvents | HowSamplingWorks | UnlockingLevels | UseDyn | IntegratingBehaviors | HelloWorldCode | InsertingInADifferentOrder | MultipleSubscriptions | TheStateHook | InterComponentCommunication | EventsAsMonoids | DerivingBehaviors | SolvingDifferentialEquations | UsingTheHookInAnAttribute | PassingAroundHooks | SwitchingOnBehaviors | GroupingComponents | FlippingTheFunctionAndArgument | MovingElements | MockDiscord | SamplingABehaviorWithACustomFunction | WhenToFixAndWhenToFold | UsingAHookToControlPresence | RemovingElements | UnsafeCustomElement | EventsAsSemigroups | AltAsAMuxer 
 exampleToString :: ExampleADT -> String
 exampleToString FilteringAnEvent = (unwrap examples).filteringAnEvent
 exampleToString UsingTheOriginalEvent = (unwrap examples).usingTheOriginalEvent
@@ -241,10 +241,11 @@ exampleToString BehaviorsVersusFlapping = (unwrap examples).behaviorsVersusFlapp
 exampleToString InjectingDependencies = (unwrap examples).injectingDependencies
 exampleToString CompactingEvents = (unwrap examples).compactingEvents
 exampleToString EmptyUntilFull = (unwrap examples).emptyUntilFull
-exampleToString AddingSeveralElements = (unwrap examples).addingSeveralElements
 exampleToString RunSSR = (unwrap examples).runSSR
 exampleToString ASimpleComponent = (unwrap examples).aSimpleComponent
+exampleToString AddingSeveralElementsToPursx = (unwrap examples).addingSeveralElementsToPursx
 exampleToString TheLemmingEvent = (unwrap examples).theLemmingEvent
+exampleToString AddingAnAttributeToPursx = (unwrap examples).addingAnAttributeToPursx
 exampleToString ComponentsAsSemigroups = (unwrap examples).componentsAsSemigroups
 exampleToString GroupsOfGroups = (unwrap examples).groupsOfGroups
 exampleToString TheOneOfFunction = (unwrap examples).theOneOfFunction
@@ -256,6 +257,7 @@ exampleToString TheKeepLatestFunction = (unwrap examples).theKeepLatestFunction
 exampleToString ASimpleCounter = (unwrap examples).aSimpleCounter
 exampleToString GlobalHandlers = (unwrap examples).globalHandlers
 exampleToString EventsAsRings = (unwrap examples).eventsAsRings
+exampleToString AddingSeveralAttributesToPursx = (unwrap examples).addingSeveralAttributesToPursx
 exampleToString SamplingABehaviorWithAnEvent = (unwrap examples).samplingABehaviorWithAnEvent
 exampleToString KnowThySelfT = (unwrap examples).knowThySelfT
 exampleToString ShorthandListeners = (unwrap examples).shorthandListeners
@@ -263,15 +265,14 @@ exampleToString ANoteOnMemoization = (unwrap examples).aNoteOnMemoization
 exampleToString OptimizedEventCreation = (unwrap examples).optimizedEventCreation
 exampleToString TheFixFunction = (unwrap examples).theFixFunction
 exampleToString TheTemporalityOfPure = (unwrap examples).theTemporalityOfPure
-exampleToString AddingAnAttribute = (unwrap examples).addingAnAttribute
 exampleToString AddingCustomElements = (unwrap examples).addingCustomElements
 exampleToString OptimizedEventFunctions = (unwrap examples).optimizedEventFunctions
 exampleToString ComponentsAsMonoids = (unwrap examples).componentsAsMonoids
+exampleToString AddingASingleElementToPursx = (unwrap examples).addingASingleElementToPursx
 exampleToString PlainOldHtml = (unwrap examples).plainOldHtml
 exampleToString UsingAnEffect = (unwrap examples).usingAnEffect
 exampleToString KnowThySelf = (unwrap examples).knowThySelf
 exampleToString UnsafePursx = (unwrap examples).unsafePursx
-exampleToString AddingASingleElement = (unwrap examples).addingASingleElement
 exampleToString TheLocalPortalSyntax = (unwrap examples).theLocalPortalSyntax
 exampleToString BooleanLogicOnEvents = (unwrap examples).booleanLogicOnEvents
 exampleToString HowSamplingWorks = (unwrap examples).howSamplingWorks
@@ -293,7 +294,6 @@ exampleToString GroupingComponents = (unwrap examples).groupingComponents
 exampleToString FlippingTheFunctionAndArgument = (unwrap examples).flippingTheFunctionAndArgument
 exampleToString MovingElements = (unwrap examples).movingElements
 exampleToString MockDiscord = (unwrap examples).mockDiscord
-exampleToString AddingSeveralAttributes = (unwrap examples).addingSeveralAttributes
 exampleToString SamplingABehaviorWithACustomFunction = (unwrap examples).samplingABehaviorWithACustomFunction
 exampleToString WhenToFixAndWhenToFold = (unwrap examples).whenToFixAndWhenToFold
 exampleToString UsingAHookToControlPresence = (unwrap examples).usingAHookToControlPresence
@@ -315,10 +315,11 @@ exampleToSlug BehaviorsVersusFlapping = "BehaviorsVersusFlapping"
 exampleToSlug InjectingDependencies = "InjectingDependencies"
 exampleToSlug CompactingEvents = "CompactingEvents"
 exampleToSlug EmptyUntilFull = "EmptyUntilFull"
-exampleToSlug AddingSeveralElements = "AddingSeveralElements"
 exampleToSlug RunSSR = "RunSSR"
 exampleToSlug ASimpleComponent = "ASimpleComponent"
+exampleToSlug AddingSeveralElementsToPursx = "AddingSeveralElementsToPursx"
 exampleToSlug TheLemmingEvent = "TheLemmingEvent"
+exampleToSlug AddingAnAttributeToPursx = "AddingAnAttributeToPursx"
 exampleToSlug ComponentsAsSemigroups = "ComponentsAsSemigroups"
 exampleToSlug GroupsOfGroups = "GroupsOfGroups"
 exampleToSlug TheOneOfFunction = "TheOneOfFunction"
@@ -330,6 +331,7 @@ exampleToSlug TheKeepLatestFunction = "TheKeepLatestFunction"
 exampleToSlug ASimpleCounter = "ASimpleCounter"
 exampleToSlug GlobalHandlers = "GlobalHandlers"
 exampleToSlug EventsAsRings = "EventsAsRings"
+exampleToSlug AddingSeveralAttributesToPursx = "AddingSeveralAttributesToPursx"
 exampleToSlug SamplingABehaviorWithAnEvent = "SamplingABehaviorWithAnEvent"
 exampleToSlug KnowThySelfT = "KnowThySelfT"
 exampleToSlug ShorthandListeners = "ShorthandListeners"
@@ -337,15 +339,14 @@ exampleToSlug ANoteOnMemoization = "ANoteOnMemoization"
 exampleToSlug OptimizedEventCreation = "OptimizedEventCreation"
 exampleToSlug TheFixFunction = "TheFixFunction"
 exampleToSlug TheTemporalityOfPure = "TheTemporalityOfPure"
-exampleToSlug AddingAnAttribute = "AddingAnAttribute"
 exampleToSlug AddingCustomElements = "AddingCustomElements"
 exampleToSlug OptimizedEventFunctions = "OptimizedEventFunctions"
 exampleToSlug ComponentsAsMonoids = "ComponentsAsMonoids"
+exampleToSlug AddingASingleElementToPursx = "AddingASingleElementToPursx"
 exampleToSlug PlainOldHtml = "PlainOldHtml"
 exampleToSlug UsingAnEffect = "UsingAnEffect"
 exampleToSlug KnowThySelf = "KnowThySelf"
 exampleToSlug UnsafePursx = "UnsafePursx"
-exampleToSlug AddingASingleElement = "AddingASingleElement"
 exampleToSlug TheLocalPortalSyntax = "TheLocalPortalSyntax"
 exampleToSlug BooleanLogicOnEvents = "BooleanLogicOnEvents"
 exampleToSlug HowSamplingWorks = "HowSamplingWorks"
@@ -367,7 +368,6 @@ exampleToSlug GroupingComponents = "GroupingComponents"
 exampleToSlug FlippingTheFunctionAndArgument = "FlippingTheFunctionAndArgument"
 exampleToSlug MovingElements = "MovingElements"
 exampleToSlug MockDiscord = "MockDiscord"
-exampleToSlug AddingSeveralAttributes = "AddingSeveralAttributes"
 exampleToSlug SamplingABehaviorWithACustomFunction = "SamplingABehaviorWithACustomFunction"
 exampleToSlug WhenToFixAndWhenToFold = "WhenToFixAndWhenToFold"
 exampleToSlug UsingAHookToControlPresence = "UsingAHookToControlPresence"

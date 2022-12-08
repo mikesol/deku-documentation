@@ -2,7 +2,7 @@ module Pages.CoreConcepts.Components.AddingEventHandlers.ShorthandListeners wher
 
 import Prelude
 
-import Components.Code (psCode)
+import Components.Code (psCodeWithLink)
 import Components.ExampleBlockquote (exampleBlockquote)
 import Components.Table (tableClass)
 import Contracts (Subsection, subsection)
@@ -10,6 +10,7 @@ import Deku.Control (text_)
 import Deku.DOM as D
 import Deku.Listeners (slider_)
 import Effect.Class.Console (logShow)
+import Examples as Examples
 
 shorthandListeners :: forall lock payload. Subsection lock payload
 shorthandListeners = subsection
@@ -57,20 +58,7 @@ shorthandListeners = subsection
               ]
           ]
       , D.p__ "As an example, consider the following slider."
-      , psCode
-          """module Main where
-
-import Prelude
-
-import Deku.DOM as D
-import Deku.Listeners (slider_)
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
-import Effect.Class.Console (logShow)
-
-main :: Effect Unit
-main = runInBody
-  (D.input (slider_ logShow) [])"""
+      , psCodeWithLink Examples.ShorthandListeners
       , D.p__
           "If you open your Developer Console and move the slider below, you'll see it light up with numbers!"
       , exampleBlockquote

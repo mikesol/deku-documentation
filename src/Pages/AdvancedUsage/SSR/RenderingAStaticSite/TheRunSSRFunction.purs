@@ -2,7 +2,7 @@ module Pages.AdvancedUsage.SSR.RenderingAStaticSite.TheRunSSRFunction where
 
 import Prelude
 
-import Components.Code (htmlCode, psCode, psCodeNoCollapse)
+import Components.Code (htmlCode, psCodeNoCollapseWithLink)
 import Components.ExampleBlockquote (exampleBlockquote)
 import Contracts (Subsection, subsection)
 import Control.Monad.ST (run)
@@ -10,6 +10,7 @@ import Deku.Control (text_)
 import Deku.Core (Domable)
 import Deku.DOM as D
 import Deku.Toplevel (runSSR)
+import Examples as Examples
 
 myApp :: forall lock payload. String -> Domable lock payload
 myApp s = D.div_
@@ -29,29 +30,7 @@ theRunSSRFunction = subsection
           , D.code__ "runSSR"
           , text_ " on itself in the most gimmicky of ways."
           ]
-      , psCodeNoCollapse
-          """module Main where
-
-import Prelude
-
-import Components.Code (htmlCode)
-import Control.Monad.ST (run)
-import Deku.Core (Domable)
-import Deku.DOM as D
-import Deku.Toplevel (runInBody, runSSR)
-import Effect (Effect)
-
-myApp :: forall lock payload. String -> Domable lock payload
-myApp s = D.div_
-  [ D.h4__ "Hi!"
-  , D.div__ "Here's some HTML for a Deku app:"
-  , htmlCode s
-  ]
-
-main :: Effect Unit
-main = runInBody do
-  myApp
-    (run (runSSR (myApp "hello")))"""
+      , psCodeNoCollapseWithLink Examples.RunSSR
       , exampleBlockquote
           [ do
               myApp

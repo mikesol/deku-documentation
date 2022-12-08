@@ -2,7 +2,7 @@ module Pages.AdvancedUsage.AccessingTheDOM.ToplevelConsiderations.GlobalHandlers
 
 import Prelude
 
-import Components.Code (psCode, psCodeNoCollapse)
+import Components.Code (psCode, psCodeNoCollapseWithLink)
 import Components.ExampleBlockquote (exampleBlockquote)
 import Contracts (Env(..), Subsection, subsection)
 import Data.Int (floor)
@@ -14,6 +14,7 @@ import Effect (Effect)
 import Effect.Random (random)
 import Effect.Ref (new, read, write)
 import Effect.Timer (setTimeout)
+import Examples as Examples
 import FRP.Event (burning, create)
 import Router.ADT (Route(..))
 
@@ -52,46 +53,7 @@ globalHandlers = subsection
           [ text_
               "The callback is invoked whenever auth state changes from true to false. The company has exceptionally given us permission to copy and paste their source code into the example below for instructional purposes."
           ]
-      , psCodeNoCollapse
-          """module Main where
-
-import Prelude
-
-import Deku.Control (text)
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
-import FRP.Event (create)
-
-
-import Data.Int (floor)
-import Deku.Control (text)
-import Effect.Random (random)
-import Effect.Ref (new, read, write)
-import Effect.Timer (setTimeout)
-
-doAuth :: (Boolean -> Effect Unit) -> Effect (Effect Unit)
-doAuth f = do
-  onOff <- new true
-  let
-    eff tf = do
-      oo <- read onOff
-      when oo do
-        f tf
-        t <- random
-        void $ setTimeout (floor $ t * 3000.0) (eff (not tf))
-  eff false
-  pure $ write false onOff
-
-
-main :: Effect Unit
-main = do
-  authEvent <- create
-  runInBody
-    ( text $ authEvent.event <#>
-        if _ then "Welcome back!" else "Please log in."
-    )
-  _ <- doAuth authEvent.push
-  pure unit"""
+      , psCodeNoCollapseWithLink Examples.GlobalHandlers
       , exampleBlockquote
           [ D.div
               ( D.Self !:= \e -> do

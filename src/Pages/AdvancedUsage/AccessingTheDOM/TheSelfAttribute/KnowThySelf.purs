@@ -2,7 +2,7 @@ module Pages.AdvancedUsage.AccessingTheDOM.TheSelfAttribute.KnowThySelf where
 
 import Prelude
 
-import Components.Code (psCode)
+import Components.Code (psCodeWithLink)
 import Components.Disclaimer (disclaimer)
 import Components.ExampleBlockquote (exampleBlockquote)
 import Contracts (Subsection, subsection)
@@ -15,7 +15,7 @@ import Deku.Do as Deku
 import Deku.Hooks (useState')
 import Effect.Aff (Milliseconds(..), delay, launchAff_)
 import Effect.Class (liftEffect)
-import QualifiedDo.Alt as Alt
+import Examples as Examples
 import Web.DOM.Element (toParentNode)
 import Web.DOM.HTMLCollection as HTMLCollection
 import Web.DOM.ParentNode (children)
@@ -33,39 +33,7 @@ knowThySelf = subsection
           , text_
               " an element's attributes and children are added, so make sure to defer your computation until the next browser tick if you want these things to be present, like in the example below."
           ]
-      , psCode
-          """module Main where
-
-import Prelude
-
-import Data.String.Utils (words)
-import Data.Tuple.Nested ((/\))
-import Deku.Attribute ((!:=))
-import Deku.Control (text)
-import Deku.DOM as D
-import Deku.Do as Deku
-import Deku.Hooks (useState')
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
-import Effect.Aff (Milliseconds(..), delay, launchAff_)
-import Effect.Class (liftEffect)
-import Web.DOM.Element (toParentNode)
-import Web.DOM.HTMLCollection as HTMLCollection
-import Web.DOM.ParentNode (children)
-
-main :: Effect Unit
-main = runInBody Deku.do
-  setLength /\ length <- useState'
-  D.div
-    Alt.do
-      D.Self !:= \e -> launchAff_ do
-        delay (Milliseconds 0.0)
-        liftEffect do
-          kids <- children (toParentNode e)
-          HTMLCollection.length kids >>= setLength
-    ( (words "I have this many kids:" <#> D.div__) <>
-        [ D.div_ [ text (show <$> length) ] ]
-    )"""
+      , psCodeWithLink Examples.KnowThySelf
       , exampleBlockquote
           [ Deku.do
               setLength /\ length <- useState'

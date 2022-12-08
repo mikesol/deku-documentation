@@ -1,4 +1,4 @@
-module Examples.AddingSeveralElements where
+module Examples.AddingASingleElementToPursx where
 
 import Prelude
 
@@ -6,7 +6,6 @@ import Control.Alt ((<|>))
 import Data.Tuple.Nested ((/\))
 import Deku.Attributes (klass, klass_)
 import Deku.Control (text_)
-import Deku.Core (fixed)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState)
@@ -46,7 +45,8 @@ myHtml =
       </div>
     </li>
 
-    ~lis~
+    ~projectLi~
+    ~neroLi~
   </ol>
 </nav>"""
   )
@@ -80,16 +80,16 @@ main = runInBody Deku.do
     , D.div_
         [ myHtml ~~
             { homeAtts: toggleHome <|> klass_ "flex h-12"
-            , lis: fixed
-                [ liHtml ~~
-                    { atts: toggleProjs <|> hideOnFalse projects
-                    , name: text_ "Projects"
-                    }
-                , liHtml ~~
-                    { atts: toggleNero <|> hideOnFalse nero
-                    , name: text_ "Project Nero"
-                    }
-                ]
+            , projectLi:
+                liHtml ~~
+                  { atts: toggleProjs <|> hideOnFalse projects
+                  , name: text_ "Projects"
+                  }
+            , neroLi:
+                liHtml ~~
+                  { atts: toggleNero <|> hideOnFalse nero
+                  , name: text_ "Project Nero"
+                  }
             }
         ]
     ]

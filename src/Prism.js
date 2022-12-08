@@ -29,9 +29,10 @@ export const addExpandButton = () => {
         check++
       }
       if (
-        check === 1 &&
-        obj.childNodes[i].nodeType === Node.ELEMENT_NODE &&
-        obj.childNodes[i].textContent === 'Main'
+        (check === 1 &&
+          obj.childNodes[i].nodeType === Node.ELEMENT_NODE &&
+          obj.childNodes[i].textContent === 'Main') ||
+        obj.childNodes[i].textContent.slice(0, 9) === 'Examples.'
       ) {
         check++
       }

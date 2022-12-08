@@ -1,4 +1,4 @@
-module Examples.AddingSeveralAttributes where
+module Examples.AddingSeveralAttributesToPursx where
 
 import Prelude
 

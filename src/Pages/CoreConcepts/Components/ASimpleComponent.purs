@@ -2,12 +2,13 @@ module Pages.CoreConcepts.Components.ASimpleComponent where
 
 import Prelude
 
-import Components.Code (psCode)
+import Components.Code (psCodeWithLink)
 import Components.ExampleBlockquote (exampleBlockquote)
 import Components.TargetedLink (targetedLink)
 import Contracts (Env(..), Section, section)
 import Deku.Control (text_)
 import Deku.DOM as D
+import Examples as Examples
 import Pages.CoreConcepts.Components.ASimpleComponent.AddingText (addingText)
 import Pages.CoreConcepts.Components.ASimpleComponent.ArraysAllTheWayDown (arraysAllTheWayDown)
 import Pages.CoreConcepts.Components.ASimpleComponent.WhatsInD (whatsInD)
@@ -21,29 +22,7 @@ aSimpleComponent = section
           [ text_
               "Let's start by making a simple comonent. It will result in a few different DOM elements, and we'll build upon it throughout this page. Here's the code."
           ]
-      , psCode
-          """module Main where
-
-import Prelude
-
-import Deku.Control (text_)
-import Deku.DOM as D
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
-
-main :: Effect Unit
-main = runInBody
-  ( D.div_
-    [ D.span__ "I exist"
-    , D.ul_ $ map D.li__ [ "A", "B", "C" ]
-    , D.div_
-        [ D.h3__ "foo"
-        , D.i__ "bar"
-        , text_ " "
-        , D.b__ "baz"
-        ]
-    ]
-  )"""
+      , psCodeWithLink Examples.ASimpleComponent
       , text_ "And here's the result."
       , exampleBlockquote
           [ D.div_
