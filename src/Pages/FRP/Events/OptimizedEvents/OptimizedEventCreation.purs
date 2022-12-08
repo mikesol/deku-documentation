@@ -80,7 +80,7 @@ return rf.value;"""
               "You can see that the optmized events have one less thunk for each call to "
           , D.code__ "push"
           , text_
-              ". While a few extra thunks here and there won't move the needle for your application, thousands of thunks a second add up, and if you're dealing with animations, you can very easily hit reach the tens of thousands of thunks a second. So to preemptively dethunkify your app, use the optimized event creation functions!"
+              ". While a few extra thunks here and there won't move the needle for your application, thousands of thunks a second add up, and if you're dealing with animations, you can very easily reach the tens of thousands of thunks a second. So to preemptively dethunkify your app, use the optimized event creation functions!"
           ]
       ]
   }
