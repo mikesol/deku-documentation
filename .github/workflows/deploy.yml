@@ -48,7 +48,9 @@ jobs:
             ${{ runner.os }}-pnpm-store-
       - name: Install dependencies
         run: pnpm i
-      - name: Build
+      - name: Build 1
+        run: npx spago build
+      - name: Build 2
         run: pnpm build
       - name: deploy to netlify
         run: NETLIFY_SITE_ID=${{ secrets.NETLIFY_DEKU_SITE_ID }} NETLIFY_AUTH_TOKEN=${{ secrets.NETLIFY_AUTH_TOKEN }} netlify deploy --dir=dist --prod
