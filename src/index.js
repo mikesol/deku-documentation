@@ -73,7 +73,7 @@ import * as UnsafeCustomElement from '../output/Examples.UnsafeCustomElement/ind
 import * as SeveralLagsUsingFix from '../output/Examples.SeveralLagsUsingFix/index.js'
 import * as EventsAsSemigroups from '../output/Examples.EventsAsSemigroups/index.js'
 import * as AltAsAMuxer from '../output/Examples.AltAsAMuxer/index.js'
-const toStart = import.meta.env.START
+const toStart = import.meta.env.VITE_START
 toStart === 'FilteringAnEvent'
   ? FilteringAnEvent.main()
   : toStart === 'UsingTheOriginalEvent'
