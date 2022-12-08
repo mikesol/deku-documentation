@@ -1,3 +1,4 @@
+import unMemoizedApplication from '../../src/Examples/UnMemoizedApplication.purs?raw'
 import filteringAnEvent from '../../src/Examples/FilteringAnEvent.purs?raw'
 import usingTheOriginalEvent from '../../src/Examples/UsingTheOriginalEvent.purs?raw'
 import eventsAsSemirings from '../../src/Examples/EventsAsSemirings.purs?raw'
@@ -65,6 +66,8 @@ import flippingTheFunctionAndArgument from '../../src/Examples/FlippingTheFuncti
 import movingElements from '../../src/Examples/MovingElements.purs?raw'
 import mockDiscord from '../../src/Examples/MockDiscord.purs?raw'
 import samplingABehaviorWithACustomFunction from '../../src/Examples/SamplingABehaviorWithACustomFunction.purs?raw'
+import memoizedApplication from '../../src/Examples/MemoizedApplication.purs?raw'
+import memoizedNoEvent from '../../src/Examples/MemoizedNoEvent.purs?raw'
 import whenToFixAndWhenToFold from '../../src/Examples/WhenToFixAndWhenToFold.purs?raw'
 import usingAHookToControlPresence from '../../src/Examples/UsingAHookToControlPresence.purs?raw'
 import removingElements from '../../src/Examples/RemovingElements.purs?raw'
@@ -72,6 +75,7 @@ import unsafeCustomElement from '../../src/Examples/UnsafeCustomElement.purs?raw
 import severalLagsUsingFix from '../../src/Examples/SeveralLagsUsingFix.purs?raw'
 import eventsAsSemigroups from '../../src/Examples/EventsAsSemigroups.purs?raw'
 import altAsAMuxer from '../../src/Examples/AltAsAMuxer.purs?raw'
+export const unMemoizedApplicationURL = unMemoizedApplication
 export const filteringAnEventURL = filteringAnEvent
 export const usingTheOriginalEventURL = usingTheOriginalEvent
 export const eventsAsSemiringsURL = eventsAsSemirings
@@ -142,6 +146,8 @@ export const movingElementsURL = movingElements
 export const mockDiscordURL = mockDiscord
 export const samplingABehaviorWithACustomFunctionURL =
   samplingABehaviorWithACustomFunction
+export const memoizedApplicationURL = memoizedApplication
+export const memoizedNoEventURL = memoizedNoEvent
 export const whenToFixAndWhenToFoldURL = whenToFixAndWhenToFold
 export const usingAHookToControlPresenceURL = usingAHookToControlPresence
 export const removingElementsURL = removingElements

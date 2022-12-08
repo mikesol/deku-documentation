@@ -71,8 +71,10 @@ psCodeWithLink' s e ex = D.div_
           Alt.do
             klass_ textSize
             href_
-              ( "https://gitpod.io/#VITE_START=" <> slug <> ",VITE_GOTO=" <> gitpodGoto <>
-                  "/https://github.com/mikesol/deku-documentation"
+              ( "https://gitpod.io/#VITE_START=" <> slug <> ",VITE_GOTO="
+                  <> gitpodGoto
+                  <>
+                    "/https://github.com/mikesol/deku-documentation"
               )
             D.Target !:= "_blank"
           [ text_ "Run on Gitpod" ]

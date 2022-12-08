@@ -10,7 +10,6 @@ import Contracts (Subsection, subsection)
 import Data.Tuple.Nested ((/\))
 import Deku.Attributes (klass_)
 import Deku.Control (text, text_)
-import Deku.Control (text_)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState')

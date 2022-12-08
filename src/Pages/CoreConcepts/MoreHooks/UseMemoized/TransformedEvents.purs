@@ -2,23 +2,18 @@ module Pages.CoreConcepts.MoreHooks.UseMemoized.TransformedEvents where
 
 import Prelude
 
-import Components.Code (psCode)
+import Components.Code (psCodeWithLink)
 import Components.ExampleBlockquote (exampleBlockquote)
-import Contracts (Section, section)
 import Contracts (Subsection, subsection)
 import Data.Array (intercalate, replicate)
 import Data.Tuple (fst, snd)
-import Data.Tuple.Nested ((/\))
-import Deku.Attribute ((!:=))
-import Deku.Attribute ((!:=))
 import Deku.Attributes (klass_)
 import Deku.Control (text, text_)
-import Deku.Control (text_)
-import Deku.DOM as D
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useMemoized, useState)
 import Deku.Listeners (click)
+import Examples as Examples
 import QualifiedDo.Alt as Alt
 
 inputKls :: String
@@ -40,42 +35,7 @@ transformedEvents = subsection
           , D.code__ "useMemoized"
           , text_ " hook."
           ]
-      , psCode
-          """Deku.do
-  a <- useState true
-  b <- useState false
-  c <- useState true
-  d <- useState false
-  e <- useState true
-  composedEvent <- useMemoized $ { a: _, b: _, c: _, d: _, e: _ }
-    <$> snd a
-    <*> snd b
-    <*> snd c
-    <*> snd d
-    <*> snd e
-  D.div_
-    [ D.div_
-        ( map
-            ( \i -> D.a
-                Alt.do
-                  click $ snd i <#> not >>> fst i
-                  klass_ "cursor-pointer"
-                [ text_ "Click me " ]
-            )
-            [ a, b, c, d, e ]
-        )
-    , D.div_
-        ( replicate 10
-            ( D.div_
-                [ text $ composedEvent
-                    <#> \{ a, b, c, d, e } ->
-                      intercalate " " $ map show
-                        [ a, b, c, d, e ]
-                ]
-            )
-        )
-    ]
-"""
+      , psCodeWithLink Examples.MemoizedApplication
       , D.p__ "Resulting in the following example:"
       , exampleBlockquote
           [ Deku.do

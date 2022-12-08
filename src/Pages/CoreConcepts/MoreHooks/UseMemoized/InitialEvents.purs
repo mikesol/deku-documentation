@@ -2,15 +2,13 @@ module Pages.CoreConcepts.MoreHooks.UseMemoized.InitialEvents where
 
 import Prelude
 
-import Components.Code (psCode)
+import Components.Code (psCodeWithLink)
 import Components.ExampleBlockquote (exampleBlockquote)
-import Contracts (Section, section)
 import Contracts (Subsection, subsection)
 import Control.Alt (alt)
-import Data.Array (intercalate, replicate)
+import Data.Array (replicate)
 import Data.Foldable (traverse_)
 import Data.Int (floor, pow)
-import Data.Tuple (fst, snd)
 import Data.Tuple.Nested ((/\))
 import Deku.Attribute ((!:=))
 import Deku.Attribute (cb, (!:=))
@@ -18,10 +16,9 @@ import Deku.Attributes (klass_)
 import Deku.Control (text, text_)
 import Deku.Control (text_)
 import Deku.DOM as D
-import Deku.DOM as D
 import Deku.Do as Deku
-import Deku.Hooks (useMemoized, useMemoized', useState)
-import Deku.Listeners (click)
+import Deku.Hooks (useMemoized')
+import Examples as Examples
 import QualifiedDo.Alt as Alt
 import Web.Event.Event (target)
 import Web.HTML.HTMLInputElement (fromEventTarget, valueAsNumber)
@@ -48,29 +45,7 @@ initialEvents = subsection
           ]
       , D.p__
           "In the example below, this method is used to memoize a squaring operation so that the result is computed only once."
-      , psCode
-          """Deku.do
-  setNumber /\ number <- useMemoized'
-    (alt (pure 0) <<< map (_ `pow` 2))
-  D.div_
-    [ D.div_
-        [ D.input
-            Alt.do
-              klass_ inputKls
-              D.Xtype !:= "number"
-              D.Min !:= "0"
-              D.Max !:= "100"
-              D.Value !:= "0"
-              D.OnChange !:= cb \evt ->
-                traverse_ (valueAsNumber >=> floor >>> setNumber) $
-                  (target >=> fromEventTarget) evt
-            []
-        ]
-    , D.div_
-        ( replicate 200 $ D.span_
-            [ text (show >>> (_ <> " ") <$> number) ]
-        )
-    ]"""
+      , psCodeWithLink Examples.MemoizedNoEvent
       , exampleBlockquote
           [ Deku.do
               setNumber /\ number <- useMemoized'

@@ -1,4 +1,5 @@
 import { main } from 'PureScript/Main/index.js'
+import * as UnMemoizedApplication from 'PureScript/Examples.UnMemoizedApplication/index.js'
 import * as FilteringAnEvent from 'PureScript/Examples.FilteringAnEvent/index.js'
 import * as UsingTheOriginalEvent from 'PureScript/Examples.UsingTheOriginalEvent/index.js'
 import * as EventsAsSemirings from 'PureScript/Examples.EventsAsSemirings/index.js'
@@ -66,6 +67,8 @@ import * as FlippingTheFunctionAndArgument from 'PureScript/Examples.FlippingThe
 import * as MovingElements from 'PureScript/Examples.MovingElements/index.js'
 import * as MockDiscord from 'PureScript/Examples.MockDiscord/index.js'
 import * as SamplingABehaviorWithACustomFunction from 'PureScript/Examples.SamplingABehaviorWithACustomFunction/index.js'
+import * as MemoizedApplication from 'PureScript/Examples.MemoizedApplication/index.js'
+import * as MemoizedNoEvent from 'PureScript/Examples.MemoizedNoEvent/index.js'
 import * as WhenToFixAndWhenToFold from 'PureScript/Examples.WhenToFixAndWhenToFold/index.js'
 import * as UsingAHookToControlPresence from 'PureScript/Examples.UsingAHookToControlPresence/index.js'
 import * as RemovingElements from 'PureScript/Examples.RemovingElements/index.js'
@@ -74,7 +77,9 @@ import * as SeveralLagsUsingFix from 'PureScript/Examples.SeveralLagsUsingFix/in
 import * as EventsAsSemigroups from 'PureScript/Examples.EventsAsSemigroups/index.js'
 import * as AltAsAMuxer from 'PureScript/Examples.AltAsAMuxer/index.js'
 const toStart = import.meta.env.VITE_START
-toStart === 'FilteringAnEvent'
+toStart === 'UnMemoizedApplication'
+  ? UnMemoizedApplication.main()
+  : toStart === 'FilteringAnEvent'
   ? FilteringAnEvent.main()
   : toStart === 'UsingTheOriginalEvent'
   ? UsingTheOriginalEvent.main()
@@ -208,6 +213,10 @@ toStart === 'FilteringAnEvent'
   ? MockDiscord.main()
   : toStart === 'SamplingABehaviorWithACustomFunction'
   ? SamplingABehaviorWithACustomFunction.main()
+  : toStart === 'MemoizedApplication'
+  ? MemoizedApplication.main()
+  : toStart === 'MemoizedNoEvent'
+  ? MemoizedNoEvent.main()
   : toStart === 'WhenToFixAndWhenToFold'
   ? WhenToFixAndWhenToFold.main()
   : toStart === 'UsingAHookToControlPresence'
