@@ -2,31 +2,25 @@ module Pages.CoreConcepts.MoreHooks.UseMailboxed.MailboxesAsFilters where
 
 import Prelude
 
-import Components.Code (psCode)
+import Components.Code (psCodeWithLink)
 import Components.ExampleBlockquote (exampleBlockquote)
-import Contracts (Env(..), Section, section)
-import Contracts (Subsection, subsection)
+import Contracts (Env(..), Subsection, subsection)
 import Control.Alt ((<|>))
-import Data.Array (intercalate, replicate, (..))
-import Data.Tuple (fst, snd)
+import Data.Array ((..))
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute ((!:=))
-import Deku.Attribute ((!:=))
 import Deku.Attributes (klass, klass_)
-import Deku.Control (text, text_)
 import Deku.Control (text_)
 import Deku.DOM as D
-import Deku.DOM as D
 import Deku.Do as Deku
-import Deku.Hooks (useMailboxed, useMemoized, useState)
+import Deku.Hooks (useMailboxed, useState)
 import Deku.Listeners (click)
+import Examples as Examples
 import QualifiedDo.Alt as Alt
-import Router.ADT (Route(..))
 
 mailboxesAsFilters :: forall lock payload. Subsection lock payload
 mailboxesAsFilters = subsection
   { title: "Hello mailbox"
-  , matter: \(Env { routeLink }) ->
+  , matter: pure
       [ D.p_
           [ text_ "A mailbox is similar to the "
           , D.code__ "useState'"
@@ -61,31 +55,7 @@ mailboxesAsFilters = subsection
           , D.code__ "address"
           , text_ ". You can see an example below."
           ]
-      , psCode
-          """ Deku.do
-  setInt /\ int <- useState 0
-  setMailbox /\ mailbox <- useMailboxed
-  D.div_
-    [ D.a
-        Alt.do
-          klass_ "cursor-pointer"
-          click $ int <#> \i -> do
-            setMailbox { address: i, payload: unit }
-            setInt ((i + 1) `mod` 100)
-        [ text_ "Bang!" ]
-    , D.div_
-        ( (0 .. 99) <#> \n -> D.span
-            ( klass $ (pure false <|> (mailbox n $> true)) <#>
-                if _ then "" else "hidden"
-            )
-            [ text_
-                ( ( if n == 99 then "We're done here"
-                    else show n
-                  ) <> " "
-                )
-            ]
-        )
-    ]"""
+      , psCodeWithLink Examples.UseMailboxed
       , exampleBlockquote
           [ Deku.do
               setInt /\ int <- useState 0

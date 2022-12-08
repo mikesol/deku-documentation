@@ -19,6 +19,7 @@ foreign import runSSRURL :: String
 foreign import aSimpleComponentURL :: String
 foreign import addingSeveralElementsToPursxURL :: String
 foreign import theLemmingEventURL :: String
+foreign import useMailboxedURL :: String
 foreign import addingAnAttributeToPursxURL :: String
 foreign import componentsAsSemigroupsURL :: String
 foreign import groupsOfGroupsURL :: String
@@ -97,6 +98,7 @@ newtype Examples = Examples {
  aSimpleComponent :: String,
  addingSeveralElementsToPursx :: String,
  theLemmingEvent :: String,
+ useMailboxed :: String,
  addingAnAttributeToPursx :: String,
  componentsAsSemigroups :: String,
  groupsOfGroups :: String,
@@ -178,6 +180,7 @@ examples = Examples {
  aSimpleComponent: aSimpleComponentURL,
  addingSeveralElementsToPursx: addingSeveralElementsToPursxURL,
  theLemmingEvent: theLemmingEventURL,
+ useMailboxed: useMailboxedURL,
  addingAnAttributeToPursx: addingAnAttributeToPursxURL,
  componentsAsSemigroups: componentsAsSemigroupsURL,
  groupsOfGroups: groupsOfGroupsURL,
@@ -238,7 +241,7 @@ examples = Examples {
  eventsAsSemigroups: eventsAsSemigroupsURL,
  altAsAMuxer: altAsAMuxerURL
  }
-data ExampleADT = UnMemoizedApplication | FilteringAnEvent | UsingTheOriginalEvent | EventsAsSemirings | UsingTheHookToSwitchBetweenElements | RowPolymorphismAndProviders | AddingAttributes | BiasingASideOfSampling | TheCreatePureEffect | SamplingABehaviorAndDiscardingTheEvent | BehaviorsVersusFlapping | InjectingDependencies | CompactingEvents | EmptyUntilFull | RunSSR | ASimpleComponent | AddingSeveralElementsToPursx | TheLemmingEvent | AddingAnAttributeToPursx | ComponentsAsSemigroups | GroupsOfGroups | TheOneOfFunction | TheGlobalPortalSyntax | GatingEventsOnBehaviors | EffectsInSSR | UsingFunctionsAsMonads | TheKeepLatestFunction | ASimpleCounter | GlobalHandlers | EventsAsRings | AddingSeveralAttributesToPursx | SamplingABehaviorWithAnEvent | KnowThySelfT | ShorthandListeners | ANoteOnMemoization | OptimizedEventCreation | TheTemporalityOfPure | AddingCustomElements | OptimizedEventFunctions | ComponentsAsMonoids | ALagUsingFix | AddingASingleElementToPursx | PlainOldHtml | UsingAnEffect | KnowThySelf | UnsafePursx | TheLocalPortalSyntax | BooleanLogicOnEvents | HowSamplingWorks | UnlockingLevels | UseDyn | IntegratingBehaviors | HelloWorldCode | InsertingInADifferentOrder | MultipleSubscriptions | TheStateHook | InterComponentCommunication | EventsAsMonoids | DerivingBehaviors | SolvingDifferentialEquations | UsingTheHookInAnAttribute | PassingAroundHooks | SwitchingOnBehaviors | GroupingComponents | FlippingTheFunctionAndArgument | MovingElements | MockDiscord | SamplingABehaviorWithACustomFunction | MemoizedApplication | MemoizedNoEvent | WhenToFixAndWhenToFold | UsingAHookToControlPresence | RemovingElements | UnsafeCustomElement | SeveralLagsUsingFix | EventsAsSemigroups | AltAsAMuxer 
+data ExampleADT = UnMemoizedApplication | FilteringAnEvent | UsingTheOriginalEvent | EventsAsSemirings | UsingTheHookToSwitchBetweenElements | RowPolymorphismAndProviders | AddingAttributes | BiasingASideOfSampling | TheCreatePureEffect | SamplingABehaviorAndDiscardingTheEvent | BehaviorsVersusFlapping | InjectingDependencies | CompactingEvents | EmptyUntilFull | RunSSR | ASimpleComponent | AddingSeveralElementsToPursx | TheLemmingEvent | UseMailboxed | AddingAnAttributeToPursx | ComponentsAsSemigroups | GroupsOfGroups | TheOneOfFunction | TheGlobalPortalSyntax | GatingEventsOnBehaviors | EffectsInSSR | UsingFunctionsAsMonads | TheKeepLatestFunction | ASimpleCounter | GlobalHandlers | EventsAsRings | AddingSeveralAttributesToPursx | SamplingABehaviorWithAnEvent | KnowThySelfT | ShorthandListeners | ANoteOnMemoization | OptimizedEventCreation | TheTemporalityOfPure | AddingCustomElements | OptimizedEventFunctions | ComponentsAsMonoids | ALagUsingFix | AddingASingleElementToPursx | PlainOldHtml | UsingAnEffect | KnowThySelf | UnsafePursx | TheLocalPortalSyntax | BooleanLogicOnEvents | HowSamplingWorks | UnlockingLevels | UseDyn | IntegratingBehaviors | HelloWorldCode | InsertingInADifferentOrder | MultipleSubscriptions | TheStateHook | InterComponentCommunication | EventsAsMonoids | DerivingBehaviors | SolvingDifferentialEquations | UsingTheHookInAnAttribute | PassingAroundHooks | SwitchingOnBehaviors | GroupingComponents | FlippingTheFunctionAndArgument | MovingElements | MockDiscord | SamplingABehaviorWithACustomFunction | MemoizedApplication | MemoizedNoEvent | WhenToFixAndWhenToFold | UsingAHookToControlPresence | RemovingElements | UnsafeCustomElement | SeveralLagsUsingFix | EventsAsSemigroups | AltAsAMuxer 
 exampleToString :: ExampleADT -> String
 exampleToString UnMemoizedApplication = (unwrap examples).unMemoizedApplication
 exampleToString FilteringAnEvent = (unwrap examples).filteringAnEvent
@@ -258,6 +261,7 @@ exampleToString RunSSR = (unwrap examples).runSSR
 exampleToString ASimpleComponent = (unwrap examples).aSimpleComponent
 exampleToString AddingSeveralElementsToPursx = (unwrap examples).addingSeveralElementsToPursx
 exampleToString TheLemmingEvent = (unwrap examples).theLemmingEvent
+exampleToString UseMailboxed = (unwrap examples).useMailboxed
 exampleToString AddingAnAttributeToPursx = (unwrap examples).addingAnAttributeToPursx
 exampleToString ComponentsAsSemigroups = (unwrap examples).componentsAsSemigroups
 exampleToString GroupsOfGroups = (unwrap examples).groupsOfGroups
@@ -336,6 +340,7 @@ exampleToSlug RunSSR = "RunSSR"
 exampleToSlug ASimpleComponent = "ASimpleComponent"
 exampleToSlug AddingSeveralElementsToPursx = "AddingSeveralElementsToPursx"
 exampleToSlug TheLemmingEvent = "TheLemmingEvent"
+exampleToSlug UseMailboxed = "UseMailboxed"
 exampleToSlug AddingAnAttributeToPursx = "AddingAnAttributeToPursx"
 exampleToSlug ComponentsAsSemigroups = "ComponentsAsSemigroups"
 exampleToSlug GroupsOfGroups = "GroupsOfGroups"

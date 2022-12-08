@@ -16,6 +16,7 @@ import runSSR from '../../src/Examples/RunSSR.purs?raw'
 import aSimpleComponent from '../../src/Examples/ASimpleComponent.purs?raw'
 import addingSeveralElementsToPursx from '../../src/Examples/AddingSeveralElementsToPursx.purs?raw'
 import theLemmingEvent from '../../src/Examples/TheLemmingEvent.purs?raw'
+import useMailboxed from '../../src/Examples/UseMailboxed.purs?raw'
 import addingAnAttributeToPursx from '../../src/Examples/AddingAnAttributeToPursx.purs?raw'
 import componentsAsSemigroups from '../../src/Examples/ComponentsAsSemigroups.purs?raw'
 import groupsOfGroups from '../../src/Examples/GroupsOfGroups.purs?raw'
@@ -95,6 +96,7 @@ export const runSSRURL = runSSR
 export const aSimpleComponentURL = aSimpleComponent
 export const addingSeveralElementsToPursxURL = addingSeveralElementsToPursx
 export const theLemmingEventURL = theLemmingEvent
+export const useMailboxedURL = useMailboxed
 export const addingAnAttributeToPursxURL = addingAnAttributeToPursx
 export const componentsAsSemigroupsURL = componentsAsSemigroups
 export const groupsOfGroupsURL = groupsOfGroups

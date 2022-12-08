@@ -17,6 +17,7 @@ import * as RunSSR from 'PureScript/Examples.RunSSR/index.js'
 import * as ASimpleComponent from 'PureScript/Examples.ASimpleComponent/index.js'
 import * as AddingSeveralElementsToPursx from 'PureScript/Examples.AddingSeveralElementsToPursx/index.js'
 import * as TheLemmingEvent from 'PureScript/Examples.TheLemmingEvent/index.js'
+import * as UseMailboxed from 'PureScript/Examples.UseMailboxed/index.js'
 import * as AddingAnAttributeToPursx from 'PureScript/Examples.AddingAnAttributeToPursx/index.js'
 import * as ComponentsAsSemigroups from 'PureScript/Examples.ComponentsAsSemigroups/index.js'
 import * as GroupsOfGroups from 'PureScript/Examples.GroupsOfGroups/index.js'
@@ -113,6 +114,8 @@ toStart === 'UnMemoizedApplication'
   ? AddingSeveralElementsToPursx.main()
   : toStart === 'TheLemmingEvent'
   ? TheLemmingEvent.main()
+  : toStart === 'UseMailboxed'
+  ? UseMailboxed.main()
   : toStart === 'AddingAnAttributeToPursx'
   ? AddingAnAttributeToPursx.main()
   : toStart === 'ComponentsAsSemigroups'
