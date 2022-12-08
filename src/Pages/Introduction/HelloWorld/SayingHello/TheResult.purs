@@ -27,7 +27,7 @@ theResult = subsection
                   , text_ ", "
                   , D.code__ "pnpm install"
                   , text_
-                      " and then run the command (you can click on the clipboard to copy it)."
+                      " and then run the command above the snippet (you can click on the clipboard to copy it)."
                   ]
               }
           ]
