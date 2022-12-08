@@ -4,31 +4,20 @@ import Prelude
 
 import Components.Code (psCode)
 import Components.ExampleBlockquote (exampleBlockquote)
+import Components.ProTip (proTip)
 import Constants (tripleQ)
 import Contracts (Subsection, subsection)
-import Contracts (Subsection, subsection)
-import Data.Int (floor)
-import Data.JSDate (getTime, now)
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute ((!:=))
-import Deku.Attribute ((!:=))
 import Deku.Attributes (klass_)
-import Deku.Control (blank, text, text_, (<#~>))
+import Deku.Control (text, text_)
 import Deku.Control (text_)
 import Deku.DOM as D
-import Deku.DOM as D
 import Deku.Do as Deku
-import Deku.Hooks (useState, useState')
-import Deku.Listeners (click, click_)
-import Deku.Pursx ((~~))
-import Effect.Aff (Milliseconds(..), delay, launchAff, launchAff_)
-import Effect.Class (liftEffect)
-import Effect.Random (random)
+import Deku.Hooks (useState')
+import Deku.Listeners (click_)
 import FRP.Event.Aff (bindToAff)
-import FRP.Event.Effect (bindToEffect)
 import Fetch (Method(..), fetch)
 import QualifiedDo.Alt as Alt
-import Type.Proxy (Proxy(..))
 
 triggerAff :: forall lock payload. Subsection lock payload
 triggerAff = subsection
@@ -97,5 +86,33 @@ triggerAff = subsection
                     )
                 ]
           ]
+      , proTip
+          { header:
+              D.span_
+                [ D.code__ "Aff", text_ "able asynchronicity in PureScript" ]
+          , message: D.div_
+              [ text_
+                  "Up until now, the side-effects we have seen have all been synchronous. In PureScript, we also have "
+              , D.code__ "Aff"
+              , text_
+                  " for asynchronous effects. You can think of them as promises with super powers. "
+              , D.code__ "liftEffect"
+              , text_ " converts an "
+              , D.code__ "Effect"
+              , text_ "ful computation to an "
+              , D.code__ "Aff"
+              , text_ "ish ("
+              , D.code__ "Aff"
+              , text_ "ular? "
+              , D.code__ "Aff"
+              , text_ "erific?) computation and "
+              , D.code__ "launchAff_"
+              , text_ " takes an "
+              , D.code__ "Aff"
+              , text_ " and launches it from within an "
+              , D.code__ "Effect"
+              , text_ ", making that block run asynchronously."
+              ]
+          }
       ]
   }

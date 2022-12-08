@@ -54,9 +54,9 @@ main = runInBody Deku.do
         Alt.do
           klass_ buttonClass
           let
-            fetcher = fetchNewRandomImage >>= liftEffect
-              <<< setUIState
-              <<< Image
+            fetcher = do
+              newRandomImage <- fetchNewRandomImage
+              liftEffect $ setUIState $ Image newRandomImage
             loader = liftEffect $ setUIState Loading
           click $ uiState <#> case _ of
             Beginning -> do
