@@ -2,9 +2,8 @@ module Pages.CoreConcepts.Collections.Monoids.ComponentsAsSemigroups where
 
 import Prelude
 
-import Components.Code (psCode, psCodeWithLink)
+import Components.Code (psCodeWithLink)
 import Components.ExampleBlockquote (exampleBlockquote)
-import Constants (tripleQ)
 import Contracts (Subsection, subsection)
 import Data.String (Pattern(..), Replacement(..), replaceAll)
 import Data.Tuple.Nested ((/\))

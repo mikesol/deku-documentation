@@ -71,8 +71,8 @@ psCodeWithLink' s e ex = D.div_
           Alt.do
             klass_ textSize
             href_
-              ( "https://gitpod.io/#VITE_START=" <> slug <>
-                  "/https://github.com/my-org/repo-to-work-on"
+              ( "https://gitpod.io/#VITE_START=" <> slug <> ",GITPOD_GOTO=" <> gitpodGoto <>
+                  "/https://github.com/mikesol/deku-documentation"
               )
             D.Target !:= "_blank"
           [ text_ "Run on Gitpod" ]
@@ -143,6 +143,7 @@ psCodeWithLink' s e ex = D.div_
   slug = exampleToSlug ex
   textSize = "text-sm"
   startTxt = "VITE_START=" <> slug <> " pnpm dev"
+  gitpodGoto = ".%2Fsrc%2FExamples%2F" <> slug <> ".purs"
 
 psCodeWithLink :: forall lock payload. ExampleADT -> Domable lock payload
 psCodeWithLink = psCodeWithLink' "" empty
