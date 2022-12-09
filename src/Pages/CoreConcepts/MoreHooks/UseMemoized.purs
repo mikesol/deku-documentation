@@ -90,7 +90,7 @@ useMemoized = section
           , D.code__ "false"
           , text_ "s is responding to a "
           , D.i__ "different"
-          , text_ "event with the following type:"
+          , text_ " event with the following type:"
           ]
       , psCode
           """{ a :: Boolean
