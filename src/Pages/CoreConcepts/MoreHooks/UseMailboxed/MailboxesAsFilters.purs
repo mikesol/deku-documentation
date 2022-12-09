@@ -25,7 +25,7 @@ mailboxesAsFilters = subsection
           [ text_ "A mailbox is similar to the "
           , D.code__ "useState'"
           , text_
-              " hook. However, the left and right side of the bound value are different."
+              " hook. However, the left and right side of the returned value are different."
           ]
       , D.ol_
           [ D.li_
