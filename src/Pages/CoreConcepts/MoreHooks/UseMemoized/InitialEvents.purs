@@ -38,7 +38,7 @@ initialEvents = subsection
   , matter: pure
       [ D.p_
           [ text_
-              "In some cases, it does not make sense to have an initial event, for example if you're building a question-answer app that needs to perform a computation and compute the response. In these cases, you can use "
+              "Sometimes, it does not make sense to have an initial event, for example if you're building a question-answer app that needs to perform a computation and compute the response. In these cases, you can use "
           , D.code__ "useMemoized'"
           , text_
               ". This hook provides the opportunity to map over the internal event, and it is the result of the mapped computation that is memoized."
