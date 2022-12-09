@@ -2,7 +2,7 @@ module Pages.FRP.Events.Definition.SubscriptionAndUnsubscriptionEffects where
 
 import Prelude
 
-import Components.Code (psCode)
+import Components.Code (psCode, psCodeWithLink)
 import Contracts (Subsection, subsection)
 import Deku.Attribute ((!:=))
 import Deku.Attributes (klass_)
@@ -12,6 +12,7 @@ import Effect (Effect)
 import Effect.Random (random)
 import Effect.Ref (new, read, write)
 import Effect.Timer (clearInterval, setInterval)
+import Examples as Examples
 import QualifiedDo.Alt as Alt
 import Web.DOM.Document (createElement, createTextNode)
 import Web.DOM.Element (setAttribute, toEventTarget, toNode)
@@ -20,7 +21,7 @@ import Web.DOM.Text as TN
 import Web.Event.Event (EventType(..))
 import Web.Event.EventTarget (addEventListener, eventListener)
 import Web.HTML (window)
-import Web.HTML.HTMLDocument (body, toDocument)
+import Web.HTML.HTMLDocument (toDocument)
 import Web.HTML.HTMLDocument (toDocument)
 import Web.HTML.Window (document)
 
@@ -35,48 +36,7 @@ subscriptionAndUnsubscriptionEffects = subsection
           [ text_
               "To get a better sense of how these subscription and unsubscription effects work in practice, let's create a small PureScript program that uses an event to update the DOM. The program uses the raw DOM API without any frameworks. In doing so, we'll see how the event contract plays out step by step."
           ]
-      , psCode
-          """type Event a = (a -> Effect Unit) -> Effect (Effect Unit)
-
-main :: Effect Unit
-main = do
-  bod <- window >>= document >>= body >>= maybe
-    (throwError $ error "Could not find body")
-    pure
-  doc <- window >>= document <#> toDocument
-  anchor <- createElement "a" doc
-  setAttribute "class" "cursor-pointer" anchor
-  setTextContent "Turn on event" (toNode anchor)
-  txt <- createTextNode " " doc
-  div <- createElement "div" doc
-  setAttribute "style" "hidden" div
-  appendChild (toNode anchor) (toNode bod)
-  appendChild (TN.toNode txt) (toNode bod)
-  appendChild (toNode div) (toNode bod)
-  onOff <- new false
-  unsubscribe <- new (pure unit)
-  let
-    (event :: Event Number) = \callback -> do
-      random >>= callback
-      i <- setInterval 400 do
-        random >>= callback
-      pure do
-        clearInterval i
-  el <- eventListener \_ -> do
-    read onOff >>= case _ of
-      false -> do
-        u <- event \v -> setTextContent (show v) (toNode div)
-        write u unsubscribe
-        write true onOff
-        setTextContent "Turn off event" (toNode anchor)
-      true -> do
-        u <- read unsubscribe
-        u
-        write false onOff
-        setTextContent "Turn on event" (toNode anchor)
-  addEventListener (EventType "click") el true
-    (toEventTarget anchor)
-"""
+      , psCodeWithLink Examples.HandRolledEvent
       , D.blockquote
           Alt.do
             klass_ "not-italic"

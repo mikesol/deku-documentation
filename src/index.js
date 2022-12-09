@@ -73,6 +73,7 @@ import * as MemoizedNoEvent from 'PureScript/Examples.MemoizedNoEvent/index.js'
 import * as WhenToFixAndWhenToFold from 'PureScript/Examples.WhenToFixAndWhenToFold/index.js'
 import * as UsingAHookToControlPresence from 'PureScript/Examples.UsingAHookToControlPresence/index.js'
 import * as RemovingElements from 'PureScript/Examples.RemovingElements/index.js'
+import * as HandRolledEvent from 'PureScript/Examples.HandRolledEvent/index.js'
 import * as UnsafeCustomElement from 'PureScript/Examples.UnsafeCustomElement/index.js'
 import * as SeveralLagsUsingFix from 'PureScript/Examples.SeveralLagsUsingFix/index.js'
 import * as EventsAsSemigroups from 'PureScript/Examples.EventsAsSemigroups/index.js'
@@ -226,6 +227,8 @@ toStart === 'UnMemoizedApplication'
   ? UsingAHookToControlPresence.main()
   : toStart === 'RemovingElements'
   ? RemovingElements.main()
+  : toStart === 'HandRolledEvent'
+  ? HandRolledEvent.main()
   : toStart === 'UnsafeCustomElement'
   ? UnsafeCustomElement.main()
   : toStart === 'SeveralLagsUsingFix'

@@ -75,6 +75,7 @@ foreign import memoizedNoEventURL :: String
 foreign import whenToFixAndWhenToFoldURL :: String
 foreign import usingAHookToControlPresenceURL :: String
 foreign import removingElementsURL :: String
+foreign import handRolledEventURL :: String
 foreign import unsafeCustomElementURL :: String
 foreign import severalLagsUsingFixURL :: String
 foreign import eventsAsSemigroupsURL :: String
@@ -154,6 +155,7 @@ newtype Examples = Examples {
  whenToFixAndWhenToFold :: String,
  usingAHookToControlPresence :: String,
  removingElements :: String,
+ handRolledEvent :: String,
  unsafeCustomElement :: String,
  severalLagsUsingFix :: String,
  eventsAsSemigroups :: String,
@@ -236,12 +238,13 @@ examples = Examples {
  whenToFixAndWhenToFold: whenToFixAndWhenToFoldURL,
  usingAHookToControlPresence: usingAHookToControlPresenceURL,
  removingElements: removingElementsURL,
+ handRolledEvent: handRolledEventURL,
  unsafeCustomElement: unsafeCustomElementURL,
  severalLagsUsingFix: severalLagsUsingFixURL,
  eventsAsSemigroups: eventsAsSemigroupsURL,
  altAsAMuxer: altAsAMuxerURL
  }
-data ExampleADT = UnMemoizedApplication | FilteringAnEvent | UsingTheOriginalEvent | EventsAsSemirings | UsingTheHookToSwitchBetweenElements | RowPolymorphismAndProviders | AddingAttributes | BiasingASideOfSampling | TheCreatePureEffect | SamplingABehaviorAndDiscardingTheEvent | BehaviorsVersusFlapping | InjectingDependencies | CompactingEvents | EmptyUntilFull | RunSSR | ASimpleComponent | AddingSeveralElementsToPursx | TheLemmingEvent | UseMailboxed | AddingAnAttributeToPursx | ComponentsAsSemigroups | GroupsOfGroups | TheOneOfFunction | TheGlobalPortalSyntax | GatingEventsOnBehaviors | EffectsInSSR | UsingFunctionsAsMonads | TheKeepLatestFunction | ASimpleCounter | GlobalHandlers | EventsAsRings | AddingSeveralAttributesToPursx | SamplingABehaviorWithAnEvent | KnowThySelfT | ShorthandListeners | ANoteOnMemoization | OptimizedEventCreation | TheTemporalityOfPure | AddingCustomElements | OptimizedEventFunctions | ComponentsAsMonoids | ALagUsingFix | AddingASingleElementToPursx | PlainOldHtml | UsingAnEffect | KnowThySelf | UnsafePursx | TheLocalPortalSyntax | BooleanLogicOnEvents | HowSamplingWorks | UnlockingLevels | UseDyn | IntegratingBehaviors | HelloWorldCode | InsertingInADifferentOrder | MultipleSubscriptions | TheStateHook | InterComponentCommunication | EventsAsMonoids | DerivingBehaviors | SolvingDifferentialEquations | UsingTheHookInAnAttribute | PassingAroundHooks | SwitchingOnBehaviors | GroupingComponents | FlippingTheFunctionAndArgument | MovingElements | MockDiscord | SamplingABehaviorWithACustomFunction | MemoizedApplication | MemoizedNoEvent | WhenToFixAndWhenToFold | UsingAHookToControlPresence | RemovingElements | UnsafeCustomElement | SeveralLagsUsingFix | EventsAsSemigroups | AltAsAMuxer 
+data ExampleADT = UnMemoizedApplication | FilteringAnEvent | UsingTheOriginalEvent | EventsAsSemirings | UsingTheHookToSwitchBetweenElements | RowPolymorphismAndProviders | AddingAttributes | BiasingASideOfSampling | TheCreatePureEffect | SamplingABehaviorAndDiscardingTheEvent | BehaviorsVersusFlapping | InjectingDependencies | CompactingEvents | EmptyUntilFull | RunSSR | ASimpleComponent | AddingSeveralElementsToPursx | TheLemmingEvent | UseMailboxed | AddingAnAttributeToPursx | ComponentsAsSemigroups | GroupsOfGroups | TheOneOfFunction | TheGlobalPortalSyntax | GatingEventsOnBehaviors | EffectsInSSR | UsingFunctionsAsMonads | TheKeepLatestFunction | ASimpleCounter | GlobalHandlers | EventsAsRings | AddingSeveralAttributesToPursx | SamplingABehaviorWithAnEvent | KnowThySelfT | ShorthandListeners | ANoteOnMemoization | OptimizedEventCreation | TheTemporalityOfPure | AddingCustomElements | OptimizedEventFunctions | ComponentsAsMonoids | ALagUsingFix | AddingASingleElementToPursx | PlainOldHtml | UsingAnEffect | KnowThySelf | UnsafePursx | TheLocalPortalSyntax | BooleanLogicOnEvents | HowSamplingWorks | UnlockingLevels | UseDyn | IntegratingBehaviors | HelloWorldCode | InsertingInADifferentOrder | MultipleSubscriptions | TheStateHook | InterComponentCommunication | EventsAsMonoids | DerivingBehaviors | SolvingDifferentialEquations | UsingTheHookInAnAttribute | PassingAroundHooks | SwitchingOnBehaviors | GroupingComponents | FlippingTheFunctionAndArgument | MovingElements | MockDiscord | SamplingABehaviorWithACustomFunction | MemoizedApplication | MemoizedNoEvent | WhenToFixAndWhenToFold | UsingAHookToControlPresence | RemovingElements | HandRolledEvent | UnsafeCustomElement | SeveralLagsUsingFix | EventsAsSemigroups | AltAsAMuxer 
 exampleToString :: ExampleADT -> String
 exampleToString UnMemoizedApplication = (unwrap examples).unMemoizedApplication
 exampleToString FilteringAnEvent = (unwrap examples).filteringAnEvent
@@ -317,6 +320,7 @@ exampleToString MemoizedNoEvent = (unwrap examples).memoizedNoEvent
 exampleToString WhenToFixAndWhenToFold = (unwrap examples).whenToFixAndWhenToFold
 exampleToString UsingAHookToControlPresence = (unwrap examples).usingAHookToControlPresence
 exampleToString RemovingElements = (unwrap examples).removingElements
+exampleToString HandRolledEvent = (unwrap examples).handRolledEvent
 exampleToString UnsafeCustomElement = (unwrap examples).unsafeCustomElement
 exampleToString SeveralLagsUsingFix = (unwrap examples).severalLagsUsingFix
 exampleToString EventsAsSemigroups = (unwrap examples).eventsAsSemigroups
@@ -396,6 +400,7 @@ exampleToSlug MemoizedNoEvent = "MemoizedNoEvent"
 exampleToSlug WhenToFixAndWhenToFold = "WhenToFixAndWhenToFold"
 exampleToSlug UsingAHookToControlPresence = "UsingAHookToControlPresence"
 exampleToSlug RemovingElements = "RemovingElements"
+exampleToSlug HandRolledEvent = "HandRolledEvent"
 exampleToSlug UnsafeCustomElement = "UnsafeCustomElement"
 exampleToSlug SeveralLagsUsingFix = "SeveralLagsUsingFix"
 exampleToSlug EventsAsSemigroups = "EventsAsSemigroups"

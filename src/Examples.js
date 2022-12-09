@@ -72,6 +72,7 @@ import memoizedNoEvent from '../../src/Examples/MemoizedNoEvent.purs?raw'
 import whenToFixAndWhenToFold from '../../src/Examples/WhenToFixAndWhenToFold.purs?raw'
 import usingAHookToControlPresence from '../../src/Examples/UsingAHookToControlPresence.purs?raw'
 import removingElements from '../../src/Examples/RemovingElements.purs?raw'
+import handRolledEvent from '../../src/Examples/HandRolledEvent.purs?raw'
 import unsafeCustomElement from '../../src/Examples/UnsafeCustomElement.purs?raw'
 import severalLagsUsingFix from '../../src/Examples/SeveralLagsUsingFix.purs?raw'
 import eventsAsSemigroups from '../../src/Examples/EventsAsSemigroups.purs?raw'
@@ -153,6 +154,7 @@ export const memoizedNoEventURL = memoizedNoEvent
 export const whenToFixAndWhenToFoldURL = whenToFixAndWhenToFold
 export const usingAHookToControlPresenceURL = usingAHookToControlPresence
 export const removingElementsURL = removingElements
+export const handRolledEventURL = handRolledEvent
 export const unsafeCustomElementURL = unsafeCustomElement
 export const severalLagsUsingFixURL = severalLagsUsingFix
 export const eventsAsSemigroupsURL = eventsAsSemigroups
