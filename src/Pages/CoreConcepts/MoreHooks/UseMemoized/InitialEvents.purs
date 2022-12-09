@@ -34,7 +34,7 @@ sm:text-sm"""
 
 initialEvents :: forall lock payload. Subsection lock payload
 initialEvents = subsection
-  { title: "Without an event"
+  { title: "Memoizing without an initial event"
   , matter: pure
       [ D.p_
           [ text_
