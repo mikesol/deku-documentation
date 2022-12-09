@@ -20,7 +20,7 @@ import QualifiedDo.Alt as Alt
 
 useMemoized :: forall lock payload. Section lock payload
 useMemoized = section
-  { title: "Use memoized"
+  { title: "The case for memoization"
   , topmatter: pure
       [ D.p_
           [ text_ "So far, we've worked with hooks like "
