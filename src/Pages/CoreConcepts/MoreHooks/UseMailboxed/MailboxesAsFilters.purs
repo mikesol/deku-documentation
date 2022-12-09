@@ -2,7 +2,7 @@ module Pages.CoreConcepts.MoreHooks.UseMailboxed.MailboxesAsFilters where
 
 import Prelude
 
-import Components.Code (psCodeWithLink)
+import Components.Code (psCode, psCodeWithLink)
 import Components.ExampleBlockquote (exampleBlockquote)
 import Contracts (Env(..), Subsection, subsection)
 import Control.Alt ((<|>))
@@ -22,10 +22,10 @@ mailboxesAsFilters = subsection
   { title: "Hello mailbox"
   , matter: pure
       [ D.p_
-          [ text_ "A mailbox is similar to the "
+          [ text_ "A mailbox hook is similar to the "
           , D.code__ "useState'"
           , text_
-              " hook. However, the left and right side of the returned value are different."
+              " hook."], psCode """pusher /\ eventCreator <- useMailboxed""", D.p_ [text_ "However, the left and right side of the returned value are different."
           ]
       , D.ol_
           [ D.li_
@@ -44,14 +44,14 @@ mailboxesAsFilters = subsection
               ]
           ]
       , D.p_
-          [ text_ "Then, when used, the mailbox delivers payloads of type "
+          [ text_ "When the pusher is pushed to, the mailbox delivers payloads of type "
           , D.code__ "b"
           , text_ " "
           , D.i__ "only to"
           , text_
-              " events that have been created with by invoking the function with the same term of type "
+              " events that have been created with by invoking the event creator with the same term of type "
           , D.code__ "a"
-          , text_ " as was received for the "
+          , text_ " that was received by the pusher as an "
           , D.code__ "address"
           , text_ ". You can see an example below."
           ]
