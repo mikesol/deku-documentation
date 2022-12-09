@@ -27,7 +27,7 @@ sm:text-sm"""
 
 transformedEvents :: forall lock payload. Subsection lock payload
 transformedEvents = subsection
-  { title: "From an event"
+  { title: "The useMemoized hook"
   , matter: pure
       [ D.p_
           [ text_
