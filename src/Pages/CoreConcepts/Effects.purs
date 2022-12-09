@@ -58,7 +58,7 @@ effects = page
           ]
       , D.p_
           [ text_
-              "While these patterns are possible in Deku, the framework prefers an alternate model of effect management where side effects are completely determined by the enclosing scope. For example, if there is a component X that requires the result of effect Y and should perform effect Z when it leaves the page, that effect should be the responsibility of the element that controls the component's presence and absence."
+              "While these patterns are possible in Deku, the framework prefers an alternate model of effect management where side effects are completely determined by the enclosing scope. For example, if there is a component X that requires the result of effect Y in order to mount and should perform effect Z when it leaves the page, those effects should be the responsibility of the element that controls the component's presence and absence."
           ]
       , D.p_
           [ text_
