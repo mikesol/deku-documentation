@@ -32,7 +32,7 @@ whatIsAFixedPoint = subsection
               "In functional programming, we tend to think of fixed points of systems, meaning how do systems converge after repeated application of some entity like a function. The standard pattern is to define "
           , D.code__ "fix"
           , text_
-              " as a function that takes a closure where some arbitrary unfoldable thing, let's call it "
+              " as a function that takes a closure where some arbitrary entity that can be repeatedly applied to a system's input or output, let's call it "
           , D.code__ "u"
           , text_ ", can be used, then returning "
           , D.code__ "u"
@@ -43,8 +43,8 @@ whatIsAFixedPoint = subsection
           [ text_ "As an example, let's consider a function of type "
           , D.code__ "(a -> b)"
           , text_
-              " as our unfoldable unit. That is, it unfolds with each application of "
-          , D.code__ "a"
+              " as our unit that will be repeatedly applied to an input. That is, it applies itself recursively to its input parameter until it converges at a term of type "
+          , D.code__ "b"
           , text_ ". We'll fix "
           , D.code__ "a"
           , text_ " as "
