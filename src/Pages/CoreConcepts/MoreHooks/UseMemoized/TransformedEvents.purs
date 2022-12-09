@@ -79,7 +79,7 @@ transformedEvents = subsection
           , text_ " will draw from the "
           , D.i__ "same"
           , text_
-              " event. This can help avoid lag, especially when working in a rendering loop that needs to execute at 60fps."
+              " event. This can help avoid lag, especially when belaboring under the constraint of a rendering loop that needs to execute at 60fps."
           ]
       ]
   }
