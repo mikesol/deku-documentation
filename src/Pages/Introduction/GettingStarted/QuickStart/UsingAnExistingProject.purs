@@ -30,10 +30,8 @@ usingAnExistingProject = subsection
                     "PureScript uses package sets to make sure that a codebase has a coherent set of packages. This documentation works for Deku version "
                 , D.code__ "0.9.8"
                 , text_
-                    " onwards, so if you'd like to use most of the conventions from this documentation, make sure to work with a package set that's made on or after December 9, 2022 (AD). You can update your package set in the "
-                , D.code__ "packages.dhall"
-                , text_ " file that is created when you run."
-                , D.code__ "spago init"
+                    " onwards, so if you'd like to use most of the conventions from this documentation, make sure to work with a package set that's made on or after December 9, 2022 (AD). You can update your package set by running "
+                , D.code__ "spago upgrade-set"
                 , text_ "."
                 ]
           }
