@@ -101,7 +101,7 @@ useMemoized = section
 }"""
       , D.p_
           [ text_
-              "While each of these events will have the same content, computing them from their constituent events wastes CPU and can be a drain on your app. To solve this, we use "
+              "While each of these events will have the same content, computing them from their constituent events wastes precious CPU cycles and can be a drain on your app. To solve this, we use "
           , D.b__ "memoization"
           , text_ "."
           ]
