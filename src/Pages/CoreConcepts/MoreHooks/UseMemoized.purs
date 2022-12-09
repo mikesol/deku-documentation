@@ -35,7 +35,7 @@ useMemoized = section
           , text_ " and "
           , D.code__ "useHot"
           , text_
-              "), the subscriptions to the events are mutualized. That means that the same source acts as the source for all downstream consumers."
+              "), the subscriptions to the events are mutualized. That means that the same event acts as the source for all downstream consumers."
           ]
       , D.p_
           [ text_
