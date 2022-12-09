@@ -15,14 +15,21 @@ import Deku.Toplevel (runInBody)
 import Effect (Effect)
 import QualifiedDo.Alt as Alt
 
+buttonClass =
+  """inline-flex items-center rounded-md
+border border-transparent bg-indigo-600 px-3 py-2
+text-sm font-medium leading-4 text-white shadow-sm
+hover:bg-indigo-700 focus:outline-none focus:ring-2
+focus:ring-indigo-500 focus:ring-offset-2 mr-6""" :: String
+
 main :: Effect Unit
 main = runInBody Deku.do
   setInt /\ int <- useState 0
   setMailbox /\ mailbox <- useMailboxed
   D.div_
-    [ D.a
+    [ D.button
         Alt.do
-          klass_ "cursor-pointer"
+          klass_ buttonClass
           click $ int <#> \i -> do
             setMailbox { address: i, payload: unit }
             setInt ((i + 1) `mod` 100)
