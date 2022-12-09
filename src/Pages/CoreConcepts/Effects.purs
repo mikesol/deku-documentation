@@ -62,7 +62,7 @@ effects = page
           ]
       , D.p_
           [ text_
-              "That being said, there are ways to get around this that come in handy in a pinch! This section will explore the Deku effect's philosophy and also present some methods to use when you need tools closer to the React/Halogen model."
+              "This section will explore Deku's effect philosophy and also present some methods to use when you need tools closer to the React/Halogen model."
           ]
       ]
   , sections:
