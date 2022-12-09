@@ -39,7 +39,7 @@ useMemoized = section
           ]
       , D.p_
           [ text_
-              "If you start working with events by composing them together, then subscriptions to the composed events "
+              "On the other hand, if you start working with events by composing them together, the subscriptions to those composed events "
           , D.i__ "will not"
           , text_
               " be memoized. As an example, take the following snippet of code:"
