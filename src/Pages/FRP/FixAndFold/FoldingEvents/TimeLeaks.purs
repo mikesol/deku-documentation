@@ -152,7 +152,7 @@ timeLeaks = subsection
           ]
       , D.p_
           [ text_
-              "There is an important semantic distinction between the first and second examples that leads to this outcome. In the first example, we're creating a fixed point for a type of "
+              "There's an important semantic distinction between the first and second examples that leads to this outcome. In the first example, we're creating a fixed point for a type of "
           , D.code__ "Effect b"
           , text_
               ". This is all well and good, but look at how we're using it. We're left binding it, then running an effectful computation "
