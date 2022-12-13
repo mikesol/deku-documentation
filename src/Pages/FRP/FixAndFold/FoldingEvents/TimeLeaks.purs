@@ -11,7 +11,6 @@ import Control.Bind (bindFlipped)
 import Data.Tuple.Nested ((/\))
 import Deku.Attributes (klass_)
 import Deku.Control (text, text_)
-import Deku.Control (text_)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState)
@@ -19,7 +18,6 @@ import Deku.Listeners (click_)
 import Effect (Effect)
 import Examples as Examples
 import FRP.Event (Event, fix, fold, sampleOnRight)
-import FRP.Event (fold)
 import FRP.Event.Effect (bindToEffect)
 import QualifiedDo.Alt as Alt
 import Router.ADT (Route(..))
