@@ -58,6 +58,7 @@ import * as MultipleSubscriptions from 'PureScript/Examples.MultipleSubscription
 import * as TheStateHook from 'PureScript/Examples.TheStateHook/index.js'
 import * as InterComponentCommunication from 'PureScript/Examples.InterComponentCommunication/index.js'
 import * as EventsAsMonoids from 'PureScript/Examples.EventsAsMonoids/index.js'
+import * as FoldEffect from 'PureScript/Examples.FoldEffect/index.js'
 import * as DerivingBehaviors from 'PureScript/Examples.DerivingBehaviors/index.js'
 import * as SolvingDifferentialEquations from 'PureScript/Examples.SolvingDifferentialEquations/index.js'
 import * as UsingTheHookInAnAttribute from 'PureScript/Examples.UsingTheHookInAnAttribute/index.js'
@@ -197,6 +198,8 @@ toStart === 'UnMemoizedApplication'
   ? InterComponentCommunication.main()
   : toStart === 'EventsAsMonoids'
   ? EventsAsMonoids.main()
+  : toStart === 'FoldEffect'
+  ? FoldEffect.main()
   : toStart === 'DerivingBehaviors'
   ? DerivingBehaviors.main()
   : toStart === 'SolvingDifferentialEquations'

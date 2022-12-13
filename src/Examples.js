@@ -57,6 +57,7 @@ import multipleSubscriptions from '../../src/Examples/MultipleSubscriptions.purs
 import theStateHook from '../../src/Examples/TheStateHook.purs?raw'
 import interComponentCommunication from '../../src/Examples/InterComponentCommunication.purs?raw'
 import eventsAsMonoids from '../../src/Examples/EventsAsMonoids.purs?raw'
+import foldEffect from '../../src/Examples/FoldEffect.purs?raw'
 import derivingBehaviors from '../../src/Examples/DerivingBehaviors.purs?raw'
 import solvingDifferentialEquations from '../../src/Examples/SolvingDifferentialEquations.purs?raw'
 import usingTheHookInAnAttribute from '../../src/Examples/UsingTheHookInAnAttribute.purs?raw'
@@ -138,6 +139,7 @@ export const multipleSubscriptionsURL = multipleSubscriptions
 export const theStateHookURL = theStateHook
 export const interComponentCommunicationURL = interComponentCommunication
 export const eventsAsMonoidsURL = eventsAsMonoids
+export const foldEffectURL = foldEffect
 export const derivingBehaviorsURL = derivingBehaviors
 export const solvingDifferentialEquationsURL = solvingDifferentialEquations
 export const usingTheHookInAnAttributeURL = usingTheHookInAnAttribute
