@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "vite dev",
+    "test": "spago test",
     "gitpod": "spago build",
     "format": "purs-tidy format-in-place src/**/*.purs && prettier --write ./src/",
     "build": "spago -x prod.dhall build && vite build"
