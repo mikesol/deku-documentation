@@ -15,17 +15,16 @@ main :: Effect Unit
 main = runInBody do
   let
     ms = 967
-    lyrics =
-      [ "Work it" /\ 0
-      , "Make it" /\ 1
-      , "Do it" /\ 2
-      , "Makes us" /\ 3
-      , "Harder" /\ 8
-      , "Better" /\ 9
-      , "Faster" /\ 10
-      , "Stronger" /\ 11
-      ]
     loop = 16 * ms
-    beat (w /\ t) =
-      delay (t * ms) (pure w <|> (interval loop $> w))
-  text (oneOf (beat <$> lyrics))
+    beat w t = delay (t * ms) (pure w <|> (interval loop $> w))
+  text $ oneOf 
+    [ beat "Work it" 0
+    , beat "Make it" 1
+    , beat "Do it" 2
+    , beat "Makes us" 3
+    , beat "Harder" 8
+    , beat "Better" 9
+    , beat "Faster" 10
+    , beat "Stronger" 11
+    ]
+
