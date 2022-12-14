@@ -40,14 +40,12 @@ main = do
               Alt.do
                 klass_ $ buttonClass "pink"
                 click_ $ random >>= setNumber
-              [ text_ "A"
-              ]
+              [ text_ "A" ]
           , D.button
               Alt.do
                 klass_ $ buttonClass "green"
                 click $ presence <#> not >>> setPresence
-              [ text_ "B"
-              ]
+              [ text_ "B" ]
           ]
       , D.div_
           [ guard presence

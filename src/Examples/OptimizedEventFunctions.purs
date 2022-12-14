@@ -48,7 +48,7 @@ so be sure to alternate between the buttons."""
             click_ (setInt n)
             klass_ buttonClass
           [ text_ ("Add " <> show n) ]
-    , D.div_ [ text $ (show <$> fold (+) 0 (dedup int)) ]
+    , D.div_ [ text (show <$> fold (+) 0 (dedup int)) ]
     , D.div_
         [ text_ "And check out this pure number! "
         , text_ $ show $ run do

@@ -30,14 +30,16 @@ focus:ring-COLOR-500 focus:ring-offset-2 mr-4"""
 main :: Effect Unit
 main = runInBody Deku.do
   setWord /\ word <- useState'
+  let
+    button text color = D.button
+      (klass_ (buttonClass color) <|> click_ (setWord text))
+      [ text_ text ]
   D.div_
-    [ D.div_ $
-        [ "Hickory" /\ "green"
-        , "Dickory" /\ "pink"
-        , "Dock" /\ "indigo"
-        ] <#> \(w /\ k) -> D.button
-          (klass_ (buttonClass k) <|> click_ (setWord w))
-          [ text_ w ]
+    [ D.div_
+        [ button "Hickory" "green"
+        , button "Dickory" "pink"
+        , button "Dock" "indigo"
+        ]
     , D.div_
         [ text_ "Previous word: "
         , text
