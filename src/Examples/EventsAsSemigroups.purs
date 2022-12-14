@@ -24,15 +24,17 @@ main :: Effect Unit
 main = runInBody Deku.do
   setKlass1 /\ klass1 <- useState "text-sm"
   setKlass2 /\ klass2 <- useState "text-green-500"
+  let
+    button setter text = D.button
+      (klass_ buttonClass <|> click_ (setter text))
+      [ text_ text ]
   D.div_
     [ D.div_ $
-        [ setKlass1 /\ "text-2xl"
-        , setKlass1 /\ "text-sm"
-        , setKlass2 /\ "text-orange-500"
-        , setKlass2 /\ "text-green-300"
-        ] <#> \(f /\ k) -> D.button
-          (klass_ buttonClass <|> click_ (f k))
-          [ text_ k ]
+        [ button setKlass1 "text-2xl"
+        , button setKlass1 "text-sm"
+        , button setKlass2 "text-orange-500"
+        , button setKlass2 "text-green-300"
+        ]
     , D.div_
         [ D.span (klass (klass1 <> pure " " <> klass2))
             [ text_ "Hello!" ]

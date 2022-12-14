@@ -71,16 +71,18 @@ main :: Effect Unit
 main = runInBody Deku.do
   setP /\ p <- useState true
   setQ /\ q <- useState true
-  let tdTableClass = klass_ tableClass
+  let
+    tdTableClass = klass_ tableClass
+    button setter letter value = D.button
+        (klass_ buttonClass <|> click_ (setter value))
+        [ text_ (letter <> " = " <> show value) ]
   D.div_
     [ D.div_ $
-        [ setP /\ "P" /\ true
-        , setP /\ "P" /\ false
-        , setQ /\ "Q" /\ true
-        , setQ /\ "Q" /\ false
-        ] <#> \(f /\ n /\ k) -> D.button
-          (klass_ buttonClass <|> click_ (f k))
-          [ text_ (n <> " = " <> show k) ]
+        [ button setP "P" true
+        , button setP "P" false
+        , button setQ "Q" true
+        , button setQ "Q" false
+        ]
     , D.table (klass_ tableClass)
         [ D.tr_
             [ D.th (klass_ tableClass) [ text_ "Equation" ]

@@ -39,14 +39,15 @@ main = runInBody Deku.do
                 (pure Nothing <|> (fst <$> ev))
                 ((Tuple <<< Just) <$> lag (n - 1) e)
             )
+    button text color = D.button
+      (klass_ (buttonClass color) <|> click_ (setWord text))
+      [ text_ text ]
   D.div_
     [ D.div_ $
-        [ "Hickory" /\ "green"
-        , "Dickory" /\ "pink"
-        , "Dock" /\ "indigo"
-        ] <#> \(w /\ k) -> D.button
-          (klass_ (buttonClass k) <|> click_ (setWord w))
-          [ text_ w ]
+        [ button "Hickory" "green"
+        , button "Dickory" "pink"
+        , button "Dock" "indigo"
+        ]
     , D.div_ $ [ 0, 1, 2, 3, 4 ] <#> \n -> D.div_
         [ text_ $ "Word with a lag of " <> show n <> ": "
         , text (pure "None" <|> lag n word)
