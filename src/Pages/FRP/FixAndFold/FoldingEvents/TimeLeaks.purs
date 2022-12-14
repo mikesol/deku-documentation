@@ -49,7 +49,7 @@ timeLeaks = subsection
           ]
       , D.p_
           [ text_
-              "Time leaks is occur when the past has to be re-lived in its entirety to arrive at the present. As an example, consider the incrementing of a counter by one. There are two ways to think of this sequence:"
+              "Time leaks occur when the past has to be re-lived in its entirety to arrive at the present. As an example, consider the incrementing of a counter by one. There are two ways to think of this sequence:"
           ]
       , D.ul_
           [ D.li_ [ D.code__ "1 2 3 4 5 ..." ]
