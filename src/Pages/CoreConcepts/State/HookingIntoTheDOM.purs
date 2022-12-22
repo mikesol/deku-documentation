@@ -4,6 +4,7 @@ import Prelude
 
 import Contracts (Section, section)
 import Deku.DOM as D
+import Pages.CoreConcepts.State.HookingIntoTheDOM.UnsettingAnAttributeWithAHook (unsettingAnAttributeWithAHook)
 import Pages.CoreConcepts.State.HookingIntoTheDOM.UsingAHookToControlThePresenceOfElements (usingAHookToControlThePresenceOfElements)
 import Pages.CoreConcepts.State.HookingIntoTheDOM.UsingTheHookInAnAttribute (usingTheHookInAnAttribute)
 import Pages.CoreConcepts.State.HookingIntoTheDOM.UsingTheHookToSwitchBetweenElements (usingTheHookToSwitchBetweenElements)
@@ -17,6 +18,7 @@ hookingIntoTheDOM = section
       ]
   , subsections:
       [ usingTheHookInAnAttribute
+      , unsettingAnAttributeWithAHook
       , usingTheHookToSwitchBetweenElements
       , usingAHookToControlThePresenceOfElements
       ]

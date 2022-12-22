@@ -46,6 +46,7 @@ import usingAnEffect from '../../src/Examples/UsingAnEffect.purs?raw'
 import knowThySelf from '../../src/Examples/KnowThySelf.purs?raw'
 import unsafePursx from '../../src/Examples/UnsafePursx.purs?raw'
 import theLocalPortalSyntax from '../../src/Examples/TheLocalPortalSyntax.purs?raw'
+import unsettingAttributes from '../../src/Examples/UnsettingAttributes.purs?raw'
 import booleanLogicOnEvents from '../../src/Examples/BooleanLogicOnEvents.purs?raw'
 import howSamplingWorks from '../../src/Examples/HowSamplingWorks.purs?raw'
 import unlockingLevels from '../../src/Examples/UnlockingLevels.purs?raw'
@@ -128,6 +129,7 @@ export const usingAnEffectURL = usingAnEffect
 export const knowThySelfURL = knowThySelf
 export const unsafePursxURL = unsafePursx
 export const theLocalPortalSyntaxURL = theLocalPortalSyntax
+export const unsettingAttributesURL = unsettingAttributes
 export const booleanLogicOnEventsURL = booleanLogicOnEvents
 export const howSamplingWorksURL = howSamplingWorks
 export const unlockingLevelsURL = unlockingLevels
