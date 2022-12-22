@@ -74,8 +74,8 @@ main = runInBody Deku.do
   let
     tdTableClass = klass_ tableClass
     button setter letter value = D.button
-        (klass_ buttonClass <|> click_ (setter value))
-        [ text_ (letter <> " = " <> show value) ]
+      (klass_ buttonClass <|> click_ (setter value))
+      [ text_ (letter <> " = " <> show value) ]
   D.div_
     [ D.div_ $
         [ button setP "P" true

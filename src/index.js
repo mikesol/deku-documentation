@@ -47,6 +47,7 @@ import * as UsingAnEffect from 'PureScript/Examples.UsingAnEffect/index.js'
 import * as KnowThySelf from 'PureScript/Examples.KnowThySelf/index.js'
 import * as UnsafePursx from 'PureScript/Examples.UnsafePursx/index.js'
 import * as TheLocalPortalSyntax from 'PureScript/Examples.TheLocalPortalSyntax/index.js'
+import * as UnsettingAttributes from 'PureScript/Examples.UnsettingAttributes/index.js'
 import * as BooleanLogicOnEvents from 'PureScript/Examples.BooleanLogicOnEvents/index.js'
 import * as HowSamplingWorks from 'PureScript/Examples.HowSamplingWorks/index.js'
 import * as UnlockingLevels from 'PureScript/Examples.UnlockingLevels/index.js'
@@ -176,6 +177,8 @@ toStart === 'UnMemoizedApplication'
   ? UnsafePursx.main()
   : toStart === 'TheLocalPortalSyntax'
   ? TheLocalPortalSyntax.main()
+  : toStart === 'UnsettingAttributes'
+  ? UnsettingAttributes.main()
   : toStart === 'BooleanLogicOnEvents'
   ? BooleanLogicOnEvents.main()
   : toStart === 'HowSamplingWorks'
