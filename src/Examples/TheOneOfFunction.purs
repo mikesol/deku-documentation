@@ -17,7 +17,7 @@ main = runInBody do
     ms = 967
     loop = 16 * ms
     beat w t = delay (t * ms) (pure w <|> (interval loop $> w))
-  text $ oneOf 
+  text $ oneOf
     [ beat "Work it" 0
     , beat "Make it" 1
     , beat "Do it" 2
