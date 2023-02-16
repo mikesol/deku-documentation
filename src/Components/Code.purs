@@ -31,8 +31,8 @@ htmlCode code = D.pre (D.Class !:= "prism-code language-markup")
       ]
   ]
 
-bashCode :: forall lock payload. String -> Domable lock payload
-bashCode code = D.pre (D.Class !:= "prism-code language-bash")
+shSessionCode :: forall lock payload. String -> Domable lock payload
+shSessionCode code = D.pre (D.Class !:= "prism-code language-sh-session")
   [ D.code_
       [ text_ code
       ]
