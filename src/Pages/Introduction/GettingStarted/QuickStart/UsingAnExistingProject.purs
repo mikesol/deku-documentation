@@ -2,7 +2,7 @@ module Pages.Introduction.GettingStarted.QuickStart.UsingAnExistingProject where
 
 import Prelude
 
-import Components.Code (bashCode)
+import Components.Code (shSessionCode)
 import Components.Disclaimer (disclaimer)
 import Contracts (Subsection, subsection)
 import Deku.Control (text_)
@@ -16,12 +16,12 @@ usingAnExistingProject = subsection
           [ text_
               "If you have an existing project that does not yet have PureScript installed, you can install PureScript and related tooling with the following command."
           ]
-      , bashCode "npm install -D purescript spago purs-tidy && npx spago init"
+      , shSessionCode "$ npm install -D purescript spago purs-tidy && npx spago init"
       , D.p_
           [ text_
               "Once PureScript is installed, or if you're working from a project with PureScript already installed, you can install Deku with the following command."
           ]
-      , bashCode "npx spago install deku"
+      , shSessionCode "$ npx spago install deku"
       , disclaimer
           { header: text_ "Package sets"
           , message:

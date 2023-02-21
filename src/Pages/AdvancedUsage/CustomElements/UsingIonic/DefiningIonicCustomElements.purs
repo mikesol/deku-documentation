@@ -2,7 +2,7 @@ module Pages.AdvancedUsage.CustomElements.UsingIonic.DefiningIonicCustomElements
 
 import Prelude
 
-import Components.Code (bashCode, jsCode)
+import Components.Code (jsCode, shSessionCode)
 import Contracts (Subsection, subsection)
 import Deku.Attribute ((!:=))
 import Deku.Control (text_)
@@ -18,7 +18,7 @@ definingIonicCustomElements = subsection
           , D.code__ "wc-discord-message"
           , text_ ", that'd be:"
           ]
-      , bashCode """pnpm i wc-discord-message"""
+      , shSessionCode """$ pnpm i wc-discord-message"""
       , D.p__ "And then:"
       , jsCode
           """import { applyPolyfills, defineCustomElements } from 'wc-discord-message/loader'

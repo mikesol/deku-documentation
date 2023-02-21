@@ -2,7 +2,7 @@ module Pages.CoreConcepts.Pursx.ASimpleExample.TypeSafety where
 
 import Prelude
 
-import Components.Code (bashCode, psCode)
+import Components.Code (psCode, shSessionCode)
 import Contracts (Subsection, subsection)
 import Deku.Control (text_)
 import Deku.DOM as D
@@ -55,7 +55,7 @@ typeSafety = subsection
 main = runInBody ((Proxy :: Proxy
     "<h1><span>hi<span></h1>") ~~ {})"""
       , D.p_ [ text_ "The compiler complains with the following message." ]
-      , bashCode
+      , shSessionCode
           """  Could not match type
 
     "h1"

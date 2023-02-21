@@ -1,7 +1,7 @@
 module Pages.Introduction.GettingStarted.QuickStart.StartingANewProject where
 
 
-import Components.Code (bashCode)
+import Components.Code (shSessionCode)
 import Contracts (Env(..), Subsection, subsection)
 import Deku.Attributes (klass_)
 import Deku.Control (text_)
@@ -17,7 +17,7 @@ startingANewProject = subsection
           , D.code_ [ text_ "create-deku-app" ]
           , text_ "."
           ]
-      , bashCode "npx create-deku-app my-awesome-app"
+      , shSessionCode "$ npx create-deku-app my-awesome-app"
       , D.p_
           [ text_
               "This will create a new Deku app in the directory "
@@ -31,7 +31,7 @@ startingANewProject = subsection
           [ text_
               "Just by doing this, you already have a full-fledged Deku app at the tips of your fingers. You can fire it up like so."
           ]
-      , bashCode "cd my-awesome-app && npx spago install && npm run dev"
+      , shSessionCode "$ cd my-awesome-app && npx spago install && npm run dev"
       , D.p_
           [ text_
               "Then, visit the link displayed in your terminal (usually "
