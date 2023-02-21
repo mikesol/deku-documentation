@@ -20,6 +20,7 @@ import Deku.Core (envy)
 import Deku.Do as Deku
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
+import Effect.Class.Console (logShow)
 import Effect.Ref as Ref
 import FRP.Dedup (dedup)
 import FRP.Event (create, fold, mailboxed, memoize, subscribe)
@@ -66,6 +67,7 @@ getScrolledSection startingAt f = go ScrollCheckStart startingAt startingAt
 
 main :: Effect Unit
 main = do
+  clickedSection <- Ref.new Nothing
   currentRouteMailbox <- create
   previousRouteMailbox <- create
   currentRoute <- create
@@ -128,8 +130,13 @@ main = do
                 false ->
                   if maxBy < minAy then ScrolledCandidate ce else NotScrolled
         wasHere <- Ref.read currentSectionRef
-        goHere <- getScrolledSection wasHere toVerify
+        goHere <- Ref.read clickedSection >>= case _ of
+          Just goHere -> do
+            Ref.write Nothing clickedSection
+            pure goHere
+          Nothing -> getScrolledSection wasHere toVerify
         Ref.write goHere currentSectionRef
+        logShow { goHere }
         rightSideNavSelectE.push goHere
       changeListener newListener
   runInBody
@@ -141,7 +148,7 @@ main = do
         pageIs <- envy <<< mailboxed
           ({ address: _, payload: unit } <$> currentRouteMailbox.event)
         rightSideNavSelect <- envy <<< mailboxed
-          (({ address: _, payload: unit }) <$> (snd <$> rightSideLagged))
+          ({ address: _, payload: unit } <$> (snd <$> rightSideLagged))
         rightSideNavDeselect <- envy <<< mailboxed
           ({ address: _, payload: unit } <$> compact (fst <$> rightSideLagged))
         app
@@ -154,6 +161,7 @@ main = do
           , showBanner: dedup (eq GettingStarted <$> currentRoute.event)
           , setHeaderElement: headerElement.push
           , setRightSideNav: Just >>> rightSideNav.push
+          , clickedSection
           , darkModePreference: darkModePreferenceE.event
           }
     )

@@ -13,19 +13,21 @@ import Control.Monad.State (evalState, get, put, runState)
 import Control.Plus (empty)
 import DarkModePreference (DarkModePreference(..))
 import Data.Foldable (oneOf)
+import Data.Maybe (Maybe(..))
 import Data.Newtype (unwrap)
 import Data.Traversable (traverse)
 import Data.Tuple (Tuple(..), fst, snd)
 import Data.Tuple.Nested (type (/\), (/\))
 import Deku.Attribute ((!:=))
 import Deku.Attributes (klass, klass_)
-import Deku.Control (blank, guard, switcher, text_)
+import Deku.Control (blank, switcher, text_)
 import Deku.Core (Domable)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState)
 import Deku.Listeners (click_)
 import Effect (Effect)
+import Effect.Ref as Ref
 import FRP.Event (Event)
 import Navigation (PushState)
 import Prism (forceHighlightAff)
@@ -46,6 +48,7 @@ app
      , pageIs :: Route -> Event Unit
      , pageWas :: Route -> Event Unit
      , pushState :: PushState
+     , clickedSection :: Ref.Ref (Maybe Int)
      }
   -> Domable lock payload
 app
@@ -59,6 +62,7 @@ app
   , pageIs
   , pageWas
   , pushState
+  , clickedSection
   } = Deku.do
   let
     env = Env
@@ -75,8 +79,9 @@ app
 
   let
     rightSideNavClass' darktxt i =
-      ( (rightSideNavSelect i $> true) <|>
-          (rightSideNavDeselect i $> false)
+      ( (rightSideNavSelect i $> true)
+          <|> (rightSideNavDeselect i $> false)
+          <|> (pure false)
       )
         <#>
           if _ then "text-sky-500"
@@ -255,13 +260,10 @@ app
                                                                     subsection.id
                                                                 )
                                                             , click_
-                                                                ( pure unit
-                                                                    :: Effect
-                                                                         Unit
+                                                                ( Ref.write
+                                                                    (Just j)
+                                                                    clickedSection
                                                                 )
-                                                            -- ( setRightSideNavSelect
-                                                            --     j
-                                                            -- )
                                                             ]
                                                         )
                                                         [ text_
@@ -283,13 +285,9 @@ app
                                                         , D.Href !:=
                                                             ("#" <> section.id)
                                                         , click_
-                                                            ( pure unit
-                                                                :: Effect Unit
+                                                            ( Ref.write (Just i)
+                                                                clickedSection
                                                             )
-                                                        -- ( setRightSideNavSelect
-                                                        --     i
-                                                        -- )
-
                                                         ]
                                                       )
                                                   )
