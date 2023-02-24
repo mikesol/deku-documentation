@@ -11,7 +11,7 @@ import Effect (Effect)
 main :: Effect Unit
 main = runInBody mySimpleComponent
   where
-  -- `Nut` is a convenience alias for the type for components
+  -- `Nut` is an alias for the type of Deku components
   -- type Nut = forall lock payload. Domable lock payload
   mySimpleComponent :: Nut
   mySimpleComponent =
