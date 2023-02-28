@@ -34,6 +34,7 @@ foreign import globalHandlersURL :: String
 foreign import eventsAsRingsURL :: String
 foreign import addingSeveralAttributesToPursxURL :: String
 foreign import samplingABehaviorWithAnEventURL :: String
+foreign import useRefURL :: String
 foreign import knowThySelfTURL :: String
 foreign import shorthandListenersURL :: String
 foreign import aNoteOnMemoizationURL :: String
@@ -116,6 +117,7 @@ newtype Examples = Examples {
  eventsAsRings :: String,
  addingSeveralAttributesToPursx :: String,
  samplingABehaviorWithAnEvent :: String,
+ useRef :: String,
  knowThySelfT :: String,
  shorthandListeners :: String,
  aNoteOnMemoization :: String,
@@ -201,6 +203,7 @@ examples = Examples {
  eventsAsRings: eventsAsRingsURL,
  addingSeveralAttributesToPursx: addingSeveralAttributesToPursxURL,
  samplingABehaviorWithAnEvent: samplingABehaviorWithAnEventURL,
+ useRef: useRefURL,
  knowThySelfT: knowThySelfTURL,
  shorthandListeners: shorthandListenersURL,
  aNoteOnMemoization: aNoteOnMemoizationURL,
@@ -250,7 +253,7 @@ examples = Examples {
  eventsAsSemigroups: eventsAsSemigroupsURL,
  altAsAMuxer: altAsAMuxerURL
  }
-data ExampleADT = UnMemoizedApplication | FilteringAnEvent | UsingTheOriginalEvent | EventsAsSemirings | UsingTheHookToSwitchBetweenElements | RowPolymorphismAndProviders | AddingAttributes | BiasingASideOfSampling | TheCreatePureEffect | SamplingABehaviorAndDiscardingTheEvent | BehaviorsVersusFlapping | InjectingDependencies | CompactingEvents | EmptyUntilFull | RunSSR | ASimpleComponent | AddingSeveralElementsToPursx | TheLemmingEvent | UseMailboxed | AddingAnAttributeToPursx | ComponentsAsSemigroups | GroupsOfGroups | TheOneOfFunction | TheGlobalPortalSyntax | GatingEventsOnBehaviors | EffectsInSSR | UsingFunctionsAsMonads | TheKeepLatestFunction | ASimpleCounter | GlobalHandlers | EventsAsRings | AddingSeveralAttributesToPursx | SamplingABehaviorWithAnEvent | KnowThySelfT | ShorthandListeners | ANoteOnMemoization | OptimizedEventCreation | TheTemporalityOfPure | AddingCustomElements | OptimizedEventFunctions | ComponentsAsMonoids | ALagUsingFix | AddingASingleElementToPursx | PlainOldHtml | UsingAnEffect | KnowThySelf | UnsafePursx | TheLocalPortalSyntax | UnsettingAttributes | BooleanLogicOnEvents | HowSamplingWorks | UnlockingLevels | UseDyn | IntegratingBehaviors | HelloWorldCode | InsertingInADifferentOrder | MultipleSubscriptions | TheStateHook | InterComponentCommunication | EventsAsMonoids | FoldEffect | DerivingBehaviors | SolvingDifferentialEquations | UsingTheHookInAnAttribute | PassingAroundHooks | SwitchingOnBehaviors | GroupingComponents | FlippingTheFunctionAndArgument | MovingElements | MockDiscord | SamplingABehaviorWithACustomFunction | MemoizedApplication | MemoizedNoEvent | WhenToFixAndWhenToFold | UsingAHookToControlPresence | RemovingElements | HandRolledEvent | UnsafeCustomElement | SeveralLagsUsingFix | EventsAsSemigroups | AltAsAMuxer 
+data ExampleADT = UnMemoizedApplication | FilteringAnEvent | UsingTheOriginalEvent | EventsAsSemirings | UsingTheHookToSwitchBetweenElements | RowPolymorphismAndProviders | AddingAttributes | BiasingASideOfSampling | TheCreatePureEffect | SamplingABehaviorAndDiscardingTheEvent | BehaviorsVersusFlapping | InjectingDependencies | CompactingEvents | EmptyUntilFull | RunSSR | ASimpleComponent | AddingSeveralElementsToPursx | TheLemmingEvent | UseMailboxed | AddingAnAttributeToPursx | ComponentsAsSemigroups | GroupsOfGroups | TheOneOfFunction | TheGlobalPortalSyntax | GatingEventsOnBehaviors | EffectsInSSR | UsingFunctionsAsMonads | TheKeepLatestFunction | ASimpleCounter | GlobalHandlers | EventsAsRings | AddingSeveralAttributesToPursx | SamplingABehaviorWithAnEvent | UseRef | KnowThySelfT | ShorthandListeners | ANoteOnMemoization | OptimizedEventCreation | TheTemporalityOfPure | AddingCustomElements | OptimizedEventFunctions | ComponentsAsMonoids | ALagUsingFix | AddingASingleElementToPursx | PlainOldHtml | UsingAnEffect | KnowThySelf | UnsafePursx | TheLocalPortalSyntax | UnsettingAttributes | BooleanLogicOnEvents | HowSamplingWorks | UnlockingLevels | UseDyn | IntegratingBehaviors | HelloWorldCode | InsertingInADifferentOrder | MultipleSubscriptions | TheStateHook | InterComponentCommunication | EventsAsMonoids | FoldEffect | DerivingBehaviors | SolvingDifferentialEquations | UsingTheHookInAnAttribute | PassingAroundHooks | SwitchingOnBehaviors | GroupingComponents | FlippingTheFunctionAndArgument | MovingElements | MockDiscord | SamplingABehaviorWithACustomFunction | MemoizedApplication | MemoizedNoEvent | WhenToFixAndWhenToFold | UsingAHookToControlPresence | RemovingElements | HandRolledEvent | UnsafeCustomElement | SeveralLagsUsingFix | EventsAsSemigroups | AltAsAMuxer 
 exampleToString :: ExampleADT -> String
 exampleToString UnMemoizedApplication = (unwrap examples).unMemoizedApplication
 exampleToString FilteringAnEvent = (unwrap examples).filteringAnEvent
@@ -285,6 +288,7 @@ exampleToString GlobalHandlers = (unwrap examples).globalHandlers
 exampleToString EventsAsRings = (unwrap examples).eventsAsRings
 exampleToString AddingSeveralAttributesToPursx = (unwrap examples).addingSeveralAttributesToPursx
 exampleToString SamplingABehaviorWithAnEvent = (unwrap examples).samplingABehaviorWithAnEvent
+exampleToString UseRef = (unwrap examples).useRef
 exampleToString KnowThySelfT = (unwrap examples).knowThySelfT
 exampleToString ShorthandListeners = (unwrap examples).shorthandListeners
 exampleToString ANoteOnMemoization = (unwrap examples).aNoteOnMemoization
@@ -367,6 +371,7 @@ exampleToSlug GlobalHandlers = "GlobalHandlers"
 exampleToSlug EventsAsRings = "EventsAsRings"
 exampleToSlug AddingSeveralAttributesToPursx = "AddingSeveralAttributesToPursx"
 exampleToSlug SamplingABehaviorWithAnEvent = "SamplingABehaviorWithAnEvent"
+exampleToSlug UseRef = "UseRef"
 exampleToSlug KnowThySelfT = "KnowThySelfT"
 exampleToSlug ShorthandListeners = "ShorthandListeners"
 exampleToSlug ANoteOnMemoization = "ANoteOnMemoization"

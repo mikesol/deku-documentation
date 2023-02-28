@@ -6,6 +6,7 @@ import Contracts (Page, page)
 import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.DOM as D
+import Pages.CoreConcepts.MoreHooks.UseRef (useRef)
 import Pages.CoreConcepts.MoreHooks.UseMailboxed (useMailboxed)
 import Pages.CoreConcepts.MoreHooks.UseMemoized (useMemoized)
 import Router.ADT (Route(..))
@@ -19,9 +20,9 @@ moreHooks = page
           ]
       , D.p_
           [ text_
-              "You're not off the hook yet! There are two hooks that can make your apps snappier in certain situations. Read on!"
+              "You're not off the hook yet! Here are some more hooks that can make your apps snappier in certain situations. Read on!"
           ]
       ]
   , sections:
-      [ {-useHot,-} useMemoized, useMailboxed ]
+      [ useMemoized, useMailboxed, useRef ]
   }

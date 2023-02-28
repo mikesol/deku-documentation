@@ -8,7 +8,7 @@ with hyrule =
       [ "st", "js-timers", "unsafe-reference"
       ]
     , repo = "https://github.com/mikesol/purescript-hyrule.git"
-    , version = "v2.3.5"
+    , version = "v2.3.7"
     }
   with tidy =
     { dependencies =
@@ -30,6 +30,13 @@ with hyrule =
       ]
     , repo = "https://github.com/mikesol/purescript-pirates-charm.git"
     , version = "v0.0.1"
+    }
+  with bolson =
+    { dependencies =
+      [ "hyrule"
+      ]
+    , repo = "https://github.com/mikesol/purescript-bolson.git"
+    , version = "v0.3.2"
     }
   with deku =
     { dependencies =
@@ -64,5 +71,5 @@ with hyrule =
       , "web-uievents"
       ]
     , repo = "https://github.com/mikesol/purescript-deku.git"
-    , version = "v0.9.9"
+    , version = "v0.9.13"
     }
