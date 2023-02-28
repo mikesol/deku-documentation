@@ -3,13 +3,19 @@ module Examples.ASimpleComponent where
 import Prelude
 
 import Deku.Control (text_)
+import Deku.Core (Nut)
 import Deku.DOM as D
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
 
 main :: Effect Unit
-main = runInBody
-  ( D.div_
+main = runInBody mySimpleComponent
+  where
+  -- `Nut` is an alias for the type of Deku components
+  -- type Nut = forall lock payload. Domable lock payload
+  mySimpleComponent :: Nut
+  mySimpleComponent =
+    D.div_
       [ D.span__ "I exist"
       , D.ul_ $ map D.li__ [ "A", "B", "C" ]
       , D.div_
@@ -19,4 +25,3 @@ main = runInBody
           , D.b__ "baz"
           ]
       ]
-  )
