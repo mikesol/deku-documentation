@@ -80,7 +80,7 @@ whenToFixAndWhenToFold = subsection
                                     if n >= 375 then 15 else n + 15
                                 pure 0
                             ) <#> \_ -> Deku.do
-                            useDyn_
+                            _ <- useDyn_
                             text_ "•​"
                         )
                     ]

@@ -106,7 +106,7 @@ insertingInADifferentOrder = subsection
                 , dyn
                     $ map
                         ( \(Tuple p t) -> Deku.do
-                            useDyn p
+                            _ <- useDyn p
                             D.div_ [ text_ t ]
                         )
                         (Tuple <$> pos <|*> item)

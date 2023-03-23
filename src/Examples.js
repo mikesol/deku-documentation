@@ -22,6 +22,7 @@ import componentsAsSemigroups from "../../src/Examples/ComponentsAsSemigroups.pu
 import groupsOfGroups from "../../src/Examples/GroupsOfGroups.purs?raw"
 import theOneOfFunction from "../../src/Examples/TheOneOfFunction.purs?raw"
 import theGlobalPortalSyntax from "../../src/Examples/TheGlobalPortalSyntax.purs?raw"
+import customHook1 from "../../src/Examples/CustomHook1.purs?raw"
 import gatingEventsOnBehaviors from "../../src/Examples/GatingEventsOnBehaviors.purs?raw"
 import effectsInSSR from "../../src/Examples/EffectsInSSR.purs?raw"
 import usingFunctionsAsMonads from "../../src/Examples/UsingFunctionsAsMonads.purs?raw"
@@ -55,6 +56,8 @@ import useDyn from "../../src/Examples/UseDyn.purs?raw"
 import integratingBehaviors from "../../src/Examples/IntegratingBehaviors.purs?raw"
 import helloWorldCode from "../../src/Examples/HelloWorldCode.purs?raw"
 import insertingInADifferentOrder from "../../src/Examples/InsertingInADifferentOrder.purs?raw"
+import customHook2 from "../../src/Examples/CustomHook2.purs?raw"
+import nestedCustomHooks from "../../src/Examples/NestedCustomHooks.purs?raw"
 import multipleSubscriptions from "../../src/Examples/MultipleSubscriptions.purs?raw"
 import theStateHook from "../../src/Examples/TheStateHook.purs?raw"
 import interComponentCommunication from "../../src/Examples/InterComponentCommunication.purs?raw"
@@ -104,6 +107,7 @@ export const componentsAsSemigroupsURL = componentsAsSemigroups;
 export const groupsOfGroupsURL = groupsOfGroups;
 export const theOneOfFunctionURL = theOneOfFunction;
 export const theGlobalPortalSyntaxURL = theGlobalPortalSyntax;
+export const customHook1URL = customHook1;
 export const gatingEventsOnBehaviorsURL = gatingEventsOnBehaviors;
 export const effectsInSSRURL = effectsInSSR;
 export const usingFunctionsAsMonadsURL = usingFunctionsAsMonads;
@@ -137,6 +141,8 @@ export const useDynURL = useDyn;
 export const integratingBehaviorsURL = integratingBehaviors;
 export const helloWorldCodeURL = helloWorldCode;
 export const insertingInADifferentOrderURL = insertingInADifferentOrder;
+export const customHook2URL = customHook2;
+export const nestedCustomHooksURL = nestedCustomHooks;
 export const multipleSubscriptionsURL = multipleSubscriptions;
 export const theStateHookURL = theStateHook;
 export const interComponentCommunicationURL = interComponentCommunication;

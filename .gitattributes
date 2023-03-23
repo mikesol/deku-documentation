@@ -19,3 +19,5 @@ public/fonts/PinyonScript-Regular.woff2 filter=lfs diff=lfs merge=lfs -text
 assets/beluga.webp filter=lfs diff=lfs merge=lfs -text
 assets/beluga2.webp filter=lfs diff=lfs merge=lfs -text
 assets/belumom.webp filter=lfs diff=lfs merge=lfs -text
+assets/nicholson.jpg filter=lfs diff=lfs merge=lfs -text
+assets/cruise.jpg filter=lfs diff=lfs merge=lfs -text

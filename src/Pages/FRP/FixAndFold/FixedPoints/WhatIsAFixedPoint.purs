@@ -7,17 +7,14 @@ import Components.Table (tableClass)
 import Contracts (Subsection, subsection)
 import Control.Alt ((<|>))
 import Control.Lazy (fix)
-import Data.Number (log)
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute ((!:=))
 import Deku.Attributes (klass_)
 import Deku.Control (text_, (<#~>))
 import Deku.Core (dyn)
 import Deku.DOM as D
 import Deku.Do as Deku
-import Deku.Hooks (useDyn, useMailboxed, useState, useState')
+import Deku.Hooks (useDyn, useMailboxed, useState)
 import Deku.Listeners (click_)
-import Effect.Class.Console (logShow)
 
 whatIsAFixedPoint :: forall lock payload. Subsection lock payload
 whatIsAFixedPoint = subsection
@@ -120,7 +117,7 @@ myFunction = fix (\f a -> if a > 100 then 100 else f (a + 1))
               disactivatePreviousElt /\ previousElt <- useMailboxed
               dyn $ elt <#> \v ->
                 Deku.do
-                  useDyn (v + 1)
+                  _ <- useDyn (v + 1)
                   (pure true <|> (previousElt v $> false)) <#~> do
                     let
                       t = case v of

@@ -6,6 +6,7 @@ import Contracts (Page, page)
 import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.DOM as D
+import Pages.CoreConcepts.MoreHooks.CustomHooks (customHooks)
 import Pages.CoreConcepts.MoreHooks.UseRef (useRef)
 import Pages.CoreConcepts.MoreHooks.UseMailboxed (useMailboxed)
 import Pages.CoreConcepts.MoreHooks.UseMemoized (useMemoized)
@@ -24,5 +25,5 @@ moreHooks = page
           ]
       ]
   , sections:
-      [ useMemoized, useMailboxed, useRef ]
+      [ useMemoized, useMailboxed, useRef, customHooks ]
   }

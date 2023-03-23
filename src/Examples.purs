@@ -25,6 +25,7 @@ foreign import componentsAsSemigroupsURL :: String
 foreign import groupsOfGroupsURL :: String
 foreign import theOneOfFunctionURL :: String
 foreign import theGlobalPortalSyntaxURL :: String
+foreign import customHook1URL :: String
 foreign import gatingEventsOnBehaviorsURL :: String
 foreign import effectsInSSRURL :: String
 foreign import usingFunctionsAsMonadsURL :: String
@@ -58,6 +59,8 @@ foreign import useDynURL :: String
 foreign import integratingBehaviorsURL :: String
 foreign import helloWorldCodeURL :: String
 foreign import insertingInADifferentOrderURL :: String
+foreign import customHook2URL :: String
+foreign import nestedCustomHooksURL :: String
 foreign import multipleSubscriptionsURL :: String
 foreign import theStateHookURL :: String
 foreign import interComponentCommunicationURL :: String
@@ -108,6 +111,7 @@ newtype Examples = Examples {
  groupsOfGroups :: String,
  theOneOfFunction :: String,
  theGlobalPortalSyntax :: String,
+ customHook1 :: String,
  gatingEventsOnBehaviors :: String,
  effectsInSSR :: String,
  usingFunctionsAsMonads :: String,
@@ -141,6 +145,8 @@ newtype Examples = Examples {
  integratingBehaviors :: String,
  helloWorldCode :: String,
  insertingInADifferentOrder :: String,
+ customHook2 :: String,
+ nestedCustomHooks :: String,
  multipleSubscriptions :: String,
  theStateHook :: String,
  interComponentCommunication :: String,
@@ -194,6 +200,7 @@ examples = Examples {
  groupsOfGroups: groupsOfGroupsURL,
  theOneOfFunction: theOneOfFunctionURL,
  theGlobalPortalSyntax: theGlobalPortalSyntaxURL,
+ customHook1: customHook1URL,
  gatingEventsOnBehaviors: gatingEventsOnBehaviorsURL,
  effectsInSSR: effectsInSSRURL,
  usingFunctionsAsMonads: usingFunctionsAsMonadsURL,
@@ -227,6 +234,8 @@ examples = Examples {
  integratingBehaviors: integratingBehaviorsURL,
  helloWorldCode: helloWorldCodeURL,
  insertingInADifferentOrder: insertingInADifferentOrderURL,
+ customHook2: customHook2URL,
+ nestedCustomHooks: nestedCustomHooksURL,
  multipleSubscriptions: multipleSubscriptionsURL,
  theStateHook: theStateHookURL,
  interComponentCommunication: interComponentCommunicationURL,
@@ -253,7 +262,7 @@ examples = Examples {
  eventsAsSemigroups: eventsAsSemigroupsURL,
  altAsAMuxer: altAsAMuxerURL
  }
-data ExampleADT = UnMemoizedApplication | FilteringAnEvent | UsingTheOriginalEvent | EventsAsSemirings | UsingTheHookToSwitchBetweenElements | RowPolymorphismAndProviders | AddingAttributes | BiasingASideOfSampling | TheCreatePureEffect | SamplingABehaviorAndDiscardingTheEvent | BehaviorsVersusFlapping | InjectingDependencies | CompactingEvents | EmptyUntilFull | RunSSR | ASimpleComponent | AddingSeveralElementsToPursx | TheLemmingEvent | UseMailboxed | AddingAnAttributeToPursx | ComponentsAsSemigroups | GroupsOfGroups | TheOneOfFunction | TheGlobalPortalSyntax | GatingEventsOnBehaviors | EffectsInSSR | UsingFunctionsAsMonads | TheKeepLatestFunction | ASimpleCounter | GlobalHandlers | EventsAsRings | AddingSeveralAttributesToPursx | SamplingABehaviorWithAnEvent | UseRef | KnowThySelfT | ShorthandListeners | ANoteOnMemoization | OptimizedEventCreation | TheTemporalityOfPure | AddingCustomElements | OptimizedEventFunctions | ComponentsAsMonoids | ALagUsingFix | AddingASingleElementToPursx | PlainOldHtml | UsingAnEffect | KnowThySelf | UnsafePursx | TheLocalPortalSyntax | UnsettingAttributes | BooleanLogicOnEvents | HowSamplingWorks | UnlockingLevels | UseDyn | IntegratingBehaviors | HelloWorldCode | InsertingInADifferentOrder | MultipleSubscriptions | TheStateHook | InterComponentCommunication | EventsAsMonoids | FoldEffect | DerivingBehaviors | SolvingDifferentialEquations | UsingTheHookInAnAttribute | PassingAroundHooks | SwitchingOnBehaviors | GroupingComponents | FlippingTheFunctionAndArgument | MovingElements | MockDiscord | SamplingABehaviorWithACustomFunction | MemoizedApplication | MemoizedNoEvent | WhenToFixAndWhenToFold | UsingAHookToControlPresence | RemovingElements | HandRolledEvent | UnsafeCustomElement | SeveralLagsUsingFix | EventsAsSemigroups | AltAsAMuxer 
+data ExampleADT = UnMemoizedApplication | FilteringAnEvent | UsingTheOriginalEvent | EventsAsSemirings | UsingTheHookToSwitchBetweenElements | RowPolymorphismAndProviders | AddingAttributes | BiasingASideOfSampling | TheCreatePureEffect | SamplingABehaviorAndDiscardingTheEvent | BehaviorsVersusFlapping | InjectingDependencies | CompactingEvents | EmptyUntilFull | RunSSR | ASimpleComponent | AddingSeveralElementsToPursx | TheLemmingEvent | UseMailboxed | AddingAnAttributeToPursx | ComponentsAsSemigroups | GroupsOfGroups | TheOneOfFunction | TheGlobalPortalSyntax | CustomHook1 | GatingEventsOnBehaviors | EffectsInSSR | UsingFunctionsAsMonads | TheKeepLatestFunction | ASimpleCounter | GlobalHandlers | EventsAsRings | AddingSeveralAttributesToPursx | SamplingABehaviorWithAnEvent | UseRef | KnowThySelfT | ShorthandListeners | ANoteOnMemoization | OptimizedEventCreation | TheTemporalityOfPure | AddingCustomElements | OptimizedEventFunctions | ComponentsAsMonoids | ALagUsingFix | AddingASingleElementToPursx | PlainOldHtml | UsingAnEffect | KnowThySelf | UnsafePursx | TheLocalPortalSyntax | UnsettingAttributes | BooleanLogicOnEvents | HowSamplingWorks | UnlockingLevels | UseDyn | IntegratingBehaviors | HelloWorldCode | InsertingInADifferentOrder | CustomHook2 | NestedCustomHooks | MultipleSubscriptions | TheStateHook | InterComponentCommunication | EventsAsMonoids | FoldEffect | DerivingBehaviors | SolvingDifferentialEquations | UsingTheHookInAnAttribute | PassingAroundHooks | SwitchingOnBehaviors | GroupingComponents | FlippingTheFunctionAndArgument | MovingElements | MockDiscord | SamplingABehaviorWithACustomFunction | MemoizedApplication | MemoizedNoEvent | WhenToFixAndWhenToFold | UsingAHookToControlPresence | RemovingElements | HandRolledEvent | UnsafeCustomElement | SeveralLagsUsingFix | EventsAsSemigroups | AltAsAMuxer 
 exampleToString :: ExampleADT -> String
 exampleToString UnMemoizedApplication = (unwrap examples).unMemoizedApplication
 exampleToString FilteringAnEvent = (unwrap examples).filteringAnEvent
@@ -279,6 +288,7 @@ exampleToString ComponentsAsSemigroups = (unwrap examples).componentsAsSemigroup
 exampleToString GroupsOfGroups = (unwrap examples).groupsOfGroups
 exampleToString TheOneOfFunction = (unwrap examples).theOneOfFunction
 exampleToString TheGlobalPortalSyntax = (unwrap examples).theGlobalPortalSyntax
+exampleToString CustomHook1 = (unwrap examples).customHook1
 exampleToString GatingEventsOnBehaviors = (unwrap examples).gatingEventsOnBehaviors
 exampleToString EffectsInSSR = (unwrap examples).effectsInSSR
 exampleToString UsingFunctionsAsMonads = (unwrap examples).usingFunctionsAsMonads
@@ -312,6 +322,8 @@ exampleToString UseDyn = (unwrap examples).useDyn
 exampleToString IntegratingBehaviors = (unwrap examples).integratingBehaviors
 exampleToString HelloWorldCode = (unwrap examples).helloWorldCode
 exampleToString InsertingInADifferentOrder = (unwrap examples).insertingInADifferentOrder
+exampleToString CustomHook2 = (unwrap examples).customHook2
+exampleToString NestedCustomHooks = (unwrap examples).nestedCustomHooks
 exampleToString MultipleSubscriptions = (unwrap examples).multipleSubscriptions
 exampleToString TheStateHook = (unwrap examples).theStateHook
 exampleToString InterComponentCommunication = (unwrap examples).interComponentCommunication
@@ -362,6 +374,7 @@ exampleToSlug ComponentsAsSemigroups = "ComponentsAsSemigroups"
 exampleToSlug GroupsOfGroups = "GroupsOfGroups"
 exampleToSlug TheOneOfFunction = "TheOneOfFunction"
 exampleToSlug TheGlobalPortalSyntax = "TheGlobalPortalSyntax"
+exampleToSlug CustomHook1 = "CustomHook1"
 exampleToSlug GatingEventsOnBehaviors = "GatingEventsOnBehaviors"
 exampleToSlug EffectsInSSR = "EffectsInSSR"
 exampleToSlug UsingFunctionsAsMonads = "UsingFunctionsAsMonads"
@@ -395,6 +408,8 @@ exampleToSlug UseDyn = "UseDyn"
 exampleToSlug IntegratingBehaviors = "IntegratingBehaviors"
 exampleToSlug HelloWorldCode = "HelloWorldCode"
 exampleToSlug InsertingInADifferentOrder = "InsertingInADifferentOrder"
+exampleToSlug CustomHook2 = "CustomHook2"
+exampleToSlug NestedCustomHooks = "NestedCustomHooks"
 exampleToSlug MultipleSubscriptions = "MultipleSubscriptions"
 exampleToSlug TheStateHook = "TheStateHook"
 exampleToSlug InterComponentCommunication = "InterComponentCommunication"

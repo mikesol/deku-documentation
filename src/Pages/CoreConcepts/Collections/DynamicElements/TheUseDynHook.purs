@@ -107,7 +107,7 @@ theUseDynHook = subsection
                 , dyn
                     $ map
                         ( \t -> Deku.do
-                            useDyn_
+                            _ <- useDyn_
                             D.div_ [ text_ t ]
                         )
                         item
