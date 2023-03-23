@@ -22,7 +22,7 @@ focus:ring-pink-500 focus:ring-offset-2 m-2""" :: String
 
 theAnatomyOfAHook :: forall lock payload. Subsection lock payload
 theAnatomyOfAHook = subsection
-  { title: "Hooked on Hooks"
+  { title: "Hooked on hooks"
   , matter: pure
       [ D.p_
           [ text_
