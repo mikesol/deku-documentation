@@ -39,18 +39,18 @@ nestedHooks = subsection
       , exampleBlockquote
           [ Deku.do
               let
-                hookusMinimus :: Hook ((Int -> Effect Unit) /\ Event Int)
-                hookusMinimus makeHook = Deku.do
-                  setMinimus /\ minimus <- useState 0
+                hookusMinimus :: Int -> Hook ((Int -> Effect Unit) /\ Event Int)
+                hookusMinimus i makeHook = Deku.do
+                  setMinimus /\ minimus <- useState i
                   makeHook (setMinimus /\ minimus)
 
                 hookusMaximus
-                  :: Hook ((Int -> Effect Unit) /\ Event Int /\ Event Int)
-                hookusMaximus makeHook = Deku.do
-                  setMinimus /\ minimus <- hookusMinimus
+                  :: Int -> Hook ((Int -> Effect Unit) /\ Event Int /\ Event Int)
+                hookusMaximus i makeHook = Deku.do
+                  setMinimus /\ minimus <- hookusMinimus i
                   maximus <- useMemoized (add 1000 <$> minimus)
                   makeHook (setMinimus /\ minimus /\ maximus)
-              setMinimus /\ minimus /\ maximus <- hookusMaximus
+              setMinimus /\ minimus /\ maximus <- hookusMaximus 0
               D.div_
                 [ D.button
                     Alt.do
