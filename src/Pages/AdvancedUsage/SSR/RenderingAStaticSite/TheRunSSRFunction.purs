@@ -7,19 +7,19 @@ import Components.ExampleBlockquote (exampleBlockquote)
 import Contracts (Subsection, subsection)
 import Control.Monad.ST (run)
 import Deku.Control (text_)
-import Deku.Core (Domable)
+import Deku.Core (Nut)
 import Deku.DOM as D
 import Deku.Toplevel (runSSR)
 import Examples as Examples
 
-myApp :: forall lock payload. String -> Domable lock payload
+myApp :: String -> Nut
 myApp s = D.div_
   [ D.h4__ "Hi!"
   , D.div__ "Here's some HTML for a Deku app:"
   , htmlCode s
   ]
 
-theRunSSRFunction :: forall lock payload. Subsection lock payload
+theRunSSRFunction :: Subsection
 theRunSSRFunction = subsection
   { title: "The runSSR function"
   , matter: pure

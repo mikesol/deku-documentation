@@ -13,7 +13,7 @@ import Pages.FRP.Sampling.SamplingWithBehaviors.SamplingABehaviorWithACustomFunc
 import Pages.FRP.Sampling.SamplingWithBehaviors.SamplingABehaviorWithAnEvent (samplingABehaviorWithAnEvent)
 import Router.ADT (Route(..))
 
-samplingWithBehaviors :: forall lock payload. Section lock payload
+samplingWithBehaviors :: Section
 samplingWithBehaviors = section
   { title: "Sampling with behaviors"
   , topmatter: \(Env { routeLink }) ->

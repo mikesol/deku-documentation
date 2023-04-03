@@ -7,7 +7,7 @@ import Deku.Control (text_)
 import Deku.Attribute ((!:=))
 import Deku.DOM as D
 
-performanceComparedToBus :: forall lock payload. Subsection lock payload
+performanceComparedToBus :: Subsection
 performanceComparedToBus = subsection
   { title: "Performance compared to bus"
   , matter: pure

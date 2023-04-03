@@ -7,7 +7,7 @@ import Deku.Control (text_)
 import Deku.Attribute ((!:=))
 import Deku.DOM as D
 
-theGlobalPortalResult :: forall lock payload. Subsection lock payload
+theGlobalPortalResult :: Subsection
 theGlobalPortalResult = subsection
   { title: "The global portal result"
   , matter: pure

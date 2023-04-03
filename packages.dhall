@@ -1,16 +1,23 @@
 let upstream =
-      https://github.com/purescript/package-sets/releases/download/psc-0.15.4-20221030/packages.dhall
-        sha256:19a962fbb4c04111c06bbb03b5ed58412dcb3beccbfd59ace970b73fdbaea20d
+      https://github.com/purescript/package-sets/releases/download/psc-0.15.7-20230227/packages.dhall
+        sha256:0168e165b4cdb40ab6f7e01448075680097791c8d98f96d684b20d1eef96f3d0
 
 in  upstream
-with hyrule =
+  with bolson =
     { dependencies =
-      [ "st", "js-timers", "unsafe-reference"
+      [ "hyrule"
       ]
-    , repo = "https://github.com/mikesol/purescript-hyrule.git"
-    , version = "v2.3.7"
+    , repo = "https://github.com/mikesol/purescript-bolson.git"
+    , version = "lockless"
     }
-  with tidy =
+  with deku =
+    { dependencies =
+      [ "bolson", "stringutils", "css", "free", "fast-vect"
+      ]
+    , repo = "https://github.com/mikesol/purescript-deku.git"
+    , version = "lockless"
+    }
+with tidy =
     { dependencies =
       [ "maybe"
       ]
@@ -30,46 +37,4 @@ with hyrule =
       ]
     , repo = "https://github.com/mikesol/purescript-pirates-charm.git"
     , version = "v0.0.1"
-    }
-  with bolson =
-    { dependencies =
-      [ "hyrule"
-      ]
-    , repo = "https://github.com/mikesol/purescript-bolson.git"
-    , version = "v0.3.2"
-    }
-  with deku =
-    { dependencies =
-      [ "aff"
-      , "arrays"
-      , "bolson"
-      , "catenable-lists"
-      , "control"
-      , "effect"
-      , "either"
-      , "fast-vect"
-      , "filterable"
-      , "foldable-traversable"
-      , "foreign-object"
-      , "hyrule"
-      , "maybe"
-      , "newtype"
-      , "ordered-collections"
-      , "prelude"
-      , "profunctor"
-      , "quickcheck"
-      , "record"
-      , "safe-coerce"
-      , "st"
-      , "strings"
-      , "transformers"
-      , "tuples"
-      , "unsafe-coerce"
-      , "web-dom"
-      , "web-events"
-      , "web-html"
-      , "web-uievents"
-      ]
-    , repo = "https://github.com/mikesol/purescript-deku.git"
-    , version = "v0.9.18"
     }

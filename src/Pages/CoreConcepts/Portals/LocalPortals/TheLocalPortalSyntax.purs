@@ -9,7 +9,7 @@ import Data.Tuple.Nested ((/\))
 import Deku.Attribute ((!:=))
 import Deku.Attributes (klass_)
 import Deku.Control (guard, portal1, text_)
-import Deku.Core (Domable, Nut)
+import Deku.Core (Nut, Nut)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState)
@@ -23,13 +23,12 @@ data Square = TL | BL | TR | BR
 derive instance Eq Square
 
 moveSpriteHere
-  :: forall lock payload
-   . { video :: Domable lock payload
+  :: { video :: Nut
      , square :: Event Square
      , setSquare :: Square -> Effect Unit
      , at :: Square
      }
-  -> Domable lock payload
+  -> Nut
 moveSpriteHere { video, square, setSquare, at } = D.a
   ( oneOf
       [ click_ (setSquare at)
@@ -60,7 +59,7 @@ myVideo = D.video
       []
   ]
 
-theLocalPortalSyntax :: forall lock payload. Subsection lock payload
+theLocalPortalSyntax :: Subsection
 theLocalPortalSyntax = subsection
   { title: "The local portal syntax"
   , matter: pure
@@ -82,7 +81,7 @@ theLocalPortalSyntax = subsection
           ]
       , psCodeWithLink Examples.TheLocalPortalSyntax
       , D.p__ "This yields a similar result as the one above."
-      , portal1 myVideo \(vid /\ _) -> Deku.do
+      , portal1 myVideo \vid -> Deku.do
           setSquare /\ square <- useState TL
           D.div (klass_ "grid grid-cols-2")
             [ moveSpriteHere { video: vid, square, setSquare, at: TL }

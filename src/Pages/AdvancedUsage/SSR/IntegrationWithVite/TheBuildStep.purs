@@ -7,7 +7,7 @@ import Deku.Control (text_)
 import Deku.Attribute ((!:=))
 import Deku.DOM as D
 
-theBuildStep :: forall lock payload. Subsection lock payload
+theBuildStep :: Subsection
 theBuildStep = subsection
   { title: "The build step"
   , matter: pure

@@ -6,7 +6,7 @@ import Contracts (Subsection, subsection)
 import Deku.Control (text_)
 import Deku.DOM as D
 
-addingText :: forall lock payload. Subsection lock payload
+addingText :: Subsection
 addingText = subsection
   { title: "Adding text"
   , matter: pure

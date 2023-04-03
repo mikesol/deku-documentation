@@ -21,7 +21,7 @@ import Data.Tuple.Nested (type (/\), (/\))
 import Deku.Attribute ((!:=))
 import Deku.Attributes (klass, klass_)
 import Deku.Control (blank, switcher, text_)
-import Deku.Core (Domable)
+import Deku.Core (Nut)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState)
@@ -37,20 +37,19 @@ import Router.RouteOrder (routeToNextRoute, routeToPrevRoute)
 import Web.DOM as DOM
 
 app
-  :: forall lock payload
-   . { setHeaderElement :: DOM.Element -> Effect Unit
+  :: { setHeaderElement :: DOM.Element -> Effect Unit
      , setRightSideNav :: (Int /\ DOM.Element) -> Effect Unit
      , rightSideNavSelect :: Int -> Event Unit
      , rightSideNavDeselect :: Int -> Event Unit
      , darkModePreference :: Event Boolean
-     , curPage :: Event (Page lock payload)
+     , curPage :: Event (Page)
      , showBanner :: Event Boolean
      , pageIs :: Route -> Event Unit
      , pageWas :: Route -> Event Unit
      , pushState :: PushState
      , clickedSection :: Ref.Ref (Maybe Int)
      }
-  -> Domable lock payload
+  -> Nut
 app
   { setHeaderElement
   , curPage

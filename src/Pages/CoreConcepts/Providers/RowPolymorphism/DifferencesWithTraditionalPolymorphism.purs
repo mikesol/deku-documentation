@@ -8,7 +8,7 @@ import Deku.Control (text_)
 import Deku.DOM as D
 
 differencesWithTraditionalPolymorphism
-  :: forall lock payload. Subsection lock payload
+  :: Subsection
 differencesWithTraditionalPolymorphism = subsection
   { title: "Row polymorphism 101"
   , matter: pure

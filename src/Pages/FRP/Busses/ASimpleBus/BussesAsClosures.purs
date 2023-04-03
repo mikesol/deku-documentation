@@ -7,7 +7,7 @@ import Deku.Control (text_)
 import Deku.Attribute ((!:=))
 import Deku.DOM as D
 
-bussesAsClosures :: forall lock payload. Subsection lock payload
+bussesAsClosures :: Subsection
 bussesAsClosures = subsection
   { title: "Busses as closures"
   , matter: pure

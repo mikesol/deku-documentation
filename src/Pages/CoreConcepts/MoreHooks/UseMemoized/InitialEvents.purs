@@ -32,7 +32,7 @@ border-solid
 focus:border-indigo-500 focus:ring-indigo-500
 sm:text-sm"""
 
-initialEvents :: forall lock payload. Subsection lock payload
+initialEvents :: Subsection
 initialEvents = subsection
   { title: "Memoizing without an initial event"
   , matter: pure

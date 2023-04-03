@@ -35,7 +35,7 @@ data UIState
   | Loading
   | Image { url :: String, watcherCount :: Int }
 
-injectingDependencies :: forall lock payload. Subsection lock payload
+injectingDependencies :: Subsection
 injectingDependencies = subsection
   { title: "Injecting dependencies"
   , matter: pure

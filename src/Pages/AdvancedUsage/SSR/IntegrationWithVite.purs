@@ -9,7 +9,7 @@ import Deku.DOM as D
 import Pages.AdvancedUsage.SSR.IntegrationWithVite.TheBuildStep (theBuildStep)
 import Pages.AdvancedUsage.SSR.IntegrationWithVite.UsingACustomWatcher (usingACustomWatcher)
 
-integrationWithVite :: forall lock payload. Section lock payload
+integrationWithVite :: Section
 integrationWithVite = section
   { title: "IntegrationWithVite"
   , topmatter: pure

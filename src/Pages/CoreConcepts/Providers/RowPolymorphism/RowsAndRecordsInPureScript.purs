@@ -8,7 +8,7 @@ import Contracts (Subsection, subsection)
 import Deku.Control (text_)
 import Deku.DOM as D
 
-rowsAndRecordsInPureScript :: forall lock payload. Subsection lock payload
+rowsAndRecordsInPureScript :: Subsection
 rowsAndRecordsInPureScript = subsection
   { title: "Rows and records in PureScript"
   , matter: pure
@@ -27,7 +27,11 @@ rowsAndRecordsInPureScript = subsection
       , psCode "{ foo :: Int, bar :: Boolean }"
       , D.p_
           [ text_
-              "Records are backed by rows. Rows, indicated by parentheses instead of curly brackets, are ", targetedLink "https://en.wikipedia.org/wiki/Kind_(type_theory)" [D.code__ "kind"] , text_ " constructors that allow you to represent sum and product types of arbitrary arity. For example, if one has a row with the following definition: "
+              "Records are backed by rows. Rows, indicated by parentheses instead of curly brackets, are "
+          , targetedLink "https://en.wikipedia.org/wiki/Kind_(type_theory)"
+              [ D.code__ "kind" ]
+          , text_
+              " constructors that allow you to represent sum and product types of arbitrary arity. For example, if one has a row with the following definition: "
           ]
       , psCode "(foo :: Int, bar :: Boolean)"
       , D.p_

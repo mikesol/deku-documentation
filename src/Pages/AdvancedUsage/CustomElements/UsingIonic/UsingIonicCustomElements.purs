@@ -10,7 +10,7 @@ import Control.Plus (empty)
 import Deku.Attribute (class Attr, Attribute, AttributeValue(..), unsafeAttribute, (!:=))
 import Deku.Attributes (style_)
 import Deku.Control (text_)
-import Deku.Core (Domable)
+import Deku.Core (Nut)
 import Deku.DOM (unsafeCustomElement)
 import Deku.DOM as D
 import Examples as Examples
@@ -37,9 +37,8 @@ instance Attr DiscordMessage_ RoleColor String where
     { key: "role-color", value: Prop' s }
 
 discordMessages
-  :: forall lock payload
-   . Array (Domable lock payload)
-  -> Domable lock payload
+  :: Array (Nut)
+  -> Nut
 discordMessages = unsafeCustomElement "discord-messages"
   ( Proxy
       :: Proxy
@@ -48,17 +47,16 @@ discordMessages = unsafeCustomElement "discord-messages"
   empty
 
 discordMessage
-  :: forall lock payload
-   . Event (Attribute DiscordMessage_)
-  -> Array (Domable lock payload)
-  -> Domable lock payload
+  :: Event (Attribute DiscordMessage_)
+  -> Array (Nut)
+  -> Nut
 discordMessage = unsafeCustomElement "discord-message"
   ( Proxy
       :: Proxy
            DiscordMessage_
   )
 
-usingIonicCustomElements :: forall lock payload. Subsection lock payload
+usingIonicCustomElements :: Subsection
 usingIonicCustomElements = subsection
   { title: "Using our custom elements"
   , matter: pure

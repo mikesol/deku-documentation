@@ -10,7 +10,7 @@ import Pages.FRP.Behaviors.Definition.TheBehaviorType (theBehaviorType)
 import Pages.FRP.Behaviors.Definition.BehaviorsVersusFlapping (behaviorsVersusFlapping)
 import Pages.FRP.Behaviors.Definition.BehaviorsAndYoneda (behaviorsAndYoneda)
 
-definition :: forall lock payload. Section lock payload
+definition :: Section
 definition = section
   { title: "Definition"
   , topmatter: pure

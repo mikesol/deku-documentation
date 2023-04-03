@@ -7,7 +7,7 @@ import Deku.Control (text_)
 import Deku.Attribute ((!:=))
 import Deku.DOM as D
 
-safetyWithSelf :: forall lock payload. Subsection lock payload
+safetyWithSelf :: Subsection
 safetyWithSelf = subsection
   { title: "Safety with Self"
   , matter: pure

@@ -9,7 +9,7 @@ import Deku.DOM as D
 import Pages.FRP.Applicatives.Functor.PerformanceConsiderations (performanceConsiderations)
 import Pages.FRP.Applicatives.Functor.TheMeaningOfMap (theMeaningOfMap)
 
-functor :: forall lock payload. Section lock payload
+functor :: Section
 functor = section
   { title: "Events as functors"
   , topmatter: pure

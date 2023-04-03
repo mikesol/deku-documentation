@@ -12,7 +12,7 @@ import Data.Tuple.Nested ((/\))
 import Deku.Attribute ((!:=), (:=))
 import Deku.Attributes (klass, klass_)
 import Deku.Control (text_)
-import Deku.Core (Domable)
+import Deku.Core (Nut)
 import Deku.DOM as D
 import Deku.Hooks (useState)
 import Deku.Do as Deku
@@ -49,8 +49,7 @@ changeSVGClassSelection =
   else classSVGBrightnessModeNotSelected
 
 header
-  :: forall lock payload
-   . { darkBoolean :: Event Boolean
+  :: { darkBoolean :: Event Boolean
      , dark :: Event DarkModePreference
      , setDark :: DarkModePreference -> Effect Unit
      , setHeaderElement :: DOM.Element -> Effect Unit
@@ -58,7 +57,7 @@ header
      , pageIs :: Route -> Event Unit
      , pageWas :: Route -> Event Unit
      }
-  -> Domable lock payload
+  -> Nut
 header
   { setHeaderElement, darkBoolean, dark, setDark, pageIs, pageWas, pushState } =
   Deku.do

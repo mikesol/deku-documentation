@@ -9,7 +9,7 @@ import Deku.DOM as D
 import Pages.FRP.FixAndFold.FixingEvents.Gotchyas (gotchyas)
 import Pages.FRP.FixAndFold.FixingEvents.AFeedforwardFilter (aFeedforwardFilter)
 
-fixingEvents :: forall lock payload. Section lock payload
+fixingEvents :: Section
 fixingEvents = section
   { title: "Fixing events"
   , topmatter: pure

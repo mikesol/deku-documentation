@@ -11,7 +11,7 @@ import Pages.FRP.Events.PureEvents.WhatIsAnEventWithoutTime (whatIsAnEventWithou
 import Pages.FRP.Events.PureEvents.TheLemmingEvent (theLemmingEvent)
 import Pages.FRP.Events.PureEvents.TheSTMonad (theSTMonad)
 
-pureEvents :: forall lock payload. Section lock payload
+pureEvents :: Section
 pureEvents = section
   { title: "Pure events"
   , topmatter: pure

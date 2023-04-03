@@ -28,7 +28,7 @@ import Pages.Introduction.GettingStarted (gettingStarted)
 import Pages.Introduction.HelloWorld (helloWorld)
 import Router.ADT (Route(..))
 
-routeToPage :: forall lock payload. Route -> Page lock payload
+routeToPage :: Route -> Page
 routeToPage GettingStarted = gettingStarted
 routeToPage HelloWorld = helloWorld
 routeToPage Components = components

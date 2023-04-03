@@ -9,7 +9,7 @@ import Deku.Attributes (href_)
 import Deku.Control (text_)
 import Deku.DOM as D
 
-lifetimeAndGarbageCollection :: forall lock payload. Subsection lock payload
+lifetimeAndGarbageCollection :: Subsection
 lifetimeAndGarbageCollection = subsection
   { title: "Lifetime and garbage collection"
   , matter: pure

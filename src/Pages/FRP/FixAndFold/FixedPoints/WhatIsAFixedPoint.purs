@@ -16,7 +16,7 @@ import Deku.Do as Deku
 import Deku.Hooks (useDyn, useMailboxed, useState)
 import Deku.Listeners (click_)
 
-whatIsAFixedPoint :: forall lock payload. Subsection lock payload
+whatIsAFixedPoint :: Subsection
 whatIsAFixedPoint = subsection
   { title: "What is a fixed point?"
   , matter: pure

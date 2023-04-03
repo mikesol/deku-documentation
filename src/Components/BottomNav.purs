@@ -8,19 +8,18 @@ import Data.Maybe (Maybe, maybe)
 import Data.Newtype (unwrap)
 import Deku.Attribute ((!:=))
 import Deku.Control (text_)
-import Deku.Core (Domable)
+import Deku.Core (Nut)
 import Deku.DOM as D
 import Navigation (PushState)
 import Router.ADT (Route)
 import Router.Page (routeToPage)
 
 bottomNav
-  :: forall lock payload
-   . { nextRoute :: Maybe Route
+  :: { nextRoute :: Maybe Route
      , prevRoute :: Maybe Route
      , pushState :: PushState
      }
-  -> Domable lock payload
+  -> Nut
 bottomNav { nextRoute, prevRoute, pushState } =
   D.dl
     ( D.Class !:=

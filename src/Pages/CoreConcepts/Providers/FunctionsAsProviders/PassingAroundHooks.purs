@@ -16,7 +16,7 @@ import Deku.Listeners (click, click_)
 import Examples as Examples
 import FRP.Event (keepLatest)
 
-passingAroundHooks :: forall lock payload. Subsection lock payload
+passingAroundHooks :: Subsection
 passingAroundHooks = subsection
   { title: "Passing around hooks"
   , matter: pure

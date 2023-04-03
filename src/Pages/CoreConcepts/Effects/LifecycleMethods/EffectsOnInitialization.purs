@@ -8,7 +8,7 @@ import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.DOM as D
 
-effectsOnInitialization :: forall lock payload. Subsection lock payload
+effectsOnInitialization :: Subsection
 effectsOnInitialization = subsection
   { title: "Effects on initialization"
   , matter: pure
@@ -30,7 +30,7 @@ effectsOnInitialization = subsection
                   ]
               , D.td tableClass
                   [ D.code__
-                      """forall lock payload. Effect Unit -> Domable lock payload -> Domable lock payload"""
+                      """ Effect Unit -> Nut -> Nut"""
                   ]
               ]
           , D.tr_
@@ -41,7 +41,7 @@ effectsOnInitialization = subsection
                   ]
               , D.td tableClass
                   [ D.code__
-                      """forall lock payload. Effect Unit -> Domable lock payload -> Domable lock payload"""
+                      """ Effect Unit -> Nut -> Nut"""
                   ]
               ]
           ]

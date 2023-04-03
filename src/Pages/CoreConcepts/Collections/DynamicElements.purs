@@ -11,7 +11,7 @@ import Pages.CoreConcepts.Collections.DynamicElements.MovingElements (movingElem
 import Pages.CoreConcepts.Collections.DynamicElements.RemovingElements (removingElements)
 import Pages.CoreConcepts.Collections.DynamicElements.TheUseDynHook (theUseDynHook)
 
-dynamicElements :: forall lock payload. Section lock payload
+dynamicElements :: Section
 dynamicElements = section
   { title: "Dynamic components"
   , topmatter: pure

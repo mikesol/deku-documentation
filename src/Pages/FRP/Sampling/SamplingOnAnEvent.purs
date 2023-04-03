@@ -11,7 +11,7 @@ import Pages.FRP.Sampling.SamplingOnAnEvent.ApplicativesAndTemporality (applicat
 import Pages.FRP.Sampling.SamplingOnAnEvent.BiasingASideOfSampling (biasingASideOfSampling)
 import Pages.FRP.Sampling.SamplingOnAnEvent.FlippingTheFunctionAndArgument (flippingTheFunctionAndArgument)
 
-samplingOnAnEvent :: forall lock payload. Section lock payload
+samplingOnAnEvent :: Section
 samplingOnAnEvent = section
   { title: "Sampling an event"
   , topmatter: pure

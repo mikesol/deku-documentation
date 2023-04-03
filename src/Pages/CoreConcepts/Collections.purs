@@ -11,7 +11,7 @@ import Pages.CoreConcepts.Collections.FixedElements (fixedElements)
 import Pages.CoreConcepts.Collections.Monoids (monoids)
 import Router.ADT (Route(..))
 
-collections :: forall lock payload. Page lock payload
+collections :: Page
 collections = page
   { route: Collections
   , topmatter: pure

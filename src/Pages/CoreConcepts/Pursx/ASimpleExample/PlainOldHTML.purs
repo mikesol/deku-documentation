@@ -8,12 +8,13 @@ import Deku.Control (text_)
 import Deku.DOM as D
 import Examples as Examples
 
-plainOldHTML :: forall lock payload. Subsection lock payload
+plainOldHTML :: Subsection
 plainOldHTML = subsection
   { title: "Plain old HTML"
   , matter: pure
       [ D.p_
-          [ text_ "Here is the Deku code that produces the breadcrumb example above."
+          [ text_
+              "Here is the Deku code that produces the breadcrumb example above."
           ]
       , psCodeNoCollapseWithLink Examples.PlainOldHtml
       , D.p__

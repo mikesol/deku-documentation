@@ -14,7 +14,7 @@ import QualifiedDo.Alt as Alt
 import Web.HTML (window)
 import Web.HTML.Window (alert)
 
-usingAnEffect :: forall lock payload. Subsection lock payload
+usingAnEffect :: Subsection
 usingAnEffect = subsection
   { title: "Using an effect"
   , matter: pure

@@ -11,7 +11,7 @@ import Pages.FRP.FixAndFold.FixingEvents (fixingEvents)
 import Pages.FRP.FixAndFold.FoldingEvents (foldingEvents)
 import Router.ADT (Route(..))
 
-fixAndFold :: forall lock payload. Page lock payload
+fixAndFold :: Page
 fixAndFold = page
   { route: FixAndFold
   , topmatter: pure

@@ -28,7 +28,7 @@ import Web.HTML.Window (document)
 type Event a = (a -> Effect Unit) -> Effect (Effect Unit)
 
 subscriptionAndUnsubscriptionEffects
-  :: forall lock payload. Subsection lock payload
+  :: Subsection
 subscriptionAndUnsubscriptionEffects = subsection
   { title: "Subscription and unsubscription effects"
   , matter: pure

@@ -8,5 +8,5 @@ import Pages.CoreConcepts (coreConcepts)
 import Pages.FRP (frp)
 import Pages.Introduction (introduction)
 
-docs :: forall lock payload. Docs lock payload
+docs :: Docs
 docs = Docs [ introduction, coreConcepts, frp, advancedUsage ]

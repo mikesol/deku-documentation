@@ -6,7 +6,7 @@ import Contracts (Subsection, subsection)
 import Deku.Control (text_)
 import Deku.DOM as D
 
-closingTagsAndTreeStructure :: forall lock payload. Subsection lock payload
+closingTagsAndTreeStructure :: Subsection
 closingTagsAndTreeStructure = subsection
   { title: "Closing tags and tree structure"
   , matter: pure

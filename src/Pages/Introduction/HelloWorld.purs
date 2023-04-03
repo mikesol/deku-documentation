@@ -10,7 +10,7 @@ import Pages.Introduction.HelloWorld.SayingHello (sayingHello)
 import Pages.Introduction.HelloWorld.TheAnatomyOfHello (theAnatomyOfHello)
 import Router.ADT (Route(..))
 
-helloWorld :: forall lock payload. Page lock payload
+helloWorld :: Page
 helloWorld = page
   { route: HelloWorld
   , topmatter: pure

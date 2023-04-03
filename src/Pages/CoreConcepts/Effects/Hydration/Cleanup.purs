@@ -7,7 +7,7 @@ import Deku.Control (text_)
 import Deku.Attribute ((!:=))
 import Deku.DOM as D
 
-cleanup :: forall lock payload. Subsection lock payload
+cleanup :: Subsection
 cleanup = subsection
   { title: "Cleanup"
   , matter: pure

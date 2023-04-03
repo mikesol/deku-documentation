@@ -6,7 +6,7 @@ import Deku.Control (text_)
 import Deku.DOM as D
 import Router.ADT (Route(..))
 
-fourOhFour :: forall lock payload. Page lock payload
+fourOhFour :: Page
 fourOhFour = page
   { route: FourOhFour
   , topmatter: \(Env { routeLinkWithText }) ->

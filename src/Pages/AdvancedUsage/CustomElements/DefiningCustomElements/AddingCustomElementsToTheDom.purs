@@ -28,7 +28,7 @@ instance Attr MyNiftyAnchor_ D.Target MyTarget where
   attr _ _ = unsafeAttribute
     { key: "target", value: Prop' "_blank" }
 
-addingCustomElementsToTheDOM :: forall lock payload. Subsection lock payload
+addingCustomElementsToTheDOM :: Subsection
 addingCustomElementsToTheDOM = subsection
   { title: "Defining attributes"
   , matter: pure

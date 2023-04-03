@@ -8,7 +8,7 @@ import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.DOM as D
 
-runningADevServer :: forall lock payload. Subsection lock payload
+runningADevServer :: Subsection
 runningADevServer = subsection
   { title: "Running a dev server"
   , matter: pure

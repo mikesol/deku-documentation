@@ -30,7 +30,7 @@ import Fetch (Method(..), fetch)
 import QualifiedDo.Alt as Alt
 import Type.Proxy (Proxy(..))
 
-triggerAffInParallel :: forall lock payload. Subsection lock payload
+triggerAffInParallel :: Subsection
 triggerAffInParallel = subsection
   { title: "The bindToAffParallel function"
   , matter: pure

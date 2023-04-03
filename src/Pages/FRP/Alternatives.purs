@@ -10,7 +10,7 @@ import Pages.FRP.Alternatives.Alt (alt)
 import Pages.FRP.Alternatives.Plus (plus)
 import Router.ADT (Route(..))
 
-alternatives :: forall lock payload. Page lock payload
+alternatives :: Page
 alternatives = page
   { route: Alternatives
   , topmatter: pure

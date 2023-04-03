@@ -8,7 +8,7 @@ import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.DOM as D
 
-effectsOnTeardown :: forall lock payload. Subsection lock payload
+effectsOnTeardown :: Subsection
 effectsOnTeardown = subsection
   { title: "Effects on teardown"
   , matter: pure
@@ -30,7 +30,7 @@ effectsOnTeardown = subsection
                   ]
               , D.td tableClass
                   [ D.code__
-                      """forall lock payload. Effect Unit -> Domable lock payload -> Domable lock payload"""
+                      """ Effect Unit -> Nut -> Nut"""
                   ]
               ]
           ]

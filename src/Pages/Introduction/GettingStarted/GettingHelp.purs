@@ -8,7 +8,7 @@ import Deku.DOM as D
 import Pages.Introduction.GettingStarted.GettingHelp.JoinTheCommunity (joinTheCommunity)
 import Pages.Introduction.GettingStarted.GettingHelp.SubmitAnIssue (submitAnIssue)
 
-gettingHelp :: forall lock payload. Section lock payload
+gettingHelp :: Section
 gettingHelp = section
   { title: "Getting help"
   , topmatter: pure

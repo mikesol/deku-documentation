@@ -9,7 +9,7 @@ import Pages.CoreConcepts.State.HookingIntoTheDOM.UsingAHookToControlThePresence
 import Pages.CoreConcepts.State.HookingIntoTheDOM.UsingTheHookInAnAttribute (usingTheHookInAnAttribute)
 import Pages.CoreConcepts.State.HookingIntoTheDOM.UsingTheHookToSwitchBetweenElements (usingTheHookToSwitchBetweenElements)
 
-hookingIntoTheDOM :: forall lock payload. Section lock payload
+hookingIntoTheDOM :: Section
 hookingIntoTheDOM = section
   { title: "Hooking into the DOM"
   , topmatter: pure

@@ -18,7 +18,8 @@ import Examples as Examples
 import Type.Proxy (Proxy(..))
 
 myHtml =
-  ( Proxy      :: Proxy
+  ( Proxy
+      :: Proxy
            """<nav class="flex" aria-label="Breadcrumb">
   <ol role="list" class="flex space-x-4 rounded-md bg-white px-6 shadow">
     <li class="flex h-12">
@@ -54,7 +55,7 @@ myHtml =
 </nav>"""
   )
 
-addingAnAttribute :: forall lock payload. Subsection lock payload
+addingAnAttribute :: Subsection
 addingAnAttribute = subsection
   { title: "Adding an attribute"
   , matter: pure

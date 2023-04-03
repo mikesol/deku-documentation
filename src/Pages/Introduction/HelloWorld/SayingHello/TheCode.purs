@@ -8,7 +8,7 @@ import Deku.Control (text_)
 import Deku.DOM as D
 import Examples as Examples
 
-theCode :: forall lock payload. Subsection lock payload
+theCode :: Subsection
 theCode = subsection
   { title: "The code"
   , matter: pure

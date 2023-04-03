@@ -12,7 +12,7 @@ import Deku.Listeners (slider_)
 import Effect.Class.Console (logShow)
 import Examples as Examples
 
-shorthandListeners :: forall lock payload. Subsection lock payload
+shorthandListeners :: Subsection
 shorthandListeners = subsection
   { title: "Shorthand event listeners"
   , matter: pure

@@ -25,7 +25,7 @@ text-sm font-medium leading-4 text-white shadow-sm
 hover:bg-pink-700 focus:outline-none focus:ring-2
 focus:ring-pink-500 focus:ring-offset-2 m-2""" :: String
 
-nestedHooks :: forall lock payload. Subsection lock payload
+nestedHooks :: Subsection
 nestedHooks = subsection
   { title: "Deku dos and nested hooks"
   , matter: pure
@@ -45,7 +45,8 @@ nestedHooks = subsection
                   makeHook (setMinimus /\ minimus)
 
                 hookusMaximus
-                  :: Int -> Hook ((Int -> Effect Unit) /\ Event Int /\ Event Int)
+                  :: Int
+                  -> Hook ((Int -> Effect Unit) /\ Event Int /\ Event Int)
                 hookusMaximus i makeHook = Deku.do
                   setMinimus /\ minimus <- hookusMinimus i
                   maximus <- useMemoized (add 1000 <$> minimus)

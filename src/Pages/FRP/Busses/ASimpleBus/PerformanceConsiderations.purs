@@ -7,7 +7,7 @@ import Deku.Control (text_)
 import Deku.Attribute ((!:=))
 import Deku.DOM as D
 
-performanceConsiderations :: forall lock payload. Subsection lock payload
+performanceConsiderations :: Subsection
 performanceConsiderations = subsection
   { title: "Performance considerations"
   , matter: pure

@@ -5,7 +5,7 @@ import Deku.Control (text_)
 import Deku.DOM as D
 import Router.ADT (Route(..))
 
-performanceConsiderations :: forall lock payload. Subsection lock payload
+performanceConsiderations :: Subsection
 performanceConsiderations = subsection
   { title: "Performance considerations"
   , matter: \(Env { routeLink }) ->

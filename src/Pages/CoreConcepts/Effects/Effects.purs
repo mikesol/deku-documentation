@@ -11,7 +11,7 @@ import Pages.CoreConcepts.Effects.Aff.TriggerAffInParallel (triggerAffInParallel
 import Pages.CoreConcepts.Effects.Aff.TriggerAffWithCancellation (triggerAffWithCancellation)
 import Pages.CoreConcepts.Effects.Aff.TriggerEffect (triggerEffect)
 
-bindingToEffects :: forall lock payload. Section lock payload
+bindingToEffects :: Section
 bindingToEffects = section
   { title: "Binding to effects"
   , topmatter: pure

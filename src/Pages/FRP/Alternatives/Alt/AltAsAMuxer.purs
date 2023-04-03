@@ -13,7 +13,7 @@ import Deku.DOM as D
 import Examples as Exampes
 import FRP.Event.Time (interval)
 
-altAsAMuxer :: forall lock payload. Subsection lock payload
+altAsAMuxer :: Subsection
 altAsAMuxer = subsection
   { title: "Alt as a muxer"
   , matter: pure

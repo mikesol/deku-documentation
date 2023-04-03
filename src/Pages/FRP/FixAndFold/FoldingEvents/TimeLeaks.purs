@@ -37,7 +37,7 @@ foldEGood :: forall a b. (b -> a -> Effect b) -> b -> Event a -> Event b
 foldEGood f b e = fix \i -> flip bindToEffect identity
   (sampleOnRight (i <|> pure b) (e <#> flip f))
 
-timeLeaks :: forall lock payload. Subsection lock payload
+timeLeaks :: Subsection
 timeLeaks = subsection
   { title: "Time leaks"
   , matter: \(Env { routeLink }) ->

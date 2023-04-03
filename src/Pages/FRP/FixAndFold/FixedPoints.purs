@@ -10,7 +10,7 @@ import Deku.DOM as D
 import Pages.FRP.FixAndFold.FixedPoints.TheFixFunction (theFixFunction)
 import Pages.FRP.FixAndFold.FixedPoints.WhatIsAFixedPoint (whatIsAFixedPoint)
 
-fixedPoints :: forall lock payload. Section lock payload
+fixedPoints :: Section
 fixedPoints = section
   { title: "Fixed points"
   , topmatter: pure

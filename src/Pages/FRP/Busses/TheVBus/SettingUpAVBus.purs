@@ -7,7 +7,7 @@ import Deku.Control (text_)
 import Deku.Attribute ((!:=))
 import Deku.DOM as D
 
-settingUpAVBus :: forall lock payload. Subsection lock payload
+settingUpAVBus :: Subsection
 settingUpAVBus = subsection
   { title: "Setting up a v-bus"
   , matter: pure

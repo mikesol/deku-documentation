@@ -9,7 +9,7 @@ import Deku.DOM as D
 import Pages.FRP.OtherInstances.Ring.EventsAsSemirings (eventsAsSemirings)
 import Pages.FRP.OtherInstances.Ring.EventsAsRings (eventsAsRings)
 
-ring :: forall lock payload. Section lock payload
+ring :: Section
 ring = section
   { title: "Ring"
   , topmatter: pure

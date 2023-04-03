@@ -25,7 +25,7 @@ border-solid
 focus:border-indigo-500 focus:ring-indigo-500
 sm:text-sm"""
 
-transformedEvents :: forall lock payload. Subsection lock payload
+transformedEvents :: Subsection
 transformedEvents = subsection
   { title: "The useMemoized hook"
   , matter: pure

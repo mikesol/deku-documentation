@@ -11,7 +11,7 @@ import Pages.CoreConcepts.State.StateWithoutInitialValues (stateWithoutInitialVa
 import Pages.CoreConcepts.State.TheStateHook (theStateHook)
 import Router.ADT (Route(..))
 
-state :: forall lock payload. Page lock payload
+state :: Page
 state = page
   { route: State
   , topmatter: pure

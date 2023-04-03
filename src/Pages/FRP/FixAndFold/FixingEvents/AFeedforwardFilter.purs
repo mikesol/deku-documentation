@@ -7,7 +7,7 @@ import Deku.Control (text_)
 import Deku.Attribute ((!:=))
 import Deku.DOM as D
 
-aFeedforwardFilter :: forall lock payload. Subsection lock payload
+aFeedforwardFilter :: Subsection
 aFeedforwardFilter = subsection
   { title: "A feedforward filter"
   , matter: pure

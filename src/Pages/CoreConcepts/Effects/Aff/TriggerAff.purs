@@ -19,7 +19,7 @@ import FRP.Event.Aff (bindToAff)
 import Fetch (Method(..), fetch)
 import QualifiedDo.Alt as Alt
 
-triggerAff :: forall lock payload. Subsection lock payload
+triggerAff :: Subsection
 triggerAff = subsection
   { title: "The bindToAff function"
   , matter: pure

@@ -21,7 +21,8 @@ import FRP.Event (Event)
 import Type.Proxy (Proxy(..))
 
 liHtml =
-  ( Proxy      :: Proxy
+  ( Proxy
+      :: Proxy
            """<li ~atts~>
       <div class="flex items-center">
         <svg class="h-full w-6 flex-shrink-0 text-gray-200" viewBox="0 0 24 44" preserveAspectRatio="none" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -33,7 +34,8 @@ liHtml =
   )
 
 myHtml =
-  ( Proxy  :: Proxy
+  ( Proxy
+      :: Proxy
            """<nav class="flex" aria-label="Breadcrumb">
   <ol role="list" class="flex space-x-4 rounded-md bg-white px-6 shadow">
     <li ~homeAtts~>
@@ -54,7 +56,7 @@ myHtml =
 </nav>"""
   )
 
-addingASingleElement :: forall lock payload. Subsection lock payload
+addingASingleElement :: Subsection
 addingASingleElement = subsection
   { title: "Adding a single DOM element as a component"
   , matter: pure

@@ -13,7 +13,7 @@ import Pages.CoreConcepts.Effects.Hydration (hydration)
 import Pages.CoreConcepts.Effects.LifecycleMethods (lifecycleMethods)
 import Router.ADT (Route(..))
 
-effects :: forall lock payload. Page lock payload
+effects :: Page
 effects = page
   { route: Effects
   , topmatter: pure

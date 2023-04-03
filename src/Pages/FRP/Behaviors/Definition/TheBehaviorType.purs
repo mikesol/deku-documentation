@@ -9,7 +9,7 @@ import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.DOM as D
 
-theBehaviorType :: forall lock payload. Subsection lock payload
+theBehaviorType :: Subsection
 theBehaviorType = subsection
   { title: "The Behavior type"
   , matter: pure

@@ -25,7 +25,7 @@ text-sm font-medium leading-4 text-white shadow-sm
 hover:bg-COLOR-700 focus:outline-none focus:ring-2
 focus:ring-COLOR-500 focus:ring-offset-2"""
 
-componentsAsSemigroups :: forall lock payload. Subsection lock payload
+componentsAsSemigroups :: Subsection
 componentsAsSemigroups = subsection
   { title: "Components as semigroups"
   , matter: pure

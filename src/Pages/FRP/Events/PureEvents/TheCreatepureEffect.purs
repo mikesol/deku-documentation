@@ -13,7 +13,7 @@ import Examples as Examples
 import FRP.Event (createPure, subscribePure)
 import Router.ADT (Route(..))
 
-theCreatepureEffect :: forall lock payload. Subsection lock payload
+theCreatepureEffect :: Subsection
 theCreatepureEffect = subsection
   { title: "The createPure effect"
   , matter: \(Env { routeLink }) ->

@@ -11,7 +11,7 @@ import Deku.DOM as D
 import Pages.FRP.Events.OptimizedEvents.OptimizedEventCreation (optimizedEventCreation)
 import Pages.FRP.Events.OptimizedEvents.OptimizedEventFunctions (optimizedEventFunctions)
 
-optimizedEvents :: forall lock payload. Section lock payload
+optimizedEvents :: Section
 optimizedEvents = section
   { title: "Optimized events"
   , topmatter: pure

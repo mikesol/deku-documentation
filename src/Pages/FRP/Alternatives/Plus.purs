@@ -9,7 +9,7 @@ import Deku.DOM as D
 import Pages.FRP.Alternatives.Plus.LawfullyAlternative (lawfullyAlternative)
 import Pages.FRP.Alternatives.Plus.Emptiness (emptiness)
 
-plus :: forall lock payload. Section lock payload
+plus :: Section
 plus = section
   { title: "Plus"
   , topmatter: pure

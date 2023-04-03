@@ -7,7 +7,7 @@ import Deku.Attributes (href_)
 import Deku.Control (text_)
 import Deku.DOM as D
 
-theSTMonad :: forall lock payload. Subsection lock payload
+theSTMonad :: Subsection
 theSTMonad = subsection
   { title: "The ST r monad"
   , matter: pure

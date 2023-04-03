@@ -14,7 +14,7 @@ import Pages.FRP.Events.PureEvents (pureEvents)
 import Pages.FRP.Events.StandAloneEvents (standAloneEvents)
 import Router.ADT (Route(..))
 
-events :: forall lock payload. Page lock payload
+events :: Page
 events = page
   { route: Events
   , topmatter: pure
