@@ -13,7 +13,7 @@ aFeedforwardFilter = subsection
   , matter: pure
       [ D.p_
           [ text_ "This subsection will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "A feedforward filter" ]
+          , D.span [D.Class !:= "font-bold"] [ text_ "A feedforward filter" ]
           , text_ "."
           ]
       ]

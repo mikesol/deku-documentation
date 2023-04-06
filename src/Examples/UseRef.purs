@@ -12,7 +12,6 @@ import Deku.Hooks (useRef, useState)
 import Deku.Listeners (click_, slider_)
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
-import QualifiedDo.Alt as Alt
 
 buttonClass =
   """inline-flex items-center rounded-md
@@ -28,15 +27,15 @@ main = runInBody Deku.do
   intRef <- useRef initial num
   D.div_
     [ D.input
-        (slider_ setNum)
+        [ slider_ setNum ]
         []
-    , D.div (klass_ "grid grid-flow-row grid-cols-3")
+    , D.div [ klass_ "grid grid-flow-row grid-cols-3" ]
         ( replicate 24 Deku.do
             setButtonText /\ buttonText <- useState "Waiting..."
             D.button
-              Alt.do
-                klass_ buttonClass
-                click_ $ intRef >>= show >>> setButtonText
+              [ klass_ buttonClass
+              , click_ $ intRef >>= show >>> setButtonText
+              ]
               [ text buttonText ]
         )
     ]

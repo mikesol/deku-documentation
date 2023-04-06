@@ -13,7 +13,7 @@ gotchyas = subsection
   , matter: pure
       [ D.p_
           [ text_ "This subsection will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "Gotchyas" ]
+          , D.span [D.Class !:= "font-bold"] [ text_ "Gotchyas" ]
           , text_ "."
           ]
       ]

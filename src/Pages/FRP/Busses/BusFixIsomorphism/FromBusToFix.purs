@@ -13,7 +13,7 @@ fromBusToFix = subsection
   , matter: pure
       [ D.p_
           [ text_ "This subsection will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "From bus to fix" ]
+          , D.span [D.Class !:= "font-bold"] [ text_ "From bus to fix" ]
           , text_ "."
           ]
       ]

@@ -13,7 +13,7 @@ fromFixToFold = subsection
   , matter: pure
       [ D.p_
           [ text_ "This subsection will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "From fix to fold" ]
+          , D.span [D.Class !:= "font-bold"] [ text_ "From fix to fold" ]
           , text_ "."
           ]
       ]

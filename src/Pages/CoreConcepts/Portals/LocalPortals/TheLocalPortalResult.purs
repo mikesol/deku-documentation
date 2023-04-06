@@ -13,7 +13,7 @@ theLocalPortalResult = subsection
   , matter: pure
       [ D.p_
           [ text_ "This subsection will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "The local portal result" ]
+          , D.span [D.Class !:= "font-bold"] [ text_ "The local portal result" ]
           , text_ "."
           ]
       ]

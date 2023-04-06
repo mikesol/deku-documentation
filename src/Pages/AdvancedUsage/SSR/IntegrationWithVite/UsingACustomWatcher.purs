@@ -13,7 +13,7 @@ usingACustomWatcher = subsection
   , matter: pure
       [ D.p_
           [ text_ "This subsection will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "Using a custom watcher" ]
+          , D.span [D.Class !:= "font-bold"] [ text_ "Using a custom watcher" ]
           , text_ "."
           ]
       ]

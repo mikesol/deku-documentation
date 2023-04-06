@@ -13,7 +13,7 @@ cleanup = subsection
   , matter: pure
       [ D.p_
           [ text_ "This subsection will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "Cleanup" ]
+          , D.span [D.Class !:= "font-bold"] [ text_ "Cleanup" ]
           , text_ "."
           ]
       ]

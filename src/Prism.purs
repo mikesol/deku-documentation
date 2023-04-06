@@ -19,23 +19,19 @@ foreign import addExpandButton :: Effect Unit
 
 forceHighlight :: Nut
 forceHighlight = D.div
-  ( oneOf
-      [ klass_ "hidden"
-      , D.Self !:= \(_ :: Element) -> do
-          highlightAll
-          addExpandButton
-      ]
-  )
+  [ klass_ "hidden"
+  , D.Self !:= \(_ :: Element) -> do
+      highlightAll
+      addExpandButton
+  ]
   []
 
 forceHighlightAff :: Nut
 forceHighlightAff = D.div
-  ( oneOf
-      [ klass_ "hidden"
-      , D.Self !:= \(_ :: Element) -> launchAff_ do
-          delay (Milliseconds 0.0)
-          liftEffect highlightAll
-          liftEffect addExpandButton
-      ]
-  )
+  [ klass_ "hidden"
+  , D.Self !:= \(_ :: Element) -> launchAff_ do
+      delay (Milliseconds 0.0)
+      liftEffect highlightAll
+      liftEffect addExpandButton
+  ]
   []

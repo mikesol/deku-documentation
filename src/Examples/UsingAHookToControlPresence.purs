@@ -11,7 +11,6 @@ import Deku.Attributes (klass_)
 import Deku.Listeners (click)
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
-import QualifiedDo.Alt as Alt
 
 main :: Effect Unit
 main = runInBody Deku.do
@@ -19,9 +18,9 @@ main = runInBody Deku.do
   D.div_
     [ guard presence (text_ "Now you see me, ")
     , D.a
-        Alt.do
-          klass_ "cursor-pointer"
-          click $ presence <#> not >>> setPresence
+        [ klass_ "cursor-pointer"
+        , click $ presence <#> not >>> setPresence
+        ]
         [ text $ presence <#>
             if _ then "now you don't." else "Oops, come back!"
         ]
