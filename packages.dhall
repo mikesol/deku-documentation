@@ -8,14 +8,14 @@ in  upstream
       [ "hyrule"
       ]
     , repo = "https://github.com/mikesol/purescript-bolson.git"
-    , version = "lockless"
+    , version = "main"
     }
   with deku =
     { dependencies =
       [ "bolson", "stringutils", "css", "free", "fast-vect"
       ]
     , repo = "https://github.com/mikesol/purescript-deku.git"
-    , version = "lockless"
+    , version = "main"
     }
 with tidy =
     { dependencies =
