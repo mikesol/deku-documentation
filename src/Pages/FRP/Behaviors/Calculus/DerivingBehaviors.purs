@@ -24,7 +24,7 @@ import FRP.Behavior.Time (seconds)
 import FRP.Event (fold)
 import FRP.Event.AnimationFrame (animationFrame)
 
-derivingBehaviors :: forall lock payload. Subsection lock payload
+derivingBehaviors :: Subsection
 derivingBehaviors = subsection
   { title: "Derivatives of behaviors"
   , matter: pure

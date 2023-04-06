@@ -12,7 +12,7 @@ import Pages.FRP.Sampling.SamplingOnAnEvent (samplingOnAnEvent)
 import Pages.FRP.Sampling.SamplingWithBehaviors (samplingWithBehaviors)
 import Router.ADT (Route(..))
 
-sampling :: forall lock payload. Page lock payload
+sampling :: Page
 sampling = page
   { route: Sampling
   , topmatter: pure

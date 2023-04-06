@@ -9,7 +9,7 @@ import Deku.DOM as D
 import Pages.CoreConcepts.MoreHooks.UseMailboxed.MailboxesAsFilters (mailboxesAsFilters)
 import Pages.CoreConcepts.MoreHooks.UseMailboxed.AMailboxingApp (aMailboxingApp)
 
-useMailboxed :: forall lock payload. Section lock payload
+useMailboxed :: Section
 useMailboxed = section
   { title: "Use mailboxed"
   , topmatter: pure

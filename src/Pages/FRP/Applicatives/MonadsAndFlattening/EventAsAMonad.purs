@@ -6,7 +6,7 @@ import Contracts (Subsection, subsection)
 import Deku.Control (text_)
 import Deku.DOM as D
 
-eventAsAMonad :: forall lock payload. Subsection lock payload
+eventAsAMonad :: Subsection
 eventAsAMonad = subsection
   { title: "Event as a monad"
   , matter: pure

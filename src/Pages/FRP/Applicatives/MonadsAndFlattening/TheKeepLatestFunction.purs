@@ -13,7 +13,7 @@ import Examples as Examples
 import FRP.Event (fold, keepLatest)
 import FRP.Event.Time (interval)
 
-theKeepLatestFunction :: forall lock payload. Subsection lock payload
+theKeepLatestFunction :: Subsection
 theKeepLatestFunction = subsection
   { title: "The keepLatest function"
   , matter: pure

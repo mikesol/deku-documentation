@@ -9,7 +9,7 @@ import Deku.DOM as D
 import Pages.FRP.Busses.BusFixIsomorphism.FromFixToBus (fromFixToBus)
 import Pages.FRP.Busses.BusFixIsomorphism.FromBusToFix (fromBusToFix)
 
-busFixIsomorphism :: forall lock payload. Section lock payload
+busFixIsomorphism :: Section
 busFixIsomorphism = section
   { title: "Bus-fix isomorphism"
   , topmatter: pure

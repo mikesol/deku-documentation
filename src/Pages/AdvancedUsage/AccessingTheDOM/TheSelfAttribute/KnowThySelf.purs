@@ -20,7 +20,7 @@ import Web.DOM.Element (toParentNode)
 import Web.DOM.HTMLCollection as HTMLCollection
 import Web.DOM.ParentNode (children)
 
-knowThySelf :: forall lock payload. Subsection lock payload
+knowThySelf :: Subsection
 knowThySelf = subsection
   { title: "Know thy Self"
   , matter: pure

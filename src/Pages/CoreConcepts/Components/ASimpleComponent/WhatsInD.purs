@@ -8,7 +8,7 @@ import Contracts (Subsection, Env(..), subsection)
 import Deku.Control (text_)
 import Deku.DOM as D
 
-whatsInD :: forall lock payload. Subsection lock payload
+whatsInD :: Subsection
 whatsInD = subsection
   { title: "What's in D?"
   , matter: \(Env { routeLink }) ->

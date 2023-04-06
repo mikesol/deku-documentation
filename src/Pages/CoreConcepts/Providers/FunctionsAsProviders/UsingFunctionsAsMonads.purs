@@ -19,7 +19,7 @@ import Examples as Examples
 import FRP.Event (Event)
 import QualifiedDo.Alt as Alt
 
-usingFunctionsAsMonads :: forall lock payload. Subsection lock payload
+usingFunctionsAsMonads :: Subsection
 usingFunctionsAsMonads = subsection
   { title: "Using functions as monads"
   , matter: pure
@@ -40,7 +40,7 @@ usingFunctionsAsMonads = subsection
               "Like React Contexts and Providers, we can dip into the provider from any component without explicitly passing values through the application. This is because "
           , D.code__ "AppMonad"
           , text_ " expands to the signature "
-          , D.code__ "forall lock payload. Function Env (Domable lock payload)"
+          , D.code__ " Function Env (Nut)"
           , text_ " where "
           , D.code__ "Env"
           , text_ " is the context."

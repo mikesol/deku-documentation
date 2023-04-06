@@ -14,7 +14,7 @@ import Pages.CoreConcepts.Components.ASimpleComponent.ArraysAllTheWayDown (array
 import Pages.CoreConcepts.Components.ASimpleComponent.WhatsInD (whatsInD)
 import Router.ADT (Route(..))
 
-aSimpleComponent :: forall lock payload. Section lock payload
+aSimpleComponent :: Section
 aSimpleComponent = section
   { title: "A simple component"
   , topmatter: \(Env { routeLink }) ->
@@ -57,7 +57,7 @@ aSimpleComponent = section
               [ text_ "A "
               , D.b__ "component"
               , text_ " is a PureScript term with type "
-              , D.code__ "forall lock payload. Document lock payload"
+              , D.code__ " Document"
               , text_
                   ". Because that's tedious to write out, there's also an alias for this called  "
               , D.code__ "Nut"

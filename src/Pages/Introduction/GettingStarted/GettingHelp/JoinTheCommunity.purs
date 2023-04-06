@@ -7,7 +7,7 @@ import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.DOM as D
 
-joinTheCommunity :: forall lock payload. Subsection lock payload
+joinTheCommunity :: Subsection
 joinTheCommunity = subsection
   { title: "Join the community"
   , matter: pure

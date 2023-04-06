@@ -11,7 +11,7 @@ import Deku.Pursx ((~~))
 import Examples as Examples
 import Type.Proxy (Proxy(..))
 
-unsafePursx :: forall lock payload. Subsection lock payload
+unsafePursx :: Subsection
 unsafePursx = subsection
   { title: "Unsafe Pursx"
   , matter: pure

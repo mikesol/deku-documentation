@@ -8,7 +8,7 @@ import Deku.DOM as D
 import Pages.CoreConcepts.State.StateWithoutInitialValues.EmptyUntilFull (emptyUntilFull)
 import Pages.CoreConcepts.State.StateWithoutInitialValues.ANoteOnMemoization (aNoteOnMemoization)
 
-stateWithoutInitialValues :: forall lock payload. Section lock payload
+stateWithoutInitialValues :: Section
 stateWithoutInitialValues = section
   { title: "State without initial values"
   , topmatter: pure

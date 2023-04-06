@@ -9,7 +9,7 @@ import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.DOM as D
 
-whyEventsCannotWither :: forall lock payload. Subsection lock payload
+whyEventsCannotWither :: Subsection
 whyEventsCannotWither = subsection
   { title: "Why events cannot wither"
   , matter: pure

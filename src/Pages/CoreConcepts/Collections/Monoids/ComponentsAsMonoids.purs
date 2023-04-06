@@ -60,7 +60,7 @@ toWord 11 = "eleventh"
 toWord 12 = "twelfth"
 toWord _ = "nth"
 
-componentsAsMonoids :: forall lock payload. Subsection lock payload
+componentsAsMonoids :: Subsection
 componentsAsMonoids = subsection
   { title: "Components as monoids"
   , matter: pure

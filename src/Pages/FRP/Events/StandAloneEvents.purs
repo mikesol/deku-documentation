@@ -10,7 +10,7 @@ import Pages.FRP.Events.StandAloneEvents.MultipleSubscriptions (multipleSubscrip
 import Pages.FRP.Events.StandAloneEvents.UnsubscribeEtiquette (unsubscribeEtiquette)
 import Pages.FRP.Events.StandAloneEvents.TheMakeEventFunction (theMakeEventFunction)
 
-standAloneEvents :: forall lock payload. Section lock payload
+standAloneEvents :: Section
 standAloneEvents = section
   { title: "Stand-alone events"
   , topmatter: pure

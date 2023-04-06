@@ -8,7 +8,7 @@ import Deku.Control (text_)
 import Deku.DOM as D
 import Router.ADT (Route(..))
 
-usingTheHookInText :: forall lock payload. Subsection lock payload
+usingTheHookInText :: Subsection
 usingTheHookInText = subsection
   { title: "Using the hook in text"
   , matter: \(Env { routeLink }) ->

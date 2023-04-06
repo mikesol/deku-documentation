@@ -10,7 +10,7 @@ import Pages.FRP.Filtering.Partition.PerformanceConsiderations (performanceConsi
 import Pages.FRP.Filtering.Partition.PartitioningAnEvent (partitioningAnEvent)
 import Pages.FRP.Filtering.Partition.MultiPartitioning (multiPartitioning)
 
-partition :: forall lock payload. Section lock payload
+partition :: Section
 partition = section
   { title: "Partition"
   , topmatter: pure

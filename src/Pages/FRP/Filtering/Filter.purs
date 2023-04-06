@@ -9,7 +9,7 @@ import Deku.DOM as D
 import Pages.FRP.Filtering.Filter.FilteringAnEvent (filteringAnEvent)
 import Pages.FRP.Filtering.Filter.PerformanceConsiderations (performanceConsiderations)
 
-filter :: forall lock payload. Section lock payload
+filter :: Section
 filter = section
   { title: "Filter"
   , topmatter: pure

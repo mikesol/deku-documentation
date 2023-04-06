@@ -8,7 +8,7 @@ import Deku.DOM as D
 import Pages.CoreConcepts.Pursx.DynamicAttributes.AddingAnAttribute (addingAnAttribute)
 import Pages.CoreConcepts.Pursx.DynamicAttributes.AddingSeveralAttributes (addingSeveralAttributes)
 
-dynamicAttributes :: forall lock payload. Section lock payload
+dynamicAttributes :: Section
 dynamicAttributes = section
   { title: "Dynamic attributes"
   , topmatter: pure

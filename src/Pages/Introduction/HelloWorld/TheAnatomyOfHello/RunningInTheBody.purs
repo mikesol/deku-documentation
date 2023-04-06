@@ -1,6 +1,5 @@
 module Pages.Introduction.HelloWorld.TheAnatomyOfHello.RunningInTheBody where
 
-
 import Router.ADT (Route(..))
 import Components.Code (psCode)
 import Contracts (Subsection, Env(..), subsection)
@@ -8,7 +7,7 @@ import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.DOM as D
 
-runningInTheBody :: forall lock payload. Subsection lock payload
+runningInTheBody :: Subsection
 runningInTheBody = subsection
   { title: "Running in the body"
   , matter: \(Env { routeLink }) ->

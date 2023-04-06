@@ -7,7 +7,7 @@ import Deku.Control (text_)
 import Deku.Attribute ((!:=))
 import Deku.DOM as D
 
-theLocalPortalResult :: forall lock payload. Subsection lock payload
+theLocalPortalResult :: Subsection
 theLocalPortalResult = subsection
   { title: "The local portal result"
   , matter: pure

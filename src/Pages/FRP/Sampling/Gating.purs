@@ -10,7 +10,7 @@ import Pages.FRP.Sampling.Gating.GatingEventsOnBehaviors (gatingEventsOnBehavior
 import Pages.FRP.Sampling.Gating.SwitchingOnBehaviors (switchingOnBehaviors)
 import Router.ADT (Route(..))
 
-gating :: forall lock payload. Section lock payload
+gating :: Section
 gating = section
   { title: "Gating"
   , topmatter: \(Env { routeLink }) ->

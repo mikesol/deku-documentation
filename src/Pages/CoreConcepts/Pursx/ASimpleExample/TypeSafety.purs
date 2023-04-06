@@ -7,7 +7,7 @@ import Contracts (Subsection, subsection)
 import Deku.Control (text_)
 import Deku.DOM as D
 
-typeSafety :: forall lock payload. Subsection lock payload
+typeSafety :: Subsection
 typeSafety = subsection
   { title: "Type safety"
   , matter: pure
@@ -38,7 +38,8 @@ typeSafety = subsection
           , text_ "."
           ]
       , D.p_
-          [ text_ "By using a type to specify the HTML, Deku can validate it at "
+          [ text_
+              "By using a type to specify the HTML, Deku can validate it at "
           , D.i__ "compile time"
           , text_
               " instead of at runtime. That means you do not need to eat up precious CPU cycles in the browser "

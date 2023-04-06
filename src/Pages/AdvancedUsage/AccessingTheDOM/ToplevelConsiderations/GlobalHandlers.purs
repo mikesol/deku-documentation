@@ -31,7 +31,7 @@ doAuth f = do
   eff false
   pure $ write false onOff
 
-globalHandlers :: forall lock payload. Subsection lock payload
+globalHandlers :: Subsection
 globalHandlers = subsection
   { title: "Global handlers"
   , matter: \(Env { routeLink }) ->

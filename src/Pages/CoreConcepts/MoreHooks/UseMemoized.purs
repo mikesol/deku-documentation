@@ -18,7 +18,7 @@ import Pages.CoreConcepts.MoreHooks.UseMemoized.InitialEvents (initialEvents)
 import Pages.CoreConcepts.MoreHooks.UseMemoized.TransformedEvents (transformedEvents)
 import QualifiedDo.Alt as Alt
 
-useMemoized :: forall lock payload. Section lock payload
+useMemoized :: Section
 useMemoized = section
   { title: "The case for memoization"
   , topmatter: pure

@@ -38,7 +38,7 @@ myHtml =
 </div>"""
   )
 
-pursx :: forall lock payload. Page lock payload
+pursx :: Page
 pursx = page
   { route: Pursx
   , topmatter: pure

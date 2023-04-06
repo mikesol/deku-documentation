@@ -7,7 +7,7 @@ import Deku.DOM as D
 import Deku.Pursx ((~~))
 import Type.Proxy (Proxy(..))
 
-behaviorsAsMonoids :: forall lock payload. Subsection lock payload
+behaviorsAsMonoids :: Subsection
 behaviorsAsMonoids = subsection
   { title: "Behaviors as monoids"
   , matter: pure

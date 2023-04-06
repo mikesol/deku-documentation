@@ -9,7 +9,7 @@ import Deku.Control (text_)
 import Deku.DOM as D
 import Router.ADT (Route(..))
 
-lawfullyAlternative :: forall lock payload. Subsection lock payload
+lawfullyAlternative :: Subsection
 lawfullyAlternative = subsection
   { title: "Lawfully alternative"
   , matter: \(Env { routeLink }) ->

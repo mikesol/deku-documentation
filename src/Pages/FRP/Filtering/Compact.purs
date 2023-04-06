@@ -9,7 +9,7 @@ import Deku.DOM as D
 import Pages.FRP.Filtering.Compact.CompactingEvents (compactingEvents)
 import Pages.FRP.Filtering.Compact.WhyEventsCannotWither (whyEventsCannotWither)
 
-compact :: forall lock payload. Section lock payload
+compact :: Section
 compact = section
   { title: "Compact"
   , topmatter: pure

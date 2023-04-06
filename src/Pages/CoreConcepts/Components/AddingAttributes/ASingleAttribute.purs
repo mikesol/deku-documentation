@@ -7,7 +7,7 @@ import Contracts (Subsection, subsection)
 import Deku.Control (text_)
 import Deku.DOM as D
 
-aSingleAttribute :: forall lock payload. Subsection lock payload
+aSingleAttribute :: Subsection
 aSingleAttribute = subsection
   { title: "A single attribute"
   , matter: pure

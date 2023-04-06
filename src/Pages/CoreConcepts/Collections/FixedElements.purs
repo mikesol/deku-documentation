@@ -8,7 +8,7 @@ import Deku.DOM as D
 import Pages.CoreConcepts.Collections.FixedElements.GroupsOfGroups (groupsOfGroups)
 import Pages.CoreConcepts.Collections.FixedElements.GroupingElementsTogether (groupingElementsTogether)
 
-fixedElements :: forall lock payload. Section lock payload
+fixedElements :: Section
 fixedElements = section
   { title: "Arrays of components"
   , topmatter: pure

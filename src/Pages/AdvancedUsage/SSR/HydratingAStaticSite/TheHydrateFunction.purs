@@ -7,7 +7,7 @@ import Contracts (Subsection, subsection)
 import Deku.Control (text_)
 import Deku.DOM as D
 
-theHydrateFunction :: forall lock payload. Subsection lock payload
+theHydrateFunction :: Subsection
 theHydrateFunction = subsection
   { title: "The hydrate function"
   , matter: pure

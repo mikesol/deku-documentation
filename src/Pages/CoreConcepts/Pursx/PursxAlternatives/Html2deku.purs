@@ -10,7 +10,7 @@ import Deku.Attributes (href_)
 import Deku.Control (text_)
 import Deku.DOM as D
 
-html2deku :: forall lock payload. Subsection lock payload
+html2deku :: Subsection
 html2deku = subsection
   { title: "html2deku"
   , matter: pure

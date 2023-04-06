@@ -12,7 +12,7 @@ import Pages.CoreConcepts.MoreHooks.UseMailboxed (useMailboxed)
 import Pages.CoreConcepts.MoreHooks.UseMemoized (useMemoized)
 import Router.ADT (Route(..))
 
-moreHooks :: forall lock payload. Page lock payload
+moreHooks :: Page
 moreHooks = page
   { route: MoreHooks
   , topmatter: pure

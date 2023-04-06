@@ -16,7 +16,7 @@ import Examples as Examples
 import QualifiedDo.Alt as Alt
 
 usingAHookToControlThePresenceOfElements
-  :: forall lock payload. Subsection lock payload
+  :: Subsection
 usingAHookToControlThePresenceOfElements = subsection
   { title: "Using a hook to control presence"
   , matter: pure

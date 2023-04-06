@@ -7,7 +7,7 @@ import Deku.Control (text_)
 import Deku.Attribute ((!:=))
 import Deku.DOM as D
 
-theToplevelElement :: forall lock payload. Subsection lock payload
+theToplevelElement :: Subsection
 theToplevelElement = subsection
   { title: "Toplevel element"
   , matter: pure

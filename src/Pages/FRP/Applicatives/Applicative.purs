@@ -9,7 +9,7 @@ import Deku.DOM as D
 import Pages.FRP.Applicatives.Applicative.ApplicativeAsBiSampling (applicativeAsBiSampling)
 import Pages.FRP.Applicatives.Applicative.TheTemporalityOfPure (theTemporalityOfPure)
 
-applicative :: forall lock payload. Section lock payload
+applicative :: Section
 applicative = section
   { title: "Applicative"
   , topmatter: pure

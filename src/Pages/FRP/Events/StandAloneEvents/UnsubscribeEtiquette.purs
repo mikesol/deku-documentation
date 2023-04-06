@@ -7,7 +7,7 @@ import Deku.Control (text_)
 import Deku.Attribute ((!:=))
 import Deku.DOM as D
 
-unsubscribeEtiquette :: forall lock payload. Subsection lock payload
+unsubscribeEtiquette :: Subsection
 unsubscribeEtiquette = subsection
   { title: "Unsubscribe etiquette"
   , matter: pure

@@ -18,7 +18,7 @@ import Deku.Listeners (slider_)
 import Examples as Examples
 import FRP.Event (Event)
 
-compactingEvents :: forall lock payload. Subsection lock payload
+compactingEvents :: Subsection
 compactingEvents = subsection
   { title: "Compacting events"
   , matter: pure

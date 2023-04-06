@@ -11,7 +11,7 @@ import Deku.DOM as D
 import Deku.Pursx ((~~))
 import Type.Proxy (Proxy(..))
 
-behaviorsAsRings :: forall lock payload. Subsection lock payload
+behaviorsAsRings :: Subsection
 behaviorsAsRings = subsection
   { title: "Behaviors as rings"
   , matter: pure

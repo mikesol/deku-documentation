@@ -9,7 +9,7 @@ import Pages.CoreConcepts.Providers.FunctionsAsProviders.MixingDoNotation (mixin
 import Pages.CoreConcepts.Providers.FunctionsAsProviders.PassingAroundHooks (passingAroundHooks)
 import Pages.CoreConcepts.Providers.FunctionsAsProviders.UsingFunctionsAsMonads (usingFunctionsAsMonads)
 
-functionsAsProviders :: forall lock payload. Section lock payload
+functionsAsProviders :: Section
 functionsAsProviders = section
   { title: "Functions as providers"
   , topmatter: pure

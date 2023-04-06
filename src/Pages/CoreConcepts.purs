@@ -10,7 +10,7 @@ import Pages.CoreConcepts.Providers (providers)
 import Pages.CoreConcepts.Pursx (pursx)
 import Pages.CoreConcepts.State (state)
 
-coreConcepts :: forall lock payload. Chapter lock payload
+coreConcepts :: Chapter
 coreConcepts = chapter
   { title: "Core concepts"
   , pages:

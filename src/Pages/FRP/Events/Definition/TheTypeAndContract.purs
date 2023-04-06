@@ -10,7 +10,7 @@ import Deku.Attributes (href_)
 import Deku.Control (text_)
 import Deku.DOM as D
 
-theTypeAndContract :: forall lock payload. Subsection lock payload
+theTypeAndContract :: Subsection
 theTypeAndContract = subsection
   { title: "The type constructor and contract"
   , matter: pure

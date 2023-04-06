@@ -11,7 +11,7 @@ import Pages.FRP.OtherInstances.Monoid (monoid)
 import Pages.FRP.OtherInstances.Ring (ring)
 import Router.ADT (Route(..))
 
-otherInstances :: forall lock payload. Page lock payload
+otherInstances :: Page
 otherInstances = page
   { route: OtherInstances
   , topmatter: pure

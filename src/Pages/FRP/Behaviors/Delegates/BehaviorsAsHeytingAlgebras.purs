@@ -11,7 +11,7 @@ import Deku.DOM as D
 import Deku.Pursx ((~~))
 import Type.Proxy (Proxy(..))
 
-behaviorsAsHeytingAlgebras :: forall lock payload. Subsection lock payload
+behaviorsAsHeytingAlgebras :: Subsection
 behaviorsAsHeytingAlgebras = subsection
   { title: "Behaviors as Heyting Algebras"
   , matter: pure

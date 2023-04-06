@@ -20,7 +20,7 @@ import FRP.Behavior (integral', sample_, step)
 import FRP.Behavior.Time (seconds)
 import FRP.Event.AnimationFrame (animationFrame)
 
-integratingBehaviors :: forall lock payload. Subsection lock payload
+integratingBehaviors :: Subsection
 integratingBehaviors = subsection
   { title: "Integrating behaviors"
   , matter: pure

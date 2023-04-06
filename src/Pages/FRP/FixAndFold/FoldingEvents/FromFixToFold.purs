@@ -7,7 +7,7 @@ import Deku.Control (text_)
 import Deku.Attribute ((!:=))
 import Deku.DOM as D
 
-fromFixToFold :: forall lock payload. Subsection lock payload
+fromFixToFold :: Subsection
 fromFixToFold = subsection
   { title: "From fix to fold"
   , matter: pure

@@ -6,7 +6,7 @@ import Deku.Control (text_)
 import Deku.DOM as D
 import Router.ADT (Route(..))
 
-pushingToAHook :: forall lock payload. Subsection lock payload
+pushingToAHook :: Subsection
 pushingToAHook = subsection
   { title: "Pushing to a hook"
   , matter: \(Env { routeLink }) ->
@@ -26,7 +26,8 @@ pushingToAHook = subsection
       , D.p_
           [ text_ "Hook pushers (aka setters) are always on the "
           , D.i__ "left"
-          , text_ " of the tuple returned from a hook. They always have the type "
+          , text_
+              " of the tuple returned from a hook. They always have the type "
           , D.code__ "a -> Effect Unit"
           , text_ ". In the example above "
           , D.code__ "a"

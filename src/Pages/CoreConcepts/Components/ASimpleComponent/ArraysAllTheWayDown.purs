@@ -8,7 +8,7 @@ import Contracts (Subsection, subsection)
 import Deku.Control (text_)
 import Deku.DOM as D
 
-arraysAllTheWayDown :: forall lock payload. Subsection lock payload
+arraysAllTheWayDown :: Subsection
 arraysAllTheWayDown = subsection
   { title: "Arrays all the way down"
   , matter: pure

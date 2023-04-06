@@ -10,7 +10,7 @@ import Deku.Attributes (href_)
 import Deku.Control (text_)
 import Deku.DOM as D
 
-theMakeEventFunction :: forall lock payload. Subsection lock payload
+theMakeEventFunction :: Subsection
 theMakeEventFunction = subsection
   { title: "The makeEvent function"
   , matter: pure

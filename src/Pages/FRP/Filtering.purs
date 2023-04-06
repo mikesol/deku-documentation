@@ -11,7 +11,7 @@ import Pages.FRP.Filtering.Filter (filter)
 import Pages.FRP.Filtering.Partition (partition)
 import Router.ADT (Route(..))
 
-filtering :: forall lock payload. Page lock payload
+filtering :: Page
 filtering = page
   { route: Filtering
   , topmatter: pure

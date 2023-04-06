@@ -10,7 +10,7 @@ import Pages.FRP.Busses.TheVBus.NestedVBusses (nestedVBusses)
 import Pages.FRP.Busses.TheVBus.SettingUpAVBus (settingUpAVBus)
 import Pages.FRP.Busses.TheVBus.PerformanceComparedToBus (performanceComparedToBus)
 
-theVBus :: forall lock payload. Section lock payload
+theVBus :: Section
 theVBus = section
   { title: "The VBus"
   , topmatter: pure

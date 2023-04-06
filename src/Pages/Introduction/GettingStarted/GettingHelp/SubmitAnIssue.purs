@@ -7,7 +7,7 @@ import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.DOM as D
 
-submitAnIssue :: forall lock payload. Subsection lock payload
+submitAnIssue :: Subsection
 submitAnIssue = subsection
   { title: "Submit an issue"
   , matter: pure

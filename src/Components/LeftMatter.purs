@@ -10,7 +10,7 @@ import Data.Newtype (unwrap)
 import Deku.Attribute ((!:=))
 import Deku.Attributes (klass)
 import Deku.Control (text_)
-import Deku.Core (Domable, Nut)
+import Deku.Core (Nut, Nut)
 import Deku.DOM as D
 import FRP.Event (Event)
 import Navigation (PushState)
@@ -18,13 +18,12 @@ import Pages.Docs (docs)
 import Router.ADT (Route)
 
 pageLi
-  :: forall lock payload
-   . { pageIs :: Route -> Event Unit
+  :: { pageIs :: Route -> Event Unit
      , pageWas :: Route -> Event Unit
      , pushState :: PushState
      }
-  -> Page lock payload
-  -> Domable lock payload
+  -> Page
+  -> Nut
 pageLi { pushState, pageIs, pageWas } (Page { route }) = D.li
   (D.Class !:= "relative")
   [ link pushState route
@@ -43,13 +42,12 @@ pageLi { pushState, pageIs, pageWas } (Page { route }) = D.li
   ]
 
 chapterLi
-  :: forall lock payload
-   . { pageIs :: Route -> Event Unit
+  :: { pageIs :: Route -> Event Unit
      , pageWas :: Route -> Event Unit
      , pushState :: PushState
      }
-  -> Chapter lock payload
-  -> Domable lock payload
+  -> Chapter
+  -> Nut
 chapterLi opts (Chapter { title, pages }) = D.li_
   [ D.h2
       ( D.Class !:=

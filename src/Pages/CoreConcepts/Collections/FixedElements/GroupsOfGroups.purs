@@ -39,7 +39,7 @@ data AlexandersDay = Bad | Worse | Worst
 derive instance Eq AlexandersDay
 derive instance Ord AlexandersDay
 
-groupsOfGroups :: forall lock payload. Subsection lock payload
+groupsOfGroups :: Subsection
 groupsOfGroups = subsection
   { title: "Groups of groups"
   , matter: pure

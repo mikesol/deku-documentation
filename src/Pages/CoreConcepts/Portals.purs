@@ -8,7 +8,7 @@ import Data.Tuple.Nested ((/\))
 import Deku.Attribute ((!:=))
 import Deku.Attributes (klass_)
 import Deku.Control (globalPortal1, guard, text_)
-import Deku.Core (Domable, Nut)
+import Deku.Core (Nut, Nut)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState)
@@ -24,13 +24,12 @@ data Square = TL | BL | TR | BR
 derive instance Eq Square
 
 moveSpriteHere
-  :: forall lock payload
-   . { iframe :: Domable lock payload
+  :: { iframe :: Nut
      , square :: Event Square
      , setSquare :: Square -> Effect Unit
      , at :: Square
      }
-  -> Domable lock payload
+  -> Nut
 moveSpriteHere { iframe, square, setSquare, at } = D.a
   ( oneOf
       [ click_ (setSquare at)
@@ -61,7 +60,7 @@ myIframe = D.video
       []
   ]
 
-portals :: forall lock payload. Page lock payload
+portals :: Page
 portals = page
   { route: Portals
   , topmatter: pure

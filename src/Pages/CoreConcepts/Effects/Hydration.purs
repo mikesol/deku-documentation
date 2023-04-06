@@ -10,7 +10,7 @@ import Pages.CoreConcepts.Effects.Hydration.InjectingDependencies (injectingDepe
 import Pages.CoreConcepts.Effects.Hydration.Cleanup (cleanup)
 import Pages.CoreConcepts.Effects.Hydration.AnAlternativeEffectModel (anAlternativeEffectModel)
 
-hydration :: forall lock payload. Section lock payload
+hydration :: Section
 hydration = section
   { title: "Hydration"
   , topmatter: pure

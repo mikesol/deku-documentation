@@ -16,7 +16,7 @@ import Deku.Listeners (slider_)
 import Examples as Examples
 import FRP.Event.Class ((<**|>), (<*|>), (<|**>), (<|*>))
 
-biasingASideOfSampling :: forall lock payload. Subsection lock payload
+biasingASideOfSampling :: Subsection
 biasingASideOfSampling = subsection
   { title: "Biasing a side of sampling"
   , matter: pure

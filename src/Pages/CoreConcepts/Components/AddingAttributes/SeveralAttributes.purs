@@ -9,7 +9,7 @@ import Deku.Control (text_)
 import QualifiedDo.Alt as Alt
 import Deku.DOM as D
 
-severalAttributes :: forall lock payload. Subsection lock payload
+severalAttributes :: Subsection
 severalAttributes = subsection
   { title: "Several attributes"
   , matter: pure

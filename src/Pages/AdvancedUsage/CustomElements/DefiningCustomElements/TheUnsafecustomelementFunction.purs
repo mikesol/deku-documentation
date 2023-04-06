@@ -14,7 +14,7 @@ import Type.Proxy (Proxy(..))
 
 data MyNiftyAnchor_
 
-theUnsafeCustomElementFunction :: forall lock payload. Subsection lock payload
+theUnsafeCustomElementFunction :: Subsection
 theUnsafeCustomElementFunction = subsection
   { title: "The unsafeCustomElement function"
   , matter: pure

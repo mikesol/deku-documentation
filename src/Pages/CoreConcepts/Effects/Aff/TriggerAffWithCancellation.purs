@@ -31,7 +31,7 @@ import QualifiedDo.Alt as Alt
 import Type.Proxy (Proxy(..))
 
 triggerAffWithCancellation
-  :: forall lock payload. Subsection lock payload
+  :: Subsection
 triggerAffWithCancellation = subsection
   { title: "The bindToAffWithCancellation function"
   , matter: pure

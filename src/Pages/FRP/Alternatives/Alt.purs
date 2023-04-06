@@ -10,7 +10,7 @@ import Pages.FRP.Alternatives.Alt.TheOneOfFunction (theOneOfFunction)
 import Pages.FRP.Alternatives.Alt.PerformanceConsiderations (performanceConsiderations)
 import Pages.FRP.Alternatives.Alt.AltAsAMuxer (altAsAMuxer)
 
-alt :: forall lock payload. Section lock payload
+alt :: Section
 alt = section
   { title: "Alt"
   , topmatter: pure

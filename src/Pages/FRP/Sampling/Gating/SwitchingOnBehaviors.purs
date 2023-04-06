@@ -16,7 +16,7 @@ import FRP.Behavior (behavior, sample_, switcher)
 import FRP.Event.Effect (bindToEffect)
 import FRP.Event.Time (interval)
 
-switchingOnBehaviors :: forall lock payload. Subsection lock payload
+switchingOnBehaviors :: Subsection
 switchingOnBehaviors = subsection
   { title: "Switching on behaviors"
   , matter: pure

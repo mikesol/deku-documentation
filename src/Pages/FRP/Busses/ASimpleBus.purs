@@ -11,7 +11,7 @@ import Pages.FRP.Busses.ASimpleBus.PerformanceConsiderations (performanceConside
 import Pages.FRP.Busses.ASimpleBus.BussesAsClosures (bussesAsClosures)
 import Pages.FRP.Busses.ASimpleBus.BussesAndDekuHooks (bussesAndDekuHooks)
 
-aSimpleBus :: forall lock payload. Section lock payload
+aSimpleBus :: Section
 aSimpleBus = section
   { title: "A simple bus"
   , topmatter: pure

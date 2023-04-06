@@ -14,7 +14,7 @@ import Examples as Examples
 import FRP.Event (delay)
 import FRP.Event.Time (interval)
 
-theOneOfFunction :: forall lock payload. Subsection lock payload
+theOneOfFunction :: Subsection
 theOneOfFunction = subsection
   { title: "The oneOf function"
   , matter: pure

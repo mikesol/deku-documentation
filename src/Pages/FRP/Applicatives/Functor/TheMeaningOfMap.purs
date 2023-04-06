@@ -7,7 +7,7 @@ import Deku.Control (text_)
 import Deku.DOM as D
 import Router.ADT (Route(..))
 
-theMeaningOfMap :: forall lock payload. Subsection lock payload
+theMeaningOfMap :: Subsection
 theMeaningOfMap = subsection
   { title: "The meaning of map"
   , matter: \(Env { routeLink }) ->

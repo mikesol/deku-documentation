@@ -8,7 +8,7 @@ import Deku.Control (text_)
 import Deku.DOM as D
 import Router.ADT (Route(..))
 
-aMailboxingApp :: forall lock payload. Subsection lock payload
+aMailboxingApp :: Subsection
 aMailboxingApp = subsection
   { title: "Mailboxes are filters with superpowers"
   , matter: \(Env { routeLink }) ->
@@ -16,7 +16,9 @@ aMailboxingApp = subsection
           [ text_ "While it's possible to achieve a similar outcome with "
           , routeLink Filtering
           , text_
-              ", it's much slower. Individual filters for a collection of ", D.i__ "n", text_ " items execute in "
+              ", it's much slower. Individual filters for a collection of "
+          , D.i__ "n"
+          , text_ " items execute in "
           , D.i__ "O(n)"
           , text_
               " time because each entry has to check if it has a valid input."

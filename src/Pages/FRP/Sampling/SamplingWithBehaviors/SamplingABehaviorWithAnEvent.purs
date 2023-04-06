@@ -17,7 +17,7 @@ import FRP.Event.Aff (bindToAffWithCancellation)
 import FRP.Event.Time (interval)
 import Fetch (Method(..))
 
-samplingABehaviorWithAnEvent :: forall lock payload. Subsection lock payload
+samplingABehaviorWithAnEvent :: Subsection
 samplingABehaviorWithAnEvent = subsection
   { title: "Sampling a behavior with an event"
   , matter: pure

@@ -15,7 +15,7 @@ import Deku.Listeners (slider_)
 import Examples as Examples
 import QualifiedDo.Alt as Alt
 
-eventsAsRings :: forall lock payload. Subsection lock payload
+eventsAsRings :: Subsection
 eventsAsRings = subsection
   { title: "Events as rings"
   , matter: pure

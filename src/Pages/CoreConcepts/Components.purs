@@ -11,7 +11,7 @@ import Pages.CoreConcepts.Components.AddingAttributes (addingAttributes)
 import Pages.CoreConcepts.Components.AddingEventHandlers (addingEventHandlers)
 import Router.ADT (Route(..))
 
-components :: forall lock payload. Page lock payload
+components :: Page
 components = page
   { route: Components
   , topmatter: pure

@@ -8,7 +8,7 @@ import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.DOM as D
 
-definingIonicCustomElements :: forall lock payload. Subsection lock payload
+definingIonicCustomElements :: Subsection
 definingIonicCustomElements = subsection
   { title: "Importing our custom elements"
   , matter: pure

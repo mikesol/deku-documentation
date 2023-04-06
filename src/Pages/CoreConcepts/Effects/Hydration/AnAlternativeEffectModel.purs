@@ -8,7 +8,7 @@ import Deku.Attributes (klass_)
 import Deku.Control (text_)
 import Deku.DOM as D
 
-anAlternativeEffectModel :: forall lock payload. Subsection lock payload
+anAlternativeEffectModel :: Subsection
 anAlternativeEffectModel = subsection
   { title: "An alternative effect model"
   , matter: pure

@@ -11,7 +11,7 @@ import Pages.CoreConcepts.Portals.LocalPortals.PerformanceNotes (performanceNote
 import Pages.CoreConcepts.Portals.LocalPortals.TheLocalPortalSyntax (theLocalPortalSyntax)
 import Pages.CoreConcepts.Portals.LocalPortals.UnlockingLevels (unlockingLevels)
 
-localPortals :: forall lock payload. Section lock payload
+localPortals :: Section
 localPortals = section
   { title: "Local portals"
   , topmatter: pure

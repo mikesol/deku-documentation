@@ -13,7 +13,7 @@ import Deku.DOM as D
 import Examples as Examples
 import FRP.Event (createPureO, subscribePureO)
 
-optimizedEventCreation :: forall lock payload. Subsection lock payload
+optimizedEventCreation :: Subsection
 optimizedEventCreation = subsection
   { title: "Optimized event creation"
   , matter: pure

@@ -8,7 +8,7 @@ import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.DOM as D
 
-emptiness :: forall lock payload. Subsection lock payload
+emptiness :: Subsection
 emptiness = subsection
   { title: "Emptiness"
   , matter: pure

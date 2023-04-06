@@ -16,7 +16,7 @@ import Web.Event.Event (type_)
 import Web.HTML (window)
 import Web.HTML.Window (alert)
 
-usingTheOriginalEvent :: forall lock payload. Subsection lock payload
+usingTheOriginalEvent :: Subsection
 usingTheOriginalEvent = subsection
   { title: "Using the original event"
   , matter: pure

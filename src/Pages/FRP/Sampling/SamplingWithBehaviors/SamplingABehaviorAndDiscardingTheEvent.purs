@@ -18,7 +18,7 @@ import FRP.Event.Time (interval)
 import Fetch (Method(..))
 
 samplingABehaviorAndDiscardingTheEvent
-  :: forall lock payload. Subsection lock payload
+  :: Subsection
 samplingABehaviorAndDiscardingTheEvent = subsection
   { title: "Sampling a behavior and discarding the event"
   , matter: pure

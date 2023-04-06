@@ -9,7 +9,7 @@ import Pages.FRP.Events.InteractiveEvents.TheCreateEffect (theCreateEffect)
 import Pages.FRP.Events.InteractiveEvents.PerformanceNotes (performanceNotes)
 import Pages.FRP.Events.InteractiveEvents.LifetimeAndGarbageCollection (lifetimeAndGarbageCollection)
 
-interactiveEvents :: forall lock payload. Section lock payload
+interactiveEvents :: Section
 interactiveEvents = section
   { title: "Interactive events"
   , topmatter: pure

@@ -7,7 +7,7 @@ import Deku.Control (text_)
 import Deku.Attribute ((!:=))
 import Deku.DOM as D
 
-multiPartitioning :: forall lock payload. Subsection lock payload
+multiPartitioning :: Subsection
 multiPartitioning = subsection
   { title: "Multi-partitioning"
   , matter: pure

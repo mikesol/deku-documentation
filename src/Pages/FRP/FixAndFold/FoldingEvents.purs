@@ -10,7 +10,7 @@ import Pages.FRP.FixAndFold.FoldingEvents.TheFoldFunction (theFoldFunction)
 import Pages.FRP.FixAndFold.FoldingEvents.TimeLeaks (timeLeaks)
 import Pages.FRP.FixAndFold.FoldingEvents.WhenToFixAndWhenToFold (whenToFixAndWhenToFold)
 
-foldingEvents :: forall lock payload. Section lock payload
+foldingEvents :: Section
 foldingEvents = section
   { title: "Folding events"
   , topmatter: pure
