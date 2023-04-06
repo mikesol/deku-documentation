@@ -9,7 +9,7 @@ import Deku.DOM as D
 import Pages.CoreConcepts.Effects.LifecycleMethods.EffectsOnTeardown (effectsOnTeardown)
 import Pages.CoreConcepts.Effects.LifecycleMethods.EffectsOnInitialization (effectsOnInitialization)
 
-lifecycleMethods :: forall lock payload. Section lock payload
+lifecycleMethods :: Section
 lifecycleMethods = section
   { title: "Lifecycle methods"
   , topmatter: pure

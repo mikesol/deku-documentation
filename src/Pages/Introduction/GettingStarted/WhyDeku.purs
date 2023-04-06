@@ -10,7 +10,7 @@ import Deku.Attributes (href_)
 import Deku.Control (text_)
 import Deku.DOM as D
 
-whyDeku :: forall lock payload. Section lock payload
+whyDeku :: Section
 whyDeku = section
   { title: "Why Deku"
   , topmatter: pure
@@ -35,7 +35,8 @@ whyDeku = section
           , targetedLink "https://deku-realworld.netlify.app"
               [ text_ "Deku Real World" ]
           , text_ " "
-          , targetedLink "https://github.com/mikesol/purescript-deku-realworld" [text_ " project"]
+          , targetedLink "https://github.com/mikesol/purescript-deku-realworld"
+              [ text_ " project" ]
           , text_ "."
           ]
       ]

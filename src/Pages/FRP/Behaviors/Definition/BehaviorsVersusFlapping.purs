@@ -14,7 +14,7 @@ import FRP.Behavior (behavior, sample)
 import FRP.Event.Effect (bindToEffect)
 import FRP.Event.Time (interval)
 
-behaviorsVersusFlapping :: forall lock payload. Subsection lock payload
+behaviorsVersusFlapping :: Subsection
 behaviorsVersusFlapping = subsection
   { title: "A Behavior in the wild"
   , matter: pure

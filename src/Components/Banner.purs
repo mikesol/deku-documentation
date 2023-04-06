@@ -10,7 +10,7 @@ import Data.Tuple.Nested ((/\))
 import Deku.Attribute (xdata, (!:=))
 import Deku.Attributes (klass, klass_)
 import Deku.Control (switcher, text_)
-import Deku.Core (Domable)
+import Deku.Core (Nut)
 import Deku.DOM as D
 import Deku.Hooks (useMemoized, useState)
 import Deku.Do as Deku
@@ -42,9 +42,8 @@ bannerExampleInnerNotSelected :: String
 bannerExampleInnerNotSelected = "flex items-center rounded-full px-2.5"
 
 banner
-  :: forall lock payload
-   . { showBanner :: Event Boolean }
-  -> Domable lock payload
+  :: { showBanner :: Event Boolean }
+  -> Nut
 banner { showBanner } = D.div
   ( klass $ showBanner <#> not >>> flip guard "hidden " >>>
       ( _ <>

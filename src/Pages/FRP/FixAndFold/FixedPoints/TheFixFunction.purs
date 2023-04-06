@@ -30,7 +30,7 @@ text-sm font-medium leading-4 text-white shadow-sm
 hover:bg-COLOR-700 focus:outline-none focus:ring-2
 focus:ring-COLOR-500 focus:ring-offset-2 mr-4"""
 
-theFixFunction :: forall lock payload. Subsection lock payload
+theFixFunction :: Subsection
 theFixFunction = subsection
   { title: "The fix function for events"
   , matter: \(Env { routeLink }) ->

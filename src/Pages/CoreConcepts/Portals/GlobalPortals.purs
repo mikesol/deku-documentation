@@ -10,7 +10,7 @@ import Pages.CoreConcepts.Portals.GlobalPortals.TheGlobalPortalSyntax (theGlobal
 import Pages.CoreConcepts.Portals.GlobalPortals.PerformanceConsiderations (performanceConsiderations)
 import Pages.CoreConcepts.Portals.GlobalPortals.TheGlobalPortalResult (theGlobalPortalResult)
 
-globalPortals :: forall lock payload. Section lock payload
+globalPortals :: Section
 globalPortals = section
   { title: "Global portals"
   , topmatter: pure

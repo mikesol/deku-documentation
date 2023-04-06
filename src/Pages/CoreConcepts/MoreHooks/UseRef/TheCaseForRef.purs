@@ -25,7 +25,7 @@ text-sm font-medium leading-4 text-white shadow-sm
 hover:bg-pink-700 focus:outline-none focus:ring-2
 focus:ring-pink-500 focus:ring-offset-2 m-2""" :: String
 
-theCaseForRef :: forall lock payload. Subsection lock payload
+theCaseForRef :: Subsection
 theCaseForRef = subsection
   { title: "What's in a ref?"
   , matter: pure

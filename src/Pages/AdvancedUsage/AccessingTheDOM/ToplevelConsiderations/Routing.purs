@@ -8,7 +8,7 @@ import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.DOM as D
 
-routing :: forall lock payload. Subsection lock payload
+routing :: Subsection
 routing = subsection
   { title: "Routing"
   , matter: pure

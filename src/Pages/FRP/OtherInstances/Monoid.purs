@@ -9,7 +9,7 @@ import Deku.DOM as D
 import Pages.FRP.OtherInstances.Monoid.EventsAsMonoids (eventsAsMonoids)
 import Pages.FRP.OtherInstances.Monoid.EventsAsSemigroups (eventsAsSemigroups)
 
-monoid :: forall lock payload. Section lock payload
+monoid :: Section
 monoid = section
   { title: "Monoid"
   , topmatter: pure

@@ -14,7 +14,7 @@ import Pages.FRP.Applicatives.Functor (functor)
 import Pages.FRP.Applicatives.MonadsAndFlattening (monadsAndFlattening)
 import Router.ADT (Route(..))
 
-applicatives :: forall lock payload. Page lock payload
+applicatives :: Page
 applicatives = page
   { route: Applicatives
   , topmatter: pure

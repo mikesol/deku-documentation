@@ -8,7 +8,7 @@ import Deku.DOM as D
 import Pages.CoreConcepts.Pursx.PursxAlternatives.Html2deku (html2deku)
 import Pages.CoreConcepts.Pursx.PursxAlternatives.UnsafePursx (unsafePursx)
 
-pursxAlternatives :: forall lock payload. Section lock payload
+pursxAlternatives :: Section
 pursxAlternatives = section
   { title: "Pursx alternatives"
   , topmatter: pure

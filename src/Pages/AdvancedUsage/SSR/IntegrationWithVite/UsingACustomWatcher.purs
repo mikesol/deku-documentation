@@ -7,7 +7,7 @@ import Deku.Control (text_)
 import Deku.Attribute ((!:=))
 import Deku.DOM as D
 
-usingACustomWatcher :: forall lock payload. Subsection lock payload
+usingACustomWatcher :: Subsection
 usingACustomWatcher = subsection
   { title: "Using a custom watcher"
   , matter: pure

@@ -9,7 +9,7 @@ import Deku.DOM as D
 import Pages.Introduction.GettingStarted.BasicUsage.RunningADevServer (runningADevServer)
 import Pages.Introduction.GettingStarted.BasicUsage.BuildingForProduction (buildingForProduction)
 
-basicUsage :: forall lock payload. Section lock payload
+basicUsage :: Section
 basicUsage = section
   { title: "Basic usage"
   , topmatter: pure

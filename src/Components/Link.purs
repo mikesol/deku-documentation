@@ -7,7 +7,7 @@ import Control.Alt ((<|>))
 import Data.Foldable (oneOf)
 import Deku.Attribute (Attribute, cb, (!:=))
 import Deku.Control (text_)
-import Deku.Core (Domable)
+import Deku.Core (Nut)
 import Deku.DOM as D
 import Deku.Listeners (click_)
 import Effect (Effect)
@@ -23,13 +23,12 @@ import Web.HTML.Window (scroll)
 import Yoga.JSON as JSON
 
 link''
-  :: forall lock payload
-   . (Web.Event -> Effect Unit)
+  :: (Web.Event -> Effect Unit)
   -> PushState
   -> Route
   -> Event (Attribute D.A_)
-  -> Array (Domable lock payload)
-  -> Domable lock payload
+  -> Array (Nut)
+  -> Nut
 link'' eff pushState route attributes children = D.a
   ( attributes <|> oneOf
       [ D.Href !:= url
@@ -49,32 +48,29 @@ link'' eff pushState route attributes children = D.a
     else chapter.path <> page.path
 
 link'
-  :: forall lock payload
-   . PushState
+  :: PushState
   -> Route
   -> Event (Attribute D.A_)
-  -> Array (Domable lock payload)
-  -> Domable lock payload
+  -> Array (Nut)
+  -> Nut
 link' = link'' (const (pure unit))
 
 link
-  :: forall lock payload
-   . PushState
+  :: PushState
   -> Route
   -> Event (Attribute D.A_)
-  -> Domable lock payload
+  -> Nut
 link pushState route attributes = link' pushState route attributes
   [ text_ page.title ]
   where
   Page page = routeToPage route
 
 linkWithString
-  :: forall lock payload
-   . PushState
+  :: PushState
   -> Route
   -> String
   -> Event (Attribute D.A_)
-  -> Domable lock payload
+  -> Nut
 linkWithString pushState route title attributes = link' pushState route
   attributes
   [ text_ title ]

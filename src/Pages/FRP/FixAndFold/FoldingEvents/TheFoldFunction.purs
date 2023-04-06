@@ -8,7 +8,7 @@ import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.DOM as D
 
-theFoldFunction :: forall lock payload. Subsection lock payload
+theFoldFunction :: Subsection
 theFoldFunction = subsection
   { title: "The fold function"
   , matter: pure

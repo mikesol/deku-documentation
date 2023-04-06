@@ -25,7 +25,7 @@ text-sm font-medium leading-4 text-white shadow-sm
 hover:bg-pink-700 focus:outline-none focus:ring-2
 focus:ring-pink-500 focus:ring-offset-2 m-2""" :: String
 
-nestedHooks :: forall lock payload. Subsection lock payload
+nestedHooks :: Subsection
 nestedHooks = subsection
   { title: "Deku dos and nested hooks"
   , matter: pure
@@ -39,18 +39,19 @@ nestedHooks = subsection
       , exampleBlockquote
           [ Deku.do
               let
-                hookusMinimus :: Hook ((Int -> Effect Unit) /\ Event Int)
-                hookusMinimus makeHook = Deku.do
-                  setMinimus /\ minimus <- useState 0
+                hookusMinimus :: Int -> Hook ((Int -> Effect Unit) /\ Event Int)
+                hookusMinimus i makeHook = Deku.do
+                  setMinimus /\ minimus <- useState i
                   makeHook (setMinimus /\ minimus)
 
                 hookusMaximus
-                  :: Hook ((Int -> Effect Unit) /\ Event Int /\ Event Int)
-                hookusMaximus makeHook = Deku.do
-                  setMinimus /\ minimus <- hookusMinimus
+                  :: Int
+                  -> Hook ((Int -> Effect Unit) /\ Event Int /\ Event Int)
+                hookusMaximus i makeHook = Deku.do
+                  setMinimus /\ minimus <- hookusMinimus i
                   maximus <- useMemoized (add 1000 <$> minimus)
                   makeHook (setMinimus /\ minimus /\ maximus)
-              setMinimus /\ minimus /\ maximus <- hookusMaximus
+              setMinimus /\ minimus /\ maximus <- hookusMaximus 0
               D.div_
                 [ D.button
                     Alt.do

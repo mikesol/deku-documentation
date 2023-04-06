@@ -10,7 +10,7 @@ import Pages.CoreConcepts.Collections.Monoids.ComponentsAsMonoids (componentsAsM
 import Pages.CoreConcepts.Collections.Monoids.ComponentsAsSemigroups (componentsAsSemigroups)
 import Router.ADT (Route(..))
 
-monoids :: forall lock payload. Section lock payload
+monoids :: Section
 monoids = section
   { title: "Monoids"
   , topmatter: \(Env { routeLink }) ->
@@ -34,9 +34,9 @@ monoids = section
                   " instances for Deku components, we're referring to components as defined in the "
               , routeLink Components
               , text_ " section. That is, they are PureScript terms with type "
-              , D.code__ "Domable lock payload"
+              , D.code__ "Nut"
               , text_ ". As "
-              , D.code__ "Domable lock payload"
+              , D.code__ "Nut"
               , text_ " is a "
               , D.code__ "newtype"
               , text_ ", we can implement typeclass instances for it."

@@ -9,7 +9,7 @@ import Pages.CoreConcepts.Providers.RowPolymorphism.DifferencesWithTraditionalPo
 import Pages.CoreConcepts.Providers.RowPolymorphism.RowsAndRecordsInPureScript (rowsAndRecordsInPureScript)
 import Pages.CoreConcepts.Providers.RowPolymorphism.RowPolymorphismAndProviders (rowPolymorphismAndProviders)
 
-rowPolymorphism :: forall lock payload. Section lock payload
+rowPolymorphism :: Section
 rowPolymorphism = section
   { title: "Row polymorphism"
   , topmatter: pure

@@ -8,7 +8,7 @@ import Deku.DOM as D
 import Pages.FRP.Applicatives.MonadsAndFlattening.TheKeepLatestFunction (theKeepLatestFunction)
 import Pages.FRP.Applicatives.MonadsAndFlattening.EventAsAMonad (eventAsAMonad)
 
-monadsAndFlattening :: forall lock payload. Section lock payload
+monadsAndFlattening :: Section
 monadsAndFlattening = section
   { title: "Monads and flattening"
   , topmatter: pure

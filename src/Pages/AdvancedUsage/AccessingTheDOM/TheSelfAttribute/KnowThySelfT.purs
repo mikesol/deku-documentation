@@ -25,7 +25,7 @@ border-solid
 focus:border-indigo-500 focus:ring-indigo-500
 sm:text-sm"""
 
-knowThySelfT :: forall lock payload. Subsection lock payload
+knowThySelfT :: Subsection
 knowThySelfT = subsection
   { title: "Know thy SelfT"
   , matter: pure

@@ -18,7 +18,7 @@ import FRP.Behavior.Time (instant)
 import FRP.Event.Time (interval)
 import Router.ADT (Route(..))
 
-gatingEventsOnBehaviors :: forall lock payload. Subsection lock payload
+gatingEventsOnBehaviors :: Subsection
 gatingEventsOnBehaviors = subsection
   { title: "Gating events on behaviors"
   , matter: \(Env { routeLink }) ->

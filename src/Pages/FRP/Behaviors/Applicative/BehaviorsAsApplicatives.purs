@@ -8,7 +8,7 @@ import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.DOM as D
 
-behaviorsAsApplicatives :: forall lock payload. Subsection lock payload
+behaviorsAsApplicatives :: Subsection
 behaviorsAsApplicatives = subsection
   { title: "Behaviors as applicatives"
   , matter: pure

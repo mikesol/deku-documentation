@@ -27,7 +27,7 @@ border-solid
 focus:border-indigo-500 focus:ring-indigo-500
 sm:text-sm"""
 
-eventsAsSemirings :: forall lock payload. Subsection lock payload
+eventsAsSemirings :: Subsection
 eventsAsSemirings = subsection
   { title: "Events as semirings"
   , matter: pure

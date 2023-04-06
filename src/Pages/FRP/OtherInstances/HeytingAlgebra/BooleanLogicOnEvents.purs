@@ -69,7 +69,7 @@ tableClass =
   """pl-2 pr-2 border
 border-slate-500 dark:border-white-300"""
 
-booleanLogicOnEvents :: forall lock payload. Subsection lock payload
+booleanLogicOnEvents :: Subsection
 booleanLogicOnEvents = subsection
   { title: "Boolean logic on events"
   , matter: pure

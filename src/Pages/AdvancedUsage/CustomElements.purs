@@ -11,7 +11,7 @@ import Pages.AdvancedUsage.CustomElements.DefiningCustomElements (definingCustom
 import Pages.AdvancedUsage.CustomElements.UsingIonic (usingIonic)
 import Router.ADT (Route(..))
 
-customElements :: forall lock payload. Page lock payload
+customElements :: Page
 customElements = page
   { route: CustomElements
   , topmatter: pure

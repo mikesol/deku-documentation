@@ -11,7 +11,7 @@ import Pages.FRP.Behaviors.Calculus.BehaviorsAsContinuousFunctionsOfTime (behavi
 import Pages.FRP.Behaviors.Calculus.DerivingBehaviors (derivingBehaviors)
 import Pages.FRP.Behaviors.Calculus.SolvingDifferentialEquations (solvingDifferentialEquations)
 
-calculus :: forall lock payload. Section lock payload
+calculus :: Section
 calculus = section
   { title: "Calculus"
   , topmatter: pure

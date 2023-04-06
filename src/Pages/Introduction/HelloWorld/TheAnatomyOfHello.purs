@@ -11,7 +11,7 @@ import Pages.Introduction.HelloWorld.TheAnatomyOfHello.ModuleDeclaration (module
 import Pages.Introduction.HelloWorld.TheAnatomyOfHello.RunningInTheBody (runningInTheBody)
 import Pages.Introduction.HelloWorld.TheAnatomyOfHello.TheMainFunction (theMainFunction)
 
-theAnatomyOfHello :: forall lock payload. Section lock payload
+theAnatomyOfHello :: Section
 theAnatomyOfHello = section
   { title: "The anatomy of hello"
   , topmatter: pure

@@ -9,7 +9,7 @@ import Pages.CoreConcepts.Components.AddingEventHandlers.ShorthandListeners (sho
 import Pages.CoreConcepts.Components.AddingEventHandlers.UsingAnEffect (usingAnEffect)
 import Pages.CoreConcepts.Components.AddingEventHandlers.UsingTheOriginalEvent (usingTheOriginalEvent)
 
-addingEventHandlers :: forall lock payload. Section lock payload
+addingEventHandlers :: Section
 addingEventHandlers = section
   { title: "Adding event handlers"
   , topmatter: pure

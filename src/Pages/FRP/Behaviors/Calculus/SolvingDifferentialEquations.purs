@@ -21,7 +21,7 @@ import FRP.Behavior.Time (seconds)
 import FRP.Event (keepLatest)
 import FRP.Event.AnimationFrame (animationFrame)
 
-solvingDifferentialEquations :: forall lock payload. Subsection lock payload
+solvingDifferentialEquations :: Subsection
 solvingDifferentialEquations = subsection
   { title: "Solving differential equations"
   , matter: pure

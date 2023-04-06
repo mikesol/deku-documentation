@@ -31,7 +31,7 @@ text-sm font-medium leading-4 text-white shadow-sm
 hover:bg-COLOR-700 focus:outline-none focus:ring-2
 focus:ring-COLOR-500 focus:ring-offset-2"""
 
-aNoteOnMemoization :: forall lock payload. Subsection lock payload
+aNoteOnMemoization :: Subsection
 aNoteOnMemoization = subsection
   { title: "Memoization and useHot"
   , matter: pure
@@ -96,7 +96,9 @@ aNoteOnMemoization = subsection
           , text_ " was pressed, the guarded section didn't activate until "
           , D.b__ "A"
           , text_
-              " was pressed again. In effect, while the hook had an initial value ", D.code__ "n", text_ " for the first "
+              " was pressed again. In effect, while the hook had an initial value "
+          , D.code__ "n"
+          , text_ " for the first "
           , D.code__ "text"
           , text_
               "component, it lacked an initial value for any component that was created afterwards. You can think of initial values to hooks as being relevant only at the moment of creation."

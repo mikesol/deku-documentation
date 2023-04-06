@@ -9,7 +9,7 @@ import Deku.DOM as D
 import Pages.AdvancedUsage.AccessingTheDOM.ToplevelConsiderations.GlobalHandlers (globalHandlers)
 import Pages.AdvancedUsage.AccessingTheDOM.ToplevelConsiderations.Routing (routing)
 
-toplevelConsiderations :: forall lock payload. Section lock payload
+toplevelConsiderations :: Section
 toplevelConsiderations = section
   { title: "Top-level considerations"
   , topmatter: pure

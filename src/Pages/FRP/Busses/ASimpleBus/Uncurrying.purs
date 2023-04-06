@@ -7,7 +7,7 @@ import Deku.Control (text_)
 import Deku.Attribute ((!:=))
 import Deku.DOM as D
 
-uncurrying :: forall lock payload. Subsection lock payload
+uncurrying :: Subsection
 uncurrying = subsection
   { title: "Uncurrying"
   , matter: pure

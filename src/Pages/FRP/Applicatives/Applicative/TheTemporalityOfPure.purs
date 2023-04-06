@@ -14,7 +14,7 @@ import FRP.Event (fold)
 import FRP.Event.Time (interval)
 import Router.ADT (Route(..))
 
-theTemporalityOfPure :: forall lock payload. Subsection lock payload
+theTemporalityOfPure :: Subsection
 theTemporalityOfPure = subsection
   { title: "The temporality of pure"
   , matter: \(Env { routeLink }) ->

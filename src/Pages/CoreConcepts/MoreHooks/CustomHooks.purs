@@ -8,12 +8,13 @@ import Deku.DOM as D
 import Pages.CoreConcepts.MoreHooks.CustomHooks.NestedHooks (nestedHooks)
 import Pages.CoreConcepts.MoreHooks.CustomHooks.TheAnatomyOfAHook (theAnatomyOfAHook)
 
-customHooks :: forall lock payload. Section lock payload
+customHooks :: Section
 customHooks = section
   { title: "Custom hooks"
   , topmatter: pure
       [ D.p_
-          [ text_ "Sometimes, Deku's amazingly versatile, hand crafted, meticulously curated library of hooks is not good enough for our most discerning, demanding, and sophisticated users. If you are in that category, read on to learn how to make custom hooks!"
+          [ text_
+              "Sometimes, Deku's amazingly versatile, hand crafted, meticulously curated library of hooks is not good enough for our most discerning, demanding, and sophisticated users. If you are in that category, read on to learn how to make custom hooks!"
           ]
       ]
   , subsections:

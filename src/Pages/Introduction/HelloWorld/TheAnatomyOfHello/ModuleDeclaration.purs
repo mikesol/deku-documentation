@@ -7,7 +7,7 @@ import Contracts (Subsection, subsection)
 import Deku.Control (text_)
 import Deku.DOM as D
 
-moduleDeclaration :: forall lock payload. Subsection lock payload
+moduleDeclaration :: Subsection
 moduleDeclaration = subsection
   { title: "Module declaration"
   , matter: pure

@@ -20,7 +20,7 @@ import FRP.Event.Effect (bindToEffect)
 import FRP.Event.Time (interval)
 import QualifiedDo.Alt as Alt
 
-multipleSubscriptions :: forall lock payload. Subsection lock payload
+multipleSubscriptions :: Subsection
 multipleSubscriptions = subsection
   { title: "Multiple subscriptions"
   , matter: pure

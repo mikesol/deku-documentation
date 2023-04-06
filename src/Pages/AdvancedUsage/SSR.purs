@@ -11,7 +11,7 @@ import Pages.AdvancedUsage.SSR.IntegrationWithVite (integrationWithVite)
 import Pages.AdvancedUsage.SSR.RenderingAStaticSite (renderingAStaticSite)
 import Router.ADT (Route(..))
 
-sSR :: forall lock payload. Page lock payload
+sSR :: Page
 sSR = page
   { route: SSR
   , topmatter: pure

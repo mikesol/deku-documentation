@@ -10,7 +10,7 @@ import Deku.DOM as D
 import Pages.AdvancedUsage.CustomElements.UsingIonic.DefiningIonicCustomElements (definingIonicCustomElements)
 import Pages.AdvancedUsage.CustomElements.UsingIonic.UsingIonicCustomElements (usingIonicCustomElements)
 
-usingIonic :: forall lock payload. Section lock payload
+usingIonic :: Section
 usingIonic = section
   { title: "An example using fake Discord messages"
   , topmatter: pure

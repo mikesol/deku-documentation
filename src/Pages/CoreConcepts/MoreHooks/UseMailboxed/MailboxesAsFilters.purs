@@ -24,7 +24,7 @@ text-sm font-medium leading-4 text-white shadow-sm
 hover:bg-indigo-700 focus:outline-none focus:ring-2
 focus:ring-indigo-500 focus:ring-offset-2 mr-6""" :: String
 
-mailboxesAsFilters :: forall lock payload. Subsection lock payload
+mailboxesAsFilters :: Subsection
 mailboxesAsFilters = subsection
   { title: "Hello mailbox"
   , matter: pure
@@ -32,7 +32,12 @@ mailboxesAsFilters = subsection
           [ text_ "A mailbox hook is similar to the "
           , D.code__ "useState'"
           , text_
-              " hook."], psCode """pusher /\ eventCreator <- useMailboxed""", D.p_ [text_ "However, the left and right side of the returned value are different."
+              " hook."
+          ]
+      , psCode """pusher /\ eventCreator <- useMailboxed"""
+      , D.p_
+          [ text_
+              "However, the left and right side of the returned value are different."
           ]
       , D.ol_
           [ D.li_
@@ -51,7 +56,8 @@ mailboxesAsFilters = subsection
               ]
           ]
       , D.p_
-          [ text_ "When the pusher is pushed to, the mailbox delivers payloads of type "
+          [ text_
+              "When the pusher is pushed to, the mailbox delivers payloads of type "
           , D.code__ "b"
           , text_ " "
           , D.i__ "only to"

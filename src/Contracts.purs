@@ -5,30 +5,29 @@ import Prelude
 import Data.Array (intercalate)
 import Data.Newtype (class Newtype)
 import Data.String (Pattern(..), split, toLower)
-import Deku.Core (Domable)
+import Deku.Core (Nut)
 import Record (union)
 import Router.ADT (Route, routeToTitle)
 
 newtype Env = Env
-  { routeLink :: forall lock payload. Route -> Domable lock payload
+  { routeLink :: Route -> Nut
   , routeLinkWithText ::
-      forall lock payload. Route -> String -> Domable lock payload
+      Route -> String -> Nut
   }
 
-newtype Docs lock paylaod = Docs (Array (Chapter lock paylaod))
+newtype Docs = Docs (Array (Chapter))
 
-derive instance Newtype (Docs lock paylaod) _
-newtype Chapter lock payload = Chapter
-  { title :: String, path :: String, pages :: Array (Page lock payload) }
+derive instance Newtype (Docs) _
+newtype Chapter = Chapter
+  { title :: String, path :: String, pages :: Array (Page) }
 
-derive instance Newtype (Chapter lock paylaod) _
+derive instance Newtype (Chapter) _
 
 chapter
-  :: forall lock payload
-   . { title :: String
-     , pages :: Array (Page lock payload)
+  :: { title :: String
+     , pages :: Array (Page)
      }
-  -> Chapter lock payload
+  -> Chapter
 chapter i = Chapter
   ( i `union`
       { path: "/" <>
@@ -36,23 +35,22 @@ chapter i = Chapter
       }
   )
 
-newtype Page lock payload = Page
+newtype Page = Page
   { path :: String
   , title :: String
   , route :: Route
-  , topmatter :: Env -> Array (Domable lock payload)
-  , sections :: Array (Section lock payload)
+  , topmatter :: Env -> Array (Nut)
+  , sections :: Array (Section)
   }
 
-derive instance Newtype (Page lock payload) _
+derive instance Newtype (Page) _
 
 page
-  :: forall lock payload
-   . { route :: Route
-     , topmatter :: Env -> Array (Domable lock payload)
-     , sections :: Array (Section lock payload)
+  :: { route :: Route
+     , topmatter :: Env -> Array (Nut)
+     , sections :: Array (Section)
      }
-  -> Page lock payload
+  -> Page
 page i = Page
   ( i `union`
       { title
@@ -63,37 +61,35 @@ page i = Page
   where
   title = routeToTitle i.route
 
-newtype Section lock payload = Section
+newtype Section = Section
   { title :: String
   , id :: String
-  , topmatter :: Env -> Array (Domable lock payload)
-  , subsections :: Array (Subsection lock payload)
+  , topmatter :: Env -> Array (Nut)
+  , subsections :: Array (Subsection)
   }
 
 section
-  :: forall lock payload
-   . { title :: String
-     , topmatter :: Env -> Array (Domable lock payload)
-     , subsections :: Array (Subsection lock payload)
+  :: { title :: String
+     , topmatter :: Env -> Array (Nut)
+     , subsections :: Array (Subsection)
      }
-  -> Section lock payload
+  -> Section
 section i = Section
   ( i `union`
       { id: intercalate "-" $ map toLower $ split (Pattern " ") i.title }
   )
 
-newtype Subsection lock payload = Subsection
+newtype Subsection = Subsection
   { title :: String
   , id :: String
-  , matter :: Env -> Array (Domable lock payload)
+  , matter :: Env -> Array (Nut)
   }
 
 subsection
-  :: forall lock payload
-   . { title :: String
-     , matter :: Env -> Array (Domable lock payload)
+  :: { title :: String
+     , matter :: Env -> Array (Nut)
      }
-  -> Subsection lock payload
+  -> Subsection
 subsection i = Subsection
   ( i `union`
       { id: intercalate "-" $ map toLower $ split (Pattern " ") i.title }

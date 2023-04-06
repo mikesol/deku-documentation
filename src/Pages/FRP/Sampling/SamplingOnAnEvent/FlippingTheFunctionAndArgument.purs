@@ -16,7 +16,7 @@ import Deku.Listeners (slider_)
 import Examples as Examples
 import FRP.Event.Class ((<**|>))
 
-flippingTheFunctionAndArgument :: forall lock payload. Subsection lock payload
+flippingTheFunctionAndArgument :: Subsection
 flippingTheFunctionAndArgument = subsection
   { title: "Flipping the temporality"
   , matter: pure

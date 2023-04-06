@@ -10,7 +10,7 @@ import Deku.Attributes (href_)
 import Deku.Control (text_)
 import Deku.DOM as D
 
-whatIsAnEventWithoutTime :: forall lock payload. Subsection lock payload
+whatIsAnEventWithoutTime :: Subsection
 whatIsAnEventWithoutTime = subsection
   { title: "What is an event without time?"
   , matter: pure

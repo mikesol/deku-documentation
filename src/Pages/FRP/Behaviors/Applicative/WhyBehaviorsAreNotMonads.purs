@@ -7,7 +7,7 @@ import Deku.Control (text_)
 import Deku.Attribute ((!:=))
 import Deku.DOM as D
 
-whyBehaviorsAreNotMonads :: forall lock payload. Subsection lock payload
+whyBehaviorsAreNotMonads :: Subsection
 whyBehaviorsAreNotMonads = subsection
   { title: "Why behaviors aren't monads"
   , matter: pure

@@ -8,7 +8,7 @@ import Contracts (Subsection, subsection)
 import Deku.Control (text_)
 import Deku.DOM as D
 
-removingTheUnderscore :: forall lock payload. Subsection lock payload
+removingTheUnderscore :: Subsection
 removingTheUnderscore = subsection
   { title: "Removing the underscore"
   , matter: pure

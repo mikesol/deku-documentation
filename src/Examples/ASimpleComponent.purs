@@ -12,7 +12,7 @@ main :: Effect Unit
 main = runInBody mySimpleComponent
   where
   -- `Nut` is an alias for the type of Deku components
-  -- type Nut = forall lock payload. Domable lock payload
+  -- type Nut =  Nut
   mySimpleComponent :: Nut
   mySimpleComponent =
     D.div_

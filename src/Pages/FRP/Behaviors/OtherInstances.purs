@@ -12,7 +12,7 @@ import Pages.FRP.Behaviors.OtherInstances.BehaviorsAsMonoids (behaviorsAsMonoids
 import Pages.FRP.Behaviors.OtherInstances.BehaviorsAsRings (behaviorsAsRings)
 import Type.Proxy (Proxy(..))
 
-otherInstances :: forall lock payload. Section lock payload
+otherInstances :: Section
 otherInstances = section
   { title: "Other instances"
   , topmatter: pure

@@ -15,7 +15,7 @@ import Deku.Hooks (useState)
 import Deku.Listeners (slider_)
 import Examples as Examples
 
-filteringAnEvent :: forall lock payload. Subsection lock payload
+filteringAnEvent :: Subsection
 filteringAnEvent = subsection
   { title: "Filtering an event"
   , matter: pure

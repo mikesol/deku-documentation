@@ -9,7 +9,7 @@ import Data.Tuple.Nested ((/\))
 import Deku.Attribute ((!:=))
 import Deku.Attributes (klass_)
 import Deku.Control (guard, text_)
-import Deku.Core (Domable)
+import Deku.Core (Nut)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState')
@@ -17,7 +17,7 @@ import Deku.Listeners (click)
 import Deku.Toplevel (runInBody, runSSR)
 import QualifiedDo.Alt as Alt
 
-myApp :: forall lock payload. String -> Domable lock payload
+myApp :: String -> Nut
 myApp s = Deku.do
   setImage /\ image <- useState'
   D.div_

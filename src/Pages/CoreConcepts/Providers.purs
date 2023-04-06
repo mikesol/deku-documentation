@@ -11,7 +11,7 @@ import Pages.CoreConcepts.Providers.FunctionsAsProviders (functionsAsProviders)
 import Pages.CoreConcepts.Providers.RowPolymorphism (rowPolymorphism)
 import Router.ADT (Route(..))
 
-providers :: forall lock payload. Page lock payload
+providers :: Page
 providers = page
   { route: Providers
   , topmatter: pure

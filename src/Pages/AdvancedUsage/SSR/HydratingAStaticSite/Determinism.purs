@@ -11,7 +11,7 @@ import Effect.Random (random)
 import FRP.Event.Effect (bindToEffect)
 import Router.ADT (Route(..))
 
-determinism :: forall lock payload. Subsection lock payload
+determinism :: Subsection
 determinism = subsection
   { title: "Determinism"
   , matter: \(Env { routeLinkWithText }) ->

@@ -12,7 +12,7 @@ import Pages.Introduction.GettingStarted.QuickStart (quickStart)
 import Pages.Introduction.GettingStarted.WhyDeku (whyDeku)
 import Router.ADT (Route(..))
 
-gettingStarted :: forall lock payload. Page lock payload
+gettingStarted :: Page
 gettingStarted = page
   { route: GettingStarted
   , topmatter: pure

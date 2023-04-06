@@ -10,7 +10,7 @@ import Pages.FRP.Events.Definition.SubscriptionAndUnsubscriptionEffects (subscri
 import Pages.FRP.Events.Definition.TheTypeAndContract (theTypeAndContract)
 import Pages.FRP.Events.Definition.ContuationPassingStyle (contuationPassingStyle)
 
-definition :: forall lock payload. Section lock payload
+definition :: Section
 definition = section
   { title: "Definition"
   , topmatter: pure

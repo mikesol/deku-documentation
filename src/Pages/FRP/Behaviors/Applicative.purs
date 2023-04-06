@@ -10,7 +10,7 @@ import Pages.FRP.Behaviors.Applicative.WhyBehaviorsAreNotMonads (whyBehaviorsAre
 import Pages.FRP.Behaviors.Applicative.BehaviorsAsApplicatives (behaviorsAsApplicatives)
 import Pages.FRP.Behaviors.Applicative.BehaviorsAsFunctors (behaviorsAsFunctors)
 
-applicative :: forall lock payload. Section lock payload
+applicative :: Section
 applicative = section
   { title: "Applicative"
   , topmatter: pure

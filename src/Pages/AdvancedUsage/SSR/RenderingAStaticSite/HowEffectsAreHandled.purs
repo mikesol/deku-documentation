@@ -10,7 +10,7 @@ import Data.Tuple.Nested ((/\))
 import Deku.Attribute ((!:=))
 import Deku.Attributes (klass_)
 import Deku.Control (guard, text_)
-import Deku.Core (Domable)
+import Deku.Core (Nut)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState')
@@ -19,7 +19,7 @@ import Deku.Toplevel (runSSR)
 import Examples as Examples
 import QualifiedDo.Alt as Alt
 
-myApp :: forall lock payload. String -> Domable lock payload
+myApp :: String -> Nut
 myApp s = Deku.do
   setImage /\ image <- useState'
   D.div_
@@ -35,7 +35,7 @@ myApp s = Deku.do
     , htmlCode s
     ]
 
-howEffectsAreHandled :: forall lock payload. Subsection lock payload
+howEffectsAreHandled :: Subsection
 howEffectsAreHandled = subsection
   { title: "How effects are handled"
   , matter: pure

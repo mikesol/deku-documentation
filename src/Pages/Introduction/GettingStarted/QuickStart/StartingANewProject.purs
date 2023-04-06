@@ -1,6 +1,5 @@
 module Pages.Introduction.GettingStarted.QuickStart.StartingANewProject where
 
-
 import Components.Code (shSessionCode)
 import Contracts (Env(..), Subsection, subsection)
 import Deku.Attributes (klass_)
@@ -8,7 +7,7 @@ import Deku.Control (text_)
 import Deku.DOM as D
 import Router.ADT (Route(..))
 
-startingANewProject :: forall lock payload. Subsection lock payload
+startingANewProject :: Subsection
 startingANewProject = subsection
   { title: "Starting a new project"
   , matter: \(Env { routeLink }) ->

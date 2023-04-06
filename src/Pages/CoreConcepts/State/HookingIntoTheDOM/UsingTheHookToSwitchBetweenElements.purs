@@ -42,7 +42,7 @@ bunny = "https://dl8.webmfiles.org/big-buck-bunny_trailer.webm"
 -- hover:bg-green-700 
 -- focus:ring-green-500
 usingTheHookToSwitchBetweenElements
-  :: forall lock payload. Subsection lock payload
+  :: Subsection
 usingTheHookToSwitchBetweenElements = subsection
   { title: "Using a hook to switch between elements"
   , matter: pure

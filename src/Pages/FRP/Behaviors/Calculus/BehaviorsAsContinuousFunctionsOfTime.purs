@@ -8,7 +8,7 @@ import Deku.Attribute ((!:=))
 import Deku.DOM as D
 
 behaviorsAsContinuousFunctionsOfTime
-  :: forall lock payload. Subsection lock payload
+  :: Subsection
 behaviorsAsContinuousFunctionsOfTime = subsection
   { title: "Behaviors as continuous functions of time"
   , matter: pure

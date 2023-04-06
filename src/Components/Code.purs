@@ -9,7 +9,7 @@ import Data.Foldable (oneOf)
 import Deku.Attribute (Attribute, (!:=))
 import Deku.Attributes (href_, klass_)
 import Deku.Control (text_)
-import Deku.Core (Domable)
+import Deku.Core (Nut)
 import Deku.DOM as D
 import Deku.Listeners (click_)
 import Effect.Random (random)
@@ -17,21 +17,21 @@ import Examples (ExampleADT, exampleToSlug, exampleToString)
 import FRP.Event (Event)
 import QualifiedDo.Alt as Alt
 
-jsCode :: forall lock payload. String -> Domable lock payload
+jsCode :: String -> Nut
 jsCode code = D.pre (D.Class !:= "prism-code language-javascript")
   [ D.code_
       [ text_ code
       ]
   ]
 
-htmlCode :: forall lock payload. String -> Domable lock payload
+htmlCode :: String -> Nut
 htmlCode code = D.pre (D.Class !:= "prism-code language-markup")
   [ D.code_
       [ text_ code
       ]
   ]
 
-shSessionCode :: forall lock payload. String -> Domable lock payload
+shSessionCode :: String -> Nut
 shSessionCode code = D.pre (D.Class !:= "prism-code language-sh-session")
   [ D.code_
       [ text_ code
@@ -40,11 +40,10 @@ shSessionCode code = D.pre (D.Class !:= "prism-code language-sh-session")
 
 -- 
 psCode'
-  :: forall lock17 payload18
-   . String
+  :: String
   -> Event (Attribute D.Code_)
   -> String
-  -> Domable lock17 payload18
+  -> Nut
 psCode' s e code = D.pre
   (D.Class !:= ("prism-code language-purescript" <> s))
   [ D.code e
@@ -52,19 +51,18 @@ psCode' s e code = D.pre
       ]
   ]
 
-psCode :: forall lock payload. String -> Domable lock payload
+psCode :: String -> Nut
 psCode = psCode' "" empty
 
-psCodeNoCollapse :: forall lock payload. String -> Domable lock payload
+psCodeNoCollapse :: String -> Nut
 psCodeNoCollapse = psCode' " no-collapse" (klass_ "no-collapse")
 
 --
 psCodeWithLink'
-  :: forall lock17 payload18
-   . String
+  :: String
   -> Event (Attribute D.Code_)
   -> ExampleADT
-  -> Domable lock17 payload18
+  -> Nut
 psCodeWithLink' s e ex = D.div_
   [ D.div_
       [ D.a
@@ -147,9 +145,9 @@ psCodeWithLink' s e ex = D.div_
   startTxt = "VITE_START=" <> slug <> " pnpm dev"
   gitpodGoto = ".%2Fsrc%2FExamples%2F" <> slug <> ".purs"
 
-psCodeWithLink :: forall lock payload. ExampleADT -> Domable lock payload
+psCodeWithLink :: ExampleADT -> Nut
 psCodeWithLink = psCodeWithLink' "" empty
 
 psCodeNoCollapseWithLink
-  :: forall lock payload. ExampleADT -> Domable lock payload
+  :: ExampleADT -> Nut
 psCodeNoCollapseWithLink = psCodeWithLink' " no-collapse" (klass_ "no-collapse")

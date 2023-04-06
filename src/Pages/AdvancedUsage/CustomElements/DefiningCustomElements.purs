@@ -9,7 +9,7 @@ import Deku.DOM as D
 import Pages.AdvancedUsage.CustomElements.DefiningCustomElements.AddingCustomElementsToTheDOM (addingCustomElementsToTheDOM)
 import Pages.AdvancedUsage.CustomElements.DefiningCustomElements.TheUnsafeCustomElementFunction (theUnsafeCustomElementFunction)
 
-definingCustomElements :: forall lock payload. Section lock payload
+definingCustomElements :: Section
 definingCustomElements = section
   { title: "Defining custom elements"
   , topmatter: pure

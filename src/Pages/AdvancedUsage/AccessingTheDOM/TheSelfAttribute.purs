@@ -10,7 +10,7 @@ import Pages.AdvancedUsage.AccessingTheDOM.TheSelfAttribute.KnowThySelf (knowThy
 import Pages.AdvancedUsage.AccessingTheDOM.TheSelfAttribute.KnowThySelfT (knowThySelfT)
 import Pages.AdvancedUsage.AccessingTheDOM.TheSelfAttribute.SafetyWithSelf (safetyWithSelf)
 
-theSelfAttribute :: forall lock payload. Section lock payload
+theSelfAttribute :: Section
 theSelfAttribute = section
   { title: "The Self attribute"
   , topmatter: pure

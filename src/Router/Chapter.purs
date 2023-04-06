@@ -9,7 +9,7 @@ import Pages.FRP (frp)
 import Pages.Introduction (introduction)
 import Router.ADT (Route(..))
 
-routeToChapter :: forall lock payload. Route -> Chapter lock payload
+routeToChapter :: Route -> Chapter
 routeToChapter GettingStarted = introduction
 routeToChapter HelloWorld = introduction
 routeToChapter Components = coreConcepts

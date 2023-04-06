@@ -7,7 +7,7 @@ import Deku.Control (text_)
 import Deku.Attribute ((!:=))
 import Deku.DOM as D
 
-nestedVBusses :: forall lock payload. Subsection lock payload
+nestedVBusses :: Subsection
 nestedVBusses = subsection
   { title: "Nested v-busses"
   , matter: pure

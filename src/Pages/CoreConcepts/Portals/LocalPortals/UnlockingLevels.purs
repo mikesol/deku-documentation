@@ -10,7 +10,7 @@ import Data.Tuple.Nested ((/\))
 import Deku.Attribute ((!:=), (:=))
 import Deku.Attributes (klass_)
 import Deku.Control (globalPortal1, guard, portal1, text, text_, (<#~>))
-import Deku.Core (Domable)
+import Deku.Core (Nut)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useHot, useState)
@@ -27,13 +27,12 @@ data Square = TL | BL | TR | BR
 derive instance Eq Square
 
 moveSpriteHere
-  :: forall lock payload
-   . { video :: Domable lock payload
+  :: { video :: Nut
      , square :: Event Square
      , setSquare :: Square -> Effect Unit
      , at :: Square
      }
-  -> Domable lock payload
+  -> Nut
 moveSpriteHere { video, square, setSquare, at } = D.a
   ( oneOf
       [ click_ (setSquare at)
@@ -56,7 +55,7 @@ vid2URL Video2 = "https://media.giphy.com/media/3o6UB7jHQYIjeh5IGY/giphy.mp4"
 vid2URL Video3 = "https://media.giphy.com/media/12GbJUnssN6NTa/giphy.mp4"
 vid2URL Video4 = "https://media.giphy.com/media/7T8LajxmBkz8gmYcRB/giphy.mp4"
 
-myVideo :: forall lock payload. Event Boolean -> String -> Domable lock payload
+myVideo :: Event Boolean -> String -> Nut
 myVideo bang vid = D.video
   ( oneOf
       [ D.Width !:= "175"
@@ -86,7 +85,7 @@ focus:ring-COLOR-500 focus:ring-offset-2"""
 
 data WhichVideo = Video1 | Video2 | Video3 | Video4
 
-unlockingLevels :: forall lock payload. Subsection lock payload
+unlockingLevels :: Subsection
 unlockingLevels = subsection
   { title: "Unlocking levels"
   , matter: pure
@@ -149,11 +148,11 @@ unlockingLevels = subsection
               , D.div_
                   [ videoURL <#~> \v -> portal1
                       (myVideo globalVideoPresence (vid2URL v))
-                      \(vid /\ lowerVid) -> Deku.do
+                      \vid -> Deku.do
                         setSquare /\ square <- useState TL
                         let
                           switchable = globalVideoPresence <#~>
-                            if _ then vid else (lowerVid globalVid)
+                            if _ then vid else globalVid
                         D.div (klass_ "grid grid-cols-2")
                           [ moveSpriteHere
                               { video: switchable, square, setSquare, at: TL }

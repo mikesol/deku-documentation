@@ -8,7 +8,7 @@ import Deku.DOM as D
 import Pages.Introduction.HelloWorld.SayingHello.TheCode (theCode)
 import Pages.Introduction.HelloWorld.SayingHello.TheResult (theResult)
 
-sayingHello :: forall lock payload. Section lock payload
+sayingHello :: Section
 sayingHello = section
   { title: "Saying hello"
   , topmatter: pure

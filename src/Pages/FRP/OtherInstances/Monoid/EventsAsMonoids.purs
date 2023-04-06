@@ -12,7 +12,7 @@ import Deku.DOM as D
 import Examples as Examples
 import FRP.Event (Event)
 
-eventsAsMonoids :: forall lock payload. Subsection lock payload
+eventsAsMonoids :: Subsection
 eventsAsMonoids = subsection
   { title: "Events as monoids"
   , matter: pure

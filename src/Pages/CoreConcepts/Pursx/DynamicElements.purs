@@ -8,7 +8,7 @@ import Deku.DOM as D
 import Pages.CoreConcepts.Pursx.DynamicElements.AddingSeveralElements (addingSeveralElements)
 import Pages.CoreConcepts.Pursx.DynamicElements.AddingASingleElement (addingASingleElement)
 
-dynamicElements :: forall lock payload. Section lock payload
+dynamicElements :: Section
 dynamicElements = section
   { title: "Dynamic elements"
   , topmatter: pure

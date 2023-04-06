@@ -11,7 +11,7 @@ import Pages.FRP.Busses.BusFixIsomorphism (busFixIsomorphism)
 import Pages.FRP.Busses.TheVBus (theVBus)
 import Router.ADT (Route(..))
 
-busses :: forall lock payload. Page lock payload
+busses :: Page
 busses = page
   { route: Busses
   , topmatter: pure

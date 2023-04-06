@@ -9,7 +9,7 @@ import Pages.AdvancedUsage.SSR.RenderingAStaticSite.TheRunSSRFunction (theRunSSR
 import Pages.AdvancedUsage.SSR.RenderingAStaticSite.TheToplevelElement (theToplevelElement)
 import Pages.AdvancedUsage.SSR.RenderingAStaticSite.HowEffectsAreHandled (howEffectsAreHandled)
 
-renderingAStaticSite :: forall lock payload. Section lock payload
+renderingAStaticSite :: Section
 renderingAStaticSite = section
   { title: "Rendering a static site"
   , topmatter: pure

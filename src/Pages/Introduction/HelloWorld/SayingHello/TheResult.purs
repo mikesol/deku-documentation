@@ -8,7 +8,7 @@ import Contracts (Subsection, subsection)
 import Deku.Control (text_)
 import Deku.DOM as D
 
-theResult :: forall lock payload. Subsection lock payload
+theResult :: Subsection
 theResult = subsection
   { title: "The result"
   , matter: pure

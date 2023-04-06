@@ -17,7 +17,7 @@ import Examples as Examples
 import FRP.Event.Class ((<|**>))
 import Router.ADT (Route(..))
 
-applicativesAndTemporality :: forall lock payload. Subsection lock payload
+applicativesAndTemporality :: Subsection
 applicativesAndTemporality = subsection
   { title: "How sampling works"
   , matter: \(Env { routeLink }) ->

@@ -7,7 +7,7 @@ import Deku.Control (text_)
 import Deku.Attribute ((!:=))
 import Deku.DOM as D
 
-behaviorsAndYoneda :: forall lock payload. Subsection lock payload
+behaviorsAndYoneda :: Subsection
 behaviorsAndYoneda = subsection
   { title: "Behaviors and Yoneda"
   , matter: pure

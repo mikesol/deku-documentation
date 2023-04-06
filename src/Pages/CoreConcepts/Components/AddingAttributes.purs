@@ -16,7 +16,7 @@ import Pages.CoreConcepts.Components.AddingAttributes.RemovingTheUnderscore (rem
 import Pages.CoreConcepts.Components.AddingAttributes.SeveralAttributes (severalAttributes)
 import Pages.CoreConcepts.Components.AddingAttributes.UsefulShorthand (usefulShorthand)
 
-addingAttributes :: forall lock payload. Section lock payload
+addingAttributes :: Section
 addingAttributes = section
   { title: "Adding attributes"
   , topmatter: pure

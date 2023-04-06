@@ -7,7 +7,7 @@ import Deku.Control (text_)
 import Deku.Attribute ((!:=))
 import Deku.DOM as D
 
-foldIsState :: forall lock payload. Subsection lock payload
+foldIsState :: Subsection
 foldIsState = subsection
   { title: "Fold is state"
   , matter: pure

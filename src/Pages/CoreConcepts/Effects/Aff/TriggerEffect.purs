@@ -25,7 +25,7 @@ import QualifiedDo.Alt as Alt
 import Router.ADT (Route(..))
 import Type.Proxy (Proxy(..))
 
-triggerEffect :: forall lock payload. Subsection lock payload
+triggerEffect :: Subsection
 triggerEffect = subsection
   { title: "The bindToEffect function"
   , matter: \(Env { routeLink }) ->

@@ -7,7 +7,7 @@ import Deku.Control (text_)
 import Deku.Attribute ((!:=))
 import Deku.DOM as D
 
-gotchyas :: forall lock payload. Subsection lock payload
+gotchyas :: Subsection
 gotchyas = subsection
   { title: "Gotchyas"
   , matter: pure

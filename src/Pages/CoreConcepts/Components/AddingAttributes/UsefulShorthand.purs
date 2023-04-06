@@ -10,7 +10,7 @@ import Deku.Control (text_)
 import Deku.DOM as D
 import QualifiedDo.Alt as Alt
 
-usefulShorthand :: forall lock payload. Subsection lock payload
+usefulShorthand :: Subsection
 usefulShorthand = subsection
   { title: "Useful shorthand"
   , matter: pure

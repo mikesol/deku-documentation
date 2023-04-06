@@ -5,23 +5,23 @@ import Prelude
 import Control.Monad.Reader (ask, asks)
 import Data.Newtype (class Newtype, unwrap)
 import Deku.Control (text_)
-import Deku.Core (Domable)
+import Deku.Core (Nut)
 import Deku.DOM as D
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
 
 libAwesome
-  :: forall n r lock payload
+  :: forall n r
    . Newtype n
        { libAwesome ::
            { s1 :: String
            , s2 :: String
-           , cont :: n -> Domable lock payload
+           , cont :: n -> Nut
            }
        | r
        }
   => n
-  -> Domable lock payload
+  -> Nut
 libAwesome = do
   { libAwesome: { s1, s2, cont } } <- asks unwrap
   c <- cont
@@ -32,32 +32,32 @@ libAwesome = do
     ]
 
 libGreat
-  :: forall n r lock payload
+  :: forall n r
    . Newtype n
        { libGreat ::
            { x1 :: String }
        | r
        }
   => n
-  -> Domable lock payload
+  -> Nut
 libGreat = do
   { libGreat: { x1 } } <- asks unwrap
   pure $ D.div_
     [ D.div__ ("Lib great says: " <> x1)
     ]
 
-newtype Env lock payload = Env
+newtype Env = Env
   { libGreat ::
       { x1 :: String }
   , libAwesome ::
       { s1 :: String
       , s2 :: String
-      , cont :: Env lock payload -> Domable lock payload
+      , cont :: Env -> Nut
       }
   , interjection :: String
   }
 
-derive instance Newtype (Env lock payload) _
+derive instance Newtype (Env) _
 
 main :: Effect Unit
 main = runInBody Deku.do

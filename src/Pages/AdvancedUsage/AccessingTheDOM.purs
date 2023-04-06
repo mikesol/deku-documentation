@@ -10,7 +10,7 @@ import Pages.AdvancedUsage.AccessingTheDOM.TheSelfAttribute (theSelfAttribute)
 import Pages.AdvancedUsage.AccessingTheDOM.ToplevelConsiderations (toplevelConsiderations)
 import Router.ADT (Route(..))
 
-accessingTheDOM :: forall lock payload. Page lock payload
+accessingTheDOM :: Page
 accessingTheDOM = page
   { route: AccessingTheDOM
   , topmatter: pure

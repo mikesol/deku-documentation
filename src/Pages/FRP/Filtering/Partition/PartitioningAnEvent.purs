@@ -7,7 +7,7 @@ import Deku.Control (text_)
 import Deku.Attribute ((!:=))
 import Deku.DOM as D
 
-partitioningAnEvent :: forall lock payload. Subsection lock payload
+partitioningAnEvent :: Subsection
 partitioningAnEvent = subsection
   { title: "Partitioning an event"
   , matter: pure
