@@ -24,8 +24,9 @@ main = runInBody Deku.do
     [ D.div_
         ( map
             ( \i -> D.a
-                [click $ snd i <#> not >>> fst i,
-                  klass_ "cursor-pointer"]
+                [ click $ snd i <#> not >>> fst i
+                , klass_ "cursor-pointer"
+                ]
                 [ text_ "Click me " ]
             )
             [ aa, bb, cc, dd, ee ]

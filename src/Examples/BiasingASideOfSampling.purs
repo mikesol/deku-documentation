@@ -18,8 +18,8 @@ main :: Effect Unit
 main = runInBody Deku.do
   setSlider /\ slider <- useState'
   fixed
-    [ D.div (klass_ "flex justify-around")
-        [ D.input (slider_ setSlider) [] ]
+    [ D.div [ klass_ "flex justify-around" ]
+        [ D.input [ slider_ setSlider ] [] ]
     , text
         ( slider <|**>
             ((\a b -> show b <> " " <> show a) <$> slider)

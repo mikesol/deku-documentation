@@ -6,7 +6,7 @@ import Components.Code (psCodeWithLink)
 import Components.ExampleBlockquote (exampleBlockquote)
 import Contracts (Subsection, subsection)
 import Data.Array (drop, length, null)
-import Data.Foldable (oneOf, sum)
+import Data.Foldable (sum)
 import Data.Int (toNumber)
 import Data.Number (isNaN)
 import Data.Time.Duration (Seconds(..))
@@ -65,7 +65,6 @@ derivingBehaviors = subsection
               D.div_
                 [ D.div_
                     [ D.input
-                        ( oneOf
                             [ slider_ setNumber
                             , klass_ "w-full"
                             , D.Min !:= "0.0"
@@ -73,7 +72,7 @@ derivingBehaviors = subsection
                             , D.Step !:= "0.01"
                             , D.Value !:= "0.5"
                             ]
-                        )
+                        
                         []
                     ]
                 , D.div_

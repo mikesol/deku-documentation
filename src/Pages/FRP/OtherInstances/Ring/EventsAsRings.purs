@@ -13,7 +13,6 @@ import Deku.Do as Deku
 import Deku.Hooks (useState)
 import Deku.Listeners (slider_)
 import Examples as Examples
-import QualifiedDo.Alt as Alt
 
 eventsAsRings :: Subsection
 eventsAsRings = subsection
@@ -34,16 +33,14 @@ eventsAsRings = subsection
               D.div_
                 [ D.div_
                     [ D.input
-                        Alt.do
-                          klass_ "w-full"
-                          slider_ setNumber1
+                          [klass_ "w-full",
+                          slider_ setNumber1]
                         []
                     ]
                 , D.div_
                     [ D.input
-                        Alt.do
-                          klass_ "w-full"
-                          slider_ setNumber2
+                          [klass_ "w-full",
+                          slider_ setNumber2]
                         []
                     ]
                 , D.div_

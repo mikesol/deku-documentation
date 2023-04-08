@@ -13,7 +13,7 @@ uncurrying = subsection
   , matter: pure
       [ D.p_
           [ text_ "This subsection will be about "
-          , D.span [D.Class !:= "font-bold"] [ text_ "Uncurrying" ]
+          , D.span [ D.Class !:= "font-bold" ] [ text_ "Uncurrying" ]
           , text_ "."
           ]
       ]

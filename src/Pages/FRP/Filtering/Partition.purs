@@ -16,7 +16,7 @@ partition = section
   , topmatter: pure
       [ D.p_
           [ text_ "This section will be about "
-          , D.span [D.Class !:= "font-bold"] [ text_ "Partition" ]
+          , D.span [ D.Class !:= "font-bold" ] [ text_ "Partition" ]
           , text_ "."
           ]
       ]

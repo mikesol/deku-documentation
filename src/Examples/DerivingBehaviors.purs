@@ -3,7 +3,7 @@ module Examples.DerivingBehaviors where
 import Prelude
 
 import Data.Array (drop, length, null)
-import Data.Foldable (oneOf, sum)
+import Data.Foldable (sum)
 import Data.Int (toNumber)
 import Data.Number (isNaN)
 import Data.Time.Duration (Seconds(..))
@@ -33,15 +33,13 @@ main = runInBody Deku.do
   D.div_
     [ D.div_
         [ D.input
-            ( oneOf
-                [ slider_ setNumber
-                , klass_ "w-full"
-                , D.Min !:= "0.0"
-                , D.Max !:= "1.0"
-                , D.Step !:= "0.01"
-                , D.Value !:= "0.5"
-                ]
-            )
+            [ slider_ setNumber
+            , klass_ "w-full"
+            , D.Min !:= "0.0"
+            , D.Max !:= "1.0"
+            , D.Step !:= "0.01"
+            , D.Value !:= "0.5"
+            ]
             []
         ]
     , D.div_

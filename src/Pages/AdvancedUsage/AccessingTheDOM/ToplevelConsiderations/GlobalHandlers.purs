@@ -56,7 +56,7 @@ globalHandlers = subsection
       , psCodeNoCollapseWithLink Examples.GlobalHandlers
       , exampleBlockquote
           [ D.div
-              ( D.Self !:= \e -> do
+              [D.Self !:= \e -> do
                   authEvent <- create
                   myAuth <- burning false authEvent.event
                   _ <- doAuth authEvent.push
@@ -65,7 +65,7 @@ globalHandlers = subsection
                         if _ then "Welcome back!" else "Please log in."
                     )
                   pure unit
-              )
+              ]
               []
           ]
       , D.p_

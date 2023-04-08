@@ -63,9 +63,9 @@ aSimpleExample = section
       , htmlCode (reflectSymbol myHtml)
       , D.p__ "This renders in the DOM like so."
       , D.div
-          ( klass_
+          [klass_
               "border-solid border-2 border-slate-200 dark:border-white-200 flex justify-center"
-          )
+          ]
           [ myHtml ~~ {} ]
       , D.p__
           "By the end of this page, we'll have our breadcrumbs hooked up to stateful logic. We'll start by seeing how to render the example above in Deku."

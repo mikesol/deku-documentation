@@ -4,9 +4,7 @@ import Prelude
 
 import Components.TargetedLink (targetedLink)
 import Contracts (Page, page)
-import Control.Alt ((<|>))
 import Deku.Attribute ((!:=))
-import Deku.Attributes (href_)
 import Deku.Control (text_)
 import Deku.DOM as D
 import Pages.FRP.Applicatives.Applicative (applicative)
@@ -18,7 +16,7 @@ applicatives :: Page
 applicatives = page
   { route: Applicatives
   , topmatter: pure
-      [ D.p (D.Class !:= "lead")
+      [ D.p [D.Class !:= "lead"]
           [ targetedLink "https://www.youtube.com/watch?v=4AyjKgz9tKg"
               [ text_ "Conjunction junctor, what's your functor?" ]
           ]

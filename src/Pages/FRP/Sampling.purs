@@ -16,7 +16,7 @@ sampling :: Page
 sampling = page
   { route: Sampling
   , topmatter: pure
-      [ D.p (D.Class !:= "lead")
+      [ D.p [D.Class !:= "lead"]
           [ text_ "Build your next "
           , targetedLink "https://www.youtube.com/watch?v=cvpMSXjR10M"
               [ text_ "sampler" ]

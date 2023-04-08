@@ -15,7 +15,6 @@ import Deku.Hooks (useHot)
 import Deku.Listeners (click_)
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
-import QualifiedDo.Alt as Alt
 
 buttonClass :: String -> String
 buttonClass color =
@@ -35,27 +34,27 @@ main :: Effect Unit
 main = runInBody Deku.do
   setBadness /\ badness <- useHot Bad
   D.div_
-    [ D.div (klass_ "flex justify-between")
+    [ D.div [ klass_ "flex justify-between" ]
         [ D.button
-            Alt.do
-              klass_ $ buttonClass "indigo"
-              click_ $ setBadness Bad
+            [ klass_ $ buttonClass "indigo"
+            , click_ $ setBadness Bad
+            ]
             [ text_ "Bad" ]
         , D.button
-            Alt.do
-              klass_ $ buttonClass "pink"
-              click_ $ setBadness Worse
+            [ klass_ $ buttonClass "pink"
+            , click_ $ setBadness Worse
+            ]
             [ text_ "Worse" ]
         , D.button
-            Alt.do
-              klass_ $ buttonClass "green"
-              click_ $ setBadness Worst
+            [ klass_ $ buttonClass "green"
+            , click_ $ setBadness Worst
+            ]
             [ text_ "Worst" ]
         ]
-    , D.div (klass_ "bg-alexander")
-        [ D.div (klass_ "p-3")
+    , D.div [ klass_ "bg-alexander" ]
+        [ D.div [ klass_ "p-3" ]
             [ D.span
-                (klass_ "font-aldine text-4xl text-alexander")
+                [ klass_ "font-aldine text-4xl text-alexander" ]
                 [ text_
                     "Alexander and the Terrible, Horrible,"
                 , guard (badness <#> (_ > Bad)) $ fixed
@@ -70,6 +69,6 @@ main = runInBody Deku.do
                 , text_ " Very Bad Day"
                 ]
             ]
-        , D.div_ [ D.img (D.Src !:= alexanderURL) [] ]
+        , D.div_ [ D.img [ D.Src !:= alexanderURL ] [] ]
         ]
     ]

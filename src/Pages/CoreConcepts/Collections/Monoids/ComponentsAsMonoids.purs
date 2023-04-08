@@ -71,9 +71,9 @@ componentsAsMonoids = subsection
           , text_
               ". Because it's a monoid, we can use all sorts of cool functions on Deku components, like "
           , D.a
-              ( href_
+              [href_
                   "https://pursuit.purescript.org/packages/purescript-foldable-traversable/6.0.0/docs/Data.Foldable#v:intercalate"
-              )
+              ]
               [ D.code__ "intercalate" ]
           , text_ "."
 
@@ -81,7 +81,7 @@ componentsAsMonoids = subsection
       , psCodeWithLink Examples.ComponentsAsMonoids
       , do
           let
-            styleF s t = D.span (klass_ s) [ text_ t ]
+            styleF s t = D.span [klass_ s] [ text_ t ]
             zipStyles = zipWith styleF textColors
             lyrics1 = zipStyles (over (ix 11) ("and " <> _) lyrics)
             lyrics0 = zipStyles lyrics

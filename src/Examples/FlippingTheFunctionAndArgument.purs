@@ -19,9 +19,9 @@ main = runInBody Deku.do
   setSlider1 /\ slider1 <- useState'
   setSlider2 /\ slider2 <- useState'
   fixed
-    [ D.div (klass_ "flex justify-around")
-        [ D.input (slider_ setSlider1) []
-        , D.input (slider_ setSlider2) []
+    [ D.div [ klass_ "flex justify-around" ]
+        [ D.input [ slider_ setSlider1 ] []
+        , D.input [ slider_ setSlider2 ] []
         ]
     , text
         ( slider1 <**|>

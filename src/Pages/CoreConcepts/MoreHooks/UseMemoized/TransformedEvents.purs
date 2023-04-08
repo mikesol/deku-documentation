@@ -14,7 +14,6 @@ import Deku.Do as Deku
 import Deku.Hooks (useMemoized, useState)
 import Deku.Listeners (click)
 import Examples as Examples
-import QualifiedDo.Alt as Alt
 
 inputKls :: String
 inputKls =
@@ -54,9 +53,8 @@ transformedEvents = subsection
                 [ D.div_
                     ( map
                         ( \i -> D.a
-                            Alt.do
-                              click $ snd i <#> not >>> fst i
-                              klass_ "cursor-pointer"
+                              [click $ snd i <#> not >>> fst i,
+                              klass_ "cursor-pointer"]
                             [ text_ "Click me " ]
                         )
                         [ a, b, c, d, e ]

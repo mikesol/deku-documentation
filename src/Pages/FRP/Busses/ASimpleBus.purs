@@ -17,7 +17,7 @@ aSimpleBus = section
   , topmatter: pure
       [ D.p_
           [ text_ "This section will be about "
-          , D.span [D.Class !:= "font-bold"] [ text_ "A simple bus" ]
+          , D.span [ D.Class !:= "font-bold" ] [ text_ "A simple bus" ]
           , text_ "."
           ]
       ]

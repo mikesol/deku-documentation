@@ -30,11 +30,11 @@ altAsAMuxer = subsection
       , psCodeWithLink Exampes.AltAsAMuxer
       , exampleBlockquote
           [ D.div
-              ( klass
+              [klass
                   ( (interval 200 $> "bg-pink-300") <|>
                       (interval 165 $> "bg-green-300")
                   )
-              )
+              ]
               [ text_ "Par-tay!" ]
           ]
       , D.p__ "The alternating of the two streams creates the strobe effect."

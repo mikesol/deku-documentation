@@ -12,31 +12,30 @@ import Deku.Hooks (useMemoized, useState)
 import Deku.Listeners (click)
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
-import QualifiedDo.Alt as Alt
 
 main :: Effect Unit
 main = runInBody Deku.do
-  a <- useState true
-  b <- useState false
-  c <- useState true
-  d <- useState false
-  e <- useState true
+  aa <- useState true
+  bb <- useState false
+  cc <- useState true
+  dd <- useState false
+  ee <- useState true
   composedEvent <- useMemoized $ { a: _, b: _, c: _, d: _, e: _ }
-    <$> snd a
-    <*> snd b
-    <*> snd c
-    <*> snd d
-    <*> snd e
+    <$> snd aa
+    <*> snd bb
+    <*> snd cc
+    <*> snd dd
+    <*> snd ee
   D.div_
     [ D.div_
         ( map
             ( \i -> D.a
-                Alt.do
-                  click $ snd i <#> not >>> fst i
-                  klass_ "cursor-pointer"
+                [ click $ snd i <#> not >>> fst i
+                , klass_ "cursor-pointer"
+                ]
                 [ text_ "Click me " ]
             )
-            [ a, b, c, d, e ]
+            [ aa, bb, cc, dd, ee ]
         )
     , D.div_
         ( replicate 10

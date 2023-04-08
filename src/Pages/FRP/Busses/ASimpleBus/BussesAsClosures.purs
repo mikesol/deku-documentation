@@ -13,7 +13,7 @@ bussesAsClosures = subsection
   , matter: pure
       [ D.p_
           [ text_ "This subsection will be about "
-          , D.span [D.Class !:= "font-bold"] [ text_ "Busses as closures" ]
+          , D.span [ D.Class !:= "font-bold" ] [ text_ "Busses as closures" ]
           , text_ "."
           ]
       ]

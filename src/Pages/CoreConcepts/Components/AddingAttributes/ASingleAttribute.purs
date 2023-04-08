@@ -9,14 +9,23 @@ import Deku.DOM as D
 
 aSingleAttribute :: Subsection
 aSingleAttribute = subsection
-  { title: "A single attribute"
+  { title: "Setting attributes"
   , matter: pure
       [ D.p_
-          [ text_ "Single attributes are specified with the "
+          [ text_ "Individual attributes are set with the "
           , D.code_ [ text_ "!:=" ]
           , text_ " infix operator."
           ]
       , psCode
           "D.Style !:= \"color:teal;\""
+      , D.p_
+          [ text_
+              "To feed an attribute to Deku, it needs to be in an array. Several attributes can be set by including them all in an array."
+          ]
+      , psCode
+          """[ D.Id !:= "my-id"
+, D.Style !:= "background-color:silver;"
+]
+"""
       ]
   }

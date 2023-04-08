@@ -13,7 +13,7 @@ foldIsState = subsection
   , matter: pure
       [ D.p_
           [ text_ "This subsection will be about "
-          , D.span [D.Class !:= "font-bold"] [ text_ "Fold is state" ]
+          , D.span [ D.Class !:= "font-bold" ] [ text_ "Fold is state" ]
           , text_ "."
           ]
       ]

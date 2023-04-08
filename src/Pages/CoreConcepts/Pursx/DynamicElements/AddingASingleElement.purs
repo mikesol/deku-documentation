@@ -95,11 +95,11 @@ addingASingleElement = subsection
                 toggleNero = click_ (setProjects true *> setNero true)
               D.div_
                 [ D.div_
-                    [ D.a (klass_ "cursor-pointer mr-4" <|> toggleHome)
+                    [ D.a [klass_ "cursor-pointer mr-4", toggleHome]
                         [ text_ "Go home" ]
-                    , D.a (klass_ "cursor-pointer mr-4" <|> toggleProjs)
+                    , D.a [klass_ "cursor-pointer mr-4", toggleProjs]
                         [ text_ "Go to projects" ]
-                    , D.a (klass_ "cursor-pointer" <|> toggleNero)
+                    , D.a [klass_ "cursor-pointer", toggleNero]
                         [ text_ "Go to nero" ]
                     ]
                 , D.div_

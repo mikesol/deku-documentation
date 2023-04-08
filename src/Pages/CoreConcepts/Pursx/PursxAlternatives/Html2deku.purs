@@ -16,9 +16,9 @@ html2deku = subsection
   , matter: pure
       [ D.p_
           [ D.a
-              ( href_ "https://mikesol.github.io/html2deku" <|> D.Target !:=
+              [href_ "https://mikesol.github.io/html2deku" <|> D.Target !:=
                   "_blank"
-              )
+              ]
               [ D.code__ "html2deku" ]
           , text_
               " is a small web app that converts HTML to Deku. A miniature version of it is embedded below."

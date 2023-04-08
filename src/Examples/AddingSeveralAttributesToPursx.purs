@@ -73,9 +73,9 @@ main = runInBody Deku.do
     akls = alt (klass_ "cursor-pointer mr-4")
   D.div_
     [ D.div_
-        [ D.a (akls toggleHome) [ text_ "Go home" ]
-        , D.a (akls toggleProjs) [ text_ "Go to projects" ]
-        , D.a (akls toggleNero) [ text_ "Go to nero" ]
+        [ D.a [ akls toggleHome ] [ text_ "Go home" ]
+        , D.a [ akls toggleProjs ] [ text_ "Go to projects" ]
+        , D.a [ akls toggleNero ] [ text_ "Go to nero" ]
         ]
     , D.div_
         [ myHtml ~~

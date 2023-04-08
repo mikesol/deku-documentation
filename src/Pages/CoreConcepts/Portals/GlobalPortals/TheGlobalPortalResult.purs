@@ -13,7 +13,7 @@ theGlobalPortalResult = subsection
   , matter: pure
       [ D.p_
           [ text_ "This subsection will be about "
-          , D.span [D.Class !:= "font-bold"]
+          , D.span [ D.Class !:= "font-bold" ]
               [ text_ "The global portal result" ]
           , text_ "."
           ]

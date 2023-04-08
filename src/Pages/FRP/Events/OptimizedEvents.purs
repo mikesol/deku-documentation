@@ -19,10 +19,10 @@ optimizedEvents = section
           [ text_
               "When you're making a game, you want to squeeze every ounce of of JavaScript that you can to hit 60 FPS. Deku, in combination with the "
           , D.a
-              ( href_
+              [href_
                   "https://github.com/aristanetworks/purescript-backend-optimizer"
-                  <|> (D.Target !:= "_blank")
-              )
+                  , (D.Target !:= "_blank")
+              ]
               [ D.code__ "purs-backend-optimizer" ]
           , text_
               " gets you 98% of the way there. For that extra two percent of juice, there are optimized events."

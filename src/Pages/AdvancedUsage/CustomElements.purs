@@ -2,7 +2,6 @@ module Pages.AdvancedUsage.CustomElements where
 
 import Prelude
 
-import Components.TargetedLink (targetedLink)
 import Contracts (Page, page)
 import Deku.Attribute ((!:=))
 import Deku.Control (text_)
@@ -15,7 +14,7 @@ customElements :: Page
 customElements = page
   { route: CustomElements
   , topmatter: pure
-      [ D.p (D.Class !:= "lead")
+      [ D.p [D.Class !:= "lead"]
           [ text_ "How to bend Deku to do your bidding."
           ]
       , D.p_

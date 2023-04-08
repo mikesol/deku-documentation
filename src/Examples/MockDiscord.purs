@@ -11,7 +11,6 @@ import Deku.DOM (unsafeCustomElement)
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
 import FRP.Event (Event)
-import QualifiedDo.Alt as Alt
 import Type.Proxy (Proxy(..))
 
 data DiscordMessages_
@@ -43,7 +42,7 @@ discordMessages = unsafeCustomElement "discord-messages"
   empty
 
 discordMessage
-  :: Event (Attribute DiscordMessage_)
+  :: Array (Event (Attribute DiscordMessage_))
   -> Array (Nut)
   -> Nut
 discordMessage = unsafeCustomElement "discord-message"
@@ -56,23 +55,23 @@ main ∷ Effect Unit
 main = runInBody do
   discordMessages
     [ discordMessage
-        Alt.do
-          Author !:= "beluga"
-          Avatar !:= belugaURL
+        [ Author !:= "beluga"
+        , Avatar !:= belugaURL
+        ]
         [ text_ "mom" ]
     , discordMessage
-        Alt.do
-          Author !:= "belu-mom🌸"
-          Avatar !:= beluMomURL
+        [ Author !:= "belu-mom🌸"
+        , Avatar !:= beluMomURL
+        ]
         [ text_ "yes beluga" ]
     , discordMessage
-        Alt.do
-          Author !:= "beluga"
-          Avatar !:= belugaURL
+        [ Author !:= "beluga"
+        , Avatar !:= belugaURL
+        ]
         [ text_ "whos my dad?" ]
     , discordMessage
-        Alt.do
-          Author !:= "belu-mom🌸"
-          Avatar !:= beluMomURL
+        [ Author !:= "belu-mom🌸"
+        , Avatar !:= beluMomURL
+        ]
         [ text_ "it's complicated..." ]
     ]

@@ -3,7 +3,6 @@ module Examples.AddingCustomElements where
 import Prelude
 
 import Deku.Toplevel (runInBody)
-import QualifiedDo.Alt as Alt
 import Effect (Effect)
 import Deku.Attribute (class Attr, AttributeValue(..), unsafeAttribute, (!:=))
 import Deku.Control (text_)
@@ -29,7 +28,7 @@ instance Attr MyNiftyAnchor_ D.Target MyTarget where
 main ∷ Effect Unit
 main = runInBody do
   unsafeCustomElement "a" (Proxy :: _ MyNiftyAnchor_)
-    Alt.do
-      D.Href !:= JoyrideFM
-      D.Target !:= Blank
+    [ D.Href !:= JoyrideFM
+    , D.Target !:= Blank
+    ]
     [ text_ "hi" ]

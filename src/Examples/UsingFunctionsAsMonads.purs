@@ -33,8 +33,9 @@ signIn :: AppMonad
 signIn = do
   { setIsSignedIn, isSignedIn } <- ask
   pure $ D.button
-    [klass_ buttonClass,
-      click $ isSignedIn <#> not >>> setIsSignedIn]
+    [ klass_ buttonClass
+    , click $ isSignedIn <#> not >>> setIsSignedIn
+    ]
     [ text $ isSignedIn <#> if _ then "Sign out" else "Sign in" ]
 
 name :: AppMonad

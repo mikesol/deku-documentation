@@ -11,7 +11,6 @@ import Deku.Attributes (klass_)
 import Deku.Control (text_)
 import Deku.DOM as D
 import Examples as Examples
-import QualifiedDo.Alt as Alt
 import Web.Event.Event (type_)
 import Web.HTML (window)
 import Web.HTML.Window (alert)
@@ -28,10 +27,9 @@ usingTheOriginalEvent = subsection
       , D.p_ [ text_ "This yields the following result." ]
       , exampleBlockquote
           [ D.span
-              Alt.do
-                D.OnClick !:= cb \e -> do
-                  window >>= alert (unwrap (type_ e))
-                klass_ "cursor-pointer"
+                [D.OnClick !:= cb \e -> do
+                  window >>= alert (unwrap (type_ e)),
+                klass_ "cursor-pointer"]
               [ text_ "Click me!" ]
           ]
       ]

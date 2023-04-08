@@ -5,7 +5,6 @@ import Prelude
 import Components.Code (psCodeWithLink)
 import Components.ExampleBlockquote (exampleBlockquote)
 import Contracts (Subsection, subsection)
-import Data.Foldable (oneOf)
 import Data.Time.Duration (Seconds(..))
 import Data.Tuple.Nested ((/\))
 import Deku.Attribute ((!:=))
@@ -42,7 +41,6 @@ integratingBehaviors = subsection
               D.div_
                 [ D.div_
                     [ D.input
-                        ( oneOf
                             [ slider_ setNumber
                             , klass_ "w-full"
                             , D.Min !:= "0.0"
@@ -50,7 +48,7 @@ integratingBehaviors = subsection
                             , D.Step !:= "0.01"
                             , D.Value !:= "0.0"
                             ]
-                        )
+                        
                         []
                     ]
                 , D.div_

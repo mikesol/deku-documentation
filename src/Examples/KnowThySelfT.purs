@@ -11,7 +11,6 @@ import Deku.Do as Deku
 import Deku.Hooks (useState')
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
-import QualifiedDo.Alt as Alt
 import Web.HTML.HTMLInputElement (value)
 
 inputKls :: String
@@ -29,10 +28,10 @@ main = runInBody Deku.do
   setInput /\ input <- useState'
   D.div_
     [ D.input
-        Alt.do
-          klass_ inputKls
-          input <#> \i -> D.OnInput := (value i >>= setTxt)
-          D.SelfT !:= setInput
+        [ klass_ inputKls
+        , input <#> \i -> D.OnInput := (value i >>= setTxt)
+        , D.SelfT !:= setInput
+        ]
         []
     , D.div_ [ text txt ]
     ]

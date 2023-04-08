@@ -5,7 +5,6 @@ import Prelude
 import Components.Code (psCodeWithLink)
 import Components.ExampleBlockquote (exampleBlockquote)
 import Contracts (Subsection, subsection)
-import Data.Foldable (oneOf)
 import Data.Time.Duration (Seconds(..))
 import Data.Tuple.Nested ((/\))
 import Deku.Attribute ((!:=), (:=))
@@ -73,14 +72,13 @@ solvingDifferentialEquations = subsection
               D.div_
                 [ D.div_
                     [ D.button
-                        ( oneOf
+                        
                             [ klass_ buttonClass, click_ (setThunk unit) ]
-                        )
+                        
                         [ text_ "Restart simulation" ]
                     ]
                 , D.div_
                     [ D.input
-                        ( oneOf
                             [ D.Xtype !:= "range"
                             , klass_ "w-full"
                             , D.Min !:= "-1.0"
@@ -88,7 +86,6 @@ solvingDifferentialEquations = subsection
                             , D.Step !:= "0.01"
                             , motion
                             ]
-                        )
                         []
                     ]
                 ]

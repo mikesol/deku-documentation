@@ -19,7 +19,6 @@ import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useMemoized')
 import Examples as Examples
-import QualifiedDo.Alt as Alt
 import Web.Event.Event (target)
 import Web.HTML.HTMLInputElement (fromEventTarget, valueAsNumber)
 
@@ -53,15 +52,14 @@ initialEvents = subsection
               D.div_
                 [ D.div_
                     [ D.input
-                        Alt.do
-                          klass_ inputKls
-                          D.Xtype !:= "number"
-                          D.Min !:= "0"
-                          D.Max !:= "100"
-                          D.Value !:= "0"
+                          [klass_ inputKls,
+                          D.Xtype !:= "number",
+                          D.Min !:= "0",
+                          D.Max !:= "100",
+                          D.Value !:= "0",
                           D.OnChange !:= cb \evt ->
                             traverse_ (valueAsNumber >=> floor >>> setNumber) $
-                              (target >=> fromEventTarget) evt
+                              (target >=> fromEventTarget) evt]
                         []
                     ]
                 , D.div_

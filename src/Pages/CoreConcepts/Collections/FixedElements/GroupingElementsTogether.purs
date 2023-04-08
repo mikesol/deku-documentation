@@ -6,7 +6,6 @@ import Components.Code (psCodeWithLink)
 import Components.ExampleBlockquote (exampleBlockquote)
 import Components.ProTip (proTip)
 import Contracts (Subsection, subsection)
-import Control.Alt ((<|>))
 import Deku.Attribute ((!:=))
 import Deku.Attributes (href_, klass_)
 import Deku.Control (text_)
@@ -38,11 +37,11 @@ groupingElementsTogether = subsection
           do
             let
               eieio = fixed
-                [ D.span (klass_ "text-blue-400") [ text_ "e " ]
-                , D.span (klass_ "text-red-400") [ text_ "i " ]
-                , D.span (klass_ "text-green-400") [ text_ "e " ]
-                , D.span (klass_ "text-teal-400") [ text_ "i " ]
-                , D.span (klass_ "text-orange-400") [ text_ "o" ]
+                [ D.span [klass_ "text-blue-400"] [ text_ "e " ]
+                , D.span [klass_ "text-red-400"] [ text_ "i " ]
+                , D.span [klass_ "text-green-400"] [ text_ "e " ]
+                , D.span [klass_ "text-teal-400"] [ text_ "i " ]
+                , D.span [klass_ "text-orange-400"] [ text_ "o" ]
                 ]
 
             [ text_ "Old MacDonald had a farm, "
@@ -62,10 +61,10 @@ groupingElementsTogether = subsection
               [ text_
                   "Dogs say woof in English, but every culture has its own animal sounds. Before using Deku, make sure to familiarize yourself with "
               , D.a
-                  ( href_
+                  [href_
                       "https://languagepro.com.br/woof-woof-dog-barks-in-different-languages/"
-                      <|> D.Target !:= "_blank"
-                  )
+                      , D.Target !:= "_blank"
+                  ]
                   [ text_ "how dogs bark in multiple languages" ]
               , text_ "."
               ]

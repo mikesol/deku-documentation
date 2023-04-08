@@ -12,7 +12,6 @@ import Deku.Toplevel (runInBody)
 import Effect (Effect)
 import Data.Foldable (traverse_)
 import Deku.Attribute (cb, (!:=))
-import QualifiedDo.Alt as Alt
 import Web.Event.Event (target)
 import Web.HTML.HTMLInputElement (fromEventTarget, valueAsNumber)
 
@@ -38,14 +37,14 @@ and we'll output a number that you can't
 reverse engineer, or your money back!"""
             ]
         , D.input
-            Alt.do
-              klass_ inputKls
-              D.Xtype !:= "number"
-              D.Min !:= "0"
-              D.Value !:= "0"
-              D.OnChange !:= cb \evt ->
+            [ klass_ inputKls
+            , D.Xtype !:= "number"
+            , D.Min !:= "0"
+            , D.Value !:= "0"
+            , D.OnChange !:= cb \evt ->
                 traverse_ (valueAsNumber >=> setNumber) $
                   (target >=> fromEventTarget) evt
+            ]
             []
         ]
     , D.div_

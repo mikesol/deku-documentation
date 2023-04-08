@@ -2,7 +2,6 @@ module Examples.SolvingDifferentialEquations where
 
 import Prelude
 
-import Data.Foldable (oneOf)
 import Data.Time.Duration (Seconds(..))
 import Data.Tuple.Nested ((/\))
 import Deku.Attribute ((!:=), (:=))
@@ -48,22 +47,18 @@ main = runInBody Deku.do
   D.div_
     [ D.div_
         [ D.button
-            ( oneOf
-                [ klass_ buttonClass, click_ (setThunk unit) ]
-            )
+            [ klass_ buttonClass, click_ (setThunk unit) ]
             [ text_ "Restart simulation" ]
         ]
     , D.div_
         [ D.input
-            ( oneOf
-                [ D.Xtype !:= "range"
-                , klass_ "w-full"
-                , D.Min !:= "-1.0"
-                , D.Max !:= "1.0"
-                , D.Step !:= "0.01"
-                , motion
-                ]
-            )
+            [ D.Xtype !:= "range"
+            , klass_ "w-full"
+            , D.Min !:= "-1.0"
+            , D.Max !:= "1.0"
+            , D.Step !:= "0.01"
+            , motion
+            ]
             []
         ]
     ]

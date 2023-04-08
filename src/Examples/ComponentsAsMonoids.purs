@@ -61,7 +61,7 @@ toWord _ = "nth"
 main :: Effect Unit
 main = runInBody do
   let
-    styleF s t = D.span (klass_ s) [ text_ t ]
+    styleF s t = D.span [ klass_ s ] [ text_ t ]
     zipStyles = zipWith styleF textColors
     lyrics0 = zipStyles lyrics
     lyrics1 = zipStyles (over (ix 11) ("and " <> _) lyrics)

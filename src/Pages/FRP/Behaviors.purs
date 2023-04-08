@@ -16,9 +16,9 @@ behaviors :: Page
 behaviors = page
   { route: Behaviors
   , topmatter: pure
-      [ D.p (D.Class !:= "lead")
+      [ D.p [D.Class !:= "lead"]
           [ text_ "Or "
-          , D.span (D.Class !:= "font-bold") [ text_ "Behaviours" ]
+          , D.span [D.Class !:= "font-bold"] [ text_ "Behaviours" ]
           , text_ " if you're in 🇬🇧, 🇮🇪, 🇦🇺, 🇨🇦, 🇿🇦, 🇳🇿, 🇧🇼, 🇬🇲, 🇳🇦, 🇿🇲, ..."
           ]
       , D.p_

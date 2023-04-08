@@ -62,7 +62,7 @@ theFixFunction = subsection
                     , "Dickory" /\ "pink"
                     , "Dock" /\ "indigo"
                     ] <#> \(w /\ k) -> D.button
-                      (klass_ (buttonClass k) <|> click_ (setWord w))
+                      [klass_ (buttonClass k), click_ (setWord w)]
                       [ text_ w ]
                 , D.div_
                     [ text_ "Previous word: "
@@ -179,7 +179,7 @@ fixedEvent = fix
                     , "Dickory" /\ "pink"
                     , "Dock" /\ "indigo"
                     ] <#> \(w /\ k) -> D.button
-                      (klass_ (buttonClass k) <|> click_ (setWord w))
+                      [klass_ (buttonClass k), click_ (setWord w)]
                       [ text_ w ]
                 , D.div_ $ [ 0, 1, 2, 3, 4 ] <#> \n -> D.div_
                     [ text_ $ "Word with a lag of " <> show n <> ": "

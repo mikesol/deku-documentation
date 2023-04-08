@@ -13,7 +13,7 @@ settingUpAVBus = subsection
   , matter: pure
       [ D.p_
           [ text_ "This subsection will be about "
-          , D.span [D.Class !:= "font-bold"] [ text_ "Setting up a v-bus" ]
+          , D.span [ D.Class !:= "font-bold" ] [ text_ "Setting up a v-bus" ]
           , text_ "."
           ]
       ]

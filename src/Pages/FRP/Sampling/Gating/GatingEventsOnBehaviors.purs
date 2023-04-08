@@ -41,14 +41,14 @@ gateBy f ps xs = compact (sampleBy (\p x -> if f p x then Just x else Nothing) p
       , psCodeWithLink Examples.GatingEventsOnBehaviors
       , exampleBlockquote
           [ D.div
-              ( klass
+              [klass
                   ( gateBy (\t _ -> (unwrap $ unInstant t) % 4000.0 < 2000.0)
                       instant
                       ( (interval 200 $> "bg-pink-300") <|>
                           (interval 165 $> "bg-green-300")
                       )
                   )
-              )
+              ]
               [ text_ "Par-tay!" ]
           ]
       ]

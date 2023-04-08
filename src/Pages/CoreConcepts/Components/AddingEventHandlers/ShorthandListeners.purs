@@ -20,32 +20,32 @@ shorthandListeners = subsection
           [ text_
               "Similar to attributes, some event listeners also have shorthand versions in Deku."
           ]
-      , D.table tableClass
+      , D.table [tableClass]
           [ D.tr_
-              [ D.th tableClass [ text_ "Shorthand" ]
-              , D.th tableClass [ text_ "Longer version" ]
+              [ D.th [tableClass] [ text_ "Shorthand" ]
+              , D.th [tableClass] [ text_ "Longer version" ]
               ]
           , D.tr_
-              [ D.td tableClass [ D.code_ [ text_ "click_ $ log \"foo\"" ] ]
-              , D.td tableClass
+              [ D.td [tableClass] [ D.code_ [ text_ "click_ $ log \"foo\"" ] ]
+              , D.td [tableClass]
                   [ D.code_ [ text_ "D.OnClick !:= log \"foo\"" ] ]
               ]
           , D.tr_
-              [ D.td tableClass [ D.code_ [ text_ "slider_ logShow" ] ]
-              , D.td tableClass
+              [ D.td [tableClass] [ D.code_ [ text_ "slider_ logShow" ] ]
+              , D.td [tableClass]
                   [ D.code_
                       [ text_
-                          """(D.Xtype !:= "range") <|> (D.OnInput !:=
+                          """[D.Xtype !:= "range", D.OnInput !:=
     cb \e ->
       for_
         (target e >>= fromEventTarget)
-        (valueAsNumber >=> logShow))"""
+        (valueAsNumber >=> logShow)]"""
                       ]
                   ]
               ]
           , D.tr_
-              [ D.td tableClass [ D.code_ [ text_ "textInput_ logShow" ] ]
-              , D.td tableClass
+              [ D.td [tableClass] [ D.code_ [ text_ "textInput_ logShow" ] ]
+              , D.td [tableClass]
                   [ D.code_
                       [ text_
                           """D.OnInput !:=
@@ -62,7 +62,7 @@ shorthandListeners = subsection
       , D.p__
           "If you open your Developer Console and move the slider below, you'll see it light up with numbers!"
       , exampleBlockquote
-          [ D.input (slider_ logShow) [] ]
+          [ D.input [slider_ logShow] [] ]
       , D.p__
           "While these events are fun, the true power of Deku lies in its ability to use events to change aspects of the DOM. The next section explores how that is done."
       ]

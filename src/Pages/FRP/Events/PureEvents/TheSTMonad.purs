@@ -19,7 +19,7 @@ theSTMonad = subsection
           , text_
               " monad, is a monad in which arbitrary stateful variables can be created, read, and written. Other than that effect, it is completely pure. And because the reference-based system can't trigger any additional side-effects, it is "
           , D.a
-              [href_
+              [ href_
                   "https://www.oreilly.com/library/view/functional-programming-a/9781680502756/f_0017.xhtml"
               ]
               [ text_ "pure in the functional-programming sense of pure" ]

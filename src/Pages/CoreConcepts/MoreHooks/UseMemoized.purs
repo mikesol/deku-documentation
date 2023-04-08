@@ -57,9 +57,8 @@ useMemoized = section
                 [ D.div_
                     ( map
                         ( \i -> D.a
-                            Alt.do
-                              click $ snd i <#> not >>> fst i
-                              klass_ "cursor-pointer"
+                            [click $ snd i <#> not >>> fst i,
+                              klass_ "cursor-pointer"]
                             [ text_ "Click me " ]
                         )
                         [ a, b, c, d, e ]

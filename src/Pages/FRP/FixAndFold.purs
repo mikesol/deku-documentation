@@ -7,7 +7,6 @@ import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.DOM as D
 import Pages.FRP.FixAndFold.FixedPoints (fixedPoints)
-import Pages.FRP.FixAndFold.FixingEvents (fixingEvents)
 import Pages.FRP.FixAndFold.FoldingEvents (foldingEvents)
 import Router.ADT (Route(..))
 
@@ -15,7 +14,7 @@ fixAndFold :: Page
 fixAndFold = page
   { route: FixAndFold
   , topmatter: pure
-      [ D.p (D.Class !:= "lead")
+      [ D.p [D.Class !:= "lead"]
           [ text_ "Behold the crown jewel of functional reactive programming!"
           ]
       , D.p_

@@ -38,12 +38,12 @@ knowThySelf = subsection
           [ Deku.do
               setLength /\ length <- useState'
               D.div
-                Alt.do
-                  D.Self !:= \e -> launchAff_ do
+                [ D.Self !:= \e -> launchAff_ do
                     delay (Milliseconds 0.0)
                     liftEffect do
                       kids <- children (toParentNode e)
                       HTMLCollection.length kids >>= setLength
+                ]
                 ( (words "I have this many kids:" <#> D.div__) <>
                     [ D.div_ [ text (show <$> length) ] ]
                 )

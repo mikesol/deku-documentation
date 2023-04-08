@@ -6,7 +6,6 @@ import Deku.Attributes (klass_)
 import Data.Tuple.Nested ((/\))
 import Deku.Control (guard, text, text_)
 import Deku.DOM as D
-import Control.Alt ((<|>))
 import Deku.Do as Deku
 import Deku.Hooks (useHot, useState, useState')
 import Deku.Listeners (click, click_)
@@ -20,18 +19,18 @@ main = runInBody Deku.do
   setGoodbye /\ goodbye <- useState true
   D.div_
     [ D.a
-        ( klass_ "cursor-pointer" <|>
-            ( click $ keepLatest $ incrementer <#>
-                \{ setNumber, number } -> number <#>
-                  (add 1 >>> setNumber)
-            )
-        )
+        [ klass_ "cursor-pointer"
+        , ( click $ keepLatest $ incrementer <#>
+              \{ setNumber, number } -> number <#>
+                (add 1 >>> setNumber)
+          )
+        ]
         [ text_ "Increment" ]
     , D.div_
         [ D.a
-            ( klass_ "cursor-pointer"
-                <|> (click_ (setGoodbye false))
-            )
+            [ klass_ "cursor-pointer"
+            , click_ (setGoodbye false)
+            ]
             [ text_ "Goodbye" ]
         ]
     , D.div_
@@ -43,11 +42,11 @@ main = runInBody Deku.do
                   ]
               , D.div_
                   [ D.a
-                      ( klass_ "cursor-pointer" <|>
-                          ( click_
-                              (setIncrementer { setNumber, number })
-                          )
-                      )
+                      [ klass_ "cursor-pointer"
+                      , ( click_
+                            (setIncrementer { setNumber, number })
+                        )
+                      ]
                       [ text_ "Cede control" ]
                   ]
               ]

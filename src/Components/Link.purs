@@ -30,7 +30,7 @@ link''
   -> Array (Nut)
   -> Nut
 link'' eff pushState route attributes children = D.a
-  ( attributes <|> oneOf
+  [attributes, oneOf
       [ D.Href !:= url
       , click_ $ cb \e -> do
           eff e
@@ -38,7 +38,7 @@ link'' eff pushState route attributes children = D.a
           pushState (JSON.writeImpl {}) url
           window >>= scroll 0 0
       ]
-  )
+  ]
   children
   where
   Chapter chapter = routeToChapter route

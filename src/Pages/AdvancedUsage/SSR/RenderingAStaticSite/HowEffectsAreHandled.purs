@@ -25,13 +25,13 @@ myApp s = Deku.do
   D.div_
     [ D.h4__ "Hi!"
     , D.a
-        Alt.do
-          klass_ "cursor-pointer"
-          click Alt.do
+        [ klass_ "cursor-pointer"
+        , click Alt.do
             pure (setImage unit)
             image $> pure unit
+        ]
         [ text_ "Click to reveal an image." ]
-    , guard (image $> true) (D.img (D.Src !:= "https://picsum.photos/150") [])
+    , guard (image $> true) (D.img [ D.Src !:= "https://picsum.photos/150" ] [])
     , htmlCode s
     ]
 

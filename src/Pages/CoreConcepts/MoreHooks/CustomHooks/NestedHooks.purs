@@ -16,7 +16,6 @@ import Deku.Listeners (click)
 import Effect (Effect)
 import Examples as Examples
 import FRP.Event (Event)
-import QualifiedDo.Alt as Alt
 
 buttonClass =
   """inline-flex items-center rounded-md
@@ -43,6 +42,7 @@ nestedHooks = subsection
                 hookusMinimus i makeHook = Deku.do
                   setMinimus /\ minimus <- useState i
                   makeHook (setMinimus /\ minimus)
+
                 hookusMaximus
                   :: Int
                   -> Hook ((Int -> Effect Unit) /\ Event Int /\ Event Int)
@@ -53,9 +53,8 @@ nestedHooks = subsection
               setMinimus /\ minimus /\ maximus <- hookusMaximus 0
               D.div_
                 [ D.button
-                    Alt.do
-                      klass_ buttonClass
-                      click $ minimus <#> (add 1 >>> setMinimus)
+                      [klass_ buttonClass,
+                      click $ minimus <#> (add 1 >>> setMinimus)]
                     [ text_ "Increment" ]
                 , D.div_
                     [ text_ "Hookus minimus: "

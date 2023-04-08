@@ -31,9 +31,9 @@ theTypeAndContract = subsection
           , D.code__ "Event"
           , text_ " from the seminal 1997 paper "
           , D.a
-              ( href_ "http://conal.net/papers/icfp97/" <|>
+              [href_ "http://conal.net/papers/icfp97/" <|>
                   (D.Target !:= "blank")
-              )
+              ]
               [ D.i__ "Functional reactive animation" ]
           , text_
               " by Paul Hudak and Conal Elliott. It's also similar to the definition used in the various Rx frameworks."

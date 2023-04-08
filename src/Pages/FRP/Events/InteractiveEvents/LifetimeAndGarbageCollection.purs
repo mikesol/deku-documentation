@@ -18,7 +18,7 @@ lifetimeAndGarbageCollection = subsection
           , D.code__ "Effect"
           , text_ " context and have the same longevity as a "
           , D.a
-              [href_
+              [ href_
                   "https://pursuit.purescript.org/packages/purescript-refs/6.0.0/docs/Effect.Ref#t:Ref"
                   <|> (D.Target !:= "_blank")
               ]

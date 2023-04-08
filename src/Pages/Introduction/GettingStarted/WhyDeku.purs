@@ -26,9 +26,9 @@ whyDeku = section
           [ text_
               "This documentation was created with Deku and is available on "
           , D.a
-              ( href_ "https://github.com/mikesol/deku-documentation"
-                  <|> (D.Target !:= "_blank")
-              )
+              [href_ "https://github.com/mikesol/deku-documentation"
+                  ,D.Target !:= "_blank"
+              ]
               [ text_ "GitHub" ]
           , text_
               ". It was built with best practices in mind and is a useful reference for building larger applications, as is the "

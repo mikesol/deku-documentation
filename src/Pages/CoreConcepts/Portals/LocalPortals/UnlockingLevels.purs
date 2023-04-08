@@ -4,7 +4,6 @@ import Prelude
 
 import Components.Code (psCodeWithLink)
 import Contracts (Subsection, subsection)
-import Data.Foldable (oneOf)
 import Data.String (replaceAll, Pattern(..), Replacement(..))
 import Data.Tuple.Nested ((/\))
 import Deku.Attribute ((!:=), (:=))
@@ -18,7 +17,6 @@ import Deku.Listeners (click, click_)
 import Effect (Effect)
 import Examples as Examples
 import FRP.Event (Event)
-import QualifiedDo.Alt as Alt
 import Web.HTML.HTMLMediaElement (play)
 import Web.HTML.HTMLVideoElement (toHTMLMediaElement)
 
@@ -34,16 +32,14 @@ moveSpriteHere
      }
   -> Nut
 moveSpriteHere { video, square, setSquare, at } = D.a
-  ( oneOf
       [ click_ (setSquare at)
       , D.Class !:=
           "block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
       ]
-  )
   [ D.h5
-      ( D.Class !:=
+      [D.Class !:=
           "cursor-pointer mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
-      )
+      ]
       [ text_ "Move sprite here"
       , guard (square <#> (_ == at)) video
       ]
@@ -57,7 +53,6 @@ vid2URL Video4 = "https://media.giphy.com/media/7T8LajxmBkz8gmYcRB/giphy.mp4"
 
 myVideo :: Event Boolean -> String -> Nut
 myVideo bang vid = D.video
-  ( oneOf
       [ D.Width !:= "175"
       , D.Height !:= "175"
       , D.Autoplay !:= "true"
@@ -69,8 +64,7 @@ myVideo bang vid = D.video
             let melt = toHTMLMediaElement e
             play melt
       ]
-  )
-  [ D.source (D.Src !:= vid)
+  [ D.source [D.Src !:= vid]
       []
   ]
 
@@ -128,17 +122,15 @@ unlockingLevels = subsection
                 "https://media.giphy.com/media/3o6Zt6GFP75DlxnDXy/giphy.mp4"
             )
             \globalVid -> D.div_
-              [ D.div (klass_ "flex")
+              [ D.div [klass_ "flex"]
                   [ guard globalVideoPresence $ D.button
-                      Alt.do
-                        klass_ $ buttonClass "indigo"
-                        click $ videoURL <#> rotator >>> setVideoURL
+                        [klass_ $ buttonClass "indigo",
+                        click $ videoURL <#> rotator >>> setVideoURL]
                       [ text_ "Shuffle video" ]
                   , D.button
-                      Alt.do
-                        klass_ $ buttonClass "indigo"
+                      [klass_ $ buttonClass "indigo",
                         click $ globalVideoPresence <#> not >>>
-                          setGlobalVideoPresence
+                          setGlobalVideoPresence]
                       [ text $ globalVideoPresence <#>
                           if _ then "Send this video down ->"
                           else "Bring video back up"
@@ -153,7 +145,7 @@ unlockingLevels = subsection
                         let
                           switchable = globalVideoPresence <#~>
                             if _ then vid else globalVid
-                        D.div (klass_ "grid grid-cols-2")
+                        D.div [klass_ "grid grid-cols-2"]
                           [ moveSpriteHere
                               { video: switchable, square, setSquare, at: TL }
                           , moveSpriteHere

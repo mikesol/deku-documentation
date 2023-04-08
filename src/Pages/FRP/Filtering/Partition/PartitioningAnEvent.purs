@@ -13,7 +13,7 @@ partitioningAnEvent = subsection
   , matter: pure
       [ D.p_
           [ text_ "This subsection will be about "
-          , D.span [D.Class !:= "font-bold"] [ text_ "Partitioning an event" ]
+          , D.span [ D.Class !:= "font-bold" ] [ text_ "Partitioning an event" ]
           , text_ "."
           ]
       ]

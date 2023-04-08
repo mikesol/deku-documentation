@@ -4,7 +4,7 @@ import Prelude
 
 import Components.Code (psCode, psCodeWithLink)
 import Components.ExampleBlockquote (exampleBlockquote)
-import Contracts (Env(..), Subsection, subsection)
+import Contracts (Subsection, subsection)
 import Control.Alt ((<|>))
 import Data.Array ((..))
 import Data.Tuple.Nested ((/\))
@@ -15,7 +15,6 @@ import Deku.Do as Deku
 import Deku.Hooks (useMailboxed, useState)
 import Deku.Listeners (click)
 import Examples as Examples
-import QualifiedDo.Alt as Alt
 
 buttonClass =
   """inline-flex items-center rounded-md
@@ -75,17 +74,16 @@ mailboxesAsFilters = subsection
               setMailbox /\ mailbox <- useMailboxed
               D.div_
                 [ D.button
-                    Alt.do
-                      klass_ buttonClass
+                    [klass_ buttonClass,
                       click $ int <#> \i -> do
                         setMailbox { address: i, payload: unit }
-                        setInt ((i + 1) `mod` 100)
+                        setInt ((i + 1) `mod` 100)]
                     [ text_ "Bang!" ]
                 , D.div_
                     ( (0 .. 99) <#> \n -> D.span
-                        ( klass $ (pure false <|> (mailbox n $> true)) <#>
+                        [klass $ (pure false <|> (mailbox n $> true)) <#>
                             if _ then "" else "hidden"
-                        )
+                        ]
                         [ text_
                             ( ( if n == 99 then "We're done here"
                                 else show n

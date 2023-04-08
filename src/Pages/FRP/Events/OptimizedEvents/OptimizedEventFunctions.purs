@@ -17,7 +17,6 @@ import Deku.Hooks (useState)
 import Deku.Listeners (click_)
 import Examples as Examples
 import FRP.Event (Event, Subscriber(..), createPure, fold, makeLemmingEventO, subscribePure)
-import QualifiedDo.Alt as Alt
 
 buttonClass =
   """inline-flex items-center rounded-md
@@ -61,9 +60,8 @@ optimizedEventFunctions = subsection
                                   so be sure to alternate between the buttons."""
                 , D.div_ $ [ 10, 100, 1000 ] <#> \n ->
                     D.button
-                      Alt.do
-                        click_ (setInt n)
-                        klass_ buttonClass
+                      [click_ (setInt n),
+                        klass_ buttonClass]
                       [ text_ ("Add " <> show n) ]
                 , D.div_ [ text $ (show <$> fold (+) 0 (dedup int)) ]
                 , D.div_

@@ -24,7 +24,7 @@ removingTheUnderscore = subsection
           , text_ " to typeset the text."
           , psCode
               """D.span
-  (D.Style !:= "color:teal;")
+  [ D.Style !:= "color:teal;" ]
   [ text_ "I exist" ]"""
           ]
       , proTip

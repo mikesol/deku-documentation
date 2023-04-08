@@ -47,7 +47,7 @@ theCreatepureEffect = subsection
           ]
       , D.p_
           [ text_ "Like we saw in "
-          , D.a (href_ "#subscription-and-unsubscription-effects")
+          , D.a [href_ "#subscription-and-unsubscription-effects"]
               [ text_ "Subscription and unsubscription effects" ]
           , text_
               ", the control logic is \"backwards\" the heart of the logic is in the subscription whereas the values piped into the logic happen later on."

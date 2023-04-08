@@ -15,7 +15,7 @@ otherInstances :: Page
 otherInstances = page
   { route: OtherInstances
   , topmatter: pure
-      [ D.p (D.Class !:= "lead")
+      [ D.p [D.Class !:= "lead"]
           [ text_ "Because who likes to lift2 over add when you can just add?"
           ]
       , D.p_

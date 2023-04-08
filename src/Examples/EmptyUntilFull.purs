@@ -12,7 +12,6 @@ import Deku.Listeners (click_)
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
 import Effect.Random (random)
-import QualifiedDo.Alt as Alt
 
 buttonClass =
   """inline-flex items-center rounded-md
@@ -26,9 +25,9 @@ main = runInBody Deku.do
   setNumber /\ number <- useState'
   D.div_
     [ D.button
-        Alt.do
-          klass_ buttonClass
-          click_ $ random >>= setNumber
+        [ klass_ buttonClass
+        , click_ $ random >>= setNumber
+        ]
         [ text_ "Update number" ]
     , text $ number <#>
         show >>> ("Here's a random number: " <> _)

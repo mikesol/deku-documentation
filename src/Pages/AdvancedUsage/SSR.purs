@@ -7,7 +7,6 @@ import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.DOM as D
 import Pages.AdvancedUsage.SSR.HydratingAStaticSite (hydratingAStaticSite)
-import Pages.AdvancedUsage.SSR.IntegrationWithVite (integrationWithVite)
 import Pages.AdvancedUsage.SSR.RenderingAStaticSite (renderingAStaticSite)
 import Router.ADT (Route(..))
 
@@ -15,7 +14,7 @@ sSR :: Page
 sSR = page
   { route: SSR
   , topmatter: pure
-      [ D.p (D.Class !:= "lead")
+      [ D.p [D.Class !:= "lead"]
           [ text_ "Server-side rendering or Static site rendering? Choose two!"
           ]
       , D.p_

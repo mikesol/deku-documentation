@@ -17,7 +17,6 @@ import Deku.Do as Deku
 import Deku.Hooks (useDyn_, useHot', useState')
 import Deku.Listeners (click, keyUp)
 import Examples as Examples
-import QualifiedDo.Alt as Alt
 import Router.ADT (Route(..))
 import Web.Event.Event (target)
 import Web.HTML (window)
@@ -86,20 +85,20 @@ theUseDynHook = subsection
                 top =
                   D.div_
                     [ D.input
-                        Alt.do
-                          D.Value !:= "Tasko primo"
-                          keyUp $ pure \evt -> do
+                        [ D.Value !:= "Tasko primo"
+                        , keyUp $ pure \evt -> do
                             when (code evt == "Enter") $
                               for_
                                 ((target >=> fromEventTarget) (toEvent evt))
                                 guardAgainstEmpty
-                          D.SelfT !:= setInput
-                          klass_ inputKls
+                        , D.SelfT !:= setInput
+                        , klass_ inputKls
+                        ]
                         []
                     , D.button
-                        Alt.do
-                          click $ input <#> guardAgainstEmpty
-                          klass_ $ buttonClass "green"
+                        [ click $ input <#> guardAgainstEmpty
+                        , klass_ $ buttonClass "green"
+                        ]
                         [ text_ "Add" ]
                     ]
               D.div_

@@ -14,7 +14,6 @@ import Deku.Hooks (useState)
 import Deku.Listeners (click)
 import Examples as Examples
 import FRP.Event (fold)
-import QualifiedDo.Alt as Alt
 import Router.ADT (Route(..))
 
 buttonClass =
@@ -43,9 +42,8 @@ aSimpleCounter = subsection
               setCount /\ count <- useState 0
               D.div_
                 [ D.button
-                    Alt.do
-                      klass_ buttonClass
-                      click $ count <#> (add 1 >>> setCount)
+                    [klass_ buttonClass,
+                      click $ count <#> (add 1 >>> setCount)]
                     [ text_ "Increment" ]
                 , D.div_
                     [ text_ "Counter 1 using state hooks: "

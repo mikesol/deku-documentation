@@ -5,7 +5,6 @@ import Prelude
 import Components.Code (psCodeWithLink)
 import Components.ExampleBlockquote (exampleBlockquote)
 import Contracts (Subsection, subsection)
-import Control.Alt ((<|>))
 import Data.Tuple.Nested ((/\))
 import Deku.Attributes (klass, klass_)
 import Deku.Control (text_)
@@ -42,10 +41,10 @@ eventsAsSemigroups = subsection
                     , setKlass2 /\ "text-orange-500"
                     , setKlass2 /\ "text-green-300"
                     ] <#> \(f /\ k) -> D.button
-                      (klass_ buttonClass <|> click_ (f k))
+                      [ klass_ buttonClass, click_ (f k) ]
                       [ text_ k ]
                 , D.div_
-                    [ D.span (klass (klass1 <> pure " " <> klass2))
+                    [ D.span [ klass (klass1 <> pure " " <> klass2) ]
                         [ text_ "Hello!" ]
                     ]
                 ]

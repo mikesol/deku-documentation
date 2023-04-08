@@ -14,7 +14,7 @@ accessingTheDOM :: Page
 accessingTheDOM = page
   { route: AccessingTheDOM
   , topmatter: pure
-      [ D.p (D.Class !:= "lead")
+      [ D.p [D.Class !:= "lead"]
           [ text_ "Raw-as-raw-gets DOM components"
           ]
       , D.p_
