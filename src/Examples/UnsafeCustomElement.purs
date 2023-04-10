@@ -2,7 +2,6 @@ module Examples.UnsafeCustomElement where
 
 import Prelude
 
-import Control.Plus (empty)
 import Deku.Control (text_)
 import Deku.DOM (unsafeCustomElement)
 import Deku.Toplevel (runInBody)
@@ -13,5 +12,5 @@ data MyNiftyAnchor_
 
 main :: Effect Unit
 main = runInBody do
-  unsafeCustomElement "a" (Proxy :: _ MyNiftyAnchor_) empty
+  unsafeCustomElement "a" (Proxy :: _ MyNiftyAnchor_) []
     [ text_ "hi" ]

@@ -19,7 +19,6 @@ import Effect (Effect)
 import Examples as Examples
 import FRP.Event (Event, fix, fold, sampleOnRight)
 import FRP.Event.Effect (bindToEffect)
-import QualifiedDo.Alt as Alt
 import Router.ADT (Route(..))
 
 buttonClass =
@@ -108,11 +107,11 @@ timeLeaks = subsection
                   pure (b + 1)
               D.div_
                 [ D.button
-                    Alt.do
-                      klass_ buttonClass
-                      click_ do
+                    [ klass_ buttonClass
+                    , click_ do
                         setThunk1 unit
                         setThunk2 unit
+                    ]
                     [ text_ "Increment" ]
                 , D.div_
                     [ text_ "Counter 1 using \"bad\" "

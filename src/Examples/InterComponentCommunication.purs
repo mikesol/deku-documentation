@@ -59,30 +59,30 @@ main = runInBody Deku.do
     top =
       D.div_
         [ D.input
-            Alt.do
-              D.Value !:= "Tasko primo"
-              keyUp $ pure \evt -> do
+            [ D.Value !:= "Tasko primo"
+            , keyUp $ pure \evt -> do
                 when (code evt == "Enter") $
                   for_
                     ((target >=> fromEventTarget) (toEvent evt))
                     guardAgainstEmpty
-              D.SelfT !:= setInput
-              klass_ inputKls
+            , D.SelfT !:= setInput
+            , klass_ inputKls
+            ]
             []
         , D.input
-            Alt.do
-              klass_ inputKls
-              D.Xtype !:= "number"
-              D.Min !:= "0"
-              D.Value !:= "0"
-              D.OnChange !:= cb \evt ->
+            [ klass_ inputKls
+            , D.Xtype !:= "number"
+            , D.Min !:= "0"
+            , D.Value !:= "0"
+            , D.OnChange !:= cb \evt ->
                 traverse_ (valueAsNumber >=> floor >>> setPos) $
                   (target >=> fromEventTarget) evt
+            ]
             []
         , D.button
-            Alt.do
-              click $ input <#> guardAgainstEmpty
-              klass_ $ buttonClass "green"
+            [ click $ input <#> guardAgainstEmpty
+            , klass_ $ buttonClass "green"
+            ]
             [ text_ "Add" ]
         ]
   D.div_
@@ -96,19 +96,19 @@ main = runInBody Deku.do
                   D.div_
                     [ text_ t
                     , D.button
-                        Alt.do
-                          klass_ $ "ml-2 " <> buttonClass "indigo"
-                          click_ (sendTo 0)
+                        [ klass_ $ "ml-2 " <> buttonClass "indigo"
+                        , click_ (sendTo 0)
+                        ]
                         [ text_ "Prioritize" ]
                     , D.button
-                        Alt.do
-                          klass_ $ "ml-2 " <> buttonClass "pink"
-                          click_ remove
+                        [ klass_ $ "ml-2 " <> buttonClass "pink"
+                        , click_ remove
+                        ]
                         [ text_ "Delete" ]
                     , D.button
-                        Alt.do
-                          klass_ $ "ml-2 " <> buttonClass "fuchsia"
-                          click_ (setRemoveAll unit)
+                        [ klass_ $ "ml-2 " <> buttonClass "fuchsia"
+                        , click_ (setRemoveAll unit)
+                        ]
                         [ text_ "Remove all" ]
                     ]
             )

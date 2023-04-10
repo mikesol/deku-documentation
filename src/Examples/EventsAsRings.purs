@@ -11,7 +11,6 @@ import Deku.Hooks (useState)
 import Deku.Listeners (slider_)
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
-import QualifiedDo.Alt as Alt
 
 main :: Effect Unit
 main = runInBody Deku.do
@@ -20,16 +19,16 @@ main = runInBody Deku.do
   D.div_
     [ D.div_
         [ D.input
-            Alt.do
-              klass_ "w-full"
-              slider_ setNumber1
+            [ klass_ "w-full"
+            , slider_ setNumber1
+            ]
             []
         ]
     , D.div_
         [ D.input
-            Alt.do
-              klass_ "w-full"
-              slider_ setNumber2
+            [ klass_ "w-full"
+            , slider_ setNumber2
+            ]
             []
         ]
     , D.div_

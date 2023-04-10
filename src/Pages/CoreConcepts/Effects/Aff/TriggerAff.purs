@@ -17,7 +17,6 @@ import Deku.Hooks (useState')
 import Deku.Listeners (click_)
 import FRP.Event.Aff (bindToAff)
 import Fetch (Method(..), fetch)
-import QualifiedDo.Alt as Alt
 
 triggerAff :: Subsection
 triggerAff = subsection
@@ -68,9 +67,8 @@ triggerAff = subsection
               setThunk /\ thunk <- useState'
               D.div_
                 [ D.a
-                    Alt.do
-                      click_ (setThunk unit)
-                      klass_ "cursor-pointer"
+                      [click_ (setThunk unit),
+                      klass_ "cursor-pointer"]
                     [ text_ "Click for a random http response" ]
                 , text_ ": "
                 , text

@@ -5,7 +5,6 @@ import Prelude
 import Components.Code (psCodeWithLink)
 import Components.ExampleBlockquote (exampleBlockquote)
 import Contracts (Subsection, subsection)
-import Control.Alt ((<|>))
 import Data.Tuple.Nested ((/\))
 import Deku.Attributes (klass_)
 import Deku.Control (guard, text, text_)
@@ -21,7 +20,7 @@ passingAroundHooks = subsection
   { title: "Passing around hooks"
   , matter: pure
       [ let
-          lt t = D.span (klass_ "line-through") [ text_ t ]
+          lt t = D.span [klass_ "line-through"] [ text_ t ]
         in
           D.p_
             [ text_
@@ -51,18 +50,18 @@ passingAroundHooks = subsection
               setGoodbye /\ goodbye <- useState true
               D.div_
                 [ D.a
-                    ( klass_ "cursor-pointer" <|>
+                    [klass_ "cursor-pointer",
                         ( click $ keepLatest $ incrementer <#>
                             \{ setNumber, number } -> number <#>
                               (add 1 >>> setNumber)
                         )
-                    )
+                    ]
                     [ text_ "Increment" ]
                 , D.div_
                     [ D.a
-                        ( klass_ "cursor-pointer"
-                            <|> (click_ (setGoodbye false))
-                        )
+                        [klass_ "cursor-pointer"
+                            , (click_ (setGoodbye false))
+                        ]
                         [ text_ "Goodbye" ]
                     ]
                 , D.div_
@@ -74,11 +73,11 @@ passingAroundHooks = subsection
                               ]
                           , D.div_
                               [ D.a
-                                  ( klass_ "cursor-pointer" <|>
-                                      ( click_
+                                  [klass_ "cursor-pointer" 
+                                      , click_
                                           (setIncrementer { setNumber, number })
-                                      )
-                                  )
+                                      
+                                  ]
                                   [ text_ "Cede control" ]
                               ]
                           ]

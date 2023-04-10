@@ -14,9 +14,8 @@ import Examples as Examples
 import Data.Array (replicate)
 import Deku.Attributes (klass_)
 import Deku.Control (text)
-import Deku.Hooks (useRef, useState, useState')
+import Deku.Hooks (useRef, useState)
 import Deku.Listeners (click_, slider_)
-import QualifiedDo.Alt as Alt
 
 buttonClass =
   """inline-flex items-center rounded-md
@@ -54,15 +53,14 @@ theCaseForRef = subsection
               intRef <- useRef initial num
               D.div_
                 [ D.input
-                    (slider_ setNum)
+                    [slider_ setNum]
                     []
-                , D.div (klass_ "grid grid-flow-row grid-cols-3")
+                , D.div [klass_ "grid grid-flow-row grid-cols-3"]
                     ( replicate 24 Deku.do
                         setButtonText /\ buttonText <- useState "Waiting..."
                         D.button
-                          Alt.do
-                            klass_ buttonClass
-                            click_ $ intRef >>= show >>> setButtonText
+                            [klass_ buttonClass,
+                            click_ $ intRef >>= show >>> setButtonText]
                           [ text buttonText ]
                     )
                 ]

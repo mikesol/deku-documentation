@@ -18,7 +18,6 @@ import Deku.Listeners (click, keyUp)
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
 import FRP.Event.Class ((<|*>))
-import QualifiedDo.Alt as Alt
 import Web.Event.Event (target)
 import Web.HTML (window)
 import Web.HTML.HTMLInputElement (fromEventTarget, value, valueAsNumber)
@@ -57,30 +56,30 @@ main = runInBody Deku.do
     top =
       D.div_
         [ D.input
-            Alt.do
-              D.Value !:= "Tasko primo"
-              keyUp $ pure \evt -> do
+            [ D.Value !:= "Tasko primo"
+            , keyUp $ pure \evt -> do
                 when (code evt == "Enter") $
                   for_
                     ((target >=> fromEventTarget) (toEvent evt))
                     guardAgainstEmpty
-              D.SelfT !:= setInput
-              klass_ inputKls
+            , D.SelfT !:= setInput
+            , klass_ inputKls
+            ]
             []
         , D.input
-            Alt.do
-              klass_ inputKls
-              D.Xtype !:= "number"
-              D.Min !:= "0"
-              D.Value !:= "0"
-              D.OnChange !:= cb \evt ->
+            [ klass_ inputKls
+            , D.Xtype !:= "number"
+            , D.Min !:= "0"
+            , D.Value !:= "0"
+            , D.OnChange !:= cb \evt ->
                 traverse_ (valueAsNumber >=> floor >>> setPos) $
                   (target >=> fromEventTarget) evt
+            ]
             []
         , D.button
-            Alt.do
-              click $ input <#> guardAgainstEmpty
-              klass_ $ buttonClass "green"
+            [ click $ input <#> guardAgainstEmpty
+            , klass_ $ buttonClass "green"
+            ]
             [ text_ "Add" ]
         ]
   D.div_

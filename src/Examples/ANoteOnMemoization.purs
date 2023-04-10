@@ -13,7 +13,6 @@ import Deku.Listeners (click, click_)
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
 import Effect.Random (random)
-import QualifiedDo.Alt as Alt
 
 buttonClass :: String -> String
 buttonClass color =
@@ -37,14 +36,14 @@ main = do
           ]
       , D.div_
           [ D.button
-              Alt.do
-                klass_ $ buttonClass "pink"
-                click_ $ random >>= setNumber
+              [ klass_ $ buttonClass "pink"
+              , click_ $ random >>= setNumber
+              ]
               [ text_ "A" ]
           , D.button
-              Alt.do
-                klass_ $ buttonClass "green"
-                click $ presence <#> not >>> setPresence
+              [ klass_ $ buttonClass "green"
+              , click $ presence <#> not >>> setPresence
+              ]
               [ text_ "B" ]
           ]
       , D.div_

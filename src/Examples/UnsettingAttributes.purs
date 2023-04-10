@@ -13,7 +13,6 @@ import Deku.Hooks (useState)
 import Deku.Listeners (click)
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
-import QualifiedDo.Alt as Alt
 
 buttonClass :: String -> String
 buttonClass color =
@@ -29,15 +28,15 @@ main = runInBody Deku.do
   setStyleSwitch /\ styleSwitch <- useState false
   D.div_
     [ D.a
-        Alt.do
-          D.Target !:= "_blank"
-          styleSwitch <#>
+        [ D.Target !:= "_blank"
+        , styleSwitch <#>
             if _ then D.Style := "color:magenta;"
             else D.Style := unit
+        ]
         [ text_ "Click me" ]
     , D.button
-        Alt.do
-          klass_ $ buttonClass "pink"
-          click $ styleSwitch <#> not >>> setStyleSwitch
+        [ klass_ $ buttonClass "pink"
+        , click $ styleSwitch <#> not >>> setStyleSwitch
+        ]
         [ text_ "Switch style" ]
     ]

@@ -10,7 +10,6 @@ import Deku.Attributes (klass_)
 import Deku.Control (text_)
 import Deku.DOM as D
 import Examples as Examples
-import QualifiedDo.Alt as Alt
 import Web.HTML (window)
 import Web.HTML.Window (alert)
 
@@ -26,10 +25,9 @@ usingAnEffect = subsection
       , D.p_ [ text_ "This yields the following result." ]
       , exampleBlockquote
           [ D.span
-              Alt.do
-                D.OnClick !:= do
-                  window >>= alert "Thanks for clicking!"
-                klass_ "cursor-pointer"
+              [D.OnClick !:= do
+                  window >>= alert "Thanks for clicking!",
+                klass_ "cursor-pointer"]
               [ text_ "Click me!" ]
           ]
       ]

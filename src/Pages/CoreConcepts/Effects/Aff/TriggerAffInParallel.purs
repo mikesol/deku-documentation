@@ -6,29 +6,16 @@ import Components.Code (psCode)
 import Components.ExampleBlockquote (exampleBlockquote)
 import Constants (tripleQ)
 import Contracts (Subsection, subsection)
-import Contracts (Subsection, subsection)
-import Data.Int (floor)
-import Data.JSDate (getTime, now)
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute ((!:=))
-import Deku.Attribute ((!:=))
 import Deku.Attributes (klass_)
-import Deku.Control (blank, text, text_, (<#~>))
+import Deku.Control (text, text_)
 import Deku.Control (text_)
 import Deku.DOM as D
-import Deku.DOM as D
 import Deku.Do as Deku
-import Deku.Hooks (useState, useState')
-import Deku.Listeners (click, click_)
-import Deku.Pursx ((~~))
-import Effect.Aff (Milliseconds(..), delay, launchAff, launchAff_)
-import Effect.Class (liftEffect)
-import Effect.Random (random)
-import FRP.Event.Aff (bindToAff, bindToAffParallel)
-import FRP.Event.Effect (bindToEffect)
+import Deku.Hooks (useState')
+import Deku.Listeners (click_)
+import FRP.Event.Aff (bindToAffParallel)
 import Fetch (Method(..), fetch)
-import QualifiedDo.Alt as Alt
-import Type.Proxy (Proxy(..))
 
 triggerAffInParallel :: Subsection
 triggerAffInParallel = subsection
@@ -73,9 +60,8 @@ triggerAffInParallel = subsection
               setThunk /\ thunk <- useState'
               D.div_
                 [ D.a
-                    Alt.do
-                      click_ (setThunk unit)
-                      klass_ "cursor-pointer"
+                    [click_ (setThunk unit),
+                      klass_ "cursor-pointer"]
                     [ text_ "Click for a random http response" ]
                 , text_ ": "
                 , text

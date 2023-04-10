@@ -13,7 +13,7 @@ bussesAndDekuHooks = subsection
   , matter: pure
       [ D.p_
           [ text_ "This subsection will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "Busses and deku hooks" ]
+          , D.span [ D.Class !:= "font-bold" ] [ text_ "Busses and deku hooks" ]
           , text_ "."
           ]
       ]

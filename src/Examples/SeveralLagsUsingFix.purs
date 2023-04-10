@@ -40,7 +40,7 @@ main = runInBody Deku.do
                 ((Tuple <<< Just) <$> lag (n - 1) e)
             )
     button text color = D.button
-      (klass_ (buttonClass color) <|> click_ (setWord text))
+      [ klass_ (buttonClass color), click_ (setWord text) ]
       [ text_ text ]
   D.div_
     [ D.div_ $

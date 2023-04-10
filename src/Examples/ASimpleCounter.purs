@@ -12,7 +12,6 @@ import Deku.Listeners (click)
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
 import FRP.Event (fold)
-import QualifiedDo.Alt as Alt
 
 buttonClass =
   """inline-flex items-center rounded-md
@@ -26,9 +25,9 @@ main = runInBody Deku.do
   setCount /\ count <- useState 0
   D.div_
     [ D.button
-        Alt.do
-          klass_ buttonClass
-          click $ count <#> (add 1 >>> setCount)
+        [ klass_ buttonClass
+        , click $ count <#> (add 1 >>> setCount)
+        ]
         [ text_ "Increment" ]
     , D.div_
         [ text_ "Counter 1 using state hooks: "

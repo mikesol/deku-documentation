@@ -20,7 +20,6 @@ import Effect.Aff (Milliseconds(..), delay, launchAff_)
 import Effect.Class (liftEffect)
 import Effect.Random (random)
 import Examples as Examples
-import QualifiedDo.Alt as Alt
 import Type.Proxy (Proxy(..))
 
 buttonClass =
@@ -83,24 +82,25 @@ injectingDependencies = subsection
               setUIState /\ uiState <- useState Beginning
               D.div_
                 [ D.button
-                    Alt.do
-                      klass_ buttonClass
-                      let
+                    [ klass_ buttonClass
+                    , let
                         fetcher = fetchNewRandomImage >>= liftEffect
                           <<< setUIState
                           <<< Image
                         loader = liftEffect $ setUIState Loading
-                      click $ uiState <#> case _ of
-                        Beginning -> do
-                          launchAff_ do
-                            loader
-                            fetcher
-                        Loading -> pure unit
-                        Image { url } ->
-                          launchAff_ do
-                            loader
-                            _ <- decreaseImageWatchCount url
-                            fetcher
+                      in
+                        click $ uiState <#> case _ of
+                          Beginning -> do
+                            launchAff_ do
+                              loader
+                              fetcher
+                          Loading -> pure unit
+                          Image { url } ->
+                            launchAff_ do
+                              loader
+                              _ <- decreaseImageWatchCount url
+                              fetcher
+                    ]
                     [ text $ uiState <#> case _ of
                         Beginning -> "Get Image"
                         _ -> "Change Image"
@@ -109,7 +109,7 @@ injectingDependencies = subsection
                     [ uiState <#~> case _ of
                         Beginning -> blank
                         Image { url, watcherCount } -> D.div_
-                          [ D.img (D.Src !:= url) []
+                          [ D.img [D.Src !:= url] []
                           , D.div_
                               [ text_ $
                                   "Watcher count (including you): " <> show
@@ -117,7 +117,7 @@ injectingDependencies = subsection
                               ]
                           ]
                         Loading ->
-                          D.div (klass_ "p-10")
+                          D.div [klass_ "p-10"]
                             [ ( ( Proxy
                                     :: _
                                          """<div role="status">

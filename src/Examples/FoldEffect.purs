@@ -14,7 +14,6 @@ import Deku.Toplevel (runInBody)
 import Effect (Effect)
 import FRP.Event (Event, fix, fold, sampleOnRight)
 import FRP.Event.Effect (bindToEffect)
-import QualifiedDo.Alt as Alt
 
 buttonClass =
   """inline-flex items-center rounded-md
@@ -58,11 +57,11 @@ main = runInBody Deku.do
       pure (b + 1)
   D.div_
     [ D.button
-        Alt.do
-          klass_ buttonClass
-          click_ do
+        [ klass_ buttonClass
+        , click_ do
             setThunk1 unit
             setThunk2 unit
+        ]
         [ text_ "Increment" ]
     , D.div_
         [ text_ "Counter 1 using \"bad\" "

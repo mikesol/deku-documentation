@@ -8,14 +8,13 @@ import Deku.Control (text_)
 import Deku.DOM as D
 import Pages.FRP.Filtering.Compact (compact)
 import Pages.FRP.Filtering.Filter (filter)
-import Pages.FRP.Filtering.Partition (partition)
 import Router.ADT (Route(..))
 
 filtering :: Page
 filtering = page
   { route: Filtering
   , topmatter: pure
-      [ D.p (D.Class !:= "lead")
+      [ D.p [D.Class !:= "lead"]
           [ text_ "How to make events less eventful."
           ]
       , D.p_

@@ -13,7 +13,6 @@ import Deku.Do as Deku
 import Deku.Hooks (useState)
 import Deku.Listeners (click)
 import Examples as Examples
-import QualifiedDo.Alt as Alt
 
 usingAHookToControlThePresenceOfElements
   :: Subsection
@@ -33,9 +32,8 @@ usingAHookToControlThePresenceOfElements = subsection
               D.div_
                 [ guard presence (text_ "Now you see me, ")
                 , D.a
-                    Alt.do
-                      klass_ "cursor-pointer"
-                      click $ presence <#> not >>> setPresence
+                    [klass_ "cursor-pointer",
+                      click $ presence <#> not >>> setPresence]
                     [ text $ presence <#>
                         if _ then "now you don't." else "Oops, come back!"
                     ]

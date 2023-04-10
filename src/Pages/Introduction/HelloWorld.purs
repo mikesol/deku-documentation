@@ -14,7 +14,7 @@ helloWorld :: Page
 helloWorld = page
   { route: HelloWorld
   , topmatter: pure
-      [ D.p (D.Class !:= "lead")
+      [ D.p [D.Class !:= "lead"]
           [ text_ "Let's teach Deku to say hello."
           ]
       , D.p_

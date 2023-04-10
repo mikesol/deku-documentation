@@ -10,7 +10,6 @@ import Deku.DOM as D
 import Deku.Listeners (click_)
 import Effect.Console (log)
 import FRP.Event (create, subscribe)
-import QualifiedDo.Alt as Alt
 import Router.ADT (Route(..))
 
 buttonClass =
@@ -57,9 +56,8 @@ theCreateEffect = subsection
   u
   push "fum" """
       , D.button
-          Alt.do
-            klass_ buttonClass
-            click_ do
+          [ klass_ buttonClass
+          , click_ do
               { push, event } <- create
               u <- subscribe event log
               push "fee"
@@ -67,6 +65,7 @@ theCreateEffect = subsection
               push "fo"
               u
               push "fum"
+          ]
           [ text_ "Run program" ]
       , D.p_
           [ text_

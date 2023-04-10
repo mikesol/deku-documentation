@@ -9,7 +9,6 @@ import Deku.Attribute ((!:=), cb)
 import Deku.DOM as D
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
-import QualifiedDo.Alt as Alt
 import Web.Event.Event (type_)
 import Web.HTML (window)
 import Web.HTML.Window (alert)
@@ -17,9 +16,9 @@ import Web.HTML.Window (alert)
 main :: Effect Unit
 main = runInBody
   ( D.span
-      Alt.do
-        D.OnClick !:= cb \e -> do
+      [ D.OnClick !:= cb \e -> do
           window >>= alert (unwrap (type_ e))
-        klass_ "cursor-pointer"
+      , klass_ "cursor-pointer"
+      ]
       [ text_ "Click me!" ]
   )

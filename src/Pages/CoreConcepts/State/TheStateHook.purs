@@ -20,7 +20,6 @@ import Examples as Examples
 import FRP.Event.Effect (bindToEffect)
 import Pages.CoreConcepts.State.TheStateHook.PushingToAHook (pushingToAHook)
 import Pages.CoreConcepts.State.TheStateHook.UsingTheHookInText (usingTheHookInText)
-import QualifiedDo.Alt as Alt
 
 buttonClass =
   """inline-flex items-center rounded-md
@@ -42,9 +41,8 @@ theStateHook = section
               setNumber /\ number <- useState'
               D.div_
                 [ D.button
-                    Alt.do
-                      klass_ buttonClass
-                      click_ $ random >>= setNumber
+                    [klass_ buttonClass,
+                      click_ $ random >>= setNumber]
                     [ text_ "Update number" ]
                 , text $ (bindToEffect (pure unit) (pure random) <|> number) <#>
                     show >>> ("Here's a random number: " <> _)

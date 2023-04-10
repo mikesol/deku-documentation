@@ -63,15 +63,14 @@ whenToFixAndWhenToFold = subsection
               D.div_
                 [ D.div_
                     [ D.button
-                        Alt.do
-                          click_ (setSwitch unit)
-                          klass_ buttonClass
+                          [click_ (setSwitch unit),
+                          klass_ buttonClass]
                         [ text Alt.do
                             pure "Start simulation"
                             switch $> "Restart simulation"
                         ]
                     ]
-                , switch <#~> \_ -> D.div (klass_ "h-24 overflow-y-scroll")
+                , switch <#~> \_ -> D.div [klass_ "h-24 overflow-y-scroll"]
                     [ dyn
                         ( fix
                             ( \e -> Alt.do

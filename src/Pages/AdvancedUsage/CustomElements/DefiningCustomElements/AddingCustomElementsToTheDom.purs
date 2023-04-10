@@ -10,7 +10,6 @@ import Deku.Control (text_)
 import Deku.DOM (unsafeCustomElement)
 import Deku.DOM as D
 import Examples as Examples
-import QualifiedDo.Alt as Alt
 import Type.Proxy (Proxy(..))
 
 data MyNiftyAnchor_
@@ -39,9 +38,8 @@ addingCustomElementsToTheDOM = subsection
       , psCodeNoCollapseWithLink Examples.AddingCustomElements
       , exampleBlockquote
           [ unsafeCustomElement "a" (Proxy :: _ MyNiftyAnchor_)
-              Alt.do
-                D.Href !:= JoyrideFM
-                D.Target !:= Blank
+                [D.Href !:= JoyrideFM,
+                D.Target !:= Blank]
               [ text_ "hi" ]
           ]
       ]

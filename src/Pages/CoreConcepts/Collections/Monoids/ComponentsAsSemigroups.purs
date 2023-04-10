@@ -14,7 +14,6 @@ import Deku.Do as Deku
 import Deku.Hooks (useState)
 import Deku.Listeners (click_)
 import Examples as Examples
-import QualifiedDo.Alt as Alt
 
 buttonClass :: String -> String
 buttonClass color =
@@ -40,16 +39,14 @@ componentsAsSemigroups = subsection
       , Deku.do
           setAstuce /\ astuce <- useState true
           exampleBlockquote
-            [ D.div (klass_ "space-x-2")
+            [ D.div [klass_ "space-x-2"]
                 [ D.button
-                    Alt.do
-                      klass_ $ buttonClass "indigo"
-                      click_ $ setAstuce true
+                    [klass_ $ buttonClass "indigo",
+                      click_ $ setAstuce true]
                     [ text_ "Sage" ]
                 , D.button
-                    Alt.do
-                      klass_ $ buttonClass "green"
-                      click_ $ setAstuce false
+                    [klass_ $ buttonClass "green",
+                      click_ $ setAstuce false]
                     [ text_ "Pas sage" ]
                 ]
             , D.div_

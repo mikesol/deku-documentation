@@ -13,7 +13,6 @@ import Deku.Hooks (useState)
 import Deku.Listeners (click_)
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
-import QualifiedDo.Alt as Alt
 
 buttonClass :: String -> String
 buttonClass color =
@@ -39,50 +38,50 @@ main = runInBody Deku.do
     [ D.div_
         [ imageType <#~>
             case _ of
-              Image -> D.img (D.Src !:= pic) []
+              Image -> D.img [ D.Src !:= pic ] []
               Video -> D.video
-                Alt.do
-                  D.Controls !:= "controls"
-                  D.Preload !:= "none"
-                  D.Width !:= "250"
-                  D.Height !:= "250"
-                  D.Autoplay !:= "true"
+                [ D.Controls !:= "controls"
+                , D.Preload !:= "none"
+                , D.Width !:= "250"
+                , D.Height !:= "250"
+                , D.Autoplay !:= "true"
+                ]
                 [ D.source
-                    Alt.do
-                      D.Src !:= bunny
-                      D.Xtype !:= "video/webm"
+                    [ D.Src !:= bunny
+                    , D.Xtype !:= "video/webm"
+                    ]
                     []
                 ]
               SVG -> D.svg
-                Alt.do
-                  D.Height !:= "170"
-                  D.Width !:= "170"
+                [ D.Height !:= "170"
+                , D.Width !:= "170"
+                ]
                 [ D.circle
-                    Alt.do
-                      D.Cx !:= "75"
-                      D.Cy !:= "75"
-                      D.R !:= "70"
-                      D.Stroke !:= "black"
-                      D.StrokeWidth !:= "3"
-                      D.Fill !:= "red"
+                    [ D.Cx !:= "75"
+                    , D.Cy !:= "75"
+                    , D.R !:= "70"
+                    , D.Stroke !:= "black"
+                    , D.StrokeWidth !:= "3"
+                    , D.Fill !:= "red"
+                    ]
                     []
                 ]
         ]
     , D.div_
         [ D.button
-            Alt.do
-              klass_ $ buttonClass "amber"
-              click_ $ setImageType Image
+            [ klass_ $ buttonClass "amber"
+            , click_ $ setImageType Image
+            ]
             [ text_ "Image" ]
         , D.button
-            Alt.do
-              klass_ $ buttonClass "cyan"
-              click_ $ setImageType Video
+            [ klass_ $ buttonClass "cyan"
+            , click_ $ setImageType Video
+            ]
             [ text_ "Video" ]
         , D.button
-            Alt.do
-              klass_ $ buttonClass "green"
-              click_ $ setImageType SVG
+            [ klass_ $ buttonClass "green"
+            , click_ $ setImageType SVG
+            ]
             [ text_ "SVG" ]
         ]
     ]

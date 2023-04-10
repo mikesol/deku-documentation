@@ -29,7 +29,7 @@ anAlternativeEffectModel = subsection
       , D.p_
           [ text_
               "Ultimately, the style you use to code your Deku app is up to you! But if you're writing a game and aiming for 60 FPS, you can't mess around. "
-          , D.span (klass_ "underline")
+          , D.span [ klass_ "underline" ]
               [ text_
                   "Don't have components' presence or absence in the DOM trigger a bunch of side effects"
               ]

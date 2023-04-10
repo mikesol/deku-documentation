@@ -15,7 +15,7 @@ collections :: Page
 collections = page
   { route: Collections
   , topmatter: pure
-      [ D.p (D.Class !:= "lead")
+      [ D.p [D.Class !:= "lead"]
           [ text_ "Working with lists and dynamic elements."
           ]
       , D.p_

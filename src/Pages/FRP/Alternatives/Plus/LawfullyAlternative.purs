@@ -66,7 +66,7 @@ lawfullyAlternative = subsection
           , text_
               " section, the composite event only fires after both sides are fired. As one side never fires, the whole thing never fires, so it is empty."
           ]
-      , D.div (klass_ "text-right") [ text_ "∎" ]
+      , D.div [ klass_ "text-right" ] [ text_ "∎" ]
 
       ]
   }

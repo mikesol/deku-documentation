@@ -16,7 +16,6 @@ import Effect (Effect)
 import Effect.Random (random)
 import FRP.Event.Effect (bindToEffect)
 import FRP.Event.Time (interval)
-import QualifiedDo.Alt as Alt
 
 main :: Effect Unit
 main = runInBody Deku.do
@@ -24,9 +23,9 @@ main = runInBody Deku.do
   let e = bindToEffect (interval 250) (const random)
   D.div_
     [ D.a
-        Alt.do
-          click $ onOff <#> not >>> setOnOff
-          klass_ "cursor-pointer"
+        [ click $ onOff <#> not >>> setOnOff
+        , klass_ "cursor-pointer"
+        ]
         [ text $ onOff <#> if _ then "Turn me off" else "Turn me on"
         ]
     , guard onOff $ D.div_

@@ -5,7 +5,6 @@ import Prelude
 import Components.Code (psCodeNoCollapseWithLink)
 import Components.ExampleBlockquote (exampleBlockquote)
 import Contracts (Subsection, subsection)
-import Control.Alt ((<|>))
 import Data.Generic.Rep (class Generic)
 import Data.Show.Generic (genericShow)
 import Data.Tuple.Nested ((/\))
@@ -89,52 +88,52 @@ booleanLogicOnEvents = subsection
                     , setQ /\ "Q" /\ true
                     , setQ /\ "Q" /\ false
                     ] <#> \(f /\ n /\ k) -> D.button
-                      (klass_ buttonClass <|> click_ (f k))
+                      [klass_ buttonClass, click_ (f k)]
                       [ text_ (n <> " = " <> show k) ]
-                , D.table (klass_ tableClass)
+                , D.table [klass_ tableClass]
                     [ D.tr_
-                        [ D.th (klass_ tableClass) [ text_ "Equation" ]
-                        , D.th (klass_ tableClass) [ text_ "Result" ]
+                        [ D.th [klass_ tableClass] [ text_ "Equation" ]
+                        , D.th [klass_ tableClass] [ text_ "Result" ]
                         ]
                     , D.tr_
-                        [ D.td (klass_ tableClass)
+                        [ D.td [klass_ tableClass]
                             [ text_ (show (rule1 (Var "P") (Var "Q"))) ]
-                        , D.td (klass_ tableClass) [ text (show <$> rule1 p q) ]
+                        , D.td [klass_ tableClass] [ text (show <$> rule1 p q) ]
                         ]
                     , D.tr_
-                        [ D.td (klass_ tableClass)
+                        [ D.td [klass_ tableClass]
                             [ text_ (show (rule2 (Var "P") (Var "Q"))) ]
-                        , D.td (klass_ tableClass) [ text (show <$> rule2 p q) ]
+                        , D.td [klass_ tableClass] [ text (show <$> rule2 p q) ]
                         ]
                     , D.tr_
-                        [ D.td (klass_ tableClass)
+                        [ D.td [klass_ tableClass]
                             [ text_ (show (rule3 (Var "P") (Var "Q"))) ]
-                        , D.td (klass_ tableClass) [ text (show <$> rule3 p q) ]
+                        , D.td [klass_ tableClass] [ text (show <$> rule3 p q) ]
                         ]
                     , D.tr_
-                        [ D.td (klass_ tableClass)
+                        [ D.td [klass_ tableClass]
                             [ text_ (show (rule4 (Var "P") (Var "Q"))) ]
-                        , D.td (klass_ tableClass) [ text (show <$> rule4 p q) ]
+                        , D.td [klass_ tableClass] [ text (show <$> rule4 p q) ]
                         ]
                     , D.tr_
-                        [ D.td (klass_ tableClass)
+                        [ D.td [klass_ tableClass]
                             [ text_ (show (rule5 (Var "P"))) ]
-                        , D.td (klass_ tableClass) [ text (show <$> rule5 p) ]
+                        , D.td [klass_ tableClass] [ text (show <$> rule5 p) ]
                         ]
                     , D.tr_
-                        [ D.td (klass_ tableClass)
+                        [ D.td [klass_ tableClass]
                             [ text_ (show (rule6 (Var "P"))) ]
-                        , D.td (klass_ tableClass) [ text (show <$> rule6 p) ]
+                        , D.td [klass_ tableClass] [ text (show <$> rule6 p) ]
                         ]
                     , D.tr_
-                        [ D.td (klass_ tableClass)
+                        [ D.td [klass_ tableClass]
                             [ text_ (show (rule5 (Var "Q"))) ]
-                        , D.td (klass_ tableClass) [ text (show <$> rule5 q) ]
+                        , D.td [klass_ tableClass] [ text (show <$> rule5 q) ]
                         ]
                     , D.tr_
-                        [ D.td (klass_ tableClass)
+                        [ D.td [klass_ tableClass]
                             [ text_ (show (rule6 (Var "Q"))) ]
-                        , D.td (klass_ tableClass) [ text (show <$> rule6 q) ]
+                        , D.td [klass_ tableClass] [ text (show <$> rule6 q) ]
                         ]
                     ]
                 ]

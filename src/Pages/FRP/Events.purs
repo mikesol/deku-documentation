@@ -18,7 +18,7 @@ events :: Page
 events = page
   { route: Events
   , topmatter: pure
-      [ D.p (D.Class !:= "lead")
+      [ D.p [D.Class !:= "lead"]
           [ text_ "The original FRP type. Always imitated, never duplicated."
           ]
       , D.p_

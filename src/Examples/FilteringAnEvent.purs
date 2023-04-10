@@ -16,7 +16,7 @@ main :: Effect Unit
 main = runInBody Deku.do
   setNumber /\ number <- useState 50.0
   D.div_
-    [ D.input (slider_ setNumber) []
+    [ D.input [ slider_ setNumber ] []
     , D.div_
         [ text_ "Latest less than 50: "
         , text (filter (_ < 50.0) number <#> show)

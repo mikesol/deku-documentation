@@ -16,7 +16,6 @@ import Deku.Do as Deku
 import Deku.Hooks (useHot)
 import Deku.Listeners (click_)
 import Examples as Examples
-import QualifiedDo.Alt as Alt
 
 -- bg-pink-600
 -- hover:bg-pink-700 
@@ -62,26 +61,23 @@ groupsOfGroups = subsection
       , Deku.do
           setBadness /\ badness <- useHot Bad
           D.div_
-            [ D.div (klass_ "flex justify-between")
+            [ D.div [klass_ "flex justify-between"]
                 [ D.button
-                    Alt.do
-                      klass_ $ buttonClass "indigo"
-                      click_ $ setBadness Bad
+                      [klass_ $ buttonClass "indigo",
+                      click_ $ setBadness Bad]
                     [ text_ "Bad" ]
                 , D.button
-                    Alt.do
-                      klass_ $ buttonClass "pink"
-                      click_ $ setBadness Worse
+                      [klass_ $ buttonClass "pink",
+                      click_ $ setBadness Worse]
                     [ text_ "Worse" ]
                 , D.button
-                    Alt.do
-                      klass_ $ buttonClass "green"
-                      click_ $ setBadness Worst
+                      [klass_ $ buttonClass "green",
+                      click_ $ setBadness Worst]
                     [ text_ "Worst" ]
                 ]
-            , D.div (klass_ "bg-alexander")
-                [ D.div (klass_ "p-3")
-                    [ D.span (klass_ "font-aldine text-4xl text-alexander")
+            , D.div [klass_ "bg-alexander"]
+                [ D.div [klass_ "p-3"]
+                    [ D.span [klass_ "font-aldine text-4xl text-alexander"]
                         [ text_
                             "Alexander and the Terrible, Horrible,"
                         , guard (badness <#> (_ > Bad)) $ fixed
@@ -96,7 +92,7 @@ groupsOfGroups = subsection
                         , text_ " Very Bad Day"
                         ]
                     ]
-                , D.div_ [ D.img (D.Src !:= alexanderURL) [] ]
+                , D.div_ [ D.img [D.Src !:= alexanderURL] [] ]
                 ]
             ]
       , D.p_

@@ -15,7 +15,7 @@ fixingEvents = section
   , topmatter: pure
       [ D.p_
           [ text_ "This section will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "Fixing events" ]
+          , D.span [D.Class !:= "font-bold"] [ text_ "Fixing events" ]
           , text_ "."
           ]
       ]

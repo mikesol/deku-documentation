@@ -14,7 +14,6 @@ import Deku.Listeners (click)
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
 import FRP.Event (Event)
-import QualifiedDo.Alt as Alt
 
 type Env =
   { isSignedIn :: Event Boolean
@@ -34,9 +33,9 @@ signIn :: AppMonad
 signIn = do
   { setIsSignedIn, isSignedIn } <- ask
   pure $ D.button
-    Alt.do
-      klass_ buttonClass
-      click $ isSignedIn <#> not >>> setIsSignedIn
+    [ klass_ buttonClass
+    , click $ isSignedIn <#> not >>> setIsSignedIn
+    ]
     [ text $ isSignedIn <#> if _ then "Sign out" else "Sign in" ]
 
 name :: AppMonad

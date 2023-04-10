@@ -18,7 +18,7 @@ import FRP.Event.Time (interval)
 main :: Effect Unit
 main = runInBody do
   D.div
-    ( klass
+    [ klass
         ( gateBy
             (\t _ -> (unwrap $ unInstant t) % 4000.0 < 2000.0)
             instant
@@ -26,5 +26,5 @@ main = runInBody do
                 (interval 165 $> "bg-green-300")
             )
         )
-    )
+    ]
     [ text_ "Par-tay!" ]

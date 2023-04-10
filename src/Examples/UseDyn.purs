@@ -20,7 +20,6 @@ import Web.HTML (window)
 import Web.HTML.HTMLInputElement (fromEventTarget, value)
 import Web.HTML.Window (alert)
 import Web.UIEvent.KeyboardEvent (code, toEvent)
-import QualifiedDo.Alt as Alt
 
 inputKls :: String
 inputKls =
@@ -53,22 +52,22 @@ main = runInBody Deku.do
     top =
       D.div_
         [ D.input
-            Alt.do
-              D.Value !:= "Tasko primo"
-              keyUp $ pure \evt -> do
+            [ D.Value !:= "Tasko primo"
+            , keyUp $ pure \evt -> do
                 when (code evt == "Enter") $
                   for_
                     ( (target >=> fromEventTarget)
                         (toEvent evt)
                     )
                     guardAgainstEmpty
-              D.SelfT !:= setInput
-              klass_ inputKls
+            , D.SelfT !:= setInput
+            , klass_ inputKls
+            ]
             []
         , D.button
-            Alt.do
-              click $ input <#> guardAgainstEmpty
-              klass_ $ buttonClass "green"
+            [ click $ input <#> guardAgainstEmpty
+            , klass_ $ buttonClass "green"
+            ]
             [ text_ "Add" ]
         ]
   D.div_

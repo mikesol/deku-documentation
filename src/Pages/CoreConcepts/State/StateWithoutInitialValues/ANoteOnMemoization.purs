@@ -17,7 +17,6 @@ import Deku.Listeners (click, click_)
 import Effect.Random (random)
 import Examples as Examples
 import FRP.Event.Effect (bindToEffect)
-import QualifiedDo.Alt as Alt
 
 -- bg-fuchsia-600
 -- hover:bg-fuchsia-700 
@@ -66,15 +65,13 @@ aNoteOnMemoization = subsection
                     ]
                 , D.div_
                     [ D.button
-                        Alt.do
-                          klass_ $ buttonClass "pink"
-                          click_ $ random >>= setNumber
+                        [klass_ $ buttonClass "pink",
+                          click_ $ random >>= setNumber]
                         [ text_ "A"
                         ]
                     , D.button
-                        Alt.do
-                          klass_ $ buttonClass "green"
-                          click $ presence <#> not >>> setPresence
+                        [klass_ $ buttonClass "green",
+                          click $ presence <#> not >>> setPresence]
                         [ text_ "B"
                         ]
                     ]
@@ -127,15 +124,13 @@ setNumber /\ number <- useHot n"""
                     ]
                 , D.div_
                     [ D.button
-                        Alt.do
-                          klass_ $ buttonClass "pink"
-                          click_ $ random >>= setNumber
+                        [klass_ $ buttonClass "pink",
+                          click_ $ random >>= setNumber]
                         [ text_ "A"
                         ]
                     , D.button
-                        Alt.do
-                          klass_ $ buttonClass "green"
-                          click $ presence <#> not >>> setPresence
+                        [klass_ $ buttonClass "green",
+                          click $ presence <#> not >>> setPresence]
                         [ text_ "B"
                         ]
                     ]

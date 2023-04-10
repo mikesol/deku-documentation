@@ -13,7 +13,7 @@ performanceConsiderations = subsection
   , matter: pure
       [ D.p_
           [ text_ "This subsection will be about "
-          , D.span (D.Class !:= "font-bold")
+          , D.span [ D.Class !:= "font-bold" ]
               [ text_ "Performance considerations" ]
           , text_ "."
           ]

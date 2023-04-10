@@ -13,7 +13,6 @@ import Effect.Random (random)
 import Effect.Ref (new, read, write)
 import Effect.Timer (clearInterval, setInterval)
 import Examples as Examples
-import QualifiedDo.Alt as Alt
 import Web.DOM.Document (createElement, createTextNode)
 import Web.DOM.Element (setAttribute, toEventTarget, toNode)
 import Web.DOM.Node (appendChild, setTextContent)
@@ -21,7 +20,6 @@ import Web.DOM.Text as TN
 import Web.Event.Event (EventType(..))
 import Web.Event.EventTarget (addEventListener, eventListener)
 import Web.HTML (window)
-import Web.HTML.HTMLDocument (toDocument)
 import Web.HTML.HTMLDocument (toDocument)
 import Web.HTML.Window (document)
 
@@ -38,9 +36,8 @@ subscriptionAndUnsubscriptionEffects = subsection
           ]
       , psCodeWithLink Examples.HandRolledEvent
       , D.blockquote
-          Alt.do
-            klass_ "not-italic"
-            D.Self !:= \bod -> do
+          [ klass_ "not-italic"
+          , D.Self !:= \bod -> do
               doc <- window >>= document <#> toDocument
               anchor <- createElement "a" doc
               setAttribute "class" "cursor-pointer" anchor
@@ -74,6 +71,7 @@ subscriptionAndUnsubscriptionEffects = subsection
                     setTextContent "Turn on event" (toNode anchor)
               addEventListener (EventType "click") el true
                 (toEventTarget anchor)
+          ]
           []
       , D.p__
           "First, let's zoom in on the hand-rolled event that's doing the updating"

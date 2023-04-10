@@ -5,7 +5,6 @@ import Prelude
 import Components.Code (psCodeWithLink)
 import Components.ExampleBlockquote (exampleBlockquote)
 import Contracts (Env(..), Subsection, subsection)
-import Control.Alt ((<|>))
 import Control.Monad.ST.Internal (modify, new, read, run, write)
 import Data.Maybe (Maybe(..))
 import Data.Tuple.Nested ((/\))
@@ -18,7 +17,6 @@ import Deku.Hooks (useState)
 import Deku.Listeners (click_)
 import Examples as Examples
 import FRP.Event (Event, createPure, fold, makeLemmingEvent, subscribePure)
-import QualifiedDo.Alt as Alt
 import Router.ADT (Route(..))
 
 buttonClass =
@@ -58,9 +56,8 @@ theLemmingEvent = subsection
           , D.code__ "ST r"
           , text_ " in pure contexts. There's an article about this called "
           , D.a
-              ( href_ "https://dev.to/mikesol/lifting-continuations-9og" <|>
-                  (D.Target !:= "_blank")
-              )
+              [href_ "https://dev.to/mikesol/lifting-continuations-9og",
+                  D.Target !:= "_blank"]
               [ text_ "Lifting continuations" ]
           , text_
               " that discusses the logic behind this implementation, but now, I expect you to unchallengingly trust me that this is the best possible implementation. Or, in other words, to be a lemming!"
@@ -97,9 +94,8 @@ But beware! Duplicate presses will be ignored,
 so be sure to alternate between the buttons."""
                 , D.div_ $ [ 10, 100, 1000 ] <#> \n ->
                     D.button
-                      Alt.do
-                        click_ (setInt n)
-                        klass_ buttonClass
+                       [click_ (setInt n),
+                        klass_ buttonClass]
                       [ text_ ("Add " <> show n) ]
                 , D.div_ [ text $ (show <$> fold (+) 0 (dedup int)) ]
                 , D.div_

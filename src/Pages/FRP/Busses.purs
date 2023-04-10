@@ -15,9 +15,9 @@ busses :: Page
 busses = page
   { route: Busses
   , topmatter: pure
-      [ D.p (D.Class !:= "lead")
+      [ D.p [D.Class !:= "lead"]
           [ text_ "This page will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "Busses" ]
+          , D.span [D.Class !:= "font-bold"] [ text_ "Busses" ]
           , text_ "."
           ]
       , D.p_

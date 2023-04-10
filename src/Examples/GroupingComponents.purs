@@ -13,11 +13,11 @@ main :: Effect Unit
 main = runInBody do
   let
     eieio = fixed
-      [ D.span (klass_ "text-blue-400") [ text_ "e " ]
-      , D.span (klass_ "text-red-400") [ text_ "i " ]
-      , D.span (klass_ "text-green-400") [ text_ "e " ]
-      , D.span (klass_ "text-teal-400") [ text_ "i " ]
-      , D.span (klass_ "text-orange-400") [ text_ "o" ]
+      [ D.span [ klass_ "text-blue-400" ] [ text_ "e " ]
+      , D.span [ klass_ "text-red-400" ] [ text_ "i " ]
+      , D.span [ klass_ "text-green-400" ] [ text_ "e " ]
+      , D.span [ klass_ "text-teal-400" ] [ text_ "i " ]
+      , D.span [ klass_ "text-orange-400" ] [ text_ "o" ]
       ]
 
   D.div_

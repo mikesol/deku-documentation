@@ -17,9 +17,9 @@ runningInTheBody = subsection
           [ text_
               "The most common way to run a Deku app is to embed it in the "
           , D.a
-              ( D.Href !:=
+              [D.Href !:=
                   "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body"
-              )
+              ]
               [ text_ "body" ]
           , text_
               " of a webpage. This is not the only way, however. You can also embed a Deku app in an arbitrary element, or you could avoid embedding it entirely and instead render it as a "

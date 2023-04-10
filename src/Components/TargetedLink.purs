@@ -1,6 +1,5 @@
 module Components.TargetedLink where
 
-import Control.Alt ((<|>))
 import Deku.Attribute ((!:=))
 import Deku.Attributes (href_)
 import Deku.Core (Nut)
@@ -11,6 +10,6 @@ targetedLink
   -> Array Nut
   -> Nut
 targetedLink s = D.a
-  ( href_ s <|>
-      (D.Target !:= "_blank")
-  )
+  [ href_ s
+  , D.Target !:= "_blank"
+  ]

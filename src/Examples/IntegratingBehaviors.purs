@@ -2,7 +2,6 @@ module Examples.IntegratingBehaviors where
 
 import Prelude
 
-import Data.Foldable (oneOf)
 import Data.Time.Duration (Seconds(..))
 import Data.Tuple.Nested ((/\))
 import Deku.Attribute ((!:=))
@@ -24,15 +23,13 @@ main = runInBody Deku.do
   D.div_
     [ D.div_
         [ D.input
-            ( oneOf
-                [ slider_ setNumber
-                , klass_ "w-full"
-                , D.Min !:= "0.0"
-                , D.Max !:= "1.0"
-                , D.Step !:= "0.01"
-                , D.Value !:= "0.0"
-                ]
-            )
+            [ slider_ setNumber
+            , klass_ "w-full"
+            , D.Min !:= "0.0"
+            , D.Max !:= "1.0"
+            , D.Step !:= "0.01"
+            , D.Value !:= "0.0"
+            ]
             []
         ]
     , D.div_

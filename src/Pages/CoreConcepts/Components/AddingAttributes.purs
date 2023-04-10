@@ -5,7 +5,6 @@ import Prelude
 import Components.Code (psCodeWithLink)
 import Components.ExampleBlockquote (exampleBlockquote)
 import Contracts (Section, section)
-import Data.Foldable (oneOf)
 import Deku.Attribute ((!:=))
 import Deku.Attributes (klass_)
 import Deku.Control (text_)
@@ -28,17 +27,15 @@ addingAttributes = section
       , text_ "And here's the result."
       , exampleBlockquote
           [ D.div_
-              [ D.span (D.Style !:= "color:teal;") [ text_ "I exist" ]
+              [ D.span [D.Style !:= "color:teal;"] [ text_ "I exist" ]
               , D.ul_ $ map D.li__ [ "A", "B", "C" ]
               , D.div_
                   [ D.h3
-                      ( oneOf
                           [ D.Id !:= "my-id"
                           , D.Style !:= "background-color:silver;"
                           ]
-                      )
                       [ text_ "foo" ]
-                  , D.i (klass_ "text-2xl") [ text_ "bar" ]
+                  , D.i [klass_ "text-2xl"] [ text_ "bar" ]
                   , text_ " "
                   , D.b_ [ text_ "baz" ]
                   ]
@@ -48,7 +45,6 @@ addingAttributes = section
   , subsections:
       [ removingTheUnderscore
       , aSingleAttribute
-      , severalAttributes
       , usefulShorthand
       ]
   }

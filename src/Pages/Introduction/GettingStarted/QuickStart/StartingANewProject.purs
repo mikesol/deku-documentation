@@ -23,7 +23,7 @@ startingANewProject = subsection
           , D.code_ [ text_ "my-awesome-app" ]
           , text_
               " using a template with "
-          , D.span (klass_ "line-through") [ text_ "very opinionated" ]
+          , D.span [klass_ "line-through"] [ text_ "very opinionated" ]
           , text_ " sensible defaults."
           ]
       , D.p_

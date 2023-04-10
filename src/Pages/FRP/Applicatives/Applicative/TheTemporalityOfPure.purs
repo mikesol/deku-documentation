@@ -129,7 +129,7 @@ theTemporalityOfPure = subsection
                   " is immaterial, and as the final value will only be emitted once both events have fired at least once, the two formulations are equivalent."
               ]
           ]
-      , D.div (klass_ "text-right") [ text_ "∎" ]
+      , D.div [klass_ "text-right"] [ text_ "∎" ]
       , D.p_
           [ text_
               "Now that we've gotten that out of the way, let's do what y'all came here for - a giant fizz-bang using applicatives! Specifically, we'll use the fact that "

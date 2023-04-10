@@ -12,7 +12,6 @@ import Deku.Hooks (useState)
 import Deku.Listeners (click_)
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
-import QualifiedDo.Alt as Alt
 
 buttonClass :: String -> String
 buttonClass color =
@@ -27,16 +26,16 @@ main :: Effect Unit
 main = runInBody Deku.do
   setAstuce /\ astuce <- useState true
   D.div_
-    [ D.div (klass_ "space-x-2")
+    [ D.div [ klass_ "space-x-2" ]
         [ D.button
-            Alt.do
-              klass_ $ buttonClass "indigo"
-              click_ $ setAstuce true
+            [ klass_ $ buttonClass "indigo"
+            , click_ $ setAstuce true
+            ]
             [ text_ "Sage" ]
         , D.button
-            Alt.do
-              klass_ $ buttonClass "green"
-              click_ $ setAstuce false
+            [ klass_ $ buttonClass "green"
+            , click_ $ setAstuce false
+            ]
             [ text_ "Pas sage" ]
         ]
     , D.div_

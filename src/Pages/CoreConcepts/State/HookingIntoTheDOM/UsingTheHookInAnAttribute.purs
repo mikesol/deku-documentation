@@ -15,7 +15,6 @@ import Deku.Do as Deku
 import Deku.Hooks (useState)
 import Deku.Listeners (click)
 import Examples as Examples
-import QualifiedDo.Alt as Alt
 
 -- bg-pink-600
 -- hover:bg-pink-700 
@@ -46,22 +45,22 @@ usingTheHookInAnAttribute = subsection
               setStyleSwitch /\ styleSwitch <- useState false
               D.div_
                 [ D.a
-                    Alt.do
-                      D.Target !:= "_blank"
-                      href $ hrefSwitch <#>
+                    [ D.Target !:= "_blank"
+                    , href $ hrefSwitch <#>
                         if _ then "https://cia.gov" else "https://fbi.gov"
-                      style $ styleSwitch <#>
+                    , style $ styleSwitch <#>
                         if _ then "color:magenta;" else "color:teal;"
+                    ]
                     [ text_ "Click me" ]
                 , D.button
-                    Alt.do
-                      klass_ $ buttonClass "indigo"
-                      click $ hrefSwitch <#> not >>> setHrefSwitch
+                    [ klass_ $ buttonClass "indigo"
+                    , click $ hrefSwitch <#> not >>> setHrefSwitch
+                    ]
                     [ text_ "Switch href" ]
                 , D.button
-                    Alt.do
-                      klass_ $ buttonClass "pink"
-                      click $ styleSwitch <#> not >>> setStyleSwitch
+                    [ klass_ $ buttonClass "pink"
+                    , click $ styleSwitch <#> not >>> setStyleSwitch
+                    ]
                     [ text_ "Switch style" ]
                 ]
           ]

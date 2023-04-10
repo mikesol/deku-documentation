@@ -40,8 +40,8 @@ compactingEvents = subsection
                   -> Event c
                 eventMaker f l r = f (l left <|> r right)
               D.div_
-                [ D.input (klass_ "mr-2" <|> slider_ setLeft) []
-                , D.input (slider_ setRight) []
+                [ D.input [klass_ "mr-2", slider_ setLeft] []
+                , D.input [slider_ setRight] []
                 , D.div_
                     [ text_ "Responds to both channels: "
                     , text (eventMaker identity identity identity <#> show)

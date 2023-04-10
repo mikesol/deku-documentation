@@ -18,7 +18,6 @@ import Effect.Random (random)
 import Examples as Examples
 import FRP.Event.Effect (bindToEffect)
 import FRP.Event.Time (interval)
-import QualifiedDo.Alt as Alt
 
 multipleSubscriptions :: Subsection
 multipleSubscriptions = subsection
@@ -67,9 +66,8 @@ interval n = makeEvent \k -> do
               let e = bindToEffect (interval 250) (const random)
               D.div_
                 [ D.a
-                    Alt.do
-                      click $ onOff <#> not >>> setOnOff
-                      klass_ "cursor-pointer"
+                      [click $ onOff <#> not >>> setOnOff,
+                      klass_ "cursor-pointer"]
                     [ text $ onOff <#> if _ then "Turn me off" else "Turn me on"
                     ]
                 , guard onOff $ D.div_
@@ -97,7 +95,7 @@ interval n = makeEvent \k -> do
       , D.p_
           [ text_
               "To understand why this is the case, remember back to the section on "
-          , D.a (href_ "#subscription-and-unsubscription-effects")
+          , D.a [href_ "#subscription-and-unsubscription-effects"]
               [ text_ "Subscription adn unsubscription effects" ]
           , text_
               ". We saw that all of the logic ultimately resided in a callback that was activated at subscription and deactivated at unsubscribe. If we wrote out the logic of the example above by hand, we would see the code to create the interval and to hook up the random number generator executed in an "
@@ -165,9 +163,8 @@ main = runInBody Deku.do
               e <- useMemoized (bindToEffect (interval 250) (const random))
               D.div_
                 [ D.a
-                    Alt.do
-                      click $ onOff <#> not >>> setOnOff
-                      klass_ "cursor-pointer"
+                      [click $ onOff <#> not >>> setOnOff,
+                      klass_ "cursor-pointer"]
                     [ text $ onOff <#> if _ then "Turn me off" else "Turn me on"
                     ]
                 , guard onOff $ D.div_

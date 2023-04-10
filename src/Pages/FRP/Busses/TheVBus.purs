@@ -16,7 +16,7 @@ theVBus = section
   , topmatter: pure
       [ D.p_
           [ text_ "This section will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "The VBus" ]
+          , D.span [ D.Class !:= "font-bold" ] [ text_ "The VBus" ]
           , text_ "."
           ]
       ]

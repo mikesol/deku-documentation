@@ -14,7 +14,7 @@ behaviorsAsContinuousFunctionsOfTime = subsection
   , matter: pure
       [ D.p_
           [ text_ "This subsection will be about "
-          , D.span (D.Class !:= "font-bold")
+          , D.span [ D.Class !:= "font-bold" ]
               [ text_ "Behaviors as continuous functions of time" ]
           , text_ "."
           ]

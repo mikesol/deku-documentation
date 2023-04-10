@@ -13,7 +13,7 @@ behaviorsAndYoneda = subsection
   , matter: pure
       [ D.p_
           [ text_ "This subsection will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "Behaviors and Yoneda" ]
+          , D.span [ D.Class !:= "font-bold" ] [ text_ "Behaviors and Yoneda" ]
           , text_ "."
           ]
       ]

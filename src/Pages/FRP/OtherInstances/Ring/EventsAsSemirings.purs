@@ -14,7 +14,6 @@ import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState)
 import Examples as Examples
-import QualifiedDo.Alt as Alt
 import Web.Event.Event (target)
 import Web.HTML.HTMLInputElement (fromEventTarget, valueAsNumber)
 
@@ -52,14 +51,13 @@ eventsAsSemirings = subsection
                             "To use our super-secure cryptographic number changer, type a number below and we'll output a number that you can't reverse engineer, or your money back!"
                         ]
                     , D.input
-                        Alt.do
-                          klass_ inputKls
-                          D.Xtype !:= "number"
-                          D.Min !:= "0"
-                          D.Value !:= "0"
+                         [klass_ inputKls,
+                          D.Xtype !:= "number",
+                          D.Min !:= "0",
+                          D.Value !:= "0",
                           D.OnChange !:= cb \evt ->
                             traverse_ (valueAsNumber >=> setNumber) $
-                              (target >=> fromEventTarget) evt
+                              (target >=> fromEventTarget) evt]
                         []
                     ]
                 , D.div_

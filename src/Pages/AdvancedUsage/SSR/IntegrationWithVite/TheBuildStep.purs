@@ -13,7 +13,7 @@ theBuildStep = subsection
   , matter: pure
       [ D.p_
           [ text_ "This subsection will be about "
-          , D.span (D.Class !:= "font-bold") [ text_ "The build step" ]
+          , D.span [ D.Class !:= "font-bold" ] [ text_ "The build step" ]
           , text_ "."
           ]
       ]

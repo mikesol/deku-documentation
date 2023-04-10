@@ -2,7 +2,6 @@ module Examples.BooleanLogicOnEvents where
 
 import Prelude
 
-import Control.Alt ((<|>))
 import Data.Generic.Rep (class Generic)
 import Data.Show.Generic (genericShow)
 import Data.Tuple.Nested ((/\))
@@ -74,7 +73,7 @@ main = runInBody Deku.do
   let
     tdTableClass = klass_ tableClass
     button setter letter value = D.button
-      (klass_ buttonClass <|> click_ (setter value))
+      [ klass_ buttonClass, click_ (setter value) ]
       [ text_ (letter <> " = " <> show value) ]
   D.div_
     [ D.div_ $
@@ -83,50 +82,50 @@ main = runInBody Deku.do
         , button setQ "Q" true
         , button setQ "Q" false
         ]
-    , D.table (klass_ tableClass)
+    , D.table [ klass_ tableClass ]
         [ D.tr_
-            [ D.th (klass_ tableClass) [ text_ "Equation" ]
-            , D.th (klass_ tableClass) [ text_ "Result" ]
+            [ D.th [ klass_ tableClass ] [ text_ "Equation" ]
+            , D.th [ klass_ tableClass ] [ text_ "Result" ]
             ]
         , D.tr_
-            [ D.td tdTableClass
+            [ D.td [ tdTableClass ]
                 [ text_ (show (rule1 (Var "P") (Var "Q"))) ]
-            , D.td tdTableClass [ text (show <$> rule1 p q) ]
+            , D.td [ tdTableClass ] [ text (show <$> rule1 p q) ]
             ]
         , D.tr_
-            [ D.td tdTableClass
+            [ D.td [ tdTableClass ]
                 [ text_ (show (rule2 (Var "P") (Var "Q"))) ]
-            , D.td tdTableClass [ text (show <$> rule2 p q) ]
+            , D.td [ tdTableClass ] [ text (show <$> rule2 p q) ]
             ]
         , D.tr_
-            [ D.td tdTableClass
+            [ D.td [ tdTableClass ]
                 [ text_ (show (rule3 (Var "P") (Var "Q"))) ]
-            , D.td tdTableClass [ text (show <$> rule3 p q) ]
+            , D.td [ tdTableClass ] [ text (show <$> rule3 p q) ]
             ]
         , D.tr_
-            [ D.td tdTableClass
+            [ D.td [ tdTableClass ]
                 [ text_ (show (rule4 (Var "P") (Var "Q"))) ]
-            , D.td tdTableClass [ text (show <$> rule4 p q) ]
+            , D.td [ tdTableClass ] [ text (show <$> rule4 p q) ]
             ]
         , D.tr_
-            [ D.td tdTableClass
+            [ D.td [ tdTableClass ]
                 [ text_ (show (rule5 (Var "P"))) ]
-            , D.td tdTableClass [ text (show <$> rule5 p) ]
+            , D.td [ tdTableClass ] [ text (show <$> rule5 p) ]
             ]
         , D.tr_
-            [ D.td tdTableClass
+            [ D.td [ tdTableClass ]
                 [ text_ (show (rule6 (Var "P"))) ]
-            , D.td tdTableClass [ text (show <$> rule6 p) ]
+            , D.td [ tdTableClass ] [ text (show <$> rule6 p) ]
             ]
         , D.tr_
-            [ D.td tdTableClass
+            [ D.td [ tdTableClass ]
                 [ text_ (show (rule5 (Var "Q"))) ]
-            , D.td tdTableClass [ text (show <$> rule5 q) ]
+            , D.td [ tdTableClass ] [ text (show <$> rule5 q) ]
             ]
         , D.tr_
-            [ D.td tdTableClass
+            [ D.td [ tdTableClass ]
                 [ text_ (show (rule6 (Var "Q"))) ]
-            , D.td tdTableClass [ text (show <$> rule6 q) ]
+            , D.td [ tdTableClass ] [ text (show <$> rule6 q) ]
             ]
         ]
     ]

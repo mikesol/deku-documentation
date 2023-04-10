@@ -65,26 +65,26 @@ myFunction = fix (\f a -> if a > 100 then 100 else f (a + 1))
       , let
           myFunction = fix (\f a -> if a > 100 then 100 else f (a + 1))
         in
-          D.table tableClass
+          D.table [tableClass]
             [ D.tr_
-                [ D.th tableClass [ text_ "Function call" ]
-                , D.th tableClass [ text_ "Result" ]
+                [ D.th [tableClass] [ text_ "Function call" ]
+                , D.th [tableClass] [ text_ "Result" ]
                 ]
             , D.tr_
-                [ D.th tableClass [ D.code__ "myFunction 0" ]
-                , D.th tableClass [ text_ (show (myFunction 0)) ]
+                [ D.th [tableClass] [ D.code__ "myFunction 0" ]
+                , D.th [tableClass] [ text_ (show (myFunction 0)) ]
                 ]
             , D.tr_
-                [ D.th tableClass [ D.code__ "myFunction 42" ]
-                , D.th tableClass [ text_ (show (myFunction 42)) ]
+                [ D.th [tableClass] [ D.code__ "myFunction 42" ]
+                , D.th [tableClass] [ text_ (show (myFunction 42)) ]
                 ]
             , D.tr_
-                [ D.th tableClass [ D.code__ "myFunction1000" ]
-                , D.th tableClass [ text_ (show (myFunction 1000)) ]
+                [ D.th [tableClass] [ D.code__ "myFunction1000" ]
+                , D.th [tableClass] [ text_ (show (myFunction 1000)) ]
                 ]
             ]
-      , D.div (klass_ "w-full flex justify-end")
-          [ D.span (klass_ "text-sm pr-2")
+      , D.div [klass_ "w-full flex justify-end"]
+          [ D.span [klass_ "text-sm pr-2"]
               [ text_
                   "* All values are calculated dynamically by the actual function."
               ]
@@ -129,11 +129,11 @@ myFunction = fix (\f a -> if a > 100 then 100 else f (a + 1))
                       D.span_
                         [ text_ t
                         , D.a
-                            ( klass_ "cursor-pointer" <|> click_ do
+                            [klass_ "cursor-pointer", click_ do
                                 setElt (v + 1)
                                 disactivatePreviousElt
                                   { address: v, payload: unit }
-                            )
+                            ]
                             [ text_ "..." ]
                         ]
                     else text_ $ t <> "... "

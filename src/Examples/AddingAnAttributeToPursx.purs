@@ -2,7 +2,6 @@ module Examples.AddingAnAttributeToPursx where
 
 import Prelude
 
-import Control.Alt ((<|>))
 import Data.Tuple.Nested ((/\))
 import Deku.Attributes (klass, klass_)
 import Deku.Control (text_)
@@ -62,12 +61,18 @@ main = runInBody Deku.do
       klass $ e <#> (if _ then "" else "hidden ") >>>
         (_ <> "flex")
     point = klass_ "cursor-pointer mr-4"
-    toggleHome = point
-      <|> click_ (setProjects false *> setNero false)
-    toggleProjects = point
-      <|> click_ (setProjects true *> setNero false)
-    toggleNero = point
-      <|> click_ (setProjects true *> setNero true)
+    toggleHome =
+      [ point
+      , click_ (setProjects false *> setNero false)
+      ]
+    toggleProjects =
+      [ point
+      , click_ (setProjects true *> setNero false)
+      ]
+    toggleNero =
+      [ point
+      , click_ (setProjects true *> setNero true)
+      ]
   D.div_
     [ D.div_
         [ D.a toggleHome [ text_ "Go home" ]

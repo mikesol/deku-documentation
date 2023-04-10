@@ -10,4 +10,4 @@ import Effect.Class.Console (logShow)
 
 main :: Effect Unit
 main = runInBody
-  (D.input (slider_ logShow) [])
+  (D.input [ slider_ logShow ] [])

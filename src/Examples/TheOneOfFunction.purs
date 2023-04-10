@@ -4,7 +4,6 @@ import Prelude
 
 import Control.Alt ((<|>))
 import Data.Foldable (oneOf)
-import Data.Tuple.Nested ((/\))
 import Deku.Control (text)
 import Deku.Toplevel (runInBody)
 import Effect (Effect)

@@ -21,7 +21,6 @@ import Deku.Hooks (useDyn, useHot', useState, useState')
 import Deku.Listeners (click, keyUp)
 import Examples as Examples
 import FRP.Event.Class ((<|*>))
-import QualifiedDo.Alt as Alt
 import Router.ADT (Route(..))
 import Web.Event.Event (target)
 import Web.HTML (window)
@@ -75,30 +74,27 @@ insertingInADifferentOrder = subsection
                 top =
                   D.div_
                     [ D.input
-                        Alt.do
-                          D.Value !:= "Tasko primo"
+                          [D.Value !:= "Tasko primo",
                           keyUp $ pure \evt -> do
                             when (code evt == "Enter") $
                               for_
                                 ((target >=> fromEventTarget) (toEvent evt))
-                                guardAgainstEmpty
-                          D.SelfT !:= setInput
-                          klass_ inputKls
+                                guardAgainstEmpty,
+                          D.SelfT !:= setInput,
+                          klass_ inputKls]
                         []
                     , D.input
-                        Alt.do
-                          klass_ inputKls
-                          D.Xtype !:= "number"
-                          D.Min !:= "0"
-                          D.Value !:= "0"
+                          [klass_ inputKls,
+                          D.Xtype !:= "number",
+                          D.Min !:= "0",
+                          D.Value !:= "0",
                           D.OnChange !:= cb \evt ->
                             traverse_ (valueAsNumber >=> floor >>> setPos) $
-                              (target >=> fromEventTarget) evt
+                              (target >=> fromEventTarget) evt]
                         []
                     , D.button
-                        Alt.do
-                          click $ input <#> guardAgainstEmpty
-                          klass_ $ buttonClass "green"
+                         [click $ input <#> guardAgainstEmpty,
+                          klass_ $ buttonClass "green"]
                         [ text_ "Add" ]
                     ]
               D.div_

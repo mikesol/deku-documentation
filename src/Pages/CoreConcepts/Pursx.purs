@@ -42,7 +42,7 @@ pursx :: Page
 pursx = page
   { route: Pursx
   , topmatter: pure
-      [ D.p (D.Class !:= "lead")
+      [ D.p [D.Class !:= "lead"]
           [ text_ "Or how I learned to stop worrying and copy-paste the DOM."
           ]
       , D.p_
@@ -52,9 +52,9 @@ pursx = page
       , htmlCode (reflectSymbol myHtml)
       , D.p__ "This renders in the DOM like so."
       , D.div
-          ( klass_
+          [ klass_
               "border-solid border-2 border-slate-200 dark:border-white-200"
-          )
+          ]
           [ myHtml ~~ {} ]
       , D.p__
           "I could meticulously rewrite the entire thing in Deku, at which point my designer would complain to our boss:"
