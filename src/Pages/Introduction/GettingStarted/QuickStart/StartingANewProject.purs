@@ -30,7 +30,7 @@ startingANewProject = subsection
           [ text_
               "Just by doing this, you already have a full-fledged Deku app at the tips of your fingers. You can fire it up like so."
           ]
-      , shSessionCode "$ cd my-awesome-app && npx spago install && npm run dev"
+      , shSessionCode "$ cd my-awesome-app && npx spago build && npm run dev"
       , D.p_
           [ text_
               "Then, visit the link displayed in your terminal (usually "
