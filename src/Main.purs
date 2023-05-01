@@ -16,11 +16,13 @@ import Data.Map as Map
 import Data.Maybe (Maybe(..), maybe)
 import Data.Show.Generic (genericShow)
 import Data.Tuple (Tuple(..), curry, fst, snd, uncurry)
+import Debug (spy)
 import Deku.Core (envy)
 import Deku.Do as Deku
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
 import Effect.Class.Console (logShow)
+import Effect.Console as Log
 import Effect.Ref as Ref
 import FRP.Dedup (dedup)
 import FRP.Event (create, fold, mailboxed, memoize, subscribe)
@@ -49,21 +51,26 @@ derive instance Generic ScrolledSection _
 instance Show ScrolledSection where
   show = genericShow
 
+-- it's impossible to prevent this function from entering into an infinite loop
+-- so the best we can do is cap it at a reasonable level
+-- it seems like it will never go beyond 3 iterations, so we'll set 7 as the upper bound
 getScrolledSection :: Int -> (Int -> Effect ScrolledSection) -> Effect Int
-getScrolledSection startingAt f = go ScrollCheckStart startingAt startingAt
+getScrolledSection startingAt f = go 0 ScrollCheckStart startingAt startingAt
   where
-  go checkDir n head = do
-    scrolledSection <- f head
-    case scrolledSection of
-      ScrolledDefinite i -> pure i
-      ScrolledCandidate i -> case checkDir of
-        ScrollCheckDown -> pure i
-        _ -> go ScrollCheckUp i (i + 1)
-      NotScrolled ->
-        if n == 0 then pure 0
-        else case checkDir of
-          ScrollCheckUp -> pure n
-          _ -> go ScrollCheckDown n (head - 1)
+  go rc checkDir n head = case rc of
+    7 -> Log.error "Infinite loop, ping Mike." *> pure 0
+    _ -> do
+      scrolledSection <- f head
+      case scrolledSection of
+        ScrolledDefinite i ->  pure i
+        ScrolledCandidate i -> case checkDir of
+          ScrollCheckDown ->  pure i
+          _ -> go (rc + 1) ScrollCheckUp i (i + 1)
+        NotScrolled ->
+          if n == 0 then  pure 0
+          else case checkDir of
+            ScrollCheckUp ->  pure n
+            _ -> go (rc + 1) ScrollCheckDown n (head - 1)
 
 main :: Effect Unit
 main = do
