@@ -29,6 +29,7 @@ import usingFunctionsAsMonads from "../../src/Examples/UsingFunctionsAsMonads.pu
 import theKeepLatestFunction from "../../src/Examples/TheKeepLatestFunction.purs?raw"
 import aSimpleCounter from "../../src/Examples/ASimpleCounter.purs?raw"
 import globalHandlers from "../../src/Examples/GlobalHandlers.purs?raw"
+import useEffectHook from "../../src/Examples/UseEffectHook.purs?raw"
 import eventsAsRings from "../../src/Examples/EventsAsRings.purs?raw"
 import addingSeveralAttributesToPursx from "../../src/Examples/AddingSeveralAttributesToPursx.purs?raw"
 import samplingABehaviorWithAnEvent from "../../src/Examples/SamplingABehaviorWithAnEvent.purs?raw"
@@ -114,6 +115,7 @@ export const usingFunctionsAsMonadsURL = usingFunctionsAsMonads;
 export const theKeepLatestFunctionURL = theKeepLatestFunction;
 export const aSimpleCounterURL = aSimpleCounter;
 export const globalHandlersURL = globalHandlers;
+export const useEffectHookURL = useEffectHook;
 export const eventsAsRingsURL = eventsAsRings;
 export const addingSeveralAttributesToPursxURL = addingSeveralAttributesToPursx;
 export const samplingABehaviorWithAnEventURL = samplingABehaviorWithAnEvent;
