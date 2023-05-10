@@ -29,7 +29,9 @@ triggerEffect = subsection
           [ text_ "In the example below, we use the "
           , D.code__ "useEffect"
           , text_
-              " hook to update a timestamp every time the button is clicked. The same pattern is accomplishable via "
+              " hook to update a timestamp every time the text "
+          , D.b__ "Current timestamp"
+          , text_ " is clicked. The same pattern is accomplishable via "
           , D.code__ "useRef"
           , text_
               ". As is the case with many things in Deku, there is more than one way to skin a Gerudian Lizalfos."
