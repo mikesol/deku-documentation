@@ -1,4 +1,4 @@
-module Examples.UseAffHookWithCancellationHook where
+module Examples.UseAffWithCancellationHook where
 
 import Prelude
 
