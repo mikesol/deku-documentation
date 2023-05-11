@@ -12,8 +12,10 @@ import behaviorsVersusFlapping from "../../src/Examples/BehaviorsVersusFlapping.
 import injectingDependencies from "../../src/Examples/InjectingDependencies.purs?raw"
 import compactingEvents from "../../src/Examples/CompactingEvents.purs?raw"
 import emptyUntilFull from "../../src/Examples/EmptyUntilFull.purs?raw"
+import useAffHook from "../../src/Examples/UseAffHook.purs?raw"
 import runSSR from "../../src/Examples/RunSSR.purs?raw"
 import aSimpleComponent from "../../src/Examples/ASimpleComponent.purs?raw"
+import useAffSequentialHook from "../../src/Examples/UseAffSequentialHook.purs?raw"
 import addingSeveralElementsToPursx from "../../src/Examples/AddingSeveralElementsToPursx.purs?raw"
 import theLemmingEvent from "../../src/Examples/TheLemmingEvent.purs?raw"
 import useMailboxed from "../../src/Examples/UseMailboxed.purs?raw"
@@ -48,6 +50,7 @@ import plainOldHtml from "../../src/Examples/PlainOldHtml.purs?raw"
 import usingAnEffect from "../../src/Examples/UsingAnEffect.purs?raw"
 import knowThySelf from "../../src/Examples/KnowThySelf.purs?raw"
 import unsafePursx from "../../src/Examples/UnsafePursx.purs?raw"
+import useAffWithCancellationHook from "../../src/Examples/UseAffWithCancellationHook.purs?raw"
 import theLocalPortalSyntax from "../../src/Examples/TheLocalPortalSyntax.purs?raw"
 import unsettingAttributes from "../../src/Examples/UnsettingAttributes.purs?raw"
 import booleanLogicOnEvents from "../../src/Examples/BooleanLogicOnEvents.purs?raw"
@@ -98,8 +101,10 @@ export const behaviorsVersusFlappingURL = behaviorsVersusFlapping;
 export const injectingDependenciesURL = injectingDependencies;
 export const compactingEventsURL = compactingEvents;
 export const emptyUntilFullURL = emptyUntilFull;
+export const useAffHookURL = useAffHook;
 export const runSSRURL = runSSR;
 export const aSimpleComponentURL = aSimpleComponent;
+export const useAffSequentialHookURL = useAffSequentialHook;
 export const addingSeveralElementsToPursxURL = addingSeveralElementsToPursx;
 export const theLemmingEventURL = theLemmingEvent;
 export const useMailboxedURL = useMailboxed;
@@ -134,6 +139,7 @@ export const plainOldHtmlURL = plainOldHtml;
 export const usingAnEffectURL = usingAnEffect;
 export const knowThySelfURL = knowThySelf;
 export const unsafePursxURL = unsafePursx;
+export const useAffWithCancellationHookURL = useAffWithCancellationHook;
 export const theLocalPortalSyntaxURL = theLocalPortalSyntax;
 export const unsettingAttributesURL = unsettingAttributes;
 export const booleanLogicOnEventsURL = booleanLogicOnEvents;

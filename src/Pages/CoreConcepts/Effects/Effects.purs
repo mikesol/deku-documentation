@@ -26,8 +26,8 @@ bindingToEffects = section
       ]
   , subsections:
       [ triggerEffect
+      , triggerAffInParallel
       , triggerAff
       , triggerAffWithCancellation
-      , triggerAffInParallel
       ]
   }

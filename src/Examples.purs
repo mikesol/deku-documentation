@@ -15,8 +15,10 @@ foreign import behaviorsVersusFlappingURL :: String
 foreign import injectingDependenciesURL :: String
 foreign import compactingEventsURL :: String
 foreign import emptyUntilFullURL :: String
+foreign import useAffHookURL :: String
 foreign import runSSRURL :: String
 foreign import aSimpleComponentURL :: String
+foreign import useAffSequentialHookURL :: String
 foreign import addingSeveralElementsToPursxURL :: String
 foreign import theLemmingEventURL :: String
 foreign import useMailboxedURL :: String
@@ -51,6 +53,7 @@ foreign import plainOldHtmlURL :: String
 foreign import usingAnEffectURL :: String
 foreign import knowThySelfURL :: String
 foreign import unsafePursxURL :: String
+foreign import useAffWithCancellationHookURL :: String
 foreign import theLocalPortalSyntaxURL :: String
 foreign import unsettingAttributesURL :: String
 foreign import booleanLogicOnEventsURL :: String
@@ -102,8 +105,10 @@ newtype Examples = Examples {
  injectingDependencies :: String,
  compactingEvents :: String,
  emptyUntilFull :: String,
+ useAffHook :: String,
  runSSR :: String,
  aSimpleComponent :: String,
+ useAffSequentialHook :: String,
  addingSeveralElementsToPursx :: String,
  theLemmingEvent :: String,
  useMailboxed :: String,
@@ -138,6 +143,7 @@ newtype Examples = Examples {
  usingAnEffect :: String,
  knowThySelf :: String,
  unsafePursx :: String,
+ useAffWithCancellationHook :: String,
  theLocalPortalSyntax :: String,
  unsettingAttributes :: String,
  booleanLogicOnEvents :: String,
@@ -192,8 +198,10 @@ examples = Examples {
  injectingDependencies: injectingDependenciesURL,
  compactingEvents: compactingEventsURL,
  emptyUntilFull: emptyUntilFullURL,
+ useAffHook: useAffHookURL,
  runSSR: runSSRURL,
  aSimpleComponent: aSimpleComponentURL,
+ useAffSequentialHook: useAffSequentialHookURL,
  addingSeveralElementsToPursx: addingSeveralElementsToPursxURL,
  theLemmingEvent: theLemmingEventURL,
  useMailboxed: useMailboxedURL,
@@ -228,6 +236,7 @@ examples = Examples {
  usingAnEffect: usingAnEffectURL,
  knowThySelf: knowThySelfURL,
  unsafePursx: unsafePursxURL,
+ useAffWithCancellationHook: useAffWithCancellationHookURL,
  theLocalPortalSyntax: theLocalPortalSyntaxURL,
  unsettingAttributes: unsettingAttributesURL,
  booleanLogicOnEvents: booleanLogicOnEventsURL,
@@ -265,7 +274,7 @@ examples = Examples {
  eventsAsSemigroups: eventsAsSemigroupsURL,
  altAsAMuxer: altAsAMuxerURL
  }
-data ExampleADT = UnMemoizedApplication | FilteringAnEvent | UsingTheOriginalEvent | EventsAsSemirings | UsingTheHookToSwitchBetweenElements | RowPolymorphismAndProviders | AddingAttributes | BiasingASideOfSampling | TheCreatePureEffect | SamplingABehaviorAndDiscardingTheEvent | BehaviorsVersusFlapping | InjectingDependencies | CompactingEvents | EmptyUntilFull | RunSSR | ASimpleComponent | AddingSeveralElementsToPursx | TheLemmingEvent | UseMailboxed | AddingAnAttributeToPursx | ComponentsAsSemigroups | GroupsOfGroups | TheOneOfFunction | TheGlobalPortalSyntax | CustomHook1 | GatingEventsOnBehaviors | EffectsInSSR | UsingFunctionsAsMonads | TheKeepLatestFunction | ASimpleCounter | GlobalHandlers | UseEffectHook | EventsAsRings | AddingSeveralAttributesToPursx | SamplingABehaviorWithAnEvent | UseRef | KnowThySelfT | ShorthandListeners | ANoteOnMemoization | OptimizedEventCreation | TheTemporalityOfPure | AddingCustomElements | OptimizedEventFunctions | ComponentsAsMonoids | ALagUsingFix | AddingASingleElementToPursx | PlainOldHtml | UsingAnEffect | KnowThySelf | UnsafePursx | TheLocalPortalSyntax | UnsettingAttributes | BooleanLogicOnEvents | HowSamplingWorks | UnlockingLevels | UseDyn | IntegratingBehaviors | HelloWorldCode | InsertingInADifferentOrder | CustomHook2 | NestedCustomHooks | MultipleSubscriptions | TheStateHook | InterComponentCommunication | EventsAsMonoids | FoldEffect | DerivingBehaviors | SolvingDifferentialEquations | UsingTheHookInAnAttribute | PassingAroundHooks | SwitchingOnBehaviors | GroupingComponents | FlippingTheFunctionAndArgument | MovingElements | MockDiscord | SamplingABehaviorWithACustomFunction | MemoizedApplication | MemoizedNoEvent | WhenToFixAndWhenToFold | UsingAHookToControlPresence | RemovingElements | HandRolledEvent | UnsafeCustomElement | SeveralLagsUsingFix | EventsAsSemigroups | AltAsAMuxer 
+data ExampleADT = UnMemoizedApplication | FilteringAnEvent | UsingTheOriginalEvent | EventsAsSemirings | UsingTheHookToSwitchBetweenElements | RowPolymorphismAndProviders | AddingAttributes | BiasingASideOfSampling | TheCreatePureEffect | SamplingABehaviorAndDiscardingTheEvent | BehaviorsVersusFlapping | InjectingDependencies | CompactingEvents | EmptyUntilFull | UseAffHook | RunSSR | ASimpleComponent | UseAffSequentialHook | AddingSeveralElementsToPursx | TheLemmingEvent | UseMailboxed | AddingAnAttributeToPursx | ComponentsAsSemigroups | GroupsOfGroups | TheOneOfFunction | TheGlobalPortalSyntax | CustomHook1 | GatingEventsOnBehaviors | EffectsInSSR | UsingFunctionsAsMonads | TheKeepLatestFunction | ASimpleCounter | GlobalHandlers | UseEffectHook | EventsAsRings | AddingSeveralAttributesToPursx | SamplingABehaviorWithAnEvent | UseRef | KnowThySelfT | ShorthandListeners | ANoteOnMemoization | OptimizedEventCreation | TheTemporalityOfPure | AddingCustomElements | OptimizedEventFunctions | ComponentsAsMonoids | ALagUsingFix | AddingASingleElementToPursx | PlainOldHtml | UsingAnEffect | KnowThySelf | UnsafePursx | UseAffWithCancellationHook | TheLocalPortalSyntax | UnsettingAttributes | BooleanLogicOnEvents | HowSamplingWorks | UnlockingLevels | UseDyn | IntegratingBehaviors | HelloWorldCode | InsertingInADifferentOrder | CustomHook2 | NestedCustomHooks | MultipleSubscriptions | TheStateHook | InterComponentCommunication | EventsAsMonoids | FoldEffect | DerivingBehaviors | SolvingDifferentialEquations | UsingTheHookInAnAttribute | PassingAroundHooks | SwitchingOnBehaviors | GroupingComponents | FlippingTheFunctionAndArgument | MovingElements | MockDiscord | SamplingABehaviorWithACustomFunction | MemoizedApplication | MemoizedNoEvent | WhenToFixAndWhenToFold | UsingAHookToControlPresence | RemovingElements | HandRolledEvent | UnsafeCustomElement | SeveralLagsUsingFix | EventsAsSemigroups | AltAsAMuxer 
 exampleToString :: ExampleADT -> String
 exampleToString UnMemoizedApplication = (unwrap examples).unMemoizedApplication
 exampleToString FilteringAnEvent = (unwrap examples).filteringAnEvent
@@ -281,8 +290,10 @@ exampleToString BehaviorsVersusFlapping = (unwrap examples).behaviorsVersusFlapp
 exampleToString InjectingDependencies = (unwrap examples).injectingDependencies
 exampleToString CompactingEvents = (unwrap examples).compactingEvents
 exampleToString EmptyUntilFull = (unwrap examples).emptyUntilFull
+exampleToString UseAffHook = (unwrap examples).useAffHook
 exampleToString RunSSR = (unwrap examples).runSSR
 exampleToString ASimpleComponent = (unwrap examples).aSimpleComponent
+exampleToString UseAffSequentialHook = (unwrap examples).useAffSequentialHook
 exampleToString AddingSeveralElementsToPursx = (unwrap examples).addingSeveralElementsToPursx
 exampleToString TheLemmingEvent = (unwrap examples).theLemmingEvent
 exampleToString UseMailboxed = (unwrap examples).useMailboxed
@@ -317,6 +328,7 @@ exampleToString PlainOldHtml = (unwrap examples).plainOldHtml
 exampleToString UsingAnEffect = (unwrap examples).usingAnEffect
 exampleToString KnowThySelf = (unwrap examples).knowThySelf
 exampleToString UnsafePursx = (unwrap examples).unsafePursx
+exampleToString UseAffWithCancellationHook = (unwrap examples).useAffWithCancellationHook
 exampleToString TheLocalPortalSyntax = (unwrap examples).theLocalPortalSyntax
 exampleToString UnsettingAttributes = (unwrap examples).unsettingAttributes
 exampleToString BooleanLogicOnEvents = (unwrap examples).booleanLogicOnEvents
@@ -368,8 +380,10 @@ exampleToSlug BehaviorsVersusFlapping = "BehaviorsVersusFlapping"
 exampleToSlug InjectingDependencies = "InjectingDependencies"
 exampleToSlug CompactingEvents = "CompactingEvents"
 exampleToSlug EmptyUntilFull = "EmptyUntilFull"
+exampleToSlug UseAffHook = "UseAffHook"
 exampleToSlug RunSSR = "RunSSR"
 exampleToSlug ASimpleComponent = "ASimpleComponent"
+exampleToSlug UseAffSequentialHook = "UseAffSequentialHook"
 exampleToSlug AddingSeveralElementsToPursx = "AddingSeveralElementsToPursx"
 exampleToSlug TheLemmingEvent = "TheLemmingEvent"
 exampleToSlug UseMailboxed = "UseMailboxed"
@@ -404,6 +418,7 @@ exampleToSlug PlainOldHtml = "PlainOldHtml"
 exampleToSlug UsingAnEffect = "UsingAnEffect"
 exampleToSlug KnowThySelf = "KnowThySelf"
 exampleToSlug UnsafePursx = "UnsafePursx"
+exampleToSlug UseAffWithCancellationHook = "UseAffWithCancellationHook"
 exampleToSlug TheLocalPortalSyntax = "TheLocalPortalSyntax"
 exampleToSlug UnsettingAttributes = "UnsettingAttributes"
 exampleToSlug BooleanLogicOnEvents = "BooleanLogicOnEvents"
