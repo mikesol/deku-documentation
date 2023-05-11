@@ -55,7 +55,7 @@ myVideo = D.video
 
 main :: Effect Unit
 main = runInBody Deku.do
-  portal1 myVideo \vid -> Deku.do
+    vid <- portal1 myVideo
     setSquare /\ square <- useState TL
     D.div [ klass_ "grid grid-cols-2" ]
       [ moveSpriteHere { video: vid, square, setSquare, at: TL }

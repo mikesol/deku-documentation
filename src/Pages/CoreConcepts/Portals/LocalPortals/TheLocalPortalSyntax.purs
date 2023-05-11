@@ -60,23 +60,12 @@ theLocalPortalSyntax = subsection
   , matter: pure
       [ D.p_
           [ text_
-              "Local portals look a lot like global portals with two important caveats."
-          , D.ol_
-              [ D.li_
-                  [ text_
-                      "They must be written as functions instead of using the "
-                  , D.code__ "do"
-                  , text_ " syntax with a left bind."
-                  ]
-              , D.li_
-                  [ text_
-                      "They output a additional parameter in addition to the component. We'll see what that parameter is a bit later, but for now we'll ignore it."
-                  ]
-              ]
+              "Local portals look just like global portals."
           ]
       , psCodeWithLink Examples.TheLocalPortalSyntax
       , D.p__ "This yields a similar result as the one above."
-      , portal1 myVideo \vid -> Deku.do
+      , Deku.do
+          vid <- portal1 myVideo
           setSquare /\ square <- useState TL
           D.div [klass_ "grid grid-cols-2"]
             [ moveSpriteHere { video: vid, square, setSquare, at: TL }
@@ -86,7 +75,7 @@ theLocalPortalSyntax = subsection
             ]
       , D.p_
           [ text_
-              "Aside from these differences, local portals look a lot like global ones. However, for a bit extra syntax, you get better performance. To understand why it's more performant, we'll use a slightly more involved example in the next section."
+              "The difference between local and global portals is that you get better performance from local portals with slightly less predictable runtime behavior. To understand why it's more performant, we'll use a slightly more involved example in the next section."
           ]
       ]
   }

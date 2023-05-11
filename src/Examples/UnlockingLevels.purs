@@ -85,45 +85,45 @@ main = runInBody Deku.do
     rotator Video2 = Video3
     rotator Video3 = Video4
     rotator Video4 = Video1
-  globalPortal1
+  globalVid <- globalPortal1
     ( myVideo (pure true)
         "https://media.giphy.com/media/3o6Zt6GFP75DlxnDXy/giphy.mp4"
     )
-    \globalVid -> D.div_
-      [ D.div [ klass_ "flex" ]
-          [ guard globalVideoPresence $ D.button
-              [ klass_ $ buttonClass "indigo"
-              , click $ videoURL <#> rotator >>> setVideoURL
+  D.div_
+    [ D.div [ klass_ "flex" ]
+        [ guard globalVideoPresence $ D.button
+            [ klass_ $ buttonClass "indigo"
+            , click $ videoURL <#> rotator >>> setVideoURL
+            ]
+            [ text_ "Shuffle video" ]
+        , D.button
+            [ klass_ $ buttonClass "indigo"
+            , click $ globalVideoPresence <#> not >>>
+                setGlobalVideoPresence
+            ]
+            [ text $ globalVideoPresence <#>
+                if _ then "Send this video down ->"
+                else "Bring video back up"
+            ]
+        , guard globalVideoPresence globalVid
+        ]
+    , D.div_
+        [ videoURL <#~> \v -> Deku.do
+            vid <- portal1 (myVideo globalVideoPresence (vid2URL v))
+
+            setSquare /\ square <- useState TL
+            let
+              switchable = globalVideoPresence <#~>
+                if _ then vid else globalVid
+            D.div [ klass_ "grid grid-cols-2" ]
+              [ moveSpriteHere
+                  { video: switchable, square, setSquare, at: TL }
+              , moveSpriteHere
+                  { video: switchable, square, setSquare, at: TR }
+              , moveSpriteHere
+                  { video: switchable, square, setSquare, at: BL }
+              , moveSpriteHere
+                  { video: switchable, square, setSquare, at: BR }
               ]
-              [ text_ "Shuffle video" ]
-          , D.button
-              [ klass_ $ buttonClass "indigo"
-              , click $ globalVideoPresence <#> not >>>
-                  setGlobalVideoPresence
-              ]
-              [ text $ globalVideoPresence <#>
-                  if _ then "Send this video down ->"
-                  else "Bring video back up"
-              ]
-          , guard globalVideoPresence globalVid
-          ]
-      , D.div_
-          [ videoURL <#~> \v -> portal1
-              (myVideo globalVideoPresence (vid2URL v))
-              \vid -> Deku.do
-                setSquare /\ square <- useState TL
-                let
-                  switchable = globalVideoPresence <#~>
-                    if _ then vid else globalVid
-                D.div [ klass_ "grid grid-cols-2" ]
-                  [ moveSpriteHere
-                      { video: switchable, square, setSquare, at: TL }
-                  , moveSpriteHere
-                      { video: switchable, square, setSquare, at: TR }
-                  , moveSpriteHere
-                      { video: switchable, square, setSquare, at: BL }
-                  , moveSpriteHere
-                      { video: switchable, square, setSquare, at: BR }
-                  ]
-          ]
-      ]
+        ]
+    ]

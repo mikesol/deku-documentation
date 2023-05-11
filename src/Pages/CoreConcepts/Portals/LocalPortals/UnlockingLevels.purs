@@ -32,12 +32,12 @@ moveSpriteHere
      }
   -> Nut
 moveSpriteHere { video, square, setSquare, at } = D.a
-      [ click_ (setSquare at)
-      , D.Class !:=
-          "block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
-      ]
+  [ click_ (setSquare at)
+  , D.Class !:=
+      "block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+  ]
   [ D.h5
-      [D.Class !:=
+      [ D.Class !:=
           "cursor-pointer mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
       ]
       [ text_ "Move sprite here"
@@ -53,18 +53,18 @@ vid2URL Video4 = "https://media.giphy.com/media/7T8LajxmBkz8gmYcRB/giphy.mp4"
 
 myVideo :: Event Boolean -> String -> Nut
 myVideo bang vid = D.video
-      [ D.Width !:= "175"
-      , D.Height !:= "175"
-      , D.Autoplay !:= "true"
-      , D.Loop !:= "true"
-      , D.Muted !:= "true"
-      , bang <#> \tf -> D.SelfT := \e ->
-          if not tf then pure unit
-          else do
-            let melt = toHTMLMediaElement e
-            play melt
-      ]
-  [ D.source [D.Src !:= vid]
+  [ D.Width !:= "175"
+  , D.Height !:= "175"
+  , D.Autoplay !:= "true"
+  , D.Loop !:= "true"
+  , D.Muted !:= "true"
+  , bang <#> \tf -> D.SelfT := \e ->
+      if not tf then pure unit
+      else do
+        let melt = toHTMLMediaElement e
+        play melt
+  ]
+  [ D.source [ D.Src !:= vid ]
       []
   ]
 
@@ -93,9 +93,7 @@ unlockingLevels = subsection
 
       , D.p_
           [ text_
-              "Portals from a higher scope, on the other hand, can be used in a lower scope because, by definition, for the lower scope to exist, the higher scope must still exist. However, to use portals at lower scopes, you need to pass them through a function that validates their type. This function is the right side of the tuple in the closure passed to"
-          , D.code__ "portal1"
-          , text_ "."
+              "Of course, there's no such thing as a free lunch, so you have to pay for this memory efficiency somehow. Where you pay is a slightly slower runtime API in theory. In practice, the slowdown is imperceptible."
           ]
       , D.p_
           [ text_
@@ -117,45 +115,47 @@ unlockingLevels = subsection
             rotator Video2 = Video3
             rotator Video3 = Video4
             rotator Video4 = Video1
-          globalPortal1
+          globalVid <- globalPortal1
             ( myVideo (pure true)
                 "https://media.giphy.com/media/3o6Zt6GFP75DlxnDXy/giphy.mp4"
             )
-            \globalVid -> D.div_
-              [ D.div [klass_ "flex"]
-                  [ guard globalVideoPresence $ D.button
-                        [klass_ $ buttonClass "indigo",
-                        click $ videoURL <#> rotator >>> setVideoURL]
-                      [ text_ "Shuffle video" ]
-                  , D.button
-                      [klass_ $ buttonClass "indigo",
-                        click $ globalVideoPresence <#> not >>>
-                          setGlobalVideoPresence]
-                      [ text $ globalVideoPresence <#>
-                          if _ then "Send this video down ->"
-                          else "Bring video back up"
+          D.div_
+            [ D.div [ klass_ "flex" ]
+                [ guard globalVideoPresence $ D.button
+                    [ klass_ $ buttonClass "indigo"
+                    , click $ videoURL <#> rotator >>> setVideoURL
+                    ]
+                    [ text_ "Shuffle video" ]
+                , D.button
+                    [ klass_ $ buttonClass "indigo"
+                    , click $ globalVideoPresence <#> not >>>
+                        setGlobalVideoPresence
+                    ]
+                    [ text $ globalVideoPresence <#>
+                        if _ then "Send this video down ->"
+                        else "Bring video back up"
+                    ]
+                , guard globalVideoPresence globalVid
+                ]
+            , D.div_
+                [ videoURL <#~> \v -> Deku.do
+                    vid <- portal1 (myVideo globalVideoPresence (vid2URL v))
+
+                    setSquare /\ square <- useState TL
+                    let
+                      switchable = globalVideoPresence <#~>
+                        if _ then vid else globalVid
+                    D.div [ klass_ "grid grid-cols-2" ]
+                      [ moveSpriteHere
+                          { video: switchable, square, setSquare, at: TL }
+                      , moveSpriteHere
+                          { video: switchable, square, setSquare, at: TR }
+                      , moveSpriteHere
+                          { video: switchable, square, setSquare, at: BL }
+                      , moveSpriteHere
+                          { video: switchable, square, setSquare, at: BR }
                       ]
-                  , guard globalVideoPresence globalVid
-                  ]
-              , D.div_
-                  [ videoURL <#~> \v -> portal1
-                      (myVideo globalVideoPresence (vid2URL v))
-                      \vid -> Deku.do
-                        setSquare /\ square <- useState TL
-                        let
-                          switchable = globalVideoPresence <#~>
-                            if _ then vid else globalVid
-                        D.div [klass_ "grid grid-cols-2"]
-                          [ moveSpriteHere
-                              { video: switchable, square, setSquare, at: TL }
-                          , moveSpriteHere
-                              { video: switchable, square, setSquare, at: TR }
-                          , moveSpriteHere
-                              { video: switchable, square, setSquare, at: BL }
-                          , moveSpriteHere
-                              { video: switchable, square, setSquare, at: BR }
-                          ]
-                  ]
-              ]
+                ]
+            ]
       ]
   }
