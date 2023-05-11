@@ -2,9 +2,8 @@ module Pages.CoreConcepts.Effects.Aff.TriggerAffWithCancellation where
 
 import Prelude
 
-import Components.Code (psCode, psCodeWithLink)
+import Components.Code (psCodeWithLink)
 import Components.ExampleBlockquote (exampleBlockquote)
-import Constants (tripleQ)
 import Contracts (Subsection, subsection)
 import Data.Tuple.Nested ((/\))
 import Deku.Attributes (klass_)
