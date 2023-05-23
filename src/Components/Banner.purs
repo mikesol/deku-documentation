@@ -587,8 +587,8 @@ banner { showBanner } = D.div
                                               """myButton :: Nut
 myButton =
   D.button
-    (buttonStyle <|> confettiClick)
-    [text_ "Click me" ]
+    [ buttonStyle, confettiClick ]
+    [ text_ "Click me" ]
 """
                                           ]
                                       ]
