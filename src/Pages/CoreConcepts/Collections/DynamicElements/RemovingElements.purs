@@ -8,15 +8,13 @@ import Contracts (Subsection, subsection)
 import Data.Foldable (for_, traverse_)
 import Data.Int (floor)
 import Data.String (Pattern(..), Replacement(..), replaceAll)
-import Data.Tuple (Tuple(..))
 import Data.Tuple.Nested ((/\))
 import Deku.Attribute (cb, (!:=))
 import Deku.Attributes (klass_)
 import Deku.Control (text_)
-import Deku.Core (dyn)
 import Deku.DOM as D
 import Deku.Do as Deku
-import Deku.Hooks (useDyn, useHot', useState, useState')
+import Deku.Hooks (Dyn(..), useDyn, useHot', useState, useState')
 import Deku.Listeners (click, click_, keyUp)
 import Examples as Examples
 import FRP.Event.Class ((<|*>))
@@ -51,11 +49,9 @@ removingElements = subsection
       [ D.p_
           [ text_
               "The "
-          , D.code__ "useDyn_"
-          , text_ " and "
           , D.code__ "useDyn"
           , text_
-              " hooks can be destructured to get a "
+              " hook can be destructured to get a "
           , D.code__ "remove"
           , text_
               " effect that removes the component from the collection."
@@ -103,25 +99,21 @@ removingElements = subsection
                     ]
               D.div_
                 [ top
-                , dyn
-                    $ map
-                        ( \(Tuple p t) -> Deku.do
-                            { sendTo, remove } <- useDyn p
-                            D.div_
-                              [ text_ t
-                              , D.button
-                                  [ klass_ $ "ml-2 " <> buttonClass "indigo"
-                                  , click_ (sendTo 0)
-                                  ]
-                                  [ text_ "Prioritize" ]
-                              , D.button
-                                  [ klass_ $ "ml-2 " <> buttonClass "pink"
-                                  , click_ remove
-                                  ]
-                                  [ text_ "Delete" ]
-                              ]
-                        )
-                        (Tuple <$> pos <|*> item)
+                , Deku.do
+                    { value: t, sendTo, remove } <- useDyn (Dyn <$> (const <$> pos) <|*> item)
+                    D.div_
+                      [ text_ t
+                      , D.button
+                          [ klass_ $ "ml-2 " <> buttonClass "indigo"
+                          , click_ (sendTo 0)
+                          ]
+                          [ text_ "Prioritize" ]
+                      , D.button
+                          [ klass_ $ "ml-2 " <> buttonClass "pink"
+                          , click_ remove
+                          ]
+                          [ text_ "Delete" ]
+                      ]
                 ]
           ]
       ]

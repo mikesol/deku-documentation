@@ -9,15 +9,13 @@ import Contracts (Env(..), Subsection, subsection)
 import Data.Foldable (for_, traverse_)
 import Data.Int (floor)
 import Data.String (Pattern(..), Replacement(..), replaceAll)
-import Data.Tuple (Tuple(..))
 import Data.Tuple.Nested ((/\))
 import Deku.Attribute (cb, (!:=))
 import Deku.Attributes (klass_)
 import Deku.Control (text_)
-import Deku.Core (dyn)
 import Deku.DOM as D
 import Deku.Do as Deku
-import Deku.Hooks (useDyn, useHot', useState, useState')
+import Deku.Hooks (Dyn(..), useDyn, useHot', useState, useState')
 import Deku.Listeners (click, keyUp)
 import Examples as Examples
 import FRP.Event.Class ((<|*>))
@@ -53,11 +51,20 @@ insertingInADifferentOrder = subsection
       [ D.p_
           [ text_
               "Sometimes, you want to insert elements in a particular order instead of the first element being inserted at the top of a list. There's a hook for that! Instead of "
-          , D.code__ "useDyn_"
-          , text_ " we'll use "
+          , D.code__ "useDynAtBeginning"
+          , text_ " or its homolog "
+          , D.code__ "useDynAtEnd"
+          , text_ ", we'll use plain old "
           , D.code__ "useDyn"
           , text_
-              " followed by the position at which we want to insert. In the example below, this position is controlled by a numeric input."
+              ". This hook expects an event of type "
+          , D.code__ "Dyn a"
+          , text_
+              "which is constructed from two values:"
+          , D.ul_
+              [ D.li_ [ text_ "A function from the element to the index at which to insert the element." ]
+              , D.li_ [ text_ "The element to insert." ]
+              ]
           ]
       , psCodeWithLink Examples.InsertingInADifferentOrder
       , exampleBlockquote
@@ -74,38 +81,38 @@ insertingInADifferentOrder = subsection
                 top =
                   D.div_
                     [ D.input
-                          [D.Value !:= "Tasko primo",
-                          keyUp $ pure \evt -> do
+                        [ D.Value !:= "Tasko primo"
+                        , keyUp $ pure \evt -> do
                             when (code evt == "Enter") $
                               for_
                                 ((target >=> fromEventTarget) (toEvent evt))
-                                guardAgainstEmpty,
-                          D.SelfT !:= setInput,
-                          klass_ inputKls]
+                                guardAgainstEmpty
+                        , D.SelfT !:= setInput
+                        , klass_ inputKls
+                        ]
                         []
                     , D.input
-                          [klass_ inputKls,
-                          D.Xtype !:= "number",
-                          D.Min !:= "0",
-                          D.Value !:= "0",
-                          D.OnChange !:= cb \evt ->
+                        [ klass_ inputKls
+                        , D.Xtype !:= "number"
+                        , D.Min !:= "0"
+                        , D.Value !:= "0"
+                        , D.OnChange !:= cb \evt ->
                             traverse_ (valueAsNumber >=> floor >>> setPos) $
-                              (target >=> fromEventTarget) evt]
+                              (target >=> fromEventTarget) evt
+                        ]
                         []
                     , D.button
-                         [click $ input <#> guardAgainstEmpty,
-                          klass_ $ buttonClass "green"]
+                        [ click $ input <#> guardAgainstEmpty
+                        , klass_ $ buttonClass "green"
+                        ]
                         [ text_ "Add" ]
                     ]
               D.div_
                 [ top
-                , dyn
-                    $ map
-                        ( \(Tuple p t) -> Deku.do
-                            _ <- useDyn p
-                            D.div_ [ text_ t ]
-                        )
-                        (Tuple <$> pos <|*> item)
+                , Deku.do
+                    { value: t } <- useDyn
+                      (Dyn <$> (const <$> pos) <|*> item)
+                    D.div_ [ text_ t ]
                 ]
           ]
       , proTip
