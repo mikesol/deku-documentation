@@ -11,10 +11,9 @@ import Data.Tuple.Nested ((/\))
 import Deku.Attribute ((!:=))
 import Deku.Attributes (klass_)
 import Deku.Control (text_)
-import Deku.Core (dyn)
 import Deku.DOM as D
 import Deku.Do as Deku
-import Deku.Hooks (useDyn_, useHot', useState')
+import Deku.Hooks (useDynAtBeginning, useHot', useState')
 import Deku.Listeners (click, keyUp)
 import Examples as Examples
 import Router.ADT (Route(..))
@@ -47,29 +46,14 @@ theUseDynHook = subsection
   { title: "The useDyn hook"
   , matter: \(Env { routeLink }) ->
       [ D.p_
-          [ text_ "To render dynamic components you'll need to do two things."
+          [ text_
+              "To render dynamic components with the most recent component appearing at the top of a collection, look no further then the "
+          , D.code__ "useDynAtBeginning"
+          , text_ " hook. The hook takes an event outputs a value called "
+          , D.code__ "value"
+          , text_
+              " that can be used to render the most recent component. Here's an example:"
           ]
-      , D.ol_
-          [ D.li_
-              [ text_ "Call the "
-              , D.code__ "dyn"
-              , text_
-                  " function at the place you want a dynamic component. This will create space for the component in the DOM."
-              ]
-          , D.li_
-              [ text_
-                  "Provide the "
-              , D.code__ "dyn"
-              , text_ " function an "
-              , D.code__ "Event"
-              , text_ " of components that start with a "
-              , D.code__ "useDyn_"
-              , text_ " or "
-              , D.code__ "useDyn"
-              , text_ "directive."
-              ]
-          ]
-      , D.p__ "Let's see some code!"
       , psCodeWithLink Examples.UseDyn
       , D.p__ "And here's the result."
       , exampleBlockquote
@@ -103,13 +87,9 @@ theUseDynHook = subsection
                     ]
               D.div_
                 [ top
-                , dyn
-                    $ map
-                        ( \t -> Deku.do
-                            _ <- useDyn_
-                            D.div_ [ text_ t ]
-                        )
-                        item
+                , Deku.do
+                    { value: t } <- useDynAtBeginning item
+                    D.div_ [ text_ t ]
                 ]
           ]
       , D.p_

@@ -10,7 +10,6 @@ import Control.Lazy (fix)
 import Data.Tuple.Nested ((/\))
 import Deku.Attributes (klass_)
 import Deku.Control (text_, (<#~>))
-import Deku.Core (dyn)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useDyn, useMailboxed, useState)
@@ -115,10 +114,8 @@ myFunction = fix (\f a -> if a > 100 then 100 else f (a + 1))
           , Deku.do
               setElt /\ elt <- useState 0
               disactivatePreviousElt /\ previousElt <- useMailboxed
-              dyn $ elt <#> \v ->
-                Deku.do
-                  _ <- useDyn (v + 1)
-                  (pure true <|> (previousElt v $> false)) <#~> do
+              { value: v } <- useDyn ((\i -> (i + 1) /\ i) <$> elt)  
+              (pure true <|> (previousElt v $> false)) <#~> do
                     let
                       t = case v of
                         10 ->

@@ -2,16 +2,15 @@ module Examples.UseDyn where
 
 import Prelude
 
-import Data.String (Pattern(..), Replacement(..), replaceAll)
 import Data.Foldable (for_)
+import Data.String (Pattern(..), Replacement(..), replaceAll)
 import Data.Tuple.Nested ((/\))
 import Deku.Attribute ((!:=))
 import Deku.Attributes (klass_)
 import Deku.Control (text_)
-import Deku.Core (dyn)
 import Deku.DOM as D
 import Deku.Do as Deku
-import Deku.Hooks (useDyn_, useHot', useState')
+import Deku.Hooks (useDynAtBeginning, useHot', useState')
 import Deku.Listeners (click, keyUp)
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
@@ -72,7 +71,7 @@ main = runInBody Deku.do
         ]
   D.div_
     [ top
-    , dyn $ item <#> \t -> Deku.do
-        _ <- useDyn_
+    , Deku.do
+        { value: t } <- useDynAtBeginning item
         D.div_ [ text_ t ]
     ]

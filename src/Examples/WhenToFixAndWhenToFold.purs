@@ -5,10 +5,9 @@ import Prelude
 import Data.Tuple.Nested ((/\))
 import Deku.Attributes (klass_)
 import Deku.Control (text_, text, (<#~>))
-import Deku.Core (dyn)
 import Deku.DOM as D
 import Deku.Do as Deku
-import Deku.Hooks (useDyn_, useState')
+import Deku.Hooks (useDynAtBeginning, useState')
 import Deku.Listeners (click_)
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
@@ -37,16 +36,16 @@ main = runInBody Deku.do
             ]
         ]
     , switch <#~> \_ -> D.div [ klass_ "h-24 overflow-y-scroll" ]
-        [ dyn
-            ( fix
-                ( \e -> Alt.do
-                    keepLatest $ e <#> \n ->
-                      (delay <*> pure)
-                        if n >= 375 then 15 else n + 15
-                    pure 0
-                ) <#> \_ -> Deku.do
-                _ <- useDyn_
-                text_ "•​"
-            )
+        [ Deku.do
+            _ <- useDynAtBeginning
+              ( fix
+                  ( \e -> Alt.do
+                      keepLatest $ e <#> \n ->
+                        (delay <*> pure)
+                          if n >= 375 then 15 else n + 15
+                      pure 0
+                  )
+              )
+            text_ "•​"
         ]
     ]

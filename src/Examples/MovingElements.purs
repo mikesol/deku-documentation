@@ -10,7 +10,6 @@ import Data.Tuple.Nested ((/\))
 import Deku.Attribute (cb, (!:=))
 import Deku.Attributes (klass_)
 import Deku.Control (text_)
-import Deku.Core (dyn)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useDyn, useHot', useState, useState')
@@ -84,18 +83,15 @@ main = runInBody Deku.do
         ]
   D.div_
     [ top
-    , dyn
-        $ map
-            ( \(Tuple p t) -> Deku.do
-                { sendTo } <- useDyn p
-                D.div_
-                  [ text_ t
-                  , D.button
-                      [ klass_ $ "ml-2 " <> buttonClass "indigo"
-                      , click_ (sendTo 0)
-                      ]
-                      [ text_ "Prioritize" ]
-                  ]
-            )
-            (Tuple <$> pos <|*> item)
+    , Deku.do
+        { value: t, sendTo } <- useDyn
+          (Tuple <$> pos <|*> item)
+        D.div_
+          [ text_ t
+          , D.button
+              [ klass_ $ "ml-2 " <> buttonClass "indigo"
+              , click_ (sendTo 0)
+              ]
+              [ text_ "Prioritize" ]
+          ]
     ]

@@ -13,7 +13,6 @@ import Data.Tuple.Nested ((/\))
 import Deku.Attribute (cb, (!:=))
 import Deku.Attributes (klass_)
 import Deku.Control (text_)
-import Deku.Core (dyn)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useDyn, useHot', useState, useState')
@@ -51,11 +50,9 @@ movingElements = subsection
       [ D.p_
           [ text_
               "The "
-          , D.code__ "useDyn_"
-          , text_ " and "
           , D.code__ "useDyn"
           , text_
-              " hooks can be destructured to get some useful methods. In this section, we'll see how the "
+              " hook can be destructured to get some useful methods. In this section, we'll see how the "
           , D.code__ "sendTo"
           , text_
               " function moves an element of a dynamic list to a different position."
@@ -103,20 +100,17 @@ movingElements = subsection
                     ]
               D.div_
                 [ top
-                , dyn
-                    $ map
-                        ( \(Tuple p t) -> Deku.do
-                            { sendTo } <- useDyn p
-                            D.div_
-                              [ text_ t
-                              , D.button
-                                  [ klass_ $ "ml-2 " <> buttonClass "indigo"
-                                  , click_ (sendTo 0)
-                                  ]
-                                  [ text_ "Prioritize" ]
-                              ]
-                        )
-                        (Tuple <$> pos <|*> item)
+                , Deku.do
+                    { value: t, sendTo } <- useDyn
+                      (Tuple <$> pos <|*> item)
+                    D.div_
+                      [ text_ t
+                      , D.button
+                          [ klass_ $ "ml-2 " <> buttonClass "indigo"
+                          , click_ (sendTo 0)
+                          ]
+                          [ text_ "Prioritize" ]
+                      ]
                 ]
           ]
       , D.p_

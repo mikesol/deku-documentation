@@ -10,7 +10,6 @@ import Data.Tuple.Nested ((/\))
 import Deku.Attribute (cb, (!:=))
 import Deku.Attributes (klass_)
 import Deku.Control (text_)
-import Deku.Core (dyn)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useDyn, useHot', useState, useState')
@@ -84,11 +83,8 @@ main = runInBody Deku.do
         ]
   D.div_
     [ top
-    , dyn
-        $ map
-            ( \(Tuple p t) -> Deku.do
-                _ <- useDyn p
-                D.div_ [ text_ t ]
-            )
-            (Tuple <$> pos <|*> item)
+    , Deku.do
+        { value: t } <- useDyn
+          (Tuple <$> pos <|*> item)
+        D.div_ [ text_ t ]
     ]

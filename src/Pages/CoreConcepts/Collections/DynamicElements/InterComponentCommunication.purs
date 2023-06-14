@@ -13,15 +13,12 @@ import Data.Tuple.Nested ((/\))
 import Deku.Attribute (cb, (!:=))
 import Deku.Attributes (klass_)
 import Deku.Control (text_)
-import Deku.Core (dyn)
-import Deku.Core as Core
 import Deku.DOM as D
 import Deku.Do as Deku
-import Deku.Hooks (useDyn, useHot', useState, useState')
+import Deku.Hooks (useDyn, useEffect, useHot', useState, useState')
 import Deku.Listeners (click, click_, keyUp)
 import Examples as Examples
 import FRP.Event.Class ((<|*>))
-import QualifiedDo.Alt as Alt
 import Router.ADT (Route(..))
 import Web.Event.Event (target)
 import Web.HTML (window)
@@ -62,15 +59,9 @@ interComponentCommunication = subsection
           , text_ "s and not "
           , D.code__ "Event"
           , text_
-              "s, we can only use them in a listener. If we want to use them in conjunction with a hook, like for example using a hook to delete all items, we need to "
-          , D.code__ "alt"
-          , text_ " our component with an event that contains either "
-          , D.code__ "sendToPos"
-          , text_ " and "
-          , D.code__ "remove"
-          , text_ " from the module "
-          , D.code__ "Deku.Core"
-          , text_ "."
+              "s, we can only use them in a listener. If we want to use them in conjunction with a hook, like for example using a hook to delete all items, we need to use the "
+          , D.code__ "useEffect"
+          , text_ " hook that you'll learn about a bit later."
           ]
       , psCodeWithLink Examples.InterComponentCommunication
       , exampleBlockquote
@@ -116,32 +107,28 @@ interComponentCommunication = subsection
                     ]
               D.div_
                 [ top
-                , dyn
-                    $ map
-                        ( \(Tuple p t) -> Alt.do
-                            removeAll $> Core.remove
-                            Deku.do
-                              { sendTo, remove } <- useDyn p
-                              D.div_
-                                [ text_ t
-                                , D.button
-                                    [ klass_ $ "ml-2 " <> buttonClass "indigo"
-                                    , click_ (sendTo 0)
-                                    ]
-                                    [ text_ "Prioritize" ]
-                                , D.button
-                                    [ klass_ $ "ml-2 " <> buttonClass "pink"
-                                    , click_ remove
-                                    ]
-                                    [ text_ "Delete" ]
-                                , D.button
-                                    [ klass_ $ "ml-2 " <> buttonClass "fuchsia"
-                                    , click_ (setRemoveAll unit)
-                                    ]
-                                    [ text_ "Remove all" ]
-                                ]
-                        )
-                        (Tuple <$> pos <|*> item)
+                , Deku.do
+                    { value: t, sendTo, remove } <- useDyn
+                      (Tuple <$> pos <|*> item)
+                    useEffect removeAll (const remove)
+                    D.div_
+                      [ text_ t
+                      , D.button
+                          [ klass_ $ "ml-2 " <> buttonClass "indigo"
+                          , click_ (sendTo 0)
+                          ]
+                          [ text_ "Prioritize" ]
+                      , D.button
+                          [ klass_ $ "ml-2 " <> buttonClass "pink"
+                          , click_ remove
+                          ]
+                          [ text_ "Delete" ]
+                      , D.button
+                          [ klass_ $ "ml-2 " <> buttonClass "fuchsia"
+                          , click_ (setRemoveAll unit)
+                          ]
+                          [ text_ "Remove all" ]
+                      ]
                 ]
           ]
       , D.p_
