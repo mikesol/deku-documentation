@@ -9,13 +9,14 @@ import Contracts (Env(..), Subsection, subsection)
 import Data.Foldable (for_, traverse_)
 import Data.Int (floor)
 import Data.String (Pattern(..), Replacement(..), replaceAll)
+import Data.Tuple (Tuple(..))
 import Data.Tuple.Nested ((/\))
 import Deku.Attribute (cb, (!:=))
 import Deku.Attributes (klass_)
 import Deku.Control (text_)
 import Deku.DOM as D
 import Deku.Do as Deku
-import Deku.Hooks (Dyn(..), useDyn, useHot', useState, useState')
+import Deku.Hooks (useDyn, useHot', useState, useState')
 import Deku.Listeners (click, keyUp)
 import Examples as Examples
 import FRP.Event.Class ((<|*>))
@@ -58,11 +59,11 @@ insertingInADifferentOrder = subsection
           , D.code__ "useDyn"
           , text_
               ". This hook expects an event of type "
-          , D.code__ "Dyn a"
+          , D.code__ "Tuple Int a"
           , text_
               "which is constructed from two values:"
-          , D.ul_
-              [ D.li_ [ text_ "A function from the element to the index at which to insert the element." ]
+          , D.ol_
+              [ D.li_ [ text_ "An index at which to insert the element; and" ]
               , D.li_ [ text_ "The element to insert." ]
               ]
           ]
@@ -111,7 +112,7 @@ insertingInADifferentOrder = subsection
                 [ top
                 , Deku.do
                     { value: t } <- useDyn
-                      (Dyn <$> (const <$> pos) <|*> item)
+                      (Tuple <$> pos <|*> item)
                     D.div_ [ text_ t ]
                 ]
           ]

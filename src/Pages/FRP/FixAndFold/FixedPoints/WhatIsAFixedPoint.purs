@@ -12,7 +12,7 @@ import Deku.Attributes (klass_)
 import Deku.Control (text_, (<#~>))
 import Deku.DOM as D
 import Deku.Do as Deku
-import Deku.Hooks (useDyn, useMailboxed, useState, (//\\))
+import Deku.Hooks (useDyn, useMailboxed, useState)
 import Deku.Listeners (click_)
 
 whatIsAFixedPoint :: Subsection
@@ -114,7 +114,7 @@ myFunction = fix (\f a -> if a > 100 then 100 else f (a + 1))
           , Deku.do
               setElt /\ elt <- useState 0
               disactivatePreviousElt /\ previousElt <- useMailboxed
-              { value: v } <- useDyn (((_ + 1) //\\ _) <$> elt)  
+              { value: v } <- useDyn ((\i -> (i + 1) /\ i) <$> elt)  
               (pure true <|> (previousElt v $> false)) <#~> do
                     let
                       t = case v of

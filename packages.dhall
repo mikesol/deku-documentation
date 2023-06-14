@@ -15,7 +15,7 @@ in  upstream
       [ "bolson", "stringutils", "css", "free", "fast-vect"
       ]
     , repo = "https://github.com/mikesol/purescript-deku.git"
-    , version = "useDyn"
+    , version = "v0.9.23"
     }
 with tidy =
     { dependencies =
