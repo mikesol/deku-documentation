@@ -11,8 +11,7 @@ import Effect (Effect)
 main :: Effect Unit
 main = runInBody mySimpleComponent
   where
-  -- `Nut` is an alias for the type of Deku components
-  -- type Nut =  Nut
+  -- `Nut` is the type of Deku components
   mySimpleComponent :: Nut
   mySimpleComponent =
     D.div_
