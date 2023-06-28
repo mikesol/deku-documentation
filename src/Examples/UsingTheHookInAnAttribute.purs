@@ -43,7 +43,7 @@ main = runInBody Deku.do
         [ text_ "Switch href" ]
     , D.button
         [ klass_ $ buttonClass "green"
-        , click $ hrefSwitch <#> not >>> setStyleSwitch
+        , click $ styleSwitch <#> not >>> setStyleSwitch
         ]
         [ text_ "Switch style" ]
     ]
