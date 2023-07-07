@@ -3,7 +3,6 @@ module Pages.CoreConcepts.MoreHooks.UseMailboxed.AMailboxingApp where
 import Prelude
 
 import Contracts (Env(..), Subsection, subsection)
-import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.DOM as D
 import Router.ADT (Route(..))

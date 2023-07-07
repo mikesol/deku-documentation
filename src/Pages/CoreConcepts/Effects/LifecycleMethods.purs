@@ -4,7 +4,6 @@ import Prelude
 
 import Contracts (Section, section)
 import Deku.Control (text_)
-import Deku.Attribute ((!:=))
 import Deku.DOM as D
 import Pages.CoreConcepts.Effects.LifecycleMethods.EffectsOnTeardown (effectsOnTeardown)
 import Pages.CoreConcepts.Effects.LifecycleMethods.EffectsOnInitialization (effectsOnInitialization)

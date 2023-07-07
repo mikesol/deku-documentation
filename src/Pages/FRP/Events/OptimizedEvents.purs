@@ -3,7 +3,6 @@ module Pages.FRP.Events.OptimizedEvents where
 import Prelude
 
 import Contracts (Section, section)
-import Control.Alt ((<|>))
 import Deku.Attribute ((!:=))
 import Deku.Attributes (href_)
 import Deku.Control (text_)

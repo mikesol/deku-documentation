@@ -12,7 +12,6 @@ import Deku.DOM as D
 import Examples as Examples
 import Pages.CoreConcepts.Components.AddingAttributes.ASingleAttribute (aSingleAttribute)
 import Pages.CoreConcepts.Components.AddingAttributes.RemovingTheUnderscore (removingTheUnderscore)
-import Pages.CoreConcepts.Components.AddingAttributes.SeveralAttributes (severalAttributes)
 import Pages.CoreConcepts.Components.AddingAttributes.UsefulShorthand (usefulShorthand)
 
 addingAttributes :: Section

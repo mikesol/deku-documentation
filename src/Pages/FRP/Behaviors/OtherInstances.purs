@@ -3,8 +3,6 @@ module Pages.FRP.Behaviors.OtherInstances where
 import Prelude
 
 import Contracts (Section, section)
-import Deku.Attribute ((!:=))
-import Deku.Control (text_)
 import Deku.DOM as D
 import Deku.Pursx ((~~))
 import Pages.FRP.Behaviors.OtherInstances.BehaviorsAsHeytingAlgebras (behaviorsAsHeytingAlgebras)

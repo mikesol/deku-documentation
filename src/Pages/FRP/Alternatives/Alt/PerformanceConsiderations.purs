@@ -4,11 +4,8 @@ import Prelude
 
 import Components.Code (psCode)
 import Contracts (Subsection, subsection)
-import Data.Traversable (sequence_, traverse)
-import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.DOM as D
-import FRP.Event (Event, makeLemmingEvent)
 
 performanceConsiderations :: Subsection
 performanceConsiderations = subsection

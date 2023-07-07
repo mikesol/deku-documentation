@@ -4,11 +4,9 @@ import Prelude
 
 import Contracts (Section, section)
 import Deku.Control (text_)
-import Deku.Attribute ((!:=))
 import Deku.DOM as D
 import Pages.FRP.Behaviors.Definition.TheBehaviorType (theBehaviorType)
 import Pages.FRP.Behaviors.Definition.BehaviorsVersusFlapping (behaviorsVersusFlapping)
-import Pages.FRP.Behaviors.Definition.BehaviorsAndYoneda (behaviorsAndYoneda)
 
 definition :: Section
 definition = section

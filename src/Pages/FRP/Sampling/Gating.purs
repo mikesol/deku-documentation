@@ -3,7 +3,6 @@ module Pages.FRP.Sampling.Gating where
 import Prelude
 
 import Contracts (Env(..), Section, section)
-import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.DOM as D
 import Pages.FRP.Sampling.Gating.GatingEventsOnBehaviors (gatingEventsOnBehaviors)

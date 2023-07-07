@@ -4,7 +4,6 @@ import Prelude
 
 import Components.TargetedLink (targetedLink)
 import Contracts (Section, section)
-import Control.Alt ((<|>))
 import Deku.Attribute ((!:=))
 import Deku.Attributes (href_)
 import Deku.Control (text_)
