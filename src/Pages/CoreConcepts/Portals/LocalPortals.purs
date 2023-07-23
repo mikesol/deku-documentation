@@ -4,9 +4,7 @@ import Prelude
 
 import Contracts (Section, section)
 import Deku.Control (text_)
-import Deku.Attribute ((!:=))
 import Deku.DOM as D
-import Pages.CoreConcepts.Portals.LocalPortals.TheLocalPortalResult (theLocalPortalResult)
 import Pages.CoreConcepts.Portals.LocalPortals.PerformanceNotes (performanceNotes)
 import Pages.CoreConcepts.Portals.LocalPortals.TheLocalPortalSyntax (theLocalPortalSyntax)
 import Pages.CoreConcepts.Portals.LocalPortals.UnlockingLevels (unlockingLevels)

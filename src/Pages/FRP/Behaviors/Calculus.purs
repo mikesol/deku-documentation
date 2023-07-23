@@ -4,10 +4,8 @@ import Prelude
 
 import Contracts (Section, section)
 import Deku.Control (text_)
-import Deku.Attribute ((!:=))
 import Deku.DOM as D
 import Pages.FRP.Behaviors.Calculus.IntegratingBehaviors (integratingBehaviors)
-import Pages.FRP.Behaviors.Calculus.BehaviorsAsContinuousFunctionsOfTime (behaviorsAsContinuousFunctionsOfTime)
 import Pages.FRP.Behaviors.Calculus.DerivingBehaviors (derivingBehaviors)
 import Pages.FRP.Behaviors.Calculus.SolvingDifferentialEquations (solvingDifferentialEquations)
 

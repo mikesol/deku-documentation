@@ -4,7 +4,6 @@ import Prelude
 
 import Contracts (Section, section)
 import Deku.Control (text_)
-import Deku.Attribute ((!:=))
 import Deku.DOM as D
 import Pages.AdvancedUsage.SSR.HydratingAStaticSite.TheHydrateFunction (theHydrateFunction)
 import Pages.AdvancedUsage.SSR.HydratingAStaticSite.Determinism (determinism)

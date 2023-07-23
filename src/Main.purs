@@ -16,7 +16,6 @@ import Data.Map as Map
 import Data.Maybe (Maybe(..), maybe)
 import Data.Show.Generic (genericShow)
 import Data.Tuple (Tuple(..), curry, fst, snd, uncurry)
-import Debug (spy)
 import Deku.Core (envy)
 import Deku.Do as Deku
 import Deku.Toplevel (runInBody)

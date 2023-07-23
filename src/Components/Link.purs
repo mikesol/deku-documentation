@@ -3,7 +3,6 @@ module Components.Link where
 import Prelude
 
 import Contracts (Chapter(..), Page(..))
-import Control.Alt ((<|>))
 import Data.Foldable (oneOf)
 import Deku.Attribute (Attribute, cb, (!:=))
 import Deku.Control (text_)

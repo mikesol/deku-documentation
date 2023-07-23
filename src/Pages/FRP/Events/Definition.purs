@@ -4,11 +4,9 @@ import Prelude
 
 import Contracts (Section, section)
 import Deku.Control (text_)
-import Deku.Attribute ((!:=))
 import Deku.DOM as D
 import Pages.FRP.Events.Definition.SubscriptionAndUnsubscriptionEffects (subscriptionAndUnsubscriptionEffects)
 import Pages.FRP.Events.Definition.TheTypeAndContract (theTypeAndContract)
-import Pages.FRP.Events.Definition.ContuationPassingStyle (contuationPassingStyle)
 
 definition :: Section
 definition = section

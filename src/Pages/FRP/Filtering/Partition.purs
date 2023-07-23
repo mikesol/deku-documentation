@@ -8,7 +8,6 @@ import Deku.Attribute ((!:=))
 import Deku.DOM as D
 import Pages.FRP.Filtering.Partition.PerformanceConsiderations (performanceConsiderations)
 import Pages.FRP.Filtering.Partition.PartitioningAnEvent (partitioningAnEvent)
-import Pages.FRP.Filtering.Partition.MultiPartitioning (multiPartitioning)
 
 partition :: Section
 partition = section

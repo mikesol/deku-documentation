@@ -3,8 +3,6 @@ module Pages.FRP.Behaviors.OtherInstances.BehaviorsAsRings where
 import Prelude
 
 import Contracts (Subsection, subsection)
-import Deku.Control (text_)
-import Deku.Attribute ((!:=))
 import Deku.DOM as D
 import Contracts (Subsection, subsection)
 import Deku.DOM as D

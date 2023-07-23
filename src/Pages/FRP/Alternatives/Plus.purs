@@ -4,7 +4,6 @@ import Prelude
 
 import Contracts (Section, section)
 import Deku.Control (text_)
-import Deku.Attribute ((!:=))
 import Deku.DOM as D
 import Pages.FRP.Alternatives.Plus.LawfullyAlternative (lawfullyAlternative)
 import Pages.FRP.Alternatives.Plus.Emptiness (emptiness)

@@ -4,7 +4,6 @@ import Prelude
 
 import Components.TargetedLink (targetedLink)
 import Contracts (Env(..), Subsection, subsection)
-import Deku.Attribute ((!:=))
 import Deku.Control (text_, (<#~>))
 import Deku.DOM as D
 import Effect.Random (random)

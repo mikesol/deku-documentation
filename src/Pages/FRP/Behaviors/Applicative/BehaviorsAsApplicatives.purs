@@ -4,7 +4,6 @@ import Prelude
 
 import Components.Code (psCode)
 import Contracts (Subsection, subsection)
-import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.DOM as D
 

@@ -3,7 +3,6 @@ module Pages.AdvancedUsage.AccessingTheDOM.TheSelfAttribute where
 import Prelude
 
 import Contracts (Section, section)
-import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.DOM as D
 import Pages.AdvancedUsage.AccessingTheDOM.TheSelfAttribute.KnowThySelf (knowThySelf)

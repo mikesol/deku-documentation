@@ -3,7 +3,6 @@ module Pages.CoreConcepts.Effects.Hydration.AnAlternativeEffectModel where
 import Prelude
 
 import Contracts (Subsection, subsection)
-import Deku.Attribute ((!:=))
 import Deku.Attributes (klass_)
 import Deku.Control (text_)
 import Deku.DOM as D

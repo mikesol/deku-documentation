@@ -3,7 +3,6 @@ module Pages.FRP.Alternatives.Plus.LawfullyAlternative where
 import Prelude
 
 import Contracts (Env(..), Subsection, subsection)
-import Deku.Attribute ((!:=))
 import Deku.Attributes (klass_)
 import Deku.Control (text_)
 import Deku.DOM as D
