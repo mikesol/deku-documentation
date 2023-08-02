@@ -25,8 +25,8 @@ apne (a' :| as') (b' :| bs') = a' b' :| (as' <*> bs')
 
 infixl 4 apne as <**>
 
-main :: ExampleSignature
-main runExample = runExample Deku.do
+app :: ExampleSignature
+app runExample = runExample Deku.do
   aa <- useState true
   bb <- useState false
   cc <- useState true

@@ -15,8 +15,8 @@ import Deku.Listeners (click)
 
 import FRP.Behavior (stepNE, (>@=))
 
-main :: ExampleSignature
-main runExample = runExample Deku.do
+app :: ExampleSignature
+app runExample = runExample Deku.do
   setIncrementer /\ incrementer <- useState'
   setGoodbye /\ goodbye <- useState true
   D.div_

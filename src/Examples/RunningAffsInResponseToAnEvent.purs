@@ -16,8 +16,8 @@ import Effect.Aff (launchAff_)
 import Effect.Class (liftEffect)
 import Fetch (Method(..), fetch)
 
-main :: ExampleSignature
-main runExample = runExample Deku.do
+app :: ExampleSignature
+app runExample = runExample Deku.do
   setResponse /\ response <- useState'
   D.div_
     [ D.a

@@ -11,8 +11,8 @@ import Effect.Random (random)
 import FRP.Behavior (behavior, sample)
 import FRP.Event.Time (interval)
 
-main :: ExampleSignature
-main runExample = do
+app :: ExampleSignature
+app runExample = do
   i <- interval 250
   runExample do
     text

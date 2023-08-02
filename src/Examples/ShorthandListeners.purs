@@ -9,6 +9,6 @@ import Deku.Listeners (slider)
 
 import Effect.Class.Console (logShow)
 
-main :: ExampleSignature
-main runExample = runExample
+app :: ExampleSignature
+app runExample = runExample
   (D.input (slider logShow) [])

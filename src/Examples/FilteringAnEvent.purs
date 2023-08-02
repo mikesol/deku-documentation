@@ -13,8 +13,8 @@ import Deku.Do as Deku
 import Deku.Hooks (useState)
 import Deku.Listeners (slider)
 
-main :: ExampleSignature
-main runExample = runExample Deku.do
+app :: ExampleSignature
+app runExample = runExample Deku.do
   setNumber /\ number <- useState 50.0
   D.div_
     [ D.input (slider setNumber) []

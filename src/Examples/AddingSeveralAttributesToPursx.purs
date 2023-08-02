@@ -55,8 +55,8 @@ myHtml =
 </nav>"""
   )
 
-main :: ExampleSignature
-main runExample = runExample Deku.do
+app :: ExampleSignature
+app runExample = runExample Deku.do
   setProjects /\ projects <- useState true
   setNero /\ nero <- useState true
   let

@@ -18,8 +18,8 @@ import Web.DOM.Element (toParentNode)
 import Web.DOM.HTMLCollection as HTMLCollection
 import Web.DOM.ParentNode (children)
 
-main :: ExampleSignature
-main runExample = runExample Deku.do
+app :: ExampleSignature
+app runExample = runExample Deku.do
   setLength /\ length <- useState'
   D.div
     [ D.Self := \e -> launchAff_ do

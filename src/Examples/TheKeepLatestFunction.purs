@@ -11,8 +11,8 @@ import FRP.Event (fold, keepLatest)
 import FRP.Event.Class (once)
 import FRP.Event.Time (interval)
 
-main :: ExampleSignature
-main runExample = do
+app :: ExampleSignature
+app runExample = do
   i0 <- interval 1600
   i1 <- interval 600
   runExample do

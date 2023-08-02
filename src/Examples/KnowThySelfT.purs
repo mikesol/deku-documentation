@@ -23,8 +23,8 @@ border-solid
 focus:border-indigo-500 focus:ring-indigo-500
 sm:text-sm """
 
-main :: ExampleSignature
-main runExample = runExample Deku.do
+app :: ExampleSignature
+app runExample = runExample Deku.do
   setTxt /\ txt <- useState'
   setInput /\ input <- useState'
   D.div_

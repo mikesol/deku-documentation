@@ -83,8 +83,8 @@ focus:ring-COLOR-500 focus:ring-offset-2"""
 
 data WhichVideo = Video1 | Video2 | Video3 | Video4
 
-main :: ExampleSignature
-main runExample = runExample Deku.do
+app :: ExampleSignature
+app runExample = runExample Deku.do
   setVideoURL /\ videoURL <- useState Video1
   setGlobalVideoPresence /\ globalVideoPresence <- useState true
   let

@@ -11,7 +11,7 @@ import Type.Proxy (Proxy(..))
 
 data MyNiftyAnchor_
 
-main :: ExampleSignature
-main runExample = runExample do
+app :: ExampleSignature
+app runExample = runExample do
   unsafeCustomElement "a" (Proxy :: _ MyNiftyAnchor_) []
     [ text "hi" ]

@@ -15,8 +15,8 @@ import Deku.Listeners (slider)
 
 import FRP.Event.Class ((<**|>))
 
-main :: ExampleSignature
-main runExample = runExample Deku.do
+app :: ExampleSignature
+app runExample = runExample Deku.do
   setSlider1 /\ slider1 <- useState'
   setSlider2 /\ slider2 <- useState'
   fixed

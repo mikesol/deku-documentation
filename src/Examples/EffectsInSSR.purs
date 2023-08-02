@@ -32,7 +32,7 @@ myApp s = Deku.do
     , htmlCode s
     ]
 
-main :: ExampleSignature
-main runExample = do
+app :: ExampleSignature
+app runExample = do
   res <- liftST $ runSSR (myApp "innnceeeppption")
   runExample (myApp res)

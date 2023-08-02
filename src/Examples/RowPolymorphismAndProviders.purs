@@ -59,8 +59,8 @@ newtype Env = Env
 
 derive instance Newtype (Env) _
 
-main :: ExampleSignature
-main runExample = runExample Deku.do
+app :: ExampleSignature
+app runExample = runExample Deku.do
   let
     cont = do
       lg <- libGreat

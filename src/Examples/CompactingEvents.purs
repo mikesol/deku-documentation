@@ -18,8 +18,8 @@ import Deku.Listeners (slider)
 
 import FRP.Event (Event)
 
-main :: ExampleSignature
-main runExample = runExample Deku.do
+app :: ExampleSignature
+app runExample = runExample Deku.do
   setLeft /\ left <- useState'
   setRight /\ right <- useState'
   let

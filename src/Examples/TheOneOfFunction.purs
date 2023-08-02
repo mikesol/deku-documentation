@@ -13,8 +13,8 @@ import Deku.Control (text)
 import FRP.Event (delay, filterMap)
 import FRP.Event.Time (interval)
 
-main :: ExampleSignature
-main runExample = do
+app :: ExampleSignature
+app runExample = do
   let
     ms = 967
     loop = 16 * ms

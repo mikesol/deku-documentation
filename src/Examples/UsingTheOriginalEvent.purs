@@ -14,8 +14,8 @@ import Web.Event.Event (type_)
 import Web.HTML (window)
 import Web.HTML.Window (alert)
 
-main :: ExampleSignature
-main runExample = runExample
+app :: ExampleSignature
+app runExample = runExample
   ( D.span
       [ D.OnClick := cb \e -> do
           window >>= alert (unwrap (type_ e))

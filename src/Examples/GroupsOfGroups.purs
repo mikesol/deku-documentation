@@ -30,8 +30,8 @@ data AlexandersDay = Bad | Worse | Worst
 derive instance Eq AlexandersDay
 derive instance Ord AlexandersDay
 
-main :: ExampleSignature
-main runExample = runExample Deku.do
+app :: ExampleSignature
+app runExample = runExample Deku.do
   setBadness /\ badness <- useState Bad
   D.div_
     [ D.div [ klass "flex justify-between" ]

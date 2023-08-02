@@ -18,8 +18,8 @@ import FRP.Behavior (behavior, sample_)
 import FRP.Event.Time (interval)
 import Fetch (Method(..))
 
-main :: ExampleSignature
-main runExample = do
+app :: ExampleSignature
+app runExample = do
   i <- interval 2000
   runExample do
     text

@@ -16,8 +16,8 @@ import Effect.Aff (joinFiber, launchAff, try)
 import Effect.Class (liftEffect)
 import Fetch (Method(..), fetch)
 
-main :: ExampleSignature
-main runExample = runExample Deku.do
+app :: ExampleSignature
+app runExample = runExample Deku.do
   setResponse /\ response <- useState'
   setFiber /\ fiber <- useState (pure unit)
   D.div_

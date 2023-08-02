@@ -6,5 +6,5 @@ import ExampleAssitant (ExampleSignature)
 
 import Deku.Control (text)
 
-main :: ExampleSignature
-main runExample = runExample (text "Hello world")
+app :: ExampleSignature
+app runExample = runExample (text "Hello world")

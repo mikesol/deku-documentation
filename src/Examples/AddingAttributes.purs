@@ -9,8 +9,8 @@ import Deku.Attributes (klass)
 import Deku.Control (text)
 import Deku.DOM as D
 
-main :: ExampleSignature
-main runExample = runExample
+app :: ExampleSignature
+app runExample = runExample
   ( D.div_
       [ D.span
           [ D.Style := "color:teal;" ]

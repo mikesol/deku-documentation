@@ -58,8 +58,8 @@ toWord 11 = "eleventh"
 toWord 12 = "twelfth"
 toWord _ = "nth"
 
-main :: ExampleSignature
-main runExample = runExample do
+app :: ExampleSignature
+app runExample = runExample do
   let
     styleF s t = D.span [ klass s ] [ text t ]
     zipStyles = zipWith styleF textColors

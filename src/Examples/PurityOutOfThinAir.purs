@@ -14,8 +14,8 @@ import Deku.Control (text)
 import FRP.Event (fold)
 import FRP.Event.Time (interval)
 
-main :: ExampleSignature
-main runExample = do
+app :: ExampleSignature
+app runExample = do
   i0 <- interval 804
   i1 <- interval 1222
   i2 <- interval 568

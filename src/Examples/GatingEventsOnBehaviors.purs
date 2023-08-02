@@ -16,8 +16,8 @@ import FRP.Behavior (gateBy)
 import FRP.Behavior.Time (instant)
 import FRP.Event.Time (interval)
 
-main :: ExampleSignature
-main runExample = do
+app :: ExampleSignature
+app runExample = do
   i0 <- interval 200
   i1 <- interval 165
   runExample do

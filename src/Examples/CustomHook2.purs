@@ -11,8 +11,8 @@ import Deku.Core (Hook)
 import Deku.DOM as D
 import Deku.Do as Deku
 
-main :: ExampleSignature
-main runExample = runExample Deku.do
+app :: ExampleSignature
+app runExample = runExample Deku.do
   let
     hook1 :: Hook Boolean
     hook1 cruise = cruise true

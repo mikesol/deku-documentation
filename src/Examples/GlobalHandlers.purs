@@ -26,8 +26,8 @@ doAuth f = do
   eff false
   pure $ write false onOff
 
-main :: ExampleSignature
-main runExample = do
+app :: ExampleSignature
+app runExample = do
   authEvent <- liftST create
   u <- runExample
     ( text $ authEvent.event <#>

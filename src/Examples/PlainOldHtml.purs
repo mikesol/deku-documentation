@@ -45,5 +45,5 @@ myHtml =
   </ol>
 </nav>"""
 
-main :: ExampleSignature
-main runExample = runExample (myHtml ~~ {})
+app :: ExampleSignature
+app runExample = runExample (myHtml ~~ {})

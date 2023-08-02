@@ -52,8 +52,8 @@ discordMessage = unsafeCustomElement "discord-message"
            DiscordMessage_
   )
 
-main :: ExampleSignature
-main runExample = runExample do
+app :: ExampleSignature
+app runExample = runExample do
   discordMessages
     [ discordMessage
         [ Author := "beluga"

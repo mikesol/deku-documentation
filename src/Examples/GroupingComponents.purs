@@ -9,8 +9,8 @@ import Deku.Control (text)
 import Deku.Core (fixed)
 import Deku.DOM as D
 
-main :: ExampleSignature
-main runExample = runExample do
+app :: ExampleSignature
+app runExample = runExample do
   let
     eieio = fixed
       [ D.span [ klass "text-blue-400" ] [ text "e " ]

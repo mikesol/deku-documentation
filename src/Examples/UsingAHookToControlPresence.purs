@@ -12,8 +12,8 @@ import Deku.Hooks (useState, guard)
 import Deku.Attributes (klass)
 import Deku.Listeners (click)
 
-main :: ExampleSignature
-main runExample = runExample Deku.do
+app :: ExampleSignature
+app runExample = runExample Deku.do
   setPresence /\ presence <- useState true
   D.div_
     [ guard presence (text "Now you see me, ")

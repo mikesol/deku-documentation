@@ -27,8 +27,8 @@ instance Attr MyNiftyAnchor_ D.Target MyTarget where
   attr _ _ = unsafeAttribute $ This
     { key: "target", value: Prop' "_blank" }
 
-main :: ExampleSignature
-main runExample = runExample do
+app :: ExampleSignature
+app runExample = runExample do
   unsafeCustomElement "a" (Proxy :: _ MyNiftyAnchor_)
     [ D.Href := JoyrideFM
     , D.Target := Blank

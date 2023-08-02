@@ -14,8 +14,8 @@ import Effect.Random (random)
 import FRP.Behavior (behavior, sample_, switcher)
 import FRP.Event.Time (interval)
 
-main :: ExampleSignature
-main runExample = do
+app :: ExampleSignature
+app runExample = do
   i0 <- interval 250
   i1 <- interval 2000
   runExample do

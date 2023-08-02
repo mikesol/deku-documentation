@@ -12,8 +12,8 @@ import Deku.Attribute ((:=))
 import Web.HTML (window)
 import Web.HTML.Window (alert)
 
-main :: ExampleSignature
-main runExample = runExample
+app :: ExampleSignature
+app runExample = runExample
   ( D.span
       [ D.OnClick := do
           window >>= alert "Thanks for clicking!"

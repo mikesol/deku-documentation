@@ -65,7 +65,7 @@ app = do
   myTable <- table
   pure $ D.div_ [ D.div_ [ mySignIn ], D.div_ [ myTable ] ]
 
-main :: ExampleSignature
-main runExample = runExample Deku.do
+app :: ExampleSignature
+app runExample = runExample Deku.do
   setIsSignedIn /\ isSignedIn <- useState false
   app { setIsSignedIn, isSignedIn }

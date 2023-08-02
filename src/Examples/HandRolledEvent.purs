@@ -24,8 +24,8 @@ import Web.HTML.Window (document)
 
 type Event a = (a -> Effect Unit) -> Effect (Effect Unit)
 
-main :: ExampleSignature
-main runExample = do
+app :: ExampleSignature
+app runExample = do
   bod <- window >>= document >>= body >>= maybe
     (throwError $ error "Could not find body")
     pure

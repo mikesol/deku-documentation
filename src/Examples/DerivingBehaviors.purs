@@ -23,8 +23,8 @@ import FRP.Behavior.Time (seconds)
 import FRP.Event (fold)
 import FRP.Event.AnimationFrame (animationFrame)
 
-main :: ExampleSignature
-main runExample = do
+app :: ExampleSignature
+app runExample = do
   af <- animationFrame
   runExample Deku.do
     setNumber /\ number <- useState 0.5

@@ -31,8 +31,8 @@ bunny = "https://dl8.webmfiles.org/big-buck-bunny_trailer.webm"
 pic :: String
 pic = "https://picsum.photos/150"
 
-main :: ExampleSignature
-main runExample = runExample Deku.do
+app :: ExampleSignature
+app runExample = runExample Deku.do
   setImageType /\ imageType <- useState Image
   D.div_
     [ D.div_

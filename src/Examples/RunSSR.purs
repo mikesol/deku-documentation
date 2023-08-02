@@ -16,7 +16,7 @@ myApp s = D.div_
   , htmlCode s
   ]
 
-main :: ExampleSignature
-main runExample = do
+app :: ExampleSignature
+app runExample = do
   txt <- liftST $ runSSR (myApp "hello")
   runExample do myApp txt

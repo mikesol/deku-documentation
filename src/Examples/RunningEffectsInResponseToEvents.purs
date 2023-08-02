@@ -13,8 +13,8 @@ import Deku.Do as Deku
 import Deku.Hooks (useState')
 import Deku.Listeners (click)
 
-main :: ExampleSignature
-main runExample = runExample Deku.do
+app :: ExampleSignature
+app runExample = runExample Deku.do
   setCurrentTime /\ currentTime <- useState'
   D.div_
     [ D.a

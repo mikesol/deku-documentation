@@ -55,8 +55,8 @@ myVideo = D.video
       []
   ]
 
-main :: ExampleSignature
-main runExample = runExample Deku.do
+app :: ExampleSignature
+app runExample = runExample Deku.do
   vid <- portal1 myVideo
   setSquare /\ square <- useState TL
   D.div [ klass "grid grid-cols-2" ]

@@ -33,8 +33,8 @@ data UIState
   | Loading
   | Image { url :: String, watcherCount :: Int }
 
-main :: ExampleSignature
-main runExample = runExample Deku.do
+app :: ExampleSignature
+app runExample = runExample Deku.do
   let
     fetchNewRandomImage = do
       delay (Milliseconds 300.0)
