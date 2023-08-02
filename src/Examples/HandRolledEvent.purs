@@ -1,6 +1,6 @@
 module Examples.HandRolledEvent where
 
-import Deku.Toplevel (runInBody)
+import Deku.Toplevel (runInBody')
 import Prelude
 
 import Control.Monad.Error.Class (throwError)
@@ -63,3 +63,6 @@ app runExample = do
   addEventListener (EventType "click") el true
     (toEventTarget anchor)
   pure (pure unit)
+
+main :: Effect Unit
+main = void $ app (map (map void) runInBody')

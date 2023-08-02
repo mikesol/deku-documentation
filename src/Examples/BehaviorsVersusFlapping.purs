@@ -1,6 +1,7 @@
 module Examples.BehaviorsVersusFlapping where
 
-import Deku.Toplevel (runInBody)
+import Deku.Toplevel (runInBody')
+import Effect (Effect)
 import Prelude
 import ExampleAssitant (ExampleSignature)
 
@@ -20,3 +21,6 @@ app runExample = do
           (behavior (pure (Tuple (pure unit) random)))
           (i.event $> add 42.0)
       )
+
+main :: Effect Unit
+main = void $ app (map (map void) runInBody')

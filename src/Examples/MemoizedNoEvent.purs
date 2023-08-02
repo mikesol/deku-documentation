@@ -1,6 +1,7 @@
 module Examples.MemoizedNoEvent where
 
-import Deku.Toplevel (runInBody)
+import Deku.Toplevel (runInBody')
+import Effect (Effect)
 import Prelude
 import ExampleAssitant (ExampleSignature)
 
@@ -50,3 +51,6 @@ app runExample = runExample Deku.do
             [ text (show >>> (_ <> " ") <$> (0 :| number)) ]
         )
     ]
+
+main :: Effect Unit
+main = void $ app (map (map void) runInBody')

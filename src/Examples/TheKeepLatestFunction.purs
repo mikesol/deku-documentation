@@ -1,6 +1,7 @@
 module Examples.TheKeepLatestFunction where
 
-import Deku.Toplevel (runInBody)
+import Deku.Toplevel (runInBody')
+import Effect (Effect)
 import Prelude
 import ExampleAssitant (ExampleSignature)
 
@@ -23,3 +24,6 @@ app runExample = do
               ((once i0.event $> 0) <|> count i1.event)
           )
       )
+
+main :: Effect Unit
+main = void $ app (map (map void) runInBody')

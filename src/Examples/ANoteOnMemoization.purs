@@ -1,6 +1,7 @@
 module Examples.ANoteOnMemoization where
 
-import Deku.Toplevel (runInBody)
+import Deku.Toplevel (runInBody')
+import Effect (Effect)
 import Prelude
 import ExampleAssitant (ExampleSignature)
 
@@ -54,3 +55,6 @@ app runExample = do
                   ("Here's the same random number: " <> _)
           ]
       ]
+
+main :: Effect Unit
+main = void $ app (map (map void) runInBody')

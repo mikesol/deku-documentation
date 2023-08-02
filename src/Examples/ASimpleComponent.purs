@@ -1,6 +1,7 @@
 module Examples.ASimpleComponent where
 
-import Deku.Toplevel (runInBody)
+import Deku.Toplevel (runInBody')
+import Effect (Effect)
 import Prelude
 import ExampleAssitant (ExampleSignature)
 
@@ -24,3 +25,6 @@ app runExample = runExample mySimpleComponent
           , D.b__ "baz"
           ]
       ]
+
+main :: Effect Unit
+main = void $ app (map (map void) runInBody')

@@ -1,6 +1,6 @@
 module Examples.NestedCustomHooks where
 
-import Deku.Toplevel (runInBody)
+import Deku.Toplevel (runInBody')
 import Prelude
 
 import Data.NonEmpty (NonEmpty, head, tail, (:|))
@@ -55,3 +55,6 @@ app runExample = runExample Deku.do
         , text (show <$> maximus)
         ]
     ]
+
+main :: Effect Unit
+main = void $ app (map (map void) runInBody')

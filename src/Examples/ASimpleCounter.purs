@@ -1,6 +1,7 @@
 module Examples.ASimpleCounter where
 
-import Deku.Toplevel (runInBody)
+import Deku.Toplevel (runInBody')
+import Effect (Effect)
 import Prelude
 import ExampleAssitant (ExampleSignature)
 
@@ -41,3 +42,6 @@ app runExample = runExample Deku.do
         , text (show <$> 0 :| (fold (pure <$> add 1) 0 count))
         ]
     ]
+
+main :: Effect Unit
+main = void $ app (map (map void) runInBody')

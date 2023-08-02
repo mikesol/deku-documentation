@@ -1,6 +1,7 @@
 module Examples.SamplingABehaviorWithAnEvent where
 
-import Deku.Toplevel (runInBody)
+import Deku.Toplevel (runInBody')
+import Effect (Effect)
 import Prelude
 import ExampleAssitant (ExampleSignature)
 
@@ -51,3 +52,6 @@ app runExample = do
 
           (i.event $> ("Here's a random user: " <> _))
       )
+
+main :: Effect Unit
+main = void $ app (map (map void) runInBody')

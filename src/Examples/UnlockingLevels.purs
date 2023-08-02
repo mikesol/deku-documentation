@@ -1,6 +1,6 @@
 module Examples.UnlockingLevels where
 
-import Deku.Toplevel (runInBody)
+import Deku.Toplevel (runInBody')
 import Prelude
 
 import Control.Plus (empty)
@@ -136,3 +136,6 @@ app runExample = runExample Deku.do
                 ]
         ]
     ]
+
+main :: Effect Unit
+main = void $ app (map (map void) runInBody')

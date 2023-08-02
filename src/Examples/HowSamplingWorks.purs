@@ -1,6 +1,7 @@
 module Examples.HowSamplingWorks where
 
-import Deku.Toplevel (runInBody)
+import Deku.Toplevel (runInBody')
+import Effect (Effect)
 import Prelude
 import ExampleAssitant (ExampleSignature)
 
@@ -29,3 +30,6 @@ app runExample = runExample Deku.do
             ((\a b -> show b <> " " <> show a) <$> slider2)
         )
     ]
+
+main :: Effect Unit
+main = void $ app (map (map void) runInBody')

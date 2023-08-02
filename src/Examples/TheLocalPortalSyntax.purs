@@ -1,6 +1,6 @@
 module Examples.TheLocalPortalSyntax where
 
-import Deku.Toplevel (runInBody)
+import Deku.Toplevel (runInBody')
 import Prelude
 
 import Data.NonEmpty (NonEmpty)
@@ -65,3 +65,6 @@ app runExample = runExample Deku.do
     , moveSpriteHere { video: vid, square, setSquare, at: BL }
     , moveSpriteHere { video: vid, square, setSquare, at: BR }
     ]
+
+main :: Effect Unit
+main = void $ app (map (map void) runInBody')

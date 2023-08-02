@@ -1,6 +1,6 @@
 module Examples.AddingSeveralElementsToPursx where
 
-import Deku.Toplevel (runInBody)
+import Deku.Toplevel (runInBody')
 import Prelude
 import ExampleAssitant (ExampleSignature)
 
@@ -104,3 +104,6 @@ app runExample = runExample Deku.do
             }
         ]
     ]
+
+main :: Effect Unit
+main = void $ app (map (map void) runInBody')

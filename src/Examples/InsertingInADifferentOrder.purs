@@ -1,6 +1,7 @@
 module Examples.InsertingInADifferentOrder where
 
-import Deku.Toplevel (runInBody)
+import Deku.Toplevel (runInBody')
+import Effect (Effect)
 import Prelude
 import ExampleAssitant (ExampleSignature)
 
@@ -89,3 +90,6 @@ app runExample = runExample Deku.do
           (sampleBy Tuple (stepNE pos) item)
         D.div_ [ text t ]
     ]
+
+main :: Effect Unit
+main = void $ app (map (map void) runInBody')

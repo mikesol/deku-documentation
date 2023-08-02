@@ -1,6 +1,7 @@
 module Examples.GroupingComponents where
 
-import Deku.Toplevel (runInBody)
+import Deku.Toplevel (runInBody')
+import Effect (Effect)
 import Prelude
 import ExampleAssitant (ExampleSignature)
 
@@ -32,3 +33,6 @@ app runExample = runExample do
     , eieio
     , text "."
     ]
+
+main :: Effect Unit
+main = void $ app (map (map void) runInBody')

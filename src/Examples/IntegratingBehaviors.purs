@@ -1,6 +1,7 @@
 module Examples.IntegratingBehaviors where
 
-import Deku.Toplevel (runInBody)
+import Deku.Toplevel (runInBody')
+import Effect (Effect)
 import Prelude
 import ExampleAssitant (ExampleSignature)
 
@@ -51,3 +52,6 @@ app runExample = do
               )
           ]
       ]
+
+main :: Effect Unit
+main = void $ app (map (map void) runInBody')

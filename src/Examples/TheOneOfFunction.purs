@@ -1,6 +1,7 @@
 module Examples.TheOneOfFunction where
 
-import Deku.Toplevel (runInBody)
+import Deku.Toplevel (runInBody')
+import Effect (Effect)
 import Prelude
 import ExampleAssitant (ExampleSignature)
 
@@ -33,3 +34,6 @@ app runExample = do
       , beat "Faster" 10
       , beat "Stronger" 11
       ]
+
+main :: Effect Unit
+main = void $ app (map (map void) runInBody')

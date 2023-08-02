@@ -1,6 +1,7 @@
 module Examples.ComponentsAsSemigroups where
 
-import Deku.Toplevel (runInBody)
+import Deku.Toplevel (runInBody')
+import Effect (Effect)
 import Prelude
 
 import Data.String (Pattern(..), Replacement(..), replaceAll)
@@ -77,3 +78,6 @@ app runExample = runExample Deku.do
             <> D.p__ "Votre poupée"
         ]
     ]
+
+main :: Effect Unit
+main = void $ app (map (map void) runInBody')

@@ -1,6 +1,7 @@
 module Examples.KnowThySelfT where
 
-import Deku.Toplevel (runInBody)
+import Deku.Toplevel (runInBody')
+import Effect (Effect)
 import Prelude
 import ExampleAssitant (ExampleSignature)
 
@@ -36,3 +37,6 @@ app runExample = runExample Deku.do
         []
     , D.div_ [ text txt ]
     ]
+
+main :: Effect Unit
+main = void $ app (map (map void) runInBody')

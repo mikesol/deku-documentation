@@ -1,6 +1,7 @@
 module Examples.ShorthandListeners where
 
-import Deku.Toplevel (runInBody)
+import Deku.Toplevel (runInBody')
+import Effect (Effect)
 import Prelude
 import ExampleAssitant (ExampleSignature)
 
@@ -12,3 +13,6 @@ import Effect.Class.Console (logShow)
 app :: ExampleSignature
 app runExample = runExample
   (D.input (slider logShow) [])
+
+main :: Effect Unit
+main = void $ app (map (map void) runInBody')

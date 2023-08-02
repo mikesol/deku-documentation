@@ -1,6 +1,7 @@
 module Examples.BiasingASideOfSampling where
 
-import Deku.Toplevel (runInBody)
+import Deku.Toplevel (runInBody')
+import Effect (Effect)
 import Prelude
 import ExampleAssitant (ExampleSignature)
 
@@ -41,3 +42,6 @@ app runExample = runExample Deku.do
             <*|> sliderE
         )
     ]
+
+main :: Effect Unit
+main = void $ app (map (map void) runInBody')

@@ -1,6 +1,7 @@
 module Examples.EventsAsSemigroups where
 
-import Deku.Toplevel (runInBody)
+import Deku.Toplevel (runInBody')
+import Effect (Effect)
 import Prelude
 
 import Data.Tuple.Nested ((/\))
@@ -42,3 +43,6 @@ app runExample = runExample Deku.do
             [ text "Hello!" ]
         ]
     ]
+
+main :: Effect Unit
+main = void $ app (map (map void) runInBody')

@@ -26,7 +26,6 @@ import usingFunctionsAsMonads from '../../src/Examples/UsingFunctionsAsMonads.pu
 import theKeepLatestFunction from '../../src/Examples/TheKeepLatestFunction.purs?raw'
 import aSimpleCounter from '../../src/Examples/ASimpleCounter.purs?raw'
 import globalHandlers from '../../src/Examples/GlobalHandlers.purs?raw'
-import eventsAsRings from '../../src/Examples/EventsAsRings.purs?raw'
 import addingSeveralAttributesToPursx from '../../src/Examples/AddingSeveralAttributesToPursx.purs?raw'
 import samplingABehaviorWithAnEvent from '../../src/Examples/SamplingABehaviorWithAnEvent.purs?raw'
 import useRef from '../../src/Examples/UseRef.purs?raw'
@@ -57,7 +56,6 @@ import nestedCustomHooks from '../../src/Examples/NestedCustomHooks.purs?raw'
 import multipleSubscriptions from '../../src/Examples/MultipleSubscriptions.purs?raw'
 import theStateHook from '../../src/Examples/TheStateHook.purs?raw'
 import interComponentCommunication from '../../src/Examples/InterComponentCommunication.purs?raw'
-import eventsAsMonoids from '../../src/Examples/EventsAsMonoids.purs?raw'
 import derivingBehaviors from '../../src/Examples/DerivingBehaviors.purs?raw'
 import solvingDifferentialEquations from '../../src/Examples/SolvingDifferentialEquations.purs?raw'
 import usingTheHookInAnAttribute from '../../src/Examples/UsingTheHookInAnAttribute.purs?raw'
@@ -110,7 +108,6 @@ export const usingFunctionsAsMonadsURL = usingFunctionsAsMonads
 export const theKeepLatestFunctionURL = theKeepLatestFunction
 export const aSimpleCounterURL = aSimpleCounter
 export const globalHandlersURL = globalHandlers
-export const eventsAsRingsURL = eventsAsRings
 export const addingSeveralAttributesToPursxURL = addingSeveralAttributesToPursx
 export const samplingABehaviorWithAnEventURL = samplingABehaviorWithAnEvent
 export const useRefURL = useRef
@@ -144,7 +141,6 @@ export const nestedCustomHooksURL = nestedCustomHooks
 export const multipleSubscriptionsURL = multipleSubscriptions
 export const theStateHookURL = theStateHook
 export const interComponentCommunicationURL = interComponentCommunication
-export const eventsAsMonoidsURL = eventsAsMonoids
 export const derivingBehaviorsURL = derivingBehaviors
 export const solvingDifferentialEquationsURL = solvingDifferentialEquations
 export const usingTheHookInAnAttributeURL = usingTheHookInAnAttribute

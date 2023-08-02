@@ -1,6 +1,7 @@
 module Examples.AddingCustomElements where
 
-import Deku.Toplevel (runInBody)
+import Deku.Toplevel (runInBody')
+import Effect (Effect)
 import Prelude
 import ExampleAssitant (ExampleSignature)
 
@@ -34,3 +35,6 @@ app runExample = runExample do
     , D.Target := Blank
     ]
     [ text "hi" ]
+
+main :: Effect Unit
+main = void $ app (map (map void) runInBody')

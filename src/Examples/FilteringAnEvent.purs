@@ -1,6 +1,7 @@
 module Examples.FilteringAnEvent where
 
-import Deku.Toplevel (runInBody)
+import Deku.Toplevel (runInBody')
+import Effect (Effect)
 import Prelude
 import ExampleAssitant (ExampleSignature)
 
@@ -27,3 +28,6 @@ app runExample = runExample Deku.do
         , text (filter (_ > 50.0) (tail number) <#> show)
         ]
     ]
+
+main :: Effect Unit
+main = void $ app (map (map void) runInBody')

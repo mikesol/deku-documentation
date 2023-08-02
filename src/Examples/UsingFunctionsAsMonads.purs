@@ -1,6 +1,6 @@
 module Examples.UsingFunctionsAsMonads where
 
-import Deku.Toplevel (runInBody)
+import Deku.Toplevel (runInBody')
 import Prelude
 
 import Control.Monad.Reader (ask)
@@ -59,8 +59,8 @@ table = do
     , D.tr_ [ myName, myBalance ]
     ]
 
-app :: AppMonad
-app = do
+fullApp :: AppMonad
+fullApp = do
   mySignIn <- signIn
   myTable <- table
   pure $ D.div_ [ D.div_ [ mySignIn ], D.div_ [ myTable ] ]
@@ -68,4 +68,7 @@ app = do
 app :: ExampleSignature
 app runExample = runExample Deku.do
   setIsSignedIn /\ isSignedIn <- useState false
-  app { setIsSignedIn, isSignedIn }
+  fullApp { setIsSignedIn, isSignedIn }
+
+main :: Effect Unit
+main = void $ app (map (map void) runInBody')

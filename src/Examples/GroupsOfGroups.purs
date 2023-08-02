@@ -1,6 +1,7 @@
 module Examples.GroupsOfGroups where
 
-import Deku.Toplevel (runInBody)
+import Deku.Toplevel (runInBody')
+import Effect (Effect)
 import Prelude
 import ExampleAssitant (ExampleSignature)
 
@@ -72,3 +73,6 @@ app runExample = runExample Deku.do
         , D.div_ [ D.img [ D.Src := alexanderURL ] [] ]
         ]
     ]
+
+main :: Effect Unit
+main = void $ app (map (map void) runInBody')

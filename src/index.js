@@ -27,7 +27,6 @@ import * as UsingFunctionsAsMonads from 'PureScript/Examples.UsingFunctionsAsMon
 import * as TheKeepLatestFunction from 'PureScript/Examples.TheKeepLatestFunction/index.js'
 import * as ASimpleCounter from 'PureScript/Examples.ASimpleCounter/index.js'
 import * as GlobalHandlers from 'PureScript/Examples.GlobalHandlers/index.js'
-import * as EventsAsRings from 'PureScript/Examples.EventsAsRings/index.js'
 import * as AddingSeveralAttributesToPursx from 'PureScript/Examples.AddingSeveralAttributesToPursx/index.js'
 import * as SamplingABehaviorWithAnEvent from 'PureScript/Examples.SamplingABehaviorWithAnEvent/index.js'
 import * as UseRef from 'PureScript/Examples.UseRef/index.js'
@@ -58,7 +57,6 @@ import * as NestedCustomHooks from 'PureScript/Examples.NestedCustomHooks/index.
 import * as MultipleSubscriptions from 'PureScript/Examples.MultipleSubscriptions/index.js'
 import * as TheStateHook from 'PureScript/Examples.TheStateHook/index.js'
 import * as InterComponentCommunication from 'PureScript/Examples.InterComponentCommunication/index.js'
-import * as EventsAsMonoids from 'PureScript/Examples.EventsAsMonoids/index.js'
 import * as DerivingBehaviors from 'PureScript/Examples.DerivingBehaviors/index.js'
 import * as SolvingDifferentialEquations from 'PureScript/Examples.SolvingDifferentialEquations/index.js'
 import * as UsingTheHookInAnAttribute from 'PureScript/Examples.UsingTheHookInAnAttribute/index.js'
@@ -138,8 +136,6 @@ toStart === 'UnMemoizedApplication'
   ? ASimpleCounter.main()
   : toStart === 'GlobalHandlers'
   ? GlobalHandlers.main()
-  : toStart === 'EventsAsRings'
-  ? EventsAsRings.main()
   : toStart === 'AddingSeveralAttributesToPursx'
   ? AddingSeveralAttributesToPursx.main()
   : toStart === 'SamplingABehaviorWithAnEvent'
@@ -200,8 +196,6 @@ toStart === 'UnMemoizedApplication'
   ? TheStateHook.main()
   : toStart === 'InterComponentCommunication'
   ? InterComponentCommunication.main()
-  : toStart === 'EventsAsMonoids'
-  ? EventsAsMonoids.main()
   : toStart === 'DerivingBehaviors'
   ? DerivingBehaviors.main()
   : toStart === 'SolvingDifferentialEquations'
