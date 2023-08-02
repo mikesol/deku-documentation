@@ -1,6 +1,7 @@
 module Examples.SolvingDifferentialEquations where
 
 import Prelude
+import ExampleAssitant (ExampleSignature)
 
 import Data.NonEmpty ((:|))
 import Data.Time.Duration (Seconds(..))
@@ -12,8 +13,7 @@ import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState')
 import Deku.Listeners (click)
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
+
 import FRP.Behavior (sample_, solve2')
 import FRP.Behavior.Time (seconds)
 import FRP.Event (keepLatest)
@@ -27,10 +27,10 @@ text-sm font-medium leading-4 text-white shadow-sm
 hover:bg-indigo-700 focus:outline-none focus:ring-2
 focus:ring-indigo-500 focus:ring-offset-2 mr-6"""
 
-main :: Effect Unit
-main = do
+main :: ExampleSignature
+main runExample = do
   af <- animationFrame
-  runInBody Deku.do
+  runExample Deku.do
     setThunk /\ thunk <- useState'
     let
       motion = 0.0 :|

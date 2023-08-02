@@ -1,6 +1,7 @@
 module Examples.MockDiscord where
 
 import Prelude
+import ExampleAssitant (ExampleSignature)
 
 import Assets (beluMomURL, belugaURL)
 import Control.Plus (empty)
@@ -9,8 +10,7 @@ import Deku.Attribute (class Attr, Attribute, AttributeValue(..), unsafeAttribut
 import Deku.Control (text)
 import Deku.Core (Nut)
 import Deku.DOM (unsafeCustomElement)
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
+
 import Type.Proxy (Proxy(..))
 
 data DiscordMessages_
@@ -51,8 +51,8 @@ discordMessage = unsafeCustomElement "discord-message"
            DiscordMessage_
   )
 
-main ∷ Effect Unit
-main = runInBody do
+main :: ExampleSignature
+main runExample = runExample do
   discordMessages
     [ discordMessage
         [ Author := "beluga"

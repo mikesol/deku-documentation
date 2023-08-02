@@ -15,8 +15,8 @@ import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (guard, useState, (<#~>))
 import Deku.Listeners (click)
-import Deku.Toplevel (runInBody)
 import Effect (Effect)
+import ExampleAssitant (ExampleSignature)
 import FRP.Behavior (sampleStepping)
 import FRP.Event (Event)
 import Web.HTML.HTMLMediaElement (play)
@@ -82,8 +82,8 @@ focus:ring-COLOR-500 focus:ring-offset-2"""
 
 data WhichVideo = Video1 | Video2 | Video3 | Video4
 
-main :: Effect Unit
-main = runInBody Deku.do
+main :: ExampleSignature
+main runExample = runExample Deku.do
   setVideoURL /\ videoURL <- useState Video1
   setGlobalVideoPresence /\ globalVideoPresence <- useState true
   let

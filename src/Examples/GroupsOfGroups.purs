@@ -1,6 +1,7 @@
 module Examples.GroupsOfGroups where
 
 import Prelude
+import ExampleAssitant (ExampleSignature)
 
 import Assets (alexanderURL)
 import Data.String (Pattern(..), Replacement(..), replaceAll)
@@ -13,8 +14,6 @@ import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (guard, useState)
 import Deku.Listeners (click)
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
 
 buttonClass :: String -> String
 buttonClass color =
@@ -30,8 +29,8 @@ data AlexandersDay = Bad | Worse | Worst
 derive instance Eq AlexandersDay
 derive instance Ord AlexandersDay
 
-main :: Effect Unit
-main = runInBody Deku.do
+main :: ExampleSignature
+main runExample = runExample Deku.do
   setBadness /\ badness <- useState Bad
   D.div_
     [ D.div [ klass "flex justify-between" ]

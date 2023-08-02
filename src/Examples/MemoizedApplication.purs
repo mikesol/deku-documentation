@@ -1,6 +1,7 @@
 module Examples.MemoizedApplication where
 
 import Prelude
+import ExampleAssitant (ExampleSignature)
 
 import Data.Array (intercalate, replicate)
 import Data.NonEmpty (NonEmpty, (:|))
@@ -11,8 +12,6 @@ import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useMemoized, useState)
 import Deku.Listeners (click)
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
 
 apne
   :: forall f a b
@@ -25,8 +24,8 @@ apne (a' :| as') (b' :| bs') = a' b' :| (as' <*> bs')
 
 infixl 4 apne as <**>
 
-main :: Effect Unit
-main = runInBody Deku.do
+main :: ExampleSignature
+main runExample = runExample Deku.do
   aa <- useState true
   bb <- useState false
   cc <- useState true

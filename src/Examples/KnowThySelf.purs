@@ -1,6 +1,7 @@
 module Examples.KnowThySelf where
 
 import Prelude
+import ExampleAssitant (ExampleSignature)
 
 import Data.String.Utils (words)
 import Data.Tuple.Nested ((/\))
@@ -9,16 +10,15 @@ import Deku.Control (text)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState')
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
+
 import Effect.Aff (Milliseconds(..), delay, launchAff_)
 import Effect.Class (liftEffect)
 import Web.DOM.Element (toParentNode)
 import Web.DOM.HTMLCollection as HTMLCollection
 import Web.DOM.ParentNode (children)
 
-main :: Effect Unit
-main = runInBody Deku.do
+main :: ExampleSignature
+main runExample = runExample Deku.do
   setLength /\ length <- useState'
   D.div
     [ D.Self := \e -> launchAff_ do

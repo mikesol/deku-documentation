@@ -1,6 +1,7 @@
 module Examples.WhenToFixAndWhenToFold where
 
 import Prelude
+import ExampleAssitant (ExampleSignature)
 
 import Data.Either (hush)
 import Data.NonEmpty ((:|))
@@ -12,8 +13,7 @@ import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useDynAtBeginning_, useState', (<#~>))
 import Deku.Listeners (click)
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
+
 import FRP.Event (delay, filterMap, fix, keepLatest, once)
 import QualifiedDo.Alt as Alt
 
@@ -24,8 +24,8 @@ text-sm font-medium leading-4 text-white shadow-sm
 hover:bg-indigo-700 focus:outline-none focus:ring-2
 focus:ring-indigo-500 focus:ring-offset-2 mr-6""" :: String
 
-main :: Effect Unit
-main = runInBody Deku.do
+main :: ExampleSignature
+main runExample = runExample Deku.do
   setSwitch /\ switch <- useState'
   D.div_
     [ D.div_

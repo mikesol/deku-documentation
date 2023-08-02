@@ -1,6 +1,7 @@
 module Examples.PassingAroundHooks where
 
 import Prelude
+import ExampleAssitant (ExampleSignature)
 
 import Data.NonEmpty ((:|), tail)
 import Data.Tuple.Nested ((/\))
@@ -10,12 +11,11 @@ import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (guard, useState, useState')
 import Deku.Listeners (click)
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
+
 import FRP.Behavior (stepNE, (>@=))
 
-main :: Effect Unit
-main = runInBody Deku.do
+main :: ExampleSignature
+main runExample = runExample Deku.do
   setIncrementer /\ incrementer <- useState'
   setGoodbye /\ goodbye <- useState true
   D.div_

@@ -1,6 +1,7 @@
 module Examples.FilteringAnEvent where
 
 import Prelude
+import ExampleAssitant (ExampleSignature)
 
 import Data.Filterable (filter)
 import Data.NonEmpty (tail)
@@ -10,11 +11,9 @@ import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState)
 import Deku.Listeners (slider)
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
 
-main :: Effect Unit
-main = runInBody Deku.do
+main :: ExampleSignature
+main runExample = runExample Deku.do
   setNumber /\ number <- useState 50.0
   D.div_
     [ D.input (slider setNumber) []

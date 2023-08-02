@@ -1,6 +1,7 @@
 module Examples.ComponentsAsMonoids where
 
 import Prelude
+import ExampleAssitant (ExampleSignature)
 
 import Data.Array (drop, intercalate, zipWith)
 import Data.FunctorWithIndex (mapWithIndex)
@@ -10,8 +11,6 @@ import Data.String (Pattern(..), split)
 import Deku.Attributes (klass)
 import Deku.Control (text)
 import Deku.DOM as D
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
 
 lyrics :: Array String
 lyrics = split (Pattern "\n")
@@ -58,8 +57,8 @@ toWord 11 = "eleventh"
 toWord 12 = "twelfth"
 toWord _ = "nth"
 
-main :: Effect Unit
-main = runInBody do
+main :: ExampleSignature
+main runExample = runExample do
   let
     styleF s t = D.span [ klass s ] [ text t ]
     zipStyles = zipWith styleF textColors

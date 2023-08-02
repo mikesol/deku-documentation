@@ -1,6 +1,7 @@
 module Examples.EmptyUntilFull where
 
 import Prelude
+import ExampleAssitant (ExampleSignature)
 
 import Data.Tuple.Nested ((/\))
 import Deku.Attributes (klass)
@@ -9,8 +10,7 @@ import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState')
 import Deku.Listeners (click)
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
+
 import Effect.Random (random)
 
 buttonClass =
@@ -20,8 +20,8 @@ text-sm font-medium leading-4 text-white shadow-sm
 hover:bg-indigo-700 focus:outline-none focus:ring-2
 focus:ring-indigo-500 focus:ring-offset-2 mr-6""" :: String
 
-main :: Effect Unit
-main = runInBody Deku.do
+main :: ExampleSignature
+main runExample = runExample Deku.do
   setNumber /\ number <- useState'
   D.div_
     [ D.button

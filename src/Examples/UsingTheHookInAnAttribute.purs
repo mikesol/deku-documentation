@@ -1,6 +1,7 @@
 module Examples.UsingTheHookInAnAttribute where
 
 import Prelude
+import ExampleAssitant (ExampleSignature)
 
 import Data.String (Pattern(..), Replacement(..), replaceAll)
 import Data.Tuple.Nested ((/\))
@@ -11,8 +12,6 @@ import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState)
 import Deku.Listeners (click)
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
 
 buttonClass :: String -> String
 buttonClass color =
@@ -23,8 +22,8 @@ text-sm font-medium leading-4 text-white shadow-sm
 hover:bg-COLOR-700 focus:outline-none focus:ring-2
 focus:ring-COLOR-500 focus:ring-offset-2"""
 
-main :: Effect Unit
-main = runInBody Deku.do
+main :: ExampleSignature
+main runExample = runExample Deku.do
   setHrefSwitch /\ hrefSwitch <- useState false
   setStyleSwitch /\ styleSwitch <- useState false
   D.div_

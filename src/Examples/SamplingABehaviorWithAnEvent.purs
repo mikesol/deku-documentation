@@ -1,6 +1,7 @@
 module Examples.SamplingABehaviorWithAnEvent where
 
 import Prelude
+import ExampleAssitant (ExampleSignature)
 
 import Affjax.ResponseFormat as ResponseFormat
 import Affjax.Web as AX
@@ -10,17 +11,16 @@ import Data.Argonaut.Core (stringifyWithIndent)
 import Data.Either (Either(..))
 import Data.Tuple (Tuple(..))
 import Deku.Control (text)
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
+
 import Effect.Aff (error, killFiber, launchAff)
 import FRP.Behavior (behavior, sample)
 import FRP.Event.Time (interval)
 import Fetch (Method(..))
 
-main :: Effect Unit
-main = do
+main :: ExampleSignature
+main runExample = do
   i <- interval 2000
-  runInBody do
+  runExample do
     text
       ( sample
           ( behavior

@@ -1,6 +1,7 @@
 module Examples.AddingSeveralElementsToPursx where
 
 import Prelude
+import ExampleAssitant (ExampleSignature)
 
 import Deku.Attribute (Attribute, class Attr)
 import Data.Tuple.Nested ((/\))
@@ -10,10 +11,10 @@ import Deku.Core (fixed)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState)
+import Effect (Effect)
 import Deku.Listeners (click)
 import Deku.Pursx ((~~))
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
+
 import Type.Proxy (Proxy(..))
 
 liHtml =
@@ -51,8 +52,8 @@ myHtml =
 </nav>"""
   )
 
-main :: Effect Unit
-main = runInBody Deku.do
+main :: ExampleSignature
+main runExample = runExample Deku.do
   setProjects /\ projects <- useState true
   setNero /\ nero <- useState true
   let

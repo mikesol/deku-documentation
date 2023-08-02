@@ -1,6 +1,7 @@
 module Examples.UseRef where
 
 import Prelude
+import ExampleAssitant (ExampleSignature)
 
 import Data.Array (replicate)
 import Data.Tuple.Nested ((/\))
@@ -10,8 +11,6 @@ import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useRefNE, useState)
 import Deku.Listeners (click, slider)
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
 
 buttonClass =
   """inline-flex items-center rounded-md
@@ -20,8 +19,8 @@ text-sm font-medium leading-4 text-white shadow-sm
 hover:bg-pink-700 focus:outline-none focus:ring-2
 focus:ring-pink-500 focus:ring-offset-2 m-2""" :: String
 
-main :: Effect Unit
-main = runInBody Deku.do
+main :: ExampleSignature
+main runExample = runExample Deku.do
   let initial = 50.0
   setNum /\ num <- useState initial
   intRef <- useRefNE num

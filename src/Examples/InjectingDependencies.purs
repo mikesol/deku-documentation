@@ -1,6 +1,7 @@
 module Examples.InjectingDependencies where
 
 import Prelude
+import ExampleAssitant (ExampleSignature)
 
 import Data.Int (floor)
 import Data.JSDate (getTime, now)
@@ -13,8 +14,7 @@ import Deku.Do as Deku
 import Deku.Hooks (useState, (<#~>))
 import Deku.Listeners (click)
 import Deku.Pursx ((~~))
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
+
 import Effect.Aff (Milliseconds(..), delay, launchAff_)
 import Effect.Class (liftEffect)
 import Effect.Random (random)
@@ -32,8 +32,8 @@ data UIState
   | Loading
   | Image { url :: String, watcherCount :: Int }
 
-main :: Effect Unit
-main = runInBody Deku.do
+main :: ExampleSignature
+main runExample = runExample Deku.do
   let
     fetchNewRandomImage = do
       delay (Milliseconds 300.0)

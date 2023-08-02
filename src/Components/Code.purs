@@ -49,7 +49,7 @@ psCode :: String -> Nut
 psCode = psCode' "" empty
 
 psCodeNoCollapse :: String -> Nut
-psCodeNoCollapse = psCode' " no-collapse" [klass "no-collapse"]
+psCodeNoCollapse = psCode' " no-collapse" [ klass "no-collapse" ]
 
 --
 psCodeWithLink'
@@ -120,7 +120,7 @@ psCodeWithLink' s e ex = D.div_
       ]
   , D.pre
       [ D.Class := ("prism-code language-purescript" <> s) ]
-      [ D.code e          [ text (exampleToString ex)]
+      [ D.code e [ text (exampleToString ex) ]
       ]
   ]
   where
@@ -134,4 +134,5 @@ psCodeWithLink = psCodeWithLink' "" []
 
 psCodeNoCollapseWithLink
   :: ExampleADT -> Nut
-psCodeNoCollapseWithLink = psCodeWithLink' " no-collapse" [klass "no-collapse"]
+psCodeNoCollapseWithLink = psCodeWithLink' " no-collapse"
+  [ klass "no-collapse" ]

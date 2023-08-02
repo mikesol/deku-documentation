@@ -12,8 +12,8 @@ import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (guard, useState)
 import Deku.Listeners (click)
-import Deku.Toplevel (runInBody)
 import Effect (Effect)
+import ExampleAssitant (ExampleSignature)
 import FRP.Event (Event)
 
 data Square = TL | BL | TR | BR
@@ -54,8 +54,8 @@ myVideo = D.video
       []
   ]
 
-main :: Effect Unit
-main = runInBody Deku.do
+main :: ExampleSignature
+main runExample = runExample Deku.do
   vid <- globalPortal1 myVideo
   setSquare /\ square <- useState TL
   D.div [ klass "grid grid-cols-2" ]

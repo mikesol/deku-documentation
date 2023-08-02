@@ -1,6 +1,7 @@
 module Examples.RunningAffsSequentiallyInResponseToAnEvent where
 
 import Prelude
+import ExampleAssitant (ExampleSignature)
 
 import Data.Tuple.Nested ((/\))
 import Deku.Attributes (klass)
@@ -9,14 +10,13 @@ import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState, useState')
 import Deku.Listeners (click)
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
+
 import Effect.Aff (joinFiber, launchAff, try)
 import Effect.Class (liftEffect)
 import Fetch (Method(..), fetch)
 
-main :: Effect Unit
-main = runInBody Deku.do
+main :: ExampleSignature
+main runExample = runExample Deku.do
   setResponse /\ response <- useState'
   setFiber /\ fiber <- useState (pure unit)
   D.div_

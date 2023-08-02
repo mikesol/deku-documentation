@@ -1,6 +1,7 @@
 module Examples.MemoizedNoEvent where
 
 import Prelude
+import ExampleAssitant (ExampleSignature)
 
 import Data.Array (replicate)
 import Data.Foldable (traverse_)
@@ -13,8 +14,7 @@ import Deku.Control (text)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useMemoized')
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
+
 import Web.Event.Event (target)
 import Web.HTML.HTMLInputElement (fromEventTarget, valueAsNumber)
 
@@ -27,8 +27,8 @@ border-solid
 focus:border-indigo-500 focus:ring-indigo-500
 sm:text-sm"""
 
-main :: Effect Unit
-main = runInBody Deku.do
+main :: ExampleSignature
+main runExample = runExample Deku.do
   setNumber /\ number <- useMemoized' (map (_ `pow` 2))
   D.div_
     [ D.div_

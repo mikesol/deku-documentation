@@ -1,6 +1,7 @@
 module Examples.ALagUsingFix where
 
 import Prelude
+import ExampleAssitant (ExampleSignature)
 
 import Data.Compactable (compact)
 import Data.Maybe (Maybe(..))
@@ -14,8 +15,6 @@ import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState')
 import Deku.Listeners (click)
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
 import FRP.Behavior (sample, step)
 import FRP.Event (fix)
 
@@ -28,8 +27,8 @@ text-sm font-medium leading-4 text-white shadow-sm
 hover:bg-COLOR-700 focus:outline-none focus:ring-2
 focus:ring-COLOR-500 focus:ring-offset-2 mr-4"""
 
-main :: Effect Unit
-main = runInBody Deku.do
+main :: ExampleSignature
+main runExample = runExample Deku.do
   setWord /\ word <- useState'
   let
     button txt color = D.button

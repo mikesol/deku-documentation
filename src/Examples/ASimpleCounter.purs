@@ -1,6 +1,7 @@
 module Examples.ASimpleCounter where
 
 import Prelude
+import ExampleAssitant (ExampleSignature)
 
 import Data.NonEmpty ((:|))
 import Data.Tuple.Nested ((/\))
@@ -10,8 +11,6 @@ import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState')
 import Deku.Listeners (click)
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
 import FRP.Event (fold)
 
 buttonClass =
@@ -21,8 +20,8 @@ text-sm font-medium leading-4 text-white shadow-sm
 hover:bg-indigo-700 focus:outline-none focus:ring-2
 focus:ring-indigo-500 focus:ring-offset-2 mr-6""" :: String
 
-main ∷ Effect Unit
-main = runInBody Deku.do
+main :: ExampleSignature
+main runExample = runExample Deku.do
   setCount /\ count <- useState'
   D.div_
     [ D.button

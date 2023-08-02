@@ -1,6 +1,7 @@
 module Examples.UnsettingAttributes where
 
 import Prelude
+import ExampleAssitant (ExampleSignature)
 
 import Data.Filterable (filter)
 import Data.NonEmpty ((:|))
@@ -13,8 +14,6 @@ import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState')
 import Deku.Listeners (click)
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
 
 buttonClass :: String -> String
 buttonClass color =
@@ -25,8 +24,8 @@ text-sm font-medium leading-4 text-white shadow-sm
 hover:bg-COLOR-700 focus:outline-none focus:ring-2
 focus:ring-COLOR-500 focus:ring-offset-2"""
 
-main :: Effect Unit
-main = runInBody Deku.do
+main :: ExampleSignature
+main runExample = runExample Deku.do
   setStyleSwitch /\ styleSwitch <- useState'
   D.div_
     [ D.a

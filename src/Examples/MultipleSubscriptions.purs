@@ -1,6 +1,7 @@
 module Examples.MultipleSubscriptions where
 
 import Prelude
+import ExampleAssitant (ExampleSignature)
 
 import Data.Array (replicate)
 import Data.Number.Format (fixed, toStringWith)
@@ -12,16 +13,15 @@ import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState, guard)
 import Deku.Listeners (click)
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
+
 import Effect.Random (random)
 import FRP.Behavior (behavior, sample_)
 import FRP.Event.Time (interval)
 
-main :: Effect Unit
-main = do
+main :: ExampleSignature
+main runExample = do
   i <- interval 250
-  runInBody Deku.do
+  runExample Deku.do
     setOnOff /\ onOff <- useState false
     let e = sample_ (behavior (pure (Tuple (pure unit) random))) i.event
     D.div_

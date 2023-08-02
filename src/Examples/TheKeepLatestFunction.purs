@@ -1,20 +1,20 @@
 module Examples.TheKeepLatestFunction where
 
 import Prelude
+import ExampleAssitant (ExampleSignature)
 
 import Control.Alt ((<|>))
 import Deku.Control (text)
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
+
 import FRP.Event (fold, keepLatest)
 import FRP.Event.Class (once)
 import FRP.Event.Time (interval)
 
-main :: Effect Unit
-main = do
+main :: ExampleSignature
+main runExample = do
   i0 <- interval 1600
   i1 <- interval 600
-  runInBody do
+  runExample do
     let count = fold (pure <$> add 1) 0
     text
       ( show <$> keepLatest

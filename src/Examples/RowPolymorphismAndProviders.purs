@@ -1,14 +1,13 @@
 module Examples.RowPolymorphismAndProviders where
 
 import Prelude
+import ExampleAssitant (ExampleSignature)
 
 import Control.Monad.Reader (ask, asks)
 import Data.Newtype (class Newtype, unwrap)
 import Deku.Control (text)
 import Deku.Core (Nut)
 import Deku.DOM as D
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
 
 libAwesome
   :: forall n r
@@ -59,8 +58,8 @@ newtype Env = Env
 
 derive instance Newtype (Env) _
 
-main :: Effect Unit
-main = runInBody Deku.do
+main :: ExampleSignature
+main runExample = runExample Deku.do
   let
     cont = do
       lg <- libGreat

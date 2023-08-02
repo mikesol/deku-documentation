@@ -1,6 +1,7 @@
 module Examples.IntegratingBehaviors where
 
 import Prelude
+import ExampleAssitant (ExampleSignature)
 
 import Data.Time.Duration (Seconds(..))
 import Data.Tuple.Nested ((/\))
@@ -11,16 +12,15 @@ import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState)
 import Deku.Listeners (slider)
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
+
 import FRP.Behavior (integral', sample_, stepNE)
 import FRP.Behavior.Time (seconds)
 import FRP.Event.AnimationFrame (animationFrame)
 
-main :: Effect Unit
-main = do
+main :: ExampleSignature
+main runExample = do
   af <- animationFrame
-  runInBody Deku.do
+  runExample Deku.do
     setNumber /\ number <- useState 0.0
     D.div_
       [ D.div_

@@ -1,6 +1,7 @@
 module Examples.UseDyn where
 
 import Prelude
+import ExampleAssitant (ExampleSignature)
 
 import Data.Foldable (for_)
 import Data.String (Pattern(..), Replacement(..), replaceAll)
@@ -12,8 +13,7 @@ import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useDynAtBeginning_, useState')
 import Deku.Listeners (click, keyUp)
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
+
 import Web.Event.Event (target)
 import Web.HTML (window)
 import Web.HTML.HTMLInputElement (fromEventTarget, value)
@@ -38,8 +38,8 @@ text-sm font-medium leading-4 text-white shadow-sm
 hover:bg-COLOR-700 focus:outline-none focus:ring-2
 focus:ring-COLOR-500 focus:ring-offset-2"""
 
-main :: Effect Unit
-main = runInBody Deku.do
+main :: ExampleSignature
+main runExample = runExample Deku.do
   setItem /\ item <- useState'
   setInput /\ input <- useState'
   let

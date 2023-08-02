@@ -5,11 +5,11 @@ import Prelude
 import Control.Monad.ST.Class (liftST)
 import Data.Int (floor)
 import Deku.Control (text)
-import Deku.Toplevel (runInBody)
 import Effect (Effect)
 import Effect.Random (random)
 import Effect.Ref (new, read, write)
 import Effect.Timer (setTimeout)
+import ExampleAssitant (ExampleSignature)
 import FRP.Event (create)
 
 doAuth :: (Boolean -> Effect Unit) -> Effect (Effect Unit)
@@ -25,12 +25,12 @@ doAuth f = do
   eff false
   pure $ write false onOff
 
-main :: Effect Unit
-main = do
+main :: ExampleSignature
+main runExample = do
   authEvent <- liftST create
-  runInBody
+  u <- runExample
     ( text $ authEvent.event <#>
         if _ then "Welcome back!" else "Please log in."
     )
   _ <- doAuth authEvent.push
-  pure unit
+  pure u

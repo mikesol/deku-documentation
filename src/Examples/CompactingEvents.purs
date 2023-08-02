@@ -1,6 +1,7 @@
 module Examples.CompactingEvents where
 
 import Prelude
+import ExampleAssitant (ExampleSignature)
 
 import Control.Alt ((<|>))
 import Data.Filterable (compact)
@@ -13,12 +14,11 @@ import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState')
 import Deku.Listeners (slider)
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
+
 import FRP.Event (Event)
 
-main :: Effect Unit
-main = runInBody Deku.do
+main :: ExampleSignature
+main runExample = runExample Deku.do
   setLeft /\ left <- useState'
   setRight /\ right <- useState'
   let

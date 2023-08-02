@@ -12,8 +12,8 @@ import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState)
 import Deku.Listeners (click)
-import Deku.Toplevel (runInBody)
 import Effect (Effect)
+import ExampleAssitant (ExampleSignature)
 import FRP.Event (Event)
 
 type Env =
@@ -64,7 +64,7 @@ app = do
   myTable <- table
   pure $ D.div_ [ D.div_ [ mySignIn ], D.div_ [ myTable ] ]
 
-main :: Effect Unit
-main = runInBody Deku.do
+main :: ExampleSignature
+main runExample = runExample Deku.do
   setIsSignedIn /\ isSignedIn <- useState false
   app { setIsSignedIn, isSignedIn }

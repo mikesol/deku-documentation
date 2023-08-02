@@ -1,6 +1,7 @@
 module Examples.FlippingTheFunctionAndArgument where
 
 import Prelude
+import ExampleAssitant (ExampleSignature)
 
 import Data.Tuple.Nested ((/\))
 import Deku.Attributes (klass)
@@ -10,18 +11,17 @@ import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState')
 import Deku.Listeners (slider)
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
+
 import FRP.Event.Class ((<**|>))
 
-main :: Effect Unit
-main = runInBody Deku.do
+main :: ExampleSignature
+main runExample = runExample Deku.do
   setSlider1 /\ slider1 <- useState'
   setSlider2 /\ slider2 <- useState'
   fixed
     [ D.div [ klass "flex justify-around" ]
-        [ D.input [ slider setSlider1 ] []
-        , D.input [ slider setSlider2 ] []
+        [ D.input (slider setSlider1) []
+        , D.input (slider setSlider2) []
         ]
     , text
         ( slider1 <**|>

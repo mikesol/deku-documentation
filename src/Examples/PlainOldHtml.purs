@@ -1,10 +1,10 @@
 module Examples.PlainOldHtml where
 
 import Prelude
+import ExampleAssitant (ExampleSignature)
 
 import Deku.Pursx ((~~))
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
+
 import Type.Proxy (Proxy(..))
 
 myHtml =
@@ -44,5 +44,5 @@ myHtml =
   </ol>
 </nav>"""
 
-main :: Effect Unit
-main = runInBody (myHtml ~~ {})
+main :: ExampleSignature
+main runExample = runExample (myHtml ~~ {})

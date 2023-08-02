@@ -11,8 +11,8 @@ import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useMemoized, useState)
 import Deku.Listeners (click)
-import Deku.Toplevel (runInBody)
 import Effect (Effect)
+import ExampleAssitant (ExampleSignature)
 import FRP.Event (Event)
 
 buttonClass =
@@ -22,8 +22,8 @@ text-sm font-medium leading-4 text-white shadow-sm
 hover:bg-pink-700 focus:outline-none focus:ring-2
 focus:ring-pink-500 focus:ring-offset-2 m-2""" :: String
 
-main :: Effect Unit
-main = runInBody Deku.do
+main :: ExampleSignature
+main runExample = runExample Deku.do
   let
     hookusMinimus :: Int -> Hook ((Int -> Effect Unit) /\ NonEmpty Event Int)
     hookusMinimus i makeHook = Deku.do
@@ -31,7 +31,8 @@ main = runInBody Deku.do
       makeHook (setMinimus /\ minimus)
 
     hookusMaximus
-      :: Int -> Hook ((Int -> Effect Unit) /\ NonEmpty Event Int /\ NonEmpty Event Int)
+      :: Int
+      -> Hook ((Int -> Effect Unit) /\ NonEmpty Event Int /\ NonEmpty Event Int)
     hookusMaximus i makeHook = Deku.do
       setMinimus /\ minimus <- hookusMinimus i
       let added = add 1000 <$> minimus

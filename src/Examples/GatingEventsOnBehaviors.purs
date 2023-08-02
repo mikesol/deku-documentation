@@ -1,6 +1,7 @@
 module Examples.GatingEventsOnBehaviors where
 
 import Prelude
+import ExampleAssitant (ExampleSignature)
 
 import Control.Alt ((<|>))
 import Data.DateTime.Instant (unInstant)
@@ -9,17 +10,16 @@ import Data.Number ((%))
 import Deku.Attributes (klass)
 import Deku.Control (text)
 import Deku.DOM as D
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
+
 import FRP.Behavior (gateBy)
 import FRP.Behavior.Time (instant)
 import FRP.Event.Time (interval)
 
-main :: Effect Unit
-main = do
+main :: ExampleSignature
+main runExample = do
   i0 <- interval 200
   i1 <- interval 165
-  runInBody do
+  runExample do
     D.div
       [ klass
           ( gateBy

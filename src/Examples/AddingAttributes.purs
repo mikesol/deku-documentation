@@ -1,16 +1,15 @@
 module Examples.AddingAttributes where
 
 import Prelude
+import ExampleAssitant (ExampleSignature)
 
 import Deku.Attribute ((:=))
 import Deku.Attributes (klass)
 import Deku.Control (text)
 import Deku.DOM as D
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
 
-main :: Effect Unit
-main = runInBody
+main :: ExampleSignature
+main runExample = runExample
   ( D.div_
       [ D.span
           [ D.Style := "color:teal;" ]

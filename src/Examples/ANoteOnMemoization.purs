@@ -1,6 +1,7 @@
 module Examples.ANoteOnMemoization where
 
 import Prelude
+import ExampleAssitant (ExampleSignature)
 
 import Data.String (replaceAll, Pattern(..), Replacement(..))
 import Data.Tuple.Nested ((/\))
@@ -10,8 +11,7 @@ import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState, guard)
 import Deku.Listeners (click)
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
+
 import Effect.Random (random)
 
 buttonClass :: String -> String
@@ -23,10 +23,10 @@ text-sm font-medium leading-4 text-white shadow-sm
 hover:bg-COLOR-700 focus:outline-none focus:ring-2
 focus:ring-COLOR-500 focus:ring-offset-2"""
 
-main :: Effect Unit
-main = do
+main :: ExampleSignature
+main runExample = do
   n <- random
-  runInBody Deku.do
+  runExample Deku.do
     setNumber /\ number <- useState n
     setPresence /\ presence <- useState false
     D.div_

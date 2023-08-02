@@ -1,10 +1,9 @@
 module Examples.HelloWorldCode where
 
 import Prelude
+import ExampleAssitant (ExampleSignature)
 
 import Deku.Control (text)
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
 
-main :: Effect Unit
-main = runInBody (text "Hello world")
+main :: ExampleSignature
+main runExample = runExample (text "Hello world")

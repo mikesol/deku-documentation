@@ -1,16 +1,16 @@
 module Examples.UnsafeCustomElement where
 
 import Prelude
+import ExampleAssitant (ExampleSignature)
 
 import Deku.Control (text)
 import Deku.DOM (unsafeCustomElement)
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
+
 import Type.Proxy (Proxy(..))
 
 data MyNiftyAnchor_
 
-main :: Effect Unit
-main = runInBody do
+main :: ExampleSignature
+main runExample = runExample do
   unsafeCustomElement "a" (Proxy :: _ MyNiftyAnchor_) []
     [ text "hi" ]

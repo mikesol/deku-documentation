@@ -1,6 +1,7 @@
 module Examples.UsingTheHookToSwitchBetweenElements where
 
 import Prelude
+import ExampleAssitant (ExampleSignature)
 
 import Data.String (Pattern(..), Replacement(..), replaceAll)
 import Data.Tuple.Nested ((/\))
@@ -11,8 +12,6 @@ import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState, (<#~>))
 import Deku.Listeners (click)
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
 
 buttonClass :: String -> String
 buttonClass color =
@@ -31,8 +30,8 @@ bunny = "https://dl8.webmfiles.org/big-buck-bunny_trailer.webm"
 pic :: String
 pic = "https://picsum.photos/150"
 
-main :: Effect Unit
-main = runInBody Deku.do
+main :: ExampleSignature
+main runExample = runExample Deku.do
   setImageType /\ imageType <- useState Image
   D.div_
     [ D.div_

@@ -1,6 +1,7 @@
 module Examples.DerivingBehaviors where
 
 import Prelude
+import ExampleAssitant (ExampleSignature)
 
 import Data.Array (drop, length, null)
 import Data.Foldable (sum)
@@ -15,17 +16,16 @@ import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState)
 import Deku.Listeners (slider)
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
+
 import FRP.Behavior (derivative', sample_, stepNE)
 import FRP.Behavior.Time (seconds)
 import FRP.Event (fold)
 import FRP.Event.AnimationFrame (animationFrame)
 
-main :: Effect Unit
-main = do
+main :: ExampleSignature
+main runExample = do
   af <- animationFrame
-  runInBody Deku.do
+  runExample Deku.do
     setNumber /\ number <- useState 0.5
     let
       average l

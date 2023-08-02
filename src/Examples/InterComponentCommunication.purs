@@ -1,6 +1,7 @@
 module Examples.InterComponentCommunication where
 
 import Prelude
+import ExampleAssitant (ExampleSignature)
 
 import Data.Foldable (for_, traverse_)
 import Data.Int (floor)
@@ -14,8 +15,7 @@ import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (dynOptions, useDynWith_, useState, useState')
 import Deku.Listeners (click, keyUp)
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
+
 import FRP.Behavior (sampleBy, stepNE)
 import Web.Event.Event (target)
 import Web.HTML (window)
@@ -41,8 +41,8 @@ text-sm font-medium leading-4 text-white shadow-sm
 hover:bg-COLOR-700 focus:outline-none focus:ring-2
 focus:ring-COLOR-500 focus:ring-offset-2"""
 
-main :: Effect Unit
-main = runInBody Deku.do
+main :: ExampleSignature
+main runExample = runExample Deku.do
   setPos /\ pos <- useState 0
   setItem /\ item <- useState'
   setRemoveAll /\ removeAll <- useState'

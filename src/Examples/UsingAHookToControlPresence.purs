@@ -1,6 +1,7 @@
 module Examples.UsingAHookToControlPresence where
 
 import Prelude
+import ExampleAssitant (ExampleSignature)
 
 import Data.Tuple.Nested ((/\))
 import Deku.Control (text)
@@ -9,11 +10,9 @@ import Deku.Do as Deku
 import Deku.Hooks (useState, guard)
 import Deku.Attributes (klass)
 import Deku.Listeners (click)
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
 
-main :: Effect Unit
-main = runInBody Deku.do
+main :: ExampleSignature
+main runExample = runExample Deku.do
   setPresence /\ presence <- useState true
   D.div_
     [ guard presence (text "Now you see me, ")

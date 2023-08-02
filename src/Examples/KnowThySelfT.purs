@@ -1,6 +1,7 @@
 module Examples.KnowThySelfT where
 
 import Prelude
+import ExampleAssitant (ExampleSignature)
 
 import Data.Tuple.Nested ((/\))
 import Deku.Attribute ((:=))
@@ -9,8 +10,7 @@ import Deku.Control (text)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState')
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
+
 import Web.HTML.HTMLInputElement (value)
 
 inputKls :: String
@@ -22,8 +22,8 @@ border-solid
 focus:border-indigo-500 focus:ring-indigo-500
 sm:text-sm """
 
-main :: Effect Unit
-main = runInBody Deku.do
+main :: ExampleSignature
+main runExample = runExample Deku.do
   setTxt /\ txt <- useState'
   setInput /\ input <- useState'
   D.div_

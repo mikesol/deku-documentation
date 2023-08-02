@@ -7,10 +7,9 @@ import Deku.Attributes (klass)
 import Deku.Control (text)
 import Deku.DOM as D
 import Deku.Do as Deku
-import Deku.Hooks (useState)
+import Deku.Hooks (useState')
 import Deku.Listeners (click)
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
+import ExampleAssitant (ExampleSignature)
 
 buttonClass =
   """inline-flex items-center rounded-md
@@ -19,14 +18,14 @@ text-sm font-medium leading-4 text-white shadow-sm
 hover:bg-indigo-700 focus:outline-none focus:ring-2
 focus:ring-indigo-500 focus:ring-offset-2 mr-6""" :: String
 
-main :: Effect Unit
-main = runInBody Deku.do
-  setKlass1 /\ klass1 <- useState "text-sm"
-  setKlass2 /\ klass2 <- useState "text-green-500"
+main :: ExampleSignature
+main runExample = runExample Deku.do
+  setKlass1 /\ klass1 <- useState'
+  setKlass2 /\ klass2 <- useState'
   let
-    button setter text = D.button
-      [ klass buttonClass, click (setter text) ]
-      [ text text ]
+    button setter txt = D.button
+      [ klass buttonClass, click (setter txt) ]
+      [ text txt ]
   D.div_
     [ D.div_ $
         [ button setKlass1 "text-2xl"
@@ -35,7 +34,10 @@ main = runInBody Deku.do
         , button setKlass2 "text-green-300"
         ]
     , D.div_
-        [ D.span [ klass (klass1 <> pure " " <> klass2) ]
+        [ D.span
+            [ klass "text-sm text-green-500"
+            , klass ((klass1 <#> (_ <> " ")) <> klass2)
+            ]
             [ text "Hello!" ]
         ]
     ]

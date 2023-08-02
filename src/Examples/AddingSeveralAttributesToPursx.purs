@@ -1,6 +1,7 @@
 module Examples.AddingSeveralAttributesToPursx where
 
 import Prelude
+import ExampleAssitant (ExampleSignature)
 
 import Data.Tuple.Nested ((/\))
 import Deku.Attribute (class Attr, Attribute)
@@ -11,8 +12,8 @@ import Deku.Do as Deku
 import Deku.Hooks (useState)
 import Deku.Listeners (click)
 import Deku.Pursx ((~~))
-import Deku.Toplevel (runInBody)
 import Effect (Effect)
+
 import Type.Proxy (Proxy(..))
 
 myHtml =
@@ -53,8 +54,8 @@ myHtml =
 </nav>"""
   )
 
-main :: Effect Unit
-main = runInBody Deku.do
+main :: ExampleSignature
+main runExample = runExample Deku.do
   setProjects /\ projects <- useState true
   setNero /\ nero <- useState true
   let
@@ -79,7 +80,7 @@ main = runInBody Deku.do
        . Attr element D.OnClick (Effect Unit)
       => Attribute element
     toggleNero = click (setProjects true *> setNero true)
-    akls =  append [klass "cursor-pointer mr-4"] <<< pure
+    akls = append [ klass "cursor-pointer mr-4" ] <<< pure
   D.div_
     [ D.div_
         [ D.a (akls toggleHome) [ text "Go home" ]

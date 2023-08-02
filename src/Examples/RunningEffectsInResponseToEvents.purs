@@ -1,6 +1,7 @@
 module Examples.RunningEffectsInResponseToEvents where
 
 import Prelude
+import ExampleAssitant (ExampleSignature)
 
 import Data.JSDate (getTime, now)
 import Data.Tuple.Nested ((/\))
@@ -10,11 +11,9 @@ import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState')
 import Deku.Listeners (click)
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
 
-main :: Effect Unit
-main = runInBody Deku.do
+main :: ExampleSignature
+main runExample = runExample Deku.do
   setCurrentTime /\ currentTime <- useState'
   D.div_
     [ D.a
