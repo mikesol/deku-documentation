@@ -3,7 +3,7 @@ module Pages.CoreConcepts.Components.AddingEventHandlers where
 import Prelude
 
 import Contracts (Section, section)
-import Deku.Control (text_)
+import Deku.Control (text)
 import Deku.DOM as D
 import Pages.CoreConcepts.Components.AddingEventHandlers.ShorthandListeners (shorthandListeners)
 import Pages.CoreConcepts.Components.AddingEventHandlers.UsingAnEffect (usingAnEffect)
@@ -14,7 +14,7 @@ addingEventHandlers = section
   { title: "Adding event handlers"
   , topmatter: pure
       [ D.p_
-          [ text_
+          [ text
               "The web would be quite uneventful without events. Be they clicks or scrolls or hovers, Deku is your one-stop-shop for event planning!"
           ]
       ]

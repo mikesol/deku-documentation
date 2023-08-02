@@ -10,7 +10,7 @@ import Data.DateTime.Instant (unInstant)
 import Data.Newtype (unwrap)
 import Data.Number ((%))
 import Deku.Attributes (klass)
-import Deku.Control (text_)
+import Deku.Control (text)
 import Deku.DOM as D
 import Examples as Examples
 import FRP.Behavior (gateBy)
@@ -23,20 +23,20 @@ gatingEventsOnBehaviors = subsection
   { title: "Gating events on behaviors"
   , matter: \(Env { routeLink }) ->
       [ D.p_
-          [ text_ "We can gate events on behaviors by using the "
+          [ text "We can gate events on behaviors by using the "
           , D.code__ "gateBy"
-          , text_ " function."
+          , text " function."
           ]
       , psCode
           """gateBy :: forall event p a. Filterable event => (p -> a -> Boolean) -> ABehavior event p -> event a -> event a
 gateBy f ps xs = compact (sampleBy (\p x -> if f p x then Just x else Nothing) ps xs)"""
       , D.p_
-          [ text_ "Let's use the same strobe example as in the "
+          [ text "Let's use the same strobe example as in the "
           , routeLink Alternatives
-          , text_
+          , text
               " section, except we'll pause the strobe every two seconds via a gate. The current time will be provided by a "
           , D.code__ "Behavior"
-          , text_ "."
+          , text "."
           ]
       , psCodeWithLink Examples.GatingEventsOnBehaviors
       , exampleBlockquote
@@ -49,7 +49,7 @@ gateBy f ps xs = compact (sampleBy (\p x -> if f p x then Just x else Nothing) p
                       )
                   )
               ]
-              [ text_ "Par-tay!" ]
+              [ text "Par-tay!" ]
           ]
       ]
   }

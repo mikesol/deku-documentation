@@ -8,9 +8,9 @@ import Contracts (Env(..), Subsection, subsection)
 import Data.Foldable (for_)
 import Data.String (Pattern(..), Replacement(..), replaceAll)
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute ((!:=))
-import Deku.Attributes (klass_)
-import Deku.Control (text_)
+import Deku.Attribute ((:=))
+import Deku.Attributes (klass)
+import Deku.Control (text)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useDynAtBeginning, useHot', useState')
@@ -46,12 +46,12 @@ theUseDynHook = subsection
   { title: "The useDyn hook"
   , matter: \(Env { routeLink }) ->
       [ D.p_
-          [ text_
+          [ text
               "To render dynamic components with the most recent component appearing at the top of a collection, look no further then the "
           , D.code__ "useDynAtBeginning"
-          , text_ " hook. The hook takes an event outputs a value called "
+          , text " hook. The hook takes an event outputs a value called "
           , D.code__ "value"
-          , text_
+          , text
               " that can be used to render the most recent component. Here's an example:"
           ]
       , psCodeWithLink Examples.UseDyn
@@ -69,48 +69,48 @@ theUseDynHook = subsection
                 top =
                   D.div_
                     [ D.input
-                        [ D.Value !:= "Tasko primo"
+                        [ D.Value := "Tasko primo"
                         , keyUp $ pure \evt -> do
                             when (code evt == "Enter") $
                               for_
                                 ((target >=> fromEventTarget) (toEvent evt))
                                 guardAgainstEmpty
-                        , D.SelfT !:= setInput
-                        , klass_ inputKls
+                        , D.SelfT := setInput
+                        , klass inputKls
                         ]
                         []
                     , D.button
                         [ click $ input <#> guardAgainstEmpty
-                        , klass_ $ buttonClass "green"
+                        , klass $ buttonClass "green"
                         ]
-                        [ text_ "Add" ]
+                        [ text "Add" ]
                     ]
               D.div_
                 [ top
                 , Deku.do
                     { value: t } <- useDynAtBeginning item
-                    D.div_ [ text_ t ]
+                    D.div_ [ text t ]
                 ]
           ]
       , D.p_
-          [ text_ "As we learned in "
+          [ text "As we learned in "
           , routeLink State
-          , text_ ", the right side of a state hook is of type "
+          , text ", the right side of a state hook is of type "
           , D.code__ "Event a"
-          , text_ ", where "
+          , text ", where "
           , D.code__ "a"
-          , text_ " is whatever's being pushed to the pusher. Because "
+          , text " is whatever's being pushed to the pusher. Because "
           , D.code__ "Event"
-          , text_ " is a functor, we can "
+          , text " is a functor, we can "
           , D.code__ "map"
-          , text_
+          , text
               " over it. So far, we've been doing simple transformations like mapping over "
           , D.code__ "Event Int"
-          , text_ " to turn it into "
+          , text " to turn it into "
           , D.code__ "Event String"
-          , text_ ". Here, we're mapping over an "
+          , text ". Here, we're mapping over an "
           , D.code__ "Event"
-          , text_
+          , text
               " to transform it into a Deku component. So instead of streaming text to a text node, we're streaming components to the DOM, but it's the same pattern!"
           ]
       ]

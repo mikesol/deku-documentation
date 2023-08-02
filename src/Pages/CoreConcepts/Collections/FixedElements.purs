@@ -3,7 +3,7 @@ module Pages.CoreConcepts.Collections.FixedElements where
 import Prelude
 
 import Contracts (Section, section)
-import Deku.Control (text_)
+import Deku.Control (text)
 import Deku.DOM as D
 import Pages.CoreConcepts.Collections.FixedElements.GroupsOfGroups (groupsOfGroups)
 import Pages.CoreConcepts.Collections.FixedElements.GroupingElementsTogether (groupingElementsTogether)
@@ -13,10 +13,10 @@ fixedElements = section
   { title: "Arrays of components"
   , topmatter: pure
       [ D.p_
-          [ text_
+          [ text
               "Sometimes, you have a fixed array of components that you'd like to insert into a parent element. For these cases, there's the "
           , D.code__ "fixed"
-          , text_ " operator."
+          , text " operator."
           ]
       ]
   , subsections:

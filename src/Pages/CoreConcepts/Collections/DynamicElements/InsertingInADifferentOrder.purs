@@ -11,9 +11,9 @@ import Data.Int (floor)
 import Data.String (Pattern(..), Replacement(..), replaceAll)
 import Data.Tuple (Tuple(..))
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute (cb, (!:=))
-import Deku.Attributes (klass_)
-import Deku.Control (text_)
+import Deku.Attribute (cb, (:=))
+import Deku.Attributes (klass)
+import Deku.Control (text)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useDyn, useHot', useState, useState')
@@ -50,21 +50,21 @@ insertingInADifferentOrder = subsection
   { title: "Inserting in a different order"
   , matter: \(Env { routeLink }) ->
       [ D.p_
-          [ text_
+          [ text
               "Sometimes, you want to insert elements in a particular order instead of the first element being inserted at the top of a list. There's a hook for that! Instead of "
           , D.code__ "useDynAtBeginning"
-          , text_ " or its homolog "
+          , text " or its homolog "
           , D.code__ "useDynAtEnd"
-          , text_ ", we'll use plain old "
+          , text ", we'll use plain old "
           , D.code__ "useDyn"
-          , text_
+          , text
               ". This hook expects an event of type "
           , D.code__ "Tuple Int a"
-          , text_
+          , text
               "which is constructed from two values:"
           , D.ol_
-              [ D.li_ [ text_ "An index at which to insert the element; and" ]
-              , D.li_ [ text_ "The element to insert." ]
+              [ D.li_ [ text "An index at which to insert the element; and" ]
+              , D.li_ [ text "The element to insert." ]
               ]
           ]
       , psCodeWithLink Examples.InsertingInADifferentOrder
@@ -82,54 +82,54 @@ insertingInADifferentOrder = subsection
                 top =
                   D.div_
                     [ D.input
-                        [ D.Value !:= "Tasko primo"
+                        [ D.Value := "Tasko primo"
                         , keyUp $ pure \evt -> do
                             when (code evt == "Enter") $
                               for_
                                 ((target >=> fromEventTarget) (toEvent evt))
                                 guardAgainstEmpty
-                        , D.SelfT !:= setInput
-                        , klass_ inputKls
+                        , D.SelfT := setInput
+                        , klass inputKls
                         ]
                         []
                     , D.input
-                        [ klass_ inputKls
-                        , D.Xtype !:= "number"
-                        , D.Min !:= "0"
-                        , D.Value !:= "0"
-                        , D.OnChange !:= cb \evt ->
+                        [ klass inputKls
+                        , D.Xtype := "number"
+                        , D.Min := "0"
+                        , D.Value := "0"
+                        , D.OnChange := cb \evt ->
                             traverse_ (valueAsNumber >=> floor >>> setPos) $
                               (target >=> fromEventTarget) evt
                         ]
                         []
                     , D.button
                         [ click $ input <#> guardAgainstEmpty
-                        , klass_ $ buttonClass "green"
+                        , klass $ buttonClass "green"
                         ]
-                        [ text_ "Add" ]
+                        [ text "Add" ]
                     ]
               D.div_
                 [ top
                 , Deku.do
                     { value: t } <- useDyn
                       (Tuple <$> pos <|*> item)
-                    D.div_ [ text_ t ]
+                    D.div_ [ text t ]
                 ]
           ]
       , proTip
           { header:
-              D.span_ [ text_ "The ", D.code__ "<|*>", text_ " operator" ]
+              D.span_ [ text "The ", D.code__ "<|*>", text " operator" ]
           , message: D.div_
-              [ text_ "In the example above, we see a new operator "
+              [ text "In the example above, we see a new operator "
               , D.code__ "<|*>"
-              , text_
+              , text
                   ". We need to use it here because otherwise we'd add a todo item whenever we change the number in the input. This operator is part of a larger collection of operators used for "
               , routeLink Sampling
-              , text_ ", which we'll go over later."
+              , text ", which we'll go over later."
               ]
           }
       , D.p_
-          [ text_
+          [ text
               "Note that, if the index overshoots or undershoots the collection's bounds, the element will go to the end or beginning of the collection respectively."
           ]
       ]

@@ -7,16 +7,16 @@ import Data.Int (floor)
 import Data.String (Pattern(..), Replacement(..), replaceAll)
 import Data.Tuple (Tuple(..))
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute (cb, (!:=))
-import Deku.Attributes (klass_)
-import Deku.Control (text_)
+import Deku.Attribute (cb, (:=))
+import Deku.Attributes (klass)
+import Deku.Control (text)
 import Deku.DOM as D
 import Deku.Do as Deku
-import Deku.Hooks (useDyn, useHot', useState, useState')
-import Deku.Listeners (click, click_, keyUp)
+import Deku.Hooks (useDyn_, useState, useState')
+import Deku.Listeners (click, keyUp)
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
-import FRP.Event.Class ((<|*>))
+import FRP.Behavior (sampleBy, stepNE)
 import Web.Event.Event (target)
 import Web.HTML (window)
 import Web.HTML.HTMLInputElement (fromEventTarget, value, valueAsNumber)
@@ -45,7 +45,7 @@ main :: Effect Unit
 main = runInBody Deku.do
   setPos /\ pos <- useState 0
   setItem /\ item <- useState'
-  setInput /\ input <- useHot'
+  setInput /\ input <- useState'
   let
     guardAgainstEmpty e = do
       v <- value e
@@ -55,43 +55,43 @@ main = runInBody Deku.do
     top =
       D.div_
         [ D.input
-            [ D.Value !:= "Tasko primo"
-            , keyUp $ pure \evt -> do
+            [ D.Value := "Tasko primo"
+            , keyUp \evt -> do
                 when (code evt == "Enter") $
                   for_
                     ((target >=> fromEventTarget) (toEvent evt))
                     guardAgainstEmpty
-            , D.SelfT !:= setInput
-            , klass_ inputKls
+            , D.SelfT := setInput
+            , klass inputKls
             ]
             []
         , D.input
-            [ klass_ inputKls
-            , D.Xtype !:= "number"
-            , D.Min !:= "0"
-            , D.Value !:= "0"
-            , D.OnChange !:= cb \evt ->
+            [ klass inputKls
+            , D.Xtype := "number"
+            , D.Min := "0"
+            , D.Value := "0"
+            , D.OnChange := cb \evt ->
                 traverse_ (valueAsNumber >=> floor >>> setPos) $
                   (target >=> fromEventTarget) evt
             ]
             []
         , D.button
             [ click $ input <#> guardAgainstEmpty
-            , klass_ $ buttonClass "green"
+            , klass $ buttonClass "green"
             ]
-            [ text_ "Add" ]
+            [ text "Add" ]
         ]
   D.div_
     [ top
     , Deku.do
-        { value: t, sendTo } <- useDyn
-          (Tuple <$> pos <|*> item)
+        { value: t, sendTo } <- useDyn_
+          (sampleBy Tuple (stepNE pos) item)
         D.div_
-          [ text_ t
+          [ text t
           , D.button
-              [ klass_ $ "ml-2 " <> buttonClass "indigo"
-              , click_ (sendTo 0)
+              [ klass $ "ml-2 " <> buttonClass "indigo"
+              , click (sendTo 0)
               ]
-              [ text_ "Prioritize" ]
+              [ text "Prioritize" ]
           ]
     ]

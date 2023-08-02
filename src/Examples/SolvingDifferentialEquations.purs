@@ -2,15 +2,16 @@ module Examples.SolvingDifferentialEquations where
 
 import Prelude
 
+import Data.NonEmpty ((:|))
 import Data.Time.Duration (Seconds(..))
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute ((!:=), (:=))
-import Deku.Attributes (klass_)
-import Deku.Control (text_)
+import Deku.Attribute ((:=))
+import Deku.Attributes (klass)
+import Deku.Control (text)
 import Deku.DOM as D
 import Deku.Do as Deku
-import Deku.Hooks (useState)
-import Deku.Listeners (click_)
+import Deku.Hooks (useState')
+import Deku.Listeners (click)
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
 import FRP.Behavior (sample_, solve2')
@@ -27,38 +28,40 @@ hover:bg-indigo-700 focus:outline-none focus:ring-2
 focus:ring-indigo-500 focus:ring-offset-2 mr-6"""
 
 main :: Effect Unit
-main = runInBody Deku.do
-  setThunk /\ thunk <- useState unit
-  let
-    motion = keepLatest $ thunk $>
-      ( show >>> (D.Value := _) <$>
-          ( sample_
-              ( solve2' 1.0 0.0
-                  ( seconds <#>
-                      (\(Seconds s) -> s)
-                  )
-                  ( \x dx'dt -> pure (-0.5) * x -
-                      (pure 0.1) * dx'dt
-                  )
-              )
-              animationFrame
-          )
-      )
-  D.div_
-    [ D.div_
-        [ D.button
-            [ klass_ buttonClass, click_ (setThunk unit) ]
-            [ text_ "Restart simulation" ]
-        ]
-    , D.div_
-        [ D.input
-            [ D.Xtype !:= "range"
-            , klass_ "w-full"
-            , D.Min !:= "-1.0"
-            , D.Max !:= "1.0"
-            , D.Step !:= "0.01"
-            , motion
-            ]
-            []
-        ]
-    ]
+main = do
+  af <- animationFrame
+  runInBody Deku.do
+    setThunk /\ thunk <- useState'
+    let
+      motion = 0.0 :|
+        ( keepLatest $ thunk $>
+            ( sample_
+                ( solve2' 1.0 0.0
+                    ( seconds <#>
+                        (\(Seconds s) -> s)
+                    )
+                    ( \x dx'dt -> pure (-0.5) * x -
+                        (pure 0.1) * dx'dt
+                    )
+                )
+                af.event
+            )
+        )
+    D.div_
+      [ D.div_
+          [ D.button
+              [ klass buttonClass, click (setThunk unit) ]
+              [ text "Restart simulation" ]
+          ]
+      , D.div_
+          [ D.input
+              [ D.Xtype := "range"
+              , klass "w-full"
+              , D.Min := "-1.0"
+              , D.Max := "1.0"
+              , D.Step := "0.01"
+              , D.Value := (show <$> motion)
+              ]
+              []
+          ]
+      ]

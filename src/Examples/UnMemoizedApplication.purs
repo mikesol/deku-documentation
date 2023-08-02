@@ -3,15 +3,27 @@ module Examples.UnMemoizedApplication where
 import Prelude
 
 import Data.Array (intercalate, replicate)
+import Data.NonEmpty (NonEmpty, (:|))
 import Data.Tuple (fst, snd)
-import Deku.Attributes (klass_)
-import Deku.Control (text, text_)
+import Deku.Attributes (klass)
+import Deku.Control (text)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState)
 import Deku.Listeners (click)
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
+
+apne
+  :: forall f a b
+   . Functor f
+  => Apply f
+  => NonEmpty f (a -> b)
+  -> NonEmpty f a
+  -> NonEmpty f b
+apne (a' :| as') (b' :| bs') = a' b' :| (as' <*> bs')
+
+infixl 4 apne as <**>
 
 main :: Effect Unit
 main = runInBody Deku.do
@@ -25,9 +37,9 @@ main = runInBody Deku.do
         ( map
             ( \i -> D.a
                 [ click $ snd i <#> not >>> fst i
-                , klass_ "cursor-pointer"
+                , klass "cursor-pointer"
                 ]
-                [ text_ "Click me " ]
+                [ text "Click me " ]
             )
             [ aa, bb, cc, dd, ee ]
         )
@@ -37,10 +49,10 @@ main = runInBody Deku.do
                 [ text $
                     ( { a: _, b: _, c: _, d: _, e: _ }
                         <$> snd aa
-                        <*> snd bb
-                        <*> snd cc
-                        <*> snd dd
-                        <*> snd ee
+                        <**> snd bb
+                        <**> snd cc
+                        <**> snd dd
+                        <**> snd ee
                     )
                       <#> \{ a, b, c, d, e } ->
                         intercalate " " $ map show

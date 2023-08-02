@@ -7,13 +7,13 @@ import Components.ExampleBlockquote (exampleBlockquote)
 import Contracts (Subsection, subsection)
 import Data.Time.Duration (Seconds(..))
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute ((!:=), (:=))
-import Deku.Attributes (klass_)
-import Deku.Control (text_)
+import Deku.Attribute ((:=))
+import Deku.Attributes (klass)
+import Deku.Control (text)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState)
-import Deku.Listeners (click_)
+import Deku.Listeners (click)
 import Examples as Examples
 import FRP.Behavior (sample_, solve2')
 import FRP.Behavior.Time (seconds)
@@ -25,23 +25,23 @@ solvingDifferentialEquations = subsection
   { title: "Solving differential equations"
   , matter: pure
       [ D.p_
-          [ text_
+          [ text
               "Last but not least, we can solve a second order differential equation of the form "
           , D.code__ "d^2a/dt^2 = f a (da/dt)"
-          , text_ " using the "
+          , text " using the "
           , D.code__ "solve2'"
-          , text_ " function."
-          , text_
+          , text " function."
+          , text
               " As the left side is the acceleration of the system, we can solve by integrating twice (using the "
           , D.code__ "integrate'"
-          , text_
+          , text
               " function above) after specifying the initial conditions for position and velocity. For example, below we create a damped oscillator using the equation "
           , D.code__ "\\x dx'dt -> -⍺ * x - δ * dx'dt"
-          , text_ ". In this case, both "
+          , text ". In this case, both "
           , D.code__ "x"
-          , text_ " (position) and "
+          , text " (position) and "
           , D.code__ "dx'dt"
-          , text_ " (veclocity) are behaviors."
+          , text " (veclocity) are behaviors."
           ]
 
       , psCodeWithLink Examples.SolvingDifferentialEquations
@@ -73,17 +73,17 @@ solvingDifferentialEquations = subsection
                 [ D.div_
                     [ D.button
                         
-                            [ klass_ buttonClass, click_ (setThunk unit) ]
+                            [ klass buttonClass, click (setThunk unit) ]
                         
-                        [ text_ "Restart simulation" ]
+                        [ text "Restart simulation" ]
                     ]
                 , D.div_
                     [ D.input
-                            [ D.Xtype !:= "range"
-                            , klass_ "w-full"
-                            , D.Min !:= "-1.0"
-                            , D.Max !:= "1.0"
-                            , D.Step !:= "0.01"
+                            [ D.Xtype := "range"
+                            , klass "w-full"
+                            , D.Min := "-1.0"
+                            , D.Max := "1.0"
+                            , D.Step := "0.01"
                             , motion
                             ]
                         []

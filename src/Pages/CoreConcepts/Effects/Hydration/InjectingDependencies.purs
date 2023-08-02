@@ -8,9 +8,9 @@ import Contracts (Subsection, subsection)
 import Data.Int (floor)
 import Data.JSDate (getTime, now)
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute ((!:=))
-import Deku.Attributes (klass_)
-import Deku.Control (blank, text, text_, (<#~>))
+import Deku.Attribute ((:=))
+import Deku.Attributes (klass)
+import Deku.Control (blank, text)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState)
@@ -39,28 +39,28 @@ injectingDependencies = subsection
   { title: "Injecting dependencies"
   , matter: pure
       [ D.p_
-          [ text_
+          [ text
               "Let's explore the Deku-ian effect model with a concrete example. Imagine that you are building an app called Image Roulette that reports when a user is watching or not watching an image. Whenever an image comes into focus, you need to report to the backend that it is being viewed, and whenever an image goes offscreen, you need to report that it is no longer being viewed."
           ]
       , D.p_
-          [ text_ "You may be tempted to make a component called ie "
+          [ text "You may be tempted to make a component called ie "
           , D.code__ "smartImage"
-          , text_
+          , text
               " that reports its own presence or absence. Don't. Someone on your team will find it, start using it for other stuff, and pretty soon you'll accidentally have a bunch of API calls slowing down your app and you won't know why. Instead, "
           , D.i__ "inject"
-          , text_ " this logic from the toplevel to the individual components."
+          , text " this logic from the toplevel to the individual components."
           ]
       , D.p__
           "In the following application, we'll implement a miniature version of Image Roulette with dummy functions for the following API calls:"
       , D.ul_
           [ D.li_
               [ D.code__ "fetchNewRandomImage"
-              , text_
+              , text
                   ": Fetch a new random image URL and increase the watcher count."
               ]
           , D.li_
               [ D.code__ "decreaseImageWatchCount"
-              , text_ ": Indicate we are no longer looking at the image."
+              , text ": Indicate we are no longer looking at the image."
               ]
           ]
       , psCodeWithLink Examples.InjectingDependencies
@@ -82,7 +82,7 @@ injectingDependencies = subsection
               setUIState /\ uiState <- useState Beginning
               D.div_
                 [ D.button
-                    [ klass_ buttonClass
+                    [ klass buttonClass
                     , let
                         fetcher = fetchNewRandomImage >>= liftEffect
                           <<< setUIState
@@ -109,15 +109,15 @@ injectingDependencies = subsection
                     [ uiState <#~> case _ of
                         Beginning -> blank
                         Image { url, watcherCount } -> D.div_
-                          [ D.img [D.Src !:= url] []
+                          [ D.img [D.Src := url] []
                           , D.div_
-                              [ text_ $
+                              [ text $
                                   "Watcher count (including you): " <> show
                                     watcherCount
                               ]
                           ]
                         Loading ->
-                          D.div [klass_ "p-10"]
+                          D.div [klass "p-10"]
                             [ ( ( Proxy
                                     :: _
                                          """<div role="status">
@@ -134,7 +134,7 @@ injectingDependencies = subsection
                 ]
           ]
       , D.p_
-          [ text_
+          [ text
               "In the example above, we see the entire effect lifecycle controlled in the button's click listener. In addition to extricating effectful logic from the image presentation components, this has the added advantage of being able to throttle requests during loading."
           ]
       ]

@@ -7,14 +7,14 @@ import Components.Code (psCodeWithLink)
 import Contracts (Subsection, subsection)
 import Data.String (Pattern(..), Replacement(..), replaceAll)
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute ((!:=))
-import Deku.Attributes (klass_)
-import Deku.Control (guard, text_)
+import Deku.Attribute ((:=))
+import Deku.Attributes (klass)
+import Deku.Control (guard, text)
 import Deku.Core (fixed)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useHot)
-import Deku.Listeners (click_)
+import Deku.Listeners (click)
 import Examples as Examples
 
 -- bg-pink-600
@@ -43,79 +43,79 @@ groupsOfGroups = subsection
   { title: "Groups of groups"
   , matter: pure
       [ D.p_
-          [ text_ "Because "
+          [ text "Because "
           , D.code__ "fixed"
-          , text_
+          , text
               " does not create a DOM element for its content, one may wonder how nested "
           , D.code__ "fixed"
-          , text_
+          , text
               " calls are handled. In Deku, they are always flattened into the lower-most logical parent element. So if there is a fixed in a fixed in a fixed, the inner-most fixed has the same parent as the top-most fixed."
           ]
       , D.p_
-          [ text_ "Here's an example of nested "
+          [ text "Here's an example of nested "
           , D.code__ "flatten"
-          , text_ "s going into the same container element."
+          , text "s going into the same container element."
           ]
       , psCodeWithLink Examples.GroupsOfGroups
       , D.p__ "And here's the result."
       , Deku.do
           setBadness /\ badness <- useHot Bad
           D.div_
-            [ D.div [klass_ "flex justify-between"]
+            [ D.div [klass "flex justify-between"]
                 [ D.button
-                      [klass_ $ buttonClass "indigo",
-                      click_ $ setBadness Bad]
-                    [ text_ "Bad" ]
+                      [klass $ buttonClass "indigo",
+                      click $ setBadness Bad]
+                    [ text "Bad" ]
                 , D.button
-                      [klass_ $ buttonClass "pink",
-                      click_ $ setBadness Worse]
-                    [ text_ "Worse" ]
+                      [klass $ buttonClass "pink",
+                      click $ setBadness Worse]
+                    [ text "Worse" ]
                 , D.button
-                      [klass_ $ buttonClass "green",
-                      click_ $ setBadness Worst]
-                    [ text_ "Worst" ]
+                      [klass $ buttonClass "green",
+                      click $ setBadness Worst]
+                    [ text "Worst" ]
                 ]
-            , D.div [klass_ "bg-alexander"]
-                [ D.div [klass_ "p-3"]
-                    [ D.span [klass_ "font-aldine text-4xl text-alexander"]
-                        [ text_
+            , D.div [klass "bg-alexander"]
+                [ D.div [klass "p-3"]
+                    [ D.span [klass "font-aldine text-4xl text-alexander"]
+                        [ text
                             "Alexander and the Terrible, Horrible,"
                         , guard (badness <#> (_ > Bad)) $ fixed
-                            [ text_ " Dreadful,"
+                            [ text " Dreadful,"
                             , guard (badness <#> (_ > Worse)) $ fixed
-                                [ text_ " Hideous,"
-                                , text_ " Soul-crushing,"
+                                [ text " Hideous,"
+                                , text " Soul-crushing,"
                                 ]
-                            , text_ " Ruinous,"
+                            , text " Ruinous,"
                             ]
-                        , text_ " No Good,"
-                        , text_ " Very Bad Day"
+                        , text " No Good,"
+                        , text " Very Bad Day"
                         ]
                     ]
-                , D.div_ [ D.img [D.Src !:= alexanderURL] [] ]
+                , D.div_ [ D.img [D.Src := alexanderURL] [] ]
                 ]
             ]
       , D.p_
-          [ text_ "In this example, we see the use of "
+          [ text "In this example, we see the use of "
           , D.code__ "useHot"
-          , text_ " instead of "
+          , text " instead of "
           , D.code__ "useState"
-          , text_
+          , text
               ". To understand why, think about the contract with the state variable "
           , D.code__ "badness"
-          , text_
+          , text
               ". The UI responds to it by creating a new section and then this section starts listening to "
           , D.code__ "badness"
-          , text_ ". But by the time it starts listening to "
+          , text ". But by the time it starts listening to "
           , D.code__ "badness"
-          , text_
+          , text
               ", the click event has already fired, so the inner listener does not evaluate the statement "
           , D.code__ "(_ > Worse)"
-          , text_ ". To provide the nested "
+          , text ". To provide the nested "
           , D.code__ "flatten"
-          , text_ " with the most recent event, we use "
+          , text " with the most recent event, we use "
           , D.code__ "useHot"
-          , text_ "."
+          , text "."
           ]
       ]
   }

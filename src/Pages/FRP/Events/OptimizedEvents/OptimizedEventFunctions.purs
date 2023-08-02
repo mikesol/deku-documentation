@@ -9,12 +9,12 @@ import Control.Monad.ST.Internal (modify, new, read, run, write)
 import Control.Monad.ST.Uncurried (mkSTFn1, mkSTFn2, runSTFn1, runSTFn2)
 import Data.Maybe (Maybe(..))
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass_)
-import Deku.Control (text, text_)
+import Deku.Attributes (klass)
+import Deku.Control (text)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState)
-import Deku.Listeners (click_)
+import Deku.Listeners (click)
 import Examples as Examples
 import FRP.Event (Event, Subscriber(..), createPure, fold, makeLemmingEventO, subscribePure)
 
@@ -30,13 +30,13 @@ optimizedEventFunctions = subsection
   { title: "Optimized stand-alone events"
   , matter: pure
       [ D.p_
-          [ text_ "The same benefits can be applied to "
+          [ text "The same benefits can be applied to "
           , D.code__ "makeLemmingEvent"
-          , text_ " through its optimized homologue, "
+          , text " through its optimized homologue, "
           , D.code__ "makeLemmingEventO"
-          , text_ ". To show this, we'll use the same "
+          , text ". To show this, we'll use the same "
           , D.code__ "dedup"
-          , text_ " function rewritten in optimized form."
+          , text " function rewritten in optimized form."
           ]
       , psCodeWithLink Examples.OptimizedEventFunctions
       , exampleBlockquote
@@ -60,13 +60,13 @@ optimizedEventFunctions = subsection
                                   so be sure to alternate between the buttons."""
                 , D.div_ $ [ 10, 100, 1000 ] <#> \n ->
                     D.button
-                      [click_ (setInt n),
-                        klass_ buttonClass]
-                      [ text_ ("Add " <> show n) ]
+                      [click (setInt n),
+                        klass buttonClass]
+                      [ text ("Add " <> show n) ]
                 , D.div_ [ text $ (show <$> fold (+) 0 (dedup int)) ]
                 , D.div_
-                    [ text_ "And check out this pure number! "
-                    , text_ $ show $ run do
+                    [ text "And check out this pure number! "
+                    , text $ show $ run do
                         { push, event } <- createPure
                         rf <- new 0
                         _ <- subscribePure (dedup event) \n -> do
@@ -83,10 +83,10 @@ optimizedEventFunctions = subsection
                 ]
           ]
       , D.p_
-          [ text_
+          [ text
               "You'll see that the optimized version has less thunks - there is one less "
           , D.code__ "do"
-          , text_
+          , text
               " bloc, the subscribe function is optimized out completely, and the callback does not need a thunk anymore."
           ]
       , D.h4__ "Unoptimized"

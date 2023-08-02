@@ -7,9 +7,9 @@ import Components.ExampleBlockquote (exampleBlockquote)
 import Contracts (Subsection, subsection)
 import Data.String (Pattern(..), Replacement(..), replaceAll)
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute ((!:=))
-import Deku.Attributes (href, klass_, style)
-import Deku.Control (text_)
+import Deku.Attribute ((:=))
+import Deku.Attributes (href, klass, style)
+import Deku.Control (text)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState)
@@ -45,30 +45,30 @@ usingTheHookInAnAttribute = subsection
               setStyleSwitch /\ styleSwitch <- useState false
               D.div_
                 [ D.a
-                    [ D.Target !:= "_blank"
+                    [ D.Target := "_blank"
                     , href $ hrefSwitch <#>
                         if _ then "https://cia.gov" else "https://fbi.gov"
                     , style $ styleSwitch <#>
                         if _ then "color:magenta;" else "color:teal;"
                     ]
-                    [ text_ "Click me" ]
+                    [ text "Click me" ]
                 , D.button
-                    [ klass_ $ buttonClass "indigo"
+                    [ klass $ buttonClass "indigo"
                     , click $ hrefSwitch <#> not >>> setHrefSwitch
                     ]
-                    [ text_ "Switch href" ]
+                    [ text "Switch href" ]
                 , D.button
-                    [ klass_ $ buttonClass "pink"
+                    [ klass $ buttonClass "pink"
                     , click $ styleSwitch <#> not >>> setStyleSwitch
                     ]
-                    [ text_ "Switch style" ]
+                    [ text "Switch style" ]
                 ]
           ]
       , D.p_
-          [ text_
+          [ text
               "In addition to controlling attributes of the anchor, these hooks "
           , D.i__ "also"
-          , text_
+          , text
               " control the click listeners. That is, each hook's value is stored in a listener, and whenever the hook updates, its new value is used to create a new listener that replaces the old one."
           ]
       ]

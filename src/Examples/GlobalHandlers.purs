@@ -2,14 +2,15 @@ module Examples.GlobalHandlers where
 
 import Prelude
 
+import Control.Monad.ST.Class (liftST)
+import Data.Int (floor)
 import Deku.Control (text)
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
-import FRP.Event (create)
-import Data.Int (floor)
 import Effect.Random (random)
 import Effect.Ref (new, read, write)
 import Effect.Timer (setTimeout)
+import FRP.Event (create)
 
 doAuth :: (Boolean -> Effect Unit) -> Effect (Effect Unit)
 doAuth f = do
@@ -26,7 +27,7 @@ doAuth f = do
 
 main :: Effect Unit
 main = do
-  authEvent <- create
+  authEvent <- liftST create
   runInBody
     ( text $ authEvent.event <#>
         if _ then "Welcome back!" else "Please log in."

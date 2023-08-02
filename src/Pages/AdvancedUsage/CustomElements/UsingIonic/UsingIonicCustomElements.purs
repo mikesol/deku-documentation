@@ -7,9 +7,9 @@ import Components.Code (psCodeNoCollapseWithLink)
 import Components.ExampleBlockquote (exampleBlockquote)
 import Contracts (Subsection, subsection)
 import Control.Plus (empty)
-import Deku.Attribute (class Attr, Attribute, AttributeValue(..), unsafeAttribute, (!:=))
+import Deku.Attribute (class Attr, Attribute, AttributeValue(..), unsafeAttribute, (:=))
 import Deku.Attributes (style_)
-import Deku.Control (text_)
+import Deku.Control (text)
 import Deku.Core (Nut)
 import Deku.DOM (unsafeCustomElement)
 import Deku.DOM as D
@@ -36,7 +36,7 @@ instance Attr DiscordMessage_ RoleColor String where
     { key: "role-color", value: Prop' s }
 
 discordMessages
-  :: Array (Nut)
+  :: Array Nut
   -> Nut
 discordMessages = unsafeCustomElement "discord-messages"
   ( Proxy
@@ -47,7 +47,7 @@ discordMessages = unsafeCustomElement "discord-messages"
 
 discordMessage
   :: Array (Event (Attribute DiscordMessage_))
-  -> Array (Nut)
+  -> Array Nut
   -> Nut
 discordMessage = unsafeCustomElement "discord-message"
   ( Proxy
@@ -60,7 +60,7 @@ usingIonicCustomElements = subsection
   { title: "Using our custom elements"
   , matter: pure
       [ D.p_
-          [ text_
+          [ text
               "We can define our Discord elements the same way we defined our custom anchor element above."
           ]
       , psCodeNoCollapseWithLink Examples.MockDiscord
@@ -68,25 +68,25 @@ usingIonicCustomElements = subsection
           [ D.div [ style_ "all:revert;" ]
               [ discordMessages
                   [ discordMessage
-                      [ Author !:= "beluga"
-                      , Avatar !:= belugaURL
+                      [ Author := "beluga"
+                      , Avatar := belugaURL
                       ]
-                      [ text_ "mom" ]
+                      [ text "mom" ]
                   , discordMessage
-                      [ Author !:= "belu-mom🌸"
-                      , Avatar !:= beluMomURL
+                      [ Author := "belu-mom🌸"
+                      , Avatar := beluMomURL
                       ]
-                      [ text_ "yes beluga" ]
+                      [ text "yes beluga" ]
                   , discordMessage
-                      [ Author !:= "beluga"
-                      , Avatar !:= belugaURL
+                      [ Author := "beluga"
+                      , Avatar := belugaURL
                       ]
-                      [ text_ "whos my dad?" ]
+                      [ text "whos my dad?" ]
                   , discordMessage
-                      [ Author !:= "belu-mom🌸"
-                      , Avatar !:= beluMomURL
+                      [ Author := "belu-mom🌸"
+                      , Avatar := beluMomURL
                       ]
-                      [ text_ "it's complicated..." ]
+                      [ text "it's complicated..." ]
                   ]
               ]
           ]

@@ -6,9 +6,9 @@ import Components.Code (psCodeWithLink)
 import Components.ExampleBlockquote (exampleBlockquote)
 import Components.Table (tableClass)
 import Contracts (Subsection, subsection)
-import Deku.Control (text_)
+import Deku.Control (text)
 import Deku.DOM as D
-import Deku.Listeners (slider_)
+import Deku.Listeners (slider)
 import Effect.Class.Console (logShow)
 import Examples as Examples
 
@@ -17,25 +17,25 @@ shorthandListeners = subsection
   { title: "Shorthand event listeners"
   , matter: pure
       [ D.p_
-          [ text_
+          [ text
               "Similar to attributes, some event listeners also have shorthand versions in Deku."
           ]
       , D.table [tableClass]
           [ D.tr_
-              [ D.th [tableClass] [ text_ "Shorthand" ]
-              , D.th [tableClass] [ text_ "Longer version" ]
+              [ D.th [tableClass] [ text "Shorthand" ]
+              , D.th [tableClass] [ text "Longer version" ]
               ]
           , D.tr_
-              [ D.td [tableClass] [ D.code_ [ text_ "click_ $ log \"foo\"" ] ]
+              [ D.td [tableClass] [ D.code_ [ text "click $ log \"foo\"" ] ]
               , D.td [tableClass]
-                  [ D.code_ [ text_ "D.OnClick !:= log \"foo\"" ] ]
+                  [ D.code_ [ text "D.OnClick := log \"foo\"" ] ]
               ]
           , D.tr_
-              [ D.td [tableClass] [ D.code_ [ text_ "slider_ logShow" ] ]
+              [ D.td [tableClass] [ D.code_ [ text "slider logShow" ] ]
               , D.td [tableClass]
                   [ D.code_
-                      [ text_
-                          """[D.Xtype !:= "range", D.OnInput !:=
+                      [ text
+                          """[D.Xtype := "range", D.OnInput :=
     cb \e ->
       for_
         (target e >>= fromEventTarget)
@@ -44,11 +44,11 @@ shorthandListeners = subsection
                   ]
               ]
           , D.tr_
-              [ D.td [tableClass] [ D.code_ [ text_ "textInput_ logShow" ] ]
+              [ D.td [tableClass] [ D.code_ [ text "textInput_ logShow" ] ]
               , D.td [tableClass]
                   [ D.code_
-                      [ text_
-                          """D.OnInput !:=
+                      [ text
+                          """D.OnInput :=
   cb \e ->
     for_
       (target e >>= fromEventTarget)
@@ -62,7 +62,7 @@ shorthandListeners = subsection
       , D.p__
           "If you open your Developer Console and move the slider below, you'll see it light up with numbers!"
       , exampleBlockquote
-          [ D.input [slider_ logShow] [] ]
+          [ D.input [slider logShow] [] ]
       , D.p__
           "While these events are fun, the true power of Deku lies in its ability to use events to change aspects of the DOM. The next section explores how that is done."
       ]

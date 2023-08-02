@@ -6,12 +6,12 @@ import Components.Code (psCodeWithLink)
 import Components.ExampleBlockquote (exampleBlockquote)
 import Contracts (Subsection, subsection)
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass, klass_)
-import Deku.Control (text_)
+import Deku.Attributes (klass)
+import Deku.Control (text)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState)
-import Deku.Listeners (click_)
+import Deku.Listeners (click)
 import Examples as Examples
 
 buttonClass =
@@ -26,7 +26,7 @@ eventsAsSemigroups = subsection
   { title: "Events as semigroups"
   , matter: pure
       [ D.p_
-          [ text_
+          [ text
               "The example below shows two events appended together to control classes"
           ]
       , psCodeWithLink Examples.EventsAsSemigroups
@@ -41,11 +41,11 @@ eventsAsSemigroups = subsection
                     , setKlass2 /\ "text-orange-500"
                     , setKlass2 /\ "text-green-300"
                     ] <#> \(f /\ k) -> D.button
-                      [ klass_ buttonClass, click_ (f k) ]
-                      [ text_ k ]
+                      [ klass buttonClass, click (f k) ]
+                      [ text k ]
                 , D.div_
                     [ D.span [ klass (klass1 <> pure " " <> klass2) ]
-                        [ text_ "Hello!" ]
+                        [ text "Hello!" ]
                     ]
                 ]
           ]

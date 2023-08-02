@@ -10,11 +10,11 @@ import Data.Array (replicate)
 import Data.Foldable (traverse_)
 import Data.Int (floor, pow)
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute ((!:=))
-import Deku.Attribute (cb, (!:=))
-import Deku.Attributes (klass_)
-import Deku.Control (text, text_)
-import Deku.Control (text_)
+import Deku.Attribute ((:=))
+import Deku.Attribute (cb, (:=))
+import Deku.Attributes (klass)
+import Deku.Control (text)
+import Deku.Control (text)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useMemoized')
@@ -36,10 +36,10 @@ initialEvents = subsection
   { title: "Memoizing without an initial event"
   , matter: pure
       [ D.p_
-          [ text_
+          [ text
               "Sometimes, it does not make sense to have an initial event, for example if you're building a question-answer app that needs to perform a computation and compute the response. In these cases, you can use "
           , D.code__ "useMemoized'"
-          , text_
+          , text
               ". This hook provides the opportunity to map over the internal event, and it is the result of the mapped computation that is memoized."
           ]
       , D.p__
@@ -52,12 +52,12 @@ initialEvents = subsection
               D.div_
                 [ D.div_
                     [ D.input
-                          [klass_ inputKls,
-                          D.Xtype !:= "number",
-                          D.Min !:= "0",
-                          D.Max !:= "100",
-                          D.Value !:= "0",
-                          D.OnChange !:= cb \evt ->
+                          [klass inputKls,
+                          D.Xtype := "number",
+                          D.Min := "0",
+                          D.Max := "100",
+                          D.Value := "0",
+                          D.OnChange := cb \evt ->
                             traverse_ (valueAsNumber >=> floor >>> setNumber) $
                               (target >=> fromEventTarget) evt]
                         []

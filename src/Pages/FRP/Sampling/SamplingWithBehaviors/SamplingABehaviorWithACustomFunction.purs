@@ -9,11 +9,10 @@ import Components.ExampleBlockquote (exampleBlockquoteWithHeight)
 import Contracts (Subsection, subsection)
 import Data.Argonaut.Core (stringifyWithIndent)
 import Data.Either (Either(..))
-import Deku.Control (text, text_)
+import Deku.Control (text)
 import Deku.DOM as D
 import Examples as Examples
 import FRP.Behavior (behavior, sampleBy)
-import FRP.Event.Aff (bindToAffWithCancellation)
 import FRP.Event.Time (interval)
 import Fetch (Method(..))
 
@@ -23,10 +22,10 @@ samplingABehaviorWithACustomFunction = subsection
   { title: "Sampling a behavior with a function"
   , matter: pure
       [ D.p_
-          [ text_
+          [ text
               "Last but not least, we can sample an event with an arbitrary function using "
           , D.code__ "sampleBy"
-          , text_ "."
+          , text "."
           ]
       , psCodeWithLink Examples.SamplingABehaviorWithACustomFunction
       , exampleBlockquoteWithHeight "h-96"

@@ -3,8 +3,8 @@ module Pages.FRP.Busses.ASimpleBus where
 import Prelude
 
 import Contracts (Section, section)
-import Deku.Control (text_)
-import Deku.Attribute ((!:=))
+import Deku.Control (text)
+import Deku.Attribute ((:=))
 import Deku.DOM as D
 import Pages.FRP.Busses.ASimpleBus.Uncurrying (uncurrying)
 import Pages.FRP.Busses.ASimpleBus.PerformanceConsiderations (performanceConsiderations)
@@ -16,9 +16,9 @@ aSimpleBus = section
   { title: "A simple bus"
   , topmatter: pure
       [ D.p_
-          [ text_ "This section will be about "
-          , D.span [ D.Class !:= "font-bold" ] [ text_ "A simple bus" ]
-          , text_ "."
+          [ text "This section will be about "
+          , D.span [ D.Class := "font-bold" ] [ text "A simple bus" ]
+          , text "."
           ]
       ]
   , subsections:

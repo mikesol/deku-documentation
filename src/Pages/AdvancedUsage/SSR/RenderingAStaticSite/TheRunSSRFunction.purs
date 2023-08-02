@@ -6,7 +6,7 @@ import Components.Code (htmlCode, psCodeNoCollapseWithLink)
 import Components.ExampleBlockquote (exampleBlockquote)
 import Contracts (Subsection, subsection)
 import Control.Monad.ST (run)
-import Deku.Control (text_)
+import Deku.Control (text)
 import Deku.Core (Nut)
 import Deku.DOM as D
 import Deku.Toplevel (runSSR)
@@ -24,11 +24,11 @@ theRunSSRFunction = subsection
   { title: "The runSSR function"
   , matter: pure
       [ D.p_
-          [ text_ "In order to turn a Deku site into a static site, use "
+          [ text "In order to turn a Deku site into a static site, use "
           , D.code__ "runSSR"
-          , text_ ". The example below gets all inception-y, calling "
+          , text ". The example below gets all inception-y, calling "
           , D.code__ "runSSR"
-          , text_ " on itself in the most gimmicky of ways."
+          , text " on itself in the most gimmicky of ways."
           ]
       , psCodeNoCollapseWithLink Examples.RunSSR
       , exampleBlockquote

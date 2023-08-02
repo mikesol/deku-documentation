@@ -7,8 +7,8 @@ import Components.ExampleBlockquote (exampleBlockquote)
 import Contracts (Subsection, subsection)
 import Data.Array (intercalate, replicate)
 import Data.Tuple (fst, snd)
-import Deku.Attributes (klass_)
-import Deku.Control (text, text_)
+import Deku.Attributes (klass)
+import Deku.Control (text)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useMemoized, useState)
@@ -29,10 +29,10 @@ transformedEvents = subsection
   { title: "The useMemoized hook"
   , matter: pure
       [ D.p_
-          [ text_
+          [ text
               "To make a more efficient version of the example above, we use the "
           , D.code__ "useMemoized"
-          , text_ " hook."
+          , text " hook."
           ]
       , psCodeWithLink Examples.MemoizedApplication
       , D.p__ "Resulting in the following example:"
@@ -54,8 +54,8 @@ transformedEvents = subsection
                     ( map
                         ( \i -> D.a
                               [click $ snd i <#> not >>> fst i,
-                              klass_ "cursor-pointer"]
-                            [ text_ "Click me " ]
+                              klass "cursor-pointer"]
+                            [ text "Click me " ]
                         )
                         [ a, b, c, d, e ]
                     )
@@ -72,11 +72,11 @@ transformedEvents = subsection
                 ]
           ]
       , D.p_
-          [ text_ "Now, each subscription to "
+          [ text "Now, each subscription to "
           , D.code__ "composedEvent"
-          , text_ " will draw from the "
+          , text " will draw from the "
           , D.i__ "same"
-          , text_
+          , text
               " event. This can help avoid lag, especially when belaboring under the constraint of a rendering loop that needs to execute at 60fps."
           ]
       ]

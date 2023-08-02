@@ -5,9 +5,9 @@ import Prelude
 import Components.Code (psCodeWithLink)
 import Components.ExampleBlockquote (exampleBlockquote)
 import Contracts (Section, section)
-import Deku.Attribute ((!:=))
-import Deku.Attributes (klass_)
-import Deku.Control (text_)
+import Deku.Attribute ((:=))
+import Deku.Attributes (klass)
+import Deku.Control (text)
 import Deku.DOM as D
 import Examples as Examples
 import Pages.CoreConcepts.Components.AddingAttributes.ASingleAttribute (aSingleAttribute)
@@ -19,24 +19,24 @@ addingAttributes = section
   { title: "Adding attributes"
   , topmatter: pure
       [ D.p_
-          [ text_
+          [ text
               "What fun would HTML be without any attributes? Un-fun, like the example above. Let's fix that and make our DOM nice and stylish! We'll use the same example as before, but spiced up with attributes."
           ]
       , psCodeWithLink Examples.AddingAttributes
-      , text_ "And here's the result."
+      , text "And here's the result."
       , exampleBlockquote
           [ D.div_
-              [ D.span [D.Style !:= "color:teal;"] [ text_ "I exist" ]
+              [ D.span [D.Style := "color:teal;"] [ text "I exist" ]
               , D.ul_ $ map D.li__ [ "A", "B", "C" ]
               , D.div_
                   [ D.h3
-                          [ D.Id !:= "my-id"
-                          , D.Style !:= "background-color:silver;"
+                          [ D.Id := "my-id"
+                          , D.Style := "background-color:silver;"
                           ]
-                      [ text_ "foo" ]
-                  , D.i [klass_ "text-2xl"] [ text_ "bar" ]
-                  , text_ " "
-                  , D.b_ [ text_ "baz" ]
+                      [ text "foo" ]
+                  , D.i [klass "text-2xl"] [ text "bar" ]
+                  , text " "
+                  , D.b_ [ text "baz" ]
                   ]
               ]
           ]

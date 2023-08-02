@@ -4,12 +4,12 @@ import Prelude
 
 import Data.Array (replicate)
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass_)
+import Deku.Attributes (klass)
 import Deku.Control (text)
 import Deku.DOM as D
 import Deku.Do as Deku
-import Deku.Hooks (useRef, useState)
-import Deku.Listeners (click_, slider_)
+import Deku.Hooks (useRefNE, useState)
+import Deku.Listeners (click, slider)
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
 
@@ -24,17 +24,16 @@ main :: Effect Unit
 main = runInBody Deku.do
   let initial = 50.0
   setNum /\ num <- useState initial
-  intRef <- useRef initial num
+  intRef <- useRefNE num
   D.div_
-    [ D.input
-        [ slider_ setNum ]
+    [ D.input (slider setNum)
         []
-    , D.div [ klass_ "grid grid-flow-row grid-cols-3" ]
+    , D.div [ klass "grid grid-flow-row grid-cols-3" ]
         ( replicate 24 Deku.do
             setButtonText /\ buttonText <- useState "Waiting..."
             D.button
-              [ klass_ buttonClass
-              , click_ $ intRef >>= show >>> setButtonText
+              [ klass buttonClass
+              , click $ intRef >>= show >>> setButtonText
               ]
               [ text buttonText ]
         )

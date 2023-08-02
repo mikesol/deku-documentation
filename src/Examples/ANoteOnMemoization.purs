@@ -4,12 +4,12 @@ import Prelude
 
 import Data.String (replaceAll, Pattern(..), Replacement(..))
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass_)
-import Deku.Control (guard, text, text_)
+import Deku.Attributes (klass)
+import Deku.Control (text)
 import Deku.DOM as D
 import Deku.Do as Deku
-import Deku.Hooks (useState)
-import Deku.Listeners (click, click_)
+import Deku.Hooks (useState, guard)
+import Deku.Listeners (click)
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
 import Effect.Random (random)
@@ -36,15 +36,15 @@ main = do
           ]
       , D.div_
           [ D.button
-              [ klass_ $ buttonClass "pink"
-              , click_ $ random >>= setNumber
+              [ klass $ buttonClass "pink"
+              , click $ random >>= setNumber
               ]
-              [ text_ "A" ]
+              [ text "A" ]
           , D.button
-              [ klass_ $ buttonClass "green"
+              [ klass $ buttonClass "green"
               , click $ presence <#> not >>> setPresence
               ]
-              [ text_ "B" ]
+              [ text "B" ]
           ]
       , D.div_
           [ guard presence

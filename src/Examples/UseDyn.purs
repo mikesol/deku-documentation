@@ -5,12 +5,12 @@ import Prelude
 import Data.Foldable (for_)
 import Data.String (Pattern(..), Replacement(..), replaceAll)
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute ((!:=))
-import Deku.Attributes (klass_)
-import Deku.Control (text_)
+import Deku.Attribute ((:=))
+import Deku.Attributes (klass)
+import Deku.Control (text)
 import Deku.DOM as D
 import Deku.Do as Deku
-import Deku.Hooks (useDynAtBeginning, useHot', useState')
+import Deku.Hooks (useDynAtBeginning_, useState')
 import Deku.Listeners (click, keyUp)
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
@@ -41,7 +41,7 @@ focus:ring-COLOR-500 focus:ring-offset-2"""
 main :: Effect Unit
 main = runInBody Deku.do
   setItem /\ item <- useState'
-  setInput /\ input <- useHot'
+  setInput /\ input <- useState'
   let
     guardAgainstEmpty e = do
       v <- value e
@@ -51,27 +51,27 @@ main = runInBody Deku.do
     top =
       D.div_
         [ D.input
-            [ D.Value !:= "Tasko primo"
-            , keyUp $ pure \evt -> do
+            [ D.Value := "Tasko primo"
+            , keyUp \evt -> do
                 when (code evt == "Enter") $
                   for_
                     ( (target >=> fromEventTarget)
                         (toEvent evt)
                     )
                     guardAgainstEmpty
-            , D.SelfT !:= setInput
-            , klass_ inputKls
+            , D.SelfT := setInput
+            , klass inputKls
             ]
             []
         , D.button
             [ click $ input <#> guardAgainstEmpty
-            , klass_ $ buttonClass "green"
+            , klass $ buttonClass "green"
             ]
-            [ text_ "Add" ]
+            [ text "Add" ]
         ]
   D.div_
     [ top
     , Deku.do
-        { value: t } <- useDynAtBeginning item
-        D.div_ [ text_ t ]
+        { value: t } <- useDynAtBeginning_ item
+        D.div_ [ text t ]
     ]

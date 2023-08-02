@@ -6,9 +6,9 @@ import Components.Code (psCodeWithLink)
 import Components.ExampleBlockquote (exampleBlockquote)
 import Contracts (Subsection, subsection)
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute ((!:=), (:=))
-import Deku.Attributes (klass_)
-import Deku.Control (text, text_)
+import Deku.Attribute ((:=))
+import Deku.Attributes (klass)
+import Deku.Control (text)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState')
@@ -29,15 +29,15 @@ knowThySelfT = subsection
   { title: "Know thy SelfT"
   , matter: pure
       [ D.p_
-          [ text_ "Certain elements, like "
+          [ text "Certain elements, like "
           , D.code__ "input"
-          , text_ " and "
+          , text " and "
           , D.code__ "button"
-          , text_ " classes, have a strongly-typed variant of "
+          , text " classes, have a strongly-typed variant of "
           , D.code__ "Self"
-          , text_ " called "
+          , text " called "
           , D.code__ "SelfT"
-          , text_
+          , text
               " that makes it a bit easier to work with the element using PureScript's DOM APIs."
           ]
       , psCodeWithLink Examples.KnowThySelfT
@@ -47,9 +47,9 @@ knowThySelfT = subsection
               setInput /\ input <- useState'
               D.div_
                 [ D.input
-                      [klass_ inputKls,
+                      [klass inputKls,
                       input <#> \i -> D.OnInput := (value i >>= setTxt),
-                      D.SelfT !:= setInput]
+                      D.SelfT := setInput]
                     []
                 , D.div_ [ text txt ]
                 ]

@@ -3,7 +3,7 @@ module Pages.AdvancedUsage.CustomElements.DefiningCustomElements where
 import Prelude
 
 import Contracts (Section, section)
-import Deku.Control (text_)
+import Deku.Control (text)
 import Deku.DOM as D
 import Pages.AdvancedUsage.CustomElements.DefiningCustomElements.AddingCustomElementsToTheDOM (addingCustomElementsToTheDOM)
 import Pages.AdvancedUsage.CustomElements.DefiningCustomElements.TheUnsafeCustomElementFunction (theUnsafeCustomElementFunction)
@@ -13,7 +13,7 @@ definingCustomElements = section
   { title: "Defining custom elements"
   , topmatter: pure
       [ D.p_
-          [ text_
+          [ text
               "In this section, we'll see how to take an element already in the DOM and give it a new alias through Deku."
           ]
       ]

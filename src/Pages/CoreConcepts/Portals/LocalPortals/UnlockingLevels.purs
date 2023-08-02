@@ -6,14 +6,14 @@ import Components.Code (psCodeWithLink)
 import Contracts (Subsection, subsection)
 import Data.String (replaceAll, Pattern(..), Replacement(..))
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute ((!:=), (:=))
-import Deku.Attributes (klass_)
-import Deku.Control (globalPortal1, guard, portal1, text, text_, (<#~>))
+import Deku.Attribute ((:=))
+import Deku.Attributes (klass)
+import Deku.Control (globalPortal1, guard, portal1, text)
 import Deku.Core (Nut)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useHot, useState)
-import Deku.Listeners (click, click_)
+import Deku.Listeners (click)
 import Effect (Effect)
 import Examples as Examples
 import FRP.Event (Event)
@@ -32,15 +32,15 @@ moveSpriteHere
      }
   -> Nut
 moveSpriteHere { video, square, setSquare, at } = D.a
-  [ click_ (setSquare at)
-  , D.Class !:=
+  [ click (setSquare at)
+  , D.Class :=
       "block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
   ]
   [ D.h5
-      [ D.Class !:=
+      [ D.Class :=
           "cursor-pointer mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
       ]
-      [ text_ "Move sprite here"
+      [ text "Move sprite here"
       , guard (square <#> (_ == at)) video
       ]
   ]
@@ -53,18 +53,18 @@ vid2URL Video4 = "https://media.giphy.com/media/7T8LajxmBkz8gmYcRB/giphy.mp4"
 
 myVideo :: Event Boolean -> String -> Nut
 myVideo bang vid = D.video
-  [ D.Width !:= "175"
-  , D.Height !:= "175"
-  , D.Autoplay !:= "true"
-  , D.Loop !:= "true"
-  , D.Muted !:= "true"
+  [ D.Width := "175"
+  , D.Height := "175"
+  , D.Autoplay := "true"
+  , D.Loop := "true"
+  , D.Muted := "true"
   , bang <#> \tf -> D.SelfT := \e ->
       if not tf then pure unit
       else do
         let melt = toHTMLMediaElement e
         play melt
   ]
-  [ D.source [ D.Src !:= vid ]
+  [ D.source [ D.Src := vid ]
       []
   ]
 
@@ -84,25 +84,25 @@ unlockingLevels = subsection
   { title: "Unlocking levels"
   , matter: pure
       [ D.p_
-          [ text_
+          [ text
               "Local portals have one big advantage over global portals: they get cleaned up when the last reference to them is deleted. Because global portals can be used "
           , D.i__ "anywhere"
-          , text_
+          , text
               " in your application at any time, it's impossible to know when they can be safely deleted. Local portals, on the other hand, are tied to the scope in which they are created and cannot be used at a higher scope. If you try, for example by sending them to a hook, you'll get a type error."
           ]
 
       , D.p_
-          [ text_
+          [ text
               "Of course, there's no such thing as a free lunch, so you have to pay for this memory efficiency somehow. Where you pay is a slightly slower runtime API in theory. In practice, the slowdown is imperceptible."
           ]
       , D.p_
-          [ text_
+          [ text
               "In the code below, note how we use this mechanism to call "
           , D.code__ "lowerVid"
-          , text_
+          , text
               " when we want to use the video "
           , D.code__ "globalVid"
-          , text_ " from the higher scope inside of the lower scope."
+          , text " from the higher scope inside of the lower scope."
           ]
       , psCodeWithLink Examples.UnlockingLevels
       , D.p__
@@ -120,14 +120,14 @@ unlockingLevels = subsection
                 "https://media.giphy.com/media/3o6Zt6GFP75DlxnDXy/giphy.mp4"
             )
           D.div_
-            [ D.div [ klass_ "flex" ]
+            [ D.div [ klass "flex" ]
                 [ guard globalVideoPresence $ D.button
-                    [ klass_ $ buttonClass "indigo"
+                    [ klass $ buttonClass "indigo"
                     , click $ videoURL <#> rotator >>> setVideoURL
                     ]
-                    [ text_ "Shuffle video" ]
+                    [ text "Shuffle video" ]
                 , D.button
-                    [ klass_ $ buttonClass "indigo"
+                    [ klass $ buttonClass "indigo"
                     , click $ globalVideoPresence <#> not >>>
                         setGlobalVideoPresence
                     ]
@@ -145,7 +145,7 @@ unlockingLevels = subsection
                     let
                       switchable = globalVideoPresence <#~>
                         if _ then vid else globalVid
-                    D.div [ klass_ "grid grid-cols-2" ]
+                    D.div [ klass "grid grid-cols-2" ]
                       [ moveSpriteHere
                           { video: switchable, square, setSquare, at: TL }
                       , moveSpriteHere

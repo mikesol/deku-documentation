@@ -4,7 +4,7 @@ import Prelude
 
 import Data.String.Utils (words)
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute ((!:=))
+import Deku.Attribute ((:=))
 import Deku.Control (text)
 import Deku.DOM as D
 import Deku.Do as Deku
@@ -21,7 +21,7 @@ main :: Effect Unit
 main = runInBody Deku.do
   setLength /\ length <- useState'
   D.div
-    [ D.Self !:= \e -> launchAff_ do
+    [ D.Self := \e -> launchAff_ do
         delay (Milliseconds 0.0)
         liftEffect do
           kids <- children (toParentNode e)

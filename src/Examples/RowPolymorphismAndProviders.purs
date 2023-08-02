@@ -4,7 +4,7 @@ import Prelude
 
 import Control.Monad.Reader (ask, asks)
 import Data.Newtype (class Newtype, unwrap)
-import Deku.Control (text_)
+import Deku.Control (text)
 import Deku.Core (Nut)
 import Deku.DOM as D
 import Deku.Toplevel (runInBody)
@@ -66,7 +66,7 @@ main = runInBody Deku.do
       lg <- libGreat
       Env { interjection } <- ask
       pure $ D.div_
-        ( [ D.div_ [ text_ interjection ]
+        ( [ D.div_ [ text interjection ]
           , lg
           ]
         )
@@ -80,4 +80,4 @@ main = runInBody Deku.do
     , libGreat: { x1: "I'm great!" }
     } # do
     awe <- libAwesome
-    pure $ D.div_ [ text_ "In all honesty...", awe ]
+    pure $ D.div_ [ text "In all honesty...", awe ]

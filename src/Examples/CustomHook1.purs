@@ -2,7 +2,7 @@ module Examples.CustomHook1 where
 
 import Prelude
 
-import Deku.Control (text_)
+import Deku.Control (text)
 import Deku.Core (Hook)
 import Deku.DOM as D
 import Deku.Do as Deku
@@ -16,4 +16,4 @@ main = runInBody Deku.do
     myFortyTwoHook makeHook = makeHook "forty-two"
   fortyTwo <- myFortyTwoHook
   D.div_
-    [ text_ fortyTwo ]
+    [ text fortyTwo ]

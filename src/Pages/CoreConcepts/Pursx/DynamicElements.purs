@@ -3,7 +3,7 @@ module Pages.CoreConcepts.Pursx.DynamicElements where
 import Prelude
 
 import Contracts (Section, section)
-import Deku.Control (text_)
+import Deku.Control (text)
 import Deku.DOM as D
 import Pages.CoreConcepts.Pursx.DynamicElements.AddingSeveralElements (addingSeveralElements)
 import Pages.CoreConcepts.Pursx.DynamicElements.AddingASingleElement (addingASingleElement)
@@ -13,7 +13,7 @@ dynamicElements = section
   { title: "Dynamic elements"
   , topmatter: pure
       [ D.p_
-          [ text_
+          [ text
               "Now that we've added dynamic attributes, let's add dynamic elements to our Pursx."
           ]
       ]

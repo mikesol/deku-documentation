@@ -7,13 +7,13 @@ import Components.ExampleBlockquote (exampleBlockquote)
 import Contracts (Subsection, subsection)
 import Data.String (Pattern(..), Replacement(..), replaceAll)
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute ((!:=))
-import Deku.Attributes (klass_)
-import Deku.Control (text_, (<#~>))
+import Deku.Attribute ((:=))
+import Deku.Attributes (klass)
+import Deku.Control (text)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState)
-import Deku.Listeners (click_)
+import Deku.Listeners (click)
 import Examples as Examples
 
 buttonClass :: String -> String
@@ -45,10 +45,10 @@ usingTheHookToSwitchBetweenElements = subsection
   { title: "Using a hook to switch between elements"
   , matter: pure
       [ D.p_
-          [ text_
+          [ text
               "You can also use a hook to switch between elements. This is particularly useful for tabbed navigation. In the example below, a hook is used to switch between an image, a video, and an SVG. This is accomplished via the "
           , D.code__ "<#~>"
-          , text_ " operator."
+          , text " operator."
           ]
       , psCodeNoCollapseWithLink Examples.UsingTheHookToSwitchBetweenElements
       , exampleBlockquote
@@ -58,58 +58,58 @@ usingTheHookToSwitchBetweenElements = subsection
                 [ D.div_
                     [ imageType <#~>
                         case _ of
-                          Image -> D.img [D.Src !:= "https://picsum.photos/150"]
+                          Image -> D.img [D.Src := "https://picsum.photos/150"]
                             []
                           Video -> D.video
-                                [ D.Controls !:= "controls"
-                                , D.Preload !:= "none"
-                                , D.Width !:= "250"
-                                , D.Height !:= "250"
-                                , D.Autoplay !:= "true"
+                                [ D.Controls := "controls"
+                                , D.Preload := "none"
+                                , D.Width := "250"
+                                , D.Height := "250"
+                                , D.Autoplay := "true"
                                 ]
                             [ D.source
-                                    [ D.Src !:= bunny
-                                    , D.Xtype !:= "video/webm"
+                                    [ D.Src := bunny
+                                    , D.Xtype := "video/webm"
                                     ]
                                 []
                             ]
                           SVG -> D.svg
-                                [ D.Height !:= "170"
-                                , D.Width !:= "170"
+                                [ D.Height := "170"
+                                , D.Width := "170"
                                 ]
                             [ D.circle
-                                  [D.Cx !:= "75",
-                                  D.Cy !:= "75",
-                                  D.R !:= "70",
-                                  D.Stroke !:= "black",
-                                  D.StrokeWidth !:= "3",
-                                  D.Fill !:= "red"]
+                                  [D.Cx := "75",
+                                  D.Cy := "75",
+                                  D.R := "70",
+                                  D.Stroke := "black",
+                                  D.StrokeWidth := "3",
+                                  D.Fill := "red"]
                                 []
                             ]
                     ]
                 , D.div_
                     [ D.button
-                          [klass_ $ buttonClass "amber",
-                          click_ $ setImageType Image]
-                        [ text_ "Image" ]
+                          [klass $ buttonClass "amber",
+                          click $ setImageType Image]
+                        [ text "Image" ]
                     , D.button
-                          [klass_ $ buttonClass "cyan",
-                          click_ $ setImageType Video]
-                        [ text_ "Video" ]
+                          [klass $ buttonClass "cyan",
+                          click $ setImageType Video]
+                        [ text "Video" ]
                     , D.button
-                        [klass_ $ buttonClass "green",
-                          click_ $ setImageType SVG]
-                        [ text_ "SVG" ]
+                        [klass $ buttonClass "green",
+                          click $ setImageType SVG]
+                        [ text "SVG" ]
                     ]
                 ]
           ]
       , D.p_
-          [ text_
+          [ text
               "If your DOM is mostly static and has a few switching elements within it, consider using multiple "
           , D.code__ "<#~>"
-          , text_ " operators instead of one global "
+          , text " operators instead of one global "
           , D.code__ "<#~>"
-          , text_ ", as it will generally result in better performance."
+          , text ", as it will generally result in better performance."
           ]
       ]
   }

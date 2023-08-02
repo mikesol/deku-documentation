@@ -9,15 +9,14 @@ import Components.TargetedLink (targetedLink)
 import Contracts (Section, section)
 import Control.Alt ((<|>))
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass_)
-import Deku.Control (text, text_)
+import Deku.Attributes (klass)
+import Deku.Control (text)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState')
-import Deku.Listeners (click_)
+import Deku.Listeners (click)
 import Effect.Random (random)
 import Examples as Examples
-import FRP.Event.Effect (bindToEffect)
 import Pages.CoreConcepts.State.TheStateHook.PushingToAHook (pushingToAHook)
 import Pages.CoreConcepts.State.TheStateHook.UsingTheHookInText (usingTheHookInText)
 
@@ -41,29 +40,29 @@ theStateHook = section
               setNumber /\ number <- useState'
               D.div_
                 [ D.button
-                    [klass_ buttonClass,
-                      click_ $ random >>= setNumber]
-                    [ text_ "Update number" ]
+                    [klass buttonClass,
+                      click $ random >>= setNumber]
+                    [ text "Update number" ]
                 , text $ (bindToEffect (pure unit) (pure random) <|> number) <#>
                     show >>> ("Here's a random number: " <> _)
                 ]
           ]
       , proTip
-          { header: text_ "Deku.do"
+          { header: text "Deku.do"
           , message: D.div_
-              [ text_ "In Haskell-family languages, a "
+              [ text "In Haskell-family languages, a "
               , D.code__ "do"
-              , text_
+              , text
                   " block is a way to write nested function calls as a sequence of instructions. This is why Haskell and its progeny are often collectively referred to as "
               , targetedLink
                   "https://stackoverflow.com/questions/6622524/why-is-haskell-sometimes-referred-to-as-best-imperative-language"
-                  [ text_ "the best imperative language" ]
-              , text_ ". Different types of instructions use different "
+                  [ text "the best imperative language" ]
+              , text ". Different types of instructions use different "
               , D.code__ "do"
-              , text_
+              , text
                   " blocks, and when you're working with Deku hooks, that block is "
               , D.code__ "Deku.do"
-              , text_ "."
+              , text "."
               ]
           }
       ]

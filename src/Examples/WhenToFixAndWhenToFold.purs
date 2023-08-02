@@ -2,16 +2,19 @@ module Examples.WhenToFixAndWhenToFold where
 
 import Prelude
 
+import Data.Either (hush)
+import Data.NonEmpty ((:|))
+import Data.Tuple (snd)
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass_)
-import Deku.Control (text_, text, (<#~>))
+import Deku.Attributes (klass)
+import Deku.Control (text)
 import Deku.DOM as D
 import Deku.Do as Deku
-import Deku.Hooks (useDynAtBeginning, useState')
-import Deku.Listeners (click_)
+import Deku.Hooks (useDynAtBeginning_, useState', (<#~>))
+import Deku.Listeners (click)
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
-import FRP.Event (delay, fix, keepLatest)
+import FRP.Event (delay, filterMap, fix, keepLatest, once)
 import QualifiedDo.Alt as Alt
 
 buttonClass =
@@ -27,25 +30,24 @@ main = runInBody Deku.do
   D.div_
     [ D.div_
         [ D.button
-            [ click_ (setSwitch unit)
-            , klass_ buttonClass
+            [ click (setSwitch unit)
+            , klass buttonClass
             ]
-            [ text Alt.do
-                pure "Start simulation"
-                switch $> "Restart simulation"
+            [ text $ "Start simulation" :| (switch $> "Restart simulation")
             ]
         ]
-    , switch <#~> \_ -> D.div [ klass_ "h-24 overflow-y-scroll" ]
+    , switch <#~> \_ -> D.div [ klass "h-24 overflow-y-scroll" ]
         [ Deku.do
-            _ <- useDynAtBeginning
+            _ <- useDynAtBeginning_
               ( fix
                   ( \e -> Alt.do
-                      keepLatest $ e <#> \n ->
-                        (delay <*> pure)
-                          if n >= 375 then 15 else n + 15
-                      pure 0
+                      keepLatest $ e <#> \n -> do
+                        let t = if n >= 375 then 15 else n + 15
+                        filterMap (hush >>> map snd) $ delay t
+                          (once switch $> t)
+                      once switch $> 0
                   )
               )
-            text_ "•​"
+            text "•​"
         ]
     ]

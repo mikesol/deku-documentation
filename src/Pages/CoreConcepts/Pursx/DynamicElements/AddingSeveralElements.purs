@@ -8,13 +8,13 @@ import Contracts (Subsection, subsection)
 import Control.Alt ((<|>))
 import Data.Tuple.Nested ((/\))
 import Deku.Attribute (class Attr, Attribute)
-import Deku.Attributes (klass, klass_)
-import Deku.Control (text_)
+import Deku.Attributes (klass)
+import Deku.Control (text)
 import Deku.Core (fixed)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState)
-import Deku.Listeners (click_)
+import Deku.Listeners (click)
 import Deku.Pursx ((~~))
 import Effect (Effect)
 import Examples as Examples
@@ -61,11 +61,11 @@ addingSeveralElements = subsection
   { title: "Adding several DOM elements as a component"
   , matter: pure
       [ D.p_
-          [ text_ "To add several elements, one can use "
+          [ text "To add several elements, one can use "
           , D.code__ "fixed"
-          , text_ " or "
+          , text " or "
           , D.code__ "<>"
-          , text_ "."
+          , text "."
           ]
       , psCodeWithLink Examples.AddingSeveralElementsToPursx
       , exampleBlockquote
@@ -81,40 +81,40 @@ addingSeveralElements = subsection
                   :: forall element24
                    . Attr element24 D.OnClick (Effect Unit)
                   => Event (Attribute element24)
-                toggleHome = click_ (setProjects false *> setNero false)
+                toggleHome = click (setProjects false *> setNero false)
 
                 toggleProjs
                   :: forall element24
                    . Attr element24 D.OnClick (Effect Unit)
                   => Event (Attribute element24)
-                toggleProjs = click_ (setProjects true *> setNero false)
+                toggleProjs = click (setProjects true *> setNero false)
 
                 toggleNero
                   :: forall element24
                    . Attr element24 D.OnClick (Effect Unit)
                   => Event (Attribute element24)
-                toggleNero = click_ (setProjects true *> setNero true)
+                toggleNero = click (setProjects true *> setNero true)
               D.div_
                 [ D.div_
-                    [ D.a [klass_ "cursor-pointer mr-4", toggleHome]
-                        [ text_ "Go home" ]
-                    , D.a [klass_ "cursor-pointer mr-4" , toggleProjs]
-                        [ text_ "Go to projects" ]
-                    , D.a [klass_ "cursor-pointer" ,toggleNero]
-                        [ text_ "Go to nero" ]
+                    [ D.a [klass "cursor-pointer mr-4", toggleHome]
+                        [ text "Go home" ]
+                    , D.a [klass "cursor-pointer mr-4" , toggleProjs]
+                        [ text "Go to projects" ]
+                    , D.a [klass "cursor-pointer" ,toggleNero]
+                        [ text "Go to nero" ]
                     ]
                 , D.div_
                     [ myHtml ~~
-                        { homeAtts: toggleHome <|> klass_ "flex h-12"
+                        { homeAtts: toggleHome <|> klass "flex h-12"
                         , lis:
                             fixed
                               [ liHtml ~~
                                   { atts: toggleProjs <|> hideOnFalse projects
-                                  , name: text_ "Projects"
+                                  , name: text "Projects"
                                   }
                               , liHtml ~~
                                   { atts: toggleNero <|> hideOnFalse nero
-                                  , name: text_ "Project Nero"
+                                  , name: text "Project Nero"
                                   }
                               ]
                         }

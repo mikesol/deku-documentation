@@ -8,12 +8,12 @@ import Contracts (Subsection, subsection)
 import Data.Generic.Rep (class Generic)
 import Data.Show.Generic (genericShow)
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass_)
-import Deku.Control (text, text_)
+import Deku.Attributes (klass)
+import Deku.Control (text)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState)
-import Deku.Listeners (click_)
+import Deku.Listeners (click)
 import Examples as Examples
 
 data FreeHeytingAlgebra
@@ -73,7 +73,7 @@ booleanLogicOnEvents = subsection
   { title: "Boolean logic on events"
   , matter: pure
       [ D.p_
-          [ text_
+          [ text
               "In the example below, we use the same functions to perform boolean logic on the events in the table as on the labels. Granted, this is highly overengineered, but it's sorta cool that it works!"
           ]
       , psCodeNoCollapseWithLink Examples.BooleanLogicOnEvents
@@ -88,52 +88,52 @@ booleanLogicOnEvents = subsection
                     , setQ /\ "Q" /\ true
                     , setQ /\ "Q" /\ false
                     ] <#> \(f /\ n /\ k) -> D.button
-                      [klass_ buttonClass, click_ (f k)]
-                      [ text_ (n <> " = " <> show k) ]
-                , D.table [klass_ tableClass]
+                      [klass buttonClass, click (f k)]
+                      [ text (n <> " = " <> show k) ]
+                , D.table [klass tableClass]
                     [ D.tr_
-                        [ D.th [klass_ tableClass] [ text_ "Equation" ]
-                        , D.th [klass_ tableClass] [ text_ "Result" ]
+                        [ D.th [klass tableClass] [ text "Equation" ]
+                        , D.th [klass tableClass] [ text "Result" ]
                         ]
                     , D.tr_
-                        [ D.td [klass_ tableClass]
-                            [ text_ (show (rule1 (Var "P") (Var "Q"))) ]
-                        , D.td [klass_ tableClass] [ text (show <$> rule1 p q) ]
+                        [ D.td [klass tableClass]
+                            [ text (show (rule1 (Var "P") (Var "Q"))) ]
+                        , D.td [klass tableClass] [ text (show <$> rule1 p q) ]
                         ]
                     , D.tr_
-                        [ D.td [klass_ tableClass]
-                            [ text_ (show (rule2 (Var "P") (Var "Q"))) ]
-                        , D.td [klass_ tableClass] [ text (show <$> rule2 p q) ]
+                        [ D.td [klass tableClass]
+                            [ text (show (rule2 (Var "P") (Var "Q"))) ]
+                        , D.td [klass tableClass] [ text (show <$> rule2 p q) ]
                         ]
                     , D.tr_
-                        [ D.td [klass_ tableClass]
-                            [ text_ (show (rule3 (Var "P") (Var "Q"))) ]
-                        , D.td [klass_ tableClass] [ text (show <$> rule3 p q) ]
+                        [ D.td [klass tableClass]
+                            [ text (show (rule3 (Var "P") (Var "Q"))) ]
+                        , D.td [klass tableClass] [ text (show <$> rule3 p q) ]
                         ]
                     , D.tr_
-                        [ D.td [klass_ tableClass]
-                            [ text_ (show (rule4 (Var "P") (Var "Q"))) ]
-                        , D.td [klass_ tableClass] [ text (show <$> rule4 p q) ]
+                        [ D.td [klass tableClass]
+                            [ text (show (rule4 (Var "P") (Var "Q"))) ]
+                        , D.td [klass tableClass] [ text (show <$> rule4 p q) ]
                         ]
                     , D.tr_
-                        [ D.td [klass_ tableClass]
-                            [ text_ (show (rule5 (Var "P"))) ]
-                        , D.td [klass_ tableClass] [ text (show <$> rule5 p) ]
+                        [ D.td [klass tableClass]
+                            [ text (show (rule5 (Var "P"))) ]
+                        , D.td [klass tableClass] [ text (show <$> rule5 p) ]
                         ]
                     , D.tr_
-                        [ D.td [klass_ tableClass]
-                            [ text_ (show (rule6 (Var "P"))) ]
-                        , D.td [klass_ tableClass] [ text (show <$> rule6 p) ]
+                        [ D.td [klass tableClass]
+                            [ text (show (rule6 (Var "P"))) ]
+                        , D.td [klass tableClass] [ text (show <$> rule6 p) ]
                         ]
                     , D.tr_
-                        [ D.td [klass_ tableClass]
-                            [ text_ (show (rule5 (Var "Q"))) ]
-                        , D.td [klass_ tableClass] [ text (show <$> rule5 q) ]
+                        [ D.td [klass tableClass]
+                            [ text (show (rule5 (Var "Q"))) ]
+                        , D.td [klass tableClass] [ text (show <$> rule5 q) ]
                         ]
                     , D.tr_
-                        [ D.td [klass_ tableClass]
-                            [ text_ (show (rule6 (Var "Q"))) ]
-                        , D.td [klass_ tableClass] [ text (show <$> rule6 q) ]
+                        [ D.td [klass tableClass]
+                            [ text (show (rule6 (Var "Q"))) ]
+                        , D.td [klass tableClass] [ text (show <$> rule6 q) ]
                         ]
                     ]
                 ]

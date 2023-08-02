@@ -2,11 +2,11 @@ module Examples.UseMailboxed where
 
 import Prelude
 
-import Control.Alt ((<|>))
 import Data.Array ((..))
+import Data.NonEmpty ((:|))
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass, klass_)
-import Deku.Control (text_)
+import Deku.Attributes (klass)
+import Deku.Control (text)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useMailboxed, useState)
@@ -27,18 +27,18 @@ main = runInBody Deku.do
   setMailbox /\ mailbox <- useMailboxed
   D.div_
     [ D.button
-        [ klass_ buttonClass
+        [ klass buttonClass
         , click $ int <#> \i -> do
             setMailbox { address: i, payload: unit }
             setInt ((i + 1) `mod` 100)
         ]
-        [ text_ "Bang!" ]
+        [ text "Bang!" ]
     , D.div_
         ( (0 .. 99) <#> \n -> D.span
-            [ klass $ (pure false <|> (mailbox n $> true)) <#>
+            [ klass $ (false :| (mailbox n $> true)) <#>
                 if _ then "" else "hidden"
             ]
-            [ text_
+            [ text
                 ( ( if n == 99 then "We're done here"
                     else show n
                   ) <> " "

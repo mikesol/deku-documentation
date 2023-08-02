@@ -7,8 +7,8 @@ import Components.ExampleBlockquote (exampleBlockquote)
 import Contracts (Section, section)
 import Data.Array (intercalate, replicate)
 import Data.Tuple (fst, snd)
-import Deku.Attributes (klass_)
-import Deku.Control (text, text_)
+import Deku.Attributes (klass)
+import Deku.Control (text)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState)
@@ -23,25 +23,25 @@ useMemoized = section
   { title: "The case for memoization"
   , topmatter: pure
       [ D.p_
-          [ text_ "So far, we've worked with hooks like "
+          [ text "So far, we've worked with hooks like "
           , D.code__ "useState"
-          , text_ " and "
+          , text " and "
           , D.code__ "useHot"
-          , text_ " whose subscriptions are "
+          , text " whose subscriptions are "
           , D.i__ "already"
-          , text_
+          , text
               " memoized. That is, even if they do not memoize their event for instant replay (that's the difference bewteen "
           , D.code__ "useState"
-          , text_ " and "
+          , text " and "
           , D.code__ "useHot"
-          , text_
+          , text
               "), the subscriptions to the events are mutualized. That means that the same event acts as the source for all downstream consumers."
           ]
       , D.p_
-          [ text_
+          [ text
               "On the other hand, if you start working with events by composing them together, the subscriptions to those composed events "
           , D.i__ "will not"
-          , text_
+          , text
               " be memoized. As an example, take the following snippet of code:"
           ]
       , psCodeWithLink Examples.UnMemoizedApplication
@@ -58,8 +58,8 @@ useMemoized = section
                     ( map
                         ( \i -> D.a
                             [click $ snd i <#> not >>> fst i,
-                              klass_ "cursor-pointer"]
-                            [ text_ "Click me " ]
+                              klass "cursor-pointer"]
+                            [ text "Click me " ]
                         )
                         [ a, b, c, d, e ]
                     )
@@ -83,13 +83,13 @@ useMemoized = section
                 ]
           ]
       , D.p_
-          [ text_ "Every line with "
+          [ text "Every line with "
           , D.code__ "true"
-          , text_ "s and "
+          , text "s and "
           , D.code__ "false"
-          , text_ "s is responding to a "
+          , text "s is responding to a "
           , D.i__ "different"
-          , text_ " event with the following type:"
+          , text " event with the following type:"
           ]
       , psCode
           """{ a :: Boolean
@@ -99,10 +99,10 @@ useMemoized = section
 , e :: Boolean
 }"""
       , D.p_
-          [ text_
+          [ text
               "While each of these events will have the same content, computing them from their constituent events wastes precious CPU cycles and can be a drain on your app. To solve this, we use "
           , D.b__ "memoization"
-          , text_ "."
+          , text "."
           ]
       ]
   , subsections:

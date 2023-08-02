@@ -2,14 +2,16 @@ module Examples.UnsettingAttributes where
 
 import Prelude
 
+import Data.Filterable (filter)
+import Data.NonEmpty ((:|))
 import Data.String (Pattern(..), Replacement(..), replaceAll)
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute ((!:=), (:=))
-import Deku.Attributes (klass_)
-import Deku.Control (text_)
+import Deku.Attribute ((:=))
+import Deku.Attributes (klass, style)
+import Deku.Control (text)
 import Deku.DOM as D
 import Deku.Do as Deku
-import Deku.Hooks (useState)
+import Deku.Hooks (useState')
 import Deku.Listeners (click)
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
@@ -25,18 +27,17 @@ focus:ring-COLOR-500 focus:ring-offset-2"""
 
 main :: Effect Unit
 main = runInBody Deku.do
-  setStyleSwitch /\ styleSwitch <- useState false
+  setStyleSwitch /\ styleSwitch <- useState'
   D.div_
     [ D.a
-        [ D.Target !:= "_blank"
-        , styleSwitch <#>
-            if _ then D.Style := "color:magenta;"
-            else D.Style := unit
+        [ D.Target := "_blank"
+        , style $ filter identity styleSwitch $> "color:magenta;"
+        , style $ false :| filter not styleSwitch $> unit
         ]
-        [ text_ "Click me" ]
+        [ text "Click me" ]
     , D.button
-        [ klass_ $ buttonClass "pink"
-        , click $ styleSwitch <#> not >>> setStyleSwitch
+        [ klass $ buttonClass "pink"
+        , click $ false :| styleSwitch <#> not >>> setStyleSwitch
         ]
-        [ text_ "Switch style" ]
+        [ text "Switch style" ]
     ]

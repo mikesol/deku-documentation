@@ -13,8 +13,8 @@ import Data.List (List(..))
 import Data.Maybe (Maybe(..))
 import Data.String (Pattern(..), Replacement(..), replaceAll, split, drop, take)
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute ((!:=), (:=))
-import Deku.Control (text_)
+import Deku.Attribute ((:=))
+import Deku.Control (text)
 import Deku.Core (Nut)
 import Deku.DOM as D
 import Deku.Hooks (useState')
@@ -81,7 +81,7 @@ toDeku l = print plainText
                 in
                   exprOp
                     (exprCtor ("D." <> dekuizeU k))
-                    [ binaryOp "!:=" (exprString v) ]
+                    [ binaryOp ":=" (exprString v) ]
           in
             case attributes of
               Nil -> []
@@ -106,7 +106,7 @@ toDeku l = print plainText
     in
       if nw == "" then Nothing
       else Just
-        (unsafePartial $ exprApp (exprIdent "text_") [ exprString str ])
+        (unsafePartial $ exprApp (exprIdent "text") [ exprString str ])
   go (HtmlComment _) = Nothing
 
 initialTxt :: String
@@ -122,9 +122,9 @@ html2deku = Deku.do
   setInput /\ input <- useState'
   D.div_
     [ D.div_
-        [ D.span [ D.Class !:= "text-xl" ] [ text_ "html2deku" ]
+        [ D.span [ D.Class := "text-xl" ] [ text "html2deku" ]
         , D.button
-            [ D.Class !:=
+            [ D.Class :=
                 "ml-2 inline-flex items-center rounded border border-transparent bg-indigo-600 px-2.5 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
             , click $ input <#> \i -> do
                 v <- value i
@@ -134,22 +134,22 @@ html2deku = Deku.do
                   Right res -> setPurs (toDeku res)
             ]
 
-            [ text_ "Convert >" ]
+            [ text "Convert >" ]
         ]
     , D.div_
         [ D.textarea
-            [ D.Rows !:= "6"
-            , D.Class !:= "border-2 w-full"
-            , D.SelfT !:= setInput
+            [ D.Rows := "6"
+            , D.Class := "border-2 w-full"
+            , D.SelfT := setInput
             ]
 
-            [ text_ initialTxt ]
+            [ text initialTxt ]
         ]
     , D.div_
         [ D.textarea
-            [ D.Rows !:= "6"
-            , D.Class !:= "border-2 w-full"
-            , purs <#> (D.Value := _)
+            [ D.Rows := "6"
+            , D.Class := "border-2 w-full"
+            , D.Value := purs
             ]
 
             ( let
@@ -157,7 +157,7 @@ html2deku = Deku.do
               in
                 case parsed of
                   Left _ -> []
-                  Right res -> [ text_ (toDeku res) ]
+                  Right res -> [ text (toDeku res) ]
             )
         ]
     ]

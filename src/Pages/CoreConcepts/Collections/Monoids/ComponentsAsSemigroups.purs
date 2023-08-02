@@ -7,12 +7,12 @@ import Components.ExampleBlockquote (exampleBlockquote)
 import Contracts (Subsection, subsection)
 import Data.String (Pattern(..), Replacement(..), replaceAll)
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass_)
-import Deku.Control (guard, text_)
+import Deku.Attributes (klass)
+import Deku.Control (guard, text)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState)
-import Deku.Listeners (click_)
+import Deku.Listeners (click)
 import Examples as Examples
 
 buttonClass :: String -> String
@@ -29,25 +29,25 @@ componentsAsSemigroups = subsection
   { title: "Components as semigroups"
   , matter: pure
       [ D.p_
-          [ text_
+          [ text
               "Components can be appended together, and the result will be a component. This is the same as enclosing all of the components in a "
           , D.code__ "fixed"
-          , text_
+          , text
               " bloc. Let's see this in action with George Sand's famous letter to Alfred de Musset."
           ]
       , psCodeWithLink Examples.ComponentsAsSemigroups
       , Deku.do
           setAstuce /\ astuce <- useState true
           exampleBlockquote
-            [ D.div [klass_ "space-x-2"]
+            [ D.div [klass "space-x-2"]
                 [ D.button
-                    [klass_ $ buttonClass "indigo",
-                      click_ $ setAstuce true]
-                    [ text_ "Sage" ]
+                    [klass $ buttonClass "indigo",
+                      click $ setAstuce true]
+                    [ text "Sage" ]
                 , D.button
-                    [klass_ $ buttonClass "green",
-                      click_ $ setAstuce false]
-                    [ text_ "Pas sage" ]
+                    [klass $ buttonClass "green",
+                      click $ setAstuce false]
+                    [ text "Pas sage" ]
                 ]
             , D.div_
                 [ D.p__ "Cher ami,"

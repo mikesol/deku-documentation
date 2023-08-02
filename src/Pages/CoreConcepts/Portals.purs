@@ -4,14 +4,14 @@ import Prelude
 
 import Contracts (Page, page)
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute ((!:=))
-import Deku.Attributes (klass_)
-import Deku.Control (globalPortal1, guard, text_)
+import Deku.Attribute ((:=))
+import Deku.Attributes (klass)
+import Deku.Control (globalPortal1, guard, text)
 import Deku.Core (Nut, Nut)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState)
-import Deku.Listeners (click_)
+import Deku.Listeners (click)
 import Effect (Effect)
 import FRP.Event (Event)
 import Pages.CoreConcepts.Portals.GlobalPortals (globalPortals)
@@ -30,28 +30,28 @@ moveSpriteHere
      }
   -> Nut
 moveSpriteHere { iframe, square, setSquare, at } = D.a
-      [ click_ (setSquare at)
-      , D.Class !:=
+      [ click (setSquare at)
+      , D.Class :=
           "block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
       ]
   [ D.h5
-      [D.Class !:=
+      [D.Class :=
           "cursor-pointer mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
       ]
-      [ text_ "Move sprite here"
+      [ text "Move sprite here"
       , guard (square <#> (_ == at)) iframe
       ]
   ]
 
 myIframe :: Nut
 myIframe = D.video
-      [ D.Width !:= "175"
-      , D.Height !:= "175"
-      , D.Autoplay !:= "true"
-      , D.Loop !:= "true"
-      , D.Muted !:= "true"
+      [ D.Width := "175"
+      , D.Height := "175"
+      , D.Autoplay := "true"
+      , D.Loop := "true"
+      , D.Muted := "true"
       ]
-  [ D.source [D.Src !:= "https://media.giphy.com/media/IMSq59ySKydYQ/giphy.mp4"]
+  [ D.source [D.Src := "https://media.giphy.com/media/IMSq59ySKydYQ/giphy.mp4"]
       []
   ]
 
@@ -59,16 +59,16 @@ portals :: Page
 portals = page
   { route: Portals
   , topmatter: pure
-      [ D.p [D.Class !:= "lead"]
-          [ text_ "Dealing with stateful DOM components."
+      [ D.p [D.Class := "lead"]
+          [ text "Dealing with stateful DOM components."
           ]
       , D.p_
-          [ text_
+          [ text
               "You've read the Deku docs, you're itching to create your first game, and you decide to make a game that involves moving a video sprite from tile to tile. Nice!"
           ]
       , Deku.do
           setSquare /\ square <- useState TL
-          D.div [klass_ "grid grid-cols-2"]
+          D.div [klass "grid grid-cols-2"]
             [ moveSpriteHere { iframe: myIframe, square, setSquare, at: TL }
             , moveSpriteHere { iframe: myIframe, square, setSquare, at: TR }
             , moveSpriteHere { iframe: myIframe, square, setSquare, at: BL }
@@ -77,25 +77,25 @@ portals = page
       , D.p__
           "There's one issue, though. Can you spot it? Look closely at the video as it moves from tile to tile. Each time you move it, the video restarts! But we don't want that, we want the video to be continuous as it's jumping from place to place."
       , D.p_
-          [ text_ "In games and other multimedia sites, it's common to use "
+          [ text "In games and other multimedia sites, it's common to use "
           , D.code__ "video"
-          , text_ ", "
+          , text ", "
           , D.code__ "audio"
-          , text_ ", and "
+          , text ", and "
           , D.code__ "canvas"
-          , text_
+          , text
               " elements that are stateful. These elements often stay put in the DOM, so we don't need to manage their statefulness. But in cases where we need to move them around, we want to preserve their state. This is where "
           , D.b__ "Portals"
-          , text_ " come in."
+          , text " come in."
           ]
       , D.p_
-          [ text_
+          [ text
               "Let's redo the example above with portals. As you click on the squares, you'll see that the video continues uninterrupted."
           ]
       , Deku.do
           ifr <- globalPortal1 myIframe
           setSquare /\ square <- useState TL
-          D.div [klass_ "grid grid-cols-2"]
+          D.div [klass "grid grid-cols-2"]
             [ moveSpriteHere { iframe: ifr, square, setSquare, at: TL }
             , moveSpriteHere { iframe: ifr, square, setSquare, at: TR }
             , moveSpriteHere { iframe: ifr, square, setSquare, at: BL }

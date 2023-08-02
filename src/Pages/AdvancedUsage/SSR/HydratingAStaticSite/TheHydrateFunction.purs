@@ -4,7 +4,7 @@ import Prelude
 
 import Components.Code (psCode)
 import Contracts (Subsection, subsection)
-import Deku.Control (text_)
+import Deku.Control (text)
 import Deku.DOM as D
 
 theHydrateFunction :: Subsection
@@ -12,11 +12,11 @@ theHydrateFunction = subsection
   { title: "The hydrate function"
   , matter: pure
       [ D.p_
-          [ text_ "The "
+          [ text "The "
           , D.code__ "hydrate"
-          , text_ " function has the same signature as "
+          , text " function has the same signature as "
           , D.code__ "runInBody"
-          , text_
+          , text
               " except that it expects a SSR-generated Deku site to already be present in the body. Here's an example of how that flow typically works (and by typically, I mean in the three known sites that use Deku SSR... soon to be four after you try it out!)."
           ]
       , psCode
@@ -24,7 +24,7 @@ theHydrateFunction = subsection
 -- some imports, then
 myApp :: Nut
 myApp = D.div_
-  [ text_ "I can't believe they pay me to make these..." ]
+  [ text "I can't believe they pay me to make these..." ]
 
 -- SSR.purs
 -- some imports, then

@@ -10,13 +10,13 @@ import Data.Int (floor)
 import Data.String (Pattern(..), Replacement(..), replaceAll)
 import Data.Tuple (Tuple(..))
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute (cb, (!:=))
-import Deku.Attributes (klass_)
-import Deku.Control (text_)
+import Deku.Attribute (cb, (:=))
+import Deku.Attributes (klass)
+import Deku.Control (text)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useDyn, useEffect, useHot', useState, useState')
-import Deku.Listeners (click, click_, keyUp)
+import Deku.Listeners (click, keyUp)
 import Examples as Examples
 import FRP.Event.Class ((<|*>))
 import Router.ADT (Route(..))
@@ -49,19 +49,19 @@ interComponentCommunication = subsection
   { title: "Inter-component communication"
   , matter: \(Env { routeLink }) ->
       [ D.p_
-          [ text_
+          [ text
               "Sometimes, you need to communicate between components in a dynamic structure. As we've seen in other examples, this possible by pushing to a hook at a higher level and subscribing to that hook at a lower level. However, because "
           , D.code__ "sendTo"
-          , text_ " and "
+          , text " and "
           , D.code__ "remove"
-          , text_ " are "
+          , text " are "
           , D.code__ "Effect"
-          , text_ "s and not "
+          , text "s and not "
           , D.code__ "Event"
-          , text_
+          , text
               "s, we can only use them in a listener. If we want to use them in conjunction with a hook, like for example using a hook to delete all items, we need to use the "
           , D.code__ "useEffect"
-          , text_ " hook that you'll learn about a bit later."
+          , text " hook that you'll learn about a bit later."
           ]
       , psCodeWithLink Examples.InterComponentCommunication
       , exampleBlockquote
@@ -79,31 +79,31 @@ interComponentCommunication = subsection
                 top =
                   D.div_
                     [ D.input
-                        [ D.Value !:= "Tasko primo"
+                        [ D.Value := "Tasko primo"
                         , keyUp $ pure \evt -> do
                             when (code evt == "Enter") $
                               for_
                                 ((target >=> fromEventTarget) (toEvent evt))
                                 guardAgainstEmpty
-                        , D.SelfT !:= setInput
-                        , klass_ inputKls
+                        , D.SelfT := setInput
+                        , klass inputKls
                         ]
                         []
                     , D.input
-                        [ klass_ inputKls
-                        , D.Xtype !:= "number"
-                        , D.Min !:= "0"
-                        , D.Value !:= "0"
-                        , D.OnChange !:= cb \evt ->
+                        [ klass inputKls
+                        , D.Xtype := "number"
+                        , D.Min := "0"
+                        , D.Value := "0"
+                        , D.OnChange := cb \evt ->
                             traverse_ (valueAsNumber >=> floor >>> setPos) $
                               (target >=> fromEventTarget) evt
                         ]
                         []
                     , D.button
                         [ click $ input <#> guardAgainstEmpty
-                        , klass_ $ buttonClass "green"
+                        , klass $ buttonClass "green"
                         ]
-                        [ text_ "Add" ]
+                        [ text "Add" ]
                     ]
               D.div_
                 [ top
@@ -112,32 +112,32 @@ interComponentCommunication = subsection
                       (Tuple <$> pos <|*> item)
                     useEffect removeAll (const remove)
                     D.div_
-                      [ text_ t
+                      [ text t
                       , D.button
-                          [ klass_ $ "ml-2 " <> buttonClass "indigo"
-                          , click_ (sendTo 0)
+                          [ klass $ "ml-2 " <> buttonClass "indigo"
+                          , click (sendTo 0)
                           ]
-                          [ text_ "Prioritize" ]
+                          [ text "Prioritize" ]
                       , D.button
-                          [ klass_ $ "ml-2 " <> buttonClass "pink"
-                          , click_ remove
+                          [ klass $ "ml-2 " <> buttonClass "pink"
+                          , click remove
                           ]
-                          [ text_ "Delete" ]
+                          [ text "Delete" ]
                       , D.button
-                          [ klass_ $ "ml-2 " <> buttonClass "fuchsia"
-                          , click_ (setRemoveAll unit)
+                          [ klass $ "ml-2 " <> buttonClass "fuchsia"
+                          , click (setRemoveAll unit)
                           ]
-                          [ text_ "Remove all" ]
+                          [ text "Remove all" ]
                       ]
                 ]
           ]
       , D.p_
-          [ text_
+          [ text
               "Using these patterns, you can implement 99.87% of DOM business logic. We'll get to the remaining bits in the "
           , routeLink Portals
-          , text_ " and "
+          , text " and "
           , routeLink CustomElements
-          , text_ " sections."
+          , text " sections."
           ]
       ]
   }

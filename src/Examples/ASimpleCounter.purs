@@ -2,12 +2,13 @@ module Examples.ASimpleCounter where
 
 import Prelude
 
+import Data.NonEmpty ((:|))
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass_)
-import Deku.Control (text, text_)
+import Deku.Attributes (klass)
+import Deku.Control (text)
 import Deku.DOM as D
 import Deku.Do as Deku
-import Deku.Hooks (useState)
+import Deku.Hooks (useState')
 import Deku.Listeners (click)
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
@@ -22,21 +23,21 @@ focus:ring-indigo-500 focus:ring-offset-2 mr-6""" :: String
 
 main ∷ Effect Unit
 main = runInBody Deku.do
-  setCount /\ count <- useState 0
+  setCount /\ count <- useState'
   D.div_
     [ D.button
-        [ klass_ buttonClass
+        [ klass buttonClass
         , click $ count <#> (add 1 >>> setCount)
         ]
-        [ text_ "Increment" ]
+        [ text "Increment" ]
     , D.div_
-        [ text_ "Counter 1 using state hooks: "
+        [ text "Counter 1 using state hooks: "
         , text (show <$> count)
         ]
     , D.div_
-        [ text_ "Counter 2 using "
+        [ text "Counter 2 using "
         , D.code__ "fold"
-        , text_ ": "
-        , text (show <$> (fold (pure <$> add 1) (-1) count))
+        , text ": "
+        , text (show <$> 0 :| (fold (pure <$> add 1) 0 count))
         ]
     ]

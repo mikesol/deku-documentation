@@ -7,8 +7,8 @@ import Data.FunctorWithIndex (mapWithIndex)
 import Data.Lens (over)
 import Data.Lens.Index (ix)
 import Data.String (Pattern(..), split)
-import Deku.Attributes (klass_)
-import Deku.Control (text_)
+import Deku.Attributes (klass)
+import Deku.Control (text)
 import Deku.DOM as D
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
@@ -61,7 +61,7 @@ toWord _ = "nth"
 main :: Effect Unit
 main = runInBody do
   let
-    styleF s t = D.span [ klass_ s ] [ text_ t ]
+    styleF s t = D.span [ klass s ] [ text t ]
     zipStyles = zipWith styleF textColors
     lyrics0 = zipStyles lyrics
     lyrics1 = zipStyles (over (ix 11) ("and " <> _) lyrics)
@@ -69,15 +69,15 @@ main = runInBody do
     [ D.ol_
         ( lyrics # mapWithIndex \i _ ->
             D.p_
-              [ text_ "On the "
-                  <> text_ (toWord (i + 1))
-                  <> text_
+              [ text "On the "
+                  <> text (toWord (i + 1))
+                  <> text
                     " day of Christmas my true love gave to me: "
-                  <> intercalate (text_ ", ")
+                  <> intercalate (text ", ")
                     ( drop (11 - i) $
                         if i == 0 then lyrics0 else lyrics1
                     )
-                  <> text_ "."
+                  <> text "."
               ]
         )
     ]

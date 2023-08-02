@@ -5,9 +5,9 @@ import Prelude
 import Components.Code (htmlCode)
 import Contracts (Page, page)
 import Data.Symbol (reflectSymbol)
-import Deku.Attribute ((!:=))
-import Deku.Attributes (klass_)
-import Deku.Control (text_)
+import Deku.Attribute ((:=))
+import Deku.Attributes (klass)
+import Deku.Control (text)
 import Deku.DOM as D
 import Deku.Pursx ((~~))
 import Pages.CoreConcepts.Pursx.ASimpleExample (aSimpleExample)
@@ -42,17 +42,17 @@ pursx :: Page
 pursx = page
   { route: Pursx
   , topmatter: pure
-      [ D.p [D.Class !:= "lead"]
-          [ text_ "Or how I learned to stop worrying and copy-paste the DOM."
+      [ D.p [D.Class := "lead"]
+          [ text "Or how I learned to stop worrying and copy-paste the DOM."
           ]
       , D.p_
-          [ text_
+          [ text
               "Sometimes, you procure a quality snippet of HTML that you would like to throw in a Deku project with minimal hassle. For example, imagine that I get the following chunk of HTML from a designer."
           ]
       , htmlCode (reflectSymbol myHtml)
       , D.p__ "This renders in the DOM like so."
       , D.div
-          [ klass_
+          [ klass
               "border-solid border-2 border-slate-200 dark:border-white-200"
           ]
           [ myHtml ~~ {} ]
@@ -61,12 +61,12 @@ pursx = page
       , D.blockquote__
           "This guy is so obsessed with using their pet functional programming language that they spent two hours rewriting HTML snippets in some esoteric format that none of us understand. Can't we just hire a JavaScript developer?"
       , D.p_
-          [ text_
+          [ text
               "After having been fired from several companies for this exact reason, I developed "
           , D.b__ "Pursx"
-          , text_
+          , text
               ", which solves this and many other problems. In this section, you too will learn how to use Pursx "
-          , text_ " (and, by extension, how to keep your job)."
+          , text " (and, by extension, how to keep your job)."
           ]
       ]
   , sections:

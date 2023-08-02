@@ -3,12 +3,12 @@ module Examples.EventsAsSemigroups where
 import Prelude
 
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass, klass_)
-import Deku.Control (text_)
+import Deku.Attributes (klass)
+import Deku.Control (text)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState)
-import Deku.Listeners (click_)
+import Deku.Listeners (click)
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
 
@@ -25,8 +25,8 @@ main = runInBody Deku.do
   setKlass2 /\ klass2 <- useState "text-green-500"
   let
     button setter text = D.button
-      [ klass_ buttonClass, click_ (setter text) ]
-      [ text_ text ]
+      [ klass buttonClass, click (setter text) ]
+      [ text text ]
   D.div_
     [ D.div_ $
         [ button setKlass1 "text-2xl"
@@ -36,6 +36,6 @@ main = runInBody Deku.do
         ]
     , D.div_
         [ D.span [ klass (klass1 <> pure " " <> klass2) ]
-            [ text_ "Hello!" ]
+            [ text "Hello!" ]
         ]
     ]

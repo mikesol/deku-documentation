@@ -8,12 +8,11 @@ import Contracts (Subsection, subsection)
 import Data.DateTime.Instant (unInstant)
 import Data.Newtype (unwrap)
 import Data.Number ((%))
-import Deku.Control (text, text_)
+import Deku.Control (text)
 import Deku.DOM as D
 import Effect.Random (random)
 import Examples as Examples
 import FRP.Behavior (behavior, sample_, switcher)
-import FRP.Event.Effect (bindToEffect)
 import FRP.Event.Time (interval)
 
 switchingOnBehaviors :: Subsection
@@ -21,7 +20,7 @@ switchingOnBehaviors = subsection
   { title: "Switching on behaviors"
   , matter: pure
       [ D.p_
-          [ text_
+          [ text
               "A close cousin of gating is switching, which alternates between behaviors based on an event. In the random number generator below, you'll see the distribution of the behavior shrink or expand via the switcher."
           ]
       , psCodeWithLink Examples.SwitchingOnBehaviors

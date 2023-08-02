@@ -4,9 +4,9 @@ import Prelude
 
 import Components.Code (psCode, psCodeWithLink)
 import Contracts (Subsection, subsection)
-import Deku.Attribute ((!:=))
-import Deku.Attributes (klass_)
-import Deku.Control (text_)
+import Deku.Attribute ((:=))
+import Deku.Attributes (klass)
+import Deku.Control (text)
 import Deku.DOM as D
 import Effect (Effect)
 import Effect.Random (random)
@@ -31,13 +31,13 @@ subscriptionAndUnsubscriptionEffects = subsection
   { title: "Subscription and unsubscription effects"
   , matter: pure
       [ D.p_
-          [ text_
+          [ text
               "To get a better sense of how these subscription and unsubscription effects work in practice, let's create a small PureScript program that uses an event to update the DOM. The program uses the raw DOM API without any frameworks. In doing so, we'll see how the event contract plays out step by step."
           ]
       , psCodeWithLink Examples.HandRolledEvent
       , D.blockquote
-          [ klass_ "not-italic"
-          , D.Self !:= \bod -> do
+          [ klass "not-italic"
+          , D.Self := \bod -> do
               doc <- window >>= document <#> toDocument
               anchor <- createElement "a" doc
               setAttribute "class" "cursor-pointer" anchor
@@ -84,68 +84,68 @@ subscriptionAndUnsubscriptionEffects = subsection
     pure do
       clearInterval i"""
       , D.p_
-          [ text_
+          [ text
               "Let's convince ourselves that this event fulfills the contract "
           , D.code__ "(a -> Effect Unit) -> Effect (Effect Unit)"
-          , text_ ". The argument "
+          , text ". The argument "
           , D.code__ "callback"
-          , text_ " is our "
+          , text " is our "
           , D.code__ "(a -> Effect Unit)"
-          , text_
+          , text
               ", so let's verify that it has that type. Indeed it does, as it binds to "
           , D.code__ "random"
-          , text_ ". Next, let's see if the return type is "
+          , text ". Next, let's see if the return type is "
           , D.code__ "Effect (Effect Unit)"
-          , text_
+          , text
               ". Indeed it is, as the return type is a thunk that clears the interval, which seems like a sensible unsubscribe action."
           ]
       , D.p_
-          [ text_
+          [ text
               "So now that we've validated that our event conforms to the contract of "
           , D.code__ "Event"
-          , text_
+          , text
               " the next step is looking at what subscription and unsubscription look like. We subscribe like so:"
           ]
       , psCode
           """u <- event \v -> setTextContent (show v) (toNode div)
 write u unsubscribe"""
       , D.p_
-          [ text_
+          [ text
               "We pass the event a subscriber that takes a float and writes it to a "
           , D.code__ "div"
-          , text_ ". "
+          , text ". "
           , D.i__ "This is our callback"
-          , text_
+          , text
               "! It's challenging to follow the control flow because it is not linear, but read through the code bloc again and convince yourself that this function "
           , D.i__ "is"
-          , text_ " the callback in the defintion of "
+          , text " the callback in the defintion of "
           , D.code__ "Event"
-          , text_ " and therefore "
+          , text " and therefore "
           , D.i__ "is"
-          , text_ " the function that receives the output of "
+          , text " the function that receives the output of "
           , D.code__ "random"
-          , text_ "."
+          , text "."
           ]
-      , D.p_ [ text_ "Next up is our unsubscribe." ]
+      , D.p_ [ text "Next up is our unsubscribe." ]
       , psCode
           """u <- read unsubscribe
 u"""
       , D.p_
-          [ text_
+          [ text
               "We read a reference to the unsubscribe function we set when we subscribed to the listener and thunk it. Again, convince yourself that this unsubscribe function is none other than:"
           ]
       , psCode
           """pure do
   clearInterval i"""
       , D.p_
-          [ text_
+          [ text
               "Which is why our random number emitting stops emitting when we ask it to. Pretty neat, huh?"
           ]
       , D.p_
-          [ text_
+          [ text
               "You may be wondering: Why have such a backwards control flow just to update stuff in the DOM? Good question! The reason is because, as we'll learn in the following sections, "
           , D.code__ "Event"
-          , text_
+          , text
               " can now act as a killer abstraction for which we will define all sorts of typeclass instances and functions to supercharge our application writing while benefiting from the fast performance of this example."
           ]
       ]

@@ -4,7 +4,7 @@ import Components.Code (psCode)
 import Components.Disclaimer (disclaimer)
 import Components.TargetedLink (targetedLink)
 import Contracts (Env(..), Subsection, subsection)
-import Deku.Control (text_)
+import Deku.Control (text)
 import Deku.DOM as D
 import Router.ADT (Route(..))
 
@@ -13,77 +13,77 @@ usingTheHookInText = subsection
   { title: "Using the hook in text"
   , matter: \(Env { routeLink }) ->
       [ D.p_
-          [ text_
+          [ text
               "Let's look at our hook again, this time focusing on the right side."
           ]
       , psCode """setNumber /\ number <- useState n"""
       , D.p_
-          [ text_ "The right side of our hook is of type "
+          [ text "The right side of our hook is of type "
           , D.code__ "Event Number"
-          , text_ "."
+          , text "."
           ]
       , disclaimer
-          { header: text_ "Raw values versus events"
+          { header: text "Raw values versus events"
           , message: D.div_
-              [ text_
+              [ text
                   "If you're coming from React, the fact that Deku hooks do not contain raw values like "
               , D.code__ "Number"
-              , text_ " or "
+              , text " or "
               , D.code__ "String"
-              , text_ " but rather "
+              , text " but rather "
               , D.code__ "Event Number"
-              , text_ " and "
+              , text " and "
               , D.code__ "Event String"
-              , text_
+              , text
                   " will be a big change. Even though they're not raw values, though, they can "
               , D.i__ "almost"
-              , text_ " be used as such. In the "
+              , text " be used as such. In the "
               , routeLink Applicatives
-              , text_ " section we'll learn how to do this."
+              , text " section we'll learn how to do this."
               ]
           }
       , D.p_
-          [ text_ "To use this event as DOM text, we'll use the "
+          [ text "To use this event as DOM text, we'll use the "
           , D.code__ "text"
-          , text_ " function."
+          , text " function."
           , D.code__ "text"
-          , text_ " is like "
-          , D.code__ "text_"
-          , text_ ", but instead of taking a "
+          , text " is like "
+          , D.code__ "text"
+          , text ", but instead of taking a "
           , D.code__ "String"
-          , text_ ", it accepts an argument of type "
+          , text ", it accepts an argument of type "
           , D.code__ "Event String"
-          , text_ ". As our hook is a number, we have to "
+          , text ". As our hook is a number, we have to "
           , D.code__ "map"
-          , text_ " over our "
+          , text " over our "
           , D.code__ "Event Number"
-          , text_ " to change it to an "
+          , text " to change it to an "
           , D.code__ "Event String"
-          , text_ "."
+          , text "."
           ]
       , psCode
           """text $ number <#>
   show >>> ("Here's a random number: " <> _)"""
       , D.p_
-          [ text_ "The symbol "
+          [ text "The symbol "
           , D.code__ "<#>"
-          , text_ " "
+          , text " "
           , D.i__ "maps"
-          , text_
+          , text
               " over the event, turning its contents into some other type (in this case, "
           , D.code__ "String"
-          , text_
+          , text
               "). At this point, it's worth mentioning that if operators like "
           , D.code__ "$"
-          , text_ ", "
+          , text ", "
           , D.code__ "<#>"
-          , text_ ", and "
+          , text ", and "
           , D.code__ "/\\"
-          , text_
+          , text
               " are unfamiliar to you, fear not! The PureScript documentation website "
           , targetedLink "https://pursuit.purescript.org"
-              [ text_ "Pursuit" ]
-          , text_
+              [ text "Pursuit" ]
+          , text
               " is your friend. You can search for all of these functions (and more) via the search bar."
           ]
       ]

@@ -2,14 +2,14 @@ module Examples.AddingSeveralAttributesToPursx where
 
 import Prelude
 
-import Control.Alt (alt, (<|>))
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass, klass_)
-import Deku.Control (text_)
+import Deku.Attribute (class Attr, Attribute)
+import Deku.Attributes (klass)
+import Deku.Control (text)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState)
-import Deku.Listeners (click_)
+import Deku.Listeners (click)
 import Deku.Pursx ((~~))
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
@@ -62,26 +62,35 @@ main = runInBody Deku.do
       klass $ e <#> (if _ then "" else "hidden ") >>>
         (_ <> "flex")
 
-    toggleHome :: D.OnClickEffect
-    toggleHome = click_ (setProjects false *> setNero false)
+    toggleHome
+      :: forall element
+       . Attr element D.OnClick (Effect Unit)
+      => Attribute element
+    toggleHome = click (setProjects false *> setNero false)
 
-    toggleProjs :: D.OnClickEffect
-    toggleProjs = click_ (setProjects true *> setNero false)
+    toggleProjs
+      :: forall element
+       . Attr element D.OnClick (Effect Unit)
+      => Attribute element
+    toggleProjs = click (setProjects true *> setNero false)
 
-    toggleNero :: D.OnClickEffect
-    toggleNero = click_ (setProjects true *> setNero true)
-    akls = alt (klass_ "cursor-pointer mr-4")
+    toggleNero
+      :: forall element
+       . Attr element D.OnClick (Effect Unit)
+      => Attribute element
+    toggleNero = click (setProjects true *> setNero true)
+    akls =  append [klass "cursor-pointer mr-4"] <<< pure
   D.div_
     [ D.div_
-        [ D.a [ akls toggleHome ] [ text_ "Go home" ]
-        , D.a [ akls toggleProjs ] [ text_ "Go to projects" ]
-        , D.a [ akls toggleNero ] [ text_ "Go to nero" ]
+        [ D.a (akls toggleHome) [ text "Go home" ]
+        , D.a (akls toggleProjs) [ text "Go to projects" ]
+        , D.a (akls toggleNero) [ text "Go to nero" ]
         ]
     , D.div_
         [ myHtml ~~
-            { homeAtts: toggleHome <|> klass_ "flex h-12"
-            , projectsAtts: toggleProjs <|> hideOnFalse projects
-            , neroAtts: toggleNero <|> hideOnFalse nero
+            { homeAtts: [ toggleHome, klass "flex h-12" ]
+            , projectsAtts: [ toggleProjs, hideOnFalse projects ]
+            , neroAtts: [ toggleNero, hideOnFalse nero ]
             }
         ]
     ]

@@ -3,7 +3,7 @@ module Pages.AdvancedUsage.AccessingTheDOM.TheSelfAttribute where
 import Prelude
 
 import Contracts (Section, section)
-import Deku.Control (text_)
+import Deku.Control (text)
 import Deku.DOM as D
 import Pages.AdvancedUsage.AccessingTheDOM.TheSelfAttribute.KnowThySelf (knowThySelf)
 import Pages.AdvancedUsage.AccessingTheDOM.TheSelfAttribute.KnowThySelfT (knowThySelfT)
@@ -14,9 +14,9 @@ theSelfAttribute = section
   { title: "The Self attribute"
   , topmatter: pure
       [ D.p_
-          [ text_ "All Deku elements can get a reference to themself via the "
+          [ text "All Deku elements can get a reference to themself via the "
           , D.code__ "Self"
-          , text_
+          , text
               " attribute. This section covers how to wield that power for good and not for evil."
           ]
       ]

@@ -45,7 +45,6 @@ to generate this file without the comments in this block.
   , "numbers"
   , "ordered-collections"
   , "partial"
-  , "pirates-charm"
   , "prelude"
   , "profunctor-lenses"
   , "qualified-do"

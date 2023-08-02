@@ -8,8 +8,8 @@ import Contracts (Subsection, subsection)
 import Control.Alt ((<|>))
 import Data.Array ((..))
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass, klass_)
-import Deku.Control (text_)
+import Deku.Attributes (klass)
+import Deku.Control (text)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useMailboxed, useState)
@@ -28,44 +28,44 @@ mailboxesAsFilters = subsection
   { title: "Hello mailbox"
   , matter: pure
       [ D.p_
-          [ text_ "A mailbox hook is similar to the "
+          [ text "A mailbox hook is similar to the "
           , D.code__ "useState'"
-          , text_
+          , text
               " hook."
           ]
       , psCode """pusher /\ eventCreator <- useMailboxed"""
       , D.p_
-          [ text_
+          [ text
               "However, the left and right side of the returned value are different."
           ]
       , D.ol_
           [ D.li_
-              [ text_
+              [ text
                   "On the left, we have a pusher that takes a record of type "
               , D.code__ "{ address :: a, payload :: b }"
-              , text_ "."
+              , text "."
               ]
           , D.li_
-              [ text_
+              [ text
                   "On the right, we have an event creator that takes a value of type "
               , D.code__ "a"
-              , text_ " and produces an event of type "
+              , text " and produces an event of type "
               , D.code__ "Event b"
-              , text_ "."
+              , text "."
               ]
           ]
       , D.p_
-          [ text_
+          [ text
               "When the pusher is pushed to, the mailbox delivers payloads of type "
           , D.code__ "b"
-          , text_ " "
+          , text " "
           , D.i__ "only to"
-          , text_
+          , text
               " events that have been created with by invoking the event creator with the same term of type "
           , D.code__ "a"
-          , text_ " that was received by the pusher as an "
+          , text " that was received by the pusher as an "
           , D.code__ "address"
-          , text_ ". You can see an example below."
+          , text ". You can see an example below."
           ]
       , psCodeWithLink Examples.UseMailboxed
       , exampleBlockquote
@@ -74,17 +74,17 @@ mailboxesAsFilters = subsection
               setMailbox /\ mailbox <- useMailboxed
               D.div_
                 [ D.button
-                    [klass_ buttonClass,
+                    [klass buttonClass,
                       click $ int <#> \i -> do
                         setMailbox { address: i, payload: unit }
                         setInt ((i + 1) `mod` 100)]
-                    [ text_ "Bang!" ]
+                    [ text "Bang!" ]
                 , D.div_
                     ( (0 .. 99) <#> \n -> D.span
                         [klass $ (pure false <|> (mailbox n $> true)) <#>
                             if _ then "" else "hidden"
                         ]
-                        [ text_
+                        [ text
                             ( ( if n == 99 then "We're done here"
                                 else show n
                               ) <> " "

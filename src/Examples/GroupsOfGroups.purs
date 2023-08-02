@@ -5,14 +5,14 @@ import Prelude
 import Assets (alexanderURL)
 import Data.String (Pattern(..), Replacement(..), replaceAll)
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute ((!:=))
-import Deku.Attributes (klass_)
-import Deku.Control (guard, text_)
+import Deku.Attribute ((:=))
+import Deku.Attributes (klass)
+import Deku.Control (text)
 import Deku.Core (fixed)
 import Deku.DOM as D
 import Deku.Do as Deku
-import Deku.Hooks (useHot)
-import Deku.Listeners (click_)
+import Deku.Hooks (guard, useState)
+import Deku.Listeners (click)
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
 
@@ -32,43 +32,43 @@ derive instance Ord AlexandersDay
 
 main :: Effect Unit
 main = runInBody Deku.do
-  setBadness /\ badness <- useHot Bad
+  setBadness /\ badness <- useState Bad
   D.div_
-    [ D.div [ klass_ "flex justify-between" ]
+    [ D.div [ klass "flex justify-between" ]
         [ D.button
-            [ klass_ $ buttonClass "indigo"
-            , click_ $ setBadness Bad
+            [ klass $ buttonClass "indigo"
+            , click $ setBadness Bad
             ]
-            [ text_ "Bad" ]
+            [ text "Bad" ]
         , D.button
-            [ klass_ $ buttonClass "pink"
-            , click_ $ setBadness Worse
+            [ klass $ buttonClass "pink"
+            , click $ setBadness Worse
             ]
-            [ text_ "Worse" ]
+            [ text "Worse" ]
         , D.button
-            [ klass_ $ buttonClass "green"
-            , click_ $ setBadness Worst
+            [ klass $ buttonClass "green"
+            , click $ setBadness Worst
             ]
-            [ text_ "Worst" ]
+            [ text "Worst" ]
         ]
-    , D.div [ klass_ "bg-alexander" ]
-        [ D.div [ klass_ "p-3" ]
+    , D.div [ klass "bg-alexander" ]
+        [ D.div [ klass "p-3" ]
             [ D.span
-                [ klass_ "font-aldine text-4xl text-alexander" ]
-                [ text_
+                [ klass "font-aldine text-4xl text-alexander" ]
+                [ text
                     "Alexander and the Terrible, Horrible,"
                 , guard (badness <#> (_ > Bad)) $ fixed
-                    [ text_ " Dreadful,"
+                    [ text " Dreadful,"
                     , guard (badness <#> (_ > Worse)) $ fixed
-                        [ text_ " Hideous,"
-                        , text_ " Soul-crushing,"
+                        [ text " Hideous,"
+                        , text " Soul-crushing,"
                         ]
-                    , text_ " Ruinous,"
+                    , text " Ruinous,"
                     ]
-                , text_ " No Good,"
-                , text_ " Very Bad Day"
+                , text " No Good,"
+                , text " Very Bad Day"
                 ]
             ]
-        , D.div_ [ D.img [ D.Src !:= alexanderURL ] [] ]
+        , D.div_ [ D.img [ D.Src := alexanderURL ] [] ]
         ]
     ]

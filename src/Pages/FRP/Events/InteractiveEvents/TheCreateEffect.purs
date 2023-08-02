@@ -4,10 +4,10 @@ import Prelude
 
 import Components.Code (psCode)
 import Contracts (Env(..), Subsection, subsection)
-import Deku.Attributes (klass_)
-import Deku.Control (text_)
+import Deku.Attributes (klass)
+import Deku.Control (text)
 import Deku.DOM as D
-import Deku.Listeners (click_)
+import Deku.Listeners (click)
 import Effect.Console (log)
 import FRP.Event (create, subscribe)
 import Router.ADT (Route(..))
@@ -24,12 +24,12 @@ theCreateEffect = subsection
   { title: "The create effect"
   , matter: \(Env { routeLink }) ->
       [ D.p_
-          [ text_ "Similar to "
+          [ text "Similar to "
           , routeLink State
-          , text_
+          , text
               " hooks from Deku, we can create a pusher and an event with the "
           , D.b__ "create"
-          , text_ " effect. It has the following signature:"
+          , text " effect. It has the following signature:"
           ]
       , psCode
           """create
@@ -39,12 +39,12 @@ theCreateEffect = subsection
     , push :: a -> Effect Unit
     }"""
       , D.p_
-          [ text_ "Let's write a small program using "
+          [ text "Let's write a small program using "
           , D.code__ "create"
-          , text_
+          , text
               ". Our program will use the created event to write a message to the console. When clicking on "
           , D.b__ "Run program"
-          , text_ " below, make sure to open up the console to see the result!"
+          , text " below, make sure to open up the console to see the result!"
           ]
       , psCode
           """main = do
@@ -56,8 +56,8 @@ theCreateEffect = subsection
   u
   push "fum" """
       , D.button
-          [ klass_ buttonClass
-          , click_ do
+          [ klass buttonClass
+          , click do
               { push, event } <- create
               u <- subscribe event log
               push "fee"
@@ -66,15 +66,15 @@ theCreateEffect = subsection
               u
               push "fum"
           ]
-          [ text_ "Run program" ]
+          [ text "Run program" ]
       , D.p_
-          [ text_
+          [ text
               "Note how, when you run the program, the word \"fum\" does not print to the console. This is because the unsubscriber is called before \"fum\" is pushed to the event."
           ]
       , D.p_
-          [ text_ "In Deku, the state hooks are literally just calling "
+          [ text "In Deku, the state hooks are literally just calling "
           , D.code__ "create"
-          , text_
+          , text
               " under the hood and passing those down into a DSL representing the DOM. And we have the guile to call those two lines of code a framework... 😤"
           ]
       ]

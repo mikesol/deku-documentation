@@ -2,8 +2,8 @@ module Prism where
 
 import Prelude
 
-import Deku.Attribute ((!:=))
-import Deku.Attributes (klass_)
+import Deku.Attribute ((:=))
+import Deku.Attributes (klass)
 import Deku.Core (Nut)
 import Deku.DOM as D
 import Effect (Effect)
@@ -17,8 +17,8 @@ foreign import addExpandButton :: Effect Unit
 
 forceHighlight :: Nut
 forceHighlight = D.div
-  [ klass_ "hidden"
-  , D.Self !:= \(_ :: Element) -> do
+  [ klass "hidden"
+  , D.Self := \(_ :: Element) -> do
       highlightAll
       addExpandButton
   ]
@@ -26,8 +26,8 @@ forceHighlight = D.div
 
 forceHighlightAff :: Nut
 forceHighlightAff = D.div
-  [ klass_ "hidden"
-  , D.Self !:= \(_ :: Element) -> launchAff_ do
+  [ klass "hidden"
+  , D.Self := \(_ :: Element) -> launchAff_ do
       delay (Milliseconds 0.0)
       liftEffect highlightAll
       liftEffect addExpandButton

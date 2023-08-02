@@ -9,11 +9,10 @@ import Components.ExampleBlockquote (exampleBlockquoteWithHeight)
 import Contracts (Subsection, subsection)
 import Data.Argonaut.Core (stringifyWithIndent)
 import Data.Either (Either(..))
-import Deku.Control (text, text_)
+import Deku.Control (text)
 import Deku.DOM as D
 import Examples as Examples
 import FRP.Behavior (behavior, sample_)
-import FRP.Event.Aff (bindToAffWithCancellation)
 import FRP.Event.Time (interval)
 import Fetch (Method(..))
 
@@ -23,10 +22,10 @@ samplingABehaviorAndDiscardingTheEvent = subsection
   { title: "Sampling a behavior and discarding the event"
   , matter: pure
       [ D.p_
-          [ text_
+          [ text
               "We can also sample a behavior and discard the event via "
           , D.code__ "sample_"
-          , text_
+          , text
               ". Here's the same example above (with a bit slower of a rate to avoid killing the API!) using that technique."
           ]
       , psCodeWithLink Examples.SamplingABehaviorAndDiscardingTheEvent

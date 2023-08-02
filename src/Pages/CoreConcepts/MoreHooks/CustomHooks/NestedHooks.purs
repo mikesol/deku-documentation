@@ -6,8 +6,8 @@ import Components.Code (psCodeWithLink)
 import Components.ExampleBlockquote (exampleBlockquote)
 import Contracts (Subsection, subsection)
 import Data.Tuple.Nested (type (/\), (/\))
-import Deku.Attributes (klass_)
-import Deku.Control (text, text_)
+import Deku.Attributes (klass)
+import Deku.Control (text)
 import Deku.Core (Hook)
 import Deku.DOM as D
 import Deku.Do as Deku
@@ -29,10 +29,10 @@ nestedHooks = subsection
   { title: "Deku dos and nested hooks"
   , matter: pure
       [ D.p_
-          [ text_
+          [ text
               "What fun would custom hooks be if they couldn't nest other hooks? When nesting hooks, "
           , D.code__ "Deku.do"
-          , text_ " is your friend."
+          , text " is your friend."
           ]
       , psCodeWithLink Examples.NestedCustomHooks
       , exampleBlockquote
@@ -53,15 +53,15 @@ nestedHooks = subsection
               setMinimus /\ minimus /\ maximus <- hookusMaximus 0
               D.div_
                 [ D.button
-                      [klass_ buttonClass,
+                      [klass buttonClass,
                       click $ minimus <#> (add 1 >>> setMinimus)]
-                    [ text_ "Increment" ]
+                    [ text "Increment" ]
                 , D.div_
-                    [ text_ "Hookus minimus: "
+                    [ text "Hookus minimus: "
                     , text (show <$> minimus)
                     ]
                 , D.div_
-                    [ text_ "Hookus maximus: "
+                    [ text "Hookus maximus: "
                     , text (show <$> maximus)
                     ]
                 ]

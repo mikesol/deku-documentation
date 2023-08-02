@@ -4,8 +4,8 @@ import Prelude
 
 import Components.TargetedLink (targetedLink)
 import Contracts (Page, page)
-import Deku.Attribute ((!:=))
-import Deku.Control (text_)
+import Deku.Attribute ((:=))
+import Deku.Control (text)
 import Deku.DOM as D
 import Pages.FRP.Applicatives.Applicative (applicative)
 import Pages.FRP.Applicatives.Functor (functor)
@@ -16,34 +16,34 @@ applicatives :: Page
 applicatives = page
   { route: Applicatives
   , topmatter: pure
-      [ D.p [D.Class !:= "lead"]
+      [ D.p [D.Class := "lead"]
           [ targetedLink "https://www.youtube.com/watch?v=4AyjKgz9tKg"
-              [ text_ "Conjunction junctor, what's your functor?" ]
+              [ text "Conjunction junctor, what's your functor?" ]
           ]
       , D.p_
           [ D.code__ "Event"
-          , text_ " is a "
+          , text " is a "
           , targetedLink
               "https://pursuit.purescript.org/packages/purescript-prelude/docs/Data.Functor"
               [ D.code__ "Functor" ]
-          , text_
+          , text
               ". It benefits from all the functorial goodness that functorness adorns unto type constructors like "
           , D.code__ "Maybe"
-          , text_ " and "
+          , text " and "
           , D.code__ "Array"
-          , text_ ". Equally if not more importantly, "
+          , text ". Equally if not more importantly, "
           , D.code__ "Event"
-          , text_ " is an "
+          , text " is an "
           , targetedLink
               "https://pursuit.purescript.org/packages/purescript-prelude/docs/Control.Applicative"
 
               [ D.code__ "Applicative Functor" ]
-          , text_ ". But is it a "
+          , text ". But is it a "
           , targetedLink
               "https://pursuit.purescript.org/packages/purescript-prelude/docs/Control.Monad"
 
               [ D.code__ "Monad" ]
-          , text_ "? To find out, read on!"
+          , text "? To find out, read on!"
           ]
       ]
   , sections:

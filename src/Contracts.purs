@@ -2,6 +2,7 @@ module Contracts where
 
 import Prelude
 
+import Control.Monad.Free (Free, liftF)
 import Data.Array (intercalate)
 import Data.Newtype (class Newtype)
 import Data.String (Pattern(..), split, toLower)
@@ -39,7 +40,7 @@ newtype Page = Page
   { path :: String
   , title :: String
   , route :: Route
-  , topmatter :: Env -> Array (Nut)
+  , topmatter :: Content (Array Nut)
   , sections :: Array (Section)
   }
 
@@ -47,7 +48,7 @@ derive instance Newtype (Page) _
 
 page
   :: { route :: Route
-     , topmatter :: Env -> Array (Nut)
+     , topmatter :: Content (Array Nut)
      , sections :: Array (Section)
      }
   -> Page
@@ -64,13 +65,13 @@ page i = Page
 newtype Section = Section
   { title :: String
   , id :: String
-  , topmatter :: Env -> Array (Nut)
+  , topmatter :: Content (Array Nut)
   , subsections :: Array (Subsection)
   }
 
 section
   :: { title :: String
-     , topmatter :: Env -> Array (Nut)
+     , topmatter :: Content (Array Nut)
      , subsections :: Array (Subsection)
      }
   -> Section
@@ -79,15 +80,29 @@ section i = Section
       { id: intercalate "-" $ map toLower $ split (Pattern " ") i.title }
   )
 
+data ContentF a
+  = GetEnv (Env -> a)
+  | GetRandomNumber (Number -> a)
+
+getEnv :: Content Env
+getEnv = liftF $ GetEnv identity
+
+getRandomNumber :: Content Number
+getRandomNumber = liftF $ GetRandomNumber identity
+
+type Content = Free ContentF
+
+derive instance Functor ContentF
+
 newtype Subsection = Subsection
   { title :: String
   , id :: String
-  , matter :: Env -> Array (Nut)
+  , matter :: Content (Array Nut)
   }
 
 subsection
   :: { title :: String
-     , matter :: Env -> Array (Nut)
+     , matter :: Content (Array Nut)
      }
   -> Subsection
 subsection i = Subsection

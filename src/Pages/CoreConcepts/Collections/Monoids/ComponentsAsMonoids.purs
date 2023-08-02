@@ -10,8 +10,8 @@ import Data.FunctorWithIndex (mapWithIndex)
 import Data.Lens (over)
 import Data.Lens.Index (ix)
 import Data.String (Pattern(..), split)
-import Deku.Attributes (href_, klass_)
-import Deku.Control (text_)
+import Deku.Attributes (href, klass)
+import Deku.Control (text)
 import Deku.DOM as D
 import Examples as Examples
 
@@ -65,23 +65,23 @@ componentsAsMonoids = subsection
   { title: "Components as monoids"
   , matter: pure
       [ D.p_
-          [ text_
+          [ text
               "In addition to being a semigroup, components are a monoid, with the empty element being "
           , D.code__ "blank"
-          , text_
+          , text
               ". Because it's a monoid, we can use all sorts of cool functions on Deku components, like "
           , D.a
-              [href_
+              [href
                   "https://pursuit.purescript.org/packages/purescript-foldable-traversable/6.0.0/docs/Data.Foldable#v:intercalate"
               ]
               [ D.code__ "intercalate" ]
-          , text_ "."
+          , text "."
 
           ]
       , psCodeWithLink Examples.ComponentsAsMonoids
       , do
           let
-            styleF s t = D.span [klass_ s] [ text_ t ]
+            styleF s t = D.span [klass s] [ text t ]
             zipStyles = zipWith styleF textColors
             lyrics1 = zipStyles (over (ix 11) ("and " <> _) lyrics)
             lyrics0 = zipStyles lyrics
@@ -91,15 +91,15 @@ componentsAsMonoids = subsection
                 [ D.ol_
                     $ lyrics # mapWithIndex \i _ ->
                         D.p_
-                          [ text_ "On the "
-                              <> text_ (toWord (i + 1))
-                              <> text_
+                          [ text "On the "
+                              <> text (toWord (i + 1))
+                              <> text
                                 " day of Christmas my true love gave to me: "
-                              <> intercalate (text_ ", ")
+                              <> intercalate (text ", ")
                                 ( drop (11 - i) $
                                     if i == 0 then lyrics0 else lyrics1
                                 )
-                              <> text_ "."
+                              <> text "."
                           ]
                 ]
             ]

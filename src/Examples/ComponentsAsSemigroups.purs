@@ -4,12 +4,12 @@ import Prelude
 
 import Data.String (Pattern(..), Replacement(..), replaceAll)
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass_)
-import Deku.Control (guard, text_)
+import Deku.Attributes (klass)
+import Deku.Control (guard, text)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState)
-import Deku.Listeners (click_)
+import Deku.Listeners (click)
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
 
@@ -26,17 +26,17 @@ main :: Effect Unit
 main = runInBody Deku.do
   setAstuce /\ astuce <- useState true
   D.div_
-    [ D.div [ klass_ "space-x-2" ]
+    [ D.div [ klass "space-x-2" ]
         [ D.button
-            [ klass_ $ buttonClass "indigo"
-            , click_ $ setAstuce true
+            [ klass $ buttonClass "indigo"
+            , click $ setAstuce true
             ]
-            [ text_ "Sage" ]
+            [ text "Sage" ]
         , D.button
-            [ klass_ $ buttonClass "green"
-            , click_ $ setAstuce false
+            [ klass $ buttonClass "green"
+            , click $ setAstuce false
             ]
-            [ text_ "Pas sage" ]
+            [ text "Pas sage" ]
         ]
     , D.div_
         [ D.p__ "Cher ami,"

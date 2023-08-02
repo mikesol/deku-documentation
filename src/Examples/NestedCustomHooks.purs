@@ -2,9 +2,10 @@ module Examples.NestedCustomHooks where
 
 import Prelude
 
+import Data.NonEmpty (NonEmpty, head, tail, (:|))
 import Data.Tuple.Nested (type (/\), (/\))
-import Deku.Attributes (klass_)
-import Deku.Control (text, text_)
+import Deku.Attributes (klass)
+import Deku.Control (text)
 import Deku.Core (Hook)
 import Deku.DOM as D
 import Deku.Do as Deku
@@ -24,30 +25,31 @@ focus:ring-pink-500 focus:ring-offset-2 m-2""" :: String
 main :: Effect Unit
 main = runInBody Deku.do
   let
-    hookusMinimus :: Int -> Hook ((Int -> Effect Unit) /\ Event Int)
+    hookusMinimus :: Int -> Hook ((Int -> Effect Unit) /\ NonEmpty Event Int)
     hookusMinimus i makeHook = Deku.do
       setMinimus /\ minimus <- useState i
       makeHook (setMinimus /\ minimus)
 
     hookusMaximus
-      :: Int -> Hook ((Int -> Effect Unit) /\ Event Int /\ Event Int)
+      :: Int -> Hook ((Int -> Effect Unit) /\ NonEmpty Event Int /\ NonEmpty Event Int)
     hookusMaximus i makeHook = Deku.do
       setMinimus /\ minimus <- hookusMinimus i
-      maximus <- useMemoized (add 1000 <$> minimus)
-      makeHook (setMinimus /\ minimus /\ maximus)
+      let added = add 1000 <$> minimus
+      maximus <- useMemoized (tail added)
+      makeHook (setMinimus /\ minimus /\ (head added :| maximus))
   setMinimus /\ minimus /\ maximus <- hookusMaximus 0
   D.div_
     [ D.button
-        [ klass_ buttonClass
+        [ klass buttonClass
         , click $ minimus <#> (add 1 >>> setMinimus)
         ]
-        [ text_ "Increment" ]
+        [ text "Increment" ]
     , D.div_
-        [ text_ "Hookus minimus: "
+        [ text "Hookus minimus: "
         , text (show <$> minimus)
         ]
     , D.div_
-        [ text_ "Hookus maximus: "
+        [ text "Hookus maximus: "
         , text (show <$> maximus)
         ]
     ]

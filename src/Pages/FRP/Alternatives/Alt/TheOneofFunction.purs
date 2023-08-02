@@ -8,7 +8,7 @@ import Contracts (Subsection, subsection)
 import Control.Alt ((<|>))
 import Data.Foldable (oneOf)
 import Data.Tuple.Nested ((/\))
-import Deku.Control (text, text_)
+import Deku.Control (text)
 import Deku.DOM as D
 import Examples as Examples
 import FRP.Event (delay)
@@ -19,13 +19,13 @@ theOneOfFunction = subsection
   { title: "The oneOf function"
   , matter: pure
       [ D.p_
-          [ text_
+          [ text
               "Alting lots of events can get tedios. Too many tie fighters! To make life easier, there's the "
           , D.code__ "oneOf"
-          , text_
+          , text
               " function that will alt a bunch of events. Surveys consistently reveal that this is the technique most often used when coders create a text-only version of "
           , D.b__ "Harder, Better, Faster, Stronger"
-          , text_ " in the browser."
+          , text " in the browser."
           ]
       , psCodeWithLink Examples.TheOneOfFunction
       , exampleBlockquote

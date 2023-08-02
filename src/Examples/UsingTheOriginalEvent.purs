@@ -3,9 +3,9 @@ module Examples.UsingTheOriginalEvent where
 import Prelude
 
 import Data.Newtype (unwrap)
-import Deku.Attributes (klass_)
-import Deku.Control (text_)
-import Deku.Attribute ((!:=), cb)
+import Deku.Attributes (klass)
+import Deku.Control (text)
+import Deku.Attribute ((:=), cb)
 import Deku.DOM as D
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
@@ -16,9 +16,9 @@ import Web.HTML.Window (alert)
 main :: Effect Unit
 main = runInBody
   ( D.span
-      [ D.OnClick !:= cb \e -> do
+      [ D.OnClick := cb \e -> do
           window >>= alert (unwrap (type_ e))
-      , klass_ "cursor-pointer"
+      , klass "cursor-pointer"
       ]
-      [ text_ "Click me!" ]
+      [ text "Click me!" ]
   )

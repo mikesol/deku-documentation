@@ -2,7 +2,7 @@ module Pages.Introduction.HelloWorld.TheAnatomyOfHello.TheMainFunction where
 
 import Components.Code (psCode)
 import Contracts (Env(..), Subsection, subsection)
-import Deku.Control (text_)
+import Deku.Control (text)
 import Deku.DOM as D
 import Router.ADT (Route(..))
 
@@ -14,19 +14,19 @@ theMainFunction = subsection
           """main :: Effect Unit
 main = ..."""
       , D.p_
-          [ text_
+          [ text
               "In most PureScript programs (and most programs), a function or context called "
-          , D.code_ [ text_ "main" ]
-          , text_
+          , D.code_ [ text "main" ]
+          , text
               " is where the main action happens. If you take a peek in the Deku starter app you created in the "
           , routeLink GettingStarted
-          , text_ " section, you'll see that "
+          , text " section, you'll see that "
           , D.code__ "main"
-          , text_ " is called from "
-          , D.code_ [ text_ "index.js" ]
-          , text_ ", which in turn is imported into "
-          , D.code_ [ text_ "index.html" ]
-          , text_ "."
+          , text " is called from "
+          , D.code_ [ text "index.js" ]
+          , text ", which in turn is imported into "
+          , D.code_ [ text "index.html" ]
+          , text "."
           ]
       ]
   }

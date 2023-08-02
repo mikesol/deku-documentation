@@ -5,8 +5,8 @@ import Prelude
 import Components.Code (htmlCode)
 import Contracts (Section, section)
 import Data.Symbol (reflectSymbol)
-import Deku.Attributes (klass_)
-import Deku.Control (text_)
+import Deku.Attributes (klass)
+import Deku.Control (text)
 import Deku.DOM as D
 import Deku.Pursx ((~~))
 import Pages.CoreConcepts.Pursx.ASimpleExample.ClosingTagsAndTreeStructure (closingTagsAndTreeStructure)
@@ -57,13 +57,13 @@ aSimpleExample = section
   { title: "A simple example"
   , topmatter: pure
       [ D.p_
-          [ text_
+          [ text
               "Let's start with a simple example. The HTML will be a bit on the long side, but the Deku will be short and sweet! As a motivating example, we'll be developing breadcrumbs."
           ]
       , htmlCode (reflectSymbol myHtml)
       , D.p__ "This renders in the DOM like so."
       , D.div
-          [klass_
+          [klass
               "border-solid border-2 border-slate-200 dark:border-white-200 flex justify-center"
           ]
           [ myHtml ~~ {} ]

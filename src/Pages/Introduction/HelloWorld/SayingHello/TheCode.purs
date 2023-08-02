@@ -4,7 +4,7 @@ import Prelude
 
 import Components.Code (psCodeNoCollapseWithLink)
 import Contracts (Subsection, subsection)
-import Deku.Control (text_)
+import Deku.Control (text)
 import Deku.DOM as D
 import Examples as Examples
 
@@ -13,7 +13,7 @@ theCode = subsection
   { title: "The code"
   , matter: pure
       [ D.p_
-          [ text_
+          [ text
               "Here it is, the moment you've all been waiting for. Let's say hello to the world!"
           ]
       , psCodeNoCollapseWithLink Examples.HelloWorldCode

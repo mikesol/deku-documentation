@@ -8,12 +8,12 @@ import Contracts (Subsection, subsection)
 import Control.Alt ((<|>))
 import Data.Tuple.Nested ((/\))
 import Deku.Attribute (class Attr, Attribute)
-import Deku.Attributes (klass, klass_)
-import Deku.Control (text_)
+import Deku.Attributes (klass)
+import Deku.Control (text)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState)
-import Deku.Listeners (click_)
+import Deku.Listeners (click)
 import Deku.Pursx ((~~))
 import Effect (Effect)
 import Examples as Examples
@@ -61,10 +61,10 @@ addingASingleElement = subsection
   { title: "Adding a single DOM element as a component"
   , matter: pure
       [ D.p_
-          [ text_
+          [ text
               "One natural case for adding elements to Pursx is when dealing with components that are easy to group together. For example, we can rewrite our breadcrumbs example to reuse the "
           , D.code__ "li"
-          , text_ " element."
+          , text " element."
           ]
       , psCodeWithLink Examples.AddingASingleElementToPursx
       , exampleBlockquote
@@ -80,47 +80,47 @@ addingASingleElement = subsection
                   :: forall element24
                    . Attr element24 D.OnClick (Effect Unit)
                   => Event (Attribute element24)
-                toggleHome = click_ (setProjects false *> setNero false)
+                toggleHome = click (setProjects false *> setNero false)
 
                 toggleProjs
                   :: forall element24
                    . Attr element24 D.OnClick (Effect Unit)
                   => Event (Attribute element24)
-                toggleProjs = click_ (setProjects true *> setNero false)
+                toggleProjs = click (setProjects true *> setNero false)
 
                 toggleNero
                   :: forall element24
                    . Attr element24 D.OnClick (Effect Unit)
                   => Event (Attribute element24)
-                toggleNero = click_ (setProjects true *> setNero true)
+                toggleNero = click (setProjects true *> setNero true)
               D.div_
                 [ D.div_
-                    [ D.a [klass_ "cursor-pointer mr-4", toggleHome]
-                        [ text_ "Go home" ]
-                    , D.a [klass_ "cursor-pointer mr-4", toggleProjs]
-                        [ text_ "Go to projects" ]
-                    , D.a [klass_ "cursor-pointer", toggleNero]
-                        [ text_ "Go to nero" ]
+                    [ D.a [klass "cursor-pointer mr-4", toggleHome]
+                        [ text "Go home" ]
+                    , D.a [klass "cursor-pointer mr-4", toggleProjs]
+                        [ text "Go to projects" ]
+                    , D.a [klass "cursor-pointer", toggleNero]
+                        [ text "Go to nero" ]
                     ]
                 , D.div_
                     [ myHtml ~~
-                        { homeAtts: toggleHome <|> klass_ "flex h-12"
+                        { homeAtts: toggleHome <|> klass "flex h-12"
                         , projectLi:
                             liHtml ~~
                               { atts: toggleProjs <|> hideOnFalse projects
-                              , name: text_ "Projects"
+                              , name: text "Projects"
                               }
                         , neroLi:
                             liHtml ~~
                               { atts: toggleNero <|> hideOnFalse nero
-                              , name: text_ "Project Nero"
+                              , name: text "Project Nero"
                               }
                         }
                     ]
                 ]
           ]
       , D.p_
-          [ text_
+          [ text
               "To add an element dynamically, we use the same method as adding a dynamic attribute. Just place it between tildes wherever you need it!"
           ]
 

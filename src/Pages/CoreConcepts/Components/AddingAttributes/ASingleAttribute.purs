@@ -4,7 +4,7 @@ import Prelude
 
 import Components.Code (psCode)
 import Contracts (Subsection, subsection)
-import Deku.Control (text_)
+import Deku.Control (text)
 import Deku.DOM as D
 
 aSingleAttribute :: Subsection
@@ -12,19 +12,19 @@ aSingleAttribute = subsection
   { title: "Setting attributes"
   , matter: pure
       [ D.p_
-          [ text_ "Individual attributes are set with the "
-          , D.code_ [ text_ "!:=" ]
-          , text_ " infix operator."
+          [ text "Individual attributes are set with the "
+          , D.code_ [ text ":=" ]
+          , text " infix operator."
           ]
       , psCode
-          "D.Style !:= \"color:teal;\""
+          "D.Style := \"color:teal;\""
       , D.p_
-          [ text_
+          [ text
               "To feed an attribute to Deku, it needs to be in an array. Several attributes can be set by including them all in an array."
           ]
       , psCode
-          """[ D.Id !:= "my-id"
-, D.Style !:= "background-color:silver;"
+          """[ D.Id := "my-id"
+, D.Style := "background-color:silver;"
 ]
 """
       ]

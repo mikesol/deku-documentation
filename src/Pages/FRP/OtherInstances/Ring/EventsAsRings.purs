@@ -6,12 +6,12 @@ import Components.Code (psCodeWithLink)
 import Components.ExampleBlockquote (exampleBlockquote)
 import Contracts (Subsection, subsection)
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass_)
-import Deku.Control (text, text_)
+import Deku.Attributes (klass)
+import Deku.Control (text)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState)
-import Deku.Listeners (slider_)
+import Deku.Listeners (slider)
 import Examples as Examples
 
 eventsAsRings :: Subsection
@@ -19,11 +19,11 @@ eventsAsRings = subsection
   { title: "Events as rings"
   , matter: pure
       [ D.p_
-          [ text_ "Events are also rings in case you need to "
+          [ text "Events are also rings in case you need to "
           , D.code__ "mod"
-          , text_ " or "
+          , text " or "
           , D.code__ "sub"
-          , text_ " them."
+          , text " them."
           ]
       , psCodeWithLink Examples.EventsAsRings
       , exampleBlockquote
@@ -33,21 +33,21 @@ eventsAsRings = subsection
               D.div_
                 [ D.div_
                     [ D.input
-                          [klass_ "w-full",
-                          slider_ setNumber1]
+                          [klass "w-full",
+                          slider setNumber1]
                         []
                     ]
                 , D.div_
                     [ D.input
-                          [klass_ "w-full",
-                          slider_ setNumber2]
+                          [klass "w-full",
+                          slider setNumber2]
                         []
                     ]
                 , D.div_
                     [ text (show <$> number1)
-                    , text_ " - "
+                    , text " - "
                     , text (show <$> number2)
-                    , text_ " = "
+                    , text " = "
                     , text (show <$> number1 - number2)
                     ]
                 ]

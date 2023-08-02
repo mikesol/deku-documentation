@@ -4,9 +4,9 @@ import Prelude
 
 import Components.Code (psCode)
 import Contracts (Subsection, subsection)
-import Deku.Attribute ((!:=))
-import Deku.Attributes (href_)
-import Deku.Control (text_)
+import Deku.Attribute ((:=))
+import Deku.Attributes (href)
+import Deku.Control (text)
 import Deku.DOM as D
 
 theMakeEventFunction :: Subsection
@@ -14,11 +14,11 @@ theMakeEventFunction = subsection
   { title: "The makeEvent function"
   , matter: pure
       [ D.p_
-          [ text_ "To make a stand-alone effect, use the "
+          [ text "To make a stand-alone effect, use the "
           , D.code__ "makeEvent"
-          , text_ " function. This function has the signature of "
+          , text " function. This function has the signature of "
           , D.code__ "Event"
-          , text_ " we saw before, namely:"
+          , text " we saw before, namely:"
           ]
       , psCode
           """makeEvent
@@ -26,22 +26,22 @@ theMakeEventFunction = subsection
   . ((a -> Effect Unit) -> Effect (Effect Unit))
   -> Event a"""
       , D.p_
-          [ text_ "In other words, for all intents and pursposes, "
+          [ text "In other words, for all intents and pursposes, "
           , D.code__ "makeEvent"
-          , text_ " is a no-op - it takes an event and returns an event."
+          , text " is a no-op - it takes an event and returns an event."
           ]
       , D.p_
-          [ text_
+          [ text
               "As an example, supposed you wanted an event to fire every time the browser requested an animation frame via "
           , D.a
-              [href_
+              [href
                   "https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame"
-                  , (D.Target !:= "_blank")
+                  , (D.Target := "_blank")
               ]
               [ D.code__ "requestAnimationFrame" ]
-          , text_ ". One way to accomplish that would be via "
+          , text ". One way to accomplish that would be via "
           , D.code__ "makeEvent"
-          , text_ "."
+          , text "."
           ]
       , psCode
           """animationFrame :: Event Unit

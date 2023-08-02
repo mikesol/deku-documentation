@@ -1,7 +1,7 @@
 module Components.TargetedLink where
 
-import Deku.Attribute ((!:=))
-import Deku.Attributes (href_)
+import Deku.Attribute ((:=))
+import Deku.Attributes (href)
 import Deku.Core (Nut)
 import Deku.DOM as D
 
@@ -10,6 +10,6 @@ targetedLink
   -> Array Nut
   -> Nut
 targetedLink s = D.a
-  [ href_ s
-  , D.Target !:= "_blank"
+  [ href s
+  , D.Target := "_blank"
   ]

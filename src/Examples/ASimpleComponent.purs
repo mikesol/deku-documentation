@@ -2,7 +2,7 @@ module Examples.ASimpleComponent where
 
 import Prelude
 
-import Deku.Control (text_)
+import Deku.Control (text)
 import Deku.Core (Nut)
 import Deku.DOM as D
 import Deku.Toplevel (runInBody)
@@ -20,7 +20,7 @@ main = runInBody mySimpleComponent
       , D.div_
           [ D.h3__ "foo"
           , D.i__ "bar"
-          , text_ " "
+          , text " "
           , D.b__ "baz"
           ]
       ]

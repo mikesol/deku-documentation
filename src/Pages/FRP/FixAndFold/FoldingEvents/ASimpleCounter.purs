@@ -6,8 +6,8 @@ import Components.Code (psCodeWithLink)
 import Components.ExampleBlockquote (exampleBlockquote)
 import Contracts (Env(..), Subsection, subsection)
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass_)
-import Deku.Control (text, text_)
+import Deku.Attributes (klass)
+import Deku.Control (text)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState)
@@ -28,12 +28,12 @@ aSimpleCounter = subsection
   { title: "Two simple counters"
   , matter: \(Env { routeLink }) ->
       [ D.p_
-          [ text_ "Let's create two counters - one that uses the "
+          [ text "Let's create two counters - one that uses the "
           , routeLink State
-          , text_
+          , text
               "-based methods we learned early in this documentation and one using folding. They'll both do the same thing, but the "
           , D.code__ "fold"
-          , text_
+          , text
               " method is a little classier, as you'll be able to brag to your friends that you're using fixed points. Your friends may appear indifferent, but they'll secretly envy you."
           ]
       , psCodeWithLink Examples.ASimpleCounter
@@ -42,17 +42,17 @@ aSimpleCounter = subsection
               setCount /\ count <- useState 0
               D.div_
                 [ D.button
-                    [klass_ buttonClass,
+                    [klass buttonClass,
                       click $ count <#> (add 1 >>> setCount)]
-                    [ text_ "Increment" ]
+                    [ text "Increment" ]
                 , D.div_
-                    [ text_ "Counter 1 using state hooks: "
+                    [ text "Counter 1 using state hooks: "
                     , text (show <$> count)
                     ]
                 , D.div_
-                    [ text_ "Counter 2 using "
+                    [ text "Counter 2 using "
                     , D.code__ "fold"
-                    , text_ ": "
+                    , text ": "
                     , text (show <$> (fold (pure <$> add 1) (-1) count))
                     ]
                 ]

@@ -3,9 +3,9 @@ module Pages.Introduction.GettingStarted where
 import Prelude
 
 import Contracts (Page, page)
-import Deku.Attribute ((!:=))
-import Deku.Attributes (klass_)
-import Deku.Control (text_)
+import Deku.Attribute ((:=))
+import Deku.Attributes (klass)
+import Deku.Control (text)
 import Deku.DOM as D
 import Pages.Introduction.GettingStarted.GettingHelp (gettingHelp)
 import Pages.Introduction.GettingStarted.QuickStart (quickStart)
@@ -16,13 +16,13 @@ gettingStarted :: Page
 gettingStarted = page
   { route: GettingStarted
   , topmatter: pure
-      [ D.p [D.Class !:= "lead"]
-          [ text_ "Hi 👋" ]
+      [ D.p [D.Class := "lead"]
+          [ text "Hi 👋" ]
       , D.p_
-          [ text_
+          [ text
               "You've found the documentation for "
-          , D.span [klass_ "font-bold"] [ text_ "PureScript Deku" ]
-          , text_
+          , D.span [klass "font-bold"] [ text "PureScript Deku" ]
+          , text
               ". If you got here by accident because you wanted to learn another UI framework, please consider staying, as Deku is really, really sweet."
           ]
       ]

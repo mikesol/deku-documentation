@@ -5,12 +5,12 @@ import Prelude
 import Data.Int (floor)
 import Data.JSDate (getTime, now)
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute ((!:=))
-import Deku.Attributes (klass_)
-import Deku.Control (blank, text, text_, (<#~>))
+import Deku.Attribute ((:=))
+import Deku.Attributes (klass)
+import Deku.Control (text)
 import Deku.DOM as D
 import Deku.Do as Deku
-import Deku.Hooks (useState)
+import Deku.Hooks (useState, (<#~>))
 import Deku.Listeners (click)
 import Deku.Pursx ((~~))
 import Deku.Toplevel (runInBody)
@@ -50,7 +50,7 @@ main = runInBody Deku.do
   setUIState /\ uiState <- useState Beginning
   D.div_
     [ D.button
-        [ klass_ buttonClass
+        [ klass buttonClass
         , let
             fetcher = do
               newRandomImage <- fetchNewRandomImage
@@ -75,17 +75,17 @@ main = runInBody Deku.do
         ]
     , D.div_
         [ uiState <#~> case _ of
-            Beginning -> blank
+            Beginning -> mempty
             Image { url, watcherCount } -> D.div_
-              [ D.img [ D.Src !:= url ] []
+              [ D.img [ D.Src := url ] []
               , D.div_
-                  [ text_ $
+                  [ text $
                       "Watcher count (including you): " <> show
                         watcherCount
                   ]
               ]
             Loading ->
-              D.div [ klass_ "p-10" ]
+              D.div [ klass "p-10" ]
                 [ ((Proxy :: _ Loading) ~~ {}) ]
         ]
     ]

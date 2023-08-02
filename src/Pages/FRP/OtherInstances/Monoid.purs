@@ -3,7 +3,7 @@ module Pages.FRP.OtherInstances.Monoid where
 import Prelude
 
 import Contracts (Section, section)
-import Deku.Control (text_)
+import Deku.Control (text)
 import Deku.DOM as D
 import Pages.FRP.OtherInstances.Monoid.EventsAsMonoids (eventsAsMonoids)
 import Pages.FRP.OtherInstances.Monoid.EventsAsSemigroups (eventsAsSemigroups)
@@ -13,19 +13,19 @@ monoid = section
   { title: "Monoid"
   , topmatter: pure
       [ D.p_
-          [ text_ "Events can be considered "
+          [ text "Events can be considered "
           , D.code__ "Monoid"
-          , text_ "s if the underlying type is a "
+          , text "s if the underlying type is a "
           , D.code__ "Monoid"
-          , text_ ". This follows the classic pattern of equating "
+          , text ". This follows the classic pattern of equating "
           , D.code__ "<>"
-          , text_ " with "
+          , text " with "
           , D.code__ "<*>"
-          , text_ " and "
+          , text " and "
           , D.code__ "mempty"
-          , text_ " with "
+          , text " with "
           , D.code__ "pure"
-          , text_ "."
+          , text "."
           ]
       ]
   , subsections:

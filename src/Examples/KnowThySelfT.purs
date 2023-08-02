@@ -3,8 +3,8 @@ module Examples.KnowThySelfT where
 import Prelude
 
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute ((!:=), (:=))
-import Deku.Attributes (klass_)
+import Deku.Attribute ((:=))
+import Deku.Attributes (klass)
 import Deku.Control (text)
 import Deku.DOM as D
 import Deku.Do as Deku
@@ -28,9 +28,9 @@ main = runInBody Deku.do
   setInput /\ input <- useState'
   D.div_
     [ D.input
-        [ klass_ inputKls
-        , input <#> \i -> D.OnInput := (value i >>= setTxt)
-        , D.SelfT !:= setInput
+        [ klass inputKls
+        , D.OnInput := (input <#> \i -> (value i >>= setTxt))
+        , D.SelfT := setInput
         ]
         []
     , D.div_ [ text txt ]

@@ -9,12 +9,12 @@ import Contracts (Subsection, subsection)
 import Control.Alt ((<|>))
 import Data.Tuple.Nested ((/\))
 import Deku.Attribute (class Attr, Attribute)
-import Deku.Attributes (klass, klass_)
-import Deku.Control (text_)
+import Deku.Attributes (klass)
+import Deku.Control (text)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState)
-import Deku.Listeners (click_)
+import Deku.Listeners (click)
 import Deku.Pursx ((~~))
 import Effect (Effect)
 import Examples as Examples
@@ -64,7 +64,7 @@ addingSeveralAttributes = subsection
   { title: "Adding several attributes"
   , matter: pure
       [ D.p_
-          [ text_
+          [ text
               "A more natural way to implement the breadcrumbs would be to embed the click lsitener directly in the crumbs in addition to the anchor elements. We can do this by adding multiple attributes to an element in Pursx."
           , psCodeWithLink Examples.AddingSeveralAttributesToPursx
           , D.p__ "Here's the result."
@@ -81,31 +81,31 @@ addingSeveralAttributes = subsection
                       :: forall element24
                        . Attr element24 D.OnClick (Effect Unit)
                       => Event (Attribute element24)
-                    toggleHome = click_ (setProjects false *> setNero false)
+                    toggleHome = click (setProjects false *> setNero false)
 
                     toggleProjs
                       :: forall element24
                        . Attr element24 D.OnClick (Effect Unit)
                       => Event (Attribute element24)
-                    toggleProjs = click_ (setProjects true *> setNero false)
+                    toggleProjs = click (setProjects true *> setNero false)
 
                     toggleNero
                       :: forall element24
                        . Attr element24 D.OnClick (Effect Unit)
                       => Event (Attribute element24)
-                    toggleNero = click_ (setProjects true *> setNero true)
+                    toggleNero = click (setProjects true *> setNero true)
                   D.div_
                     [ D.div_
-                        [ D.a [klass_ "cursor-pointer mr-4", toggleHome]
-                            [ text_ "Go home" ]
-                        , D.a [klass_ "cursor-pointer mr-4", toggleProjs]
-                            [ text_ "Go to projects" ]
-                        , D.a [klass_ "cursor-pointer", toggleNero]
-                            [ text_ "Go to nero" ]
+                        [ D.a [klass "cursor-pointer mr-4", toggleHome]
+                            [ text "Go home" ]
+                        , D.a [klass "cursor-pointer mr-4", toggleProjs]
+                            [ text "Go to projects" ]
+                        , D.a [klass "cursor-pointer", toggleNero]
+                            [ text "Go to nero" ]
                         ]
                     , D.div_
                         [ myHtml ~~
-                            { homeAtts: toggleHome <|> klass_ "flex h-12"
+                            { homeAtts: toggleHome <|> klass "flex h-12"
                             , projectsAtts: toggleProjs <|> hideOnFalse projects
                             , neroAtts: toggleNero <|> hideOnFalse nero
                             }
@@ -113,25 +113,25 @@ addingSeveralAttributes = subsection
                     ]
               ]
           , D.p_
-              [ text_ "By using the tie fighter "
+              [ text "By using the tie fighter "
               , D.code__ "<|>"
-              , text_
+              , text
                   ", we were able to compose the breadcrumb's class and its click listener together, just like if we were working with attributes in a Deku component. This allows you to mix Pursx code and Deku components."
               ]
           , disclaimer
               { header: D.span_
-                  [ text_ "No ", D.code__ "let", text_ " polymorphism" ]
+                  [ text "No ", D.code__ "let", text " polymorphism" ]
               , message: D.p_
-                  [ text_ "PureScript lacks "
+                  [ text "PureScript lacks "
                   , D.code__ "let"
-                  , text_ " polymorphism, meaning that effects like "
+                  , text " polymorphism, meaning that effects like "
                   , D.code__ "toggleHome"
-                  , text_ " and "
+                  , text " and "
                   , D.code__ "toggleNero"
-                  , text_
+                  , text
                       " need an explicit polymorphic signature when used for different DOM elements. Otherwise, they would be specialized to their first call site, which in this case is an "
                   , D.code__ "a"
-                  , text_
+                  , text
                       " tag. That's why we use explicit signatures for the toggle effects."
                   ]
               }

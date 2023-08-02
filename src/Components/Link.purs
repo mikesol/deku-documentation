@@ -4,11 +4,11 @@ import Prelude
 
 import Contracts (Chapter(..), Page(..))
 import Data.Foldable (oneOf)
-import Deku.Attribute (Attribute, cb, (!:=))
-import Deku.Control (text_)
+import Deku.Attribute (Attribute, cb, (:=))
+import Deku.Control (text)
 import Deku.Core (Nut)
 import Deku.DOM as D
-import Deku.Listeners (click_)
+import Deku.Listeners (click)
 import Effect (Effect)
 import FRP.Event (Event)
 import Navigation (PushState)
@@ -26,12 +26,13 @@ link''
   -> PushState
   -> Route
   -> Event (Attribute D.A_)
-  -> Array (Nut)
+  -> Array Nut
   -> Nut
 link'' eff pushState route attributes children = D.a
-  [attributes, oneOf
-      [ D.Href !:= url
-      , click_ $ cb \e -> do
+  [ attributes
+  , oneOf
+      [ D.Href := url
+      , click $ cb \e -> do
           eff e
           preventDefault e
           pushState (JSON.writeImpl {}) url
@@ -50,7 +51,7 @@ link'
   :: PushState
   -> Route
   -> Event (Attribute D.A_)
-  -> Array (Nut)
+  -> Array Nut
   -> Nut
 link' = link'' (const (pure unit))
 
@@ -60,7 +61,7 @@ link
   -> Event (Attribute D.A_)
   -> Nut
 link pushState route attributes = link' pushState route attributes
-  [ text_ page.title ]
+  [ text page.title ]
   where
   Page page = routeToPage route
 
@@ -72,6 +73,6 @@ linkWithString
   -> Nut
 linkWithString pushState route title attributes = link' pushState route
   attributes
-  [ text_ title ]
+  [ text title ]
   where
   Page page = routeToPage route

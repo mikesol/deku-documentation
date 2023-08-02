@@ -3,7 +3,7 @@ module Pages.CoreConcepts.State.StateWithoutInitialValues where
 import Prelude
 
 import Contracts (Section, section)
-import Deku.Control (text_)
+import Deku.Control (text)
 import Deku.DOM as D
 import Pages.CoreConcepts.State.StateWithoutInitialValues.EmptyUntilFull (emptyUntilFull)
 import Pages.CoreConcepts.State.StateWithoutInitialValues.ANoteOnMemoization (aNoteOnMemoization)
@@ -13,7 +13,7 @@ stateWithoutInitialValues = section
   { title: "State without initial values"
   , topmatter: pure
       [ D.p_
-          [ text_
+          [ text
               "It's possible to have a state hook without an initial value. In that case, whatever the hook was controlling, be it text, an attribute, or an element, is simply omitted from the DOM."
           ]
       ]

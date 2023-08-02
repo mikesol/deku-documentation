@@ -3,12 +3,12 @@ module Examples.AddingAnAttributeToPursx where
 import Prelude
 
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass, klass_)
-import Deku.Control (text_)
+import Deku.Attributes (klass)
+import Deku.Control (text)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState)
-import Deku.Listeners (click_)
+import Deku.Listeners (click)
 import Deku.Pursx ((~~))
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
@@ -60,29 +60,29 @@ main = runInBody Deku.do
     hideOnFalse e =
       klass $ e <#> (if _ then "" else "hidden ") >>>
         (_ <> "flex")
-    point = klass_ "cursor-pointer mr-4"
+    point = klass "cursor-pointer mr-4"
     toggleHome =
       [ point
-      , click_ (setProjects false *> setNero false)
+      , click (setProjects false *> setNero false)
       ]
     toggleProjects =
       [ point
-      , click_ (setProjects true *> setNero false)
+      , click (setProjects true *> setNero false)
       ]
     toggleNero =
       [ point
-      , click_ (setProjects true *> setNero true)
+      , click (setProjects true *> setNero true)
       ]
   D.div_
     [ D.div_
-        [ D.a toggleHome [ text_ "Go home" ]
-        , D.a toggleProjects [ text_ "Go to projects" ]
-        , D.a toggleNero [ text_ "Go to nero" ]
+        [ D.a toggleHome [ text "Go home" ]
+        , D.a toggleProjects [ text "Go to projects" ]
+        , D.a toggleNero [ text "Go to nero" ]
         ]
     , D.div_
         [ myHtml ~~
-            { projectsHidden: hideOnFalse projects
-            , neroHidden: hideOnFalse nero
+            { projectsHidden: [ hideOnFalse projects ]
+            , neroHidden: [ hideOnFalse nero ]
             }
         ]
     ]

@@ -6,12 +6,12 @@ import Components.Code (psCodeWithLink)
 import Components.ExampleBlockquote (exampleBlockquote)
 import Contracts (Subsection, subsection)
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass, klass_)
-import Deku.Control (text_)
+import Deku.Attributes (klass)
+import Deku.Control (text)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState)
-import Deku.Listeners (click_)
+import Deku.Listeners (click)
 import Deku.Pursx ((~~))
 import Examples as Examples
 import Type.Proxy (Proxy(..))
@@ -59,7 +59,7 @@ addingAnAttribute = subsection
   { title: "Adding an attribute"
   , matter: pure
       [ D.p_
-          [ text_
+          [ text
               "First, let's add a single listener that sets the breadcrumbs' visibiltiy based on interactions with an anchor tag. Here's the code."
           , psCodeWithLink Examples.AddingAnAttributeToPursx
           , D.p__ "Here's the result."
@@ -71,18 +71,18 @@ addingAnAttribute = subsection
                     hideOnFalse e =
                       klass $ e <#> (if _ then "" else "hidden ") >>>
                         (_ <> "flex")
-                    point = klass_ "cursor-pointer mr-4"
-                    toggleHome = [point, click_
+                    point = klass "cursor-pointer mr-4"
+                    toggleHome = [point, click
                       (setProjects false *> setNero false)]
-                    toggleProjects = [point, click_
+                    toggleProjects = [point, click
                       (setProjects true *> setNero false)]
-                    toggleNero = [point, click_
+                    toggleNero = [point, click
                       (setProjects true *> setNero true)]
                   D.div_
                     [ D.div_
-                        [ D.a toggleHome [ text_ "Go home" ]
-                        , D.a toggleProjects [ text_ "Go to projects" ]
-                        , D.a toggleNero [ text_ "Go to nero" ]
+                        [ D.a toggleHome [ text "Go home" ]
+                        , D.a toggleProjects [ text "Go to projects" ]
+                        , D.a toggleNero [ text "Go to nero" ]
                         ]
                     , D.div_
                         [ myHtml ~~
@@ -93,12 +93,12 @@ addingAnAttribute = subsection
                     ]
               ]
           , D.p_
-              [ text_
+              [ text
                   "To specify an attribute in Pursx, we pick an identifier for the attribute and enclose it in tildes. For example, the attribute for the "
               , D.b__ "Project Nero"
-              , text_ " list element is "
+              , text " list element is "
               , D.code__ "~neroHidden~"
-              , text_
+              , text
                   ". Then, when creating the Pursx, we add a field to the record with the name of that identifier followed by whatever attribute we wish to add. In this case, we're adding a class that hides or shows the breadcrumb."
               ]
           ]

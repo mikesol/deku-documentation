@@ -7,7 +7,7 @@ import Components.ExampleBlockquote (exampleBlockquote)
 import Contracts (Subsection, subsection)
 import Data.Monoid.Additive (Additive)
 import Data.Monoid.Multiplicative (Multiplicative)
-import Deku.Control (text, text_)
+import Deku.Control (text)
 import Deku.DOM as D
 import Examples as Examples
 import FRP.Event (Event)
@@ -17,7 +17,7 @@ eventsAsMonoids = subsection
   { title: "Events as monoids"
   , matter: pure
       [ D.p_
-          [ text_
+          [ text
               "We can take a walk down monad lane using monoidal events with minimal mapping!"
           ]
       , psCodeWithLink Examples.EventsAsMonoids

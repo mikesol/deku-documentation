@@ -5,8 +5,8 @@ import Prelude
 import Components.Code (psCodeNoCollapseWithLink)
 import Components.ExampleBlockquote (exampleBlockquote)
 import Contracts (Subsection, subsection)
-import Deku.Attribute (class Attr, AttributeValue(..), unsafeAttribute, (!:=))
-import Deku.Control (text_)
+import Deku.Attribute (class Attr, AttributeValue(..), unsafeAttribute, (:=))
+import Deku.Control (text)
 import Deku.DOM (unsafeCustomElement)
 import Deku.DOM as D
 import Examples as Examples
@@ -32,15 +32,15 @@ addingCustomElementsToTheDOM = subsection
   { title: "Defining attributes"
   , matter: pure
       [ D.p_
-          [ text_
+          [ text
               "Things get more interesting when custom attributes are involved. By defining what attributes are settable for your custom element and how they should be marshaled into strings or listeners, you can create domain-specific logic for your DOM."
           ]
       , psCodeNoCollapseWithLink Examples.AddingCustomElements
       , exampleBlockquote
           [ unsafeCustomElement "a" (Proxy :: _ MyNiftyAnchor_)
-                [D.Href !:= JoyrideFM,
-                D.Target !:= Blank]
-              [ text_ "hi" ]
+                [D.Href := JoyrideFM,
+                D.Target := Blank]
+              [ text "hi" ]
           ]
       ]
   }

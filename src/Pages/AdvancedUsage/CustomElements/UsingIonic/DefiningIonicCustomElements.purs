@@ -4,7 +4,7 @@ import Prelude
 
 import Components.Code (jsCode, shSessionCode)
 import Contracts (Subsection, subsection)
-import Deku.Control (text_)
+import Deku.Control (text)
 import Deku.DOM as D
 
 definingIonicCustomElements :: Subsection
@@ -12,10 +12,10 @@ definingIonicCustomElements = subsection
   { title: "Importing our custom elements"
   , matter: pure
       [ D.p_
-          [ text_
+          [ text
               "Before using custom elements, make sure to import them using whatever instructions are given in the README.md of the library you're using. In the case of "
           , D.code__ "wc-discord-message"
-          , text_ ", that'd be:"
+          , text ", that'd be:"
           ]
       , shSessionCode """$ pnpm i wc-discord-message"""
       , D.p__ "And then:"
