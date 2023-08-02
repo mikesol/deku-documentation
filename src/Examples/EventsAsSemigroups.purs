@@ -1,5 +1,6 @@
 module Examples.EventsAsSemigroups where
 
+import Deku.Toplevel (runInBody)
 import Prelude
 
 import Data.Tuple.Nested ((/\))

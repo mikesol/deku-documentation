@@ -1,5 +1,6 @@
 module Examples.UsingTheHookToSwitchBetweenElements where
 
+import Deku.Toplevel (runInBody)
 import Prelude
 import ExampleAssitant (ExampleSignature)
 

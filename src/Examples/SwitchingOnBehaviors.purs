@@ -1,5 +1,6 @@
 module Examples.SwitchingOnBehaviors where
 
+import Deku.Toplevel (runInBody)
 import Prelude
 import ExampleAssitant (ExampleSignature)
 

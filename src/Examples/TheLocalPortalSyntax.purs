@@ -1,5 +1,6 @@
 module Examples.TheLocalPortalSyntax where
 
+import Deku.Toplevel (runInBody)
 import Prelude
 
 import Data.NonEmpty (NonEmpty)

@@ -1,5 +1,6 @@
 module Examples.CustomHook2 where
 
+import Deku.Toplevel (runInBody)
 import Prelude
 import ExampleAssitant (ExampleSignature)
 

@@ -1,5 +1,6 @@
 module Examples.ComponentsAsMonoids where
 
+import Deku.Toplevel (runInBody)
 import Prelude
 import ExampleAssitant (ExampleSignature)
 

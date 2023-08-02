@@ -1,5 +1,6 @@
 module Examples.UsingFunctionsAsMonads where
 
+import Deku.Toplevel (runInBody)
 import Prelude
 
 import Control.Monad.Reader (ask)

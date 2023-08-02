@@ -1,5 +1,6 @@
 module Examples.ComponentsAsSemigroups where
 
+import Deku.Toplevel (runInBody)
 import Prelude
 
 import Data.String (Pattern(..), Replacement(..), replaceAll)

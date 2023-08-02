@@ -14,7 +14,7 @@ import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (guard, useState')
 import Deku.Listeners (click)
-import Deku.Toplevel (runSSR)
+import Deku.Toplevel (runInBody, runSSR)
 import ExampleAssitant (ExampleSignature)
 
 myApp :: String -> Nut

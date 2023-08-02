@@ -1,5 +1,6 @@
 module Examples.NestedCustomHooks where
 
+import Deku.Toplevel (runInBody)
 import Prelude
 
 import Data.NonEmpty (NonEmpty, head, tail, (:|))

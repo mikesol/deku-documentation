@@ -1,5 +1,6 @@
 module Examples.UnsafePursx where
 
+import Deku.Toplevel (runInBody)
 import Prelude
 import ExampleAssitant (ExampleSignature)
 

@@ -1,5 +1,6 @@
 module Examples.MovingElements where
 
+import Deku.Toplevel (runInBody)
 import Prelude
 import ExampleAssitant (ExampleSignature)
 

@@ -1,5 +1,6 @@
 module Examples.GatingEventsOnBehaviors where
 
+import Deku.Toplevel (runInBody)
 import Prelude
 import ExampleAssitant (ExampleSignature)
 

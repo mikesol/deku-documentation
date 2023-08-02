@@ -6,7 +6,7 @@ import Components.Code (htmlCode)
 import Control.Monad.ST.Class (liftST)
 import Deku.Core (Nut)
 import Deku.DOM as D
-import Deku.Toplevel (runSSR)
+import Deku.Toplevel (runInBody, runSSR)
 import ExampleAssitant (ExampleSignature)
 
 myApp :: String -> Nut

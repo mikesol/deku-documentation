@@ -1,5 +1,6 @@
 module Examples.PurityOutOfThinAir where
 
+import Deku.Toplevel (runInBody)
 import Prelude
 import ExampleAssitant (ExampleSignature)
 
