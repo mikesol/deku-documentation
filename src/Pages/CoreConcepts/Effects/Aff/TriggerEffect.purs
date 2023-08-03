@@ -2,23 +2,18 @@ module Pages.CoreConcepts.Effects.Aff.TriggerEffect where
 
 import Prelude
 
-import Components.Code (psCodeWithLink)
-import Contracts (Subsection, subsection)
-import Data.JSDate (getTime, now)
-import Data.Tuple.Nested ((/\))
-import Examples as Examples
-import Deku.Attributes (klass)
+import Contracts (CollapseState(..), Subsection, getExample, subsection)
+import Data.Maybe (Maybe(..))
 import Deku.Control (text)
 import Deku.DOM as D
-import Deku.Do as Deku
-import Deku.Hooks (useEffect, useState')
-import Deku.Listeners (click)
+import Examples as Examples
 
 triggerEffect :: Subsection
 triggerEffect = subsection
   { title: "The useEffect hook"
-  , matter: \_ ->
-      [ D.p_
+  , matter: do
+      example <- getExample StartCollapsed Nothing Examples.RunningEffectsInResponseToEvents
+      pure [ D.p_
           [ text
               "The "
           , D.code__ "useEffect"
@@ -36,20 +31,6 @@ triggerEffect = subsection
           , text
               ". As is the case with many things in Deku, there is more than one way to skin a Gerudian Lizalfos."
           ]
-      , psCodeWithLink Examples.RunningEffectsInResponseToEvents
-      , Deku.do
-          setCurrentTime /\ currentTime <- useState'
-          setClicked /\ clicked <- useState'
-          useEffect clicked \_ -> getTime <$> now >>= setCurrentTime
-          D.div_
-            [ D.a
-                [ click (setClicked unit)
-                , klass "cursor-pointer"
-                ]
-                [ text "Current timestamp" ]
-            , text ": "
-            , text (show <$> currentTime)
-            ]
-
+      , example
       ]
   }

@@ -1,21 +1,21 @@
 module Examples.UnsettingAttributes where
 
-import Deku.Toplevel (runInBody')
-import Effect (Effect)
 import Prelude
-import ExampleAssitant (ExampleSignature)
 
-import Data.Filterable (filter)
-import Data.NonEmpty ((:|))
+import Control.Alternative (guard)
 import Data.String (Pattern(..), Replacement(..), replaceAll)
 import Data.Tuple.Nested ((/\))
 import Deku.Attribute ((:=))
-import Deku.Attributes (klass, style)
+import Deku.Attributes (klass)
 import Deku.Control (text)
 import Deku.DOM as D
 import Deku.Do as Deku
-import Deku.Hooks (useState')
+import Deku.Hooks (useState)
 import Deku.Listeners (click)
+import Deku.NonEmpty (filterMapAttribute)
+import Deku.Toplevel (runInBody')
+import Effect (Effect)
+import ExampleAssitant (ExampleSignature)
 
 buttonClass :: String -> String
 buttonClass color =
@@ -28,17 +28,17 @@ focus:ring-COLOR-500 focus:ring-offset-2"""
 
 app :: ExampleSignature
 app runExample = runExample Deku.do
-  setStyleSwitch /\ styleSwitch <- useState'
+  setStyleSwitch /\ styleSwitch <- useState false
   D.div_
     [ D.a
         [ D.Target := "_blank"
-        , style $ filter identity styleSwitch $> "color:magenta;"
-        , style $ false :| filter not styleSwitch $> unit
+        , filterMapAttribute D.Style (\x -> guard x $> "color:magenta;") styleSwitch
+        , filterMapAttribute D.Style (\x -> guard (not x) $> unit) $ styleSwitch
         ]
         [ text "Click me" ]
     , D.button
         [ klass $ buttonClass "pink"
-        , click $ false :| styleSwitch <#> not >>> setStyleSwitch
+        , click $ styleSwitch <#> not >>> setStyleSwitch
         ]
         [ text "Switch style" ]
     ]

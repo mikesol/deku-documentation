@@ -2,7 +2,7 @@ module Pages.FRP.Sampling.Gating where
 
 import Prelude
 
-import Contracts (Env(..), Section, section)
+import Contracts (Env(..), Section, getEnv, section)
 import Deku.Control (text)
 import Deku.DOM as D
 import Pages.FRP.Sampling.Gating.GatingEventsOnBehaviors (gatingEventsOnBehaviors)
@@ -12,8 +12,9 @@ import Router.ADT (Route(..))
 gating :: Section
 gating = section
   { title: "Gating"
-  , topmatter: \(Env { routeLink }) ->
-      [ D.p_
+  , topmatter: do
+      Env { routeLink } <- getEnv
+      pure [ D.p_
           [ text "A close cousin of sampling is "
           , D.b__ "gating"
           , text

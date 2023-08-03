@@ -4,9 +4,11 @@ import Prelude
 
 import Control.Monad.Free (Free, liftF)
 import Data.Array (intercalate)
+import Data.Maybe (Maybe)
 import Data.Newtype (class Newtype)
 import Data.String (Pattern(..), split, toLower)
 import Deku.Core (Nut)
+import Examples (ExampleADT)
 import Record (union)
 import Router.ADT (Route, routeToTitle)
 
@@ -83,12 +85,18 @@ section i = Section
 data ContentF a
   = GetEnv (Env -> a)
   | GetRandomNumber (Number -> a)
+  | GetExample CollapseState (Maybe String) ExampleADT (Nut -> a)
 
 getEnv :: Content Env
 getEnv = liftF $ GetEnv identity
 
 getRandomNumber :: Content Number
 getRandomNumber = liftF $ GetRandomNumber identity
+
+data CollapseState = StartCollapsed | StartExapanded
+
+getExample :: CollapseState -> Maybe String -> ExampleADT -> Content Nut
+getExample b k e = liftF $ GetExample b k e identity
 
 type Content = Free ContentF
 

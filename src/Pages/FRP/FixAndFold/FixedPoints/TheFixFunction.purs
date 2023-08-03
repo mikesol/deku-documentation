@@ -2,23 +2,13 @@ module Pages.FRP.FixAndFold.FixedPoints.TheFixFunction where
 
 import Prelude
 
-import Components.Code (psCode, psCodeWithLink)
-import Components.ExampleBlockquote (exampleBlockquote)
-import Contracts (Env(..), Subsection, subsection)
-import Control.Alt ((<|>))
-import Data.Compactable (compact)
+import Components.Code (psCode)
+import Contracts (CollapseState(..), Env(..), Subsection, getEnv, getExample, subsection)
 import Data.Maybe (Maybe(..))
 import Data.String (Pattern(..), Replacement(..), replaceAll)
-import Data.Tuple (Tuple(..), fst, snd)
-import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass)
 import Deku.Control (text)
 import Deku.DOM as D
-import Deku.Do as Deku
-import Deku.Hooks (useState')
-import Deku.Listeners (click)
 import Examples as Examples
-import FRP.Event (fix, sampleOnRight)
 import Router.ADT (Route(..))
 
 buttonClass :: String -> String
@@ -33,8 +23,11 @@ focus:ring-COLOR-500 focus:ring-offset-2 mr-4"""
 theFixFunction :: Subsection
 theFixFunction = subsection
   { title: "The fix function for events"
-  , matter: \(Env { routeLink }) ->
-      [ D.p_
+  , matter: do
+      Env { routeLink } <- getEnv
+      example <- getExample StartCollapsed Nothing Examples.ALagUsingFix
+      severalLags <- getExample StartCollapsed Nothing Examples.SeveralLagsUsingFix
+      pure [ D.p_
           [ text
               "If we consider events as streams of values, one way to build intuition about "
           , D.code__ "fix"
@@ -52,32 +45,7 @@ theFixFunction = subsection
           , text
               ". We'll create a mechanism that lags by one event. That is, the first thing you click on will not change the value, and from then on, whenever you click, the previous value will be displayed."
           ]
-      , psCodeWithLink Examples.ALagUsingFix
-      , exampleBlockquote
-          [ Deku.do
-              setWord /\ word <- useState'
-              D.div_
-                [ D.div_ $
-                    [ "Hickory" /\ "green"
-                    , "Dickory" /\ "pink"
-                    , "Dock" /\ "indigo"
-                    ] <#> \(w /\ k) -> D.button
-                      [klass (buttonClass k), click (setWord w)]
-                      [ text w ]
-                , D.div_
-                    [ text "Previous word: "
-                    , text
-                        ( pure "None" <|>
-                            ( compact $ snd <$> fix
-                                ( \e -> sampleOnRight
-                                    (pure Nothing <|> (fst <$> e))
-                                    ((Tuple <<< Just) <$> word)
-                                )
-                            )
-                        )
-                    ]
-                ]
-          ]
+      , example
       , D.p_
           [ text
               "Before we delve into the inner workings of the function above, it's important to note that what we've just done is created "
@@ -160,34 +128,7 @@ fixedEvent = fix
           ]
       , D.p__
           "To extend the example, we can use our fixed function as a building block to create lags of arbitrary depth."
-      , psCodeWithLink Examples.SeveralLagsUsingFix
-      , exampleBlockquote
-          [ Deku.do
-              setWord /\ word <- useState'
-              let
-                lag n e
-                  | n <= 0 = e
-                  | otherwise =
-                      compact $ snd <$> fix
-                        ( \ev -> sampleOnRight
-                            (pure Nothing <|> (fst <$> ev))
-                            ((Tuple <<< Just) <$> lag (n - 1) e)
-                        )
-              D.div_
-                [ D.div_ $
-                    [ "Hickory" /\ "green"
-                    , "Dickory" /\ "pink"
-                    , "Dock" /\ "indigo"
-                    ] <#> \(w /\ k) -> D.button
-                      [klass (buttonClass k), click (setWord w)]
-                      [ text w ]
-                , D.div_ $ [ 0, 1, 2, 3, 4 ] <#> \n -> D.div_
-                    [ text $ "Word with a lag of " <> show n <> ": "
-                    , text
-                        (pure "None" <|> lag n word)
-                    ]
-                ]
-          ]
+      , severalLags
       , D.p_
           [ text
               "Using this technique, you can create powerful state machines that articulate arbitrary relationships between items in the past. So long as there is a sampling function that stops the fixed point from turning into an infinite loop, you can articulate any stateful behavior you so choose."

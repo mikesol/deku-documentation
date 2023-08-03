@@ -5,7 +5,6 @@ import Prelude
 import Contracts (Section, section)
 import Deku.Control (text)
 import Deku.DOM as D
-import Pages.FRP.Events.StandAloneEvents.MultipleSubscriptions (multipleSubscriptions)
 import Pages.FRP.Events.StandAloneEvents.UnsubscribeEtiquette (unsubscribeEtiquette)
 import Pages.FRP.Events.StandAloneEvents.TheMakeEventFunction (theMakeEventFunction)
 
@@ -23,5 +22,5 @@ standAloneEvents = section
           ]
       ]
   , subsections:
-      [ theMakeEventFunction, unsubscribeEtiquette, multipleSubscriptions ]
+      [ theMakeEventFunction, unsubscribeEtiquette ]
   }

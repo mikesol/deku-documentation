@@ -2,22 +2,22 @@ module Pages.FRP.Applicatives.MonadsAndFlattening.TheKeepLatestFunction where
 
 import Prelude
 
-import Components.Code (psCode, psCodeWithLink)
-import Components.ExampleBlockquote (exampleBlockquote)
+import Components.Code (psCode)
 import Components.TargetedLink (targetedLink)
-import Contracts (Subsection, subsection)
-import Control.Alt ((<|>))
+import Contracts (CollapseState(..), Subsection, getExample, subsection)
+import Data.Maybe (Maybe(..))
 import Deku.Control (text)
 import Deku.DOM as D
 import Examples as Examples
-import FRP.Event (fold, keepLatest)
-import FRP.Event.Time (interval)
 
 theKeepLatestFunction :: Subsection
 theKeepLatestFunction = subsection
   { title: "The keepLatest function"
-  , matter: pure
-      [ D.p_
+  , matter: do
+      example <- getExample StartCollapsed Nothing
+        Examples.TheKeepLatestFunction
+
+      pure [ D.p_
           [ text "One candidate for a "
           , D.code__ "Monad"
           , text " instance of "
@@ -51,15 +51,7 @@ theKeepLatestFunction = subsection
           , text
               " yet because we don't have enough tools and terms to, but you may already be able to guess what it does from its usage on this page!"
           ]
-      , psCodeWithLink Examples.TheKeepLatestFunction
-      , exampleBlockquote
-          [ do
-              let count = fold (pure <$> add 1) 0
-              text
-                ( show <$> keepLatest
-                    (interval 1600 $> (pure 0 <|> count (interval 600)))
-                )
-          ]
+      , example
       , D.p_
           [ text "The result is a "
           , targetedLink "https://en.wikipedia.org/wiki/Tresillo_(rhythm)"

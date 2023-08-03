@@ -2,51 +2,25 @@ module Pages.CoreConcepts.Effects.Aff.TriggerAff where
 
 import Prelude
 
-import Components.Code (psCodeWithLink)
-import Components.ExampleBlockquote (exampleBlockquote)
 import Components.ProTip (proTip)
 import Components.TargetedLink (targetedLink)
-import Contracts (Subsection, subsection)
-import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass)
+import Contracts (CollapseState(..), Subsection, getExample, subsection)
+import Data.Maybe (Maybe(..))
 import Deku.Control (text)
 import Deku.DOM as D
-import Deku.Do as Deku
-import Deku.Hooks (useAffWithCancellation, useState')
-import Deku.Listeners (click)
-import Effect.Class (liftEffect)
 import Examples as Examples
-import Fetch (Method(..), fetch)
 
 triggerAff :: Subsection
 triggerAff = subsection
   { title: "The useAffSequential hook"
-  , matter: pure
-      [ D.p_
+  , matter: do
+      example <- getExample StartCollapsed Nothing
+        Examples.RunningAffsSequentiallyInResponseToAnEvent
+      pure [ D.p_
           [ text
               "The following hook will emit an aff on each event. It does no cancellation, so if affs pile up, they will keep going until the element leaves the screen. If you're a glutton for punishment, click the link really fast ~20 times while watching your network tab."
           ]
-      , psCodeWithLink Examples.RunningAffsSequentiallyInResponseToAnEvent
-      , exampleBlockquote
-          [ Deku.do
-              setResponse /\ response <- useState'
-              setClicked /\ clicked <- useState'
-              useAffWithCancellation clicked \_ -> do
-                { text: t } <- fetch "https://httpbin.org/post"
-                  { method: POST
-                  , body: """{"hello":"world"}"""
-                  , headers: { "Content-Type": "application/json" }
-                  }
-                t >>= liftEffect <<< setResponse
-              D.div_
-                [ D.a
-                      [click (setClicked unit),
-                      klass "cursor-pointer"]
-                    [ text "Click for a random http response" ]
-                , text ": "
-                , text ( show <$> response)
-                ]
-          ]
+      , example
       , proTip
           { header:
               D.span_

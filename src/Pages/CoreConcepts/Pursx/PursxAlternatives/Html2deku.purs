@@ -4,7 +4,6 @@ import Prelude
 
 import Components.HTML2Deku.Component as HTML2Deku
 import Contracts (Subsection, subsection)
-import Control.Alt ((<|>))
 import Deku.Attribute ((:=))
 import Deku.Attributes (href)
 import Deku.Control (text)
@@ -16,7 +15,8 @@ html2deku = subsection
   , matter: pure
       [ D.p_
           [ D.a
-              [href "https://mikesol.github.io/html2deku" <|> D.Target :=
+              [ href "https://mikesol.github.io/html2deku"
+              , D.Target :=
                   "_blank"
               ]
               [ D.code__ "html2deku" ]

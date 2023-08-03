@@ -1,7 +1,9 @@
 module Pages.CoreConcepts.State.TheStateHook.PushingToAHook where
 
+import Prelude
+
 import Components.Code (psCode)
-import Contracts (Env(..), Subsection, subsection)
+import Contracts (Env(..), Subsection, getEnv, subsection)
 import Deku.Control (text)
 import Deku.DOM as D
 import Router.ADT (Route(..))
@@ -9,8 +11,9 @@ import Router.ADT (Route(..))
 pushingToAHook :: Subsection
 pushingToAHook = subsection
   { title: "Pushing to a hook"
-  , matter: \(Env { routeLink }) ->
-      [ D.p_
+  , matter: do
+      Env { routeLink } <- getEnv
+      pure [ D.p_
           [ text "As we saw in the "
           , routeLink Components
           , text

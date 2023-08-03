@@ -1,11 +1,7 @@
 module Examples.PassingAroundHooks where
 
-import Deku.Toplevel (runInBody')
-import Effect (Effect)
 import Prelude
-import ExampleAssitant (ExampleSignature)
 
-import Data.NonEmpty ((:|), tail)
 import Data.Tuple.Nested ((/\))
 import Deku.Attributes (klass)
 import Deku.Control (text)
@@ -13,7 +9,10 @@ import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (guard, useState, useState')
 import Deku.Listeners (click)
-
+import Deku.NonEmpty (rehead)
+import Deku.Toplevel (runInBody')
+import Effect (Effect)
+import ExampleAssitant (ExampleSignature)
 import FRP.Behavior (stepNE, (>@=))
 
 app :: ExampleSignature
@@ -51,7 +50,7 @@ app runExample = runExample Deku.do
                       [ klass "cursor-pointer"
                       , ( click $ number <#> \n ->
                             ( setIncrementer
-                                { setNumber, number: n :| tail number }
+                                { setNumber, number: rehead n number }
                             )
                         )
                       ]

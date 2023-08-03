@@ -6,9 +6,7 @@ import Contracts (Page, page)
 import Deku.Attribute ((:=))
 import Deku.Control (text)
 import Deku.DOM as D
-import Pages.FRP.OtherInstances.HeytingAlgebra (heytingAlgebra)
-import Pages.FRP.OtherInstances.Monoid (monoid)
-import Pages.FRP.OtherInstances.Ring (ring)
+import Pages.FRP.OtherInstances.Semigroup (semigroup)
 import Router.ADT (Route(..))
 
 otherInstances :: Page
@@ -16,7 +14,7 @@ otherInstances = page
   { route: OtherInstances
   , topmatter: pure
       [ D.p [D.Class := "lead"]
-          [ text "Because who likes to lift2 over add when you can just add?"
+          [ text "Because who likes to lift2 over append when you can just append?"
           ]
       , D.p_
           [ text
@@ -36,5 +34,5 @@ otherInstances = page
           ]
       ]
   , sections:
-      [ monoid, heytingAlgebra, ring ]
+      [ semigroup ]
   }

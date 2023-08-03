@@ -9,8 +9,6 @@ import Deku.Control (text)
 import Deku.DOM as D
 import Pages.FRP.Events.Definition (definition)
 import Pages.FRP.Events.InteractiveEvents (interactiveEvents)
-import Pages.FRP.Events.OptimizedEvents (optimizedEvents)
-import Pages.FRP.Events.PureEvents (pureEvents)
 import Pages.FRP.Events.StandAloneEvents (standAloneEvents)
 import Router.ADT (Route(..))
 
@@ -44,7 +42,5 @@ events = page
       [ definition
       , interactiveEvents
       , standAloneEvents
-      , pureEvents
-      , optimizedEvents
       ]
   }

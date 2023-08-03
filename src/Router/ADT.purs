@@ -22,7 +22,6 @@ data Route
   | Filtering
   | Sampling
   | OtherInstances
-  | Busses
   | FixAndFold
   | Behaviors
   | CustomElements
@@ -54,7 +53,6 @@ routeToTitle Alternatives = "Alternatives"
 routeToTitle Filtering = "Filtering"
 routeToTitle Sampling = "Sampling"
 routeToTitle OtherInstances = "Other instances"
-routeToTitle Busses = "Busses"
 routeToTitle FixAndFold = "Fix and fold"
 routeToTitle Behaviors = "Behaviors"
 routeToTitle CustomElements = "Custom elements"

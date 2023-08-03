@@ -3,7 +3,7 @@ module Examples.NestedCustomHooks where
 import Deku.Toplevel (runInBody')
 import Prelude
 
-import Data.NonEmpty (NonEmpty, head, tail, (:|))
+import Data.NonEmpty (NonEmpty, head, tail)
 import Data.Tuple.Nested (type (/\), (/\))
 import Deku.Attributes (klass)
 import Deku.Control (text)
@@ -37,8 +37,8 @@ app runExample = runExample Deku.do
     hookusMaximus i makeHook = Deku.do
       setMinimus /\ minimus <- hookusMinimus i
       let added = add 1000 <$> minimus
-      maximus <- useMemoized (tail added)
-      makeHook (setMinimus /\ minimus /\ (head added :| maximus))
+      maximus <- useMemoized added
+      makeHook (setMinimus /\ minimus /\ maximus)
   setMinimus /\ minimus /\ maximus <- hookusMaximus 0
   D.div_
     [ D.button

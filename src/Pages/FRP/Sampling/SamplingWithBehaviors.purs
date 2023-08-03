@@ -4,7 +4,7 @@ import Prelude
 
 import Components.ProTip (proTip)
 import Components.TargetedLink (targetedLink)
-import Contracts (Env(..), Section, section)
+import Contracts (Env(..), Section, getEnv, section)
 import Deku.Control (text)
 import Deku.DOM as D
 import Pages.FRP.Sampling.SamplingWithBehaviors.SamplingABehaviorAndDiscardingTheEvent (samplingABehaviorAndDiscardingTheEvent)
@@ -15,8 +15,9 @@ import Router.ADT (Route(..))
 samplingWithBehaviors :: Section
 samplingWithBehaviors = section
   { title: "Sampling with behaviors"
-  , topmatter: \(Env { routeLink }) ->
-      [ D.p_
+  , topmatter: do
+      Env { routeLink } <- getEnv
+      pure [ D.p_
           [ text "As we saw in the section on "
           , routeLink Behaviors
           , text

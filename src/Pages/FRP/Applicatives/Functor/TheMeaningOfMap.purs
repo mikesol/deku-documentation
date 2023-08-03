@@ -1,8 +1,10 @@
 module Pages.FRP.Applicatives.Functor.TheMeaningOfMap where
 
+import Prelude
+
 import Components.Code (psCode)
 import Components.TargetedLink (targetedLink)
-import Contracts (Env(..), Subsection, subsection)
+import Contracts (Env(..), Subsection, getEnv, subsection)
 import Deku.Control (text)
 import Deku.DOM as D
 import Router.ADT (Route(..))
@@ -10,8 +12,9 @@ import Router.ADT (Route(..))
 theMeaningOfMap :: Subsection
 theMeaningOfMap = subsection
   { title: "The meaning of map"
-  , matter: \(Env { routeLink }) ->
-      [ D.p_
+  , matter: do
+      Env { routeLink } <- getEnv
+      pure [ D.p_
           [ text "Using the simplified type of "
           , D.code__ "Event"
           , text " from the "

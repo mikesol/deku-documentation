@@ -2,51 +2,27 @@ module Pages.CoreConcepts.State.TheStateHook where
 
 import Prelude
 
-import Components.Code (psCodeWithLink)
-import Components.ExampleBlockquote (exampleBlockquote)
 import Components.ProTip (proTip)
 import Components.TargetedLink (targetedLink)
-import Contracts (Section, section)
-import Control.Alt ((<|>))
-import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass)
+import Contracts (CollapseState(..), Section, getExample, section)
+import Data.Maybe (Maybe(..))
 import Deku.Control (text)
 import Deku.DOM as D
-import Deku.Do as Deku
-import Deku.Hooks (useState')
-import Deku.Listeners (click)
-import Effect.Random (random)
 import Examples as Examples
 import Pages.CoreConcepts.State.TheStateHook.PushingToAHook (pushingToAHook)
 import Pages.CoreConcepts.State.TheStateHook.UsingTheHookInText (usingTheHookInText)
 
-buttonClass =
-  """inline-flex items-center rounded-md
-border border-transparent bg-indigo-600 px-3 py-2
-text-sm font-medium leading-4 text-white shadow-sm
-hover:bg-indigo-700 focus:outline-none focus:ring-2
-focus:ring-indigo-500 focus:ring-offset-2 mr-6""" :: String
-
 theStateHook :: Section
 theStateHook = section
   { title: "The state hook"
-  , topmatter: pure
-      [ D.p__
+  , topmatter: do
+      example <- getExample StartCollapsed Nothing
+        Examples.TheStateHook
+      pure
+       [ D.p__
           "Deku's state hooks fit comfortably on a single line and pack a lot of power. Let's see one now!"
-      , psCodeWithLink Examples.TheStateHook
-      , D.p__ "Here's the result."
-      , exampleBlockquote
-          [ Deku.do
-              setNumber /\ number <- useState'
-              D.div_
-                [ D.button
-                    [klass buttonClass,
-                      click $ random >>= setNumber]
-                    [ text "Update number" ]
-                , text $ (bindToEffect (pure unit) (pure random) <|> number) <#>
-                    show >>> ("Here's a random number: " <> _)
-                ]
-          ]
+
+      , example
       , proTip
           { header: text "Deku.do"
           , message: D.div_

@@ -2,26 +2,21 @@ module Pages.FRP.Sampling.SamplingOnAnEvent.ApplicativesAndTemporality where
 
 import Prelude
 
-import Components.Code (psCode, psCodeWithLink)
-import Components.ExampleBlockquote (exampleBlockquote)
-import Contracts (Env(..), Subsection, subsection)
-import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass)
+import Components.Code (psCode)
+import Contracts (CollapseState(..), Env(..), Subsection, getEnv, getExample, subsection)
+import Data.Maybe (Maybe(..))
 import Deku.Control (text)
-import Deku.Core (fixed)
 import Deku.DOM as D
-import Deku.Do as Deku
-import Deku.Hooks (useState')
-import Deku.Listeners (slider)
 import Examples as Examples
-import FRP.Event.Class ((<|**>))
 import Router.ADT (Route(..))
 
 applicativesAndTemporality :: Subsection
 applicativesAndTemporality = subsection
   { title: "How sampling works"
-  , matter: \(Env { routeLink }) ->
-      [ D.p_
+  , matter: do
+      Env { routeLink } <- getEnv
+      example <- getExample StartCollapsed Nothing Examples.HowSamplingWorks
+      pure [ D.p_
           [ text "We'll start our journey through sampling with "
           , D.code__ "sampleOnRight"
           , text " aka "
@@ -53,22 +48,7 @@ applicativesAndTemporality = subsection
           ]
       , D.p__
           "To see this in action, let's concoct an example with two sliders. Both sliders do not emit an initial value, meaning they need to be moved in order for a value to be registered. Because of this, the system will only start producing values once both sliders have been moved, but it will only respond to the right slider. To see this, move the right (nothing), then the left (still nothing), then the right (bam!)."
-      , psCodeWithLink Examples.HowSamplingWorks
-      , exampleBlockquote
-          [ Deku.do
-              setSlider1 /\ slider1 <- useState'
-              setSlider2 /\ slider2 <- useState'
-              fixed
-                [ D.div [klass "flex justify-around"]
-                    [ D.input [slider setSlider1] []
-                    , D.input [slider setSlider2] []
-                    ]
-                , text
-                    ( slider1 <|**>
-                        ((\a b -> show b <> " " <> show a) <$> slider2)
-                    )
-                ]
-          ]
+      , example
       , D.p_
           [ text "If you compare the defition of "
           , D.code__ "sampleOnRight"

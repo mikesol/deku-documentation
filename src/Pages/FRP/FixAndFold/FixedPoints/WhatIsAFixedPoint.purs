@@ -5,14 +5,14 @@ import Prelude
 import Components.Code (psCode)
 import Components.Table (tableClass)
 import Contracts (Subsection, subsection)
-import Control.Alt ((<|>))
 import Control.Lazy (fix)
+import Data.NonEmpty ((:|))
 import Data.Tuple.Nested ((/\))
 import Deku.Attributes (klass)
 import Deku.Control (text)
 import Deku.DOM as D
 import Deku.Do as Deku
-import Deku.Hooks (useDyn, useMailboxed, useState)
+import Deku.Hooks (useDyn, useMailboxed, useState', (<#~>))
 import Deku.Listeners (click)
 
 whatIsAFixedPoint :: Subsection
@@ -64,26 +64,26 @@ myFunction = fix (\f a -> if a > 100 then 100 else f (a + 1))
       , let
           myFunction = fix (\f a -> if a > 100 then 100 else f (a + 1))
         in
-          D.table [tableClass]
+          D.table [ tableClass ]
             [ D.tr_
-                [ D.th [tableClass] [ text "Function call" ]
-                , D.th [tableClass] [ text "Result" ]
+                [ D.th [ tableClass ] [ text "Function call" ]
+                , D.th [ tableClass ] [ text "Result" ]
                 ]
             , D.tr_
-                [ D.th [tableClass] [ D.code__ "myFunction 0" ]
-                , D.th [tableClass] [ text (show (myFunction 0)) ]
+                [ D.th [ tableClass ] [ D.code__ "myFunction 0" ]
+                , D.th [ tableClass ] [ text (show (myFunction 0)) ]
                 ]
             , D.tr_
-                [ D.th [tableClass] [ D.code__ "myFunction 42" ]
-                , D.th [tableClass] [ text (show (myFunction 42)) ]
+                [ D.th [ tableClass ] [ D.code__ "myFunction 42" ]
+                , D.th [ tableClass ] [ text (show (myFunction 42)) ]
                 ]
             , D.tr_
-                [ D.th [tableClass] [ D.code__ "myFunction1000" ]
-                , D.th [tableClass] [ text (show (myFunction 1000)) ]
+                [ D.th [ tableClass ] [ D.code__ "myFunction1000" ]
+                , D.th [ tableClass ] [ text (show (myFunction 1000)) ]
                 ]
             ]
-      , D.div [klass "w-full flex justify-end"]
-          [ D.span [klass "text-sm pr-2"]
+      , D.div [ klass "w-full flex justify-end" ]
+          [ D.span [ klass "text-sm pr-2" ]
               [ text
                   "* All values are calculated dynamically by the actual function."
               ]
@@ -112,28 +112,29 @@ myFunction = fix (\f a -> if a > 100 then 100 else f (a + 1))
           [ text
               "The reason that fixed points only make sense for unfoldable things like functions or streams or events (things that go on "
           , Deku.do
-              setElt /\ elt <- useState 0
+              setElt /\ elt <- useState'
               disactivatePreviousElt /\ previousElt <- useMailboxed
-              { value: v } <- useDyn ((\i -> (i + 1) /\ i) <$> elt)  
-              (pure true <|> (previousElt v $> false)) <#~> do
-                    let
-                      t = case v of
-                        10 ->
-                          "ok, you got me, there's an upper bound to this joke. if you click the dots, i'll stop"
-                        11 -> "meaning that i'll stop going on and on"
-                        _ -> "and on and on"
-                    if _ then
-                      D.span_
-                        [ text t
-                        , D.a
-                            [klass "cursor-pointer", click do
-                                setElt (v + 1)
-                                disactivatePreviousElt
-                                  { address: v, payload: unit }
-                            ]
-                            [ text "..." ]
+              { value: v } <- useDyn [ 1 /\ 0 ] ((\i -> (i + 1) /\ i) <$> elt)
+              (true :| (previousElt v $> false)) <#~> do
+                let
+                  t = case v of
+                    10 ->
+                      "ok, you got me, there's an upper bound to this joke. if you click the dots, i'll stop"
+                    11 -> "meaning that i'll stop going on and on"
+                    _ -> "and on and on"
+                if _ then
+                  D.span_
+                    [ text t
+                    , D.a
+                        [ klass "cursor-pointer"
+                        , click do
+                            setElt (v + 1)
+                            disactivatePreviousElt
+                              { address: v, payload: unit }
                         ]
-                    else text $ t <> "... "
+                        [ text "..." ]
+                    ]
+                else text $ t <> "... "
           , text
               ") is because the fixed point needs repeated application. A function "
           , D.code__ "(a -> b)"

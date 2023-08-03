@@ -2,19 +2,11 @@ module Pages.CoreConcepts.State.StateWithoutInitialValues.ANoteOnMemoization whe
 
 import Prelude
 
-import Components.Code (psCode, psCodeWithLink)
-import Components.ExampleBlockquote (exampleBlockquote)
-import Contracts (Subsection, subsection)
-import Control.Alt ((<|>))
+import Contracts (CollapseState(..), Subsection, getExample, subsection)
+import Data.Maybe (Maybe(..))
 import Data.String (replaceAll, Pattern(..), Replacement(..))
-import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass)
-import Deku.Control (guard, text)
+import Deku.Control (text)
 import Deku.DOM as D
-import Deku.Do as Deku
-import Deku.Hooks (useHot', useState, useState')
-import Deku.Listeners (click)
-import Effect.Random (random)
 import Examples as Examples
 
 -- bg-fuchsia-600
@@ -32,8 +24,13 @@ focus:ring-COLOR-500 focus:ring-offset-2"""
 aNoteOnMemoization :: Subsection
 aNoteOnMemoization = subsection
   { title: "Memoization and useHot"
-  , matter: pure
-      [ D.p_
+  , matter: do
+      example <- getExample StartCollapsed Nothing
+        Examples.ANoteOnMemoization
+      example2 <- getExample StartCollapsed Nothing
+        Examples.AWayToMemoize
+      pure
+       [ D.p_
           [ text "It's important to know that the hooks above are "
           , D.i__ "not"
           , text
@@ -51,37 +48,7 @@ aNoteOnMemoization = subsection
           , D.b__ "A"
           , text " again a few times. What do you think will happen?"
           ]
-      , psCodeWithLink Examples.ANoteOnMemoization
-      , exampleBlockquote
-          [ Deku.do
-              setNumber /\ number <- useState'
-              setPresence /\ presence <- useState false
-              D.div_
-                [ D.div_
-                    [ text $ (bindToEffect (pure unit) (pure random) <|> number)
-                        <#> show >>>
-                          ("Here's a random number: " <> _)
-                    ]
-                , D.div_
-                    [ D.button
-                        [klass $ buttonClass "pink",
-                          click $ random >>= setNumber]
-                        [ text "A"
-                        ]
-                    , D.button
-                        [klass $ buttonClass "green",
-                          click $ presence <#> not >>> setPresence]
-                        [ text "B"
-                        ]
-                    ]
-                , D.div_
-                    [ guard presence
-                        $ text
-                        $ (number) <#> show >>>
-                            ("Here's the same random number: " <> _)
-                    ]
-                ]
-          ]
+      , example
       , D.p_
           [ text
               "Because the hook simply passes through values as it receives them, as there was no simultaneous value coming from "
@@ -101,51 +68,12 @@ aNoteOnMemoization = subsection
           ]
       , D.p_
           [ text
-              "It is indeed possible to have hooks that always supply their most recent value, but it comes with a slight performance penalty. Note that the performance penalty is negligible for most real-world applciations. You won't feel any lag in the example below, which is a memoized version of the example above. The only change is to use "
-          , D.code__ "useHot"
-          , text " instead of "
-          , D.code__ "useState"
-          , text "."
+              "It is indeed possible to have hooks that always supply their most recent value, but it requires using a concept we haven't learned about yet: the "
+          , D.code__ "Behavior"
+          , text ". Fear not though, an example will thusly be presented, and we'll cover "
+          , D.code__ "Behavior"
+          , text "s later."
           ]
-      , psCode
-          """-- change this line
-setNumber /\ number <- useHot n"""
-      , D.p__ "And voilà the result."
-      , exampleBlockquote
-          [ Deku.do
-              setNumber /\ number <- useHot'
-              setPresence /\ presence <- useState false
-              D.div_
-                [ D.div_
-                    [ text $ (bindToEffect (pure unit) (pure random) <|> number)
-                        <#> show >>>
-                          ("Here's a random number: " <> _)
-                    ]
-                , D.div_
-                    [ D.button
-                        [klass $ buttonClass "pink",
-                          click $ random >>= setNumber]
-                        [ text "A"
-                        ]
-                    , D.button
-                        [klass $ buttonClass "green",
-                          click $ presence <#> not >>> setPresence]
-                        [ text "B"
-                        ]
-                    ]
-                , D.div_
-                    [ guard presence
-                        $ text
-                        $ (number) <#> show >>>
-                            ("Here's the same random number: " <> _)
-                    ]
-                ]
-          ]
-      , D.p_
-          [ text
-              "As you work more with the framework, you'll get a sense of when "
-          , D.code__ "useHot"
-          , text " is necessary to achieve the outcome you want."
-          ]
+      ,example2
       ]
   }

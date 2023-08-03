@@ -4,7 +4,6 @@ import Prelude
 
 import Components.Code (psCode)
 import Contracts (Subsection, subsection)
-import Control.Alt ((<|>))
 import Deku.Attribute ((:=))
 import Deku.Attributes (href)
 import Deku.Control (text)
@@ -31,8 +30,8 @@ theTypeAndContract = subsection
           , D.code__ "Event"
           , text " from the seminal 1997 paper "
           , D.a
-              [href "http://conal.net/papers/icfp97/" <|>
-                  (D.Target := "blank")
+              [ href "http://conal.net/papers/icfp97/"
+              , D.Target := "blank"
               ]
               [ D.i__ "Functional reactive animation" ]
           , text

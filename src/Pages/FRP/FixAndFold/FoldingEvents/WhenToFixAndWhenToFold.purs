@@ -2,20 +2,12 @@ module Pages.FRP.FixAndFold.FoldingEvents.WhenToFixAndWhenToFold where
 
 import Prelude
 
-import Components.Code (psCodeWithLink)
-import Components.ExampleBlockquote (exampleBlockquote)
 import Components.TargetedLink (targetedLink)
-import Contracts (Subsection, subsection)
-import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass)
+import Contracts (CollapseState(..), Subsection, getExample, subsection)
+import Data.Maybe (Maybe(..))
 import Deku.Control (text)
 import Deku.DOM as D
-import Deku.Do as Deku
-import Deku.Hooks (useDynAtBeginning, useState')
-import Deku.Listeners (click)
 import Examples as Examples
-import FRP.Event (delay, fix, keepLatest)
-import QualifiedDo.Alt as Alt
 
 buttonClass =
   """inline-flex items-center rounded-md
@@ -27,8 +19,9 @@ focus:ring-indigo-500 focus:ring-offset-2 mr-6""" :: String
 whenToFixAndWhenToFold :: Subsection
 whenToFixAndWhenToFold = subsection
   { title: "When to fix and when to fold"
-  , matter: pure
-      [ D.p_
+  , matter: do
+      example <- getExample StartCollapsed Nothing Examples.WhenToFixAndWhenToFold
+      pure [ D.p_
           [ D.i__ "In anger"
           , text
               ", as in these docs, we see much more folding than fixing. This is because the conceptual model of "
@@ -55,36 +48,7 @@ whenToFixAndWhenToFold = subsection
           , text
               ", and generates all subsequent values from that initial impulse. As the delay goes up, the speed of the dots goes down, and when the sawtooth starts a new period, the speed quickens."
           ]
-      , psCodeWithLink Examples.WhenToFixAndWhenToFold
-      , exampleBlockquote
-          [ Deku.do
-              setSwitch /\ switch <- useState'
-              D.div_
-                [ D.div_
-                    [ D.button
-                        [ click (setSwitch unit)
-                        , klass buttonClass
-                        ]
-                        [ text Alt.do
-                            pure "Start simulation"
-                            switch $> "Restart simulation"
-                        ]
-                    ]
-                , switch <#~> \_ -> D.div [ klass "h-24 overflow-y-scroll" ]
-                    [ Deku.do
-                        _ <- useDynAtBeginning
-                          ( fix
-                              ( \e -> Alt.do
-                                  keepLatest $ e <#> \n ->
-                                    (delay <*> pure)
-                                      if n >= 375 then 15 else n + 15
-                                  pure 0
-                              )
-                          )
-                        text "•​"
-                    ]
-                ]
-          ]
+      , example 
       , D.p__
           "In addition to being great for games and for web apps, the FRP event-based architecture is also great for animations and simple physical models in the browser. Many animations, like the one above, do not require an animation loop and run entirely on timeouts. While less precise, this method frees up your UI thread."
       ]

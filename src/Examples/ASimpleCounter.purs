@@ -1,11 +1,7 @@
 module Examples.ASimpleCounter where
 
-import Deku.Toplevel (runInBody')
-import Effect (Effect)
 import Prelude
-import ExampleAssitant (ExampleSignature)
 
-import Data.NonEmpty ((:|))
 import Data.Tuple.Nested ((/\))
 import Deku.Attributes (klass)
 import Deku.Control (text)
@@ -13,6 +9,10 @@ import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState')
 import Deku.Listeners (click)
+import Deku.NonEmpty (thisThen)
+import Deku.Toplevel (runInBody')
+import Effect (Effect)
+import ExampleAssitant (ExampleSignature)
 import FRP.Event (fold)
 
 buttonClass =
@@ -39,7 +39,7 @@ app runExample = runExample Deku.do
         [ text "Counter 2 using "
         , D.code__ "fold"
         , text ": "
-        , text (show <$> 0 :| (fold (pure <$> add 1) 0 count))
+        , text (show <$> thisThen 0 (flip (fold (pure <$> add 1)) count))
         ]
     ]
 

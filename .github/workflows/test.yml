@@ -43,6 +43,8 @@ jobs:
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
+      - name: Codegen
+        run: python genExamples.py
       - name: Install dependencies
         run: pnpm i
       - name: Test

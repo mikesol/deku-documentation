@@ -2,22 +2,10 @@ module Pages.FRP.FixAndFold.FoldingEvents.TimeLeaks where
 
 import Prelude
 
-import Components.Code (psCodeNoCollapseWithLink)
-import Components.ExampleBlockquote (exampleBlockquote)
 import Components.TargetedLink (targetedLink)
-import Contracts (Env(..), Subsection, subsection)
-import Control.Alt ((<|>))
-import Control.Bind (bindFlipped)
-import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass)
+import Contracts (Env(..), Subsection, getEnv, subsection)
 import Deku.Control (text)
 import Deku.DOM as D
-import Deku.Do as Deku
-import Deku.Hooks (useState)
-import Deku.Listeners (click)
-import Effect (Effect)
-import Examples as Examples
-import FRP.Event (Event, fix, fold, sampleOnRight)
 import Router.ADT (Route(..))
 
 buttonClass =
@@ -27,19 +15,12 @@ text-sm font-medium leading-4 text-white shadow-sm
 hover:bg-indigo-700 focus:outline-none focus:ring-2
 focus:ring-indigo-500 focus:ring-offset-2 mr-6""" :: String
 
-foldEBad :: forall a b. (b -> a -> Effect b) -> b -> Event a -> Event b
-foldEBad f b e = flip bindToEffect identity $ fix \i ->
-  (sampleOnRight (i <|> pure (pure b)) (e <#> bindFlipped <<< flip f))
-
-foldEGood :: forall a b. (b -> a -> Effect b) -> b -> Event a -> Event b
-foldEGood f b e = fix \i -> flip bindToEffect identity
-  (sampleOnRight (i <|> pure b) (e <#> flip f))
-
 timeLeaks :: Subsection
 timeLeaks = subsection
   { title: "Time leaks"
-  , matter: \(Env { routeLink }) ->
-      [ D.p_
+  , matter: do
+      Env { routeLink } <- getEnv
+      pure [ D.p_
           [ text
               "We've seen that fixed points can be dangerous because they lead to potentially infinite loops. But there's another, even more devious way that they're dangerous - "
           , D.i__ "time leaks"
@@ -92,55 +73,6 @@ timeLeaks = subsection
       , D.p_
           [ text
               "Let's see this in action. We'll set up two fixed points, one with a time leak and one without. Both fixed points will run an effectful computation on each tick, which will cause one counter to spin out of control whereas the other one stays tame."
-          ]
-      , psCodeNoCollapseWithLink Examples.FoldEffect
-      , exampleBlockquote
-          [ Deku.do
-              setThunk1 /\ thunk1 <- useState unit
-              setThunk2 /\ thunk2 <- useState unit
-              setThunk3 /\ thunk3 <- useState unit
-              setThunk4 /\ thunk4 <- useState unit
-              let
-                thunker p b _ = do
-                  p unit
-                  pure (b + 1)
-              D.div_
-                [ D.button
-                    [ klass buttonClass
-                    , click do
-                        setThunk1 unit
-                        setThunk2 unit
-                    ]
-                    [ text "Increment" ]
-                , D.div_
-                    [ text "Counter 1 using \"bad\" "
-                    , D.code__ "foldE"
-                    , text ": "
-                    , text
-                        (show <$> (foldEBad (thunker setThunk3) (-1) thunk1))
-                    ]
-                , D.div_
-                    [ text "Counter 2 using \"good\" "
-                    , D.code__ "foldE"
-                    , text ": "
-                    , text
-                        (show <$> (foldEGood (thunker setThunk4) (-1) thunk2))
-                    ]
-                , D.div_
-                    [ text "Result of \"bad\" "
-                    , D.code__ "foldE has a time leak"
-                    , text ": "
-                    , text
-                        (show <$> (fold (pure <$> add 1) (-1) thunk3))
-                    ]
-                , D.div_
-                    [ text "Result of \"good\" "
-                    , D.code__ "foldE behaves"
-                    , text ": "
-                    , text
-                        (show <$> (fold (pure <$> add 1) (-1) thunk4))
-                    ]
-                ]
           ]
       , D.p_
           [ text

@@ -1,10 +1,9 @@
 module Examples.UnlockingLevels where
 
-import Deku.Toplevel (runInBody')
 import Prelude
 
 import Control.Plus (empty)
-import Data.NonEmpty (NonEmpty, tail, (:|))
+import Data.NonEmpty (NonEmpty, (:|))
 import Data.String (replaceAll, Pattern(..), Replacement(..))
 import Data.Tuple (Tuple(..))
 import Data.Tuple.Nested ((/\))
@@ -16,6 +15,8 @@ import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (guard, useState, (<#~>))
 import Deku.Listeners (click)
+import Deku.NonEmpty (rehead)
+import Deku.Toplevel (runInBody')
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
 import FRP.Behavior (sampleStepping)
@@ -117,7 +118,7 @@ app runExample = runExample Deku.do
     , D.div_
         [ sampleStepping globalVideoPresence (Tuple <$> videoURL) <#~>
             \(Tuple v gvp) -> Deku.do
-              let globalVideo = gvp :| tail globalVideoPresence
+              let globalVideo = rehead gvp globalVideoPresence
               vid <- portal1 (myVideo globalVideo (vid2URL v))
 
               setSquare /\ square <- useState TL

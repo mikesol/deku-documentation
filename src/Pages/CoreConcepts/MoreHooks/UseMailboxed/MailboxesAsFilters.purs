@@ -2,32 +2,19 @@ module Pages.CoreConcepts.MoreHooks.UseMailboxed.MailboxesAsFilters where
 
 import Prelude
 
-import Components.Code (psCode, psCodeWithLink)
-import Components.ExampleBlockquote (exampleBlockquote)
-import Contracts (Subsection, subsection)
-import Control.Alt ((<|>))
-import Data.Array ((..))
-import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass)
+import Components.Code (psCode)
+import Contracts (CollapseState(..), Subsection, getExample, subsection)
+import Data.Maybe (Maybe(..))
 import Deku.Control (text)
 import Deku.DOM as D
-import Deku.Do as Deku
-import Deku.Hooks (useMailboxed, useState)
-import Deku.Listeners (click)
 import Examples as Examples
-
-buttonClass =
-  """inline-flex items-center rounded-md
-border border-transparent bg-indigo-600 px-3 py-2
-text-sm font-medium leading-4 text-white shadow-sm
-hover:bg-indigo-700 focus:outline-none focus:ring-2
-focus:ring-indigo-500 focus:ring-offset-2 mr-6""" :: String
 
 mailboxesAsFilters :: Subsection
 mailboxesAsFilters = subsection
   { title: "Hello mailbox"
-  , matter: pure
-      [ D.p_
+  , matter: do
+      example <- getExample StartCollapsed Nothing Examples.UseMailboxed
+      pure [ D.p_
           [ text "A mailbox hook is similar to the "
           , D.code__ "useState'"
           , text
@@ -67,32 +54,6 @@ mailboxesAsFilters = subsection
           , D.code__ "address"
           , text ". You can see an example below."
           ]
-      , psCodeWithLink Examples.UseMailboxed
-      , exampleBlockquote
-          [ Deku.do
-              setInt /\ int <- useState 0
-              setMailbox /\ mailbox <- useMailboxed
-              D.div_
-                [ D.button
-                    [klass buttonClass,
-                      click $ int <#> \i -> do
-                        setMailbox { address: i, payload: unit }
-                        setInt ((i + 1) `mod` 100)]
-                    [ text "Bang!" ]
-                , D.div_
-                    ( (0 .. 99) <#> \n -> D.span
-                        [klass $ (pure false <|> (mailbox n $> true)) <#>
-                            if _ then "" else "hidden"
-                        ]
-                        [ text
-                            ( ( if n == 99 then "We're done here"
-                                else show n
-                              ) <> " "
-                            )
-                        ]
-                    )
-                ]
-          ]
-
+      , example
       ]
   }

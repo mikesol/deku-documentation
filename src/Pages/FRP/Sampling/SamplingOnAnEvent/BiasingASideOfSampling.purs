@@ -2,24 +2,18 @@ module Pages.FRP.Sampling.SamplingOnAnEvent.BiasingASideOfSampling where
 
 import Prelude
 
-import Components.Code (psCodeWithLink)
-import Components.ExampleBlockquote (exampleBlockquote)
-import Contracts (Subsection, subsection)
-import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass)
+import Contracts (CollapseState(..), Subsection, getExample, subsection)
+import Data.Maybe (Maybe(..))
 import Deku.Control (text)
-import Deku.Core (fixed)
 import Deku.DOM as D
-import Deku.Do as Deku
-import Deku.Hooks (useState')
-import Deku.Listeners (slider)
 import Examples as Examples
-import FRP.Event.Class ((<**|>), (<*|>), (<|**>), (<|*>))
 
 biasingASideOfSampling :: Subsection
 biasingASideOfSampling = subsection
   { title: "Biasing a side of sampling"
-  , matter: pure
+  , matter: do
+     example <- getExample StartCollapsed Nothing Examples.BiasingASideOfSampling
+     pure
       [ D.p_
           [ text "Even though "
           , D.code__ "sampleOnLeft"
@@ -37,32 +31,7 @@ biasingASideOfSampling = subsection
           , D.i__ "single"
           , text " slider."
           ]
-      , psCodeWithLink Examples.BiasingASideOfSampling
-      , exampleBlockquote
-          [ Deku.do
-              setSlider /\ slider <- useState'
-              fixed
-                [ D.div [klass "flex justify-around"]
-                    [ D.input [slider setSlider] [] ]
-                , text
-                    ( slider <|**>
-                        ((\a b -> show b <> " " <> show a) <$> slider)
-                    )
-                , D.br_ []
-                , text
-                    ( slider <**|>
-                        ((\a b -> show b <> " " <> show a) <$> slider)
-                    )
-                , D.br_ []
-                , text
-                    ( ((\a b -> show a <> " " <> show b) <$> slider) <|*> slider
-                    )
-                , D.br_ []
-                , text
-                    ( ((\a b -> show a <> " " <> show b) <$> slider) <*|> slider
-                    )
-                ]
-          ]
+      , example
       , D.p_
           [ text
               "As you move the slider, a curious situation appears on lines 2 and 4, "

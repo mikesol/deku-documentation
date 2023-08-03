@@ -1,9 +1,11 @@
 module Pages.CoreConcepts.State.TheStateHook.UsingTheHookInText where
 
+import Prelude
+
 import Components.Code (psCode)
 import Components.Disclaimer (disclaimer)
 import Components.TargetedLink (targetedLink)
-import Contracts (Env(..), Subsection, subsection)
+import Contracts (Env(..), Subsection, getEnv, subsection)
 import Deku.Control (text)
 import Deku.DOM as D
 import Router.ADT (Route(..))
@@ -11,8 +13,9 @@ import Router.ADT (Route(..))
 usingTheHookInText :: Subsection
 usingTheHookInText = subsection
   { title: "Using the hook in text"
-  , matter: \(Env { routeLink }) ->
-      [ D.p_
+  , matter: do
+      Env { routeLink } <- getEnv
+      pure [ D.p_
           [ text
               "Let's look at our hook again, this time focusing on the right side."
           ]
