@@ -1,6 +1,5 @@
 module Router.Chapter where
 
-import Prelude
 
 import Contracts (Chapter)
 import Pages.AdvancedUsage (advancedUsage)
@@ -26,7 +25,6 @@ routeToChapter Alternatives = frp
 routeToChapter Filtering = frp
 routeToChapter Sampling = frp
 routeToChapter OtherInstances = frp
-routeToChapter Busses = frp
 routeToChapter FixAndFold = frp
 routeToChapter Behaviors = frp
 routeToChapter CustomElements = advancedUsage

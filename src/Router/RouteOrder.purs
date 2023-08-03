@@ -13,6 +13,7 @@ pageOrder :: Array Route
 pageOrder = join $ map (unwrap >>> _.pages >>> map (unwrap >>> _.route))
   (unwrap docs)
 
+pageOrderMinusOne :: Array Route
 pageOrderMinusOne = drop 1 pageOrder
 
 routeToNextRouteMap :: Map Route Route

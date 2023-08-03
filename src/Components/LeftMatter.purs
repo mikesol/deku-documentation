@@ -4,14 +4,14 @@ import Prelude
 
 import Components.Link (link)
 import Contracts (Chapter(..), Page(..))
-import Control.Alt ((<|>))
 import Data.Newtype (unwrap)
+import Data.NonEmpty ((:|))
 import Deku.Attribute ((:=))
 import Deku.Attributes (klass)
 import Deku.Control (text)
-import Deku.Core (Nut, Nut)
+import Deku.Core (Nut)
 import Deku.DOM as D
-import FRP.Event (Event)
+import FRP.Event (Event, merge)
 import Navigation (PushState)
 import Pages.Docs (docs)
 import Router.ADT (Route)
@@ -26,17 +26,18 @@ pageLi
 pageLi { pushState, pageIs, pageWas } (Page { route }) = D.li
   [ D.Class := "relative" ]
   [ link pushState route
-      ( klass $
-          ( pure false <|> (pageIs route $> true) <|>
-              (pageWas route $> false)
+      [ klass $
+          ( false :| merge
+              [ pageIs route $> true
+              , pageWas route $> false
+              ]
           ) <#>
             ( if _ then
                 "block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full font-semibold text-sky-500 before:bg-sky-500"
               else
                 "block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block dark:text-slate-400 dark:before:bg-slate-700 dark:hover:text-slate-300"
             )
-
-      )
+      ]
   ]
 
 chapterLi

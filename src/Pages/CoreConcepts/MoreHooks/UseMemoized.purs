@@ -2,27 +2,21 @@ module Pages.CoreConcepts.MoreHooks.UseMemoized where
 
 import Prelude
 
-import Components.Code (psCode, psCodeWithLink)
-import Components.ExampleBlockquote (exampleBlockquote)
-import Contracts (Section, section)
-import Data.Array (intercalate, replicate)
-import Data.Tuple (fst, snd)
-import Deku.Attributes (klass)
+import Components.Code (psCode)
+import Contracts (CollapseState(..), Section, getExample, section)
+import Data.Maybe (Maybe(..))
 import Deku.Control (text)
 import Deku.DOM as D
-import Deku.Do as Deku
-import Deku.Hooks (useState)
-import Deku.Listeners (click)
 import Examples as Examples
 import Pages.CoreConcepts.MoreHooks.UseMemoized.InitialEvents (initialEvents)
 import Pages.CoreConcepts.MoreHooks.UseMemoized.TransformedEvents (transformedEvents)
-import QualifiedDo.Alt as Alt
 
 useMemoized :: Section
 useMemoized = section
   { title: "The case for memoization"
-  , topmatter: pure
-      [ D.p_
+  , topmatter: do
+      example <- getExample StartCollapsed Nothing Examples.UnMemoizedApplication
+      pure [ D.p_
           [ text "So far, we've worked with hooks like "
           , D.code__ "useState"
           , text " and "
@@ -44,44 +38,7 @@ useMemoized = section
           , text
               " be memoized. As an example, take the following snippet of code:"
           ]
-      , psCodeWithLink Examples.UnMemoizedApplication
-      , D.p__ "Resulting in the following example:"
-      , exampleBlockquote
-          [ Deku.do
-              a <- useState true
-              b <- useState false
-              c <- useState true
-              d <- useState false
-              e <- useState true
-              D.div_
-                [ D.div_
-                    ( map
-                        ( \i -> D.a
-                            [click $ snd i <#> not >>> fst i,
-                              klass "cursor-pointer"]
-                            [ text "Click me " ]
-                        )
-                        [ a, b, c, d, e ]
-                    )
-                , D.div_
-                    ( replicate 10
-                        ( D.div_
-                            [ text $
-                                ( { a: _, b: _, c: _, d: _, e: _ }
-                                    <$> snd a
-                                    <*> snd b
-                                    <*> snd c
-                                    <*> snd d
-                                    <*> snd e
-                                )
-                                  <#> \{ a, b, c, d, e } ->
-                                    intercalate " " $ map show
-                                      [ a, b, c, d, e ]
-                            ]
-                        )
-                    )
-                ]
-          ]
+      , example
       , D.p_
           [ text "Every line with "
           , D.code__ "true"

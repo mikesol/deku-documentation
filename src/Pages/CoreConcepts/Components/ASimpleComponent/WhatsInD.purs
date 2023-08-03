@@ -2,17 +2,18 @@ module Pages.CoreConcepts.Components.ASimpleComponent.WhatsInD where
 
 import Prelude
 
-import Router.ADT (Route(..))
 import Components.Code (psCode)
-import Contracts (Subsection, Env(..), subsection)
+import Contracts (Env(..), Subsection, getEnv, subsection)
 import Deku.Control (text)
 import Deku.DOM as D
+import Router.ADT (Route(..))
 
 whatsInD :: Subsection
 whatsInD = subsection
   { title: "What's in D?"
-  , matter: \(Env { routeLink }) ->
-      [ D.p_
+  , matter: do
+      Env { routeLink } <- getEnv
+      pure [ D.p_
           [ text
               "Compared to the imports from "
           , routeLink HelloWorld

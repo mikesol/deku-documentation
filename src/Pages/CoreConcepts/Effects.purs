@@ -2,7 +2,6 @@ module Pages.CoreConcepts.Effects where
 
 import Prelude
 
-import Control.Alt ((<|>))
 import Contracts (Page, page)
 import Deku.Attribute ((:=))
 import Deku.Attributes (href)
@@ -17,7 +16,7 @@ effects :: Page
 effects = page
   { route: Effects
   , topmatter: pure
-      [ D.p [D.Class := "lead"]
+      [ D.p [ D.Class := "lead" ]
           [ text "How Deku manages side effects."
           ]
       , D.p_
@@ -28,13 +27,15 @@ effects = page
           [ D.li_
               [ text "Lifecycle effects ("
               , D.a
-                  [D.Target := "_blank" <|> href
+                  [ D.Target := "_blank"
+                  , href
                       "https://reactjs.org/docs/hooks-effect.html#example-using-hooks-1"
                   ]
                   [ text "React" ]
               , text " | "
               , D.a
-                  [D.Target := "_blank" <|> href
+                  [ D.Target := "_blank"
+                  , href
                       "https://purescript-halogen.github.io/purescript-halogen/guide/04-Lifecycles-Subscriptions.html"
                   ]
                   [ text "Halogen" ]
@@ -43,13 +44,15 @@ effects = page
           , D.li_
               [ text "Effect hooks ("
               , D.a
-                  [D.Target := "_blank" <|> href
+                  [ D.Target := "_blank"
+                  , href
                       "https://reactjs.org/docs/hooks-effect.html"
                   ]
                   [ text "React" ]
               , text " | "
               , D.a
-                  [D.Target := "_blank" <|> href
+                  [ D.Target := "_blank"
+                  , href
                       "https://github.com/thomashoneyman/purescript-halogen-hooks/blob/main/docs/03-Effect-Hook.md"
                   ]
                   [ text "Halogen" ]

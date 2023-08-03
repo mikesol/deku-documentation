@@ -7,17 +7,18 @@ import Components.LeftMatterMobile (leftMatterMobile)
 import Components.Link (link')
 import Control.Plus (empty)
 import DarkModePreference (DarkModePreference(..))
+import Data.NonEmpty (NonEmpty)
 import Data.Tuple.Nested ((/\))
 import Deku.Attribute ((:=))
-import Deku.Attributes (klass)
+import Deku.Attributes (klass, src)
 import Deku.Control (text)
 import Deku.Core (Nut)
 import Deku.DOM as D
-import Deku.Hooks (useState)
 import Deku.Do as Deku
+import Deku.Hooks (useState)
 import Deku.Listeners (click)
 import Effect (Effect)
-import FRP.Dedup (dedup)
+import FRP.Dedup (dedupNE)
 import FRP.Event (Event)
 import Modal (modalClick)
 import Navigation (PushState)
@@ -49,7 +50,7 @@ changeSVGClassSelection =
 
 header
   :: { darkBoolean :: Event Boolean
-     , dark :: Event DarkModePreference
+     , dark :: NonEmpty Event DarkModePreference
      , setDark :: DarkModePreference -> Effect Unit
      , setHeaderElement :: DOM.Element -> Effect Unit
      , pushState :: PushState
@@ -108,7 +109,7 @@ header
       , D.div [ D.Class := "relative flex flex-grow basis-0 items-center" ]
           [ link' pushState GettingStarted empty
               [ D.img
-                  ( [ darkBoolean <#> \dk -> D.Src :=
+                  ( [ src $ darkBoolean <#> \dk ->
                         if dk then dekulogodarkURL else dekulogoURL
                     , klass "w-20 object-contain"
                     ]
@@ -144,7 +145,7 @@ header
                       ( [ D.AriaHidden := "true"
                         , D.ViewBox := "0 0 16 16"
                         , klass $
-                            dedup isLightMode <#> keepDarkModeMenuOption
+                            dedupNE isLightMode <#> keepDarkModeMenuOption
                         ]
                       )
                       [ D.path
@@ -160,7 +161,7 @@ header
                       ( [ D.AriaHidden := "true"
                         , D.ViewBox := "0 0 16 16"
                         , klass $
-                            dedup isDarkMode <#> keepDarkModeMenuOption
+                            dedupNE isDarkMode <#> keepDarkModeMenuOption
                         ]
                       )
                       [ D.path
@@ -176,7 +177,7 @@ header
                       ( [ D.AriaHidden := "true"
                         , D.ViewBox := "0 0 16 16"
                         , klass $
-                            dedup isUsingSystemPreference <#>
+                            dedupNE isUsingSystemPreference <#>
                               keepDarkModeMenuOption
                         ]
                       )

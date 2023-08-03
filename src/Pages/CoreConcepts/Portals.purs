@@ -3,14 +3,15 @@ module Pages.CoreConcepts.Portals where
 import Prelude
 
 import Contracts (Page, page)
+import Data.NonEmpty (NonEmpty)
 import Data.Tuple.Nested ((/\))
 import Deku.Attribute ((:=))
 import Deku.Attributes (klass)
-import Deku.Control (globalPortal1, guard, text)
-import Deku.Core (Nut, Nut)
+import Deku.Control (globalPortal1, text)
+import Deku.Core (Nut)
 import Deku.DOM as D
 import Deku.Do as Deku
-import Deku.Hooks (useState)
+import Deku.Hooks (guard, useState)
 import Deku.Listeners (click)
 import Effect (Effect)
 import FRP.Event (Event)
@@ -24,7 +25,7 @@ derive instance Eq Square
 
 moveSpriteHere
   :: { iframe :: Nut
-     , square :: Event Square
+     , square :: NonEmpty Event Square
      , setSquare :: Square -> Effect Unit
      , at :: Square
      }

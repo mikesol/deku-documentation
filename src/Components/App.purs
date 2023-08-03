@@ -14,20 +14,22 @@ import Control.Plus (empty)
 import DarkModePreference (DarkModePreference(..))
 import Data.Maybe (Maybe(..))
 import Data.Newtype (unwrap)
+import Data.NonEmpty (head, tail)
 import Data.Traversable (traverse)
 import Data.Tuple (Tuple(..), fst, snd)
 import Data.Tuple.Nested (type (/\), (/\))
 import Deku.Attribute ((:=))
 import Deku.Attributes (klass)
-import Deku.Control (blank, switcher, text)
+import Deku.Control (text)
 import Deku.Core (Nut)
 import Deku.DOM as D
 import Deku.Do as Deku
-import Deku.Hooks (useState)
+import Deku.Hooks (useState, (<#~>))
 import Deku.Listeners (click)
 import Effect (Effect)
 import Effect.Ref as Ref
 import FRP.Event (Event)
+import FRP.Event.Class (once_)
 import Navigation (PushState)
 import Prism (forceHighlightAff)
 import Router.ADT (Route(..))
@@ -69,11 +71,14 @@ app
       }
   setDark /\ dark <- useState LightMode
   let
-    darkBoolean = (Tuple <$> darkModePreference <*> dark) <#> \(dmPref /\ dk) ->
-      case dk of
-        DarkMode -> true
-        LightMode -> false
-        SystemDarkModePreference -> dmPref
+    darkBoolean =
+      ( Tuple <$> darkModePreference <*>
+          (once_ darkModePreference (head dark) <|> tail dark)
+      ) <#> \(dmPref /\ dk) ->
+        case dk of
+          DarkMode -> true
+          LightMode -> false
+          SystemDarkModePreference -> dmPref
 
   let
     rightSideNavClass' darktxt i =
@@ -113,7 +118,7 @@ app
                 [ D.Class :=
                     "min-w-0 max-w-2xl flex-auto px-4 py-16 lg:max-w-none lg:pr-0 lg:pl-8 xl:px-16"
                 ]
-                [ flip switcher curPage \(Page cp) -> D.article_
+                [ curPage <#~> \(Page cp) -> D.article_
                     [ D.header
                         ( [ D.Class := "mb-9 space-y-1"
                           ]
@@ -199,7 +204,7 @@ app
                         )
                     , forceHighlightAff
                     ]
-                , flip switcher curPage \(Page cp) -> bottomNav
+                , curPage <#~> \(Page cp) -> bottomNav
                     { pushState
                     , prevRoute: routeToPrevRoute cp.route
                     , nextRoute: routeToNextRoute cp.route
@@ -209,8 +214,8 @@ app
                 [ D.Class :=
                     "hidden xl:sticky xl:top-[4.5rem] xl:-mr-6 xl:block xl:h-[calc(100vh-4.5rem)] xl:flex-none xl:overflow-y-auto xl:py-16 xl:pr-6"
                 ]
-                [ flip switcher curPage \(Page cp) ->
-                    if cp.route == FourOhFour then blank
+                [ curPage <#~> \(Page cp) ->
+                    if cp.route == FourOhFour then mempty
                     else D.nav
                       ( [ D.Class := "w-56" ]
                       )

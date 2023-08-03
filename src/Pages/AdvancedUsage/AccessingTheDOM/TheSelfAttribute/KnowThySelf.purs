@@ -2,29 +2,19 @@ module Pages.AdvancedUsage.AccessingTheDOM.TheSelfAttribute.KnowThySelf where
 
 import Prelude
 
-import Components.Code (psCodeWithLink)
 import Components.Disclaimer (disclaimer)
-import Components.ExampleBlockquote (exampleBlockquote)
-import Contracts (Subsection, subsection)
-import Data.String.Utils (words)
-import Data.Tuple.Nested ((/\))
-import Deku.Attribute ((:=))
+import Contracts (Subsection, CollapseState(..), getExample, subsection)
+import Data.Maybe (Maybe(..))
 import Deku.Control (text)
 import Deku.DOM as D
-import Deku.Do as Deku
-import Deku.Hooks (useState')
-import Effect.Aff (Milliseconds(..), delay, launchAff_)
-import Effect.Class (liftEffect)
 import Examples as Examples
-import Web.DOM.Element (toParentNode)
-import Web.DOM.HTMLCollection as HTMLCollection
-import Web.DOM.ParentNode (children)
 
 knowThySelf :: Subsection
 knowThySelf = subsection
   { title: "Know thy Self"
-  , matter: pure
-      [ D.p_
+  , matter: do
+      example <- getExample StartCollapsed Nothing Examples.KnowThySelf
+      pure [ D.p_
           [ text "An event hooked up to the special "
           , D.code__ "Self"
           , text
@@ -33,22 +23,7 @@ knowThySelf = subsection
           , text
               " an element's attributes and children are added, so make sure to defer your computation until the next browser tick if you want these things to be present, like in the example below."
           ]
-      , psCodeWithLink Examples.KnowThySelf
-      , exampleBlockquote
-          [ Deku.do
-              setLength /\ length <- useState'
-              D.div
-                [ D.Self := \e -> launchAff_ do
-                    delay (Milliseconds 0.0)
-                    liftEffect do
-                      kids <- children (toParentNode e)
-                      HTMLCollection.length kids >>= setLength
-                ]
-                ( (words "I have this many kids:" <#> D.div__) <>
-                    [ D.div_ [ text (show <$> length) ] ]
-                )
-
-          ]
+      , example
       , disclaimer
           { header: text "Who would've thunk?"
           , message: D.div_

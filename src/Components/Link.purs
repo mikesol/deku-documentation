@@ -3,14 +3,12 @@ module Components.Link where
 import Prelude
 
 import Contracts (Chapter(..), Page(..))
-import Data.Foldable (oneOf)
 import Deku.Attribute (Attribute, cb, (:=))
 import Deku.Control (text)
 import Deku.Core (Nut)
 import Deku.DOM as D
 import Deku.Listeners (click)
 import Effect (Effect)
-import FRP.Event (Event)
 import Navigation (PushState)
 import Router.ADT (Route(..))
 import Router.Chapter (routeToChapter)
@@ -25,12 +23,11 @@ link''
   :: (Web.Event -> Effect Unit)
   -> PushState
   -> Route
-  -> Event (Attribute D.A_)
+  -> Array (Attribute D.A_)
   -> Array Nut
   -> Nut
 link'' eff pushState route attributes children = D.a
-  [ attributes
-  , oneOf
+  ( attributes <>
       [ D.Href := url
       , click $ cb \e -> do
           eff e
@@ -38,7 +35,8 @@ link'' eff pushState route attributes children = D.a
           pushState (JSON.writeImpl {}) url
           window >>= scroll 0 0
       ]
-  ]
+  )
+
   children
   where
   Chapter chapter = routeToChapter route
@@ -50,7 +48,7 @@ link'' eff pushState route attributes children = D.a
 link'
   :: PushState
   -> Route
-  -> Event (Attribute D.A_)
+  -> Array (Attribute D.A_)
   -> Array Nut
   -> Nut
 link' = link'' (const (pure unit))
@@ -58,7 +56,7 @@ link' = link'' (const (pure unit))
 link
   :: PushState
   -> Route
-  -> Event (Attribute D.A_)
+  -> Array (Attribute D.A_)
   -> Nut
 link pushState route attributes = link' pushState route attributes
   [ text page.title ]
@@ -69,10 +67,8 @@ linkWithString
   :: PushState
   -> Route
   -> String
-  -> Event (Attribute D.A_)
+  -> Array (Attribute D.A_)
   -> Nut
 linkWithString pushState route title attributes = link' pushState route
   attributes
   [ text title ]
-  where
-  Page page = routeToPage route

@@ -2,40 +2,21 @@ module Pages.AdvancedUsage.AccessingTheDOM.ToplevelConsiderations.GlobalHandlers
 
 import Prelude
 
-import Components.Code (psCode, psCodeNoCollapseWithLink)
-import Components.ExampleBlockquote (exampleBlockquote)
-import Contracts (Env(..), Subsection, subsection)
-import Data.Int (floor)
-import Deku.Attribute ((:=))
+import Components.Code (psCode)
+import Contracts (CollapseState(..), Env(..), Subsection, getEnv, getExample, subsection)
+import Data.Maybe (Maybe(..))
 import Deku.Control (text)
 import Deku.DOM as D
-import Deku.Toplevel (runInElement')
-import Effect (Effect)
-import Effect.Random (random)
-import Effect.Ref (new, read, write)
-import Effect.Timer (setTimeout)
 import Examples as Examples
-import FRP.Event (burning, create)
 import Router.ADT (Route(..))
-
-doAuth :: (Boolean -> Effect Unit) -> Effect (Effect Unit)
-doAuth f = do
-  onOff <- new true
-  let
-    eff tf = do
-      oo <- read onOff
-      when oo do
-        f tf
-        t <- random
-        void $ setTimeout (floor $ t * 3000.0) (eff (not tf))
-  eff false
-  pure $ write false onOff
 
 globalHandlers :: Subsection
 globalHandlers = subsection
   { title: "Global handlers"
-  , matter: \(Env { routeLink }) ->
-      [ D.p_
+  , matter: do
+      Env { routeLink } <- getEnv
+      example <- getExample StartCollapsed Nothing Examples.GlobalHandlers
+      pure [ D.p_
           [ text
               "One common scenario in a web app is to have a top-level auth handler. We've already seen an example of this on the "
           , routeLink Providers
@@ -52,22 +33,7 @@ globalHandlers = subsection
       , D.p_
           [ text
               "The callback is invoked whenever auth state changes from true to false. The company has exceptionally given us permission to copy and paste their source code into the example below for instructional purposes."
-          ]
-      , psCodeNoCollapseWithLink Examples.GlobalHandlers
-      , exampleBlockquote
-          [ D.div
-              [D.Self := \e -> do
-                  authEvent <- create
-                  myAuth <- burning false authEvent.event
-                  _ <- doAuth authEvent.push
-                  _ <- runInElement' e
-                    ( text $ myAuth.event <#>
-                        if _ then "Welcome back!" else "Please log in."
-                    )
-                  pure unit
-              ]
-              []
-          ]
+          ],example
       , D.p_
           [ text
               "Note that, for the Deku DOM to catch the initial auth event, it must be created "
