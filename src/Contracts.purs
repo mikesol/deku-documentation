@@ -2,20 +2,28 @@ module Contracts where
 
 import Prelude
 
+import Components.Code (psCodeNoCollapseWithLink, psCodeWithLink)
+import Components.ExampleBlockquote (exampleBlockquote, exampleBlockquoteWithHeight)
 import Control.Monad.Free (Free, liftF)
+import Control.Monad.Writer (WriterT(..), lift)
 import Data.Array (intercalate)
-import Data.Maybe (Maybe)
+import Data.Maybe (Maybe(..))
 import Data.Newtype (class Newtype)
 import Data.String (Pattern(..), split, toLower)
-import Deku.Core (Nut)
-import Examples (ExampleADT)
+import Data.Tuple (Tuple(..))
+import Deku.Core (Nut, fixed)
+import Effect (Effect)
+import Effect.Random (random)
+import Effect.Ref (new, read, write)
+import Examples (ExampleADT, exampleToApp)
 import Record (union)
 import Router.ADT (Route, routeToTitle)
+import Web.DOM as DOM
 
 newtype Env = Env
   { routeLink :: Route -> Nut
-  , routeLinkWithText ::
-      Route -> String -> Nut
+  , routeLinkWithText :: Route -> String -> Nut
+  , setRightSideNav :: (Tuple Int DOM.Element) -> Effect Unit
   }
 
 newtype Docs = Docs (Array (Chapter))
@@ -86,6 +94,30 @@ data ContentF a
   = GetEnv (Env -> a)
   | GetRandomNumber (Number -> a)
   | GetExample CollapseState (Maybe String) ExampleADT (Nut -> a)
+
+type WTEffectWithCancellers = WriterT (Effect Unit) Effect
+type EffectWithCancellers a = Effect (Tuple a (Effect Unit))
+
+contentToBehavior :: Env -> ContentF ~> WTEffectWithCancellers
+contentToBehavior env = case _ of
+  GetEnv f -> pure $ f env
+  GetRandomNumber f -> f <$> lift random
+  GetExample b k e f -> do
+    let
+      m = WriterT do
+        i <- new mempty
+        u <- exampleToApp e (\w -> write w i *> mempty)
+        n <- read i
+        pure $ (flip Tuple) u $ fixed
+          [ e #
+              case b of
+                StartCollapsed -> psCodeWithLink
+                StartExapanded -> psCodeNoCollapseWithLink
+          , case k of
+              Just x -> exampleBlockquoteWithHeight x [ n ]
+              Nothing -> exampleBlockquote [ n ]
+          ]
+    f <$> m
 
 getEnv :: Content Env
 getEnv = liftF $ GetEnv identity

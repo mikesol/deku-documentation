@@ -8,6 +8,9 @@ import Prelude
 
 import Components.App (app)
 import Control.Alt ((<|>))
+import Control.Monad.ST (ST)
+import Control.Monad.ST.Class (liftST)
+import Control.Monad.ST.Global (Global)
 import DarkModePreference (OnDark(..), OnLight(..), darkModeListener, prefersDarkMode)
 import Data.Compactable (compact)
 import Data.Foldable (traverse_)
@@ -16,15 +19,13 @@ import Data.Map as Map
 import Data.Maybe (Maybe(..), maybe)
 import Data.Show.Generic (genericShow)
 import Data.Tuple (Tuple(..), curry, fst, snd, uncurry)
-import Deku.Core (envy)
-import Deku.Do as Deku
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
 import Effect.Class.Console (logShow)
 import Effect.Console as Log
 import Effect.Ref as Ref
 import FRP.Dedup (dedup)
-import FRP.Event (create, fold, mailboxed, memoize, subscribe)
+import FRP.Event (Event, create, fold, mailbox, subscribe)
 import FRP.Lag (lag)
 import Router.ADT (Route(..))
 import Router.Page (routeToPage)
@@ -61,26 +62,45 @@ getScrolledSection startingAt f = go 0 ScrollCheckStart startingAt startingAt
     _ -> do
       scrolledSection <- f head
       case scrolledSection of
-        ScrolledDefinite i ->  pure i
+        ScrolledDefinite i -> pure i
         ScrolledCandidate i -> case checkDir of
-          ScrollCheckDown ->  pure i
+          ScrollCheckDown -> pure i
           _ -> go (rc + 1) ScrollCheckUp i (i + 1)
         NotScrolled ->
-          if n == 0 then  pure 0
+          if n == 0 then pure 0
           else case checkDir of
-            ScrollCheckUp ->  pure n
+            ScrollCheckUp -> pure n
             _ -> go (rc + 1) ScrollCheckDown n (head - 1)
+
+boxMe
+  :: forall a b
+   . Ord a
+  => Event { address :: a, payload :: b }
+  -> ST Global { event :: a -> Event b, unsubscribe :: ST Global Unit }
+boxMe e = do
+  { push, event } <- mailbox
+  unsubscribe <- subscribe e push
+  pure { event, unsubscribe }
+
+memoizeMe
+  :: forall a
+   . Event a
+  -> ST Global { event :: Event a, unsubscribe :: ST Global Unit }
+memoizeMe e = do
+  { push, event } <- create
+  unsubscribe <- subscribe e push
+  pure { event, unsubscribe }
 
 main :: Effect Unit
 main = do
   clickedSection <- Ref.new Nothing
-  currentRouteMailbox <- create
-  previousRouteMailbox <- create
-  currentRoute <- create
-  headerElement <- create
-  rightSideNav <- create
-  rightSideNavSelectE <- create
-  darkModePreferenceE <- create
+  currentRouteMailbox <- liftST create
+  previousRouteMailbox <- liftST create
+  currentRoute <- liftST create
+  headerElement <- liftST create
+  rightSideNav <- liftST create
+  rightSideNavSelectE <- liftST create
+  darkModePreferenceE <- liftST create
   psi <- makeInterface
   initialListener <- eventListener (\_ -> pure unit)
   scrollListenerRef <- Ref.new initialListener
@@ -107,7 +127,7 @@ main = do
     makeMap inMap = case _ of
       Nothing -> Map.empty
       Just (Tuple key val) -> Map.insert key val inMap
-  void $ subscribe
+  void $ liftST $ subscribe
     ( { header: _, mapOfElts: _ }
         <$> headerElement.event
         <*> fold makeMap
@@ -145,23 +165,23 @@ main = do
         logShow { goHere }
         rightSideNavSelectE.push goHere
       changeListener newListener
+  rightSideLagged <- liftST $ memoizeMe (lag (dedup rightSideNavSelectE.event))
+  pageWas <- liftST $ boxMe
+    ({ address: _, payload: unit } <$> previousRouteMailbox.event)
+  pageIs <- liftST $ boxMe
+    ({ address: _, payload: unit } <$> currentRouteMailbox.event)
+  rightSideNavSelect <- liftST $ boxMe
+    ({ address: _, payload: unit } <$> (snd <$> rightSideLagged.event))
+  rightSideNavDeselect <- liftST $ boxMe
+    ({ address: _, payload: unit } <$> compact (fst <$> rightSideLagged.event))
   runInBody
     ( Deku.do
-        rightSideLagged <- envy <<< memoize
-          (lag (dedup rightSideNavSelectE.event))
-        pageWas <- envy <<< mailboxed
-          ({ address: _, payload: unit } <$> previousRouteMailbox.event)
-        pageIs <- envy <<< mailboxed
-          ({ address: _, payload: unit } <$> currentRouteMailbox.event)
-        rightSideNavSelect <- envy <<< mailboxed
-          ({ address: _, payload: unit } <$> (snd <$> rightSideLagged))
-        rightSideNavDeselect <- envy <<< mailboxed
-          ({ address: _, payload: unit } <$> compact (fst <$> rightSideLagged))
+
         app
-          { pageIs
-          , pageWas
-          , rightSideNavSelect
-          , rightSideNavDeselect
+          { pageIs: pageIs.event
+          , pageWas: pageWas.event
+          , rightSideNavSelect: rightSideNavSelect.event
+          , rightSideNavDeselect: rightSideNavDeselect.event
           , pushState: psi.pushState
           , curPage: routeToPage <$> currentRoute.event
           , showBanner: dedup (eq GettingStarted <$> currentRoute.event)
@@ -171,8 +191,8 @@ main = do
           , darkModePreference: darkModePreferenceE.event
           }
     )
-  dedupRoute <- create
-  void $ subscribe (dedup dedupRoute.event) $ uncurry \old new -> do
+  dedupRoute <- liftST $ create
+  void $ liftST $ subscribe (dedup dedupRoute.event) $ uncurry \old new -> do
     rightSideNav.push Nothing
     traverse_ previousRouteMailbox.push old
     currentRouteMailbox.push new
