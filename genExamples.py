@@ -6,8 +6,7 @@ examples = [x for x in os.listdir('./src/Examples') if ".purs" in x]
 with open('./src/Examples.js','w') as ofi:
     for example in examples:
         lex = example[0].lower() + example[1:-5]
-        print(f'./src/Examples/{example}')
-        with open(f'./src/Examples/{example}','w') as ifi:
+        with open(f'./src/Examples/{example}','r') as ifi:
             i = ifi.read().split('\n')
             IN_IMPORTS = False
             O = []
@@ -23,8 +22,9 @@ with open('./src/Examples.js','w') as ofi:
                     else:
                         if x.split(' ')[0] == 'main':
                             break
-            joined = '\n'.join(O).replace('app :: ExampleSignature','main :: Effect Unit').replace('app runExample =','main =')
-            ofi.write(f'export const {lex}URL = {json.stringify(joined)};\n')
+                        O.append(x)
+            joined = '\n'.join(O).replace('app :: ExampleSignature','main :: Effect Unit').replace('app runExample =','main =').replace('runExample','runInBody')
+            ofi.write(f'export const {lex}URL = {json.dumps(joined)};\n')
 
 with open('./src/Examples.purs','w') as ofi:
     ofi.write('module Examples (Examples(..), ExampleADT(..), examples, exampleToString, exampleToSlug, exampleToApp) where\n\nimport Data.Newtype (class Newtype, unwrap)\nimport ExampleAssitant (ExampleSignature)\n')
