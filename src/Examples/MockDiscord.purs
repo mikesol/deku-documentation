@@ -23,15 +23,15 @@ data RoleColor = RoleColor
 
 instance Attr DiscordMessage_ Author String where
   attr _ s = unsafeAttribute
-    $ This { key: "author", value: Prop' s }
+    $ This $ pure { key: "author", value: Prop' s }
 
 instance Attr DiscordMessage_ Avatar String where
   attr _ s = unsafeAttribute
-    $ This { key: "avatar", value: Prop' s }
+    $ This $ pure { key: "avatar", value: Prop' s }
 
 instance Attr DiscordMessage_ RoleColor String where
   attr _ s = unsafeAttribute
-    $ This { key: "role-color", value: Prop' s }
+    $ This $ pure { key: "role-color", value: Prop' s }
 
 discordMessages
   :: Array Nut
