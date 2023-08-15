@@ -1,16 +1,16 @@
 module Examples.AltAsAMuxer where
 
-import Deku.Toplevel (runInBody')
-import Effect (Effect)
 import Prelude
-import ExampleAssitant (ExampleSignature)
 
 import Control.Alt ((<|>))
-import Deku.Attributes (klass, klass_)
-import Deku.Control (text, text_)
+import Deku.Attributes (klass)
+import Deku.Control (text_)
 import Deku.DOM as D
-
+import Deku.Toplevel (runInBody')
+import Effect (Effect)
+import ExampleAssitant (ExampleSignature)
 import FRP.Event.Time (interval)
+import FRP.Poll (sham)
 
 app :: ExampleSignature
 app runExample = do
@@ -19,8 +19,10 @@ app runExample = do
   runExample do
     D.div
       [ klass
-          ( (i0.event $> "bg-pink-300")
-              <|> (i1.event $> "bg-green-300")
+          ( sham
+              ( (i0.event $> "bg-pink-300")
+                  <|> (i1.event $> "bg-green-300")
+              )
           )
       ]
       [ text_ "Par-tay!" ]

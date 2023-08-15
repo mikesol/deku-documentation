@@ -2,7 +2,7 @@ module Components.ExampleBlockquote where
 
 import Prelude
 
-import Deku.Attributes (klass, klass_)
+import Deku.Attributes (klass_)
 import Deku.Core (Nut)
 import Deku.DOM as D
 
@@ -16,4 +16,4 @@ exampleBlockquoteWithHeight
   -> Array Nut
   -> Nut
 exampleBlockquoteWithHeight h = D.blockquote
-  [ klass $ "not-italic overflow-y-scroll " <> h ]
+  [ klass_ $ "not-italic overflow-y-scroll " <> h ]

@@ -1,45 +1,44 @@
 module Examples.BiasingASideOfSampling where
 
-import Deku.Toplevel (runInBody')
-import Effect (Effect)
 import Prelude
-import ExampleAssitant (ExampleSignature)
 
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass, klass_)
-import Deku.Control (text, text_)
+import Deku.Attributes (klass_)
+import Deku.Control (text)
 import Deku.Core (fixed)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState')
-import Deku.Listeners (slider)
-
+import Deku.Listeners (slider_)
+import Deku.Toplevel (runInBody')
+import Effect (Effect)
+import ExampleAssitant (ExampleSignature)
 import FRP.Event.Class ((<|**>), (<|*>), (<**|>), (<*|>))
 
 app :: ExampleSignature
 app runExample = runExample Deku.do
-  setSlider /\ sliderE <- useState'
+  setSlider /\ slider <- useState'
   fixed
     [ D.div [ klass_ "flex justify-around" ]
-        [ D.input (slider setSlider) [] ]
+        [ D.input [ slider_ setSlider ] [] ]
     , text
-        ( sliderE <|**>
-            ((\a b -> show b <> " " <> show a) <$> sliderE)
+        ( slider <|**>
+            ((\a b -> show b <> " " <> show a) <$> slider)
         )
     , D.br_ []
     , text
-        ( sliderE <**|>
-            ((\a b -> show b <> " " <> show a) <$> sliderE)
+        ( slider <**|>
+            ((\a b -> show b <> " " <> show a) <$> slider)
         )
     , D.br_ []
     , text
-        ( ((\a b -> show a <> " " <> show b) <$> sliderE)
-            <|*> sliderE
+        ( ((\a b -> show a <> " " <> show b) <$> slider)
+            <|*> slider
         )
     , D.br_ []
     , text
-        ( ((\a b -> show a <> " " <> show b) <$> sliderE)
-            <*|> sliderE
+        ( ((\a b -> show a <> " " <> show b) <$> slider)
+            <*|> slider
         )
     ]
 
