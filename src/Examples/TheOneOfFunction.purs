@@ -1,18 +1,17 @@
 module Examples.TheOneOfFunction where
 
-import Deku.Toplevel (runInBody')
-import Effect (Effect)
 import Prelude
-import ExampleAssitant (ExampleSignature)
 
 import Data.Either (hush)
 import Data.Foldable (oneOf)
-import Data.NonEmpty ((:|))
 import Data.Tuple (snd)
-import Deku.Control (text, text_)
-
+import Deku.Control (text)
+import Deku.Toplevel (runInBody')
+import Effect (Effect)
+import ExampleAssitant (ExampleSignature)
 import FRP.Event (delay, filterMap)
 import FRP.Event.Time (interval)
+import FRP.Poll (sham)
 
 app :: ExampleSignature
 app runExample = do
@@ -22,10 +21,11 @@ app runExample = do
   ivl <- interval loop
   let
     beat w t = filterMap (hush >>> map snd)
-      $ delay (t * ms) (ivl.event $> w)
+      $ sham (delay (t * ms) (ivl.event $> w))
   runExample do
-    text $ "Work it" :| oneOf
-      [ beat "Work it" 0
+    text $ oneOf
+      [ pure "Work it" 
+      , beat "Work it" 0
       , beat "Make it" 1
       , beat "Do it" 2
       , beat "Makes us" 3
