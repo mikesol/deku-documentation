@@ -1,20 +1,19 @@
 module Examples.RunningAffsInResponseToAnEvent where
 
-import Deku.Toplevel (runInBody')
-import Effect (Effect)
 import Prelude
-import ExampleAssitant (ExampleSignature)
 
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass, klass_)
+import Deku.Attributes (klass_)
 import Deku.Control (text, text_)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState')
-import Deku.Listeners (click, click_)
-
+import Deku.Listeners (click_)
+import Deku.Toplevel (runInBody')
+import Effect (Effect)
 import Effect.Aff (launchAff_)
 import Effect.Class (liftEffect)
+import ExampleAssitant (ExampleSignature)
 import Fetch (Method(..), fetch)
 
 app :: ExampleSignature
@@ -22,7 +21,7 @@ app runExample = runExample Deku.do
   setResponse /\ response <- useState'
   D.div_
     [ D.a
-        [ click $ launchAff_ do
+        [ click_ $ launchAff_ do
             { text: t } <- fetch "https://httpbin.org/post"
               { method: POST
               , body: """{"hello":"world"}"""

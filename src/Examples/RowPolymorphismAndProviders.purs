@@ -1,15 +1,15 @@
 module Examples.RowPolymorphismAndProviders where
 
-import Deku.Toplevel (runInBody')
-import Effect (Effect)
 import Prelude
-import ExampleAssitant (ExampleSignature)
 
 import Control.Monad.Reader (ask, asks)
 import Data.Newtype (class Newtype, unwrap)
-import Deku.Control (text, text_)
+import Deku.Control (text_)
 import Deku.Core (Nut)
 import Deku.DOM as D
+import Deku.Toplevel (runInBody')
+import Effect (Effect)
+import ExampleAssitant (ExampleSignature)
 
 libAwesome
   :: forall n r
@@ -67,7 +67,7 @@ app runExample = runExample Deku.do
       lg <- libGreat
       Env { interjection } <- ask
       pure $ D.div_
-        ( [ D.div_ [ text interjection ]
+        ( [ D.div_ [ text_ interjection ]
           , lg
           ]
         )

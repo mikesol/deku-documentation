@@ -12,7 +12,6 @@ import Deku.Listeners (click, click_)
 import Deku.Toplevel (runInBody')
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
-import FRP.Poll (stepNE, (>@=))
 
 app :: ExampleSignature
 app runExample = runExample Deku.do

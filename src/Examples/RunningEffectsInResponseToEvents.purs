@@ -1,25 +1,25 @@
 module Examples.RunningEffectsInResponseToEvents where
 
-import Deku.Toplevel (runInBody')
-import Effect (Effect)
 import Prelude
-import ExampleAssitant (ExampleSignature)
 
 import Data.JSDate (getTime, now)
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass, klass_)
+import Deku.Attributes (klass_)
 import Deku.Control (text, text_)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState')
-import Deku.Listeners (click, click_)
+import Deku.Listeners (click_)
+import Deku.Toplevel (runInBody')
+import Effect (Effect)
+import ExampleAssitant (ExampleSignature)
 
 app :: ExampleSignature
 app runExample = runExample Deku.do
   setCurrentTime /\ currentTime <- useState'
   D.div_
     [ D.a
-        [ click (getTime <$> now >>= setCurrentTime)
+        [ click_ (getTime <$> now >>= setCurrentTime)
         , klass_ "cursor-pointer"
         ]
         [ text_ "Current timestamp" ]
