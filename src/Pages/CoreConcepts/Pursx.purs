@@ -5,9 +5,9 @@ import Prelude
 import Components.Code (htmlCode)
 import Contracts (Page, page)
 import Data.Symbol (reflectSymbol)
-import Deku.Attribute ((:=), (<:=>), (!:=))
-import Deku.Attributes (klass, klass_)
-import Deku.Control (text, text_)
+import Deku.Attribute ((!:=))
+import Deku.Attributes (klass_)
+import Deku.Control (text_)
 import Deku.DOM as D
 import Deku.Pursx ((~~))
 import Pages.CoreConcepts.Pursx.ASimpleExample (aSimpleExample)
@@ -52,7 +52,7 @@ pursx = page
       , htmlCode (reflectSymbol myHtml)
       , D.p__ "This renders in the DOM like so."
       , D.div
-          [ klass
+          [ klass_
               "border-solid border-2 border-slate-200 dark:border-white-200"
           ]
           [ myHtml ~~ {} ]

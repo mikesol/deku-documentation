@@ -25,8 +25,9 @@ app runExample = do
   i <- interval 2000
   runExample do
     text
-      (sham ( sample_
-          (pure "Fetching..." <|> poll \e -> makeEvent \k ->  do
+      ( sham
+          ( sample_
+              ( pure "Fetching..." <|> poll \e -> makeEvent \k -> do
                   fiber <- new (pure unit)
                   subscribe e \ff -> do
                     fb <- launchAff do
@@ -42,13 +43,15 @@ app runExample = do
                       liftEffect case result of
                         Left err -> k $ ff (AX.printError err)
                         Right response -> k $ ff
-                          ("Here's a random user: " <> stringifyWithIndent 2 response.body)
+                          ( "Here's a random user: " <> stringifyWithIndent 2
+                              response.body
+                          )
                     liftST $ void $ write fb fiber
               )
-          
 
-          i.event
-      ))
+              i.event
+          )
+      )
 
 main :: Effect Unit
 main = void $ app (map (map void) runInBody')

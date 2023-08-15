@@ -3,9 +3,9 @@ module Pages.CoreConcepts.Effects where
 import Prelude
 
 import Contracts (Page, page)
-import Deku.Attribute ((:=), (<:=>), (!:=))
-import Deku.Attributes (href, href_)
-import Deku.Control (text, text_)
+import Deku.Attribute ((!:=))
+import Deku.Attributes (href_)
+import Deku.Control (text_)
 import Deku.DOM as D
 import Pages.CoreConcepts.Effects.BindingToEffects (bindingToEffects)
 import Pages.CoreConcepts.Effects.Hydration (hydration)
@@ -28,14 +28,14 @@ effects = page
               [ text_ "Lifecycle effects ("
               , D.a
                   [ D.Target !:= "_blank"
-                  , href
+                  , href_
                       "https://reactjs.org/docs/hooks-effect.html#example-using-hooks-1"
                   ]
                   [ text_ "React" ]
               , text_ " | "
               , D.a
                   [ D.Target !:= "_blank"
-                  , href
+                  , href_
                       "https://purescript-halogen.github.io/purescript-halogen/guide/04-Lifecycles-Subscriptions.html"
                   ]
                   [ text_ "Halogen" ]
@@ -45,14 +45,14 @@ effects = page
               [ text_ "Effect hooks ("
               , D.a
                   [ D.Target !:= "_blank"
-                  , href
+                  , href_
                       "https://reactjs.org/docs/hooks-effect.html"
                   ]
                   [ text_ "React" ]
               , text_ " | "
               , D.a
                   [ D.Target !:= "_blank"
-                  , href
+                  , href_
                       "https://github.com/thomashoneyman/purescript-halogen-hooks/blob/main/docs/03-Effect-Hook.md"
                   ]
                   [ text_ "Halogen" ]

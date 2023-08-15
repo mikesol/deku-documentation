@@ -27,7 +27,7 @@ app runExample = runExample Deku.do
   setNum /\ num <- useState initial
   intRef <- useRef initial num
   D.div_
-    [ D.input [slider_ setNum]
+    [ D.input [ slider_ setNum ]
         []
     , D.div [ klass_ "grid grid-flow-row grid-cols-3" ]
         ( replicate 24 Deku.do

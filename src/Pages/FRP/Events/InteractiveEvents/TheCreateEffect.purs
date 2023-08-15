@@ -60,7 +60,7 @@ theCreateEffect = subsection
   push "fum" """
         , D.button
             [ klass_ buttonClass
-            , click do
+            , click_ do
                 { push, event } <- liftST create
                 u <- liftST $ subscribe event log
                 push "fee"

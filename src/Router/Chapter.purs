@@ -1,6 +1,5 @@
 module Router.Chapter where
 
-
 import Contracts (Chapter)
 import Pages.AdvancedUsage (advancedUsage)
 import Pages.CoreConcepts (coreConcepts)

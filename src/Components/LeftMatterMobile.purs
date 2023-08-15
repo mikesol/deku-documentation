@@ -6,21 +6,21 @@ import Assets (dekulogoURL, dekulogodarkURL)
 import Components.Link (link, link')
 import Contracts (Chapter(..), Page(..))
 import Control.Plus (empty)
+import Data.Foldable (oneOf)
 import Data.Newtype (unwrap)
-import Data.NonEmpty (NonEmpty, (:|))
-import Deku.Attribute ((:=), (<:=>), (!:=))
-import Deku.Attributes (klass, klass_, src)
-import Deku.Control (text, text_)
+import Deku.Attribute ((!:=), (<:=>))
+import Deku.Attributes (klass, klass_)
+import Deku.Control (text_)
 import Deku.Core (Nut)
 import Deku.DOM as D
-import FRP.Event (Event, merge)
+import FRP.Poll (Poll)
 import Navigation (PushState)
 import Pages.Docs (docs)
 import Router.ADT (Route(..))
 
 pageLi
-  :: { pageIs :: Route -> Event Unit
-     , pageWas :: Route -> Event Unit
+  :: { pageIs :: Route -> Poll Unit
+     , pageWas :: Route -> Poll Unit
      , pushState :: PushState
      }
   -> Page
@@ -29,7 +29,7 @@ pageLi { pushState, pageIs, pageWas } (Page { route }) = D.li
   [ D.Class !:= "relative" ]
   [ link pushState route
       [ klass $
-          ( false :| merge [ pageIs route $> true, pageWas route $> false ]
+          (  oneOf [ pure false, pageIs route $> true, pageWas route $> false ]
           ) <#>
             ( if _ then
                 "block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full font-semibold text-sky-500 before:bg-sky-500"
@@ -40,21 +40,21 @@ pageLi { pushState, pageIs, pageWas } (Page { route }) = D.li
   ]
 
 chapterLi
-  :: { pageIs :: Route -> Event Unit
-     , pageWas :: Route -> Event Unit
+  :: { pageIs :: Route -> Poll Unit
+     , pageWas :: Route -> Poll Unit
      , pushState :: PushState
      }
   -> Chapter
   -> Nut
 chapterLi opts (Chapter { title, pages }) = D.li_
   [ D.h2
-      [ D.Class :=
+      [ D.Class !:=
           "font-display font-medium text-slate-900 dark:text-white"
       ]
-      [ text title ]
+      [ text_ title ]
   , D.ul
       [ D.Role !:= "list"
-      , D.Class :=
+      , D.Class !:=
           "mt-2 space-y-2 border-l-2 border-slate-100 dark:border-slate-800 lg:mt-4 lg:space-y-4 lg:border-slate-200"
       ]
 
@@ -62,11 +62,11 @@ chapterLi opts (Chapter { title, pages }) = D.li_
   ]
 
 leftMatterMobile
-  :: { navModalOpen :: NonEmpty Event Boolean
-     , pageIs :: Route -> Event Unit
-     , pageWas :: Route -> Event Unit
+  :: { navModalOpen :: Poll Boolean
+     , pageIs :: Route -> Poll Unit
+     , pageWas :: Route -> Poll Unit
      , pushState :: PushState
-     , darkBoolean :: Event Boolean
+     , darkBoolean :: Poll Boolean
      }
   -> Nut
 leftMatterMobile
@@ -85,7 +85,7 @@ leftMatterMobile
       ]
 
       [ D.div
-          ( [ D.Class :=
+          ( [ D.Class !:=
                 "min-h-full w-full max-w-xs bg-white px-4 pt-5 pb-12 dark:bg-slate-900 sm:px-6"
             , D.Id !:= "headlessui-dialog-panel-:r9:"
             ]
@@ -110,8 +110,8 @@ leftMatterMobile
                   ]
               , link' pushState GettingStarted empty
                   [ D.img
-                      ( [ src $ darkBoolean <#> \dk ->
-                            if dk then dekulogodarkURL else dekulogoURL
+                      ( [ D.Src <:=> (darkBoolean <#> \dk ->
+                            if dk then dekulogodarkURL else dekulogoURL)
                         , klass_ "mb-2 ml-6 w-20 object-contain"
                         ]
                       )
@@ -123,21 +123,21 @@ leftMatterMobile
                   (chapterLi opts <$> unwrap docs)
               -- [ D.li_
               --     [ D.h2
-              --         ( D.Class :=
+              --         ( D.Class !:=
               --             "font-display font-medium text-slate-900 dark:text-white"
               --         )
               --         [ text_ "Introduction" ]
               --     , D.ul
               --         ( oneOf
               --             [ D.Role !:= "list"
-              --             , D.Class :=
+              --             , D.Class !:=
               --                 "mt-2 space-y-2 border-l-2 border-slate-100 dark:border-slate-800 lg:mt-4 lg:space-y-4 lg:border-slate-200"
               --             ]
               --         )
               --         [ D.li (D.Class !:= "relative")
               --             [ D.a
               --                 ( oneOf
-              --                     [ D.Class :=
+              --                     [ D.Class !:=
               --                         "block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full font-semibold text-sky-500 before:bg-sky-500"
               --                     , D.Href !:= "/"
               --                     ]
@@ -147,7 +147,7 @@ leftMatterMobile
               --         , D.li (D.Class !:= "relative")
               --             [ D.a
               --                 ( oneOf
-              --                     [ D.Class :=
+              --                     [ D.Class !:=
               --                         "block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block dark:text-slate-400 dark:before:bg-slate-700 dark:hover:text-slate-300"
               --                     , D.Href !:= "/docs/installation"
               --                     ]
@@ -158,21 +158,21 @@ leftMatterMobile
               --     ]
               -- , D.li_
               --     [ D.h2
-              --         ( D.Class :=
+              --         ( D.Class !:=
               --             "font-display font-medium text-slate-900 dark:text-white"
               --         )
               --         [ text_ "Core concepts" ]
               --     , D.ul
               --         ( oneOf
               --             [ D.Role !:= "list"
-              --             , D.Class :=
+              --             , D.Class !:=
               --                 "mt-2 space-y-2 border-l-2 border-slate-100 dark:border-slate-800 lg:mt-4 lg:space-y-4 lg:border-slate-200"
               --             ]
               --         )
               --         [ D.li (D.Class !:= "relative")
               --             [ D.a
               --                 ( oneOf
-              --                     [ D.Class :=
+              --                     [ D.Class !:=
               --                         "block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block dark:text-slate-400 dark:before:bg-slate-700 dark:hover:text-slate-300"
               --                     , D.Href !:= "/docs/understanding-caching"
               --                     ]
@@ -182,7 +182,7 @@ leftMatterMobile
               --         , D.li (D.Class !:= "relative")
               --             [ D.a
               --                 ( oneOf
-              --                     [ D.Class :=
+              --                     [ D.Class !:=
               --                         "block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block dark:text-slate-400 dark:before:bg-slate-700 dark:hover:text-slate-300"
               --                     , D.Href :=
               --                         "/docs/predicting-user-poll"
@@ -193,7 +193,7 @@ leftMatterMobile
               --         , D.li (D.Class !:= "relative")
               --             [ D.a
               --                 ( oneOf
-              --                     [ D.Class :=
+              --                     [ D.Class !:=
               --                         "block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block dark:text-slate-400 dark:before:bg-slate-700 dark:hover:text-slate-300"
               --                     , D.Href !:= "/docs/basics-of-time-travel"
               --                     ]
@@ -203,7 +203,7 @@ leftMatterMobile
               --         , D.li (D.Class !:= "relative")
               --             [ D.a
               --                 ( oneOf
-              --                     [ D.Class :=
+              --                     [ D.Class !:=
               --                         "block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block dark:text-slate-400 dark:before:bg-slate-700 dark:hover:text-slate-300"
               --                     , D.Href :=
               --                         "/docs/introduction-to-string-theory"
@@ -214,7 +214,7 @@ leftMatterMobile
               --         , D.li (D.Class !:= "relative")
               --             [ D.a
               --                 ( oneOf
-              --                     [ D.Class :=
+              --                     [ D.Class !:=
               --                         "block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block dark:text-slate-400 dark:before:bg-slate-700 dark:hover:text-slate-300"
               --                     , D.Href !:= "/docs/the-butterfly-effect"
               --                     ]
@@ -225,21 +225,21 @@ leftMatterMobile
               --     ]
               -- , D.li_
               --     [ D.h2
-              --         ( D.Class :=
+              --         ( D.Class !:=
               --             "font-display font-medium text-slate-900 dark:text-white"
               --         )
               --         [ text_ "Advanced guides" ]
               --     , D.ul
               --         ( oneOf
               --             [ D.Role !:= "list"
-              --             , D.Class :=
+              --             , D.Class !:=
               --                 "mt-2 space-y-2 border-l-2 border-slate-100 dark:border-slate-800 lg:mt-4 lg:space-y-4 lg:border-slate-200"
               --             ]
               --         )
               --         [ D.li (D.Class !:= "relative")
               --             [ D.a
               --                 ( oneOf
-              --                     [ D.Class :=
+              --                     [ D.Class !:=
               --                         "block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block dark:text-slate-400 dark:before:bg-slate-700 dark:hover:text-slate-300"
               --                     , D.Href !:= "/docs/writing-plugins"
               --                     ]
@@ -249,7 +249,7 @@ leftMatterMobile
               --         , D.li (D.Class !:= "relative")
               --             [ D.a
               --                 ( oneOf
-              --                     [ D.Class :=
+              --                     [ D.Class !:=
               --                         "block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block dark:text-slate-400 dark:before:bg-slate-700 dark:hover:text-slate-300"
               --                     , D.Href !:= "/docs/neuralink-integration"
               --                     ]
@@ -259,7 +259,7 @@ leftMatterMobile
               --         , D.li (D.Class !:= "relative")
               --             [ D.a
               --                 ( oneOf
-              --                     [ D.Class :=
+              --                     [ D.Class !:=
               --                         "block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block dark:text-slate-400 dark:before:bg-slate-700 dark:hover:text-slate-300"
               --                     , D.Href !:= "/docs/temporal-paradoxes"
               --                     ]
@@ -269,7 +269,7 @@ leftMatterMobile
               --         , D.li (D.Class !:= "relative")
               --             [ D.a
               --                 ( oneOf
-              --                     [ D.Class :=
+              --                     [ D.Class !:=
               --                         "block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block dark:text-slate-400 dark:before:bg-slate-700 dark:hover:text-slate-300"
               --                     , D.Href !:= "/docs/testing"
               --                     ]
@@ -279,7 +279,7 @@ leftMatterMobile
               --         , D.li (D.Class !:= "relative")
               --             [ D.a
               --                 ( oneOf
-              --                     [ D.Class :=
+              --                     [ D.Class !:=
               --                         "block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block dark:text-slate-400 dark:before:bg-slate-700 dark:hover:text-slate-300"
               --                     , D.Href !:= "/docs/compile-time-caching"
               --                     ]
@@ -289,7 +289,7 @@ leftMatterMobile
               --         , D.li (D.Class !:= "relative")
               --             [ D.a
               --                 ( oneOf
-              --                     [ D.Class :=
+              --                     [ D.Class !:=
               --                         "block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block dark:text-slate-400 dark:before:bg-slate-700 dark:hover:text-slate-300"
               --                     , D.Href :=
               --                         "/docs/predictive-data-generation"
@@ -301,21 +301,21 @@ leftMatterMobile
               --     ]
               -- , D.li_
               --     [ D.h2
-              --         ( D.Class :=
+              --         ( D.Class !:=
               --             "font-display font-medium text-slate-900 dark:text-white"
               --         )
               --         [ text_ "API reference" ]
               --     , D.ul
               --         ( oneOf
               --             [ D.Role !:= "list"
-              --             , D.Class :=
+              --             , D.Class !:=
               --                 "mt-2 space-y-2 border-l-2 border-slate-100 dark:border-slate-800 lg:mt-4 lg:space-y-4 lg:border-slate-200"
               --             ]
               --         )
               --         [ D.li (D.Class !:= "relative")
               --             [ D.a
               --                 ( oneOf
-              --                     [ D.Class :=
+              --                     [ D.Class !:=
               --                         "block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block dark:text-slate-400 dark:before:bg-slate-700 dark:hover:text-slate-300"
               --                     , D.Href !:= "/docs/cacheadvance-predict"
               --                     ]
@@ -325,7 +325,7 @@ leftMatterMobile
               --         , D.li (D.Class !:= "relative")
               --             [ D.a
               --                 ( oneOf
-              --                     [ D.Class :=
+              --                     [ D.Class !:=
               --                         "block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block dark:text-slate-400 dark:before:bg-slate-700 dark:hover:text-slate-300"
               --                     , D.Href !:= "/docs/cacheadvance-flush"
               --                     ]
@@ -335,7 +335,7 @@ leftMatterMobile
               --         , D.li (D.Class !:= "relative")
               --             [ D.a
               --                 ( oneOf
-              --                     [ D.Class :=
+              --                     [ D.Class !:=
               --                         "block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block dark:text-slate-400 dark:before:bg-slate-700 dark:hover:text-slate-300"
               --                     , D.Href !:= "/docs/cacheadvance-revert"
               --                     ]
@@ -345,7 +345,7 @@ leftMatterMobile
               --         , D.li (D.Class !:= "relative")
               --             [ D.a
               --                 ( oneOf
-              --                     [ D.Class :=
+              --                     [ D.Class !:=
               --                         "block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block dark:text-slate-400 dark:before:bg-slate-700 dark:hover:text-slate-300"
               --                     , D.Href !:= "/docs/cacheadvance-regret"
               --                     ]
@@ -356,21 +356,21 @@ leftMatterMobile
               --     ]
               -- , D.li_
               --     [ D.h2
-              --         ( D.Class :=
+              --         ( D.Class !:=
               --             "font-display font-medium text-slate-900 dark:text-white"
               --         )
               --         [ text_ "Contributing" ]
               --     , D.ul
               --         ( oneOf
               --             [ D.Role !:= "list"
-              --             , D.Class :=
+              --             , D.Class !:=
               --                 "mt-2 space-y-2 border-l-2 border-slate-100 dark:border-slate-800 lg:mt-4 lg:space-y-4 lg:border-slate-200"
               --             ]
               --         )
               --         [ D.li (D.Class !:= "relative")
               --             [ D.a
               --                 ( oneOf
-              --                     [ D.Class :=
+              --                     [ D.Class !:=
               --                         "block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block dark:text-slate-400 dark:before:bg-slate-700 dark:hover:text-slate-300"
               --                     , D.Href !:= "/docs/how-to-contribute"
               --                     ]
@@ -380,7 +380,7 @@ leftMatterMobile
               --         , D.li (D.Class !:= "relative")
               --             [ D.a
               --                 ( oneOf
-              --                     [ D.Class :=
+              --                     [ D.Class !:=
               --                         "block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block dark:text-slate-400 dark:before:bg-slate-700 dark:hover:text-slate-300"
               --                     , D.Href !:= "/docs/architecture-guide"
               --                     ]
@@ -390,7 +390,7 @@ leftMatterMobile
               --         , D.li (D.Class !:= "relative")
               --             [ D.a
               --                 ( oneOf
-              --                     [ D.Class :=
+              --                     [ D.Class !:=
               --                         "block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block dark:text-slate-400 dark:before:bg-slate-700 dark:hover:text-slate-300"
               --                     , D.Href !:= "/docs/design-principles"
               --                     ]

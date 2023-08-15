@@ -5,15 +5,15 @@ import Prelude
 import Components.Code (psCode)
 import Components.Table (tableClass)
 import Contracts (Subsection, subsection)
+import Control.Alt ((<|>))
 import Control.Lazy (fix)
-import Data.NonEmpty ((:|))
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass, klass_)
-import Deku.Control (text, text_)
+import Deku.Attributes (klass_)
+import Deku.Control (text_)
 import Deku.DOM as D
 import Deku.Do as Deku
-import Deku.Hooks (useDyn, useMailboxed, useState, useState', (<#~>))
-import Deku.Listeners (click, click_)
+import Deku.Hooks (useDyn, useMailboxed, useState, (<#~>))
+import Deku.Listeners (click_)
 
 whatIsAFixedPoint :: Subsection
 whatIsAFixedPoint = subsection
@@ -114,8 +114,8 @@ myFunction = fix (\f a -> if a > 100 then 100 else f (a + 1))
           , Deku.do
               setElt /\ elt <- useState 0
               disactivatePreviousElt /\ previousElt <- useMailboxed
-              { value: v } <- useDyn ((\i -> (i + 1) /\ i) <$> elt)
-              (true :| (previousElt v $> false)) <#~> do
+              { value: v } <- useDyn ((\i -> (i + 1) /\ i) <$> elt)  
+              (pure true <|> (previousElt v $> false)) <#~> do
                 let
                   t = case v of
                     10 ->
@@ -124,17 +124,17 @@ myFunction = fix (\f a -> if a > 100 then 100 else f (a + 1))
                     _ -> "and on and on"
                 if _ then
                   D.span_
-                    [ text t
+                    [ text_ t
                     , D.a
                         [ klass_ "cursor-pointer"
-                        , click do
+                        , click_ do
                             setElt (v + 1)
                             disactivatePreviousElt
                               { address: v, payload: unit }
                         ]
                         [ text_ "..." ]
                     ]
-                else text $ t <> "... "
+                else text_ $ t <> "... "
           , text_
               ") is because the fixed point needs repeated application. A function "
           , D.code__ "(a -> b)"

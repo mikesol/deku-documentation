@@ -406,7 +406,8 @@ banner { showBanner } = D.div
                             ( showBanner $> CodeExample <|> dedup
                                 bannerExample'
                             )
-                          let bannerExample = pure CodeExample <|> bannerExample''
+                          let
+                            bannerExample = pure CodeExample <|> bannerExample''
                           D.div [ D.Class !:= "pl-4 pt-4" ]
                             [ D.svg
                                 ( [ D.AriaHidden !:= "true"

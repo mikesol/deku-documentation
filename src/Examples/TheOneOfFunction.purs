@@ -24,7 +24,7 @@ app runExample = do
       $ sham (delay (t * ms) (ivl.event $> w))
   runExample do
     text $ oneOf
-      [ pure "Work it" 
+      [ pure "Work it"
       , beat "Work it" 0
       , beat "Make it" 1
       , beat "Do it" 2

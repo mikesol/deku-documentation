@@ -16,22 +16,22 @@ import Control.Plus (empty)
 import DarkModePreference (DarkModePreference(..))
 import Data.Maybe (Maybe(..))
 import Data.Newtype (unwrap)
-import Data.NonEmpty (head, tail, (:|))
-import Data.Traversable (traverse)
+import Data.Traversable (oneOf, traverse)
 import Data.Tuple (Tuple(..), fst, snd)
 import Data.Tuple.Nested (type (/\), (/\))
-import Deku.Attribute ((:=), (<:=>), (!:=))
+import Deku.Attribute ((!:=))
 import Deku.Attributes (klass, klass_)
-import Deku.Control (text, text_)
+import Deku.Control (text_)
 import Deku.Core (Nut)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (cycle, useState, (<#~>))
-import Deku.Listeners (click, click_)
+import Deku.Listeners (click_)
 import Effect (Effect)
 import Effect.Ref as Ref
-import FRP.Event (Event, fix, bindToEffect, merge, sampleOnRight)
-import FRP.Event.Class (once)
+import FRP.Event (bindToEffect)
+import FRP.Event.Class (once, sampleOnRight, fix)
+import FRP.Poll (Poll, dredge)
 import Navigation (PushState)
 import Prism (forceHighlightAff)
 import Router.ADT (Route(..))
@@ -57,11 +57,11 @@ pageToContent (Page cp) = do
                     smat <- lift subsection.matter
                     pure
                       ( [ D.h3
-                            ( [ D.Id := subsection.id
-                              , D.Self := Tuple j >>> setRightSideNav
+                            ( [ D.Id !:= subsection.id
+                              , D.Self !:= Tuple j >>> setRightSideNav
                               ]
                             )
-                            [ text subsection.title
+                            [ text_ subsection.title
                             ]
                         ] <> smat
                       )
@@ -70,13 +70,13 @@ pageToContent (Page cp) = do
             pure
               ( [ D.hr_ []
                 , D.h2
-                    ( [ D.Id := section.id
-                      , D.Self :=
+                    ( [ D.Id !:= section.id
+                      , D.Self !:=
                           Tuple i >>>
                           setRightSideNav
                       ]
                     )
-                    [ text section.title ]
+                    [ text_ section.title ]
 
                 ] <> stm <> join inner
               )
@@ -91,26 +91,26 @@ pageToContent (Page cp) = do
         ( ( if cp.route == FourOhFour then []
             else
               [ D.p
-                  ( [ D.Class :=
+                  ( [ D.Class !:=
                         "font-display text-sm font-medium text-sky-500"
                     ]
                   )
-                  [ text
+                  [ text_
                       (unwrap (routeToChapter cp.route)).title
                   ]
               ]
           ) <>
             [ D.h1
                 ( [ D.Id !:= "getting-started"
-                  , D.Class :=
+                  , D.Class !:=
                       "font-display text-3xl tracking-tight text-slate-900 dark:text-white"
                   ]
                 )
-                [ text cp.title ]
+                [ text_ cp.title ]
             ]
         )
     , D.div
-        ( [ D.Class :=
+        ( [ D.Class !:=
               "prose prose-slate max-w-none dark:prose-invert dark:text-slate-400 prose-headings:scroll-mt-28 prose-headings:font-display prose-headings:font-normal lg:prose-headings:scroll-mt-[8.5rem] prose-lead:text-slate-500 dark:prose-lead:text-slate-400 prose-a:font-semibold dark:prose-a:text-sky-400 prose-a:no-underline prose-a:shadow-[inset_0_-2px_0_0_var(--tw-prose-background,#fff),inset_0_calc(-1*(var(--tw-prose-underline-size,4px)+2px))_0_0_var(--tw-prose-underline,theme(colors.sky.300))] hover:prose-a:[--tw-prose-underline-size:6px] dark:[--tw-prose-background:theme(colors.slate.900)] dark:prose-a:shadow-[inset_0_calc(-1*var(--tw-prose-underline-size,2px))_0_0_var(--tw-prose-underline,theme(colors.sky.800))] dark:hover:prose-a:[--tw-prose-underline-size:6px] prose-pre:rounded-xl prose-pre:bg-slate-900 prose-pre:shadow-lg dark:prose-pre:bg-slate-800/60 dark:prose-pre:shadow-none dark:prose-pre:ring-1 dark:prose-pre:ring-slate-300/10 dark:prose-hr:border-slate-800"
           ]
         )
@@ -123,12 +123,12 @@ pageToPollWithCancellers env = runWriterT
   <<< foldFree (contentToPoll env)
   <<< pageToContent
 
-pageEventToNut :: Env -> Event Page -> Event Nut
-pageEventToNut env p = map snd $ fix \i -> bindToEffect
+pageEventToNut :: Env -> Poll Page -> Poll Nut
+pageEventToNut env p = map snd $ fix \i -> dredge (flip bindToEffect triggerFx)
   ( sampleOnRight ((once p $> (Tuple (pure unit) mempty)) <|> i)
       (go <$> (pageToPollWithCancellers env <$> p))
   )
-  triggerFx
+
   where
   go
     :: EffectWithCancellers Nut
@@ -149,13 +149,13 @@ pageEventToNut env p = map snd $ fix \i -> bindToEffect
 app
   :: { setHeaderElement :: DOM.Element -> Effect Unit
      , setRightSideNav :: (Int /\ DOM.Element) -> Effect Unit
-     , rightSideNavSelect :: Int -> Event Unit
-     , rightSideNavDeselect :: Int -> Event Unit
-     , darkModePreference :: Event Boolean
-     , curPage :: Event (Page)
-     , showBanner :: Event Boolean
-     , pageIs :: Route -> Event Unit
-     , pageWas :: Route -> Event Unit
+     , rightSideNavSelect :: Int -> Poll Unit
+     , rightSideNavDeselect :: Int -> Poll Unit
+     , darkModePreference :: Poll Boolean
+     , curPage :: Poll Page
+     , showBanner :: Poll Boolean
+     , pageIs :: Route -> Poll Unit
+     , pageWas :: Route -> Poll Unit
      , pushState :: PushState
      , clickedSection :: Ref.Ref (Maybe Int)
      }
@@ -182,8 +182,7 @@ app
   setDark /\ dark <- useState LightMode
   let
     darkBoolean =
-      ( Tuple <$> darkModePreference <*>
-          ((once darkModePreference $> (head dark)) <|> tail dark)
+      ( Tuple <$> darkModePreference <*> dark
       ) <#> \(dmPref /\ dk) ->
         case dk of
           DarkMode -> true
@@ -192,8 +191,9 @@ app
 
   let
     rightSideNavClass' darktxt i =
-      ( false :| merge
-          [ rightSideNavSelect i $> true
+      ( oneOf
+          [ pure false
+          , rightSideNavSelect i $> true
           , rightSideNavDeselect i $> false
           ]
       )
@@ -220,13 +220,13 @@ app
             }
         , banner { showBanner }
         , D.div
-            ( [ D.Class :=
+            ( [ D.Class !:=
                   "relative mx-auto flex max-w-8xl justify-center sm:px-2 lg:px-8 xl:px-12"
               ]
             )
             [ leftMatter { pushState, pageIs, pageWas }
             , D.div
-                [ D.Class :=
+                [ D.Class !:=
                     "min-w-0 max-w-2xl flex-auto px-4 py-16 lg:max-w-none lg:pr-0 lg:pl-8 xl:px-16"
                 ]
                 [ cycle (pageEventToNut env curPage)
@@ -237,7 +237,7 @@ app
                     }
                 ]
             , D.div
-                [ D.Class :=
+                [ D.Class !:=
                     "hidden xl:sticky xl:top-[4.5rem] xl:-mr-6 xl:block xl:h-[calc(100vh-4.5rem)] xl:flex-none xl:overflow-y-auto xl:py-16 xl:pr-6"
                 ]
                 [ curPage <#~> \(Page cp) ->
@@ -247,7 +247,7 @@ app
                       )
                       [ D.h2
                           ( [ D.Id !:= "on-this-page-title"
-                            , D.Class :=
+                            , D.Class !:=
                                 "font-display text-sm font-medium text-slate-900 dark:text-white"
                             ]
                           )
@@ -273,18 +273,18 @@ app
                                                               ( rightSideSubNavClass
                                                                   j
                                                               )
-                                                          , D.Href :=
+                                                          , D.Href !:=
                                                               ( "#" <>
                                                                   subsection.id
                                                               )
-                                                          , click
+                                                          , click_
                                                               ( Ref.write
                                                                   (Just j)
                                                                   clickedSection
                                                               )
                                                           ]
                                                         )
-                                                        [ text
+                                                        [ text_
                                                             subsection.title
                                                         ]
                                                     ]
@@ -299,20 +299,20 @@ app
                                                           ( rightSideNavClass
                                                               i
                                                           )
-                                                      , D.Href :=
+                                                      , D.Href !:=
                                                           ("#" <> section.id)
-                                                      , click
+                                                      , click_
                                                           ( Ref.write (Just i)
                                                               clickedSection
                                                           )
                                                       ]
                                                     )
                                                   )
-                                                  [ text section.title ]
+                                                  [ text_ section.title ]
                                               ]
                                           , D.ol
                                               ( [ D.Role !:= "list"
-                                                , D.Class :=
+                                                , D.Class !:=
                                                     "mt-2 space-y-3 pl-5 text-slate-500 dark:text-slate-400"
                                                 ]
                                               )

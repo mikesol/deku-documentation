@@ -2,15 +2,10 @@ module Pages.CoreConcepts.MoreHooks.CustomHooks.TheAnatomyOfAHook where
 
 import Prelude
 
-import Assets (cruiseURL, nicholsonURL)
-import Components.Code (psCodeWithLink)
-import Components.ExampleBlockquote (exampleBlockquote)
-import Contracts (Subsection, subsection)
-import Deku.Attribute ((:=), (<:=>), (!:=))
-import Deku.Control (text, text_)
-import Deku.Core (Hook)
+import Contracts (CollapseState(..), Subsection, getExample, subsection)
+import Data.Maybe (Maybe(..))
+import Deku.Control (text_)
 import Deku.DOM as D
-import Deku.Do as Deku
 import Examples as Examples
 
 buttonClass =
@@ -23,8 +18,13 @@ focus:ring-pink-500 focus:ring-offset-2 m-2""" :: String
 theAnatomyOfAHook :: Subsection
 theAnatomyOfAHook = subsection
   { title: "Hooked on hooks"
-  , matter: pure
-      [ D.p_
+  , matter: do
+      example <- getExample StartExapanded Nothing
+        Examples.CustomHook1
+      example2 <- getExample StartExapanded Nothing
+        Examples.CustomHook2
+
+      pure [ D.p_
           [ text_
               "The first step on your journey to a custom hook is saying to yourself \"I need a custom hook.\" Now that you've gotten that out of the way, Deku provides a type "
           , D.code__ "Hook a"
@@ -32,16 +32,7 @@ theAnatomyOfAHook = subsection
           , D.code__ "a"
           , text_ ". In its simplest form, it looks like this:"
           ]
-      , psCodeWithLink Examples.CustomHook1
-      , exampleBlockquote
-          [ Deku.do
-              let
-                myFortyTwoHook :: Hook String
-                myFortyTwoHook makeHook = makeHook "forty-two"
-              fortyTwo <- myFortyTwoHook
-              D.div_
-                [ text fortyTwo ]
-          ]
+      , example
       , D.p_
           [ text_ "Note that the "
           , D.code__ "Hook"
@@ -60,27 +51,6 @@ theAnatomyOfAHook = subsection
           , text_
               "."
           ]
-      , psCodeWithLink Examples.CustomHook2
-      , exampleBlockquote
-          [ Deku.do
-              let
-                hook1 :: Hook Boolean
-                hook1 cruise = cruise true
-
-                hook2 :: Hook Boolean
-                hook2 nicholson = nicholson true
-              r1 <- hook1
-              r2 <- hook2
-              D.div_
-                [ D.p_ [ text_ "I want the ", D.code__ $ show r1, text_ "th!" ]
-                , D.img [D.Src := cruiseURL] []
-                , D.p_
-                    [ text_ "You can't handle the "
-                    , D.code__ $ show r2
-                    , text_ "th!"
-                    ]
-                , D.img [D.Src := nicholsonURL] []
-                ]
-          ]
+      , example2
       ]
   }

@@ -21,7 +21,7 @@ componentsAsMonoids = subsection
           , text_
               ". Because it's a monoid, we can use all sorts of cool functions on Deku components, like "
           , D.a
-              [href
+              [href_
                   "https://pursuit.purescript.org/packages/purescript-foldable-traversable/6.0.0/docs/Data.Foldable#v:intercalate"
               ]
               [ D.code__ "intercalate" ]

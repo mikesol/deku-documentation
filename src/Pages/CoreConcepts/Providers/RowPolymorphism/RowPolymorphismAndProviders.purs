@@ -2,12 +2,11 @@ module Pages.CoreConcepts.Providers.RowPolymorphism.RowPolymorphismAndProviders 
 
 import Prelude
 
-import Components.Code (psCodeNoCollapseWithLink)
-import Components.ExampleBlockquote (exampleBlockquote)
-import Contracts (Subsection, subsection)
-import Control.Monad.Reader (ask, asks)
+import Contracts (CollapseState(..), Subsection, getExample, subsection)
+import Control.Monad.Reader (asks)
+import Data.Maybe (Maybe(..))
 import Data.Newtype (class Newtype, unwrap)
-import Deku.Control (text, text_)
+import Deku.Control (text_)
 import Deku.Core (Nut)
 import Deku.DOM as D
 import Examples as Examples
@@ -64,8 +63,9 @@ derive instance Newtype (Env) _
 rowPolymorphismAndProviders :: Subsection
 rowPolymorphismAndProviders = subsection
   { title: "Row polymorphism and providers"
-  , matter: pure
-      [ D.p_
+  , matter: do
+      example <- getExample StartExapanded Nothing Examples.RowPolymorphismAndProviders
+      pure [ D.p_
           [ text_
               "Now that we've explored what Row Polymorphism looks like, let's see it in the case of a Deku provider. We'll explore two scenarios:"
           ]
@@ -81,32 +81,8 @@ rowPolymorphismAndProviders = subsection
               , text_ " that's an intermediary node in our Deku tree."
               ]
           ]
-      , D.p__ "Here's the code."
-      , psCodeNoCollapseWithLink Examples.RowPolymorphismAndProviders
-      , D.p__ "And here's the result."
-      , exampleBlockquote
-          [ Deku.do
-              let
-                cont = do
-                  lg <- libGreat
-                  Env { interjection } <- ask
-                  pure $ D.div_
-                    ( [ D.div_ [ text interjection ]
-                      , lg
-                      ]
-                    )
-              Env
-                { interjection: "Oh and..."
-                , libAwesome:
-                    { s1: "I'm awesome!"
-                    , s2: "Heck yeah!"
-                    , cont
-                    }
-                , libGreat: { x1: "I'm great!" }
-                } # do
-                awe <- libAwesome
-                pure $ D.div_ [ text_ "In all honesty...", awe ]
-          ]
+      , D.p__ "Here's the example."
+      , example
       , D.p_
           [ text_ "By using Row Polymorphism, both "
           , D.code__ "libGreat"

@@ -4,21 +4,21 @@ import Prelude
 
 import Components.Link (link)
 import Contracts (Chapter(..), Page(..))
+import Data.Foldable (oneOf)
 import Data.Newtype (unwrap)
-import Data.NonEmpty ((:|))
-import Deku.Attribute ((:=), (<:=>), (!:=))
-import Deku.Attributes (klass, klass_)
-import Deku.Control (text, text_)
+import Deku.Attribute ((!:=))
+import Deku.Attributes (klass)
+import Deku.Control (text_)
 import Deku.Core (Nut)
 import Deku.DOM as D
-import FRP.Event (Event, merge)
+import FRP.Poll (Poll)
 import Navigation (PushState)
 import Pages.Docs (docs)
 import Router.ADT (Route)
 
 pageLi
-  :: { pageIs :: Route -> Event Unit
-     , pageWas :: Route -> Event Unit
+  :: { pageIs :: Route -> Poll Unit
+     , pageWas :: Route -> Poll Unit
      , pushState :: PushState
      }
   -> Page
@@ -27,8 +27,9 @@ pageLi { pushState, pageIs, pageWas } (Page { route }) = D.li
   [ D.Class !:= "relative" ]
   [ link pushState route
       [ klass $
-          ( false :| merge
-              [ pageIs route $> true
+          ( oneOf
+              [ pure false
+              , pageIs route $> true
               , pageWas route $> false
               ]
           ) <#>
@@ -41,21 +42,21 @@ pageLi { pushState, pageIs, pageWas } (Page { route }) = D.li
   ]
 
 chapterLi
-  :: { pageIs :: Route -> Event Unit
-     , pageWas :: Route -> Event Unit
+  :: { pageIs :: Route -> Poll Unit
+     , pageWas :: Route -> Poll Unit
      , pushState :: PushState
      }
   -> Chapter
   -> Nut
 chapterLi opts (Chapter { title, pages }) = D.li_
   [ D.h2
-      [ D.Class :=
+      [ D.Class !:=
           "font-display font-medium text-slate-900 dark:text-white"
       ]
-      [ text title ]
+      [ text_ title ]
   , D.ul
       ( [ D.Role !:= "list"
-        , D.Class :=
+        , D.Class !:=
             "mt-2 space-y-2 border-l-2 border-slate-100 dark:border-slate-800 lg:mt-4 lg:space-y-4 lg:border-slate-200"
         ]
       )
@@ -63,34 +64,34 @@ chapterLi opts (Chapter { title, pages }) = D.li_
   ]
 
 leftMatter
-  :: { pageIs :: Route -> Event Unit
-     , pageWas :: Route -> Event Unit
+  :: { pageIs :: Route -> Poll Unit
+     , pageWas :: Route -> Poll Unit
      , pushState :: PushState
      }
   -> Nut
 leftMatter opts = D.div
   [ D.Class !:= "hidden lg:relative lg:block lg:flex-none" ]
   [ D.div
-      [ D.Class :=
+      [ D.Class !:=
           "absolute inset-y-0 right-0 w-[50vw] bg-slate-50 dark:hidden"
       ]
       []
   , D.div
-      [ D.Class :=
+      [ D.Class !:=
           "absolute top-16 bottom-0 right-0 hidden h-12 w-px bg-gradient-to-t from-slate-800 dark:block"
       ]
       []
   , D.div
-      [ D.Class :=
+      [ D.Class !:=
           "absolute top-28 bottom-0 right-0 hidden w-px bg-slate-800 dark:block"
       ]
       []
   , D.div
-      [ D.Class :=
+      [ D.Class !:=
           "sticky top-[4.5rem] -ml-0.5 h-[calc(100vh-4.5rem)] overflow-y-auto overflow-x-hidden py-16 pl-0.5"
       ]
       [ D.nav
-          [ D.Class :=
+          [ D.Class !:=
               "text-base lg:text-sm w-64 pr-8 xl:w-72 xl:pr-16"
           ]
           [ D.ul ([ D.Role !:= "list", D.Class !:= "space-y-9" ])

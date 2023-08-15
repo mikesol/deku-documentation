@@ -4,9 +4,9 @@ import Prelude
 
 import Components.Code (psCode, psCodeWithLink)
 import Contracts (Subsection, subsection)
-import Deku.Attribute ((:=), (<:=>), (!:=))
-import Deku.Attributes (klass, klass_)
-import Deku.Control (text, text_)
+import Deku.Attribute ((!:=))
+import Deku.Attributes (klass_)
+import Deku.Control (text_)
 import Deku.DOM as D
 import Effect (Effect)
 import Effect.Random (random)
@@ -37,7 +37,7 @@ subscriptionAndUnsubscriptionEffects = subsection
       , psCodeWithLink Examples.HandRolledEvent
       , D.blockquote
           [ klass_ "not-italic"
-          , D.Self := \bod -> do
+          , D.Self !:= \bod -> do
               doc <- window >>= document <#> toDocument
               anchor <- createElement "a" doc
               setAttribute "class" "cursor-pointer" anchor

@@ -24,10 +24,10 @@ app runExample = runExample Deku.do
   composedEvent <- useRant
     ( { a: _, b: _, c: _, d: _, e: _ }
         <$> snd aa
-          <*> snd bb
-          <*> snd cc
-          <*> snd dd
-          <*> snd ee
+        <*> snd bb
+        <*> snd cc
+        <*> snd dd
+        <*> snd ee
     )
   D.div_
     [ D.div_

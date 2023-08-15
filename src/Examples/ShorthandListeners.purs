@@ -11,7 +11,7 @@ import ExampleAssitant (ExampleSignature)
 
 app :: ExampleSignature
 app runExample = runExample
-  (D.input [slider_ logShow] [])
+  (D.input [ slider_ logShow ] [])
 
 main :: Effect Unit
 main = void $ app (map (map void) runInBody')

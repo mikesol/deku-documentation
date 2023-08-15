@@ -37,7 +37,8 @@ app runExample = runExample Deku.do
             [ click_ (setSwitch unit)
             , klass_ buttonClass
             ]
-            [ text (pure "Start simulation" <|> (switch $> "Restart simulation"))
+            [ text
+                (pure "Start simulation" <|> (switch $> "Restart simulation"))
             ]
         ]
     , switch <#~> \_ -> D.div [ klass_ "h-24 overflow-y-scroll" ]

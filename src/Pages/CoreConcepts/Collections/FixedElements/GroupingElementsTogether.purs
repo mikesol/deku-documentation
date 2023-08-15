@@ -5,9 +5,9 @@ import Prelude
 import Components.ProTip (proTip)
 import Contracts (CollapseState(..), Subsection, getExample, subsection)
 import Data.Maybe (Maybe(..))
-import Deku.Attribute ((:=), (<:=>), (!:=))
-import Deku.Attributes (href, href_)
-import Deku.Control (text, text_)
+import Deku.Attribute ((!:=))
+import Deku.Attributes (href_)
+import Deku.Control (text_)
 import Deku.DOM as D
 import Examples as Examples
 
@@ -40,7 +40,7 @@ groupingElementsTogether = subsection
                 [ text_
                     "Dogs say woof in English, but every culture has its own animal sounds. Before using Deku, make sure to familiarize yourself with "
                 , D.a
-                    [ href
+                    [ href_
                         "https://languagepro.com.br/woof-woof-dog-barks-in-different-languages/"
                     , D.Target !:= "_blank"
                     ]

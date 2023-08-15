@@ -27,6 +27,7 @@ import Effect.Ref as Ref
 import FRP.Dedup (dedup)
 import FRP.Event (Event, create, fold, mailbox, subscribe)
 import FRP.Lag (lag)
+import FRP.Poll (sham)
 import Router.ADT (Route(..))
 import Router.Page (routeToPage)
 import Router.Route (route)
@@ -178,17 +179,17 @@ main = do
     ( Deku.do
 
         app
-          { pageIs: pageIs.event
-          , pageWas: pageWas.event
-          , rightSideNavSelect: rightSideNavSelect.event
-          , rightSideNavDeselect: rightSideNavDeselect.event
+          { pageIs: map sham pageIs.event
+          , pageWas: map sham pageWas.event
+          , rightSideNavSelect: map sham rightSideNavSelect.event
+          , rightSideNavDeselect: map sham rightSideNavDeselect.event
           , pushState: psi.pushState
-          , curPage: routeToPage <$> currentRoute.event
-          , showBanner: dedup (eq GettingStarted <$> currentRoute.event)
+          , curPage: sham $ routeToPage <$> currentRoute.event
+          , showBanner: dedup (eq GettingStarted <$> sham currentRoute.event)
           , setHeaderElement: headerElement.push
           , setRightSideNav: Just >>> rightSideNav.push
           , clickedSection
-          , darkModePreference: darkModePreferenceE.event
+          , darkModePreference: sham darkModePreferenceE.event
           }
     )
   dedupRoute <- liftST $ create

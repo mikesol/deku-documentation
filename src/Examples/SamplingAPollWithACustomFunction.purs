@@ -42,7 +42,9 @@ app runExample = do
                       liftEffect case result of
                         Left err -> k $ ff (AX.printError err)
                         Right response -> k $ ff
-                          ("Here's a random user: " <> stringifyWithIndent 2 response.body)
+                          ( "Here's a random user: " <> stringifyWithIndent 2
+                              response.body
+                          )
                     liftST $ void $ write fb fiber
               )
 

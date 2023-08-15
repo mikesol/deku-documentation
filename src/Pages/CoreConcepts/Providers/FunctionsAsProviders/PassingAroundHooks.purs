@@ -4,8 +4,8 @@ import Prelude
 
 import Contracts (CollapseState(..), Subsection, getExample, subsection)
 import Data.Maybe (Maybe(..))
-import Deku.Attributes (klass, klass_)
-import Deku.Control (text, text_)
+import Deku.Attributes (klass_)
+import Deku.Control (text_)
 import Deku.DOM as D
 import Examples as Examples
 
@@ -13,7 +13,7 @@ passingAroundHooks :: Subsection
 passingAroundHooks = subsection
   { title: "Passing around hooks"
   , matter: do
-      let lt t = D.span [klass_ "line-through"] [ text t ]
+      let lt t = D.span [klass_ "line-through"] [ text_ t ]
       example <- getExample StartCollapsed Nothing Examples.PassingAroundHooks
       pure [ D.p_
             [ text_

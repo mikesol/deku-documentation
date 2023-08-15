@@ -51,6 +51,7 @@ discordMessage = unsafeCustomElement "discord-message"
       :: Proxy
            DiscordMessage_
   )
+
 app :: ExampleSignature
 app runExample = runExample do
   discordMessages
