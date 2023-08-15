@@ -7,11 +7,12 @@ import ExampleAssitant (ExampleSignature)
 import Data.Tuple.Nested ((/\))
 import Deku.Attribute (Attribute, class Attr)
 import Deku.Attributes (klass, klass_)
-import Deku.Control (text, text_)
+import Deku.Control (text_)
 import Deku.DOM as D
+import FRP.Poll (Poll)
 import Deku.Do as Deku
 import Deku.Hooks (useState)
-import Deku.Listeners (click, click_)
+import Deku.Listeners (click_)
 import Deku.Pursx ((~~))
 import Effect (Effect)
 
@@ -65,20 +66,20 @@ app runExample = runExample Deku.do
     toggleHome
       :: forall element
        . Attr element D.OnClick (Effect Unit)
-      => Attribute element
-    toggleHome = click (setProjects false *> setNero false)
+      => Poll (Attribute element)
+    toggleHome = click_ (setProjects false *> setNero false)
 
     toggleProjs
       :: forall element
        . Attr element D.OnClick (Effect Unit)
-      => Attribute element
-    toggleProjs = click (setProjects true *> setNero false)
+      => Poll (Attribute element)
+    toggleProjs = click_ (setProjects true *> setNero false)
 
     toggleNero
       :: forall element
        . Attr element D.OnClick (Effect Unit)
-      => Attribute element
-    toggleNero = click (setProjects true *> setNero true)
+      => Poll (Attribute element)
+    toggleNero = click_ (setProjects true *> setNero true)
 
   D.div_
     [ D.div_

@@ -1,9 +1,6 @@
 module Examples.ALagUsingFix where
 
-import Deku.Toplevel (runInBody')
-import Effect (Effect)
 import Prelude
-import ExampleAssitant (ExampleSignature)
 
 import Data.Compactable (compact)
 import Data.Maybe (Maybe(..))
@@ -15,10 +12,13 @@ import Deku.Attributes (klass, klass_)
 import Deku.Control (text, text_)
 import Deku.DOM as D
 import Deku.Do as Deku
-import Deku.Hooks (useState')
+import Deku.Hooks (useState, useState')
 import Deku.Listeners (click, click_)
-import FRP.Poll (sample, step)
+import Deku.Toplevel (runInBody')
+import Effect (Effect)
+import ExampleAssitant (ExampleSignature)
 import FRP.Event (fix)
+import FRP.Poll (sample, step)
 
 buttonClass :: String -> String
 buttonClass color =
@@ -31,11 +31,11 @@ focus:ring-COLOR-500 focus:ring-offset-2 mr-4"""
 
 app :: ExampleSignature
 app runExample = runExample Deku.do
-  setWord /\ word <- useState'
+  setWord /\ word <- useState "None"
   let
     button txt color = D.button
-      [ klass (buttonClass color), click (setWord txt) ]
-      [ text txt ]
+      [ klass_ (buttonClass color), click_ (setWord txt) ]
+      [ text_ txt ]
   D.div_
     [ D.div_
         [ button "Hickory" "green"
@@ -44,7 +44,7 @@ app runExample = runExample Deku.do
         ]
     , D.div_
         [ text_ "Previous word: "
-        , text $ "None" :|
+        , text 
             ( compact $ snd <$> fix
                 ( \e -> sample
                     (step Nothing (fst <$> e))

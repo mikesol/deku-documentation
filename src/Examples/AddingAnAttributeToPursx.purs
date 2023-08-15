@@ -7,11 +7,11 @@ import ExampleAssitant (ExampleSignature)
 
 import Data.Tuple.Nested ((/\))
 import Deku.Attributes (klass, klass_)
-import Deku.Control (text, text_)
+import Deku.Control (text_)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState)
-import Deku.Listeners (click, click_)
+import Deku.Listeners (click_)
 import Deku.Pursx ((~~))
 
 import Type.Proxy (Proxy(..))
@@ -65,15 +65,15 @@ app runExample = runExample Deku.do
     point = klass_ "cursor-pointer mr-4"
     toggleHome =
       [ point
-      , click (setProjects false *> setNero false)
+      , click_ (setProjects false *> setNero false)
       ]
     toggleProjects =
       [ point
-      , click (setProjects true *> setNero false)
+      , click_ (setProjects true *> setNero false)
       ]
     toggleNero =
       [ point
-      , click (setProjects true *> setNero true)
+      , click_ (setProjects true *> setNero true)
       ]
   D.div_
     [ D.div_
