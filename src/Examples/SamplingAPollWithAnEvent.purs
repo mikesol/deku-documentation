@@ -1,9 +1,6 @@
 module Examples.SamplingAPollWithAnEvent where
 
-import Deku.Toplevel (runInBody')
-import Effect (Effect)
 import Prelude
-import ExampleAssitant (ExampleSignature)
 
 import Affjax.ResponseFormat as ResponseFormat
 import Affjax.Web as AX
@@ -13,10 +10,12 @@ import Data.Argonaut.Core (stringifyWithIndent)
 import Data.Either (Either(..))
 import Data.Tuple (Tuple(..))
 import Deku.Control (text, text_)
-
+import Deku.Toplevel (runInBody')
+import Effect (Effect)
 import Effect.Aff (error, killFiber, launchAff)
-import FRP.Poll (poll, sample)
+import ExampleAssitant (ExampleSignature)
 import FRP.Event.Time (interval)
+import FRP.Poll (poll, sample, sham)
 import Fetch (Method(..))
 
 app :: ExampleSignature
@@ -24,7 +23,7 @@ app runExample = do
   i <- interval 2000
   runExample do
     text
-      ( sample
+      (sham( sample
           ( poll
               ( do
                   fiber <- new (pure unit)
@@ -51,7 +50,7 @@ app runExample = do
           )
 
           (i.event $> ("Here's a random user: " <> _))
-      )
+      ))
 
 main :: Effect Unit
 main = void $ app (map (map void) runInBody')

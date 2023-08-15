@@ -1,14 +1,14 @@
 module Examples.CustomHook1 where
 
-import Deku.Toplevel (runInBody')
-import Effect (Effect)
 import Prelude
-import ExampleAssitant (ExampleSignature)
 
-import Deku.Control (text, text_)
+import Deku.Control (text_)
 import Deku.Core (Hook)
 import Deku.DOM as D
 import Deku.Do as Deku
+import Deku.Toplevel (runInBody')
+import Effect (Effect)
+import ExampleAssitant (ExampleSignature)
 
 app :: ExampleSignature
 app runExample = runExample Deku.do
@@ -17,7 +17,7 @@ app runExample = runExample Deku.do
     myFortyTwoHook makeHook = makeHook "forty-two"
   fortyTwo <- myFortyTwoHook
   D.div_
-    [ text fortyTwo ]
+    [ text_ fortyTwo ]
 
 main :: Effect Unit
 main = void $ app (map (map void) runInBody')

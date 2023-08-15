@@ -2,17 +2,17 @@ module Examples.EffectsInSSR where
 
 import Prelude
 
+import Control.Alt ((<|>))
 import Control.Monad.ST.Class (liftST)
-import Data.NonEmpty ((:|))
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute ((:=), (<:=>), (!:=))
-import Deku.Attributes (klass, klass_)
-import Deku.Control (text, text_)
+import Deku.Attribute ((!:=))
+import Deku.Attributes (klass_)
+import Deku.Control (text_)
 import Deku.Core (Nut)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (guard, useState')
-import Deku.Listeners (click, click_)
+import Deku.Listeners (click)
 import Deku.Toplevel (runInBody', runSSR)
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
@@ -31,7 +31,7 @@ myApp s = Deku.do
     [ D.h4__ "Hi!"
     , D.a
         [ klass_ "cursor-pointer"
-        , click_ $ (setImage unit) :| (image $> pure unit)
+        , click $ (pure unit <|> image) <#> setImage
         ]
         [ text_ "Click to reveal an image." ]
     , guard (image $> true)

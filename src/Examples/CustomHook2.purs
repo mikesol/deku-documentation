@@ -6,8 +6,8 @@ import Prelude
 import ExampleAssitant (ExampleSignature)
 
 import Assets (cruiseURL, nicholsonURL)
-import Deku.Attribute ((:=), (<:=>), (!:=))
-import Deku.Control (text, text_)
+import Deku.Attribute ((!:=))
+import Deku.Control (text_)
 import Deku.Core (Hook)
 import Deku.DOM as D
 import Deku.Do as Deku
@@ -24,13 +24,13 @@ app runExample = runExample Deku.do
   r2 <- hook2
   D.div_
     [ D.p_ [ text_ "I want the ", D.code__ $ show r1, text_ "th!" ]
-    , D.img [ D.Src := cruiseURL ] []
+    , D.img [ D.Src !:= cruiseURL ] []
     , D.p_
         [ text_ "You can't handle the "
         , D.code__ $ show r2
         , text_ "th!"
         ]
-    , D.img [ D.Src := nicholsonURL ] []
+    , D.img [ D.Src !:= nicholsonURL ] []
     ]
 
 main :: Effect Unit
