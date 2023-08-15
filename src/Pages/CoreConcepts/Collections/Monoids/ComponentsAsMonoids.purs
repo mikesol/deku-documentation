@@ -5,7 +5,7 @@ import Prelude
 import Contracts (CollapseState(..), Subsection, getExample, subsection)
 import Data.Maybe (Maybe(..))
 import Deku.Attributes (href)
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Examples as Examples
 
@@ -25,7 +25,7 @@ componentsAsMonoids = subsection
                   "https://pursuit.purescript.org/packages/purescript-foldable-traversable/6.0.0/docs/Data.Foldable#v:intercalate"
               ]
               [ D.code__ "intercalate" ]
-          , text "."
+          , text_ "."
 
           ]
       , example

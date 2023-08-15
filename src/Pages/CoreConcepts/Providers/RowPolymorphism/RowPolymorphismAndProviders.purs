@@ -7,7 +7,7 @@ import Components.ExampleBlockquote (exampleBlockquote)
 import Contracts (Subsection, subsection)
 import Control.Monad.Reader (ask, asks)
 import Data.Newtype (class Newtype, unwrap)
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.Core (Nut)
 import Deku.DOM as D
 import Examples as Examples
@@ -71,14 +71,14 @@ rowPolymorphismAndProviders = subsection
           ]
       , D.ol_
           [ D.li_
-              [ text "A third-party library called "
+              [ text_ "A third-party library called "
               , D.code__ "libGreat"
-              , text " that's a terminal node in our Deku tree."
+              , text_ " that's a terminal node in our Deku tree."
               ]
           , D.li_
-              [ text "A third-party library called "
+              [ text_ "A third-party library called "
               , D.code__ "libAwesome"
-              , text " that's an intermediary node in our Deku tree."
+              , text_ " that's an intermediary node in our Deku tree."
               ]
           ]
       , D.p__ "Here's the code."
@@ -105,27 +105,27 @@ rowPolymorphismAndProviders = subsection
                 , libGreat: { x1: "I'm great!" }
                 } # do
                 awe <- libAwesome
-                pure $ D.div_ [ text "In all honesty...", awe ]
+                pure $ D.div_ [ text_ "In all honesty...", awe ]
           ]
       , D.p_
-          [ text "By using Row Polymorphism, both "
+          [ text_ "By using Row Polymorphism, both "
           , D.code__ "libGreat"
-          , text " and "
+          , text_ " and "
           , D.code__ "libAwesome"
           , text
               " are able to exist in the Deku tree without knowing much about the environment into which they're inserted aside from the fact that it's a "
           , D.code__ "Record"
-          , text " in a "
+          , text_ " in a "
           , D.code__ "newtype"
-          , text ". So long as their dependencies are present, they compile."
+          , text_ ". So long as their dependencies are present, they compile."
           ]
       , D.p_
-          [ text "Because "
+          [ text_ "Because "
           , D.code__ "libAwesome"
           , text
               " refers to additional nodes in the Deku tree, it must provide an environment to these nodes. However, because it cannot know the type of this environment, we're in a bind. Enter the "
           , D.code__ "Newtype"
-          , text " constraint. "
+          , text_ " constraint. "
           , D.code__ "Newtype"
           , text
               "s allow you to use recursive Row Polymorphism in a library without committing to a concrete type upfront. Armed with this knowledge, you'll be able to create all sorts of neat Deku libraries. I expect to see the market flooded with Deku image carousel implementations any day now!"

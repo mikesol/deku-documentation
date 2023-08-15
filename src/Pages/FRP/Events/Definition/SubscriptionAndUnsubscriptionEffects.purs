@@ -4,9 +4,9 @@ import Prelude
 
 import Components.Code (psCode, psCodeWithLink)
 import Contracts (Subsection, subsection)
-import Deku.Attribute ((:=))
-import Deku.Attributes (klass)
-import Deku.Control (text)
+import Deku.Attribute ((:=), (<:=>), (!:=))
+import Deku.Attributes (klass, klass_)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Effect (Effect)
 import Effect.Random (random)
@@ -36,7 +36,7 @@ subscriptionAndUnsubscriptionEffects = subsection
           ]
       , psCodeWithLink Examples.HandRolledEvent
       , D.blockquote
-          [ klass "not-italic"
+          [ klass_ "not-italic"
           , D.Self := \bod -> do
               doc <- window >>= document <#> toDocument
               anchor <- createElement "a" doc
@@ -87,14 +87,14 @@ subscriptionAndUnsubscriptionEffects = subsection
           [ text
               "Let's convince ourselves that this event fulfills the contract "
           , D.code__ "(a -> Effect Unit) -> Effect (Effect Unit)"
-          , text ". The argument "
+          , text_ ". The argument "
           , D.code__ "callback"
-          , text " is our "
+          , text_ " is our "
           , D.code__ "(a -> Effect Unit)"
           , text
               ", so let's verify that it has that type. Indeed it does, as it binds to "
           , D.code__ "random"
-          , text ". Next, let's see if the return type is "
+          , text_ ". Next, let's see if the return type is "
           , D.code__ "Effect (Effect Unit)"
           , text
               ". Indeed it is, as the return type is a thunk that clears the interval, which seems like a sensible unsubscribe action."
@@ -113,20 +113,20 @@ write u unsubscribe"""
           [ text
               "We pass the event a subscriber that takes a float and writes it to a "
           , D.code__ "div"
-          , text ". "
+          , text_ ". "
           , D.i__ "This is our callback"
           , text
               "! It's challenging to follow the control flow because it is not linear, but read through the code bloc again and convince yourself that this function "
           , D.i__ "is"
-          , text " the callback in the defintion of "
+          , text_ " the callback in the defintion of "
           , D.code__ "Event"
-          , text " and therefore "
+          , text_ " and therefore "
           , D.i__ "is"
-          , text " the function that receives the output of "
+          , text_ " the function that receives the output of "
           , D.code__ "random"
-          , text "."
+          , text_ "."
           ]
-      , D.p_ [ text "Next up is our unsubscribe." ]
+      , D.p_ [ text_ "Next up is our unsubscribe." ]
       , psCode
           """u <- read unsubscribe
 u"""

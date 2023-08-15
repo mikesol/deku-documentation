@@ -1,10 +1,10 @@
-module Pages.FRP.Behaviors.Calculus.SolvingDifferentialEquations where
+module Pages.FRP.Polls.Calculus.SolvingDifferentialEquations where
 
 import Prelude
 
 import Contracts (CollapseState(..), Subsection, getExample, subsection)
 import Data.Maybe (Maybe(..))
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Examples as Examples
 
@@ -19,20 +19,20 @@ solvingDifferentialEquations = subsection
           [ text
               "Last but not least, we can solve a second order differential equation of the form "
           , D.code__ "d^2a/dt^2 = f a (da/dt)"
-          , text " using the "
+          , text_ " using the "
           , D.code__ "solve2'"
-          , text " function."
+          , text_ " function."
           , text
               " As the left side is the acceleration of the system, we can solve by integrating twice (using the "
           , D.code__ "integrate'"
           , text
               " function above) after specifying the initial conditions for position and velocity. For example, below we create a damped oscillator using the equation "
           , D.code__ "\\x dx'dt -> -⍺ * x - δ * dx'dt"
-          , text ". In this case, both "
+          , text_ ". In this case, both "
           , D.code__ "x"
-          , text " (position) and "
+          , text_ " (position) and "
           , D.code__ "dx'dt"
-          , text " (veclocity) are behaviors."
+          , text_ " (veclocity) are polls."
           ]
       , example
       , D.p__

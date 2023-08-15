@@ -5,10 +5,10 @@ import Effect (Effect)
 import Prelude
 import ExampleAssitant (ExampleSignature)
 
-import Deku.Attributes (klass)
-import Deku.Control (text)
+import Deku.Attributes (klass_)
+import Deku.Control (text_)
 import Deku.DOM as D
-import Deku.Attribute ((:=))
+import Deku.Attribute ((!:=))
 
 import Web.HTML (window)
 import Web.HTML.Window (alert)
@@ -16,11 +16,11 @@ import Web.HTML.Window (alert)
 app :: ExampleSignature
 app runExample = runExample
   ( D.span
-      [ D.OnClick := do
+      [ D.OnClick !:= do
           window >>= alert "Thanks for clicking!"
-      , klass "cursor-pointer"
+      , klass_ "cursor-pointer"
       ]
-      [ text "Click me!" ]
+      [ text_ "Click me!" ]
   )
 
 main :: Effect Unit

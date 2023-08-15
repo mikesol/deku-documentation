@@ -5,14 +5,13 @@ import Prelude
 import Control.Alternative (guard)
 import Data.String (Pattern(..), Replacement(..), replaceAll)
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute ((:=))
-import Deku.Attributes (klass)
-import Deku.Control (text)
+import Deku.Attribute ((:=), (<:=>), (!:=))
+import Deku.Attributes (klass, klass_)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState)
-import Deku.Listeners (click)
-import Deku.NonEmpty (filterMapAttribute)
+import Deku.Listeners (click, click_)
 import Deku.Toplevel (runInBody')
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
@@ -31,16 +30,16 @@ app runExample = runExample Deku.do
   setStyleSwitch /\ styleSwitch <- useState false
   D.div_
     [ D.a
-        [ D.Target := "_blank"
+        [ D.Target !:= "_blank"
         , filterMapAttribute D.Style (\x -> guard x $> "color:magenta;") styleSwitch
         , filterMapAttribute D.Style (\x -> guard (not x) $> unit) $ styleSwitch
         ]
-        [ text "Click me" ]
+        [ text_ "Click me" ]
     , D.button
-        [ klass $ buttonClass "pink"
+        [ klass_ $ buttonClass "pink"
         , click $ styleSwitch <#> not >>> setStyleSwitch
         ]
-        [ text "Switch style" ]
+        [ text_ "Switch style" ]
     ]
 
 main :: Effect Unit

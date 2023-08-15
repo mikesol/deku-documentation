@@ -1,22 +1,22 @@
-module Pages.FRP.Behaviors.Calculus.BehaviorsAsContinuousFunctionsOfTime where
+module Pages.FRP.Polls.Calculus.PollsAsContinuousFunctionsOfTime where
 
 import Prelude
 
 import Contracts (Subsection, subsection)
-import Deku.Control (text)
-import Deku.Attribute ((:=))
+import Deku.Control (text, text_)
+import Deku.Attribute ((:=), (<:=>), (!:=))
 import Deku.DOM as D
 
-behaviorsAsContinuousFunctionsOfTime
+pollsAsContinuousFunctionsOfTime
   :: Subsection
-behaviorsAsContinuousFunctionsOfTime = subsection
-  { title: "Behaviors as continuous functions of time"
+pollsAsContinuousFunctionsOfTime = subsection
+  { title: "Polls as continuous functions of time"
   , matter: pure
       [ D.p_
-          [ text "This subsection will be about "
-          , D.span [ D.Class := "font-bold" ]
-              [ text "Behaviors as continuous functions of time" ]
-          , text "."
+          [ text_ "This subsection will be about "
+          , D.span [ D.Class !:= "font-bold" ]
+              [ text_ "Polls as continuous functions of time" ]
+          , text_ "."
           ]
       ]
   }

@@ -4,7 +4,7 @@ import Prelude
 
 import Components.TargetedLink (targetedLink)
 import Contracts (Section, section)
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Pages.FRP.Sampling.SamplingOnAnEvent.ApplicativesAndTemporality (applicativesAndTemporality)
 import Pages.FRP.Sampling.SamplingOnAnEvent.BiasingASideOfSampling (biasingASideOfSampling)
@@ -19,7 +19,7 @@ samplingOnAnEvent = section
               "This section will look at the basic mechanisms for sampling, exploring the various functions available in "
           , targetedLink "https://github.com/mikesol/purescript-hyrule"
               [ D.code__ "purescript-hyrule" ]
-          , text " as well as some important corner cases to be aware of."
+          , text_ " as well as some important corner cases to be aware of."
           ]
       ]
   , subsections:

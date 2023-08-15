@@ -11,13 +11,13 @@ import Data.NonEmpty ((:|))
 import Data.String (Pattern(..), Replacement(..), replaceAll)
 import Data.Tuple (Tuple(..), fst, snd)
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass)
-import Deku.Control (text)
+import Deku.Attributes (klass, klass_)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState')
-import Deku.Listeners (click)
-import FRP.Behavior (sample, step)
+import Deku.Listeners (click, click_)
+import FRP.Poll (sample, step)
 import FRP.Event (fix)
 
 buttonClass :: String -> String
@@ -43,7 +43,7 @@ app runExample = runExample Deku.do
         , button "Dock" "indigo"
         ]
     , D.div_
-        [ text "Previous word: "
+        [ text_ "Previous word: "
         , text $ "None" :|
             ( compact $ snd <$> fix
                 ( \e -> sample

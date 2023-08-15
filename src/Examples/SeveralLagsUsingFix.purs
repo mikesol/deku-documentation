@@ -11,14 +11,14 @@ import Data.NonEmpty ((:|))
 import Data.String (Pattern(..), Replacement(..), replaceAll)
 import Data.Tuple (Tuple(..), fst, snd)
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass)
-import Deku.Control (text)
+import Deku.Attributes (klass, klass_)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState')
-import Deku.Listeners (click)
+import Deku.Listeners (click, click_)
 
-import FRP.Behavior (sample, step)
+import FRP.Poll (sample, step)
 import FRP.Event (fix)
 
 buttonClass :: String -> String

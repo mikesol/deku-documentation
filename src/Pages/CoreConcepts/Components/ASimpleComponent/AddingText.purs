@@ -3,7 +3,7 @@ module Pages.CoreConcepts.Components.ASimpleComponent.AddingText where
 import Prelude
 
 import Contracts (Subsection, subsection)
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 
 addingText :: Subsection
@@ -11,14 +11,14 @@ addingText = subsection
   { title: "Adding text"
   , matter: pure
       [ D.p_
-          [ text "Text in deku is created via the "
-          , D.code_ [ text "text" ]
-          , text " function. Additionally, for elements that "
-          , D.i_ [ text "only" ]
+          [ text_ "Text in deku is created via the "
+          , D.code_ [ text_ "text" ]
+          , text_ " function. Additionally, for elements that "
+          , D.i_ [ text_ "only" ]
           , text
               " contain text, you can use a double-underscore. For example, "
-          , D.code_ [ text "D.i__ \"Pow!\"" ]
-          , D.i_ [ text "Pow!" ]
+          , D.code_ [ text_ "D.i__ \"Pow!\"" ]
+          , D.i_ [ text_ "Pow!" ]
           ]
       ]
   }

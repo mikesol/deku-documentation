@@ -1,34 +1,34 @@
-module Pages.FRP.Behaviors.Applicative.BehaviorsAsFunctors where
+module Pages.FRP.Polls.Applicative.PollsAsFunctors where
 
 import Prelude
 
 import Components.Code (psCode)
 import Contracts (Subsection, subsection)
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 
-behaviorsAsFunctors :: Subsection
-behaviorsAsFunctors = subsection
-  { title: "Behaviors as functors"
+pollsAsFunctors :: Subsection
+pollsAsFunctors = subsection
+  { title: "Polls as functors"
   , matter: pure
       [ D.p_
-          [ text "The definition of "
-          , D.code__ "Behavior"
-          , text "'s instance of functor is similar to that of "
+          [ text_ "The definition of "
+          , D.code__ "Poll"
+          , text_ "'s instance of functor is similar to that of "
           , D.code__ "Event"
-          , text ":"
+          , text_ ":"
           ]
       , psCode
-          """newtype Behavior a = Behavior (forall b. Event (a -> b) -> Event b)
+          """newtype Poll a = Poll (forall b. Event (a -> b) -> Event b)
 
-instance Functor Behavior where
-  map (Behavior b) f = Behavior ((lcmap <<< lcmap) f b)
+instance Functor Poll where
+  map (Poll b) f = Poll ((lcmap <<< lcmap) f b)
 """
       , D.p_
           [ text
-              "The map applies a transformation to the values at the behavior "
+              "The map applies a transformation to the values at the poll "
           , D.i__ "only at the moment"
-          , text " that the behavior is queried by an event."
+          , text_ " that the poll is queried by an event."
           ]
       ]
   }

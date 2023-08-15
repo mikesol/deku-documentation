@@ -4,7 +4,7 @@ import Prelude
 
 import Contracts (CollapseState(..), Subsection, getExample, subsection)
 import Data.Maybe (Maybe(..))
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Examples as Examples
 
@@ -16,11 +16,11 @@ addingSeveralElements = subsection
         Examples.AddingSeveralElementsToPursx
       pure
         [ D.p_
-            [ text "To add several elements, one can use "
+            [ text_ "To add several elements, one can use "
             , D.code__ "fixed"
-            , text " or "
+            , text_ " or "
             , D.code__ "<>"
-            , text "."
+            , text_ "."
             ]
         , example
         ]

@@ -5,10 +5,10 @@ import Effect (Effect)
 import Prelude
 import ExampleAssitant (ExampleSignature)
 
-import Deku.Control (text)
+import Deku.Control (text, text_)
 
 app :: ExampleSignature
-app runExample = runExample (text "Hello world")
+app runExample = runExample (text_ "Hello world")
 
 main :: Effect Unit
 main = void $ app (map (map void) runInBody')

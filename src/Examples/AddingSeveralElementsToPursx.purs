@@ -6,14 +6,14 @@ import ExampleAssitant (ExampleSignature)
 
 import Deku.Attribute (Attribute, class Attr)
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass)
-import Deku.Control (text)
+import Deku.Attributes (klass, klass_)
+import Deku.Control (text, text_)
 import Deku.Core (fixed)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState)
 import Effect (Effect)
-import Deku.Listeners (click)
+import Deku.Listeners (click, click_)
 import Deku.Pursx ((~~))
 
 import Type.Proxy (Proxy(..))
@@ -81,24 +81,24 @@ app runExample = runExample Deku.do
     toggleNero = click (setProjects true *> setNero true)
   D.div_
     [ D.div_
-        [ D.a [ klass "cursor-pointer mr-4", toggleHome ]
-            [ text "Go home" ]
-        , D.a [ klass "cursor-pointer mr-4", toggleProjs ]
-            [ text "Go to projects" ]
-        , D.a [ klass "cursor-pointer", toggleNero ]
-            [ text "Go to nero" ]
+        [ D.a [ klass_ "cursor-pointer mr-4", toggleHome ]
+            [ text_ "Go home" ]
+        , D.a [ klass_ "cursor-pointer mr-4", toggleProjs ]
+            [ text_ "Go to projects" ]
+        , D.a [ klass_ "cursor-pointer", toggleNero ]
+            [ text_ "Go to nero" ]
         ]
     , D.div_
         [ myHtml ~~
-            { homeAtts: [ toggleHome, klass "flex h-12" ]
+            { homeAtts: [ toggleHome, klass_ "flex h-12" ]
             , lis: fixed
                 [ liHtml ~~
                     { atts: [ toggleProjs, hideOnFalse projects ]
-                    , name: text "Projects"
+                    , name: text_ "Projects"
                     }
                 , liHtml ~~
                     { atts: [ toggleNero, hideOnFalse nero ]
-                    , name: text "Project Nero"
+                    , name: text_ "Project Nero"
                     }
                 ]
             }

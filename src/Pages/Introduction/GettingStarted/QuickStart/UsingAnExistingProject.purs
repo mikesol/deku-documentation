@@ -5,7 +5,7 @@ import Prelude
 import Components.Code (shSessionCode)
 import Components.Disclaimer (disclaimer)
 import Contracts (Subsection, subsection)
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 
 usingAnExistingProject :: Subsection
@@ -24,7 +24,7 @@ usingAnExistingProject = subsection
           ]
       , shSessionCode "$ npx spago install deku"
       , disclaimer
-          { header: text "Package sets"
+          { header: text_ "Package sets"
           , message:
               D.div_
                 [ text
@@ -33,7 +33,7 @@ usingAnExistingProject = subsection
                 , text
                     " onwards, so if you'd like to use most of the conventions from this documentation, make sure to work with a package set that's made on or after December 9, 2022 (AD). You can update your package set by running "
                 , D.code__ "spago upgrade-set"
-                , text "."
+                , text_ "."
                 ]
           }
       ]

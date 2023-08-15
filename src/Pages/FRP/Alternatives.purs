@@ -3,8 +3,8 @@ module Pages.FRP.Alternatives where
 import Prelude
 
 import Contracts (Page, page)
-import Deku.Attribute ((:=))
-import Deku.Control (text)
+import Deku.Attribute ((:=), (<:=>), (!:=))
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Pages.FRP.Alternatives.Alt (alt)
 import Pages.FRP.Alternatives.Plus (plus)
@@ -14,8 +14,8 @@ alternatives :: Page
 alternatives = page
   { route: Alternatives
   , topmatter: pure
-      [ D.p [D.Class := "lead"]
-          [ text "How events function in an alternative universe."
+      [ D.p [D.Class !:= "lead"]
+          [ text_ "How events function in an alternative universe."
           ]
       , D.p_
           [ text
@@ -32,16 +32,16 @@ alternatives = page
           , D.li__ "Applicative functors"
           ]
       , D.p_
-          [ text "Another place we see this is the "
+          [ text_ "Another place we see this is the "
           , D.code__ "Alternative"
           , text
               " class, where composition fuses together collections and the identity element is the empty collection. "
           , D.code__ "Event"
-          , text " is a great candidate for an "
+          , text_ " is a great candidate for an "
           , D.code__ "Alternative"
-          , text " instance, so let's see what "
+          , text_ " instance, so let's see what "
           , D.code__ "alt"
-          , text "-ing events looks like!"
+          , text_ "-ing events looks like!"
           ]
       ]
   , sections:

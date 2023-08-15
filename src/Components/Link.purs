@@ -4,10 +4,10 @@ import Prelude
 
 import Contracts (Chapter(..), Page(..))
 import Deku.Attribute (Attribute, cb, (:=))
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.Core (Nut)
 import Deku.DOM as D
-import Deku.Listeners (click)
+import Deku.Listeners (click, click_)
 import Effect (Effect)
 import Navigation (PushState)
 import Router.ADT (Route(..))

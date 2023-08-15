@@ -1,14 +1,14 @@
-module Pages.FRP.Behaviors.Applicative.WhyBehaviorsAreNotMonads where
+module Pages.FRP.Polls.Applicative.WhyPollsAreNotMonads where
 
 import Prelude
 
 import Contracts (Subsection, subsection)
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 
-whyBehaviorsAreNotMonads :: Subsection
-whyBehaviorsAreNotMonads = subsection
-  { title: "Behaviors are monads"
+whyPollsAreNotMonads :: Subsection
+whyPollsAreNotMonads = subsection
+  { title: "Polls are monads"
   , matter: pure
       [ D.p_
           [ text

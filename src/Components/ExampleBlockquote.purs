@@ -2,14 +2,14 @@ module Components.ExampleBlockquote where
 
 import Prelude
 
-import Deku.Attributes (klass)
+import Deku.Attributes (klass, klass_)
 import Deku.Core (Nut)
 import Deku.DOM as D
 
 exampleBlockquote
   :: Array Nut
   -> Nut
-exampleBlockquote = D.blockquote [ klass "not-italic" ]
+exampleBlockquote = D.blockquote [ klass_ "not-italic" ]
 
 exampleBlockquoteWithHeight
   :: String

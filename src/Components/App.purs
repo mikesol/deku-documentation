@@ -7,7 +7,7 @@ import Components.BottomNav (bottomNav)
 import Components.Header (header)
 import Components.LeftMatter (leftMatter)
 import Components.Link (link, linkWithString)
-import Contracts (Content, Env(..), Page(..), Section(..), Subsection(..), EffectWithCancellers, contentToBehavior, getEnv)
+import Contracts (Content, Env(..), Page(..), Section(..), Subsection(..), EffectWithCancellers, contentToPoll, getEnv)
 import Control.Alt ((<|>))
 import Control.Monad.Free (foldFree)
 import Control.Monad.State (evalState, evalStateT, get, lift, put, runState)
@@ -20,14 +20,14 @@ import Data.NonEmpty (head, tail, (:|))
 import Data.Traversable (traverse)
 import Data.Tuple (Tuple(..), fst, snd)
 import Data.Tuple.Nested (type (/\), (/\))
-import Deku.Attribute ((:=))
-import Deku.Attributes (klass)
-import Deku.Control (text)
+import Deku.Attribute ((:=), (<:=>), (!:=))
+import Deku.Attributes (klass, klass_)
+import Deku.Control (text, text_)
 import Deku.Core (Nut)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (cycle, useState, (<#~>))
-import Deku.Listeners (click)
+import Deku.Listeners (click, click_)
 import Effect (Effect)
 import Effect.Ref as Ref
 import FRP.Event (Event, fix, bindToEffect, merge, sampleOnRight)
@@ -85,7 +85,7 @@ pageToContent (Page cp) = do
     )
   pure $ D.article_
     [ D.header
-        ( [ D.Class := "mb-9 space-y-1"
+        ( [ D.Class !:= "mb-9 space-y-1"
           ]
         )
         ( ( if cp.route == FourOhFour then []
@@ -101,7 +101,7 @@ pageToContent (Page cp) = do
               ]
           ) <>
             [ D.h1
-                ( [ D.Id := "getting-started"
+                ( [ D.Id !:= "getting-started"
                   , D.Class :=
                       "font-display text-3xl tracking-tight text-slate-900 dark:text-white"
                   ]
@@ -118,15 +118,15 @@ pageToContent (Page cp) = do
     , forceHighlightAff
     ]
 
-pageToBehaviorWithCancellers :: Env -> Page -> EffectWithCancellers Nut
-pageToBehaviorWithCancellers env = runWriterT
-  <<< foldFree (contentToBehavior env)
+pageToPollWithCancellers :: Env -> Page -> EffectWithCancellers Nut
+pageToPollWithCancellers env = runWriterT
+  <<< foldFree (contentToPoll env)
   <<< pageToContent
 
 pageEventToNut :: Env -> Event Page -> Event Nut
 pageEventToNut env p = map snd $ fix \i -> bindToEffect
   ( sampleOnRight ((once p $> (Tuple (pure unit) mempty)) <|> i)
-      (go <$> (pageToBehaviorWithCancellers env <$> p))
+      (go <$> (pageToPollWithCancellers env <$> p))
   )
   triggerFx
   where
@@ -208,7 +208,7 @@ app
     ( [ klass $ darkBoolean <#> if _ then "dark" else ""
       ]
     )
-    [ D.div ([ klass "bg-white dark:bg-slate-900" ])
+    [ D.div ([ klass_ "bg-white dark:bg-slate-900" ])
         [ header
             { pushState
             , darkBoolean
@@ -243,18 +243,18 @@ app
                 [ curPage <#~> \(Page cp) ->
                     if cp.route == FourOhFour then mempty
                     else D.nav
-                      ( [ D.Class := "w-56" ]
+                      ( [ D.Class !:= "w-56" ]
                       )
                       [ D.h2
-                          ( [ D.Id := "on-this-page-title"
+                          ( [ D.Id !:= "on-this-page-title"
                             , D.Class :=
                                 "font-display text-sm font-medium text-slate-900 dark:text-white"
                             ]
                           )
-                          [ text "On this page" ]
+                          [ text_ "On this page" ]
                       , D.ol
-                          ( [ D.Role := "list"
-                            , D.Class := "mt-4 space-y-3 text-sm"
+                          ( [ D.Role !:= "list"
+                            , D.Class !:= "mt-4 space-y-3 text-sm"
                             ]
                           )
                           ( flip evalState 0
@@ -311,7 +311,7 @@ app
                                                   [ text section.title ]
                                               ]
                                           , D.ol
-                                              ( [ D.Role := "list"
+                                              ( [ D.Role !:= "list"
                                                 , D.Class :=
                                                     "mt-2 space-y-3 pl-5 text-slate-500 dark:text-slate-400"
                                                 ]

@@ -11,8 +11,8 @@ import Data.Int (floor, pow)
 import Data.NonEmpty ((:|))
 import Data.Tuple.Nested ((/\))
 import Deku.Attribute (cb, (:=))
-import Deku.Attributes (klass)
-import Deku.Control (text)
+import Deku.Attributes (klass, klass_)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useMemoized')
@@ -35,11 +35,11 @@ app runExample = runExample Deku.do
   D.div_
     [ D.div_
         [ D.input
-            [ klass inputKls
-            , D.Xtype := "number"
-            , D.Min := "0"
-            , D.Max := "100"
-            , D.Value := "0"
+            [ klass_ inputKls
+            , D.Xtype !:= "number"
+            , D.Min !:= "0"
+            , D.Max !:= "100"
+            , D.Value !:= "0"
             , D.OnChange := cb \evt ->
                 traverse_ (valueAsNumber >=> floor >>> setNumber) $
                   (target >=> fromEventTarget) evt

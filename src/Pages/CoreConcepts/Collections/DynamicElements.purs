@@ -3,7 +3,7 @@ module Pages.CoreConcepts.Collections.DynamicElements where
 import Prelude
 
 import Contracts (Section, section)
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Pages.CoreConcepts.Collections.DynamicElements.InsertingInADifferentOrder (insertingInADifferentOrder)
 import Pages.CoreConcepts.Collections.DynamicElements.InterComponentCommunication (interComponentCommunication)
@@ -22,7 +22,7 @@ dynamicElements = section
           , text
               " hook to facilitate the rendering of dynamic collections. In the following section, we'll build intuition for "
           , D.code__ "useDyn"
-          , text " through a small Todo app."
+          , text_ " through a small Todo app."
           ]
       ]
   , subsections:

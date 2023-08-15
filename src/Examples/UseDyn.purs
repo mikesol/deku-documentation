@@ -1,21 +1,20 @@
 module Examples.UseDyn where
 
-import Deku.Toplevel (runInBody')
-import Effect (Effect)
 import Prelude
-import ExampleAssitant (ExampleSignature)
 
 import Data.Foldable (for_)
 import Data.String (Pattern(..), Replacement(..), replaceAll)
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute ((:=))
-import Deku.Attributes (klass)
-import Deku.Control (text)
+import Deku.Attribute ((!:=))
+import Deku.Attributes (klass_)
+import Deku.Control (text_)
 import Deku.DOM as D
 import Deku.Do as Deku
-import Deku.Hooks (useDynAtBeginning_, useState')
-import Deku.Listeners (click, keyUp)
-
+import Deku.Hooks (useDynAtBeginning, useState')
+import Deku.Listeners (click, keyUp_)
+import Deku.Toplevel (runInBody')
+import Effect (Effect)
+import ExampleAssitant (ExampleSignature)
 import Web.Event.Event (target)
 import Web.HTML (window)
 import Web.HTML.HTMLInputElement (fromEventTarget, value)
@@ -53,29 +52,29 @@ app runExample = runExample Deku.do
     top =
       D.div_
         [ D.input
-            [ D.Value := "Tasko primo"
-            , keyUp \evt -> do
+            [ D.Value !:= "Tasko primo"
+            , keyUp_ \evt -> do
                 when (code evt == "Enter") $
                   for_
                     ( (target >=> fromEventTarget)
                         (toEvent evt)
                     )
                     guardAgainstEmpty
-            , D.SelfT := setInput
-            , klass inputKls
+            , D.SelfT !:= setInput
+            , klass_ inputKls
             ]
             []
         , D.button
             [ click $ input <#> guardAgainstEmpty
-            , klass $ buttonClass "green"
+            , klass_ $ buttonClass "green"
             ]
-            [ text "Add" ]
+            [ text_ "Add" ]
         ]
   D.div_
     [ top
     , Deku.do
-        { value: t } <- useDynAtBeginning_ item
-        D.div_ [ text t ]
+        { value: t } <- useDynAtBeginning item
+        D.div_ [ text_ t ]
     ]
 
 main :: Effect Unit

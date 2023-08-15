@@ -9,7 +9,7 @@ import Assets (beluMomURL, belugaURL)
 import Control.Plus (empty)
 import Data.These (These(..))
 import Deku.Attribute (class Attr, Attribute, AttributeValue(..), unsafeAttribute, (:=))
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.Core (Nut)
 import Deku.DOM (unsafeCustomElement)
 
@@ -57,25 +57,25 @@ app :: ExampleSignature
 app runExample = runExample do
   discordMessages
     [ discordMessage
-        [ Author := "beluga"
+        [ Author !:= "beluga"
         , Avatar := belugaURL
         ]
-        [ text "mom" ]
+        [ text_ "mom" ]
     , discordMessage
-        [ Author := "belu-mom🌸"
+        [ Author !:= "belu-mom🌸"
         , Avatar := beluMomURL
         ]
-        [ text "yes beluga" ]
+        [ text_ "yes beluga" ]
     , discordMessage
-        [ Author := "beluga"
+        [ Author !:= "beluga"
         , Avatar := belugaURL
         ]
-        [ text "whos my dad?" ]
+        [ text_ "whos my dad?" ]
     , discordMessage
-        [ Author := "belu-mom🌸"
+        [ Author !:= "belu-mom🌸"
         , Avatar := beluMomURL
         ]
-        [ text "it's complicated..." ]
+        [ text_ "it's complicated..." ]
     ]
 
 main :: Effect Unit

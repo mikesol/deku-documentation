@@ -6,9 +6,9 @@ import Components.Link (link)
 import Contracts (Chapter(..), Page(..))
 import Data.Newtype (unwrap)
 import Data.NonEmpty ((:|))
-import Deku.Attribute ((:=))
-import Deku.Attributes (klass)
-import Deku.Control (text)
+import Deku.Attribute ((:=), (<:=>), (!:=))
+import Deku.Attributes (klass, klass_)
+import Deku.Control (text, text_)
 import Deku.Core (Nut)
 import Deku.DOM as D
 import FRP.Event (Event, merge)
@@ -24,7 +24,7 @@ pageLi
   -> Page
   -> Nut
 pageLi { pushState, pageIs, pageWas } (Page { route }) = D.li
-  [ D.Class := "relative" ]
+  [ D.Class !:= "relative" ]
   [ link pushState route
       [ klass $
           ( false :| merge
@@ -54,7 +54,7 @@ chapterLi opts (Chapter { title, pages }) = D.li_
       ]
       [ text title ]
   , D.ul
-      ( [ D.Role := "list"
+      ( [ D.Role !:= "list"
         , D.Class :=
             "mt-2 space-y-2 border-l-2 border-slate-100 dark:border-slate-800 lg:mt-4 lg:space-y-4 lg:border-slate-200"
         ]
@@ -69,7 +69,7 @@ leftMatter
      }
   -> Nut
 leftMatter opts = D.div
-  [ D.Class := "hidden lg:relative lg:block lg:flex-none" ]
+  [ D.Class !:= "hidden lg:relative lg:block lg:flex-none" ]
   [ D.div
       [ D.Class :=
           "absolute inset-y-0 right-0 w-[50vw] bg-slate-50 dark:hidden"
@@ -93,7 +93,7 @@ leftMatter opts = D.div
           [ D.Class :=
               "text-base lg:text-sm w-64 pr-8 xl:w-72 xl:pr-16"
           ]
-          [ D.ul ([ D.Role := "list", D.Class := "space-y-9" ])
+          [ D.ul ([ D.Role !:= "list", D.Class !:= "space-y-9" ])
               (chapterLi opts <$> unwrap docs)
           ]
       ]

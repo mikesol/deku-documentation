@@ -9,14 +9,14 @@ import Control.Plus (empty)
 import DarkModePreference (DarkModePreference(..))
 import Data.NonEmpty (NonEmpty)
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute ((:=))
-import Deku.Attributes (klass, src)
-import Deku.Control (text)
+import Deku.Attribute ((:=), (<:=>), (!:=))
+import Deku.Attributes (klass, klass_, src)
+import Deku.Control (text, text_)
 import Deku.Core (Nut)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState)
-import Deku.Listeners (click)
+import Deku.Listeners (click, click_)
 import Effect (Effect)
 import FRP.Dedup (dedupNE)
 import FRP.Event (Event)
@@ -83,35 +83,35 @@ header
             "sticky top-0 z-50 flex flex-wrap items-center justify-between bg-white px-4 py-5 shadow-md shadow-slate-900/5 transition duration-500 dark:shadow-none sm:px-6 lg:px-8 dark:bg-slate-900/95 dark:backdrop-blur dark:[@supports(backdrop-filter:blur(0))]:bg-slate-900/75"
         ]
       )
-      [ D.div [ D.Class := "mr-6 flex lg:hidden" ]
+      [ D.div [ D.Class !:= "mr-6 flex lg:hidden" ]
           [ D.button
-              ( [ D.Xtype := "button"
-                , D.Class := "relative"
+              ( [ D.Xtype !:= "button"
+                , D.Class !:= "relative"
                 , click do
                     setNavModalOpen true
                     modalClick (setNavModalOpen false)
                 ]
               )
               [ D.svg
-                  ( [ D.AriaHidden := "true"
-                    , D.ViewBox := "0 0 24 24"
-                    , D.Fill := "none"
-                    , D.StrokeWidth := "2"
-                    , D.StrokeLinecap := "round"
-                    , D.Class := "h-6 w-6 stroke-slate-500"
+                  ( [ D.AriaHidden !:= "true"
+                    , D.ViewBox !:= "0 0 24 24"
+                    , D.Fill !:= "none"
+                    , D.StrokeWidth !:= "2"
+                    , D.StrokeLinecap !:= "round"
+                    , D.Class !:= "h-6 w-6 stroke-slate-500"
                     ]
                   )
-                  [ D.path [ D.D := "M4 7h16M4 12h16M4 17h16" ] [] ]
+                  [ D.path [ D.D !:= "M4 7h16M4 12h16M4 17h16" ] [] ]
               ]
           , leftMatterMobile
               { darkBoolean, navModalOpen, pageIs, pageWas, pushState }
           ]
-      , D.div [ D.Class := "relative flex flex-grow basis-0 items-center" ]
+      , D.div [ D.Class !:= "relative flex flex-grow basis-0 items-center" ]
           [ link' pushState GettingStarted empty
               [ D.img
                   ( [ src $ darkBoolean <#> \dk ->
                         if dk then dekulogodarkURL else dekulogoURL
-                    , klass "w-20 object-contain"
+                    , klass_ "w-20 object-contain"
                     ]
                   )
                   []
@@ -122,18 +122,18 @@ header
               "relative flex basis-0 justify-end gap-6 sm:gap-8 md:flex-grow"
           ]
           [ D.div
-              ( [ D.Class := "relative z-10"
+              ( [ D.Class !:= "relative z-10"
                 ]
               )
               [ D.label
-                  ( [ D.Class := "sr-only"
+                  ( [ D.Class !:= "sr-only"
                     ]
                   )
-                  [ text "Theme" ]
+                  [ text_ "Theme" ]
               , D.button
                   ( [ D.Class :=
                         "flex h-6 w-6 items-center justify-center rounded-lg shadow-md shadow-black/5 ring-1 ring-black/5 dark:bg-slate-700 dark:ring-inset dark:ring-white/5"
-                    , D.Xtype := "button"
+                    , D.Xtype !:= "button"
                     , click $ darkModeModalOpen <#>
                         if _ then (pure unit)
                         else do
@@ -142,15 +142,15 @@ header
                     ]
                   )
                   [ D.svg
-                      ( [ D.AriaHidden := "true"
-                        , D.ViewBox := "0 0 16 16"
+                      ( [ D.AriaHidden !:= "true"
+                        , D.ViewBox !:= "0 0 16 16"
                         , klass $
                             dedupNE isLightMode <#> keepDarkModeMenuOption
                         ]
                       )
                       [ D.path
-                          ( [ D.FillRule := "evenodd"
-                            , D.ClipRule := "evenodd"
+                          ( [ D.FillRule !:= "evenodd"
+                            , D.ClipRule !:= "evenodd"
                             , D.D :=
                                 "M7 1a1 1 0 0 1 2 0v1a1 1 0 1 1-2 0V1Zm4 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm2.657-5.657a1 1 0 0 0-1.414 0l-.707.707a1 1 0 0 0 1.414 1.414l.707-.707a1 1 0 0 0 0-1.414Zm-1.415 11.313-.707-.707a1 1 0 0 1 1.415-1.415l.707.708a1 1 0 0 1-1.415 1.414ZM16 7.999a1 1 0 0 0-1-1h-1a1 1 0 1 0 0 2h1a1 1 0 0 0 1-1ZM7 14a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1Zm-2.536-2.464a1 1 0 0 0-1.414 0l-.707.707a1 1 0 0 0 1.414 1.414l.707-.707a1 1 0 0 0 0-1.414Zm0-8.486A1 1 0 0 1 3.05 4.464l-.707-.707a1 1 0 0 1 1.414-1.414l.707.707ZM3 8a1 1 0 0 0-1-1H1a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1Z"
                             ]
@@ -158,15 +158,15 @@ header
                           []
                       ]
                   , D.svg
-                      ( [ D.AriaHidden := "true"
-                        , D.ViewBox := "0 0 16 16"
+                      ( [ D.AriaHidden !:= "true"
+                        , D.ViewBox !:= "0 0 16 16"
                         , klass $
                             dedupNE isDarkMode <#> keepDarkModeMenuOption
                         ]
                       )
                       [ D.path
-                          ( [ D.FillRule := "evenodd"
-                            , D.ClipRule := "evenodd"
+                          ( [ D.FillRule !:= "evenodd"
+                            , D.ClipRule !:= "evenodd"
                             , D.D :=
                                 "M7.23 3.333C7.757 2.905 7.68 2 7 2a6 6 0 1 0 0 12c.68 0 .758-.905.23-1.332A5.989 5.989 0 0 1 5 8c0-1.885.87-3.568 2.23-4.668ZM12 5a1 1 0 0 1 1 1 1 1 0 0 0 1 1 1 1 0 1 1 0 2 1 1 0 0 0-1 1 1 1 0 1 1-2 0 1 1 0 0 0-1-1 1 1 0 1 1 0-2 1 1 0 0 0 1-1 1 1 0 0 1 1-1Z"
                             ]
@@ -174,16 +174,16 @@ header
                           []
                       ]
                   , D.svg
-                      ( [ D.AriaHidden := "true"
-                        , D.ViewBox := "0 0 16 16"
+                      ( [ D.AriaHidden !:= "true"
+                        , D.ViewBox !:= "0 0 16 16"
                         , klass $
                             dedupNE isUsingSystemPreference <#>
                               keepDarkModeMenuOption
                         ]
                       )
                       [ D.path
-                          ( [ D.FillRule := "evenodd"
-                            , D.ClipRule := "evenodd"
+                          ( [ D.FillRule !:= "evenodd"
+                            , D.ClipRule !:= "evenodd"
                             , D.D :=
                                 "M7 1a1 1 0 0 1 2 0v1a1 1 0 1 1-2 0V1Zm4 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm2.657-5.657a1 1 0 0 0-1.414 0l-.707.707a1 1 0 0 0 1.414 1.414l.707-.707a1 1 0 0 0 0-1.414Zm-1.415 11.313-.707-.707a1 1 0 0 1 1.415-1.415l.707.708a1 1 0 0 1-1.415 1.414ZM16 7.999a1 1 0 0 0-1-1h-1a1 1 0 1 0 0 2h1a1 1 0 0 0 1-1ZM7 14a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1Zm-2.536-2.464a1 1 0 0 0-1.414 0l-.707.707a1 1 0 0 0 1.414 1.414l.707-.707a1 1 0 0 0 0-1.414Zm0-8.486A1 1 0 0 1 3.05 4.464l-.707-.707a1 1 0 0 1 1.414-1.414l.707.707ZM3 8a1 1 0 0 0-1-1H1a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1Z"
                             ]
@@ -191,15 +191,15 @@ header
                           []
                       ]
                   , D.svg
-                      ( [ D.AriaHidden := "true"
-                        , D.ViewBox := "0 0 16 16"
+                      ( [ D.AriaHidden !:= "true"
+                        , D.ViewBox !:= "0 0 16 16"
                         , D.Class :=
                             "hidden h-4 w-4 fill-slate-400 [.dark[data-theme=system]_&]:block"
                         ]
                       )
                       [ D.path
-                          ( [ D.FillRule := "evenodd"
-                            , D.ClipRule := "evenodd"
+                          ( [ D.FillRule !:= "evenodd"
+                            , D.ClipRule !:= "evenodd"
                             , D.D :=
                                 "M7.23 3.333C7.757 2.905 7.68 2 7 2a6 6 0 1 0 0 12c.68 0 .758-.905.23-1.332A5.989 5.989 0 0 1 5 8c0-1.885.87-3.568 2.23-4.668ZM12 5a1 1 0 0 1 1 1 1 1 0 0 0 1 1 1 1 0 1 1 0 2 1 1 0 0 0-1 1 1 1 0 1 1-2 0 1 1 0 0 0-1-1 1 1 0 1 1 0-2 1 1 0 0 0 1-1 1 1 0 0 1 1-1Z"
                             ]
@@ -213,13 +213,13 @@ header
                           ( _ <>
                               "absolute top-full left-1/2 mt-3 w-36 -translate-x-1/2 space-y-1 rounded-xl bg-white p-3 text-sm font-medium shadow-md shadow-black/5 ring-1 ring-black/5 dark:bg-slate-800 dark:ring-white/5"
                           )
-                    , D.Role := "listbox"
+                    , D.Role !:= "listbox"
                     ]
                   )
                   [ D.li
                       ( [ klass $ isLightMode <#> changeClassSelection
                         , click (setDark LightMode)
-                        , D.Role := "option"
+                        , D.Role !:= "option"
                         ]
                       )
                       [ D.div
@@ -227,15 +227,15 @@ header
                               "rounded-md bg-white p-1 shadow ring-1 ring-slate-900/5 dark:bg-slate-700 dark:ring-inset dark:ring-white/5"
                           ]
                           [ D.svg
-                              ( [ D.AriaHidden := "true"
-                                , D.ViewBox := "0 0 16 16"
+                              ( [ D.AriaHidden !:= "true"
+                                , D.ViewBox !:= "0 0 16 16"
                                 , klass $ isLightMode <#>
                                     changeSVGClassSelection
                                 ]
                               )
                               [ D.path
-                                  ( [ D.FillRule := "evenodd"
-                                    , D.ClipRule := "evenodd"
+                                  ( [ D.FillRule !:= "evenodd"
+                                    , D.ClipRule !:= "evenodd"
                                     , D.D :=
                                         "M7 1a1 1 0 0 1 2 0v1a1 1 0 1 1-2 0V1Zm4 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm2.657-5.657a1 1 0 0 0-1.414 0l-.707.707a1 1 0 0 0 1.414 1.414l.707-.707a1 1 0 0 0 0-1.414Zm-1.415 11.313-.707-.707a1 1 0 0 1 1.415-1.415l.707.708a1 1 0 0 1-1.415 1.414ZM16 7.999a1 1 0 0 0-1-1h-1a1 1 0 1 0 0 2h1a1 1 0 0 0 1-1ZM7 14a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1Zm-2.536-2.464a1 1 0 0 0-1.414 0l-.707.707a1 1 0 0 0 1.414 1.414l.707-.707a1 1 0 0 0 0-1.414Zm0-8.486A1 1 0 0 1 3.05 4.464l-.707-.707a1 1 0 0 1 1.414-1.414l.707.707ZM3 8a1 1 0 0 0-1-1H1a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1Z"
                                     ]
@@ -243,11 +243,11 @@ header
                                   []
                               ]
                           ]
-                      , D.div [ D.Class := "ml-3" ] [ text "Light" ]
+                      , D.div [ D.Class !:= "ml-3" ] [ text_ "Light" ]
                       ]
                   , D.li
                       ( [ klass $ isDarkMode <#> changeClassSelection
-                        , D.Role := "option"
+                        , D.Role !:= "option"
                         , click (setDark DarkMode)
                         ]
                       )
@@ -256,15 +256,15 @@ header
                               "rounded-md bg-white p-1 shadow ring-1 ring-slate-900/5 dark:bg-slate-700 dark:ring-inset dark:ring-white/5"
                           ]
                           [ D.svg
-                              ( [ D.AriaHidden := "true"
-                                , D.ViewBox := "0 0 16 16"
+                              ( [ D.AriaHidden !:= "true"
+                                , D.ViewBox !:= "0 0 16 16"
                                 , klass $ isDarkMode <#>
                                     changeSVGClassSelection
                                 ]
                               )
                               [ D.path
-                                  ( [ D.FillRule := "evenodd"
-                                    , D.ClipRule := "evenodd"
+                                  ( [ D.FillRule !:= "evenodd"
+                                    , D.ClipRule !:= "evenodd"
                                     , D.D :=
                                         "M7.23 3.333C7.757 2.905 7.68 2 7 2a6 6 0 1 0 0 12c.68 0 .758-.905.23-1.332A5.989 5.989 0 0 1 5 8c0-1.885.87-3.568 2.23-4.668ZM12 5a1 1 0 0 1 1 1 1 1 0 0 0 1 1 1 1 0 1 1 0 2 1 1 0 0 0-1 1 1 1 0 1 1-2 0 1 1 0 0 0-1-1 1 1 0 1 1 0-2 1 1 0 0 0 1-1 1 1 0 0 1 1-1Z"
                                     ]
@@ -272,12 +272,12 @@ header
                                   []
                               ]
                           ]
-                      , D.div [ D.Class := "ml-3" ] [ text "Dark" ]
+                      , D.div [ D.Class !:= "ml-3" ] [ text_ "Dark" ]
                       ]
                   , D.li
                       ( [ klass $ isUsingSystemPreference <#>
                             changeClassSelection
-                        , D.Role := "option"
+                        , D.Role !:= "option"
                         , click (setDark SystemDarkModePreference)
                         ]
                       )
@@ -286,15 +286,15 @@ header
                               "rounded-md bg-white p-1 shadow ring-1 ring-slate-900/5 dark:bg-slate-700 dark:ring-inset dark:ring-white/5"
                           ]
                           [ D.svg
-                              ( [ D.AriaHidden := "true"
-                                , D.ViewBox := "0 0 16 16"
+                              ( [ D.AriaHidden !:= "true"
+                                , D.ViewBox !:= "0 0 16 16"
                                 , klass $ isUsingSystemPreference <#>
                                     changeSVGClassSelection
                                 ]
                               )
                               [ D.path
-                                  ( [ D.FillRule := "evenodd"
-                                    , D.ClipRule := "evenodd"
+                                  ( [ D.FillRule !:= "evenodd"
+                                    , D.ClipRule !:= "evenodd"
                                     , D.D :=
                                         "M1 4a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v4a3 3 0 0 1-3 3h-1.5l.31 1.242c.084.333.36.573.63.808.091.08.182.158.264.24A1 1 0 0 1 11 15H5a1 1 0 0 1-.704-1.71c.082-.082.173-.16.264-.24.27-.235.546-.475.63-.808L5.5 11H4a3 3 0 0 1-3-3V4Zm3-1a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H4Z"
                                     ]
@@ -302,18 +302,18 @@ header
                                   []
                               ]
                           ]
-                      , D.div [ D.Class := "ml-3" ] [ text "System" ]
+                      , D.div [ D.Class !:= "ml-3" ] [ text_ "System" ]
                       ]
                   ]
               ]
           , D.a
-              ( [ D.Class := "group"
-                , D.Href := "https://github.com/mikesol/purescript-deku"
+              ( [ D.Class !:= "group"
+                , D.Href !:= "https://github.com/mikesol/purescript-deku"
                 ]
               )
               [ D.svg
-                  ( [ D.AriaHidden := "true"
-                    , D.ViewBox := "0 0 16 16"
+                  ( [ D.AriaHidden !:= "true"
+                    , D.ViewBox !:= "0 0 16 16"
                     , D.Class :=
                         "h-6 w-6 fill-slate-400 group-hover:fill-slate-500 dark:group-hover:fill-slate-300"
                     ]

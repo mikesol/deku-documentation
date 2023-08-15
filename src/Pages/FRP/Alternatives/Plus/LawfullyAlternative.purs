@@ -3,8 +3,8 @@ module Pages.FRP.Alternatives.Plus.LawfullyAlternative where
 import Prelude
 
 import Contracts (Env(..), Subsection, getEnv, subsection)
-import Deku.Attributes (klass)
-import Deku.Control (text)
+import Deku.Attributes (klass, klass_)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Router.ADT (Route(..))
 
@@ -14,59 +14,59 @@ lawfullyAlternative = subsection
   , matter: do
       Env { routeLink } <- getEnv
       pure [ D.p_
-          [ text "Let's verify that "
+          [ text_ "Let's verify that "
           , D.code__ "alt"
-          , text " and "
+          , text_ " and "
           , D.code__ "empty"
-          , text " fulfill the laws for "
+          , text_ " fulfill the laws for "
           , D.code__ "Alternative"
-          , text ", namely:"
+          , text_ ", namely:"
           ]
       , D.ul_
           [ D.li_
               [ D.b__ "Distributivity"
-              , text ": "
+              , text_ ": "
               , D.code__ "(f <|> g) <*> x == (f <*> x) <|> (g <*> x)"
               ]
           , D.li_
               [ D.b__ "Annihilation"
-              , text ": "
+              , text_ ": "
               , D.code__ "empty <*> f = empty"
               ]
           ]
       , D.p_
-          [ text "The "
+          [ text_ "The "
           , D.b__ "Distributivity"
-          , text " condition is fulfilled by thinking of "
+          , text_ " condition is fulfilled by thinking of "
           , D.code__ "alt"
-          , text " as the conjunction "
+          , text_ " as the conjunction "
           , D.b__ "or"
-          , text ", meaning that it's one event or the other. The function "
+          , text_ ", meaning that it's one event or the other. The function "
           , D.code__ "f"
-          , text " "
+          , text_ " "
           , D.b__ "or"
-          , text " "
+          , text_ " "
           , D.code__ "g"
-          , text " applied to "
+          , text_ " applied to "
           , D.code__ "x"
-          , text " is the same as the function "
+          , text_ " is the same as the function "
           , D.code__ "f"
-          , text " applied to "
+          , text_ " applied to "
           , D.code__ "x"
-          , text " "
+          , text_ " "
           , D.b__ "or"
-          , text " the function "
+          , text_ " the function "
           , D.code__ "g"
-          , text " applied to "
+          , text_ " applied to "
           , D.code__ "x"
-          , text ". "
+          , text_ ". "
           , D.b__ "Annihalation "
-          , text " is true because, as we learned in the "
+          , text_ " is true because, as we learned in the "
           , routeLink Applicatives
           , text
               " section, the composite event only fires after both sides are fired. As one side never fires, the whole thing never fires, so it is empty."
           ]
-      , D.div [ klass "text-right" ] [ text "∎" ]
+      , D.div [ klass_ "text-right" ] [ text_ "∎" ]
 
       ]
   }

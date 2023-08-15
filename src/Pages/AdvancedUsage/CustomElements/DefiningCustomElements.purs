@@ -3,7 +3,7 @@ module Pages.AdvancedUsage.CustomElements.DefiningCustomElements where
 import Prelude
 
 import Contracts (Section, section)
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Pages.AdvancedUsage.CustomElements.DefiningCustomElements.AddingCustomElementsToTheDOM (addingCustomElementsToTheDOM)
 import Pages.AdvancedUsage.CustomElements.DefiningCustomElements.TheUnsafeCustomElementFunction (theUnsafeCustomElementFunction)

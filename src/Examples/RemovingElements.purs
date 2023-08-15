@@ -11,14 +11,14 @@ import Data.String (Pattern(..), Replacement(..), replaceAll)
 import Data.Tuple (Tuple(..))
 import Data.Tuple.Nested ((/\))
 import Deku.Attribute (cb, (:=))
-import Deku.Attributes (klass)
-import Deku.Control (text)
+import Deku.Attributes (klass, klass_)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useDyn_, useState, useState')
 import Deku.Listeners (click, keyUp)
 
-import FRP.Behavior (sampleBy, stepNE)
+import FRP.Poll (sampleBy, stepNE)
 import Web.Event.Event (target)
 import Web.HTML (window)
 import Web.HTML.HTMLInputElement (fromEventTarget, value, valueAsNumber)
@@ -57,21 +57,21 @@ app runExample = runExample Deku.do
     top =
       D.div_
         [ D.input
-            [ D.Value := "Tasko primo"
+            [ D.Value !:= "Tasko primo"
             , keyUp \evt -> do
                 when (code evt == "Enter") $
                   for_
                     ((target >=> fromEventTarget) (toEvent evt))
                     guardAgainstEmpty
             , D.SelfT := setInput
-            , klass inputKls
+            , klass_ inputKls
             ]
             []
         , D.input
-            [ klass inputKls
-            , D.Xtype := "number"
-            , D.Min := "0"
-            , D.Value := "0"
+            [ klass_ inputKls
+            , D.Xtype !:= "number"
+            , D.Min !:= "0"
+            , D.Value !:= "0"
             , D.OnChange := cb \evt ->
                 traverse_ (valueAsNumber >=> floor >>> setPos) $
                   (target >=> fromEventTarget) evt
@@ -79,9 +79,9 @@ app runExample = runExample Deku.do
             []
         , D.button
             [ click $ input <#> guardAgainstEmpty
-            , klass $ buttonClass "green"
+            , klass_ $ buttonClass "green"
             ]
-            [ text "Add" ]
+            [ text_ "Add" ]
         ]
   D.div_
     [ top
@@ -94,12 +94,12 @@ app runExample = runExample Deku.do
               [ klass $ "ml-2 " <> buttonClass "indigo"
               , click (sendTo 0)
               ]
-              [ text "Prioritize" ]
+              [ text_ "Prioritize" ]
           , D.button
               [ klass $ "ml-2 " <> buttonClass "pink"
               , click remove
               ]
-              [ text "Delete" ]
+              [ text_ "Delete" ]
           ]
     ]
 

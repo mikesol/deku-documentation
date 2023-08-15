@@ -1,4 +1,4 @@
-module Pages.FRP.Behaviors.OtherInstances.BehaviorsAsHeytingAlgebras where
+module Pages.FRP.Polls.OtherInstances.PollsAsHeytingAlgebras where
 
 import Prelude
 
@@ -9,13 +9,13 @@ import Deku.DOM as D
 import Deku.Pursx ((~~))
 import Type.Proxy (Proxy(..))
 
-behaviorsAsHeytingAlgebras :: Subsection
-behaviorsAsHeytingAlgebras = subsection
-  { title: "Behaviors as Heyting Algebras"
+pollsAsHeytingAlgebras :: Subsection
+pollsAsHeytingAlgebras = subsection
+  { title: "Polls as Heyting Algebras"
   , matter: pure
       [ ( Proxy
             :: _
-                 "<p><code>Behavior</code>s, can act as a wrapper around arbitrary Heyting algebras so that you can <code>not</code>, <code>or</code>, and/or <code>and</code> them with reckless abandon.</p>"
+                 "<p><code>Poll</code>s, can act as a wrapper around arbitrary Heyting algebras so that you can <code>not</code>, <code>or</code>, and/or <code>and</code> them with reckless abandon.</p>"
         ) ~~ {}
       ]
   }

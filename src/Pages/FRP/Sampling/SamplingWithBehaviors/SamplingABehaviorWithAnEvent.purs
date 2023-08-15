@@ -1,35 +1,35 @@
-module Pages.FRP.Sampling.SamplingWithBehaviors.SamplingABehaviorWithAnEvent where
+module Pages.FRP.Sampling.SamplingWithPolls.SamplingAPollWithAnEvent where
 
 import Prelude
 
 import Components.Code (psCode)
 import Contracts (CollapseState(..), Subsection, getExample, subsection)
 import Data.Maybe (Maybe(..))
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Examples as Examples
 
-samplingABehaviorWithAnEvent :: Subsection
-samplingABehaviorWithAnEvent = subsection
-  { title: "Sampling a behavior with an event"
+samplingAPollWithAnEvent :: Subsection
+samplingAPollWithAnEvent = subsection
+  { title: "Sampling a poll with an event"
   , matter: do
-      sampleBehavior <- getExample StartCollapsed (Just "h-96") Examples.SamplingABehaviorWithAnEvent
+      samplePoll <- getExample StartCollapsed (Just "h-96") Examples.SamplingAPollWithAnEvent
       pure [ D.p_
           [ text
-              "The easiest way to sample a behavior with an event is to do what the signature of "
-          , D.code__ "Behavior"
+              "The easiest way to sample a poll with an event is to do what the signature of "
+          , D.code__ "Poll"
           , text
               " is inviting, nay enticing us to do, namely function application."
           ]
       , psCode
-          """type Behavior a = forall b. Event (a -> b) -> Event b
-sample :: forall a b. Behavior a -> Event (a -> b) -> Event b
+          """type Poll a = forall b. Event (a -> b) -> Event b
+sample :: forall a b. Poll a -> Event (a -> b) -> Event b
 sample = ($)"""
-      , D.p_ [ D.b__ "tl;dr - sampling behaviors = $" ]
+      , D.p_ [ D.b__ "tl;dr - sampling polls = $" ]
       , D.p_
           [ text
-              "Here's an example of an event that consults a random behavior every two seconds. Note that the event sampling a \"random user behavior\", meaning that the conceptual model is that at any time the service is measured, there's always a random user."
+              "Here's an example of an event that consults a random poll every two seconds. Note that the event sampling a \"random user poll\", meaning that the conceptual model is that at any time the service is measured, there's always a random user."
           ]
-      , sampleBehavior
+      , samplePoll
       ]
   }

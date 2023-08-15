@@ -5,12 +5,12 @@ import Effect (Effect)
 import Prelude
 
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass)
-import Deku.Control (text)
+import Deku.Attributes (klass, klass_)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState')
-import Deku.Listeners (click)
+import Deku.Listeners (click, click_)
 import ExampleAssitant (ExampleSignature)
 
 buttonClass =
@@ -26,7 +26,7 @@ app runExample = runExample Deku.do
   setKlass2 /\ klass2 <- useState'
   let
     button setter txt = D.button
-      [ klass buttonClass, click (setter txt) ]
+      [ klass_ buttonClass, click (setter txt) ]
       [ text txt ]
   D.div_
     [ D.div_ $
@@ -37,10 +37,10 @@ app runExample = runExample Deku.do
         ]
     , D.div_
         [ D.span
-            [ klass "text-sm text-green-500"
+            [ klass_ "text-sm text-green-500"
             , klass ((klass1 <#> (_ <> " ")) <> klass2)
             ]
-            [ text "Hello!" ]
+            [ text_ "Hello!" ]
         ]
     ]
 

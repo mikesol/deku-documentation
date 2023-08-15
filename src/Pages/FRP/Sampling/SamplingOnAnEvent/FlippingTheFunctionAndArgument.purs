@@ -5,7 +5,7 @@ import Prelude
 import Components.Code (psCode)
 import Contracts (CollapseState(..), Subsection, getExample, subsection)
 import Data.Maybe (Maybe(..))
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Examples as Examples
 
@@ -16,13 +16,13 @@ flippingTheFunctionAndArgument = subsection
      example <- getExample StartCollapsed Nothing Examples.FlippingTheFunctionAndArgument
      pure
       [ D.p_
-          [ text "We can flip which event controls time by using "
+          [ text_ "We can flip which event controls time by using "
           , D.code__ "sampleOnLeft"
-          , text " aka "
+          , text_ " aka "
           , D.code__ "<**|>"
-          , text ". The signature is the same as "
+          , text_ ". The signature is the same as "
           , D.code__ "sampleOnRight"
-          , text ", namely:"
+          , text_ ", namely:"
           ]
       , psCode
           """sampleOnLeft :: forall a b. event a -> event (a -> b) -> event b"""

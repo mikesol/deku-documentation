@@ -13,13 +13,13 @@ import Data.List (List(..))
 import Data.Maybe (Maybe(..))
 import Data.String (Pattern(..), Replacement(..), replaceAll, split, drop, take)
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute ((:=))
-import Deku.Control (text)
+import Deku.Attribute ((:=), (<:=>), (!:=))
+import Deku.Control (text, text_)
 import Deku.Core (Nut)
 import Deku.DOM as D
 import Deku.Hooks (useState')
 import Deku.Do as Deku
-import Deku.Listeners (click)
+import Deku.Listeners (click, click_)
 import Dodo (plainText, print, twoSpaces)
 import Components.HTML2Deku.HalogenParser (HtmlAttribute(..), HtmlNode(..))
 import Components.HTML2Deku.HalogenParser as HalogenParser
@@ -122,7 +122,7 @@ html2deku = Deku.do
   setInput /\ input <- useState'
   D.div_
     [ D.div_
-        [ D.span [ D.Class := "text-xl" ] [ text "html2deku" ]
+        [ D.span [ D.Class !:= "text-xl" ] [ text_ "html2deku" ]
         , D.button
             [ D.Class :=
                 "ml-2 inline-flex items-center rounded border border-transparent bg-indigo-600 px-2.5 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
@@ -134,12 +134,12 @@ html2deku = Deku.do
                   Right res -> setPurs (toDeku res)
             ]
 
-            [ text "Convert >" ]
+            [ text_ "Convert >" ]
         ]
     , D.div_
         [ D.textarea
-            [ D.Rows := "6"
-            , D.Class := "border-2 w-full"
+            [ D.Rows !:= "6"
+            , D.Class !:= "border-2 w-full"
             , D.SelfT := setInput
             ]
 
@@ -147,8 +147,8 @@ html2deku = Deku.do
         ]
     , D.div_
         [ D.textarea
-            [ D.Rows := "6"
-            , D.Class := "border-2 w-full"
+            [ D.Rows !:= "6"
+            , D.Class !:= "border-2 w-full"
             , D.Value := purs
             ]
 

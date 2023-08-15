@@ -6,8 +6,8 @@ import Assets (cruiseURL, nicholsonURL)
 import Components.Code (psCodeWithLink)
 import Components.ExampleBlockquote (exampleBlockquote)
 import Contracts (Subsection, subsection)
-import Deku.Attribute ((:=))
-import Deku.Control (text)
+import Deku.Attribute ((:=), (<:=>), (!:=))
+import Deku.Control (text, text_)
 import Deku.Core (Hook)
 import Deku.DOM as D
 import Deku.Do as Deku
@@ -28,9 +28,9 @@ theAnatomyOfAHook = subsection
           [ text
               "The first step on your journey to a custom hook is saying to yourself \"I need a custom hook.\" Now that you've gotten that out of the way, Deku provides a type "
           , D.code__ "Hook a"
-          , text " that allows you to construct a hook of type "
+          , text_ " that allows you to construct a hook of type "
           , D.code__ "a"
-          , text ". In its simplest form, it looks like this:"
+          , text_ ". In its simplest form, it looks like this:"
           ]
       , psCodeWithLink Examples.CustomHook1
       , exampleBlockquote
@@ -43,7 +43,7 @@ theAnatomyOfAHook = subsection
                 [ text fortyTwo ]
           ]
       , D.p_
-          [ text "Note that the "
+          [ text_ "Note that the "
           , D.code__ "Hook"
           , text
               " type constructor is actually a function that takes the hook creator as an argument and returns whatever is in your hook passed through that creator. The flow may seem a bit odd at first, but you'll get the hang of it! Just remember: to make a hook, make sure to accept a "
@@ -72,12 +72,12 @@ theAnatomyOfAHook = subsection
               r1 <- hook1
               r2 <- hook2
               D.div_
-                [ D.p_ [ text "I want the ", D.code__ $ show r1, text "th!" ]
+                [ D.p_ [ text_ "I want the ", D.code__ $ show r1, text_ "th!" ]
                 , D.img [D.Src := cruiseURL] []
                 , D.p_
-                    [ text "You can't handle the "
+                    [ text_ "You can't handle the "
                     , D.code__ $ show r2
-                    , text "th!"
+                    , text_ "th!"
                     ]
                 , D.img [D.Src := nicholsonURL] []
                 ]

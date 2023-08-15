@@ -7,19 +7,18 @@ import Data.NonEmpty (NonEmpty, (:|))
 import Data.String (replaceAll, Pattern(..), Replacement(..))
 import Data.Tuple (Tuple(..))
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute ((:=))
-import Deku.Attributes (klass)
+import Deku.Attribute ((:=), (<:=>), (!:=))
+import Deku.Attributes (klass, klass_)
 import Deku.Control (globalPortal1, portal1, text)
 import Deku.Core (Nut)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (guard, useState, (<#~>))
-import Deku.Listeners (click)
-import Deku.NonEmpty (rehead)
+import Deku.Listeners (click, click_)
 import Deku.Toplevel (runInBody')
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
-import FRP.Behavior (sampleStepping)
+import FRP.Poll (sampleStepping)
 import FRP.Event (Event)
 import Web.HTML.HTMLMediaElement (play)
 import Web.HTML.HTMLVideoElement (toHTMLMediaElement)
@@ -44,7 +43,7 @@ moveSpriteHere { video, square, setSquare, at } = D.a
       [ D.Class :=
           "cursor-pointer mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
       ]
-      [ text "Move sprite here"
+      [ text_ "Move sprite here"
       , guard (square <#> (_ == at)) video
       ]
   ]
@@ -57,11 +56,11 @@ vid2URL Video4 = "https://media.giphy.com/media/7T8LajxmBkz8gmYcRB/giphy.mp4"
 
 myVideo :: NonEmpty Event Boolean -> String -> Nut
 myVideo bang vid = D.video
-  [ D.Width := "175"
-  , D.Height := "175"
-  , D.Autoplay := "true"
-  , D.Loop := "true"
-  , D.Muted := "true"
+  [ D.Width !:= "175"
+  , D.Height !:= "175"
+  , D.Autoplay !:= "true"
+  , D.Loop !:= "true"
+  , D.Muted !:= "true"
   , D.SelfT :=
       ( bang <#> \tf e ->
           if not tf then pure unit
@@ -98,14 +97,14 @@ app runExample = runExample Deku.do
         "https://media.giphy.com/media/3o6Zt6GFP75DlxnDXy/giphy.mp4"
     )
   D.div_
-    [ D.div [ klass "flex" ]
+    [ D.div [ klass_ "flex" ]
         [ guard globalVideoPresence $ D.button
-            [ klass $ buttonClass "indigo"
+            [ klass_ $ buttonClass "indigo"
             , click $ videoURL <#> rotator >>> setVideoURL
             ]
-            [ text "Shuffle video" ]
+            [ text_ "Shuffle video" ]
         , D.button
-            [ klass $ buttonClass "indigo"
+            [ klass_ $ buttonClass "indigo"
             , click $ globalVideoPresence <#> not >>>
                 setGlobalVideoPresence
             ]
@@ -125,7 +124,7 @@ app runExample = runExample Deku.do
               let
                 switchable = globalVideo <#~>
                   if _ then vid else globalVid
-              D.div [ klass "grid grid-cols-2" ]
+              D.div [ klass_ "grid grid-cols-2" ]
                 [ moveSpriteHere
                     { video: switchable, square, setSquare, at: TL }
                 , moveSpriteHere

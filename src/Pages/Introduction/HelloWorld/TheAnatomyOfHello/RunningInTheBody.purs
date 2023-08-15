@@ -4,8 +4,8 @@ import Prelude
 
 import Components.Code (psCode)
 import Contracts (Env(..), Subsection, getEnv, subsection)
-import Deku.Attribute ((:=))
-import Deku.Control (text)
+import Deku.Attribute ((:=), (<:=>), (!:=))
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Router.ADT (Route(..))
 
@@ -24,10 +24,10 @@ runningInTheBody = subsection
                 [ D.Href :=
                     "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body"
                 ]
-                [ text "body" ]
+                [ text_ "body" ]
             , text
                 " of a webpage. This is not the only way, however. You can also embed a Deku app in an arbitrary element, or you could avoid embedding it entirely and instead render it as a "
-            , D.code_ [ text "String" ]
+            , D.code_ [ text_ "String" ]
             , text
                 " of HTML, for example when doing Static Site Rendering ("
             , routeLink SSR

@@ -5,7 +5,7 @@ import Prelude
 import Components.Code (psCodeWithLink)
 import Components.ExampleBlockquote (exampleBlockquote)
 import Contracts (Subsection, subsection)
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Deku.Pursx ((~~))
 import Examples as Examples
@@ -26,12 +26,12 @@ unsafePursx = subsection
               "The example is too long and thus takes a long time to compile."
           ]
       , D.p_
-          [ text "In both of these cases, you can use ⚠️"
+          [ text_ "In both of these cases, you can use ⚠️"
           , D.b__ "unsafe Pursx"
           , text
               "⚠️. Unsafe pursx works just like pursx except it operates off of strings rather than proxies. The syntax uses "
           , D.code__ "~!~"
-          , text " instead of "
+          , text_ " instead of "
           , D.code__ "~~"
           , text
               ", but the functionality is exactly the same. Note that there's no validation of unsafe Pursx, which means that your app may explode, so make sure to run your html through a validator first!"

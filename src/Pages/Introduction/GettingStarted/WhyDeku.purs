@@ -4,9 +4,9 @@ import Prelude
 
 import Components.TargetedLink (targetedLink)
 import Contracts (Section, section)
-import Deku.Attribute ((:=))
+import Deku.Attribute ((:=), (<:=>), (!:=))
 import Deku.Attributes (href)
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 
 whyDeku :: Section
@@ -26,17 +26,17 @@ whyDeku = section
               "This documentation was created with Deku and is available on "
           , D.a
               [href "https://github.com/mikesol/deku-documentation"
-                  ,D.Target := "_blank"
+                  ,D.Target !:= "_blank"
               ]
-              [ text "GitHub" ]
+              [ text_ "GitHub" ]
           , text
               ". It was built with best practices in mind and is a useful reference for building larger applications, as is the "
           , targetedLink "https://deku-realworld.netlify.app"
-              [ text "Deku Real World" ]
-          , text " "
+              [ text_ "Deku Real World" ]
+          , text_ " "
           , targetedLink "https://github.com/mikesol/purescript-deku-realworld"
-              [ text " project" ]
-          , text "."
+              [ text_ " project" ]
+          , text_ "."
           ]
       ]
   , subsections:

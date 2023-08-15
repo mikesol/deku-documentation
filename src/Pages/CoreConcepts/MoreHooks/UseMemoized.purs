@@ -5,7 +5,7 @@ import Prelude
 import Components.Code (psCode)
 import Contracts (CollapseState(..), Section, getExample, section)
 import Data.Maybe (Maybe(..))
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Examples as Examples
 import Pages.CoreConcepts.MoreHooks.UseMemoized.InitialEvents (initialEvents)
@@ -17,16 +17,16 @@ useMemoized = section
   , topmatter: do
       example <- getExample StartCollapsed Nothing Examples.UnMemoizedApplication
       pure [ D.p_
-          [ text "So far, we've worked with hooks like "
+          [ text_ "So far, we've worked with hooks like "
           , D.code__ "useState"
-          , text " and "
+          , text_ " and "
           , D.code__ "useHot"
-          , text " whose subscriptions are "
+          , text_ " whose subscriptions are "
           , D.i__ "already"
           , text
               " memoized. That is, even if they do not memoize their event for instant replay (that's the difference bewteen "
           , D.code__ "useState"
-          , text " and "
+          , text_ " and "
           , D.code__ "useHot"
           , text
               "), the subscriptions to the events are mutualized. That means that the same event acts as the source for all downstream consumers."
@@ -40,13 +40,13 @@ useMemoized = section
           ]
       , example
       , D.p_
-          [ text "Every line with "
+          [ text_ "Every line with "
           , D.code__ "true"
-          , text "s and "
+          , text_ "s and "
           , D.code__ "false"
-          , text "s is responding to a "
+          , text_ "s is responding to a "
           , D.i__ "different"
-          , text " event with the following type:"
+          , text_ " event with the following type:"
           ]
       , psCode
           """{ a :: Boolean
@@ -59,7 +59,7 @@ useMemoized = section
           [ text
               "While each of these events will have the same content, computing them from their constituent events wastes precious CPU cycles and can be a drain on your app. To solve this, we use "
           , D.b__ "memoization"
-          , text "."
+          , text_ "."
           ]
       ]
   , subsections:

@@ -5,7 +5,7 @@ import Prelude
 import Components.Code (psCode)
 import Contracts (CollapseState(..), Env(..), Subsection, getEnv, getExample, subsection)
 import Data.Maybe (Maybe(..))
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Examples as Examples
 import Router.ADT (Route(..))
@@ -24,7 +24,7 @@ globalHandlers = subsection
               " page, but a more realistic example would be to sync a third-party auth API to the event-based architecture and pass the event to Deku."
           ]
       , D.p_
-          [ text "In the example below, we use an API sold to use by "
+          [ text_ "In the example below, we use an API sold to use by "
           , D.b__ "FlakyAuth"
           , text
               " to power our application's authentication. FlakyAuth provides a simple PureScript authentication API with the following single function:"

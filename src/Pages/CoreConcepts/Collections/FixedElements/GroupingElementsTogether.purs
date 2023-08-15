@@ -5,9 +5,9 @@ import Prelude
 import Components.ProTip (proTip)
 import Contracts (CollapseState(..), Subsection, getExample, subsection)
 import Data.Maybe (Maybe(..))
-import Deku.Attribute ((:=))
+import Deku.Attribute ((:=), (<:=>), (!:=))
 import Deku.Attributes (href)
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Examples as Examples
 
@@ -29,27 +29,27 @@ groupingElementsTogether = subsection
             [ text
                 "As an example, consider the following version of Old MacDonald. We use "
             , D.code__ "fixed"
-            , text " for the lyric "
+            , text_ " for the lyric "
             , D.i__ "e i e i o"
-            , text " so as to avoid needless code duplication. "
+            , text_ " so as to avoid needless code duplication. "
             ]
         , example
         , proTip
-            { header: text "Animal sounds in different cultures"
+            { header: text_ "Animal sounds in different cultures"
             , message: D.div_
                 [ text
                     "Dogs say woof in English, but every culture has its own animal sounds. Before using Deku, make sure to familiarize yourself with "
                 , D.a
                     [ href
                         "https://languagepro.com.br/woof-woof-dog-barks-in-different-languages/"
-                    , D.Target := "_blank"
+                    , D.Target !:= "_blank"
                     ]
-                    [ text "how dogs bark in multiple languages" ]
-                , text "."
+                    [ text_ "how dogs bark in multiple languages" ]
+                , text_ "."
                 ]
             }
         , D.p_
-            [ text "With "
+            [ text_ "With "
             , D.code__ "fixed"
             , text
                 ", you don't need to do any extra accounting when subbing arrays in and out of the DOM. Deku automatically manages node insertion and deletion so that fixed elements always show up in the right place."

@@ -3,7 +3,7 @@ module Pages.Introduction.GettingStarted.GettingHelp where
 import Prelude
 
 import Contracts (Section, section)
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Pages.Introduction.GettingStarted.GettingHelp.JoinTheCommunity (joinTheCommunity)
 import Pages.Introduction.GettingStarted.GettingHelp.SubmitAnIssue (submitAnIssue)
@@ -13,7 +13,7 @@ gettingHelp = section
   { title: "Getting help"
   , topmatter: pure
       [ D.p_
-          [ text "Run into a snag? There are several ways you can get help!"
+          [ text_ "Run into a snag? There are several ways you can get help!"
           ]
       ]
   , subsections:

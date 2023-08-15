@@ -1,26 +1,26 @@
-module Pages.FRP.Sampling.SamplingWithBehaviors.SamplingABehaviorWithACustomFunction where
+module Pages.FRP.Sampling.SamplingWithPolls.SamplingAPollWithACustomFunction where
 
 import Prelude
 
 import Contracts (CollapseState(..), Subsection, getExample, subsection)
 import Data.Maybe (Maybe(..))
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Examples as Examples
 
-samplingABehaviorWithACustomFunction
+samplingAPollWithACustomFunction
   :: Subsection
-samplingABehaviorWithACustomFunction = subsection
-  { title: "Sampling a behavior with a function"
+samplingAPollWithACustomFunction = subsection
+  { title: "Sampling a poll with a function"
   , matter: do
-      sampleBehavior <- getExample StartCollapsed (Just "h-96") Examples.SamplingABehaviorWithACustomFunction
+      samplePoll <- getExample StartCollapsed (Just "h-96") Examples.SamplingAPollWithACustomFunction
       pure
         [ D.p_
             [ text
                 "Last but not least, we can sample an event with an arbitrary function using "
             , D.code__ "sampleBy"
-            , text "."
+            , text_ "."
             ]
-        , sampleBehavior
+        , samplePoll
         ]
   }

@@ -1,24 +1,23 @@
 module Examples.UsingFunctionsAsMonads where
 
-import Deku.Toplevel (runInBody')
 import Prelude
 
 import Control.Monad.Reader (ask)
-import Data.NonEmpty (NonEmpty)
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass)
+import Deku.Attributes (klass_)
 import Deku.Control (text)
 import Deku.Core (NutWith)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState)
 import Deku.Listeners (click)
+import Deku.Toplevel (runInBody')
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
-import FRP.Event (Event)
+import FRP.Poll (Poll)
 
 type Env =
-  { isSignedIn :: NonEmpty Event Boolean
+  { isSignedIn :: Poll Boolean
   , setIsSignedIn :: Boolean -> Effect Unit
   }
 
@@ -35,7 +34,7 @@ signIn :: AppMonad
 signIn = do
   { setIsSignedIn, isSignedIn } <- ask
   pure $ D.button
-    [ klass buttonClass
+    [ klass_ buttonClass
     , click $ isSignedIn <#> not >>> setIsSignedIn
     ]
     [ text $ isSignedIn <#> if _ then "Sign out" else "Sign in" ]

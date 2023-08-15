@@ -23,7 +23,7 @@ data Route
   | Sampling
   | OtherInstances
   | FixAndFold
-  | Behaviors
+  | Polls
   | CustomElements
   | AccessingTheDOM
   | SSR
@@ -54,7 +54,7 @@ routeToTitle Filtering = "Filtering"
 routeToTitle Sampling = "Sampling"
 routeToTitle OtherInstances = "Other instances"
 routeToTitle FixAndFold = "Fix and fold"
-routeToTitle Behaviors = "Behaviors"
+routeToTitle Polls = "Polls"
 routeToTitle CustomElements = "Custom elements"
 routeToTitle AccessingTheDOM = "Accessing the DOM"
 routeToTitle SSR = "SSR"

@@ -5,7 +5,7 @@ import Prelude
 import Components.TargetedLink (targetedLink)
 import Contracts (CollapseState(..), Env(..), Section, getEnv, getExample, section)
 import Data.Maybe (Maybe(..))
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Examples as Examples
 import Pages.CoreConcepts.Components.ASimpleComponent.AddingText (addingText)
@@ -30,31 +30,31 @@ aSimpleComponent = section
           ]
       , D.ol_
           [ D.li_
-              [ text "An "
+              [ text_ "An "
               , D.b__ "element"
-              , text " is a DOM element in the "
+              , text_ " is a DOM element in the "
               , targetedLink
                   "https://developer.mozilla.org/en-US/docs/Web/API/Element"
-                  [ text "MDN Documentation on Elements" ]
+                  [ text_ "MDN Documentation on Elements" ]
               , text
                   " sense of the term. We will learn how to hook into the raw DOM in the "
               , routeLink AccessingTheDOM
-              , text " section."
+              , text_ " section."
               ]
           , D.li_
-              [ text "A "
+              [ text_ "A "
               , D.b__ "component"
-              , text " is a PureScript term with type "
+              , text_ " is a PureScript term with type "
               , D.code__ "Nut"
-              , text ", named affectionately after "
+              , text_ ", named affectionately after "
               , targetedLink "https://zelda.fandom.com/wiki/Deku_Nut"
-                  [ text "Deku nuts" ]
-              , text ". "
+                  [ text_ "Deku nuts" ]
+              , text_ ". "
               , D.code__ "Nut"
               , text
                   " is the type produced by "
               , D.code__ "D.div_"
-              , text ", "
+              , text_ ", "
               , D.code__ "D.span_"
               , text
                   " and the other DOM-building instructions above. But the concept of a "
@@ -65,7 +65,7 @@ aSimpleComponent = section
               , text
                   " (which we'll learn about later) or multiple DOM elements using "
               , D.code__ "dyn"
-              , text " (which we'll also learn about later)."
+              , text_ " (which we'll also learn about later)."
               ]
           ]
       ]

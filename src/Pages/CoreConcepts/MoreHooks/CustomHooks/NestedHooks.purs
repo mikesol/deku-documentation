@@ -4,7 +4,7 @@ import Prelude
 
 import Data.Maybe (Maybe(..))
 import Contracts (Subsection, getExample, CollapseState(..), subsection)
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Examples as Examples
 
@@ -17,7 +17,7 @@ nestedHooks = subsection
           [ text
               "What fun would custom hooks be if they couldn't nest other hooks? When nesting hooks, "
           , D.code__ "Deku.do"
-          , text " is your friend."
+          , text_ " is your friend."
           ]
       , example
       ]

@@ -6,12 +6,12 @@ import ExampleAssitant (ExampleSignature)
 
 import Data.Tuple.Nested ((/\))
 import Deku.Attribute (Attribute, class Attr)
-import Deku.Attributes (klass)
-import Deku.Control (text)
+import Deku.Attributes (klass, klass_)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState)
-import Deku.Listeners (click)
+import Deku.Listeners (click, click_)
 import Deku.Pursx ((~~))
 import Effect (Effect)
 
@@ -82,25 +82,25 @@ app runExample = runExample Deku.do
 
   D.div_
     [ D.div_
-        [ D.a [ klass "cursor-pointer mr-4", toggleHome ]
-            [ text "Go home" ]
-        , D.a [ klass "cursor-pointer mr-4", toggleProjs ]
-            [ text "Go to projects" ]
-        , D.a [ klass "cursor-pointer", toggleNero ]
-            [ text "Go to nero" ]
+        [ D.a [ klass_ "cursor-pointer mr-4", toggleHome ]
+            [ text_ "Go home" ]
+        , D.a [ klass_ "cursor-pointer mr-4", toggleProjs ]
+            [ text_ "Go to projects" ]
+        , D.a [ klass_ "cursor-pointer", toggleNero ]
+            [ text_ "Go to nero" ]
         ]
     , D.div_
         [ myHtml ~~
-            { homeAtts: [ toggleHome, klass "flex h-12" ]
+            { homeAtts: [ toggleHome, klass_ "flex h-12" ]
             , projectLi:
                 liHtml ~~
                   { atts: [ toggleProjs, hideOnFalse projects ]
-                  , name: text "Projects"
+                  , name: text_ "Projects"
                   }
             , neroLi:
                 liHtml ~~
                   { atts: [ toggleNero, hideOnFalse nero ]
-                  , name: text "Project Nero"
+                  , name: text_ "Project Nero"
                   }
             }
         ]

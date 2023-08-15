@@ -4,23 +4,23 @@ import Prelude
 
 import Components.TargetedLink (targetedLink)
 import Contracts (Page, page)
-import Deku.Attribute ((:=))
-import Deku.Control (text)
+import Deku.Attribute ((:=), (<:=>), (!:=))
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Pages.FRP.Sampling.Gating (gating)
 import Pages.FRP.Sampling.SamplingOnAnEvent (samplingOnAnEvent)
-import Pages.FRP.Sampling.SamplingWithBehaviors (samplingWithBehaviors)
+import Pages.FRP.Sampling.SamplingWithPolls (samplingWithPolls)
 import Router.ADT (Route(..))
 
 sampling :: Page
 sampling = page
   { route: Sampling
   , topmatter: pure
-      [ D.p [D.Class := "lead"]
-          [ text "Build your next "
+      [ D.p [D.Class !:= "lead"]
+          [ text_ "Build your next "
           , targetedLink "https://www.youtube.com/watch?v=cvpMSXjR10M"
-              [ text "sampler" ]
-          , text " with FRP!"
+              [ text_ "sampler" ]
+          , text_ " with FRP!"
           ]
       , D.p_
           [ text
@@ -31,5 +31,5 @@ sampling = page
           ]
       ]
   , sections:
-      [ samplingOnAnEvent, samplingWithBehaviors, gating ]
+      [ samplingOnAnEvent, samplingWithPolls, gating ]
   }

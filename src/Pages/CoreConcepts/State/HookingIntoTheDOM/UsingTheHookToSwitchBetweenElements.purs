@@ -4,7 +4,7 @@ import Prelude
 
 import Contracts (CollapseState(..), Subsection, getExample, subsection)
 import Data.Maybe (Maybe(..))
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Examples as Examples
 
@@ -20,16 +20,16 @@ usingTheHookToSwitchBetweenElements = subsection
             [ text
                 "You can also use a hook to switch between elements. This is particularly useful for tabbed navigation. In the example below, a hook is used to switch between an image, a video, and an SVG. This is accomplished via the "
             , D.code__ "<#~>"
-            , text " operator."
+            , text_ " operator."
             ]
         , example
         , D.p_
             [ text
                 "If your DOM is mostly static and has a few switching elements within it, consider using multiple "
             , D.code__ "<#~>"
-            , text " operators instead of one global "
+            , text_ " operators instead of one global "
             , D.code__ "<#~>"
-            , text ", as it will generally result in better performance."
+            , text_ ", as it will generally result in better performance."
             ]
         ]
   }

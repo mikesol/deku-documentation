@@ -6,8 +6,8 @@ import Prelude
 import ExampleAssitant (ExampleSignature)
 
 import Data.Newtype (unwrap)
-import Deku.Attributes (klass)
-import Deku.Control (text)
+import Deku.Attributes (klass, klass_)
+import Deku.Control (text, text_)
 import Deku.Attribute ((:=), cb)
 import Deku.DOM as D
 
@@ -18,11 +18,11 @@ import Web.HTML.Window (alert)
 app :: ExampleSignature
 app runExample = runExample
   ( D.span
-      [ D.OnClick := cb \e -> do
+      [ pure $ D.OnClick := cb \e -> do
           window >>= alert (unwrap (type_ e))
-      , klass "cursor-pointer"
+      , klass_ "cursor-pointer"
       ]
-      [ text "Click me!" ]
+      [ text_ "Click me!" ]
   )
 
 main :: Effect Unit

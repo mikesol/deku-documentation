@@ -9,7 +9,7 @@ import Data.Either (hush)
 import Data.Foldable (oneOf)
 import Data.NonEmpty ((:|))
 import Data.Tuple (snd)
-import Deku.Control (text)
+import Deku.Control (text, text_)
 
 import FRP.Event (delay, filterMap)
 import FRP.Event.Time (interval)

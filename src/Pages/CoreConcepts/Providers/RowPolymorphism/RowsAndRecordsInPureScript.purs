@@ -5,7 +5,7 @@ import Prelude
 import Components.Code (psCode)
 import Components.TargetedLink (targetedLink)
 import Contracts (Subsection, subsection)
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 
 rowsAndRecordsInPureScript :: Subsection
@@ -17,7 +17,7 @@ rowsAndRecordsInPureScript = subsection
               "Rows and records are incredibly powerful concepts in PureScript. Many texts about functional programming and dependent types treat rows as an advanced concept, but PureScript has made them first-class citizens of the language to the point where working with them feels natural and easier than many other language features. If you're comfortable writing JSON, you should feel at home with rows and records!"
           ]
       , D.p_
-          [ text "A "
+          [ text_ "A "
           , D.code__ "Record"
           , text
               " in PureScript is defined with curly brackets and has a series of key-value pairs. Here's an example:"
@@ -42,7 +42,7 @@ rowsAndRecordsInPureScript = subsection
               " a variant (a sum of these terms, meaning only one is present). Other types can be encoded as well. From a theoretical perspective, rows are so powerful because they represent a potential indexing of the entire domain of a language, from the empty row:"
           ]
       , psCode "()"
-      , D.p_ [ text "To the row of all types:" ]
+      , D.p_ [ text_ "To the row of all types:" ]
       , psCode
           """( int :: Int
 , boolean :: Boolean

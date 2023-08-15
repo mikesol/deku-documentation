@@ -4,9 +4,9 @@ import Prelude
 
 import Components.Code (psCode)
 import Contracts (Subsection, subsection)
-import Deku.Attribute ((:=))
+import Deku.Attribute ((:=), (<:=>), (!:=))
 import Deku.Attributes (href)
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 
 theMakeEventFunction :: Subsection
@@ -14,11 +14,11 @@ theMakeEventFunction = subsection
   { title: "The makeEvent function"
   , matter: pure
       [ D.p_
-          [ text "To make a stand-alone effect, use the "
+          [ text_ "To make a stand-alone effect, use the "
           , D.code__ "makeEvent"
-          , text " function. This function has the signature of "
+          , text_ " function. This function has the signature of "
           , D.code__ "Event"
-          , text " we saw before, namely:"
+          , text_ " we saw before, namely:"
           ]
       , psCode
           """makeEvent
@@ -26,9 +26,9 @@ theMakeEventFunction = subsection
   . ((a -> Effect Unit) -> Effect (Effect Unit))
   -> Event a"""
       , D.p_
-          [ text "In other words, for all intents and pursposes, "
+          [ text_ "In other words, for all intents and pursposes, "
           , D.code__ "makeEvent"
-          , text " is a no-op - it takes an event and returns an event."
+          , text_ " is a no-op - it takes an event and returns an event."
           ]
       , D.p_
           [ text
@@ -36,12 +36,12 @@ theMakeEventFunction = subsection
           , D.a
               [href
                   "https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame"
-                  , (D.Target := "_blank")
+                  , (D.Target !:= "_blank")
               ]
               [ D.code__ "requestAnimationFrame" ]
-          , text ". One way to accomplish that would be via "
+          , text_ ". One way to accomplish that would be via "
           , D.code__ "makeEvent"
-          , text "."
+          , text_ "."
           ]
       , psCode
           """animationFrame :: Event Unit

@@ -3,7 +3,7 @@ module Pages.CoreConcepts.Effects.BindingToEffects where
 import Prelude
 
 import Contracts (Section, section)
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Pages.CoreConcepts.Effects.Aff.TriggerAff (triggerAff)
 import Pages.CoreConcepts.Effects.Aff.TriggerAffInParallel (triggerAffInParallel)

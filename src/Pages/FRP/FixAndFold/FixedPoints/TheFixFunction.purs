@@ -5,7 +5,7 @@ import Prelude
 import Components.Code (psCode)
 import Contracts (CollapseState(..), Env(..), Subsection, getEnv, getExample, subsection)
 import Data.Maybe (Maybe(..))
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Examples as Examples
 import Router.ADT (Route(..))
@@ -54,9 +54,9 @@ theFixFunction = subsection
       , D.p__
           "From this definiton, we know that the event must be producing a tuple and that the second value of this tuple must be a "
       , D.code__ "Maybe String"
-      , text " as it is compacted. So we can give a signature to the "
+      , text_ " as it is compacted. So we can give a signature to the "
       , D.code__ "fix"
-      , text " part:"
+      , text_ " part:"
       , psCode
           """fixedEvent :: Event (Tuple ?hole (Maybe String))
 fixedEvent = fix
@@ -68,11 +68,11 @@ fixedEvent = fix
           [ text
               "To fill in the type hole, let's look at the inner function. We know that it must be a "
           , D.code__ "Maybe"
-          , text " because it is "
+          , text_ " because it is "
           , D.code__ "alt"
-          , text "ed with"
+          , text_ "ed with"
           , D.code__ "pure Nothing"
-          , text ". So we can refine our hole as:"
+          , text_ ". So we can refine our hole as:"
           ]
       , psCode
           """fixedEvent :: Event (Tuple (Maybe ?hole) (Maybe String))
@@ -82,30 +82,30 @@ fixedEvent = fix
       ((Tuple <<< Just) <$> word)
   )"""
       , D.p_
-          [ text "To refine it further, let's look at the "
+          [ text_ "To refine it further, let's look at the "
           , D.code__ "sampleOnRight"
           , text
               " operation. We know that it must produce a tuple because the incoming event is a tuple, which means that the second argument to "
           , D.code__ "sampleOnRight"
-          , text " must be of type "
+          , text_ " must be of type "
           , D.code__ "Maybe String -> Tuple (Maybe ?hole) (Maybe String)"
           , text
               ". Looking at the function, we see that it is filling in the left side of the tuple with "
           , D.code__ "Just word"
-          , text ", and knowing that "
+          , text_ ", and knowing that "
           , D.code__ "word"
-          , text " is a "
+          , text_ " is a "
           , D.code__ "String"
-          , text ", we now know that the type of "
+          , text_ ", we now know that the type of "
           , D.code__ "fixedEvent"
-          , text " is "
+          , text_ " is "
           , D.code__ "Tuple (Maybe String) (Maybe String)"
-          , text "."
+          , text_ "."
           ]
       , D.p_
-          [ text "From the section on "
+          [ text_ "From the section on "
           , routeLink Sampling
-          , text ", we know that in "
+          , text_ ", we know that in "
           , D.code__ "sampleOnRight"
           , text
               ", the right event will fire before the left event, creating a lag of one value. That means that the second value of the tuple will lag the first by one, and because it is hydrated with the incoming first value, it will always be the value of "
@@ -121,7 +121,7 @@ fixedEvent = fix
       , severalLags
       , D.p_
           [ text
-              "Using this technique, you can create powerful state machines that articulate arbitrary relationships between items in the past. So long as there is a sampling function that stops the fixed point from turning into an infinite loop, you can articulate any stateful behavior you so choose."
+              "Using this technique, you can create powerful state machines that articulate arbitrary relationships between items in the past. So long as there is a sampling function that stops the fixed point from turning into an infinite loop, you can articulate any stateful poll you so choose."
           ]
       ]
   }

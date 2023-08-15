@@ -5,7 +5,7 @@ import Prelude
 import Components.Code (psCode)
 import Components.Disclaimer (disclaimer)
 import Contracts (Subsection, subsection)
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 
 arraysAllTheWayDown :: Subsection
@@ -15,10 +15,10 @@ arraysAllTheWayDown = subsection
       [ D.p_
           [ text
               "Let's revisit the previous example, but we'll expand it array-by-array to show how the Deku DOM is organized. The example starts with a single enclosing "
-          , D.code_ [ text "div" ]
-          , text " created by the instruction "
-          , D.code_ [ text "D.div_" ]
-          , text "."
+          , D.code_ [ text_ "div" ]
+          , text_ " created by the instruction "
+          , D.code_ [ text_ "D.div_" ]
+          , text_ "."
           ]
       , psCode
           """main :: Effect Unit
@@ -30,14 +30,14 @@ main = runInBody
       , D.p_
           [ text
               "The "
-          , D.code_ [ text "div" ]
-          , text " contains three elements, a "
-          , D.code_ [ text "span" ]
-          , text ", a "
-          , D.code_ [ text "ul" ]
-          , text ", and another "
-          , D.code_ [ text "div" ]
-          , text ". "
+          , D.code_ [ text_ "div" ]
+          , text_ " contains three elements, a "
+          , D.code_ [ text_ "span" ]
+          , text_ ", a "
+          , D.code_ [ text_ "ul" ]
+          , text_ ", and another "
+          , D.code_ [ text_ "div" ]
+          , text_ ". "
           ]
       , psCode
           """[ D.span_ [ ... ]
@@ -49,45 +49,45 @@ main = runInBody
       , D.p_
           [ text
               "You can have as many nested elements as you want. Deku makes no effort to check that your DOM's sensible. While a "
-          , D.code_ [ text "span" ]
-          , text " in a "
-          , D.code_ [ text "button" ]
-          , text " in a "
-          , D.code_ [ text "div" ]
-          , text " makes sense, a "
-          , D.code_ [ text "div" ]
-          , text " in a "
-          , D.code_ [ text "button" ]
-          , text " in a "
-          , D.code_ [ text "span" ]
-          , text " does not. But we won't stop you from doing it! "
+          , D.code_ [ text_ "span" ]
+          , text_ " in a "
+          , D.code_ [ text_ "button" ]
+          , text_ " in a "
+          , D.code_ [ text_ "div" ]
+          , text_ " makes sense, a "
+          , D.code_ [ text_ "div" ]
+          , text_ " in a "
+          , D.code_ [ text_ "button" ]
+          , text_ " in a "
+          , D.code_ [ text_ "span" ]
+          , text_ " does not. But we won't stop you from doing it! "
           ]
       , disclaimer
-          { header: text "Malformed DOM"
+          { header: text_ "Malformed DOM"
           , message: D.p_
-              [ text "Arrays all the way down means arrays "
-              , D.i_ [ text "all the way down" ]
+              [ text_ "Arrays all the way down means arrays "
+              , D.i_ [ text_ "all the way down" ]
               , text
                   ", including elements that can't have children. For example, "
-              , D.code_ [ text "<br />" ]
+              , D.code_ [ text_ "<br />" ]
               , text
                   " can never take any children, and yet in Deku it is written "
-              , D.code_ [ text "D.br_ []" ]
-              , text ". This is done because there are rare cases where you "
-              , D.i_ [ text "want" ]
+              , D.code_ [ text_ "D.br_ []" ]
+              , text_ ". This is done because there are rare cases where you "
+              , D.i_ [ text_ "want" ]
               , text
                   " to emit a malformed DOM, like when teaching someone how not to write code. In general, though, make sure to leave arrays empty for elements like "
-              , D.code_ [ text "<br />" ]
-              , text " that don't take any elements."
+              , D.code_ [ text_ "<br />" ]
+              , text_ " that don't take any elements."
               ]
           }
       , D.p_
-          [ text "Lastly, we saw that the "
-          , D.code_ [ text "ul" ]
+          [ text_ "Lastly, we saw that the "
+          , D.code_ [ text_ "ul" ]
           , text
               " is created from mapping over strings in order to create Deku "
-          , D.code_ [ text "li" ]
-          , text " components."
+          , D.code_ [ text_ "li" ]
+          , text_ " components."
           ]
       , psCode """D.ul_ $ map D.li__ [ "A", "B", "C" ]"""
       , D.p_

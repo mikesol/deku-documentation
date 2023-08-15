@@ -5,7 +5,7 @@ import Effect (Effect)
 import Prelude
 import ExampleAssitant (ExampleSignature)
 
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.Core (Nut)
 import Deku.DOM as D
 
@@ -21,7 +21,7 @@ app runExample = runExample mySimpleComponent
       , D.div_
           [ D.h3__ "foo"
           , D.i__ "bar"
-          , text " "
+          , text_ " "
           , D.b__ "baz"
           ]
       ]

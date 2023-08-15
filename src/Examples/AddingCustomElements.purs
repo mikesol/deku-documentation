@@ -7,7 +7,7 @@ import ExampleAssitant (ExampleSignature)
 
 import Data.These (These(..))
 import Deku.Attribute (class Attr, AttributeValue(..), unsafeAttribute, (:=))
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM (unsafeCustomElement)
 import Deku.DOM as D
 
@@ -34,7 +34,7 @@ app runExample = runExample do
     [ D.Href := JoyrideFM
     , D.Target := Blank
     ]
-    [ text "hi" ]
+    [ text_ "hi" ]
 
 main :: Effect Unit
 main = void $ app (map (map void) runInBody')

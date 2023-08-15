@@ -6,12 +6,12 @@ import Prelude
 
 import Data.String (Pattern(..), Replacement(..), replaceAll)
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass)
-import Deku.Control (text)
+import Deku.Attributes (klass, klass_)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (guard, useState)
-import Deku.Listeners (click)
+import Deku.Listeners (click, click_)
 import ExampleAssitant (ExampleSignature)
 
 buttonClass :: String -> String
@@ -27,17 +27,17 @@ app :: ExampleSignature
 app runExample = runExample Deku.do
   setAstuce /\ astuce <- useState true
   D.div_
-    [ D.div [ klass "space-x-2" ]
+    [ D.div [ klass_ "space-x-2" ]
         [ D.button
-            [ klass $ buttonClass "indigo"
+            [ klass_ $ buttonClass "indigo"
             , click $ setAstuce true
             ]
-            [ text "Sage" ]
+            [ text_ "Sage" ]
         , D.button
-            [ klass $ buttonClass "green"
+            [ klass_ $ buttonClass "green"
             , click $ setAstuce false
             ]
-            [ text "Pas sage" ]
+            [ text_ "Pas sage" ]
         ]
     , D.div_
         [ D.p__ "Cher ami,"

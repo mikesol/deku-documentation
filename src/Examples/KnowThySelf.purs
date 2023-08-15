@@ -7,8 +7,8 @@ import ExampleAssitant (ExampleSignature)
 
 import Data.String.Utils (words)
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute ((:=))
-import Deku.Control (text)
+import Deku.Attribute ((:=), (<:=>), (!:=))
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState')

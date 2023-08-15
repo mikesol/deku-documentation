@@ -4,7 +4,7 @@ import Prelude
 
 import Contracts (CollapseState(..), Subsection, getExample, subsection)
 import Data.Maybe (Maybe(..))
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Examples as Examples
 
@@ -15,9 +15,9 @@ biasingASideOfSampling = subsection
      example <- getExample StartCollapsed Nothing Examples.BiasingASideOfSampling
      pure
       [ D.p_
-          [ text "Even though "
+          [ text_ "Even though "
           , D.code__ "sampleOnLeft"
-          , text " and "
+          , text_ " and "
           , D.code__ "sampleOnRight"
           , text
               " control the temporality of which side to sample from, there's an important corner case to consider: when the events are \"cotemporal.\""
@@ -29,7 +29,7 @@ biasingASideOfSampling = subsection
           , text
               " cotemporal. The easiest way to see this is by using the same event as a source. Let's recreate both examples above using a "
           , D.i__ "single"
-          , text " slider."
+          , text_ " slider."
           ]
       , example
       , D.p_
@@ -40,7 +40,7 @@ biasingASideOfSampling = subsection
               " Even though the events are cotemporal, the second one lags after the first. What gives?"
           ]
       , D.p_
-          [ text "In the browser, one thing "
+          [ text_ "In the browser, one thing "
           , D.i__ "always"
           , text
               " happens after another thing. Technically that's probably true about everything. But let's stick to the browser. In examples 1 and 3 we use left-biased operators, and in examples 2 and 4, we use right-biased operators. In "
@@ -54,7 +54,7 @@ biasingASideOfSampling = subsection
           ]
       , D.p_
           [ text
-              "So which one is better? You decide! The framework lets you opt into whichever behavior suites your needs."
+              "So which one is better? You decide! The framework lets you opt into whichever poll suites your needs."
           ]
       ]
   }

@@ -5,7 +5,7 @@ import Prelude
 
 import Control.Monad.ST.Class (liftST)
 import Data.Int (floor)
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Effect (Effect)
 import Effect.Random (random)
 import Effect.Ref (new, read, write)

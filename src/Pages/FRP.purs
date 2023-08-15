@@ -5,7 +5,7 @@ import Prelude
 import Contracts (Chapter, chapter)
 import Pages.FRP.Alternatives (alternatives)
 import Pages.FRP.Applicatives (applicatives)
-import Pages.FRP.Behaviors (behaviors)
+import Pages.FRP.Polls (polls)
 import Pages.FRP.OtherInstances (otherInstances)
 import Pages.FRP.Events (events)
 import Pages.FRP.Filtering (filtering)
@@ -21,7 +21,7 @@ frp = chapter
       , alternatives
       , filtering
       , otherInstances
-      , behaviors
+      , polls
       , sampling
       , fixAndFold
       ]

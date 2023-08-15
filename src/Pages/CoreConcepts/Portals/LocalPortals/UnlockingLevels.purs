@@ -4,7 +4,7 @@ import Prelude
 
 import Contracts (CollapseState(..), Subsection, getExample, subsection)
 import Data.Maybe (Maybe(..))
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Examples as Examples
 
@@ -32,7 +32,7 @@ unlockingLevels = subsection
           , text
               " when we want to use the video "
           , D.code__ "globalVid"
-          , text " from the higher scope inside of the lower scope."
+          , text_ " from the higher scope inside of the lower scope."
           ]
       , D.p__
           "In the example below, make sure to try all the controls. Send the top video down, bring the video back up again, shuffle the inner videos, etc. While you can't see it, know that every time you click shuffle video, the inner video object's memory is released when it is replaced."

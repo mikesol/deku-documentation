@@ -4,13 +4,12 @@ import Prelude
 
 import Data.Array (intercalate, replicate)
 import Data.Tuple (fst, snd)
-import Deku.Attributes (klass)
-import Deku.Control (text)
+import Deku.Attributes (klass, klass_)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState)
-import Deku.Listeners (click)
-import Deku.NonEmpty ((<**>))
+import Deku.Listeners (click, click_)
 import Deku.Toplevel (runInBody')
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
@@ -27,9 +26,9 @@ app runExample = runExample Deku.do
         ( map
             ( \i -> D.a
                 [ click $ snd i <#> not >>> fst i
-                , klass "cursor-pointer"
+                , klass_ "cursor-pointer"
                 ]
-                [ text "Click me " ]
+                [ text_ "Click me " ]
             )
             [ aa, bb, cc, dd, ee ]
         )

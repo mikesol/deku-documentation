@@ -10,8 +10,8 @@ import Data.FunctorWithIndex (mapWithIndex)
 import Data.Lens (over)
 import Data.Lens.Index (ix)
 import Data.String (Pattern(..), split)
-import Deku.Attributes (klass)
-import Deku.Control (text)
+import Deku.Attributes (klass, klass_)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 
 lyrics :: Array String
@@ -70,15 +70,15 @@ app runExample = runExample do
     [ D.ol_
         ( lyrics # mapWithIndex \i _ ->
             D.p_
-              [ text "On the "
+              [ text_ "On the "
                   <> text (toWord (i + 1))
                   <> text
                     " day of Christmas my true love gave to me: "
-                  <> intercalate (text ", ")
+                  <> intercalate (text_ ", ")
                     ( drop (11 - i) $
                         if i == 0 then lyrics0 else lyrics1
                     )
-                  <> text "."
+                  <> text_ "."
               ]
         )
     ]

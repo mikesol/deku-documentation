@@ -7,12 +7,12 @@ import ExampleAssitant (ExampleSignature)
 
 import Data.String (replaceAll, Pattern(..), Replacement(..))
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass)
-import Deku.Control (text)
+import Deku.Attributes (klass, klass_)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState, guard)
-import Deku.Listeners (click)
+import Deku.Listeners (click, click_)
 
 import Effect.Random (random)
 
@@ -38,15 +38,15 @@ app runExample = do
           ]
       , D.div_
           [ D.button
-              [ klass $ buttonClass "pink"
+              [ klass_ $ buttonClass "pink"
               , click $ random >>= setNumber
               ]
-              [ text "A" ]
+              [ text_ "A" ]
           , D.button
-              [ klass $ buttonClass "green"
+              [ klass_ $ buttonClass "green"
               , click $ presence <#> not >>> setPresence
               ]
-              [ text "B" ]
+              [ text_ "B" ]
           ]
       , D.div_
           [ guard presence

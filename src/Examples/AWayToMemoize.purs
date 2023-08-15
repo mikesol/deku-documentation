@@ -6,18 +6,17 @@ import Control.Alternative as Alt
 import Data.NonEmpty ((:|))
 import Data.String (replaceAll, Pattern(..), Replacement(..))
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass)
-import Deku.Control (text)
+import Deku.Attributes (klass, klass_)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (guardWith, useState, useState')
-import Deku.Listeners (click)
-import Deku.NonEmpty (rehead)
+import Deku.Listeners (click, click_)
 import Deku.Toplevel (runInBody')
 import Effect (Effect)
 import Effect.Random (random)
 import ExampleAssitant (ExampleSignature)
-import FRP.Behavior (sampleBy, stepNE)
+import FRP.Poll (sampleBy, stepNE)
 
 buttonClass :: String -> String
 buttonClass color =
@@ -41,15 +40,15 @@ app runExample = do
           ]
       , D.div_
           [ D.button
-              [ klass $ buttonClass "pink"
+              [ klass_ $ buttonClass "pink"
               , click $ random >>= setNumber
               ]
-              [ text "A" ]
+              [ text_ "A" ]
           , D.button
-              [ klass $ buttonClass "green"
+              [ klass_ $ buttonClass "green"
               , click $ false :| presence <#> not >>> setPresence
               ]
-              [ text "B" ]
+              [ text_ "B" ]
           ]
       , D.div_
           [ guardWith

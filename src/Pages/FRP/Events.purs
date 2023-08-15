@@ -4,8 +4,8 @@ import Prelude
 
 import Components.Code (psCode)
 import Contracts (Page, page)
-import Deku.Attribute ((:=))
-import Deku.Control (text)
+import Deku.Attribute ((:=), (<:=>), (!:=))
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Pages.FRP.Events.Definition (definition)
 import Pages.FRP.Events.InteractiveEvents (interactiveEvents)
@@ -16,8 +16,8 @@ events :: Page
 events = page
   { route: Events
   , topmatter: pure
-      [ D.p [D.Class := "lead"]
-          [ text "The original FRP type. Always imitated, never duplicated."
+      [ D.p [D.Class !:= "lead"]
+          [ text_ "The original FRP type. Always imitated, never duplicated."
           ]
       , D.p_
           [ text

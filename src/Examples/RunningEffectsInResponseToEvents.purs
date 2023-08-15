@@ -7,12 +7,12 @@ import ExampleAssitant (ExampleSignature)
 
 import Data.JSDate (getTime, now)
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass)
-import Deku.Control (text)
+import Deku.Attributes (klass, klass_)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState')
-import Deku.Listeners (click)
+import Deku.Listeners (click, click_)
 
 app :: ExampleSignature
 app runExample = runExample Deku.do
@@ -20,10 +20,10 @@ app runExample = runExample Deku.do
   D.div_
     [ D.a
         [ click (getTime <$> now >>= setCurrentTime)
-        , klass "cursor-pointer"
+        , klass_ "cursor-pointer"
         ]
-        [ text "Current timestamp" ]
-    , text ": "
+        [ text_ "Current timestamp" ]
+    , text_ ": "
     , text (show <$> currentTime)
     ]
 

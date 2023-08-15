@@ -6,20 +6,20 @@ import Prelude
 import ExampleAssitant (ExampleSignature)
 
 import Data.Tuple.Nested ((/\))
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState, guard)
-import Deku.Attributes (klass)
-import Deku.Listeners (click)
+import Deku.Attributes (klass, klass_)
+import Deku.Listeners (click, click_)
 
 app :: ExampleSignature
 app runExample = runExample Deku.do
   setPresence /\ presence <- useState true
   D.div_
-    [ guard presence (text "Now you see me, ")
+    [ guard presence (text_ "Now you see me, ")
     , D.a
-        [ klass "cursor-pointer"
+        [ klass_ "cursor-pointer"
         , click $ presence <#> not >>> setPresence
         ]
         [ text $ presence <#>

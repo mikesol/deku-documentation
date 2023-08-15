@@ -4,8 +4,8 @@ import Prelude
 
 import Contracts (CollapseState(..), Subsection, getExample, subsection)
 import Data.Maybe (Maybe(..))
-import Deku.Attributes (klass)
-import Deku.Control (text)
+import Deku.Attributes (klass, klass_)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Examples as Examples
 
@@ -13,15 +13,15 @@ passingAroundHooks :: Subsection
 passingAroundHooks = subsection
   { title: "Passing around hooks"
   , matter: do
-      let lt t = D.span [klass "line-through"] [ text t ]
+      let lt t = D.span [klass_ "line-through"] [ text t ]
       example <- getExample StartCollapsed Nothing Examples.PassingAroundHooks
       pure [ D.p_
             [ text
                 "As we saw in the first example on this page, we can send the results of hooks - events and pushers - down through our provider system. This "
             , lt "provides"
-            , text " "
+            , text_ " "
             , lt "provisions"
-            , text " "
+            , text_ " "
             , lt "provokes"
             , text
                 " makes for an elegant and flexible inter-component communication mechanism. However, a case may arise where you accidentally over-wire your system so that you are pushing to a hook that could not possibly active because its element has disappeared. What happens in this case? Let's find out!"
@@ -31,10 +31,10 @@ passingAroundHooks = subsection
               "The following example is slightly contrived (to be fair, they all are...), but we'll create a small UI where you have to follow the following steps in order."
           ]
       , D.ol_
-          [ D.li_ [ text "Click ", D.b__ "Cede control." ]
-          , D.li_ [ text "Click ", D.b__ "Increment", text " several times." ]
-          , D.li_ [ text "Click ", D.b__ "Goodbye" ]
-          , D.li_ [ text "Click ", D.b__ "Increment", text " again." ]
+          [ D.li_ [ text_ "Click ", D.b__ "Cede control." ]
+          , D.li_ [ text_ "Click ", D.b__ "Increment", text_ " several times." ]
+          , D.li_ [ text_ "Click ", D.b__ "Goodbye" ]
+          , D.li_ [ text_ "Click ", D.b__ "Increment", text_ " again." ]
           ]
       , example
       , D.p__

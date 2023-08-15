@@ -9,15 +9,15 @@ import Data.Array (replicate)
 import Data.Number.Format (fixed, toStringWith)
 import Data.Tuple (Tuple(..))
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass)
-import Deku.Control (text)
+import Deku.Attributes (klass, klass_)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState, guard)
-import Deku.Listeners (click)
+import Deku.Listeners (click, click_)
 
 import Effect.Random (random)
-import FRP.Behavior (behavior, sample_)
+import FRP.Poll (poll, sample_)
 import FRP.Event.Time (interval)
 
 app :: ExampleSignature
@@ -25,11 +25,11 @@ app runExample = do
   i <- interval 250
   runExample Deku.do
     setOnOff /\ onOff <- useState false
-    let e = sample_ (behavior (pure (Tuple (pure unit) random))) i.event
+    let e = sample_ (poll (pure (Tuple (pure unit) random))) i.event
     D.div_
       [ D.a
           [ click $ onOff <#> not >>> setOnOff
-          , klass "cursor-pointer"
+          , klass_ "cursor-pointer"
           ]
           [ text $ onOff <#> if _ then "Turn me off" else "Turn me on"
           ]

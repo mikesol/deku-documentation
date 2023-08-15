@@ -4,7 +4,7 @@ import Prelude
 
 import Components.Code (psCode)
 import Contracts (Subsection, subsection)
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 
 emptiness :: Subsection
@@ -12,7 +12,7 @@ emptiness = subsection
   { title: "Emptiness"
   , matter: pure
       [ D.p_
-          [ text "The empty event is none other than:"
+          [ text_ "The empty event is none other than:"
           ]
       , psCode "makeLemmingEvent \\_ _ -> pure (pure unit)"
       , D.p_

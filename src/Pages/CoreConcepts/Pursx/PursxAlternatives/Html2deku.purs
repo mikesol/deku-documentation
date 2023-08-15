@@ -4,9 +4,9 @@ import Prelude
 
 import Components.HTML2Deku.Component as HTML2Deku
 import Contracts (Subsection, subsection)
-import Deku.Attribute ((:=))
+import Deku.Attribute ((:=), (<:=>), (!:=))
 import Deku.Attributes (href)
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 
 html2deku :: Subsection

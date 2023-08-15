@@ -5,7 +5,7 @@ import Prelude
 import Components.ProTip (proTip)
 import Contracts (CollapseState(..), Env(..), Subsection, getEnv, getExample, subsection)
 import Data.Maybe (Maybe(..))
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Examples as Examples
 import Router.ADT (Route(..))
@@ -21,9 +21,9 @@ insertingInADifferentOrder = subsection
           [ text
               "Sometimes, you want to insert elements in a particular order instead of the first element being inserted at the top of a list. There's a hook for that! Instead of "
           , D.code__ "useDynAtBeginning"
-          , text " or its homolog "
+          , text_ " or its homolog "
           , D.code__ "useDynAtEnd"
-          , text ", we'll use plain old "
+          , text_ ", we'll use plain old "
           , D.code__ "useDyn"
           , text
               ". This hook expects an event of type "
@@ -31,21 +31,21 @@ insertingInADifferentOrder = subsection
           , text
               "which is constructed from two values:"
           , D.ol_
-              [ D.li_ [ text "An index at which to insert the element; and" ]
-              , D.li_ [ text "The element to insert." ]
+              [ D.li_ [ text_ "An index at which to insert the element; and" ]
+              , D.li_ [ text_ "The element to insert." ]
               ]
           ]
       ,example
       , proTip
           { header:
-              D.span_ [ text "The ", D.code__ "<|*>", text " operator" ]
+              D.span_ [ text_ "The ", D.code__ "<|*>", text_ " operator" ]
           , message: D.div_
-              [ text "In the example above, we see a new operator "
+              [ text_ "In the example above, we see a new operator "
               , D.code__ "<|*>"
               , text
                   ". We need to use it here because otherwise we'd add a todo item whenever we change the number in the input. This operator is part of a larger collection of operators used for "
               , routeLink Sampling
-              , text ", which we'll go over later."
+              , text_ ", which we'll go over later."
               ]
           }
       , D.p_

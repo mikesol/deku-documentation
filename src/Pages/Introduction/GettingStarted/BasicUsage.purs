@@ -3,8 +3,8 @@ module Pages.Introduction.GettingStarted.BasicUsage where
 import Prelude
 
 import Contracts (Section, section)
-import Deku.Control (text)
-import Deku.Attribute ((:=))
+import Deku.Control (text, text_)
+import Deku.Attribute ((:=), (<:=>), (!:=))
 import Deku.DOM as D
 import Pages.Introduction.GettingStarted.BasicUsage.RunningADevServer (runningADevServer)
 import Pages.Introduction.GettingStarted.BasicUsage.BuildingForProduction (buildingForProduction)
@@ -14,9 +14,9 @@ basicUsage = section
   { title: "Basic usage"
   , topmatter: pure
       [ D.p_
-          [ text "This section will be about "
-          , D.span [D.Class := "font-bold"] [ text "Basic usage" ]
-          , text "."
+          [ text_ "This section will be about "
+          , D.span [D.Class !:= "font-bold"] [ text_ "Basic usage" ]
+          , text_ "."
           ]
       , D.p_
           [ text

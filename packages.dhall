@@ -11,7 +11,7 @@ in  upstream
       , "web-uievents"
       ]
     , repo = "https://github.com/mikesol/purescript-hyrule.git"
-    , version = "fantasy-land"
+    , version = "fantasy-land2"
     }
   with bolson =
     { dependencies =
@@ -19,14 +19,14 @@ in  upstream
       , "fast-vect"
       ]
     , repo = "https://github.com/mikesol/purescript-bolson.git"
-    , version = "fantasy-land"
+    , version = "fantasy-land2"
     }
   with deku =
     { dependencies =
       [ "web-uievents", "bolson"
       ]
     , repo = "https://github.com/mikesol/purescript-deku.git"
-    , version = "fantasy-land"
+    , version = "fantasy-land3"
     }
   with tidy =
     { dependencies =

@@ -7,9 +7,9 @@ import ExampleAssitant (ExampleSignature)
 
 import Data.String (Pattern(..), Replacement(..), replaceAll)
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute ((:=))
-import Deku.Attributes (href, klass, style)
-import Deku.Control (text)
+import Deku.Attribute ((!:=))
+import Deku.Attributes (href, klass_, style)
+import Deku.Control (text_)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState)
@@ -30,23 +30,23 @@ app runExample = runExample Deku.do
   setStyleSwitch /\ styleSwitch <- useState false
   D.div_
     [ D.a
-        [ D.Target := "_blank"
+        [ D.Target !:= "_blank"
         , href $ hrefSwitch <#>
             if _ then "https://cia.gov" else "https://fbi.gov"
         , style $ styleSwitch <#>
             if _ then "color:magenta;" else "color:teal;"
         ]
-        [ text "Click me" ]
+        [ text_ "Click me" ]
     , D.button
-        [ klass $ buttonClass "indigo"
+        [ klass_ $ buttonClass "indigo"
         , click $ hrefSwitch <#> not >>> setHrefSwitch
         ]
-        [ text "Switch href" ]
+        [ text_ "Switch href" ]
     , D.button
-        [ klass $ buttonClass "green"
+        [ klass_ $ buttonClass "green"
         , click $ styleSwitch <#> not >>> setStyleSwitch
         ]
-        [ text "Switch style" ]
+        [ text_ "Switch style" ]
     ]
 
 main :: Effect Unit

@@ -8,16 +8,16 @@ import ExampleAssitant (ExampleSignature)
 import Data.NonEmpty ((:|))
 import Data.Time.Duration (Seconds(..))
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute ((:=))
-import Deku.Attributes (klass)
-import Deku.Control (text)
+import Deku.Attribute ((:=), (<:=>), (!:=))
+import Deku.Attributes (klass, klass_)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState')
-import Deku.Listeners (click)
+import Deku.Listeners (click, click_)
 
-import FRP.Behavior (sample_, solve2')
-import FRP.Behavior.Time (seconds)
+import FRP.Poll (sample_, solve2')
+import FRP.Poll.Time (seconds)
 import FRP.Event (keepLatest)
 import FRP.Event.AnimationFrame (animationFrame)
 
@@ -52,16 +52,16 @@ app runExample = do
     D.div_
       [ D.div_
           [ D.button
-              [ klass buttonClass, click (setThunk unit) ]
-              [ text "Restart simulation" ]
+              [ klass_ buttonClass, click (setThunk unit) ]
+              [ text_ "Restart simulation" ]
           ]
       , D.div_
           [ D.input
-              [ D.Xtype := "range"
-              , klass "w-full"
-              , D.Min := "-1.0"
-              , D.Max := "1.0"
-              , D.Step := "0.01"
+              [ D.Xtype !:= "range"
+              , klass_ "w-full"
+              , D.Min !:= "-1.0"
+              , D.Max !:= "1.0"
+              , D.Step !:= "0.01"
               , D.Value := (show <$> motion)
               ]
               []

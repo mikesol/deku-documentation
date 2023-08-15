@@ -6,12 +6,12 @@ import Prelude
 import ExampleAssitant (ExampleSignature)
 
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass)
-import Deku.Control (text)
+import Deku.Attributes (klass, klass_)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState')
-import Deku.Listeners (click)
+import Deku.Listeners (click, click_)
 
 import Effect.Random (random)
 
@@ -27,10 +27,10 @@ app runExample = runExample Deku.do
   setNumber /\ number <- useState'
   D.div_
     [ D.button
-        [ klass buttonClass
+        [ klass_ buttonClass
         , click $ random >>= setNumber
         ]
-        [ text "Update number" ]
+        [ text_ "Update number" ]
     , text $ number <#>
         show >>> ("Here's a random number: " <> _)
     ]

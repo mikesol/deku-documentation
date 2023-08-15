@@ -3,8 +3,8 @@ module Pages.CoreConcepts.Effects.Hydration.AnAlternativeEffectModel where
 import Prelude
 
 import Contracts (Subsection, subsection)
-import Deku.Attributes (klass)
-import Deku.Control (text)
+import Deku.Attributes (klass, klass_)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 
 anAlternativeEffectModel :: Subsection
@@ -19,7 +19,7 @@ anAlternativeEffectModel = subsection
           [ text
               "Later on in the history of the devleopment of the framework, methods were added to work with components mounting and unmounting. These proved useful for sanity checks - for example, if a large project could not risk an audio context accidentally staying on on a page turn, it sometimes proved more practical for a component to "
           , D.i__ "always"
-          , text " turn off audio when it disappeared."
+          , text_ " turn off audio when it disappeared."
           ]
       , D.p_
           [ text
@@ -28,7 +28,7 @@ anAlternativeEffectModel = subsection
       , D.p_
           [ text
               "Ultimately, the style you use to code your Deku app is up to you! But if you're writing a game and aiming for 60 FPS, you can't mess around. "
-          , D.span [ klass "underline" ]
+          , D.span [ klass_ "underline" ]
               [ text
                   "Don't have components' presence or absence in the DOM trigger a bunch of side effects"
               ]

@@ -7,7 +7,7 @@ import ExampleAssitant (ExampleSignature)
 
 import Control.Monad.Reader (ask, asks)
 import Data.Newtype (class Newtype, unwrap)
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.Core (Nut)
 import Deku.DOM as D
 
@@ -81,7 +81,7 @@ app runExample = runExample Deku.do
     , libGreat: { x1: "I'm great!" }
     } # do
     awe <- libAwesome
-    pure $ D.div_ [ text "In all honesty...", awe ]
+    pure $ D.div_ [ text_ "In all honesty...", awe ]
 
 main :: Effect Unit
 main = void $ app (map (map void) runInBody')

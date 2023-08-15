@@ -3,9 +3,9 @@ module Pages.CoreConcepts.Effects where
 import Prelude
 
 import Contracts (Page, page)
-import Deku.Attribute ((:=))
+import Deku.Attribute ((:=), (<:=>), (!:=))
 import Deku.Attributes (href)
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Pages.CoreConcepts.Effects.BindingToEffects (bindingToEffects)
 import Pages.CoreConcepts.Effects.Hydration (hydration)
@@ -16,8 +16,8 @@ effects :: Page
 effects = page
   { route: Effects
   , topmatter: pure
-      [ D.p [ D.Class := "lead" ]
-          [ text "How Deku manages side effects."
+      [ D.p [ D.Class !:= "lead" ]
+          [ text_ "How Deku manages side effects."
           ]
       , D.p_
           [ text
@@ -25,38 +25,38 @@ effects = page
           ]
       , D.ul_
           [ D.li_
-              [ text "Lifecycle effects ("
+              [ text_ "Lifecycle effects ("
               , D.a
-                  [ D.Target := "_blank"
+                  [ D.Target !:= "_blank"
                   , href
                       "https://reactjs.org/docs/hooks-effect.html#example-using-hooks-1"
                   ]
-                  [ text "React" ]
-              , text " | "
+                  [ text_ "React" ]
+              , text_ " | "
               , D.a
-                  [ D.Target := "_blank"
+                  [ D.Target !:= "_blank"
                   , href
                       "https://purescript-halogen.github.io/purescript-halogen/guide/04-Lifecycles-Subscriptions.html"
                   ]
-                  [ text "Halogen" ]
-              , text ")."
+                  [ text_ "Halogen" ]
+              , text_ ")."
               ]
           , D.li_
-              [ text "Effect hooks ("
+              [ text_ "Effect hooks ("
               , D.a
-                  [ D.Target := "_blank"
+                  [ D.Target !:= "_blank"
                   , href
                       "https://reactjs.org/docs/hooks-effect.html"
                   ]
-                  [ text "React" ]
-              , text " | "
+                  [ text_ "React" ]
+              , text_ " | "
               , D.a
-                  [ D.Target := "_blank"
+                  [ D.Target !:= "_blank"
                   , href
                       "https://github.com/thomashoneyman/purescript-halogen-hooks/blob/main/docs/03-Effect-Hook.md"
                   ]
-                  [ text "Halogen" ]
-              , text ")."
+                  [ text_ "Halogen" ]
+              , text_ ")."
               ]
           ]
       , D.p_

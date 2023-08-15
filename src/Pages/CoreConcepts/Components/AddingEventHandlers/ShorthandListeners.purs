@@ -6,7 +6,7 @@ import Components.Code (psCodeWithLink)
 import Components.ExampleBlockquote (exampleBlockquote)
 import Components.Table (tableClass)
 import Contracts (Subsection, subsection)
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Deku.Listeners (slider)
 import Effect.Class.Console (logShow)
@@ -22,20 +22,20 @@ shorthandListeners = subsection
           ]
       , D.table [tableClass]
           [ D.tr_
-              [ D.th [tableClass] [ text "Shorthand" ]
-              , D.th [tableClass] [ text "Longer version" ]
+              [ D.th [tableClass] [ text_ "Shorthand" ]
+              , D.th [tableClass] [ text_ "Longer version" ]
               ]
           , D.tr_
-              [ D.td [tableClass] [ D.code_ [ text "click $ log \"foo\"" ] ]
+              [ D.td [tableClass] [ D.code_ [ text_ "click $ log \"foo\"" ] ]
               , D.td [tableClass]
-                  [ D.code_ [ text "D.OnClick := log \"foo\"" ] ]
+                  [ D.code_ [ text_ "D.OnClick := log \"foo\"" ] ]
               ]
           , D.tr_
-              [ D.td [tableClass] [ D.code_ [ text "slider logShow" ] ]
+              [ D.td [tableClass] [ D.code_ [ text_ "slider logShow" ] ]
               , D.td [tableClass]
                   [ D.code_
                       [ text
-                          """[D.Xtype := "range", D.OnInput :=
+                          """[D.Xtype !:= "range", D.OnInput :=
     cb \e ->
       for_
         (target e >>= fromEventTarget)
@@ -44,7 +44,7 @@ shorthandListeners = subsection
                   ]
               ]
           , D.tr_
-              [ D.td [tableClass] [ D.code_ [ text "textInput_ logShow" ] ]
+              [ D.td [tableClass] [ D.code_ [ text_ "textInput_ logShow" ] ]
               , D.td [tableClass]
                   [ D.code_
                       [ text

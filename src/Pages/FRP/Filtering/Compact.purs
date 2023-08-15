@@ -3,7 +3,7 @@ module Pages.FRP.Filtering.Compact where
 import Prelude
 
 import Contracts (Section, section)
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Pages.FRP.Filtering.Compact.CompactingEvents (compactingEvents)
 import Pages.FRP.Filtering.Compact.WhyEventsCannotWither (whyEventsCannotWither)
@@ -16,11 +16,11 @@ compact = section
           [ text
               "Events are compactable as well, which is extremely useful for sketching out systems that occassionally fail before developing robust error handling. The "
           , D.code__ "compact"
-          , text " function for "
+          , text_ " function for "
           , D.code__ "Event"
-          , text " is defined as "
+          , text_ " is defined as "
           , D.code__ "filterMap identity"
-          , text "."
+          , text_ "."
           ]
       ]
   , subsections:

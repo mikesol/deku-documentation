@@ -8,14 +8,14 @@ import ExampleAssitant (ExampleSignature)
 import Assets (alexanderURL)
 import Data.String (Pattern(..), Replacement(..), replaceAll)
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute ((:=))
-import Deku.Attributes (klass)
-import Deku.Control (text)
+import Deku.Attribute ((:=), (<:=>), (!:=))
+import Deku.Attributes (klass, klass_)
+import Deku.Control (text, text_)
 import Deku.Core (fixed)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (guard, useState)
-import Deku.Listeners (click)
+import Deku.Listeners (click, click_)
 
 buttonClass :: String -> String
 buttonClass color =
@@ -35,39 +35,39 @@ app :: ExampleSignature
 app runExample = runExample Deku.do
   setBadness /\ badness <- useState Bad
   D.div_
-    [ D.div [ klass "flex justify-between" ]
+    [ D.div [ klass_ "flex justify-between" ]
         [ D.button
-            [ klass $ buttonClass "indigo"
+            [ klass_ $ buttonClass "indigo"
             , click $ setBadness Bad
             ]
-            [ text "Bad" ]
+            [ text_ "Bad" ]
         , D.button
-            [ klass $ buttonClass "pink"
+            [ klass_ $ buttonClass "pink"
             , click $ setBadness Worse
             ]
-            [ text "Worse" ]
+            [ text_ "Worse" ]
         , D.button
-            [ klass $ buttonClass "green"
+            [ klass_ $ buttonClass "green"
             , click $ setBadness Worst
             ]
-            [ text "Worst" ]
+            [ text_ "Worst" ]
         ]
-    , D.div [ klass "bg-alexander" ]
-        [ D.div [ klass "p-3" ]
+    , D.div [ klass_ "bg-alexander" ]
+        [ D.div [ klass_ "p-3" ]
             [ D.span
-                [ klass "font-aldine text-4xl text-alexander" ]
+                [ klass_ "font-aldine text-4xl text-alexander" ]
                 [ text
                     "Alexander and the Terrible, Horrible,"
                 , guard (badness <#> (_ > Bad)) $ fixed
-                    [ text " Dreadful,"
+                    [ text_ " Dreadful,"
                     , guard (badness <#> (_ > Worse)) $ fixed
-                        [ text " Hideous,"
-                        , text " Soul-crushing,"
+                        [ text_ " Hideous,"
+                        , text_ " Soul-crushing,"
                         ]
-                    , text " Ruinous,"
+                    , text_ " Ruinous,"
                     ]
-                , text " No Good,"
-                , text " Very Bad Day"
+                , text_ " No Good,"
+                , text_ " Very Bad Day"
                 ]
             ]
         , D.div_ [ D.img [ D.Src := alexanderURL ] [] ]

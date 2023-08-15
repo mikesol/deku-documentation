@@ -1,13 +1,13 @@
-module Pages.FRP.Behaviors.Calculus where
+module Pages.FRP.Polls.Calculus where
 
 import Prelude
 
 import Contracts (Section, section)
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
-import Pages.FRP.Behaviors.Calculus.IntegratingBehaviors (integratingBehaviors)
-import Pages.FRP.Behaviors.Calculus.DerivingBehaviors (derivingBehaviors)
-import Pages.FRP.Behaviors.Calculus.SolvingDifferentialEquations (solvingDifferentialEquations)
+import Pages.FRP.Polls.Calculus.IntegratingPolls (integratingPolls)
+import Pages.FRP.Polls.Calculus.DerivingPolls (derivingPolls)
+import Pages.FRP.Polls.Calculus.SolvingDifferentialEquations (solvingDifferentialEquations)
 
 calculus :: Section
 calculus = section
@@ -15,14 +15,14 @@ calculus = section
   , topmatter: pure
       [ D.p_
           [ text
-              "Because behaviors are continuous functions of time, one can perform classic time-domain operations on them like derivation and integration. You can even solve differential equations using behaviors. Let's see how!"
+              "Because polls are continuous functions of time, one can perform classic time-domain operations on them like derivation and integration. You can even solve differential equations using polls. Let's see how!"
           ]
       ]
   , subsections:
-      [ --behaviorsAsContinuousFunctionsOfTime
+      [ --pollsAsContinuousFunctionsOfTime
         --, 
-        derivingBehaviors
-      , integratingBehaviors
+        derivingPolls
+      , integratingPolls
       , solvingDifferentialEquations
       ]
   }

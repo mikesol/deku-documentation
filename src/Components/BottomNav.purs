@@ -5,8 +5,8 @@ import Prelude
 import Components.Link (link')
 import Data.Maybe (Maybe, maybe)
 import Data.Newtype (unwrap)
-import Deku.Attributes (klass)
-import Deku.Control (text)
+import Deku.Attributes (klass, klass_)
+import Deku.Control (text, text_)
 import Deku.Core (Nut)
 import Deku.DOM as D
 import Navigation (PushState)
@@ -30,13 +30,13 @@ bottomNav { nextRoute, prevRoute, pushState } =
                   [ klass
                       "font-display text-sm font-medium text-slate-900 dark:text-white"
                   ]
-                  [ text "Previous" ]
-              , D.dd [ klass "mt-1" ]
+                  [ text_ "Previous" ]
+              , D.dd [ klass_ "mt-1" ]
                   [ link' pushState pr
                       [ klass
                           "text-base font-semibold text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300"
                       ]
-                      [ D.span_ [ text "←" ]
+                      [ D.span_ [ text_ "←" ]
                       , text (unwrap (routeToPage pr)).title
                       ]
                   ]
@@ -44,19 +44,19 @@ bottomNav { nextRoute, prevRoute, pushState } =
           ]
       ) <>
         ( nextRoute # maybe [] \nr ->
-            [ D.div [ klass "ml-auto text-right" ]
+            [ D.div [ klass_ "ml-auto text-right" ]
                 [ D.dt
                     [ klass
                         "font-display text-sm font-medium text-slate-900 dark:text-white"
                     ]
-                    [ text "Next" ]
-                , D.dd [ klass "mt-1" ]
+                    [ text_ "Next" ]
+                , D.dd [ klass_ "mt-1" ]
                     [ link' pushState nr
                         [ klass
                             "text-base font-semibold text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300"
                         ]
                         [ text (unwrap (routeToPage nr)).title
-                        , D.span_ [ text "→" ]
+                        , D.span_ [ text_ "→" ]
                         ]
                     ]
                 ]

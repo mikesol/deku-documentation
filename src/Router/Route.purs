@@ -28,7 +28,7 @@ route = root $ sum
       noArgs
   , "Busses": "functional-reactive-programming" / "busses" / noArgs
   , "FixAndFold": "functional-reactive-programming" / "fix-and-fold" / noArgs
-  , "Behaviors": "functional-reactive-programming" / "behaviors" / noArgs
+  , "Polls": "functional-reactive-programming" / "polls" / noArgs
   , "CustomElements": "advanced-usage" / "custom-elements" / noArgs
   , "AccessingTheDOM": "advanced-usage" / "accessing-the-dom" / noArgs
   , "SSR": "advanced-usage" / "ssr" / noArgs

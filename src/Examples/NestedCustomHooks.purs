@@ -5,13 +5,13 @@ import Prelude
 
 import Data.NonEmpty (NonEmpty, head, tail)
 import Data.Tuple.Nested (type (/\), (/\))
-import Deku.Attributes (klass)
-import Deku.Control (text)
+import Deku.Attributes (klass, klass_)
+import Deku.Control (text, text_)
 import Deku.Core (Hook)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useMemoized, useState)
-import Deku.Listeners (click)
+import Deku.Listeners (click, click_)
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
 import FRP.Event (Event)
@@ -42,16 +42,16 @@ app runExample = runExample Deku.do
   setMinimus /\ minimus /\ maximus <- hookusMaximus 0
   D.div_
     [ D.button
-        [ klass buttonClass
+        [ klass_ buttonClass
         , click $ minimus <#> (add 1 >>> setMinimus)
         ]
-        [ text "Increment" ]
+        [ text_ "Increment" ]
     , D.div_
-        [ text "Hookus minimus: "
+        [ text_ "Hookus minimus: "
         , text (show <$> minimus)
         ]
     , D.div_
-        [ text "Hookus maximus: "
+        [ text_ "Hookus maximus: "
         , text (show <$> maximus)
         ]
     ]

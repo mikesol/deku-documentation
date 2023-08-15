@@ -6,7 +6,7 @@ import Prelude
 import ExampleAssitant (ExampleSignature)
 
 import Control.Alt ((<|>))
-import Deku.Control (text)
+import Deku.Control (text, text_)
 
 import FRP.Event (fold, keepLatest)
 import FRP.Event.Class (once)

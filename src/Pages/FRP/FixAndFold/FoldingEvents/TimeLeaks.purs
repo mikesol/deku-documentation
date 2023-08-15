@@ -4,7 +4,7 @@ import Prelude
 
 import Components.TargetedLink (targetedLink)
 import Contracts (Env(..), Subsection, getEnv, subsection)
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Router.ADT (Route(..))
 
@@ -17,7 +17,7 @@ timeLeaks = subsection
           [ text
               "We've seen that fixed points can be dangerous because they lead to potentially infinite loops. But there's another, even more devious way that they're dangerous - "
           , D.i__ "time leaks"
-          , text " ⌛😵‍💫."
+          , text_ " ⌛😵‍💫."
           ]
       , D.p_
           [ text
@@ -34,7 +34,7 @@ timeLeaks = subsection
           [ text
               "Even though these two representations of our counter are equivalent "
           , D.i__ "conceptually"
-          , text ", they diverge "
+          , text_ ", they diverge "
           , D.i__ "computationally"
           , text
               ". That is, the first example uses the result produced by the past to achieve the present, whereas the second example has to re-live the past step-by-step to get to the present."
@@ -47,13 +47,13 @@ timeLeaks = subsection
               " want to recompute the past in order to compute the present. But usually we don't. And thankfully, in functional programming, this concept is embodied by the notion of "
           , targetedLink
               "https://en.wikipedia.org/wiki/Referential_transparency"
-              [ text "Referential transparency" ]
+              [ text_ "Referential transparency" ]
           , text
               ". A referentially transparent expression can be replaced with its corresponding value, which is why a compiler can and does replace the prolix "
           , D.code__ "1 + 1 + 1 + 1 + 1"
-          , text " with its terser homologue "
+          , text_ " with its terser homologue "
           , D.code__ "5"
-          , text "."
+          , text_ "."
           ]
       , D.p_
           [ text
@@ -81,7 +81,7 @@ timeLeaks = subsection
           , text
               ", and then emitting the result. But as monads are just blueprints for programs yet to be executed, by continuously building off of the incoming "
           , D.code__ "Effect b"
-          , text " to produce the new "
+          , text_ " to produce the new "
           , D.code__ "Effect b"
           , text
               ", we are creating an ever-increasing blueprint. The result is that, when each one is interpreted, all of the effects up until the present are executed every time the event emits a value."
@@ -93,11 +93,11 @@ timeLeaks = subsection
           , text
               " is a pure value so we do not need to left-bind on it. This is not to say that the "
           , D.code__ "Effect"
-          , text "magically disappears - we still have to eliminate it via "
+          , text_ "magically disappears - we still have to eliminate it via "
           , D.code__ "bindToEffect"
-          , text ". But as we learned in the "
+          , text_ ". But as we learned in the "
           , routeLink Effects
-          , text " section, "
+          , text_ " section, "
           , D.code__ "bindToEffect"
           , text
               " \"swallows\" an effect into its event. This works more like a monadic bind or join, which does not accumulate effects but rather tacks on effects to a sequence."
@@ -110,24 +110,24 @@ timeLeaks = subsection
           [ D.li__
               "As much as possible, use primitives from your FRP library that already exist for these purposes. These have been heavily tested and vetted."
           , D.li_
-              [ text "When possible, use "
-              , D.code__ "Behavior"
+              [ text_ "When possible, use "
+              , D.code__ "Poll"
               , text
-                  "s to separate out the read-only effectful parts of a computation from the pure ones. A behavior is a continuous function of time, so one way to think of anything effectful in FRP is how it is behaving at any given moment, be it a random-number generator or a "
+                  "s to separate out the read-only effectful parts of a computation from the pure ones. A poll is a continuous function of time, so one way to think of anything effectful in FRP is how it is behaving at any given moment, be it a random-number generator or a "
               , D.code__ "GET"
               , text
-                  " request to an API. Sampling behaviors on events, doing some work, and then sampling more behaviors as you need them is not only a better way to write FRP - it makes the use of side effects crystal clear to those reading your code, which makes refactoring easier."
+                  " request to an API. Sampling polls on events, doing some work, and then sampling more polls as you need them is not only a better way to write FRP - it makes the use of side effects crystal clear to those reading your code, which makes refactoring easier."
               ]
           , D.li_
               [ text
                   "If (when) you're using Deku, do all of the effectful work in listeners like "
               , D.code__ "click"
-              , text " or "
+              , text_ " or "
               , D.code__ "slider"
               , text
                   ". For example, if you have a game state that updates whenever you click a button based on the previous game state and a current timestamp, this can be modeled as "
               , D.code__ "click $ state <#> \\s -> now >>= newState s"
-              , text "."
+              , text_ "."
               ]
           ]
       , D.p__

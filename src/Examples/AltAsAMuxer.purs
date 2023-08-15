@@ -6,8 +6,8 @@ import Prelude
 import ExampleAssitant (ExampleSignature)
 
 import Control.Alt ((<|>))
-import Deku.Attributes (klass)
-import Deku.Control (text)
+import Deku.Attributes (klass, klass_)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 
 import FRP.Event.Time (interval)
@@ -23,7 +23,7 @@ app runExample = do
               <|> (i1.event $> "bg-green-300")
           )
       ]
-      [ text "Par-tay!" ]
+      [ text_ "Par-tay!" ]
 
 main :: Effect Unit
 main = void $ app (map (map void) runInBody')

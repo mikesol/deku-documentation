@@ -8,7 +8,7 @@ import ExampleAssitant (ExampleSignature)
 import Data.Filterable (filter)
 import Data.NonEmpty (tail)
 import Data.Tuple.Nested ((/\))
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState)
@@ -20,11 +20,11 @@ app runExample = runExample Deku.do
   D.div_
     [ D.input (slider setNumber) []
     , D.div_
-        [ text "Latest less than 50: "
+        [ text_ "Latest less than 50: "
         , text (filter (_ < 50.0) (tail number) <#> show)
         ]
     , D.div_
-        [ text "Latest greater than 50: "
+        [ text_ "Latest greater than 50: "
         , text (filter (_ > 50.0) (tail number) <#> show)
         ]
     ]

@@ -4,8 +4,8 @@ import Prelude
 
 import Components.Code (shSessionCode)
 import Contracts (Env(..), Subsection, getEnv, subsection)
-import Deku.Attributes (klass)
-import Deku.Control (text)
+import Deku.Attributes (klass, klass_)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Router.ADT (Route(..))
 
@@ -16,19 +16,19 @@ startingANewProject = subsection
       Env { routeLink } <- getEnv
       pure
         [ D.p_
-            [ text "The easiest way to get up-and-running with Deku is to use "
-            , D.code_ [ text "create-deku-app" ]
-            , text "."
+            [ text_ "The easiest way to get up-and-running with Deku is to use "
+            , D.code_ [ text_ "create-deku-app" ]
+            , text_ "."
             ]
         , shSessionCode "$ npx create-deku-app my-awesome-app"
         , D.p_
             [ text
                 "This will create a new Deku app in the directory "
-            , D.code_ [ text "my-awesome-app" ]
+            , D.code_ [ text_ "my-awesome-app" ]
             , text
                 " using a template with "
-            , D.span [ klass "line-through" ] [ text "very opinionated" ]
-            , text " sensible defaults."
+            , D.span [ klass_ "line-through" ] [ text_ "very opinionated" ]
+            , text_ " sensible defaults."
             ]
         , D.p_
             [ text
@@ -38,11 +38,11 @@ startingANewProject = subsection
         , D.p_
             [ text
                 "Then, visit the link displayed in your terminal (usually "
-            , D.code_ [ text "http://localhost:5173" ]
+            , D.code_ [ text_ "http://localhost:5173" ]
             , text
                 ") to see your site in action. It should bear an uncanny resemblance to the "
             , routeLink HelloWorld
-            , text " we'll see on the next page."
+            , text_ " we'll see on the next page."
             ]
 
         ]

@@ -4,7 +4,7 @@ import Prelude
 
 import Contracts (CollapseState(..), Subsection, getExample, subsection)
 import Data.Maybe (Maybe(..))
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Examples as Examples
 
@@ -21,7 +21,7 @@ theOneOfFunction = subsection
           , text
               " function that will alt a bunch of events. Surveys consistently reveal that this is the technique most often used when coders create a text-only version of "
           , D.b__ "Harder, Better, Faster, Stronger"
-          , text " in the browser."
+          , text_ " in the browser."
           ]
       , example
       ]

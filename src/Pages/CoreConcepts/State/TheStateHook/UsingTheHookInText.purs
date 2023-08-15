@@ -6,7 +6,7 @@ import Components.Code (psCode)
 import Components.Disclaimer (disclaimer)
 import Components.TargetedLink (targetedLink)
 import Contracts (Env(..), Subsection, getEnv, subsection)
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Router.ADT (Route(..))
 
@@ -21,56 +21,56 @@ usingTheHookInText = subsection
           ]
       , psCode """setNumber /\ number <- useState n"""
       , D.p_
-          [ text "The right side of our hook is of type "
+          [ text_ "The right side of our hook is of type "
           , D.code__ "Event Number"
-          , text "."
+          , text_ "."
           ]
       , disclaimer
-          { header: text "Raw values versus events"
+          { header: text_ "Raw values versus events"
           , message: D.div_
               [ text
                   "If you're coming from React, the fact that Deku hooks do not contain raw values like "
               , D.code__ "Number"
-              , text " or "
+              , text_ " or "
               , D.code__ "String"
-              , text " but rather "
+              , text_ " but rather "
               , D.code__ "Event Number"
-              , text " and "
+              , text_ " and "
               , D.code__ "Event String"
               , text
                   " will be a big change. Even though they're not raw values, though, they can "
               , D.i__ "almost"
-              , text " be used as such. In the "
+              , text_ " be used as such. In the "
               , routeLink Applicatives
-              , text " section we'll learn how to do this."
+              , text_ " section we'll learn how to do this."
               ]
           }
       , D.p_
-          [ text "To use this event as DOM text, we'll use the "
+          [ text_ "To use this event as DOM text, we'll use the "
           , D.code__ "text"
-          , text " function."
+          , text_ " function."
           , D.code__ "text"
-          , text " is like "
+          , text_ " is like "
           , D.code__ "text"
-          , text ", but instead of taking a "
+          , text_ ", but instead of taking a "
           , D.code__ "String"
-          , text ", it accepts an argument of type "
+          , text_ ", it accepts an argument of type "
           , D.code__ "Event String"
-          , text ". As our hook is a number, we have to "
+          , text_ ". As our hook is a number, we have to "
           , D.code__ "map"
-          , text " over our "
+          , text_ " over our "
           , D.code__ "Event Number"
-          , text " to change it to an "
+          , text_ " to change it to an "
           , D.code__ "Event String"
-          , text "."
+          , text_ "."
           ]
       , psCode
           """text $ number <#>
   show >>> ("Here's a random number: " <> _)"""
       , D.p_
-          [ text "The symbol "
+          [ text_ "The symbol "
           , D.code__ "<#>"
-          , text " "
+          , text_ " "
           , D.i__ "maps"
           , text
               " over the event, turning its contents into some other type (in this case, "
@@ -78,14 +78,14 @@ usingTheHookInText = subsection
           , text
               "). At this point, it's worth mentioning that if operators like "
           , D.code__ "$"
-          , text ", "
+          , text_ ", "
           , D.code__ "<#>"
-          , text ", and "
+          , text_ ", and "
           , D.code__ "/\\"
           , text
               " are unfamiliar to you, fear not! The PureScript documentation website "
           , targetedLink "https://pursuit.purescript.org"
-              [ text "Pursuit" ]
+              [ text_ "Pursuit" ]
           , text
               " is your friend. You can search for all of these functions (and more) via the search bar."
           ]

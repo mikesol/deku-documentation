@@ -4,7 +4,7 @@ import Prelude
 
 import Components.Code (psCode)
 import Contracts (Subsection, subsection)
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 
 severalAttributes :: Subsection
@@ -13,12 +13,12 @@ severalAttributes = subsection
   , matter: pure
 
       [ D.p_
-          [ text "Several attributes can be set by including them all in an array."
+          [ text_ "Several attributes can be set by including them all in an array."
           ]
       , psCode
           """
-[ D.Id := "my-id"
-, D.Style := "background-color:silver;"
+[ D.Id !:= "my-id"
+, D.Style !:= "background-color:silver;"
 ]
 """
       ]

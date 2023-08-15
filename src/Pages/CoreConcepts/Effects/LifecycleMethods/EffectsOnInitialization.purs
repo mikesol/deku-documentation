@@ -4,7 +4,7 @@ import Prelude
 
 import Components.Table (tableClass)
 import Contracts (Subsection, subsection)
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 
 effectsOnInitialization :: Subsection
@@ -17,9 +17,9 @@ effectsOnInitialization = subsection
           ]
       , D.table [ tableClass ]
           [ D.tr_
-              [ D.th [ tableClass ] [ text "Name" ]
-              , D.th [ tableClass ] [ text "Purpose" ]
-              , D.th [ tableClass ] [ text "Signature" ]
+              [ D.th [ tableClass ] [ text_ "Name" ]
+              , D.th [ tableClass ] [ text_ "Purpose" ]
+              , D.th [ tableClass ] [ text_ "Signature" ]
               ]
           , D.tr_
               [ D.td [ tableClass ] [ D.code__ "onWillMount" ]

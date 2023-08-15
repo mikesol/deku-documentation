@@ -4,7 +4,7 @@ import Prelude
 
 import Components.Code (psCode, shSessionCode)
 import Contracts (Subsection, subsection)
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 
 typeSafety :: Subsection
@@ -15,27 +15,27 @@ typeSafety = subsection
           [ text
               "Going back to our HTML string, you'll see that it's actually not a "
           , D.code__ "String"
-          , text " in the \"the type of this term is "
+          , text_ " in the \"the type of this term is "
           , D.code__ "String"
-          , text "\" sense of the term. Instead, it's of type "
+          , text_ "\" sense of the term. Instead, it's of type "
           , D.code__ "Proxy html"
-          , text ", where "
+          , text_ ", where "
           , D.code__ "html"
-          , text " is a "
+          , text_ " is a "
           , D.code__ "Symbol"
-          , text " (aka a type-level "
+          , text_ " (aka a type-level "
           , D.code__ "String"
-          , text ") containing your HTML. That is, the "
+          , text_ ") containing your HTML. That is, the "
           , D.code__ "Proxy"
-          , text " type constructor is parameterized by your HTML, much as "
+          , text_ " type constructor is parameterized by your HTML, much as "
           , D.code__ "Array"
-          , text " can be parameterized by "
+          , text_ " can be parameterized by "
           , D.code__ "Int"
-          , text " or "
+          , text_ " or "
           , D.code__ "String"
-          , text " or "
+          , text_ " or "
           , D.code__ "Nu Maybe"
-          , text "."
+          , text_ "."
           ]
       , D.p_
           [ text
@@ -55,7 +55,7 @@ typeSafety = subsection
           """main :: Effect Unit
 main = runInBody ((Proxy :: Proxy
     "<h1><span>hi<span></h1>") ~~ {})"""
-      , D.p_ [ text "The compiler complains with the following message." ]
+      , D.p_ [ text_ "The compiler complains with the following message." ]
       , shSessionCode
           """  Could not match type
 

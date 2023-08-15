@@ -4,7 +4,7 @@ import Prelude
 
 import Components.TargetedLink (targetedLink)
 import Contracts (Subsection, subsection)
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 
 routing :: Subsection
@@ -12,7 +12,7 @@ routing = subsection
   { title: "Routing"
   , matter: pure
       [ D.p_
-          [ text "Deku apps work swimmingly with "
+          [ text_ "Deku apps work swimmingly with "
           , targetedLink
               "https://github.com/natefaubion/purescript-routing-duplex"
               [ D.code__ "purescript-routing-duplex" ]
@@ -24,8 +24,8 @@ routing = subsection
               "In lieu of a proper interactive example, you can see a text example in this documentation's "
           , targetedLink
               "https://github.com/mikesol/deku-documentation/blob/4f184ec2c28eba1d1f5dd5547114ce29c43e6172/src/Main.purs#L166"
-              [ text "source code" ]
-          , text ". Each page in the documentation is a route, and "
+              [ text_ "source code" ]
+          , text_ ". Each page in the documentation is a route, and "
           , D.code__ "routing-duplex"
           , text
               " is used to alternate between these pages while keeping certain elements, like the header and left page links, constant so as to avoid needless redraws."

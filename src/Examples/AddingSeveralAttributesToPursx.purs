@@ -6,12 +6,12 @@ import ExampleAssitant (ExampleSignature)
 
 import Data.Tuple.Nested ((/\))
 import Deku.Attribute (class Attr, Attribute)
-import Deku.Attributes (klass)
-import Deku.Control (text)
+import Deku.Attributes (klass, klass_)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState)
-import Deku.Listeners (click)
+import Deku.Listeners (click, click_)
 import Deku.Pursx ((~~))
 import Effect (Effect)
 
@@ -81,16 +81,16 @@ app runExample = runExample Deku.do
        . Attr element D.OnClick (Effect Unit)
       => Attribute element
     toggleNero = click (setProjects true *> setNero true)
-    akls = append [ klass "cursor-pointer mr-4" ] <<< pure
+    akls = append [ klass_ "cursor-pointer mr-4" ] <<< pure
   D.div_
     [ D.div_
-        [ D.a (akls toggleHome) [ text "Go home" ]
-        , D.a (akls toggleProjs) [ text "Go to projects" ]
-        , D.a (akls toggleNero) [ text "Go to nero" ]
+        [ D.a (akls toggleHome) [ text_ "Go home" ]
+        , D.a (akls toggleProjs) [ text_ "Go to projects" ]
+        , D.a (akls toggleNero) [ text_ "Go to nero" ]
         ]
     , D.div_
         [ myHtml ~~
-            { homeAtts: [ toggleHome, klass "flex h-12" ]
+            { homeAtts: [ toggleHome, klass_ "flex h-12" ]
             , projectsAtts: [ toggleProjs, hideOnFalse projects ]
             , neroAtts: [ toggleNero, hideOnFalse nero ]
             }

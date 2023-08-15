@@ -98,8 +98,8 @@ data ContentF a
 type WTEffectWithCancellers = WriterT (Effect Unit) Effect
 type EffectWithCancellers a = Effect (Tuple a (Effect Unit))
 
-contentToBehavior :: Env -> ContentF ~> WTEffectWithCancellers
-contentToBehavior env = case _ of
+contentToPoll :: Env -> ContentF ~> WTEffectWithCancellers
+contentToPoll env = case _ of
   GetEnv f -> pure $ f env
   GetRandomNumber f -> f <$> lift random
   GetExample b k e f -> do

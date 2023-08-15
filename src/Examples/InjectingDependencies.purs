@@ -8,13 +8,13 @@ import ExampleAssitant (ExampleSignature)
 import Data.Int (floor)
 import Data.JSDate (getTime, now)
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute ((:=))
-import Deku.Attributes (klass)
-import Deku.Control (text)
+import Deku.Attribute ((:=), (<:=>), (!:=))
+import Deku.Attributes (klass, klass_)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState, (<#~>))
-import Deku.Listeners (click)
+import Deku.Listeners (click, click_)
 import Deku.Pursx ((~~))
 
 import Effect.Aff (Milliseconds(..), delay, launchAff_)
@@ -52,7 +52,7 @@ app runExample = runExample Deku.do
   setUIState /\ uiState <- useState Beginning
   D.div_
     [ D.button
-        [ klass buttonClass
+        [ klass_ buttonClass
         , let
             fetcher = do
               newRandomImage <- fetchNewRandomImage
@@ -87,7 +87,7 @@ app runExample = runExample Deku.do
                   ]
               ]
             Loading ->
-              D.div [ klass "p-10" ]
+              D.div [ klass_ "p-10" ]
                 [ ((Proxy :: _ Loading) ~~ {}) ]
         ]
     ]

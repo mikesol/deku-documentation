@@ -4,7 +4,7 @@ import Prelude
 
 import Contracts (CollapseState(..), Subsection, getExample, subsection)
 import Data.Maybe (Maybe(..))
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Examples as Examples
 
@@ -22,7 +22,7 @@ theLocalPortalSyntax = subsection
       , example
       , D.p_
           [ text
-              "The difference between local and global portals is that you get better performance from local portals with slightly less predictable runtime behavior. To understand why it's more performant, we'll use a slightly more involved example in the next section."
+              "The difference between local and global portals is that you get better performance from local portals with slightly less predictable runtime poll. To understand why it's more performant, we'll use a slightly more involved example in the next section."
           ]
       ]
   }

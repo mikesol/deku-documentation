@@ -3,7 +3,7 @@ module Pages.FRP.FixAndFold.FoldingEvents where
 import Prelude
 
 import Contracts (Section, section)
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Pages.FRP.FixAndFold.FoldingEvents.ASimpleCounter (aSimpleCounter)
 import Pages.FRP.FixAndFold.FoldingEvents.TheFoldFunction (theFoldFunction)
@@ -15,17 +15,17 @@ foldingEvents = section
   { title: "Folding events"
   , topmatter: pure
       [ D.p_
-          [ text "One special category of "
+          [ text_ "One special category of "
           , D.code__ "fix"
-          , text "ing is "
+          , text_ "ing is "
           , D.code__ "fold"
-          , text "ing. In this section, we'll define the "
+          , text_ "ing. In this section, we'll define the "
           , D.code__ "fold"
-          , text " function from "
+          , text_ " function from "
           , D.code__ "fix"
-          , text ", build a simple counter using "
+          , text_ ", build a simple counter using "
           , D.code__ "fold"
-          , text ", and discuss when to use one versus the other."
+          , text_ ", and discuss when to use one versus the other."
           ]
       ]
   , subsections:

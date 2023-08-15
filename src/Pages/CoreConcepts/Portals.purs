@@ -5,14 +5,14 @@ import Prelude
 import Contracts (Page, page)
 import Data.NonEmpty (NonEmpty)
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute ((:=))
-import Deku.Attributes (klass)
+import Deku.Attribute ((:=), (<:=>), (!:=))
+import Deku.Attributes (klass, klass_)
 import Deku.Control (globalPortal1, text)
 import Deku.Core (Nut)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (guard, useState)
-import Deku.Listeners (click)
+import Deku.Listeners (click, click_)
 import Effect (Effect)
 import FRP.Event (Event)
 import Pages.CoreConcepts.Portals.GlobalPortals (globalPortals)
@@ -39,20 +39,20 @@ moveSpriteHere { iframe, square, setSquare, at } = D.a
       [D.Class :=
           "cursor-pointer mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
       ]
-      [ text "Move sprite here"
+      [ text_ "Move sprite here"
       , guard (square <#> (_ == at)) iframe
       ]
   ]
 
 myIframe :: Nut
 myIframe = D.video
-      [ D.Width := "175"
-      , D.Height := "175"
-      , D.Autoplay := "true"
-      , D.Loop := "true"
-      , D.Muted := "true"
+      [ D.Width !:= "175"
+      , D.Height !:= "175"
+      , D.Autoplay !:= "true"
+      , D.Loop !:= "true"
+      , D.Muted !:= "true"
       ]
-  [ D.source [D.Src := "https://media.giphy.com/media/IMSq59ySKydYQ/giphy.mp4"]
+  [ D.source [D.Src !:= "https://media.giphy.com/media/IMSq59ySKydYQ/giphy.mp4"]
       []
   ]
 
@@ -60,8 +60,8 @@ portals :: Page
 portals = page
   { route: Portals
   , topmatter: pure
-      [ D.p [D.Class := "lead"]
-          [ text "Dealing with stateful DOM components."
+      [ D.p [D.Class !:= "lead"]
+          [ text_ "Dealing with stateful DOM components."
           ]
       , D.p_
           [ text
@@ -69,7 +69,7 @@ portals = page
           ]
       , Deku.do
           setSquare /\ square <- useState TL
-          D.div [klass "grid grid-cols-2"]
+          D.div [klass_ "grid grid-cols-2"]
             [ moveSpriteHere { iframe: myIframe, square, setSquare, at: TL }
             , moveSpriteHere { iframe: myIframe, square, setSquare, at: TR }
             , moveSpriteHere { iframe: myIframe, square, setSquare, at: BL }
@@ -78,16 +78,16 @@ portals = page
       , D.p__
           "There's one issue, though. Can you spot it? Look closely at the video as it moves from tile to tile. Each time you move it, the video restarts! But we don't want that, we want the video to be continuous as it's jumping from place to place."
       , D.p_
-          [ text "In games and other multimedia sites, it's common to use "
+          [ text_ "In games and other multimedia sites, it's common to use "
           , D.code__ "video"
-          , text ", "
+          , text_ ", "
           , D.code__ "audio"
-          , text ", and "
+          , text_ ", and "
           , D.code__ "canvas"
           , text
               " elements that are stateful. These elements often stay put in the DOM, so we don't need to manage their statefulness. But in cases where we need to move them around, we want to preserve their state. This is where "
           , D.b__ "Portals"
-          , text " come in."
+          , text_ " come in."
           ]
       , D.p_
           [ text
@@ -96,7 +96,7 @@ portals = page
       , Deku.do
           ifr <- globalPortal1 myIframe
           setSquare /\ square <- useState TL
-          D.div [klass "grid grid-cols-2"]
+          D.div [klass_ "grid grid-cols-2"]
             [ moveSpriteHere { iframe: ifr, square, setSquare, at: TL }
             , moveSpriteHere { iframe: ifr, square, setSquare, at: TR }
             , moveSpriteHere { iframe: ifr, square, setSquare, at: BL }

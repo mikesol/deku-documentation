@@ -4,7 +4,7 @@ import Prelude
 
 import Contracts (CollapseState(..), Subsection, getExample, subsection)
 import Data.Maybe (Maybe(..))
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Examples as Examples
 
@@ -17,13 +17,13 @@ transformedEvents = subsection
           [ text
               "To make a more efficient version of the example above, we use the "
           , D.code__ "useMemoized"
-          , text " hook."
+          , text_ " hook."
           ]
       , example
       , D.p_
-          [ text "Now, each subscription to "
+          [ text_ "Now, each subscription to "
           , D.code__ "composedEvent"
-          , text " will draw from the "
+          , text_ " will draw from the "
           , D.i__ "same"
           , text
               " event. This can help avoid lag, especially when belaboring under the constraint of a rendering loop that needs to execute at 60fps."

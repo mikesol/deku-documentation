@@ -5,7 +5,7 @@ import Prelude
 import Components.Code (psCode)
 import Contracts (CollapseState(..), Subsection, getExample, subsection)
 import Data.Maybe (Maybe(..))
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Examples as Examples
 
@@ -26,21 +26,21 @@ usingFunctionsAsMonads = subsection
             [ text
                 "Like React Contexts and Providers, we can dip into the provider from any component without explicitly passing values through the application. This is because "
             , D.code__ "AppMonad"
-            , text " expands to the signature "
+            , text_ " expands to the signature "
             , D.code__ " Function Env Nut"
-            , text " where "
+            , text_ " where "
             , D.code__ "Env"
-            , text " is the context."
+            , text_ " is the context."
             ]
         , D.p_
-            [ text "In PureScript, "
+            [ text_ "In PureScript, "
             , D.code__ "Function Env"
             , text
                 " is a monad, which means that its context gets passed down the monadic stack automatically through "
             , D.code__ "bind"
-            , text "s in "
+            , text_ "s in "
             , D.code__ "do"
-            , text " notation. Take the following extract from the code above."
+            , text_ " notation. Take the following extract from the code above."
             ]
         , psCode
             """app :: AppMonad
@@ -49,13 +49,13 @@ app = do
   myTable <- table
   pure $ D.div_ [ D.div_ [ mySignIn ], D.div_ [ myTable ] ]"""
         , D.p_
-            [ text "By left-binding, "
+            [ text_ "By left-binding, "
             , D.code__ "signIn"
-            , text " and "
+            , text_ " and "
             , D.code__ "table"
-            , text " automagically get the "
+            , text_ " automagically get the "
             , D.code__ "Env"
-            , text " context passed down through the stack."
+            , text_ " context passed down through the stack."
             ]
         , D.p_
             [ text

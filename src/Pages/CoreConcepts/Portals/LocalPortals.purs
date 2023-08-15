@@ -3,7 +3,7 @@ module Pages.CoreConcepts.Portals.LocalPortals where
 import Prelude
 
 import Contracts (Section, section)
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Pages.CoreConcepts.Portals.LocalPortals.PerformanceNotes (performanceNotes)
 import Pages.CoreConcepts.Portals.LocalPortals.TheLocalPortalSyntax (theLocalPortalSyntax)
@@ -14,7 +14,7 @@ localPortals = section
   { title: "Local portals"
   , topmatter: pure
       [ D.p_
-          [ text "Let's rewrite the example above using local portals."
+          [ text_ "Let's rewrite the example above using local portals."
           ]
       ]
   , subsections:

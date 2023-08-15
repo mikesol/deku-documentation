@@ -4,7 +4,7 @@ import Prelude
 
 import Components.Code (psCode)
 import Contracts (Subsection, subsection)
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 
 performanceConsiderations :: Subsection
@@ -12,7 +12,7 @@ performanceConsiderations = subsection
   { title: "Performance considerations"
   , matter: pure
       [ D.p_
-          [ text "Because "
+          [ text_ "Because "
           , D.code__ "<|>"
           , text
               " adds an extra thunk to your stack, too many of them can degrade performance. To aleviate this, you can make a hand-written version of "

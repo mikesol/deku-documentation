@@ -5,9 +5,9 @@ import Prelude
 import Components.Code (htmlCode)
 import Contracts (Page, page)
 import Data.Symbol (reflectSymbol)
-import Deku.Attribute ((:=))
-import Deku.Attributes (klass)
-import Deku.Control (text)
+import Deku.Attribute ((:=), (<:=>), (!:=))
+import Deku.Attributes (klass, klass_)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Deku.Pursx ((~~))
 import Pages.CoreConcepts.Pursx.ASimpleExample (aSimpleExample)
@@ -42,8 +42,8 @@ pursx :: Page
 pursx = page
   { route: Pursx
   , topmatter: pure
-      [ D.p [D.Class := "lead"]
-          [ text "Or how I learned to stop worrying and copy-paste the DOM."
+      [ D.p [D.Class !:= "lead"]
+          [ text_ "Or how I learned to stop worrying and copy-paste the DOM."
           ]
       , D.p_
           [ text
@@ -66,7 +66,7 @@ pursx = page
           , D.b__ "Pursx"
           , text
               ", which solves this and many other problems. In this section, you too will learn how to use Pursx "
-          , text " (and, by extension, how to keep your job)."
+          , text_ " (and, by extension, how to keep your job)."
           ]
       ]
   , sections:

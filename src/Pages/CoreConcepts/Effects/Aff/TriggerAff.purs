@@ -6,7 +6,7 @@ import Components.ProTip (proTip)
 import Components.TargetedLink (targetedLink)
 import Contracts (CollapseState(..), Subsection, getExample, subsection)
 import Data.Maybe (Maybe(..))
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Examples as Examples
 
@@ -24,7 +24,7 @@ triggerAff = subsection
       , proTip
           { header:
               D.span_
-                [ D.code__ "Aff", text "able asynchronicity in PureScript" ]
+                [ D.code__ "Aff", text_ "able asynchronicity in PureScript" ]
           , message: D.div_
               [ text
                   "Up until now, the side-effects we have seen have all been synchronous. In PureScript, we also have "
@@ -34,27 +34,27 @@ triggerAff = subsection
               , targetedLink
                   "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise"
                   [ D.code__ "Promises" ]
-              , text " that are meant to be broken (see "
+              , text_ " that are meant to be broken (see "
               , targetedLink
                   "https://pursuit.purescript.org/packages/purescript-aff/5.1.2/docs/Effect.Aff#t:Canceler"
                   [ D.code__ "Canceler" ]
-              , text "). "
+              , text_ "). "
               , D.code__ "liftEffect"
-              , text " converts an "
+              , text_ " converts an "
               , D.code__ "Effect"
-              , text "ful computation to an "
+              , text_ "ful computation to an "
               , D.code__ "Aff"
-              , text "ish ("
+              , text_ "ish ("
               , D.code__ "Aff"
-              , text "ular? "
+              , text_ "ular? "
               , D.code__ "Aff"
-              , text "erific?) computation and "
+              , text_ "erific?) computation and "
               , D.code__ "launchAff_"
-              , text " takes an "
+              , text_ " takes an "
               , D.code__ "Aff"
-              , text " and launches it from within an "
+              , text_ " and launches it from within an "
               , D.code__ "Effect"
-              , text ", making that block run asynchronously."
+              , text_ ", making that block run asynchronously."
               ]
           }
       ]

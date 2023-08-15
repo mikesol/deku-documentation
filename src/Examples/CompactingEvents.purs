@@ -10,8 +10,8 @@ import Data.Filterable (compact)
 import Data.Maybe (Maybe(..))
 import Data.NonEmpty ((:|))
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass)
-import Deku.Control (text)
+import Deku.Attributes (klass, klass_)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState')
@@ -32,14 +32,14 @@ app runExample = runExample Deku.do
       -> Event c
     eventMaker f l r = f (l left <|> r right)
   D.div_
-    [ D.input ([ klass "mr-2" ] <> slider setLeft) []
+    [ D.input ([ klass_ "mr-2" ] <> slider setLeft) []
     , D.input (slider setRight) []
     , D.div_
-        [ text "Responds to both channels: "
+        [ text_ "Responds to both channels: "
         , text $ show <$> (50.0 :| (eventMaker identity identity identity))
         ]
     , D.div_
-        [ text "Only responds to the left channel: "
+        [ text_ "Only responds to the left channel: "
         , text $ show <$>
             ( 50.0 :|
                 (eventMaker compact (Just <$> _) (_ $> Nothing))

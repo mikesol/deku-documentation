@@ -4,7 +4,7 @@ import Prelude
 
 import Components.Code (psCode, psCodeNoCollapseWithLink)
 import Contracts (Subsection, subsection)
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Examples as Examples
 
@@ -23,12 +23,12 @@ plainOldHTML = subsection
           """main :: Effect Unit
 main = runInBody (myHtml ~~ {})"""
       , D.p_
-          [ text "All you have to do is take your HTML string, add "
+          [ text_ "All you have to do is take your HTML string, add "
           , D.code__ "~~ {}"
           , text
               " after it, and you get your HTML in the DOM prest-o change-o. In addition to being low-code, this is the most performant Deku gets. It literally takes the code and sets it as the "
           , D.code__ "innerHTML"
-          , text " of some containing element."
+          , text_ " of some containing element."
           ]
       ]
   }

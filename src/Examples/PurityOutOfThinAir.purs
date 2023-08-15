@@ -10,7 +10,7 @@ import Control.Plus (empty)
 import Data.Array (intercalate)
 import Data.Monoid.Endo (Endo(..))
 import Data.Newtype (unwrap)
-import Deku.Control (text)
+import Deku.Control (text, text_)
 
 import FRP.Event (fold)
 import FRP.Event.Time (interval)

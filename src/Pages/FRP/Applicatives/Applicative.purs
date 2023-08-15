@@ -4,7 +4,7 @@ import Prelude
 
 import Components.TargetedLink (targetedLink)
 import Contracts (Section, section)
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Pages.FRP.Applicatives.Applicative.ApplicativeAsBiSampling (applicativeAsBiSampling)
 import Pages.FRP.Applicatives.Applicative.PurityOutOfThinAir (theTemporalityOfPure)
@@ -21,7 +21,7 @@ applicative = section
           , text
               ", "
           , D.code__ "Event"
-          , text " is an "
+          , text_ " is an "
           , targetedLink
               "https://pursuit.purescript.org/packages/purescript-prelude/docs/Control.Applicative"
               [ D.code__ "Applicative Functor" ]

@@ -5,7 +5,7 @@ import Prelude
 import Components.TargetedLink (targetedLink)
 import Contracts (CollapseState(..), Subsection, getExample, subsection)
 import Data.Maybe (Maybe(..))
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Examples as Examples
 
@@ -37,11 +37,11 @@ whenToFixAndWhenToFold = subsection
               "One classic example of this is "
           , targetedLink
               "https://en.wikipedia.org/wiki/Infinite_impulse_response"
-              [ text "IIR filters" ]
+              [ text_ "IIR filters" ]
           , text
               ", which generate a potentially infinite response from an initial impulse of energy. The equations for digital versions of these filters mix a signal with its output using a set of coefficients. Below, for example, we create an IIR filter for a "
           , targetedLink "https://en.wikipedia.org/wiki/Sawtooth_wave"
-              [ text "Sawtooth wave" ]
+              [ text_ "Sawtooth wave" ]
           , text
               " and link the output of the wave to a time-delay. The system has a single input, "
           , D.code__ "pure 0"

@@ -5,7 +5,7 @@ import Prelude
 import Components.Code (psCode)
 import Components.TargetedLink (targetedLink)
 import Contracts (Subsection, subsection)
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 
 whyEventsCannotWither :: Subsection
@@ -13,7 +13,7 @@ whyEventsCannotWither = subsection
   { title: "Why events cannot wither"
   , matter: pure
       [ D.p_
-          [ text "The "
+          [ text_ "The "
           , targetedLink
               "https://pursuit.purescript.org/packages/purescript-filterable/docs/Data.Witherable#t:Witherable"
               [ D.code__ "Witherable" ]

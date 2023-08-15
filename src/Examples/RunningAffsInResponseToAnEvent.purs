@@ -6,12 +6,12 @@ import Prelude
 import ExampleAssitant (ExampleSignature)
 
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass)
-import Deku.Control (text)
+import Deku.Attributes (klass, klass_)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState')
-import Deku.Listeners (click)
+import Deku.Listeners (click, click_)
 
 import Effect.Aff (launchAff_)
 import Effect.Class (liftEffect)
@@ -30,10 +30,10 @@ app runExample = runExample Deku.do
               }
             t' <- t
             liftEffect $ setResponse t'
-        , klass "cursor-pointer"
+        , klass_ "cursor-pointer"
         ]
-        [ text "Click for a random http response" ]
-    , text ": "
+        [ text_ "Click for a random http response" ]
+    , text_ ": "
     , text (show <$> response)
     ]
 

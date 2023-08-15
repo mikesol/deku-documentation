@@ -5,7 +5,7 @@ import Prelude
 import Components.Disclaimer (disclaimer)
 import Contracts (Subsection, CollapseState(..), getExample, subsection)
 import Data.Maybe (Maybe(..))
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Examples as Examples
 
@@ -15,7 +15,7 @@ knowThySelf = subsection
   , matter: do
       example <- getExample StartCollapsed Nothing Examples.KnowThySelf
       pure [ D.p_
-          [ text "An event hooked up to the special "
+          [ text_ "An event hooked up to the special "
           , D.code__ "Self"
           , text
               " attribute will invoke an effectful function with the DOM element as its argument whenever the event fires. Note that the event fires "
@@ -25,14 +25,14 @@ knowThySelf = subsection
           ]
       , example
       , disclaimer
-          { header: text "Who would've thunk?"
+          { header: text_ "Who would've thunk?"
           , message: D.div_
-              [ text "Because it is not a listener, the "
+              [ text_ "Because it is not a listener, the "
               , D.code__ "Self"
               , text
                   " attribute thunks its effect immediately when an event occurs. So make sure to manage your events carefully and/or to make sure your effectful shenanigans with your"
               , D.code__ "Self"
-              , text " are idempotent."
+              , text_ " are idempotent."
               ]
           }
       ]

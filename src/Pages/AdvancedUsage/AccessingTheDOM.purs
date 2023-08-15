@@ -3,8 +3,8 @@ module Pages.AdvancedUsage.AccessingTheDOM where
 import Prelude
 
 import Contracts (Page, page)
-import Deku.Attribute ((:=))
-import Deku.Control (text)
+import Deku.Attribute ((:=), (<:=>), (!:=))
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Pages.AdvancedUsage.AccessingTheDOM.TheSelfAttribute (theSelfAttribute)
 import Pages.AdvancedUsage.AccessingTheDOM.ToplevelConsiderations (toplevelConsiderations)
@@ -14,8 +14,8 @@ accessingTheDOM :: Page
 accessingTheDOM = page
   { route: AccessingTheDOM
   , topmatter: pure
-      [ D.p [D.Class := "lead"]
-          [ text "Raw-as-raw-gets DOM components"
+      [ D.p [D.Class !:= "lead"]
+          [ text_ "Raw-as-raw-gets DOM components"
           ]
       , D.p_
           [ text

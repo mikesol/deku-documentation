@@ -4,8 +4,8 @@ import Prelude
 
 import Contracts (CollapseState(..), Env(..), Subsection, getEnv, getExample, subsection)
 import Data.Maybe (Maybe(..))
-import Deku.Attributes (klass)
-import Deku.Control (text)
+import Deku.Attributes (klass, klass_)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Examples as Examples
 import Router.ADT (Route(..))
@@ -20,31 +20,31 @@ theTemporalityOfPure = subsection
 
       pure
         [ D.p_
-            [ text "To define "
+            [ text_ "To define "
             , D.code__ "pure"
-            , text " for events, we need a function whose signature is "
+            , text_ " for events, we need a function whose signature is "
             , D.code__ "forall a. a -> Event a"
-            , text " and that conforms to the applicative laws:"
+            , text_ " and that conforms to the applicative laws:"
             ]
         , D.ul_
             [ D.li_
                 [ D.b__ "Identity"
-                , text ": "
+                , text_ ": "
                 , D.code__ "(pure identity) <*> v = v"
                 ]
             , D.li_
                 [ D.b__ "Composition"
-                , text ": "
+                , text_ ": "
                 , D.code__ "pure (<<<) <*> f <*> g <*> h = f <*> (g <*> h)"
                 ]
             , D.li_
                 [ D.b__ "Homomorphism"
-                , text ": "
+                , text_ ": "
                 , D.code__ "(pure f) <*> (pure x) = pure (f x)"
                 ]
             , D.li_
                 [ D.b__ "Interchange"
-                , text ": "
+                , text_ ": "
                 , D.code__ "u <*> (pure y) = (pure (_ $ y)) <*> u"
                 ]
             ]
@@ -56,15 +56,15 @@ theTemporalityOfPure = subsection
             [ text
                 "It's not at all obvious which one to choose, but it turns out that the only lawful implementation of "
             , D.code__ "pure"
-            , text " is the one that emits a value immediately."
+            , text_ " is the one that emits a value immediately."
             ]
         , D.p_
             [ text
                 "Let's walk through the laws to verify that they're satisfied by our implementations of "
             , D.code__ "apply"
-            , text " and "
+            , text_ " and "
             , D.code__ "pure"
-            , text "."
+            , text_ "."
             ]
         , D.ul_
             [ D.li_
@@ -77,30 +77,30 @@ theTemporalityOfPure = subsection
                 , text
                     ": The right side of composition preserves the temporality of all three events, favoring "
                 , D.code__ "g"
-                , text " over "
+                , text_ " over "
                 , D.code__ "h"
-                , text " due to the left-to-right rule and then favoring "
+                , text_ " due to the left-to-right rule and then favoring "
                 , D.code__ "f"
-                , text " over the applied result. Because "
+                , text_ " over the applied result. Because "
                 , D.code__ "pure (<<<)"
-                , text " is applied to "
+                , text_ " is applied to "
                 , D.code__ "f"
-                , text ", "
+                , text_ ", "
                 , D.code__ "f"
-                , text "'s temporality will remain unchanged. Furthermore, "
+                , text_ "'s temporality will remain unchanged. Furthermore, "
                 , D.code__ "f"
-                , text " still wins out over "
+                , text_ " still wins out over "
                 , D.code__ "g"
-                , text " and "
+                , text_ " and "
                 , D.code__ "g"
-                , text " still wins out over "
+                , text_ " still wins out over "
                 , D.code__ "h"
                 , text
                     " in the left-to-right order, so we have the same tie-breaking mechanism for events in the same tick."
                 ]
             , D.li_
                 [ D.b__ "Homomorphism"
-                , text ": this is the easiest to verify. Because "
+                , text_ ": this is the easiest to verify. Because "
                 , D.code__ "pure"
                 , text
                     " will have the same temporality on the left and right regardless of its implementation, it will be homomorphic."
@@ -113,12 +113,12 @@ theTemporalityOfPure = subsection
                 , text
                     " arrives any time after the initial browser tick, there will be no issue because the "
                 , D.code__ "(pure y)"
-                , text " and "
+                , text_ " and "
                 , D.code__ "(pure (_ $ y)"
                 , text
                     " will be cached and used as soon as the value event from "
                 , D.code__ "u"
-                , text " is emitted. However, in the case where "
+                , text_ " is emitted. However, in the case where "
                 , D.code__ "u"
                 , text
                     " also happens on the initial browser tick, we need to confirm that the order of application is irrelevant. Indeed, because "
@@ -130,25 +130,25 @@ theTemporalityOfPure = subsection
                     " is immaterial, and as the final value will only be emitted once both events have fired at least once, the two formulations are equivalent."
                 ]
             ]
-        , D.div [ klass "text-right" ] [ text "∎" ]
+        , D.div [ klass_ "text-right" ] [ text_ "∎" ]
         , D.p_
             [ text
                 "Now that we've gotten that out of the way, let's do what y'all came here for - a giant fizz-bang using applicatives! Specifically, we'll use the fact that "
             , D.code__ "Event"
-            , text "'s instance of "
+            , text_ "'s instance of "
             , D.code__ "Semigroup"
-            , text " is defined as "
+            , text_ " is defined as "
             , D.code__ "lift2 append"
-            , text "."
+            , text_ "."
             ]
         , example
         , D.p_
-            [ text "Yet again, we see the ubiquitous "
+            [ text_ "Yet again, we see the ubiquitous "
             , D.code__ "fold"
             , text
                 " function. We'll get a full explanation of what it does once we reach "
             , routeLink FixAndFold
-            , text "."
+            , text_ "."
             ]
         ]
   }

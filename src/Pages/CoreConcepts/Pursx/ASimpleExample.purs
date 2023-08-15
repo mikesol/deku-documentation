@@ -5,8 +5,8 @@ import Prelude
 import Components.Code (htmlCode)
 import Contracts (Section, section)
 import Data.Symbol (reflectSymbol)
-import Deku.Attributes (klass)
-import Deku.Control (text)
+import Deku.Attributes (klass, klass_)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Deku.Pursx ((~~))
 import Pages.CoreConcepts.Pursx.ASimpleExample.ClosingTagsAndTreeStructure (closingTagsAndTreeStructure)

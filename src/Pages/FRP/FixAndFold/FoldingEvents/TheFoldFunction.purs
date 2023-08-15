@@ -4,7 +4,7 @@ import Prelude
 
 import Components.Code (psCode)
 import Contracts (Subsection, subsection)
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 
 theFoldFunction :: Subsection
@@ -22,15 +22,15 @@ fold f b e = fix \i -> sampleOnRight (i <|> pure b) ((flip f) <$> e)"""
           [ text
               "This looks similar to the lag functions we created above, but instead of creating a tuple we create an arbitrary function that combines "
           , D.code__ "b"
-          , text " and "
+          , text_ " and "
           , D.code__ " a "
-          , text " to produce a "
+          , text_ " to produce a "
           , D.code__ "b"
-          , text ". The type "
+          , text_ ". The type "
           , D.code__ "b"
-          , text " can, of course, include an "
+          , text_ " can, of course, include an "
           , D.code__ "a"
-          , text ", ie "
+          , text_ ", ie "
           , D.code__ "Maybe (Tuple Int a)"
           , text
               ". This allows you to output both a state and the value of the event."

@@ -4,7 +4,7 @@ import Prelude
 
 import Contracts (CollapseState(..), Subsection, getExample, subsection)
 import Data.Maybe (Maybe(..))
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Examples as Examples
 
@@ -14,17 +14,17 @@ theCaseForRef = subsection
   , matter: do
       example <- getExample StartCollapsed Nothing Examples.UseRef
       pure [ D.p_
-          [ text "The "
+          [ text_ "The "
           , D.code__ "useRef"
-          , text " hook takes an initial value of type"
+          , text_ " hook takes an initial value of type"
           , D.code__ "a"
-          , text " and an event of type "
+          , text_ " and an event of type "
           , D.code__ "Event a"
-          , text " and returns a value of type "
+          , text_ " and returns a value of type "
           , D.code__ "Effect a"
-          , text " that is a reference to the most recent value of the event "
+          , text_ " that is a reference to the most recent value of the event "
           , D.i__ "or"
-          , text " the initial value if the event has never fired."
+          , text_ " the initial value if the event has never fired."
           ]
       , D.p_
           [ text

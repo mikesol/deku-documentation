@@ -6,12 +6,12 @@ import Prelude
 import ExampleAssitant (ExampleSignature)
 
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass)
-import Deku.Control (text)
+import Deku.Attributes (klass, klass_)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState)
-import Deku.Listeners (click)
+import Deku.Listeners (click, click_)
 import Deku.Pursx ((~~))
 
 import Type.Proxy (Proxy(..))
@@ -62,7 +62,7 @@ app runExample = runExample Deku.do
     hideOnFalse e =
       klass $ e <#> (if _ then "" else "hidden ") >>>
         (_ <> "flex")
-    point = klass "cursor-pointer mr-4"
+    point = klass_ "cursor-pointer mr-4"
     toggleHome =
       [ point
       , click (setProjects false *> setNero false)
@@ -77,9 +77,9 @@ app runExample = runExample Deku.do
       ]
   D.div_
     [ D.div_
-        [ D.a toggleHome [ text "Go home" ]
-        , D.a toggleProjects [ text "Go to projects" ]
-        , D.a toggleNero [ text "Go to nero" ]
+        [ D.a toggleHome [ text_ "Go home" ]
+        , D.a toggleProjects [ text_ "Go to projects" ]
+        , D.a toggleNero [ text_ "Go to nero" ]
         ]
     , D.div_
         [ myHtml ~~
