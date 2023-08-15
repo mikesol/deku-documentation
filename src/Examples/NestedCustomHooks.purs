@@ -1,20 +1,19 @@
 module Examples.NestedCustomHooks where
 
-import Deku.Toplevel (runInBody')
 import Prelude
 
-import Data.NonEmpty (NonEmpty, head, tail)
 import Data.Tuple.Nested (type (/\), (/\))
-import Deku.Attributes (klass, klass_)
+import Deku.Attributes (klass_)
 import Deku.Control (text, text_)
 import Deku.Core (Hook)
 import Deku.DOM as D
 import Deku.Do as Deku
-import Deku.Hooks (useMemoized, useState)
-import Deku.Listeners (click, click_)
+import Deku.Hooks (useRant, useState)
+import Deku.Listeners (click)
+import Deku.Toplevel (runInBody')
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
-import FRP.Event (Event)
+import FRP.Poll (Poll)
 
 buttonClass =
   """inline-flex items-center rounded-md
@@ -26,18 +25,18 @@ focus:ring-pink-500 focus:ring-offset-2 m-2""" :: String
 app :: ExampleSignature
 app runExample = runExample Deku.do
   let
-    hookusMinimus :: Int -> Hook ((Int -> Effect Unit) /\ NonEmpty Event Int)
+    hookusMinimus :: Int -> Hook ((Int -> Effect Unit) /\ Poll Int)
     hookusMinimus i makeHook = Deku.do
       setMinimus /\ minimus <- useState i
       makeHook (setMinimus /\ minimus)
 
     hookusMaximus
       :: Int
-      -> Hook ((Int -> Effect Unit) /\ NonEmpty Event Int /\ NonEmpty Event Int)
+      -> Hook ((Int -> Effect Unit) /\ Poll Int /\ Poll Int)
     hookusMaximus i makeHook = Deku.do
       setMinimus /\ minimus <- hookusMinimus i
       let added = add 1000 <$> minimus
-      maximus <- useMemoized added
+      maximus <- useRant added
       makeHook (setMinimus /\ minimus /\ maximus)
   setMinimus /\ minimus /\ maximus <- hookusMaximus 0
   D.div_
