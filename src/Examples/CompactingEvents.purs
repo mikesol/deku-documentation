@@ -17,7 +17,7 @@ import Deku.Do as Deku
 import Deku.Hooks (useState')
 import Deku.Listeners (slider)
 
-import FRP.Event (Event)
+import FRP.Poll (Poll)
 
 app :: ExampleSignature
 app runExample = runExample Deku.do
@@ -26,14 +26,14 @@ app runExample = runExample Deku.do
   let
     eventMaker
       :: forall b c
-       . (Event b -> Event c)
-      -> (Event Number -> Event b)
-      -> (Event Number -> Event b)
-      -> Event c
+       . (Poll b -> Poll c)
+      -> (Poll Number -> Poll b)
+      -> (Poll Number -> Poll b)
+      -> Poll c
     eventMaker f l r = f (l left <|> r right)
   D.div_
-    [ D.input ([ klass_ "mr-2" ] <> slider setLeft) []
-    , D.input (slider setRight) []
+    [ D.input [ klass_ "mr-2", slider_ setLeft ] []
+    , D.input [slider setRight] []
     , D.div_
         [ text_ "Responds to both channels: "
         , text $ show <$> (50.0 :| (eventMaker identity identity identity))

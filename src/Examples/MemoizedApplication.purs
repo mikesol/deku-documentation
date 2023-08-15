@@ -4,12 +4,12 @@ import Prelude
 
 import Data.Array (intercalate, replicate)
 import Data.Tuple (fst, snd)
-import Deku.Attributes (klass, klass_)
+import Deku.Attributes (klass_)
 import Deku.Control (text, text_)
 import Deku.DOM as D
 import Deku.Do as Deku
-import Deku.Hooks (useMemoized, useState)
-import Deku.Listeners (click, click_)
+import Deku.Hooks (useRant, useState)
+import Deku.Listeners (click)
 import Deku.Toplevel (runInBody')
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
@@ -21,13 +21,13 @@ app runExample = runExample Deku.do
   cc <- useState true
   dd <- useState false
   ee <- useState true
-  composedEvent <- useMemoized
+  composedEvent <- useRant
     ( { a: _, b: _, c: _, d: _, e: _ }
         <$> snd aa
-          <**> snd bb
-          <**> snd cc
-          <**> snd dd
-          <**> snd ee
+          <*> snd bb
+          <*> snd cc
+          <*> snd dd
+          <*> snd ee
     )
   D.div_
     [ D.div_

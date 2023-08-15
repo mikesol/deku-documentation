@@ -1,31 +1,29 @@
 module Examples.MultipleSubscriptions where
 
-import Deku.Toplevel (runInBody')
-import Effect (Effect)
 import Prelude
-import ExampleAssitant (ExampleSignature)
 
 import Data.Array (replicate)
 import Data.Number.Format (fixed, toStringWith)
-import Data.Tuple (Tuple(..))
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass, klass_)
-import Deku.Control (text, text_)
+import Deku.Attributes (klass_)
+import Deku.Control (text)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState, guard)
-import Deku.Listeners (click, click_)
-
+import Deku.Listeners (click)
+import Deku.Toplevel (runInBody')
+import Effect (Effect)
 import Effect.Random (random)
-import FRP.Poll (poll, sample_)
+import ExampleAssitant (ExampleSignature)
 import FRP.Event.Time (interval)
+import FRP.Poll (effectToPoll, sample_, sham)
 
 app :: ExampleSignature
 app runExample = do
   i <- interval 250
   runExample Deku.do
     setOnOff /\ onOff <- useState false
-    let e = sample_ (poll (pure (Tuple (pure unit) random))) i.event
+    let e = sham (sample_ (effectToPoll random) i.event)
     D.div_
       [ D.a
           [ click $ onOff <#> not >>> setOnOff
