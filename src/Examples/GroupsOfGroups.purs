@@ -1,21 +1,21 @@
 module Examples.GroupsOfGroups where
 
-import Deku.Toplevel (runInBody')
-import Effect (Effect)
 import Prelude
-import ExampleAssitant (ExampleSignature)
 
 import Assets (alexanderURL)
 import Data.String (Pattern(..), Replacement(..), replaceAll)
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute ((:=), (<:=>), (!:=))
-import Deku.Attributes (klass, klass_)
-import Deku.Control (text, text_)
+import Deku.Attribute ((!:=))
+import Deku.Attributes (klass_)
+import Deku.Control (text_)
 import Deku.Core (fixed)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (guard, useState)
-import Deku.Listeners (click, click_)
+import Deku.Listeners (click_)
+import Deku.Toplevel (runInBody')
+import Effect (Effect)
+import ExampleAssitant (ExampleSignature)
 
 buttonClass :: String -> String
 buttonClass color =
@@ -38,17 +38,17 @@ app runExample = runExample Deku.do
     [ D.div [ klass_ "flex justify-between" ]
         [ D.button
             [ klass_ $ buttonClass "indigo"
-            , click $ setBadness Bad
+            , click_ $ setBadness Bad
             ]
             [ text_ "Bad" ]
         , D.button
             [ klass_ $ buttonClass "pink"
-            , click $ setBadness Worse
+            , click_ $ setBadness Worse
             ]
             [ text_ "Worse" ]
         , D.button
             [ klass_ $ buttonClass "green"
-            , click $ setBadness Worst
+            , click_ $ setBadness Worst
             ]
             [ text_ "Worst" ]
         ]
@@ -56,7 +56,7 @@ app runExample = runExample Deku.do
         [ D.div [ klass_ "p-3" ]
             [ D.span
                 [ klass_ "font-aldine text-4xl text-alexander" ]
-                [ text
+                [ text_
                     "Alexander and the Terrible, Horrible,"
                 , guard (badness <#> (_ > Bad)) $ fixed
                     [ text_ " Dreadful,"
@@ -70,7 +70,7 @@ app runExample = runExample Deku.do
                 , text_ " Very Bad Day"
                 ]
             ]
-        , D.div_ [ D.img [ D.Src := alexanderURL ] [] ]
+        , D.div_ [ D.img [ D.Src !:= alexanderURL ] [] ]
         ]
     ]
 

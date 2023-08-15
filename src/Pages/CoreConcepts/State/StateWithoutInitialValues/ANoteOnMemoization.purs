@@ -68,11 +68,11 @@ aNoteOnMemoization = subsection
           ]
       , D.p_
           [ text
-              "It is indeed possible to have hooks that always supply their most recent value, but it requires using a concept we haven't learned about yet: the "
-          , D.code__ "Poll"
+              "It is indeed possible to have hooks that always supply their most recent value, but it requires using a hook we haven't learned about yet: "
+          , D.code__ "useHot"
           , text_ ". Fear not though, an example will thusly be presented, and we'll cover "
-          , D.code__ "Poll"
-          , text_ "s later."
+          , D.code__ "useHot"
+          , text_ " later."
           ]
       ,example2
       ]

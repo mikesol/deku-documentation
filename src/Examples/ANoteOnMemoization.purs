@@ -1,20 +1,19 @@
 module Examples.ANoteOnMemoization where
 
-import Deku.Toplevel (runInBody')
-import Effect (Effect)
 import Prelude
-import ExampleAssitant (ExampleSignature)
 
 import Data.String (replaceAll, Pattern(..), Replacement(..))
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass, klass_)
+import Deku.Attributes (klass_)
 import Deku.Control (text, text_)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState, guard)
 import Deku.Listeners (click, click_)
-
+import Deku.Toplevel (runInBody')
+import Effect (Effect)
 import Effect.Random (random)
+import ExampleAssitant (ExampleSignature)
 
 buttonClass :: String -> String
 buttonClass color =
@@ -39,7 +38,7 @@ app runExample = do
       , D.div_
           [ D.button
               [ klass_ $ buttonClass "pink"
-              , click $ random >>= setNumber
+              , click_ $ random >>= setNumber
               ]
               [ text_ "A" ]
           , D.button

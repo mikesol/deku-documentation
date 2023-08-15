@@ -1,16 +1,16 @@
 module Examples.EventsAsSemigroups where
 
-import Deku.Toplevel (runInBody')
-import Effect (Effect)
 import Prelude
 
 import Data.Tuple.Nested ((/\))
 import Deku.Attributes (klass, klass_)
-import Deku.Control (text, text_)
+import Deku.Control (text_)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState')
-import Deku.Listeners (click, click_)
+import Deku.Listeners (click_)
+import Deku.Toplevel (runInBody')
+import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
 
 buttonClass =
@@ -26,8 +26,8 @@ app runExample = runExample Deku.do
   setKlass2 /\ klass2 <- useState'
   let
     button setter txt = D.button
-      [ klass_ buttonClass, click (setter txt) ]
-      [ text txt ]
+      [ klass_ buttonClass, click_ (setter txt) ]
+      [ text_ txt ]
   D.div_
     [ D.div_ $
         [ button setKlass1 "text-2xl"

@@ -13,7 +13,7 @@ import Deku.Control (text_)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (dynOptions, useDynWith, useState, useState')
-import Deku.Listeners (click, click_, keyUp)
+import Deku.Listeners (click, click_, keyUp_)
 import Deku.Toplevel (runInBody')
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
@@ -58,7 +58,7 @@ app runExample = runExample Deku.do
       D.div_
         [ D.input
             [ D.Value !:= "Tasko primo"
-            , keyUp $ pure \evt -> do
+            , keyUp_ $ \evt -> do
                 when (code evt == "Enter") $
                   for_
                     ((target >=> fromEventTarget) (toEvent evt))
