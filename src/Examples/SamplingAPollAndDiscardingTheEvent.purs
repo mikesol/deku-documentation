@@ -1,22 +1,23 @@
 module Examples.SamplingAPollAndDiscardingTheEvent where
 
-import Deku.Toplevel (runInBody')
-import Effect (Effect)
 import Prelude
-import ExampleAssitant (ExampleSignature)
 
 import Affjax.ResponseFormat as ResponseFormat
 import Affjax.Web as AX
+import Control.Alt ((<|>))
 import Control.Monad.ST.Class (liftST)
 import Control.Monad.ST.Internal (new, read, write)
 import Data.Argonaut.Core (stringifyWithIndent)
 import Data.Either (Either(..))
-import Data.Tuple (Tuple(..))
-import Deku.Control (text, text_)
-
+import Deku.Control (text)
+import Deku.Toplevel (runInBody')
+import Effect (Effect)
 import Effect.Aff (error, killFiber, launchAff)
-import FRP.Poll (poll, sample_)
+import Effect.Class (liftEffect)
+import ExampleAssitant (ExampleSignature)
+import FRP.Event (makeEvent, subscribe)
 import FRP.Event.Time (interval)
+import FRP.Poll (poll, sample_, sham)
 import Fetch (Method(..))
 
 app :: ExampleSignature
@@ -24,12 +25,10 @@ app runExample = do
   i <- interval 2000
   runExample do
     text
-      ( sample_
-          ( poll
-              ( do
+      (sham ( sample_
+          (pure "Fetching..." <|> poll \e -> makeEvent \k ->  do
                   fiber <- new (pure unit)
-                  value <- new "Fetching..."
-                  pure $ Tuple (pure unit) do
+                  subscribe e \ff -> do
                     fb <- launchAff do
                       f <- liftST $ read fiber
                       killFiber (error "cancelling") f
@@ -40,19 +39,16 @@ app runExample = do
                             , responseFormat = ResponseFormat.json
                             }
                         )
-                      let ff s = liftST $ void $ write s value
-                      case result of
-                        Left err -> ff (AX.printError err)
-                        Right response -> ff
-                          (stringifyWithIndent 2 response.body)
+                      liftEffect case result of
+                        Left err -> k $ ff (AX.printError err)
+                        Right response -> k $ ff
+                          ("Here's a random user: " <> stringifyWithIndent 2 response.body)
                     liftST $ void $ write fb fiber
-                    o <- liftST $ read value
-                    pure ("Here's a random user: " <> o)
               )
-          )
+          
 
           i.event
-      )
+      ))
 
 main :: Effect Unit
 main = void $ app (map (map void) runInBody')
