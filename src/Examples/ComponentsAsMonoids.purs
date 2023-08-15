@@ -10,8 +10,8 @@ import Data.FunctorWithIndex (mapWithIndex)
 import Data.Lens (over)
 import Data.Lens.Index (ix)
 import Data.String (Pattern(..), split)
-import Deku.Attributes (klass, klass_)
-import Deku.Control (text, text_)
+import Deku.Attributes (klass_)
+import Deku.Control (text_)
 import Deku.DOM as D
 
 lyrics :: Array String
@@ -62,7 +62,7 @@ toWord _ = "nth"
 app :: ExampleSignature
 app runExample = runExample do
   let
-    styleF s t = D.span [ klass_ s ] [ text t ]
+    styleF s t = D.span [ klass_ s ] [ text_ t ]
     zipStyles = zipWith styleF textColors
     lyrics0 = zipStyles lyrics
     lyrics1 = zipStyles (over (ix 11) ("and " <> _) lyrics)
@@ -71,8 +71,8 @@ app runExample = runExample do
         ( lyrics # mapWithIndex \i _ ->
             D.p_
               [ text_ "On the "
-                  <> text (toWord (i + 1))
-                  <> text
+                  <> text_ (toWord (i + 1))
+                  <> text_
                     " day of Christmas my true love gave to me: "
                   <> intercalate (text_ ", ")
                     ( drop (11 - i) $
