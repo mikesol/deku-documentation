@@ -1,18 +1,17 @@
 module Examples.MockDiscord where
 
-import Deku.Toplevel (runInBody')
-import Effect (Effect)
 import Prelude
-import ExampleAssitant (ExampleSignature)
 
 import Assets (beluMomURL, belugaURL)
 import Control.Plus (empty)
-import Data.These (These(..))
-import Deku.Attribute (class Attr, Attribute, AttributeValue(..), unsafeAttribute, (:=))
-import Deku.Control (text, text_)
+import Deku.Attribute (class Attr, Attribute, AttributeValue(..), unsafeAttribute, (!:=))
+import Deku.Control (text_)
 import Deku.Core (Nut)
 import Deku.DOM (unsafeCustomElement)
-
+import Deku.Toplevel (runInBody')
+import Effect (Effect)
+import ExampleAssitant (ExampleSignature)
+import FRP.Poll (Poll)
 import Type.Proxy (Proxy(..))
 
 data DiscordMessages_
@@ -23,18 +22,18 @@ data RoleColor = RoleColor
 
 instance Attr DiscordMessage_ Author String where
   attr _ s = unsafeAttribute
-    $ This $ pure { key: "author", value: Prop' s }
+    { key: "author", value: Prop' s }
 
 instance Attr DiscordMessage_ Avatar String where
   attr _ s = unsafeAttribute
-    $ This $ pure { key: "avatar", value: Prop' s }
+    { key: "avatar", value: Prop' s }
 
 instance Attr DiscordMessage_ RoleColor String where
   attr _ s = unsafeAttribute
-    $ This $ pure { key: "role-color", value: Prop' s }
+    { key: "role-color", value: Prop' s }
 
 discordMessages
-  :: Array Nut
+  :: Array (Nut)
   -> Nut
 discordMessages = unsafeCustomElement "discord-messages"
   ( Proxy
@@ -44,36 +43,35 @@ discordMessages = unsafeCustomElement "discord-messages"
   empty
 
 discordMessage
-  :: Array (Attribute DiscordMessage_)
-  -> Array Nut
+  :: Array (Poll (Attribute DiscordMessage_))
+  -> Array (Nut)
   -> Nut
 discordMessage = unsafeCustomElement "discord-message"
   ( Proxy
       :: Proxy
            DiscordMessage_
   )
-
 app :: ExampleSignature
 app runExample = runExample do
   discordMessages
     [ discordMessage
         [ Author !:= "beluga"
-        , Avatar := belugaURL
+        , Avatar !:= belugaURL
         ]
         [ text_ "mom" ]
     , discordMessage
         [ Author !:= "belu-mom🌸"
-        , Avatar := beluMomURL
+        , Avatar !:= beluMomURL
         ]
         [ text_ "yes beluga" ]
     , discordMessage
         [ Author !:= "beluga"
-        , Avatar := belugaURL
+        , Avatar !:= belugaURL
         ]
         [ text_ "whos my dad?" ]
     , discordMessage
         [ Author !:= "belu-mom🌸"
-        , Avatar := beluMomURL
+        , Avatar !:= beluMomURL
         ]
         [ text_ "it's complicated..." ]
     ]

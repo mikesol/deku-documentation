@@ -6,9 +6,9 @@ import Prelude
 import ExampleAssitant (ExampleSignature)
 
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute ((:=), (<:=>), (!:=))
-import Deku.Attributes (klass, klass_)
-import Deku.Control (text, text_)
+import Deku.Attribute ((!:=), (<:=>))
+import Deku.Attributes (klass_)
+import Deku.Control (text)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState')
@@ -31,8 +31,8 @@ app runExample = runExample Deku.do
   D.div_
     [ D.input
         [ klass_ inputKls
-        , D.OnInput := (input <#> \i -> (value i >>= setTxt))
-        , D.SelfT := setInput
+        , D.OnInput <:=> (input <#> \i -> (value i >>= setTxt))
+        , D.SelfT !:= setInput
         ]
         []
     , D.div_ [ text txt ]
