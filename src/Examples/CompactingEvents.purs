@@ -1,28 +1,26 @@
 module Examples.CompactingEvents where
 
-import Deku.Toplevel (runInBody')
-import Effect (Effect)
 import Prelude
-import ExampleAssitant (ExampleSignature)
 
 import Control.Alt ((<|>))
 import Data.Filterable (compact)
 import Data.Maybe (Maybe(..))
-import Data.NonEmpty ((:|))
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass, klass_)
+import Deku.Attributes (klass_)
 import Deku.Control (text, text_)
 import Deku.DOM as D
 import Deku.Do as Deku
-import Deku.Hooks (useState')
-import Deku.Listeners (slider)
-
+import Deku.Hooks (useState)
+import Deku.Listeners (slider_)
+import Deku.Toplevel (runInBody')
+import Effect (Effect)
+import ExampleAssitant (ExampleSignature)
 import FRP.Poll (Poll)
 
 app :: ExampleSignature
 app runExample = runExample Deku.do
-  setLeft /\ left <- useState'
-  setRight /\ right <- useState'
+  setLeft /\ left <- useState 50.0
+  setRight /\ right <- useState 50.0
   let
     eventMaker
       :: forall b c
@@ -33,16 +31,16 @@ app runExample = runExample Deku.do
     eventMaker f l r = f (l left <|> r right)
   D.div_
     [ D.input [ klass_ "mr-2", slider_ setLeft ] []
-    , D.input [slider setRight] []
+    , D.input [ slider_ setRight ] []
     , D.div_
         [ text_ "Responds to both channels: "
-        , text $ show <$> (50.0 :| (eventMaker identity identity identity))
+        , text (eventMaker identity identity identity <#> show)
         ]
     , D.div_
         [ text_ "Only responds to the left channel: "
-        , text $ show <$>
-            ( 50.0 :|
-                (eventMaker compact (Just <$> _) (_ $> Nothing))
+        , text
+            ( eventMaker compact (map Just) (const (pure Nothing))
+                <#> show
             )
         ]
     ]
