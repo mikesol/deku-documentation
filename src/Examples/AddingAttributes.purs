@@ -5,9 +5,9 @@ import Effect (Effect)
 import Prelude
 import ExampleAssitant (ExampleSignature)
 
-import Deku.Attribute ((:=), (<:=>), (!:=))
-import Deku.Attributes (klass, klass_)
-import Deku.Control (text, text_)
+import Deku.Attribute ((!:=))
+import Deku.Attributes (klass_)
+import Deku.Control (text_)
 import Deku.DOM as D
 
 app :: ExampleSignature
