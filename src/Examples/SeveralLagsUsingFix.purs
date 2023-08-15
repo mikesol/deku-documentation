@@ -2,23 +2,22 @@ module Examples.SeveralLagsUsingFix where
 
 import Prelude
 
+import Control.Alt ((<|>))
 import Data.Compactable (compact)
 import Data.Maybe (Maybe(..))
-import Data.NonEmpty ((:|))
 import Data.String (Pattern(..), Replacement(..), replaceAll)
 import Data.Tuple (Tuple(..), fst, snd)
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass, klass_)
+import Deku.Attributes (klass_)
 import Deku.Control (text, text_)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState')
-import Deku.Listeners (click, click_)
+import Deku.Listeners (click_)
 import Deku.Toplevel (runInBody')
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
-import FRP.Event (fix)
-import FRP.Poll (sample, step)
+import FRP.Event.Class (fix, sampleOnRight)
 
 buttonClass :: String -> String
 buttonClass color =
@@ -37,13 +36,13 @@ app runExample = runExample Deku.do
       | n <= 0 = e
       | otherwise =
           compact $ snd <$> fix
-            ( \ev -> sample
-                (step Nothing (fst <$> ev))
+            ( \ev -> sampleOnRight
+                (pure Nothing <|> (fst <$> ev))
                 ((Tuple <<< Just) <$> lag (n - 1) e)
             )
-    button txt color = D.button
-      [ klass_ (buttonClass color), click_ (setWord txt) ]
-      [ text_ txt ]
+    button text color = D.button
+      [ klass_ (buttonClass color), click_ (setWord text) ]
+      [ text_ text ]
   D.div_
     [ D.div_ $
         [ button "Hickory" "green"
@@ -52,7 +51,7 @@ app runExample = runExample Deku.do
         ]
     , D.div_ $ [ 0, 1, 2, 3, 4 ] <#> \n -> D.div_
         [ text_ $ "Word with a lag of " <> show n <> ": "
-        , text ("None" :| lag n word)
+        , text (pure "None" <|> lag n word)
         ]
     ]
 
