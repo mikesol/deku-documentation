@@ -1,7 +1,6 @@
 module Examples.EffectsInSSR where
 
 import Prelude
-import Effect (Effect)
 
 import Control.Monad.ST.Class (liftST)
 import Data.NonEmpty ((:|))
@@ -15,12 +14,13 @@ import Deku.Do as Deku
 import Deku.Hooks (guard, useState')
 import Deku.Listeners (click, click_)
 import Deku.Toplevel (runInBody', runSSR)
+import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
 
 htmlCode :: String -> Nut
 htmlCode code = D.pre [ D.Class !:= "prism-code language-markup" ]
   [ D.code_
-      [ text code
+      [ text_ code
       ]
   ]
 
@@ -31,7 +31,7 @@ myApp s = Deku.do
     [ D.h4__ "Hi!"
     , D.a
         [ klass_ "cursor-pointer"
-        , click $ (setImage unit) :| (image $> pure unit)
+        , click_ $ (setImage unit) :| (image $> pure unit)
         ]
         [ text_ "Click to reveal an image." ]
     , guard (image $> true)

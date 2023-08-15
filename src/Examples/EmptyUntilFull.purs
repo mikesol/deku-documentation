@@ -1,19 +1,18 @@
 module Examples.EmptyUntilFull where
 
-import Deku.Toplevel (runInBody')
-import Effect (Effect)
 import Prelude
-import ExampleAssitant (ExampleSignature)
 
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass, klass_)
+import Deku.Attributes (klass_)
 import Deku.Control (text, text_)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState')
-import Deku.Listeners (click, click_)
-
+import Deku.Listeners (click_)
+import Deku.Toplevel (runInBody')
+import Effect (Effect)
 import Effect.Random (random)
+import ExampleAssitant (ExampleSignature)
 
 buttonClass =
   """inline-flex items-center rounded-md
@@ -28,7 +27,7 @@ app runExample = runExample Deku.do
   D.div_
     [ D.button
         [ klass_ buttonClass
-        , click $ random >>= setNumber
+        , click_ $ random >>= setNumber
         ]
         [ text_ "Update number" ]
     , text $ number <#>
