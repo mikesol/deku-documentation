@@ -2,13 +2,14 @@ module Examples.ANoteOnMemoization where
 
 import Prelude
 
+import Control.Alt ((<|>))
 import Data.String (replaceAll, Pattern(..), Replacement(..))
 import Data.Tuple.Nested ((/\))
 import Deku.Attributes (klass_)
 import Deku.Control (text, text_)
 import Deku.DOM as D
 import Deku.Do as Deku
-import Deku.Hooks (useState, guard)
+import Deku.Hooks (guard, useState, useState')
 import Deku.Listeners (click, click_)
 import Deku.Toplevel (runInBody')
 import Effect (Effect)
@@ -28,11 +29,11 @@ app :: ExampleSignature
 app runExample = do
   n <- random
   runExample Deku.do
-    setNumber /\ number <- useState n
+    setNumber /\ number <- useState'
     setPresence /\ presence <- useState false
     D.div_
       [ D.div_
-          [ text $ number <#> show >>>
+          [ text $ (pure n <|> number) <#> show >>>
               ("Here's a random number: " <> _)
           ]
       , D.div_

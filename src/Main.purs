@@ -22,7 +22,6 @@ import Data.Tuple (Tuple(..), curry, fst, snd, uncurry)
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
 import Effect.Class.Console (logShow)
-import Effect.Console as Log
 import Effect.Ref as Ref
 import FRP.Dedup (dedup)
 import FRP.Event (Event, create, fold, mailbox, subscribe)
@@ -59,7 +58,7 @@ getScrolledSection :: Int -> (Int -> Effect ScrolledSection) -> Effect Int
 getScrolledSection startingAt f = go 0 ScrollCheckStart startingAt startingAt
   where
   go rc checkDir n head = case rc of
-    7 -> Log.error "Infinite loop, ping Mike." *> pure 0
+    7 -> {-Log.error "Infinite loop, ping Mike." *>-} pure 0
     _ -> do
       scrolledSection <- f head
       case scrolledSection of
