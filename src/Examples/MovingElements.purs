@@ -1,24 +1,23 @@
 module Examples.MovingElements where
 
-import Deku.Toplevel (runInBody')
-import Effect (Effect)
 import Prelude
-import ExampleAssitant (ExampleSignature)
 
 import Data.Foldable (for_, traverse_)
 import Data.Int (floor)
 import Data.String (Pattern(..), Replacement(..), replaceAll)
 import Data.Tuple (Tuple(..))
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute (cb, (:=))
-import Deku.Attributes (klass, klass_)
-import Deku.Control (text, text_)
+import Deku.Attribute (cb, (!:=))
+import Deku.Attributes (klass_)
+import Deku.Control (text_)
 import Deku.DOM as D
 import Deku.Do as Deku
-import Deku.Hooks (useDyn_, useState, useState')
-import Deku.Listeners (click, keyUp)
-
-import FRP.Poll (sampleBy, stepNE)
+import Deku.Hooks (useDyn, useState, useState')
+import Deku.Listeners (click, click_, keyUp)
+import Deku.Toplevel (runInBody')
+import Effect (Effect)
+import ExampleAssitant (ExampleSignature)
+import FRP.Event.Class ((<|*>))
 import Web.Event.Event (target)
 import Web.HTML (window)
 import Web.HTML.HTMLInputElement (fromEventTarget, value, valueAsNumber)
@@ -58,12 +57,12 @@ app runExample = runExample Deku.do
       D.div_
         [ D.input
             [ D.Value !:= "Tasko primo"
-            , keyUp \evt -> do
+            , keyUp $ pure \evt -> do
                 when (code evt == "Enter") $
                   for_
                     ((target >=> fromEventTarget) (toEvent evt))
                     guardAgainstEmpty
-            , D.SelfT := setInput
+            , D.SelfT !:= setInput
             , klass_ inputKls
             ]
             []
@@ -72,7 +71,7 @@ app runExample = runExample Deku.do
             , D.Xtype !:= "number"
             , D.Min !:= "0"
             , D.Value !:= "0"
-            , D.OnChange := cb \evt ->
+            , D.OnChange !:= cb \evt ->
                 traverse_ (valueAsNumber >=> floor >>> setPos) $
                   (target >=> fromEventTarget) evt
             ]
@@ -86,13 +85,13 @@ app runExample = runExample Deku.do
   D.div_
     [ top
     , Deku.do
-        { value: t, sendTo } <- useDyn_
-          (sampleBy Tuple (stepNE pos) item)
+        { value: t, sendTo } <- useDyn
+          (Tuple <$> pos <|*> item)
         D.div_
-          [ text t
+          [ text_ t
           , D.button
-              [ klass $ "ml-2 " <> buttonClass "indigo"
-              , click (sendTo 0)
+              [ klass_ $ "ml-2 " <> buttonClass "indigo"
+              , click_ (sendTo 0)
               ]
               [ text_ "Prioritize" ]
           ]
