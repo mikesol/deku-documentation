@@ -17,7 +17,7 @@ derivingPolls = subsection
       pure [ D.p_
           [ text_ "We can use the function "
           , D.code__ "derivative' a b"
-          , text
+          , text_
               " to take the derivative of a positional poll for the slider between 0.0 and 1.0 "
           , D.code__ "b"
           , text_ " with respect to a measure of time "
@@ -31,7 +31,7 @@ derivingPolls = subsection
       , D.ul_
           [ D.li_
               [ D.code__ "step"
-              , text
+              , text_
                   ": Starting from an initial value, update a poll based on an event's most recent value."
               ]
           , D.li_

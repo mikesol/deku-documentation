@@ -12,7 +12,7 @@ definingIonicCustomElements = subsection
   { title: "Importing our custom elements"
   , matter: pure
       [ D.p_
-          [ text
+          [ text_
               "Before using custom elements, make sure to import them using whatever instructions are given in the README.md of the library you're using. In the case of "
           , D.code__ "wc-discord-message"
           , text_ ", that'd be:"

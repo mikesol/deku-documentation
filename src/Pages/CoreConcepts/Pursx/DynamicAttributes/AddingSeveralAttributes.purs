@@ -22,7 +22,7 @@ addingSeveralAttributes = subsection
         , D.p_
             [ text_ "By using the tie fighter "
             , D.code__ "<|>"
-            , text
+            , text_
                 ", we were able to compose the breadcrumb's class and its click listener together, just like if we were working with attributes in a Deku component. This allows you to mix Pursx code and Deku components."
             ]
         , disclaimer
@@ -35,10 +35,10 @@ addingSeveralAttributes = subsection
                 , D.code__ "toggleHome"
                 , text_ " and "
                 , D.code__ "toggleNero"
-                , text
+                , text_
                     " need an explicit polymorphic signature when used for different DOM elements. Otherwise, they would be specialized to their first call site, which in this case is an "
                 , D.code__ "a"
-                , text
+                , text_
                     " tag. That's why we use explicit signatures for the toggle effects."
                 ]
             }

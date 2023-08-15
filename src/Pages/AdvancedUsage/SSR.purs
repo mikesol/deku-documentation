@@ -18,7 +18,7 @@ sSR = page
           [ text_ "Server-side rendering or Static site rendering? Choose two!"
           ]
       , D.p_
-          [ text
+          [ text_
               "Deku has support for rendering any deku app as a static site. For games, this is not that helpful, but for documentation or landing pages this can make the loading experience snappier. This page goes over how to use Deku SSR."
           ]
       ]

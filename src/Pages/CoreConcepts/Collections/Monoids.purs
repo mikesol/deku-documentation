@@ -19,10 +19,10 @@ monoids = section
         [ D.p_
             [ text_ "Deku components are also "
             , D.b__ "Monoids"
-            , text
+            , text_
                 ", which means they can be appended together. Furthermore, there is the empty component "
             , D.code__ "blank"
-            , text
+            , text_
                 " that, when appended to any component, yields the component back."
             ]
         , proTip
@@ -32,7 +32,7 @@ monoids = section
                 , D.code__ "Semigroup"
                 , text_ " and "
                 , D.code__ "Monoid"
-                , text
+                , text_
                     " instances for Deku components, we're referring to components as defined in the "
                 , routeLink Components
                 , text_ " section. That is, they are PureScript terms with type "

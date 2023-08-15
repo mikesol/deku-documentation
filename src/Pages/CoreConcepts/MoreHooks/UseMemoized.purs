@@ -23,19 +23,19 @@ useMemoized = section
           , D.code__ "useHot"
           , text_ " whose subscriptions are "
           , D.i__ "already"
-          , text
+          , text_
               " memoized. That is, even if they do not memoize their event for instant replay (that's the difference bewteen "
           , D.code__ "useState"
           , text_ " and "
           , D.code__ "useHot"
-          , text
+          , text_
               "), the subscriptions to the events are mutualized. That means that the same event acts as the source for all downstream consumers."
           ]
       , D.p_
-          [ text
+          [ text_
               "On the other hand, if you start working with events by composing them together, the subscriptions to those composed events "
           , D.i__ "will not"
-          , text
+          , text_
               " be memoized. As an example, take the following snippet of code:"
           ]
       , example
@@ -56,7 +56,7 @@ useMemoized = section
 , e :: Boolean
 }"""
       , D.p_
-          [ text
+          [ text_
               "While each of these events will have the same content, computing them from their constituent events wastes precious CPU cycles and can be a drain on your app. To solve this, we use "
           , D.b__ "memoization"
           , text_ "."

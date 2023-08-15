@@ -16,7 +16,7 @@ interactiveEvents = section
       [ D.p_
           [ text_ "In the previous section, we saw an example of a "
           , D.b__ "Stand-alone event"
-          , text
+          , text_
               ", or an event that managed its own input and unsubscription. This is quite uncommon at the end of the day - the far more common scenario is one where there is a pusher and an event. This type of event is called an "
           , D.b__ "Interactive event"
           , text_ ", the subject of this section."

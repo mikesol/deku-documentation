@@ -43,7 +43,7 @@ instance Functor Event where
               [ D.code__ "map" ]
           , text_ " but it maps over the "
           , D.i__ "left"
-          , text
+          , text_
               " side of a profunctor (in our case, a function) instead of the right side."
           ]
       , D.p_

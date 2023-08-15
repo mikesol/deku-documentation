@@ -22,24 +22,24 @@ startingANewProject = subsection
             ]
         , shSessionCode "$ npx create-deku-app my-awesome-app"
         , D.p_
-            [ text
+            [ text_
                 "This will create a new Deku app in the directory "
             , D.code_ [ text_ "my-awesome-app" ]
-            , text
+            , text_
                 " using a template with "
             , D.span [ klass_ "line-through" ] [ text_ "very opinionated" ]
             , text_ " sensible defaults."
             ]
         , D.p_
-            [ text
+            [ text_
                 "Just by doing this, you already have a full-fledged Deku app at the tips of your fingers. You can fire it up like so."
             ]
         , shSessionCode "$ cd my-awesome-app && npx spago build && npm run dev"
         , D.p_
-            [ text
+            [ text_
                 "Then, visit the link displayed in your terminal (usually "
             , D.code_ [ text_ "http://localhost:5173" ]
-            , text
+            , text_
                 ") to see your site in action. It should bear an uncanny resemblance to the "
             , routeLink HelloWorld
             , text_ " we'll see on the next page."

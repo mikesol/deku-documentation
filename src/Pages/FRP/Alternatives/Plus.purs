@@ -15,10 +15,10 @@ plus = section
       [ D.p_
           [ text_ "The "
           , D.code__ "Plus"
-          , text
+          , text_
               " typeclass allows us to define an empty element for a collection. We've already sort-of seen this, as we need an empty element for "
           , D.code__ "oneOf"
-          , text
+          , text_
               " to work on an empty array. Let's build some intuition about what the empty "
           , D.code__ "Event"
           , text_ " is and how it is lawful."

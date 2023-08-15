@@ -20,12 +20,12 @@ aSimpleComponent = section
       Env { routeLink } <- getEnv
       example <- getExample StartExapanded Nothing Examples.ASimpleComponent
       pure [ D.p_
-          [ text
+          [ text_
               "Let's start by making a simple comonent. It will result in a few different DOM elements being rendered, and we'll build upon it throughout this page. Here's the code."
           ]
       , example
       , D.p_
-          [ text
+          [ text_
               "Before we proceed, it's important to establish a bit of Deku terminology that will come in handy as you shred through this documentation."
           ]
       , D.ol_
@@ -36,7 +36,7 @@ aSimpleComponent = section
               , targetedLink
                   "https://developer.mozilla.org/en-US/docs/Web/API/Element"
                   [ text_ "MDN Documentation on Elements" ]
-              , text
+              , text_
                   " sense of the term. We will learn how to hook into the raw DOM in the "
               , routeLink AccessingTheDOM
               , text_ " section."
@@ -51,18 +51,18 @@ aSimpleComponent = section
                   [ text_ "Deku nuts" ]
               , text_ ". "
               , D.code__ "Nut"
-              , text
+              , text_
                   " is the type produced by "
               , D.code__ "D.div_"
               , text_ ", "
               , D.code__ "D.span_"
-              , text
+              , text_
                   " and the other DOM-building instructions above. But the concept of a "
               , D.b__ "component"
-              , text
+              , text_
                   " is broader than a one-to-one relationship with DOM elements - it can also represent the absence of DOM elements using "
               , D.code__ "blank"
-              , text
+              , text_
                   " (which we'll learn about later) or multiple DOM elements using "
               , D.code__ "dyn"
               , text_ " (which we'll also learn about later)."

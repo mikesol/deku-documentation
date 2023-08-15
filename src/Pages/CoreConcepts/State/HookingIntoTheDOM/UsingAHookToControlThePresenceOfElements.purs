@@ -18,14 +18,14 @@ usingAHookToControlThePresenceOfElements = subsection
         Examples.UsingAHookToControlPresence
       pure
         [ D.p_
-            [ text
+            [ text_
                 "You can also use a boolean hook to control the presence or absence of an object via the "
             , D.code__ "guard"
             , text_ " function."
             ]
         , example
         , D.p_
-            [ text
+            [ text_
                 "In case you ever want to typeset an empty element (meaning an element that does not appear in the DOM at all), you can use "
             , D.code__ "blank"
             , text_ ". In fact, the definition of "

@@ -14,7 +14,7 @@ nestedHooks = subsection
   , matter: do
       example <- getExample StartCollapsed Nothing Examples.NestedCustomHooks
       pure [ D.p_
-          [ text
+          [ text_
               "What fun would custom hooks be if they couldn't nest other hooks? When nesting hooks, "
           , D.code__ "Deku.do"
           , text_ " is your friend."

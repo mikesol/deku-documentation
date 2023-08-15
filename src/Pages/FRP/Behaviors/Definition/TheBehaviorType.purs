@@ -19,31 +19,31 @@ thePollType = subsection
       , D.p_
           [ text_ "Like "
           , D.code__ "Event"
-          , text
+          , text_
               " poll defines a contract. It's saying, \"If you give me any event that produces a "
           , D.code__ "b"
           , text_ " in exchange for an "
           , D.code__ "a"
           , text_ ", I'll give you a "
           , D.code__ "b"
-          , text
+          , text_
               " back.\" Importantly, to fulfill the contract, you don't know what "
           , D.code__ "b"
-          , text
+          , text_
               " is, and yet you have to produce one. The only way we can do this, then, is with an "
           , D.code__ "a"
-          , text
+          , text_
               "."
           ]
       , D.p_
-          [ text
+          [ text_
               "We consider this a continuous function of time because the poll is defined over the entire lifespan of the event. That is, no matter when "
           , D.code__ "Event (a -> b)"
           , text_ " emits an "
           , D.code__ "(a -> b)"
           , text_ ", we need to be able to supply an "
           , D.code__ "a"
-          , text
+          , text_
               ". Or, in other words, at this point in time, we need to observe how "
           , D.code__ "a"
           , text_ " is "
@@ -53,19 +53,19 @@ thePollType = subsection
           , text_ ". Thus the name poll!"
           ]
       , D.p_
-          [ text
+          [ text_
               "You may be tempted to ask, \"But isn't that just "
           , targetedLink
               "https://pursuit.purescript.org/packages/purescript-prelude/docs/Data.Functor#v:flap"
               [ D.code__ "flap", text_ "ping" ]
-          , text
+          , text_
               " over the incoming event to produce the outgoing event?\" If so, I encourage you to give in to temptation and ask! And since you asked, the answer is "
           , D.b__ "yes"
           , text_ ". This is a perfectly valid way to create a poll."
           ]
       , psCode "always42 :: Poll Int\nalways42 e = e <@> 42"
       , D.p_
-          [ text
+          [ text_
               "However, this is not the only way to create a poll. Polls encapsulate a broader notion than "
           , targetedLink "https://youtu.be/NdPlUjbiDoI?t=29"
               [ text_ "flapping" ]
@@ -82,14 +82,14 @@ thePollType = subsection
               "The poll may return multiple values by calling the callback of the resultant event multiple times."
           ]
       , D.p_
-          [ text
+          [ text_
               "This corresponds to the way observing actually work in the real world. For example, if we send a specialist to observe a daycare, it will take them time to make an observation, they might make several, and there's a non-trivial chance they won't make it out in one piece."
           ]
       , D.p_
-          [ text
+          [ text_
               "Therefore, even though polls are continuous functions of time, they effectively produce two pieces of information - a new value "
           , D.i__ "and"
-          , text
+          , text_
               " a new point in time, which at the earliest is simultaneous to the emitted value and at the latest is never. Meaning that if you want to create a misbehaving poll, you can!"
           ]
       , psCode

@@ -13,7 +13,7 @@ globalPortals = section
   { title: "Global portals"
   , topmatter: pure
       [ D.p_
-          [ text
+          [ text_
               "Global portals are the easiest to work with, but they come with a potential performance price. Let's dive into their syntax!"
           ]
       ]

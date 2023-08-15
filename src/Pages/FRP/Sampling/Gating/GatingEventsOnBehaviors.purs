@@ -27,7 +27,7 @@ gateBy f ps xs = compact (sampleBy (\p x -> if f p x then Just x else Nothing) p
       , D.p_
           [ text_ "Let's use the same strobe example as in the "
           , routeLink Alternatives
-          , text
+          , text_
               " section, except we'll pause the strobe every two seconds via a gate. The current time will be provided by a "
           , D.code__ "Poll"
           , text_ "."

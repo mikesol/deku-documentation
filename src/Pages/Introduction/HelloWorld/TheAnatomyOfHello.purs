@@ -18,7 +18,7 @@ theAnatomyOfHello = section
       [ D.p_
           [ text_ "There are a few things going on in our "
           , D.b_ [ text_ "Hello world" ]
-          , text
+          , text_
               " that we'll see over and over again. Soon, we'll start collapsing some bits like import statements in the interest of saving space, so it's best we get acquainted with them now!"
           ]
       ]

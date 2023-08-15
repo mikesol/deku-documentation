@@ -12,10 +12,10 @@ joinTheCommunity = subsection
   { title: "Join the community"
   , matter: pure
       [ D.p_
-          [ text
+          [ text_
               "Deku has a small but passionate community of framework users and developers that hang out on the "
           , D.a [ D.Href !:= "https://discord.gg/Tvt9uBpv5s" ] [ text_ "FRP" ]
-          , text
+          , text_
               " channel of the PureScript Discord. No question is too small, no Zelda-themed meme is too tangential. Come say hi!"
           ]
       ]

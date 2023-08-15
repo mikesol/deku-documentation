@@ -14,7 +14,7 @@ performanceConsiderations = subsection
       [ D.p_
           [ text_ "The double-application of "
           , D.code__ "lcmap"
-          , text
+          , text_
               " winds up creating two additional functions on top of the original event. That means two additional thunks, which can tank performance if you chain together hundreds of maps for the same event. This is the case of most functors, and for small numbers of maps it doesn't matter, but when every millisecond counts you don't want your maps to bog you down!"
           ]
       , D.p__
@@ -28,7 +28,7 @@ performanceConsiderations = subsection
               , targetedLink
                   "https://github.com/natefaubion/purescript-free-semigroupoid"
                   [ text_ "Free Semigroupoid" ]
-              , text
+              , text_
                   " to collect function applications and fold over them to compose them. While this is inefficient for small quantities of maps, it pays off for 100s of maps."
               ]
           ]

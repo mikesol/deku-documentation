@@ -6,7 +6,7 @@ import Components.ProTip (proTip)
 import Contracts (CollapseState(..), Subsection, getExample, subsection)
 import Data.Maybe (Maybe(..))
 import Deku.Attribute ((:=), (<:=>), (!:=))
-import Deku.Attributes (href)
+import Deku.Attributes (href, href_)
 import Deku.Control (text, text_)
 import Deku.DOM as D
 import Examples as Examples
@@ -19,14 +19,14 @@ groupingElementsTogether = subsection
         Examples.GroupingComponents
       pure
         [ D.p_
-            [ text
+            [ text_
                 "To group components together, you can pass an array of components to the "
             , D.code__ "fixed"
-            , text
+            , text_
                 " function. The components will render into the correct position in the parent component."
             ]
         , D.p_
-            [ text
+            [ text_
                 "As an example, consider the following version of Old MacDonald. We use "
             , D.code__ "fixed"
             , text_ " for the lyric "
@@ -37,7 +37,7 @@ groupingElementsTogether = subsection
         , proTip
             { header: text_ "Animal sounds in different cultures"
             , message: D.div_
-                [ text
+                [ text_
                     "Dogs say woof in English, but every culture has its own animal sounds. Before using Deku, make sure to familiarize yourself with "
                 , D.a
                     [ href
@@ -51,7 +51,7 @@ groupingElementsTogether = subsection
         , D.p_
             [ text_ "With "
             , D.code__ "fixed"
-            , text
+            , text_
                 ", you don't need to do any extra accounting when subbing arrays in and out of the DOM. Deku automatically manages node insertion and deletion so that fixed elements always show up in the right place."
             ]
         ]

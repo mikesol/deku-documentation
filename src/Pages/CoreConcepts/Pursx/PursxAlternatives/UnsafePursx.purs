@@ -16,7 +16,7 @@ unsafePursx = subsection
   { title: "Unsafe Pursx"
   , matter: pure
       [ D.p_
-          [ text
+          [ text_
               "While Pursx provides helpful type-safety, it may be too restrictive for several reasons."
           ]
       , D.ul_
@@ -28,12 +28,12 @@ unsafePursx = subsection
       , D.p_
           [ text_ "In both of these cases, you can use ⚠️"
           , D.b__ "unsafe Pursx"
-          , text
+          , text_
               "⚠️. Unsafe pursx works just like pursx except it operates off of strings rather than proxies. The syntax uses "
           , D.code__ "~!~"
           , text_ " instead of "
           , D.code__ "~~"
-          , text
+          , text_
               ", but the functionality is exactly the same. Note that there's no validation of unsafe Pursx, which means that your app may explode, so make sure to run your html through a validator first!"
           ]
       , D.p__ "Here's an example of unsafe pursx."

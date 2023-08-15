@@ -19,7 +19,7 @@ eventAsAMonad = subsection
           , D.code__ "bind"
           , text_ " would be "
           , D.code__ "bind m f = keepLatest (f <$> m)"
-          , text
+          , text_
               ". Armed with this definition, we would need to verify that it fulfills the monad laws."
           ]
       , D.ul_
@@ -40,7 +40,7 @@ eventAsAMonad = subsection
               ]
           ]
       , D.p_
-          [ text
+          [ text_
               "While identity holds, associativity does not. This is because, on the left side, "
 
           , D.code__ "x"
@@ -55,37 +55,37 @@ eventAsAMonad = subsection
           , D.code__ "f"
           , text_ " which then adds to "
           , D.code__ "g"
-          , text
+          , text_
               ". The result is that the left side would have more events because "
           , D.code__ " f "
           , text_ " and "
           , D.code__ "g"
-          , text
+          , text_
               " would both be contributing impulses, whereas on the right side, only "
           , D.code__ "g"
           , text_ " is contributing impulses."
           ]
       , D.p_
-          [ text
+          [ text_
               "The only viable monad definition would be one that doesn't have restarting - namely, one where each new outer event triggers an inner event but doesn't clean up the old one. This is often called "
           , D.code__ "flatMap"
           , text_ " in FRP frameworks. So, at least in theory, "
           , D.code__ "Event"
           , text_ " "
           , D.i__ "can"
-          , text
+          , text_
               " be a monad. But, by convention, it's not. This is a deliberate choice of several frameworks, including "
           , D.code__ "purescript-hyrule"
-          , text
+          , text_
               ", to make it hard for people to accidentally create situations where, after lots of binds, 1000s of events are spewing every second because the previous ones haven't been cleaned up."
           ]
       , D.p_
           [ text_ "So there's your answer - "
           , D.code__ "Event"
-          , text
+          , text_
               " is not a monad for your own safety. We may change our minds about this in the future, but so far, no one seems to miss "
           , D.code__ "flatMap"
-          , text
+          , text_
               ", so the benefits of adding it don't seem to offset the cost of someone accidentally frying their CPU."
           ]
       ]

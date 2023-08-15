@@ -16,7 +16,7 @@ usingTheHookInText = subsection
   , matter: do
       Env { routeLink } <- getEnv
       pure [ D.p_
-          [ text
+          [ text_
               "Let's look at our hook again, this time focusing on the right side."
           ]
       , psCode """setNumber /\ number <- useState n"""
@@ -28,7 +28,7 @@ usingTheHookInText = subsection
       , disclaimer
           { header: text_ "Raw values versus events"
           , message: D.div_
-              [ text
+              [ text_
                   "If you're coming from React, the fact that Deku hooks do not contain raw values like "
               , D.code__ "Number"
               , text_ " or "
@@ -37,7 +37,7 @@ usingTheHookInText = subsection
               , D.code__ "Event Number"
               , text_ " and "
               , D.code__ "Event String"
-              , text
+              , text_
                   " will be a big change. Even though they're not raw values, though, they can "
               , D.i__ "almost"
               , text_ " be used as such. In the "
@@ -72,21 +72,21 @@ usingTheHookInText = subsection
           , D.code__ "<#>"
           , text_ " "
           , D.i__ "maps"
-          , text
+          , text_
               " over the event, turning its contents into some other type (in this case, "
           , D.code__ "String"
-          , text
+          , text_
               "). At this point, it's worth mentioning that if operators like "
           , D.code__ "$"
           , text_ ", "
           , D.code__ "<#>"
           , text_ ", and "
           , D.code__ "/\\"
-          , text
+          , text_
               " are unfamiliar to you, fear not! The PureScript documentation website "
           , targetedLink "https://pursuit.purescript.org"
               [ text_ "Pursuit" ]
-          , text
+          , text_
               " is your friend. You can search for all of these functions (and more) via the search bar."
           ]
       ]

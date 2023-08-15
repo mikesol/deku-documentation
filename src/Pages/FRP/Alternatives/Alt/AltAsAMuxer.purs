@@ -23,7 +23,7 @@ altAsAMuxer = subsection
             , D.code__ "<|>"
             , text_ ", and whose definition is "
             , D.code__ "Event a -> Event a -> Event a"
-            , text
+            , text_
                 " to mux together two streams controlling the background of a div. The result will be a rave in your browser... sort of..."
             ]
         , example
@@ -35,7 +35,7 @@ altAsAMuxer = subsection
                 , D.code__ "<|>"
                 , text_ " operator "
                 , D.i__ "always"
-                , text
+                , text_
                     "muxes from right to left for simultaneous events. For example, "
                 , D.code__ "pure 0 <|> pure 1"
                 , text_ " will emit 0 and then 1."

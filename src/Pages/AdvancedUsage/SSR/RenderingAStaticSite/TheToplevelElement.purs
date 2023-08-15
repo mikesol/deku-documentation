@@ -13,7 +13,7 @@ theToplevelElement = subsection
       [ D.p_
           [ text_ "The "
           , D.code__ "runSSR"
-          , text
+          , text_
               " function automatically places the generated Deku code in the body of an HTML document. To change the toplevel HTML element, call "
           , D.code__ "runSSR'"
           , text_ " with the desired toplevel tagname as the first argument."

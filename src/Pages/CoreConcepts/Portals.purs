@@ -64,7 +64,7 @@ portals = page
           [ text_ "Dealing with stateful DOM components."
           ]
       , D.p_
-          [ text
+          [ text_
               "You've read the Deku docs, you're itching to create your first game, and you decide to make a game that involves moving a video sprite from tile to tile. Nice!"
           ]
       , Deku.do
@@ -84,13 +84,13 @@ portals = page
           , D.code__ "audio"
           , text_ ", and "
           , D.code__ "canvas"
-          , text
+          , text_
               " elements that are stateful. These elements often stay put in the DOM, so we don't need to manage their statefulness. But in cases where we need to move them around, we want to preserve their state. This is where "
           , D.b__ "Portals"
           , text_ " come in."
           ]
       , D.p_
-          [ text
+          [ text_
               "Let's redo the example above with portals. As you click on the squares, you'll see that the video continues uninterrupted."
           ]
       , Deku.do

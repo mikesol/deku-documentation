@@ -7,7 +7,7 @@ import Prelude
 
 import Contracts (Subsection, subsection)
 import Deku.Attribute ((:=), (<:=>), (!:=))
-import Deku.Attributes (href)
+import Deku.Attributes (href, href_)
 import Deku.Control (text, text_)
 import Deku.DOM as D
 
@@ -25,7 +25,7 @@ lifetimeAndGarbageCollection = subsection
                   , D.Target !:= "_blank"
               ]
               [ text_ "Ref" ]
-          , text
+          , text_
               ". That is, their lifetime is completely managed by JavaScript garbage collection instead of PureScript. In most cases, modern JavaScript engines are smart enough to clean these when they are no longer needed, but as a precaution, you should have an eye on where you dispatch both pushers and events to make sure too many of them are not accidentally stashed in long-living objects."
           ]
       ]

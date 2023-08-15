@@ -16,7 +16,7 @@ triggerAffInParallel = subsection
         Examples.RunningAffsInResponseToAnEvent
       pure
         [ D.p_
-            [ text
+            [ text_
                 "Use this hook to trigger affs without preserving order. This will keep your UI snappier but things may arrive out of order!"
             ]
         , example

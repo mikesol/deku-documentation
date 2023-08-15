@@ -17,7 +17,7 @@ standAloneEvents = section
           , D.code__ "setInterval"
           , text_ " that we saw earlier on this page is an example of a "
           , D.b__ "Stand-alone event"
-          , text
+          , text_
               ". These events do not have a pusher associated with them because all of the pushing happens within the event. They also manage their own unsubscribe effects."
           ]
       ]

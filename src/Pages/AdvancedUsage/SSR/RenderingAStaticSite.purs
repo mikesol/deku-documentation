@@ -14,7 +14,7 @@ renderingAStaticSite = section
   { title: "Rendering a static site"
   , topmatter: pure
       [ D.p_
-          [ text
+          [ text_
               "Rendering a static site in Deku can be done using the same components you've seen all throughout this documentation. It only requires a different toplevel handler."
           ]
       ]

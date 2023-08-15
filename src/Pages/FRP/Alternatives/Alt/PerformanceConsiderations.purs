@@ -14,10 +14,10 @@ performanceConsiderations = subsection
       [ D.p_
           [ text_ "Because "
           , D.code__ "<|>"
-          , text
+          , text_
               " adds an extra thunk to your stack, too many of them can degrade performance. To aleviate this, you can make a hand-written version of "
           , D.code__ "oneOf"
-          , text
+          , text_
               " that only costs one thunk for an arbitrary number of events."
           ]
       , psCode

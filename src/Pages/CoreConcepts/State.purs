@@ -29,7 +29,7 @@ state = page
               "Those who rebranded some feature of their framework as \"hooks\" so as not to miss out on the craze without needing to expend much effort."
           ]
       , D.p_
-          [ text
+          [ text_
               "Yours truly falls into all three categories, and it is with great pride that I introduce you to Deku's state-management paradigm "
           , D.i__ "à la"
           , text_ " React, Deku's "

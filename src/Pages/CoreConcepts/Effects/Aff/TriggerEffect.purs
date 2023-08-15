@@ -14,21 +14,21 @@ triggerEffect = subsection
   , matter: do
       example <- getExample StartCollapsed Nothing Examples.RunningEffectsInResponseToEvents
       pure [ D.p_
-          [ text
+          [ text_
               "The "
           , D.code__ "useEffect"
-          , text
+          , text_
               " hook allows us to trigger an arbitrary side effect whenever an event is emitted. In general, this is pretty safe. However, because side effects can have indefinitely-long asynchronous poll and trigger infinitely-many sub(sub(sub))-effects, you should use this with parsimony and restraint!"
           ]
       , D.p_
           [ text_ "In the example below, we use the "
           , D.code__ "useEffect"
-          , text
+          , text_
               " hook to update a timestamp every time the text_ "
           , D.b__ "Current timestamp"
           , text_ " is clicked. The same pattern is accomplishable via "
           , D.code__ "useRef"
-          , text
+          , text_
               ". As is the case with many things in Deku, there is more than one way to skin a Gerudian Lizalfos."
           ]
       , example

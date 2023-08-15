@@ -17,14 +17,14 @@ usingTheHookToSwitchBetweenElements = subsection
         Examples.UsingTheHookToSwitchBetweenElements
       pure
         [ D.p_
-            [ text
+            [ text_
                 "You can also use a hook to switch between elements. This is particularly useful for tabbed navigation. In the example below, a hook is used to switch between an image, a video, and an SVG. This is accomplished via the "
             , D.code__ "<#~>"
             , text_ " operator."
             ]
         , example
         , D.p_
-            [ text
+            [ text_
                 "If your DOM is mostly static and has a few switching elements within it, consider using multiple "
             , D.code__ "<#~>"
             , text_ " operators instead of one global "

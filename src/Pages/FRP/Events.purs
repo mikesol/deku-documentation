@@ -20,21 +20,21 @@ events = page
           [ text_ "The original FRP type. Always imitated, never duplicated."
           ]
       , D.p_
-          [ text
+          [ text_
               "If you've been following these docs from the beginning, you've been working with events for several pages already. Every time you used a state hook, you created an event as well as a pusher to that event."
           ]
       , psCode
           """Deku.do
   pusher /\ event <- useState 42"""
       , D.p_
-          [ text
+          [ text_
               "We've also seen that events can be mapped over, which is how we turned their raw data into assets like text and attributes."
           ]
       , D.p_
-          [ text
+          [ text_
               " To create robust web apps with Deku, however, it's important to go to the heart of the "
           , D.code__ "Event"
-          , text
+          , text_
               " type constructor and understand its strengths and limitations. Armed with that knowledge, you'll be able to create truly reactive sites for the ages!"
           ]
       ]

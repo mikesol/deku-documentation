@@ -13,7 +13,7 @@ theCode = subsection
   { title: "The code"
   , matter: pure
       [ D.p_
-          [ text
+          [ text_
               "Here it is, the moment you've all been waiting for. Let's say hello to the world!"
           ]
       , psCodeNoCollapseWithLink Examples.HelloWorldCode

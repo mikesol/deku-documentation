@@ -17,10 +17,10 @@ groupsOfGroups = subsection
         [ D.p_
             [ text_ "Because "
             , D.code__ "fixed"
-            , text
+            , text_
                 " does not create a DOM element for its content, one may wonder how nested "
             , D.code__ "fixed"
-            , text
+            , text_
                 " calls are handled. In Deku, they are always flattened into the lower-most logical parent element. So if there is a fixed in a fixed in a fixed, the inner-most fixed has the same parent as the top-most fixed."
             ]
         , D.p_
@@ -34,15 +34,15 @@ groupsOfGroups = subsection
             , D.code__ "useHot"
             , text_ " instead of "
             , D.code__ "useState"
-            , text
+            , text_
                 ". To understand why, think about the contract with the state variable "
             , D.code__ "badness"
-            , text
+            , text_
                 ". The UI responds to it by creating a new section and then this section starts listening to "
             , D.code__ "badness"
             , text_ ". But by the time it starts listening to "
             , D.code__ "badness"
-            , text
+            , text_
                 ", the click event has already fired, so the inner listener does not evaluate the statement "
             , D.code__ "(_ > Worse)"
             , text_ ". To provide the nested "

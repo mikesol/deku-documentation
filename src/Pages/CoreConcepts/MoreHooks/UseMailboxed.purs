@@ -13,7 +13,7 @@ useMailboxed = section
   { title: "Use mailboxed"
   , topmatter: pure
       [ D.p_
-          [ text
+          [ text_
               "In web apps, there are many cases where we receive information from a REST or GraphQL API that applies to a specific component in a large collection of Deku components, for example a game lobby picker or a friends list. In these cases, it is inefficient for every component in the collection to listen to the update. Instead, we want only the relevant components to listen. For these cases, there's "
           , D.code__ "useMailboxed"
           , text_ "."

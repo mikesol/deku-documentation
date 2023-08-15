@@ -17,12 +17,12 @@ useRef = section
           , D.code__ "useMailboxed"
           , text_ " hook has a spiritual cousin of sorts called "
           , D.code__ "useRef"
-          , text
+          , text_
               ". They both exist as performance optimizations. As you learned in the last section, "
           , D.code__ "useMailboxed"
           , text_ " is used to reduce the number of subscriptions to an event. "
           , D.code__ "useRef"
-          , text
+          , text_
               " takes this one step further, reducing the number of subscriptions to one. If you can get the number lower, I'll eat my hat!"
           ]
       ]

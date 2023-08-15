@@ -5,7 +5,7 @@ import Prelude
 import Components.Code (psCode)
 import Contracts (Subsection, subsection)
 import Deku.Attribute ((:=), (<:=>), (!:=))
-import Deku.Attributes (href)
+import Deku.Attributes (href, href_)
 import Deku.Control (text, text_)
 import Deku.DOM as D
 
@@ -31,7 +31,7 @@ theMakeEventFunction = subsection
           , text_ " is a no-op - it takes an event and returns an event."
           ]
       , D.p_
-          [ text
+          [ text_
               "As an example, supposed you wanted an event to fire every time the browser requested an animation frame via "
           , D.a
               [href

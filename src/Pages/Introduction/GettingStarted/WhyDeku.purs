@@ -5,7 +5,7 @@ import Prelude
 import Components.TargetedLink (targetedLink)
 import Contracts (Section, section)
 import Deku.Attribute ((:=), (<:=>), (!:=))
-import Deku.Attributes (href)
+import Deku.Attributes (href, href_)
 import Deku.Control (text, text_)
 import Deku.DOM as D
 
@@ -14,22 +14,22 @@ whyDeku = section
   { title: "Why Deku"
   , topmatter: pure
       [ D.p_
-          [ text
+          [ text_
               "Deku was originally created to develop HTML5-based musical instruments. It has since been used to create several games and interactive websites."
           ]
       , D.p_
-          [ text
+          [ text_
               "If you're building a game or a complex web app and would like to create it using a functional style of programming, Deku is a great fit! It is fast, accurate, and encourages the use of expressive and efficient patterns for building web apps."
           ]
       , D.p_
-          [ text
+          [ text_
               "This documentation was created with Deku and is available on "
           , D.a
-              [href "https://github.com/mikesol/deku-documentation"
+              [href_ "https://github.com/mikesol/deku-documentation"
                   ,D.Target !:= "_blank"
               ]
               [ text_ "GitHub" ]
-          , text
+          , text_
               ". It was built with best practices in mind and is a useful reference for building larger applications, as is the "
           , targetedLink "https://deku-realworld.netlify.app"
               [ text_ "Deku Real World" ]

@@ -14,7 +14,7 @@ whatsInD = subsection
   , matter: do
       Env { routeLink } <- getEnv
       pure [ D.p_
-          [ text
+          [ text_
               "Compared to the imports from "
           , routeLink HelloWorld
           , text_ ", there's one additional import here worth noting."

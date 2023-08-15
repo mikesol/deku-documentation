@@ -13,7 +13,7 @@ dynamicAttributes = section
   { title: "Dynamic attributes"
   , topmatter: pure
       [ D.p_
-          [ text
+          [ text_
               "Let's bring our Pursx to live by adding some dynamic attributes. We'll modify the breadcrumbs example above with a hook that sets the presence or absence of a crumb based on a click listener."
           ]
       ]

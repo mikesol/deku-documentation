@@ -13,7 +13,7 @@ definition = section
   { title: "Definition"
   , topmatter: pure
       [ D.p_
-          [ text
+          [ text_
               "This section will look at how polls are defined, explore the nuance of the definition, and present a small example of a Poll being used in the browser."
           ]
       ]

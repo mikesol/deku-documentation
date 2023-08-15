@@ -2,23 +2,22 @@ module Examples.ALagUsingFix where
 
 import Prelude
 
+import Control.Alt ((<|>))
 import Data.Compactable (compact)
 import Data.Maybe (Maybe(..))
-import Data.NonEmpty ((:|))
 import Data.String (Pattern(..), Replacement(..), replaceAll)
 import Data.Tuple (Tuple(..), fst, snd)
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass, klass_)
+import Deku.Attributes (klass_)
 import Deku.Control (text, text_)
 import Deku.DOM as D
 import Deku.Do as Deku
-import Deku.Hooks (useState, useState')
-import Deku.Listeners (click, click_)
+import Deku.Hooks (useState')
+import Deku.Listeners (click_)
 import Deku.Toplevel (runInBody')
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
-import FRP.Event (fix)
-import FRP.Poll (sample, step)
+import FRP.Event (fix, sampleOnRight)
 
 buttonClass :: String -> String
 buttonClass color =
@@ -31,11 +30,11 @@ focus:ring-COLOR-500 focus:ring-offset-2 mr-4"""
 
 app :: ExampleSignature
 app runExample = runExample Deku.do
-  setWord /\ word <- useState "None"
+  setWord /\ word <- useState'
   let
-    button txt color = D.button
-      [ klass_ (buttonClass color), click_ (setWord txt) ]
-      [ text_ txt ]
+    button text color = D.button
+      [ klass_ (buttonClass color), click_ (setWord text) ]
+      [ text_ text ]
   D.div_
     [ D.div_
         [ button "Hickory" "green"
@@ -44,11 +43,13 @@ app runExample = runExample Deku.do
         ]
     , D.div_
         [ text_ "Previous word: "
-        , text 
-            ( compact $ snd <$> fix
-                ( \e -> sample
-                    (step Nothing (fst <$> e))
-                    ((Tuple <<< Just) <$> word)
+        , text
+            ( pure "None" <|>
+                ( compact $ snd <$> fix
+                    ( \e -> sampleOnRight
+                        (pure Nothing <|> (fst <$> e))
+                        ((Tuple <<< Just) <$> word)
+                    )
                 )
             )
         ]

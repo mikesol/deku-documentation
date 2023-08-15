@@ -16,10 +16,10 @@ samplingAPollAndDiscardingTheEvent = subsection
       samplePoll <- getExample StartCollapsed (Just "h-96") Examples.SamplingAPollAndDiscardingTheEvent
       pure
         [ D.p_
-            [ text
+            [ text_
                 "We can also sample a poll and discard the event via "
             , D.code__ "sample_"
-            , text
+            , text_
                 ". Here's the same example above (with a bit slower of a rate to avoid killing the API!) using that technique."
             ]
         , samplePoll

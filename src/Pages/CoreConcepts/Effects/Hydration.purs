@@ -13,7 +13,7 @@ hydration = section
   { title: "Hydration"
   , topmatter: pure
       [ D.p_
-          [ text
+          [ text_
               "In Deku, components traditionally manage side effects by hydrating their children. Let's look at that what that means and how to implement it in practice."
           ]
       ]

@@ -18,14 +18,14 @@ applicative = section
           , targetedLink
               "https://pursuit.purescript.org/packages/purescript-prelude/docs/Data.Functor"
               [ D.code__ "Functor" ]
-          , text
+          , text_
               ", "
           , D.code__ "Event"
           , text_ " is an "
           , targetedLink
               "https://pursuit.purescript.org/packages/purescript-prelude/docs/Control.Applicative"
               [ D.code__ "Applicative Functor" ]
-          , text
+          , text_
               ". The implementation of the applicative functions, as well as their conformity to the applicative laws, is less obvious than those of functor, so we take a bit extra care to define how these are defined and why they're lawful."
           ]
       ]

@@ -13,7 +13,7 @@ plainOldHTML = subsection
   { title: "Plain old HTML"
   , matter: pure
       [ D.p_
-          [ text
+          [ text_
               "Here is the Deku code that produces the breadcrumb example above."
           ]
       , psCodeNoCollapseWithLink Examples.PlainOldHtml
@@ -25,7 +25,7 @@ main = runInBody (myHtml ~~ {})"""
       , D.p_
           [ text_ "All you have to do is take your HTML string, add "
           , D.code__ "~~ {}"
-          , text
+          , text_
               " after it, and you get your HTML in the DOM prest-o change-o. In addition to being low-code, this is the most performant Deku gets. It literally takes the code and sets it as the "
           , D.code__ "innerHTML"
           , text_ " of some containing element."

@@ -19,7 +19,7 @@ aSingleAttribute = subsection
       , psCode
           "D.Style := \"color:teal;\""
       , D.p_
-          [ text
+          [ text_
               "To feed an attribute to Deku, it needs to be in an array. Several attributes can be set by including them all in an array."
           ]
       , psCode

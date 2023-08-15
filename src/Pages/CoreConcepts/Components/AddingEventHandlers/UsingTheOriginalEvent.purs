@@ -20,7 +20,7 @@ usingTheOriginalEvent = subsection
   { title: "Using the original event"
   , matter: pure
       [ D.p_
-          [ text
+          [ text_
               "To use the original event, pass "
           ]
       , psCodeWithLink Examples.UsingTheOriginalEvent

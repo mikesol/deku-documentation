@@ -42,13 +42,13 @@ theKeepLatestFunction = subsection
           ]
       , D.p_
           [ D.code__ "keepLatest"
-          , text
+          , text_
               " keeps the latest inner event stream omitted by the outer stream. To see an example of this, let's nest two intervals and use a "
           , D.code__ "fold"
-          , text
+          , text_
               " to distinguish between events. Again, we haven't defined "
           , D.code__ "fold"
-          , text
+          , text_
               " yet because we don't have enough tools and terms to, but you may already be able to guess what it does from its usage on this page!"
           ]
       , example
@@ -64,7 +64,7 @@ theKeepLatestFunction = subsection
               [ text_ "Johnny One Note" ]
           , text_ ". This is due to the fact that we keep the "
           , D.i__ "latest"
-          , text
+          , text_
               " inner event emitted by the outer event, cancelling the previous inner event. And because the inner event emits every 600 ms, when it resets at 1600 ms, it is cut off 400 ms into the event, creating 600 + 600 + 400, or 3+3+2, or tresillo."
           ]
       ]

@@ -17,7 +17,7 @@ shorthandListeners = subsection
   { title: "Shorthand event listeners"
   , matter: pure
       [ D.p_
-          [ text
+          [ text_
               "Similar to attributes, some event listeners also have shorthand versions in Deku."
           ]
       , D.table [tableClass]

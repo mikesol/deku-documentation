@@ -20,7 +20,7 @@ moreHooks = page
           [ text_ "Specialized hooks for faster rendering."
           ]
       , D.p_
-          [ text
+          [ text_
               "You're not off the hook yet! Here are some more hooks that can make your apps snappier in certain situations. Read on!"
           ]
       ]

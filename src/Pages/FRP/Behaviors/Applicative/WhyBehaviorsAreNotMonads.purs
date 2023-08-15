@@ -11,7 +11,7 @@ whyPollsAreNotMonads = subsection
   { title: "Polls are monads"
   , matter: pure
       [ D.p_
-          [ text
+          [ text_
               "Write me."
           ]
       ]

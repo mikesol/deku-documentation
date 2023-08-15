@@ -13,7 +13,7 @@ definingCustomElements = section
   { title: "Defining custom elements"
   , topmatter: pure
       [ D.p_
-          [ text
+          [ text_
               "In this section, we'll see how to take an element already in the DOM and give it a new alias through Deku."
           ]
       ]

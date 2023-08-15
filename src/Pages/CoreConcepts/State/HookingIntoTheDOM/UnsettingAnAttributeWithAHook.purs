@@ -16,18 +16,18 @@ unsettingAnAttributeWithAHook = subsection
         Examples.UnsettingAttributes
       pure
         [ D.p_
-            [ text
+            [ text_
                 "Sometimes, you need to unset an attribute. You can do that by setting the attribute to "
             , D.code__ "unit"
             , text_ " via your hook."
             ]
         , example
         , D.p_
-            [ text
+            [ text_
                 "Under the hood, unsetting an attribute calls the DOM's "
             , D.code__
                 "removeAttribute"
-            , text
+            , text_
                 " function, so it'll be as if the attribute were never there. What attribute? Exactly..."
             ]
         ]

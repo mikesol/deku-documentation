@@ -13,7 +13,7 @@ hydratingAStaticSite = section
   { title: "Hydrating a static site"
   , topmatter: pure
       [ D.p_
-          [ text
+          [ text_
               "Unless your static site has no JavaScript, you'll likely want to hook it up to various event listeners. You can do that with the "
           , D.code__ "hydrate"
           , text_ " function."

@@ -16,16 +16,16 @@ solvingDifferentialEquations = subsection
         Examples.SolvingDifferentialEquations
 
       pure [ D.p_
-          [ text
+          [ text_
               "Last but not least, we can solve a second order differential equation of the form "
           , D.code__ "d^2a/dt^2 = f a (da/dt)"
           , text_ " using the "
           , D.code__ "solve2'"
           , text_ " function."
-          , text
+          , text_
               " As the left side is the acceleration of the system, we can solve by integrating twice (using the "
           , D.code__ "integrate'"
-          , text
+          , text_
               " function above) after specifying the initial conditions for position and velocity. For example, below we create a damped oscillator using the equation "
           , D.code__ "\\x dx'dt -> -⍺ * x - δ * dx'dt"
           , text_ ". In this case, both "

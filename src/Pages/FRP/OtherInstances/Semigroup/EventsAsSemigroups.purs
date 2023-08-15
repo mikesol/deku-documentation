@@ -15,7 +15,7 @@ eventsAsSemigroups = subsection
       example <- getExample StartCollapsed Nothing Examples.EventsAsSemigroups
       pure
         [ D.p_
-            [ text
+            [ text_
                 "The example below shows two events appended together to control classes"
             ]
         , example

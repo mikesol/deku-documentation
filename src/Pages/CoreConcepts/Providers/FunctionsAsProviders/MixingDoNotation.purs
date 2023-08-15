@@ -27,7 +27,7 @@ mixingDoNotation = subsection
       , D.p_
           [ text_ "Each one of these "
           , D.code__ "do"
-          , text
+          , text_
               "s denote a different computational context, so a left-bind in one won't work in another one!"
           ]
       , D.p_

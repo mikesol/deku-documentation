@@ -14,39 +14,39 @@ usefulShorthand = subsection
   { title: "Useful shorthand"
   , matter: pure
       [ D.p_
-          [ text
+          [ text_
               "An ever-expanding library of shorthand functions is present in Deku to help you succinctly articulate various attributes and combinations of attributes. Here is what's currently available."
           ]
-      , D.table [ tableClass ]
+      , D.table [ pure tableClass ]
           [ D.tr_
-              [ D.th [ tableClass ] [ text_ "Shorthand" ]
-              , D.th [ tableClass ] [ text_ "Longer version" ]
+              [ D.th [ pure tableClass ] [ text_ "Shorthand" ]
+              , D.th [ pure tableClass ] [ text_ "Longer version" ]
               ]
           , D.tr_
-              [ D.td [ tableClass ] [ D.code_ [ text_ "klass \"foo\"" ] ]
-              , D.td [ tableClass ] [ D.code_ [ text_ "D.Class := \"foo\"" ] ]
+              [ D.td [ pure tableClass ] [ D.code_ [ text_ "klass \"foo\"" ] ]
+              , D.td [ pure tableClass ] [ D.code_ [ text_ "D.Class := \"foo\"" ] ]
               ]
           , D.tr_
-              [ D.td [ tableClass ] [ D.code_ [ text_ "id_ \"foo\"" ] ]
-              , D.td [ tableClass ] [ D.code_ [ text_ "D.Id := \"foo\"" ] ]
+              [ D.td [ pure tableClass ] [ D.code_ [ text_ "id_ \"foo\"" ] ]
+              , D.td [ pure tableClass ] [ D.code_ [ text_ "D.Id := \"foo\"" ] ]
               ]
           , D.tr_
-              [ D.td [ tableClass ]
+              [ D.td [ pure tableClass ]
                   [ D.code_ [ text_ "style_ \"color:black;\"" ] ]
-              , D.td [ tableClass ]
+              , D.td [ pure tableClass ]
                   [ D.code_ [ text_ "D.Style := \"color:black;\"" ] ]
               ]
           ]
       , D.p_
-          [ text
+          [ text_
               "Additionally, PureScript has a delightful type-safe CSS library called "
           , D.a
-              [ D.Href :=
+              [ D.Href !:=
                   "https://pursuit.purescript.org/packages/purescript-css/"
               , D.Target !:= "_blank"
               ]
               [ D.code_ [ text_ "purescript-css" ] ]
-          , text
+          , text_
               " that you can use to author CSS, which is easier to debug than string-based styles."
           ]
       , psCode

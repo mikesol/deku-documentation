@@ -26,7 +26,7 @@ applicatives = page
           , targetedLink
               "https://pursuit.purescript.org/packages/purescript-prelude/docs/Data.Functor"
               [ D.code__ "Functor" ]
-          , text
+          , text_
               ". It benefits from all the functorial goodness that functorness adorns unto type constructors like "
           , D.code__ "Maybe"
           , text_ " and "

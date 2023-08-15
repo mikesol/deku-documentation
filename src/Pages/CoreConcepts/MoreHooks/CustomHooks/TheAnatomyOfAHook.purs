@@ -25,7 +25,7 @@ theAnatomyOfAHook = subsection
   { title: "Hooked on hooks"
   , matter: pure
       [ D.p_
-          [ text
+          [ text_
               "The first step on your journey to a custom hook is saying to yourself \"I need a custom hook.\" Now that you've gotten that out of the way, Deku provides a type "
           , D.code__ "Hook a"
           , text_ " that allows you to construct a hook of type "
@@ -45,19 +45,19 @@ theAnatomyOfAHook = subsection
       , D.p_
           [ text_ "Note that the "
           , D.code__ "Hook"
-          , text
+          , text_
               " type constructor is actually a function that takes the hook creator as an argument and returns whatever is in your hook passed through that creator. The flow may seem a bit odd at first, but you'll get the hang of it! Just remember: to make a hook, make sure to accept a "
           , D.i__ "function"
-          , text
+          , text_
               " as the first parameter and, as the last step, apply that function to the content of your hook. In the example above, we call the function "
           , D.code__ "makeHook"
-          , text
+          , text_
               ", but it could just as well be called "
           , D.code__ "cruise"
-          , text
+          , text_
               " or "
           , D.code__ "nicholson"
-          , text
+          , text_
               "."
           ]
       , psCodeWithLink Examples.CustomHook2

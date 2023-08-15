@@ -18,10 +18,10 @@ theMainFunction = subsection
             """main :: Effect Unit
 main = ..."""
         , D.p_
-            [ text
+            [ text_
                 "In most PureScript programs (and most programs), a function or context called "
             , D.code_ [ text_ "main" ]
-            , text
+            , text_
                 " is where the main action happens. If you take a peek in the Deku starter app you created in the "
             , routeLink GettingStarted
             , text_ " section, you'll see that "

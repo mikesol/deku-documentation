@@ -13,7 +13,7 @@ performanceNotes = subsection
       [ D.p_
           [ text_ "The performance of events created using "
           , D.code__ "create"
-          , text
+          , text_
               " scales linearly with the number of times the event is subscribed to. Any one unsubscribe has logarithmic performance."
           ]
       ]

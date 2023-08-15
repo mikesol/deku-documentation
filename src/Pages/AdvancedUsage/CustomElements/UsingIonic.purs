@@ -14,7 +14,7 @@ usingIonic = section
   { title: "An example using fake Discord messages"
   , topmatter: pure
       [ D.p_
-          [ text
+          [ text_
               "You can also use this method to work with components created by libraries like "
           , targetedLink "https://stenciljs.com/" [ text_ "Stencil.js" ]
           , text_ ". In this section, we'll bring stencil components from "

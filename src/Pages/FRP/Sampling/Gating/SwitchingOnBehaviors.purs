@@ -16,7 +16,7 @@ switchingOnPolls = subsection
         Examples.SwitchingOnPolls
       pure
         [ D.p_
-            [ text
+            [ text_
                 "A close cousin of gating is switching, which alternates between polls based on an event. In the random number generator below, you'll see the distribution of the poll shrink or expand via the switcher."
             ]
         , example

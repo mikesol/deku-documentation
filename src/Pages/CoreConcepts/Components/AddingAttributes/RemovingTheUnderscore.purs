@@ -13,12 +13,12 @@ removingTheUnderscore = subsection
   { title: "Removing the underscore"
   , matter: pure
       [ D.p_
-          [ text
+          [ text_
               "To add attributes to a Deku DOM element, remove the underscore(s) from the element. Let's start with the "
           , D.code_ [ text_ "span" ]
           , text_ "from the example above."
           , psCode "D.span__ \"I exist\""
-          , text
+          , text_
               "When we added the style attribute to make the color teal, we dropped the underscores. Furthermore, we added a "
           , D.code_ [ text_ "text" ]
           , text_ " to typeset the text."
@@ -30,7 +30,7 @@ removingTheUnderscore = subsection
       , proTip
           { header: text_ "Expand the text"
           , message: D.div_
-              [ text
+              [ text_
                   "When adding attirubtes to a double-underscored element like "
               , D.code_ [ text_ "D.span__" ]
               , text_ ", make sure to "

@@ -13,7 +13,7 @@ customHooks = section
   { title: "Custom hooks"
   , topmatter: pure
       [ D.p_
-          [ text
+          [ text_
               "Sometimes, Deku's amazingly versatile, hand crafted, meticulously curated library of hooks is not good enough for our most discerning, demanding, and sophisticated users. If you are in that category, read on to learn how to make custom hooks!"
           ]
       ]

@@ -17,10 +17,10 @@ knowThySelf = subsection
       pure [ D.p_
           [ text_ "An event hooked up to the special "
           , D.code__ "Self"
-          , text
+          , text_
               " attribute will invoke an effectful function with the DOM element as its argument whenever the event fires. Note that the event fires "
           , D.i__ "before"
-          , text
+          , text_
               " an element's attributes and children are added, so make sure to defer your computation until the next browser tick if you want these things to be present, like in the example below."
           ]
       , example
@@ -29,7 +29,7 @@ knowThySelf = subsection
           , message: D.div_
               [ text_ "Because it is not a listener, the "
               , D.code__ "Self"
-              , text
+              , text_
                   " attribute thunks its effect immediately when an event occurs. So make sure to manage your events carefully and/or to make sure your effectful shenanigans with your"
               , D.code__ "Self"
               , text_ " are idempotent."

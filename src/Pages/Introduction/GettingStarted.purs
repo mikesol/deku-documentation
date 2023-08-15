@@ -19,10 +19,10 @@ gettingStarted = page
       [ D.p [D.Class !:= "lead"]
           [ text_ "Hi 👋" ]
       , D.p_
-          [ text
+          [ text_
               "You've found the documentation for "
           , D.span [klass_ "font-bold"] [ text_ "PureScript Deku" ]
-          , text
+          , text_
               ". If you got here by accident because you wanted to learn another UI framework, please consider staying, as Deku is really, really sweet."
           ]
       ]

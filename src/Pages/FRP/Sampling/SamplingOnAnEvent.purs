@@ -15,7 +15,7 @@ samplingOnAnEvent = section
   { title: "Sampling an event"
   , topmatter: pure
       [ D.p_
-          [ text
+          [ text_
               "This section will look at the basic mechanisms for sampling, exploring the various functions available in "
           , targetedLink "https://github.com/mikesol/purescript-hyrule"
               [ D.code__ "purescript-hyrule" ]

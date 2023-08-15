@@ -15,7 +15,7 @@ addingText = subsection
           , D.code_ [ text_ "text" ]
           , text_ " function. Additionally, for elements that "
           , D.i_ [ text_ "only" ]
-          , text
+          , text_
               " contain text, you can use a double-underscore. For example, "
           , D.code_ [ text_ "D.i__ \"Pow!\"" ]
           , D.i_ [ text_ "Pow!" ]

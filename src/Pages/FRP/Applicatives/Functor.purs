@@ -15,7 +15,7 @@ functor = section
       [ D.p_
           [ text_ "As we've seen in Deku, to do anything interesting with an "
           , D.code__ "Event"
-          , text
+          , text_
               " we need to map over it. In this section, we'll learn how to define "
           , D.code__ "map"
           , text_ " for "

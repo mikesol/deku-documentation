@@ -15,26 +15,26 @@ theGlobalPortalSyntax = subsection
   , matter: do
       example <- getExample StartExapanded Nothing Examples.TheGlobalPortalSyntax
       pure [ D.p_
-          [ text
+          [ text_
               "The global portal syntax looks a lot like the hooks syntax. We use a left-bind in a "
           , D.code__ "Deku.do"
-          , text
+          , text_
               " bloc to create a value that will be used later. But instead of creating a hook, we create a component. In the example below, look how "
           , D.code__ "globalPortal1"
-          , text
+          , text_
               "is used to create a single component that is consumed by other components."
           ]
       , D.p__ "And, as y'all know, the result is the following."
       , example
       , D.p_
-          [ text
+          [ text_
               "While using a portal looks like using a vanilla Deku node, don't let it fool you! These two snippets are different: "
           ]
       , psCode
           """let a = Deku.div_ [ text_ "hi" ]
 a <- globalPortal1 (Deku.div_ [ text_ "hi" ])"""
       , D.p_
-          [ text
+          [ text_
               "Portals are created with a left bind, and as such are referentially opaque. That means that, when a portal is created, it represents "
           , D.i__ "a single DOM node that exists"
           , text_ ", as opposed to a template for a DOM node."
@@ -45,12 +45,12 @@ a <- globalPortal1 (Deku.div_ [ text_ "hi" ])"""
       , D.p_
           [ text_ "The term "
           , D.code__ "vid"
-          , text
+          , text_
               " is one single instantiation of our video. On the other hand, if we had passed "
           , D.code__ "myVideo"
           , text_ " to the "
           , D.code__ "moveSpriteHere"
-          , text
+          , text_
               " function, we would be working with a referentially transparent object that acts as a blueprint for a node to construct as opposed to an actual node."
           ]
       , D.p__

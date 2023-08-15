@@ -18,7 +18,7 @@ alternatives = page
           [ text_ "How events function in an alternative universe."
           ]
       , D.p_
-          [ text
+          [ text_
               "In functional programming, we tend to be obsessed with two classes of operations."
           ]
       , D.ol_
@@ -34,7 +34,7 @@ alternatives = page
       , D.p_
           [ text_ "Another place we see this is the "
           , D.code__ "Alternative"
-          , text
+          , text_
               " class, where composition fuses together collections and the identity element is the empty collection. "
           , D.code__ "Event"
           , text_ " is a great candidate for an "

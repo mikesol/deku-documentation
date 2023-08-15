@@ -17,7 +17,7 @@ triggerAffWithCancellation = subsection
         Examples.RunningAffsWithCancellationInResponseToAnEvent
       pure
         [ D.p_
-            [ text
+            [ text_
                 "This variation does cancellation, so when a new aff comes down the pipe, the previous one is cancelled."
             ]
         , example

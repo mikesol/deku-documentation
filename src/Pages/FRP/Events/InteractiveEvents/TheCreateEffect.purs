@@ -29,7 +29,7 @@ theCreateEffect = subsection
         [ D.p_
             [ text_ "Similar to "
             , routeLink State
-            , text
+            , text_
                 " hooks from Deku, we can create a pusher and an event with the "
             , D.b__ "create"
             , text_ " effect. It has the following signature:"
@@ -44,7 +44,7 @@ theCreateEffect = subsection
         , D.p_
             [ text_ "Let's write a small program using "
             , D.code__ "create"
-            , text
+            , text_
                 ". Our program will use the created event to write a message to the console. When clicking on "
             , D.b__ "Run program"
             , text_ " below, make sure to open up the console to see the result!"
@@ -71,13 +71,13 @@ theCreateEffect = subsection
             ]
             [ text_ "Run program" ]
         , D.p_
-            [ text
+            [ text_
                 "Note how, when you run the program, the word \"fum\" does not print to the console. This is because the unsubscriber is called before \"fum\" is pushed to the event."
             ]
         , D.p_
             [ text_ "In Deku, the state hooks are literally just calling "
             , D.code__ "create"
-            , text
+            , text_
                 " under the hood and passing those down into a DSL representing the DOM. And we have the guile to call those two lines of code a framework... 😤"
             ]
         ]

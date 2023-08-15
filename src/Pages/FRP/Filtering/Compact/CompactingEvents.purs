@@ -16,7 +16,7 @@ compactingEvents = subsection
         Examples.CompactingEvents
       pure
         [ D.p_
-            [ text
+            [ text_
                 "Here's an example of using compact to \"turn off\" one slider in our application. We can think of the right slider as representing errors, and we write a higher-order function to turn it off via compact."
             ]
         , example

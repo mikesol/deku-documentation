@@ -14,7 +14,7 @@ applicative = section
   { title: "Applicative"
   , topmatter: pure
       [ D.p_
-          [ text
+          [ text_
               "Polls are applicative functors. Let's see what that means in practice, starting at functors and stopping just shy of monads."
           ]
       ]

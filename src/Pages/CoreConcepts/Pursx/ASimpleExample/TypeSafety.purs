@@ -12,7 +12,7 @@ typeSafety = subsection
   { title: "Type safety"
   , matter: pure
       [ D.p_
-          [ text
+          [ text_
               "Going back to our HTML string, you'll see that it's actually not a "
           , D.code__ "String"
           , text_ " in the \"the type of this term is "
@@ -38,17 +38,17 @@ typeSafety = subsection
           , text_ "."
           ]
       , D.p_
-          [ text
+          [ text_
               "By using a type to specify the HTML, Deku can validate it at "
           , D.i__ "compile time"
-          , text
+          , text_
               " instead of at runtime. That means you do not need to eat up precious CPU cycles in the browser "
           , D.i__ "and"
-          , text
+          , text_
               " you'll weed out errors earlier. If the HTML isn't valid, your program won't compile."
           ]
       , D.p_
-          [ text
+          [ text_
               "Let's see a concrete example of this. Say I try to compile the following Deku program with malformed HTML."
           ]
       , psCode
@@ -66,7 +66,7 @@ main = runInBody ((Proxy :: Proxy
     "span"
 """
       , D.p_
-          [ text
+          [ text_
               "While the message could be better by identifying line numbers (we're working on this...), it identifies the HTML tag mismatch that needs to be corrected. Once we correct it, the program compiles!"
           ]
       ]

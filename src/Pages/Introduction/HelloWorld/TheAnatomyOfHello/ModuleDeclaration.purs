@@ -15,7 +15,7 @@ moduleDeclaration = subsection
       , D.p_
           [ text_ "All PureScript files "
           , D.i_ [ text_ "must" ]
-          , text
+          , text_
               " start with a module declaration, and it's customary to call this module "
           , D.code_ [ text_ "Main" ]
           , text_ " in a file called "

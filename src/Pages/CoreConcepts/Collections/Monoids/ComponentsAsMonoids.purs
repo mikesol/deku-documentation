@@ -4,7 +4,7 @@ import Prelude
 
 import Contracts (CollapseState(..), Subsection, getExample, subsection)
 import Data.Maybe (Maybe(..))
-import Deku.Attributes (href)
+import Deku.Attributes (href, href_)
 import Deku.Control (text, text_)
 import Deku.DOM as D
 import Examples as Examples
@@ -15,10 +15,10 @@ componentsAsMonoids = subsection
   , matter: do
       example <- getExample StartCollapsed Nothing Examples.ComponentsAsMonoids
       pure [ D.p_
-          [ text
+          [ text_
               "In addition to being a semigroup, components are a monoid, with the empty element being "
           , D.code__ "blank"
-          , text
+          , text_
               ". Because it's a monoid, we can use all sorts of cool functions on Deku components, like "
           , D.a
               [href

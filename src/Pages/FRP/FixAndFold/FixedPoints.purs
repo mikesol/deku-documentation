@@ -14,7 +14,7 @@ fixedPoints = section
   { title: "Fixed points"
   , topmatter: pure
       [ D.p_
-          [ text
+          [ text_
               "Fixed points come up all over functional progrmaming. Browsing the term "
           , targetedLink "https://pursuit.purescript.org/search?q=fix"
               [ text_ "fix" ]
@@ -22,7 +22,7 @@ fixedPoints = section
           , D.code__ "fix"
           , text_ " in various libraries. One of the most magical aspects of "
           , D.code__ "Event"
-          , text
+          , text_
               " is the unique and intuitive way fixed points relate to events. In this section, we'll define what fixed points are in general before delving into their "
           , D.code__ "Event"
           , text_ "-specific representation."

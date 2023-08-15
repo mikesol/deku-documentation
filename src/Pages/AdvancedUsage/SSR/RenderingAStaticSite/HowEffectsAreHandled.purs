@@ -15,7 +15,7 @@ howEffectsAreHandled = subsection
       example <- getExample StartCollapsed Nothing Examples.EffectsInSSR
       pure
         [ D.p_
-            [ text
+            [ text_
                 "The Deku SSR engine is smart enough to drop all effectful elements like click listeners and all parts of the DOM that are created using effects, like for example an image that is only created when a click event occurs."
             ]
         , example

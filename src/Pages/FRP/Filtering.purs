@@ -18,7 +18,7 @@ filtering = page
           [ text_ "How to make events less eventful."
           ]
       , D.p_
-          [ text
+          [ text_
               "If you're implementing any sort of client-side search bar or content-picker, filtering is a must. This section will show you how to filter events."
           ]
       ]

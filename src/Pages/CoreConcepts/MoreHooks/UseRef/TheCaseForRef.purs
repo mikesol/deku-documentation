@@ -27,7 +27,7 @@ theCaseForRef = subsection
           , text_ " the initial value if the event has never fired."
           ]
       , D.p_
-          [ text
+          [ text_
               "In the example below, slide the slider from left to right and click on buttons periodically. Each button will update with the most recent value of the slider when it is clicked."
           ]
       , example

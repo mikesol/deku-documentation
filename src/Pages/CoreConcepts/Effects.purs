@@ -4,7 +4,7 @@ import Prelude
 
 import Contracts (Page, page)
 import Deku.Attribute ((:=), (<:=>), (!:=))
-import Deku.Attributes (href)
+import Deku.Attributes (href, href_)
 import Deku.Control (text, text_)
 import Deku.DOM as D
 import Pages.CoreConcepts.Effects.BindingToEffects (bindingToEffects)
@@ -20,7 +20,7 @@ effects = page
           [ text_ "How Deku manages side effects."
           ]
       , D.p_
-          [ text
+          [ text_
               "If you're familiar with React or Halogen, the word \"effect\" is often used to refer to one of two related concepts:"
           ]
       , D.ul_
@@ -60,11 +60,11 @@ effects = page
               ]
           ]
       , D.p_
-          [ text
+          [ text_
               "While these patterns are possible in Deku, the framework prefers an alternate model of effect management where side effects are completely determined by the enclosing scope. For example, if there is a component X that requires the result of effect Y in order to mount and should perform effect Z when it leaves the page, those effects should be the responsibility of the element that controls the component's presence and absence."
           ]
       , D.p_
-          [ text
+          [ text_
               "This section will explore Deku's effect philosophy and also present some methods to use when you need tools closer to the React/Halogen model."
           ]
       ]

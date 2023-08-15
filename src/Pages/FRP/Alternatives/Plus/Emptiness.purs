@@ -16,7 +16,7 @@ emptiness = subsection
           ]
       , psCode "makeLemmingEvent \\_ _ -> pure (pure unit)"
       , D.p_
-          [ text
+          [ text_
               "It just ignores its inputs entirey and returns a no-op unsubscribe."
           ]
       ]

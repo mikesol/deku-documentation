@@ -16,12 +16,12 @@ theUseDynHook = subsection
       Env { routeLink } <- getEnv
       example <- getExample StartCollapsed Nothing Examples.UseDyn
       pure [ D.p_
-          [ text
+          [ text_
               "To render dynamic components with the most recent component appearing at the top of a collection, look no further then the "
           , D.code__ "useDynAtBeginning"
           , text_ " hook. The hook takes an event outputs a value called "
           , D.code__ "value"
-          , text
+          , text_
               " that can be used to render the most recent component. Here's an example:"
           ]
       , example
@@ -36,14 +36,14 @@ theUseDynHook = subsection
           , D.code__ "Event"
           , text_ " is a functor, we can "
           , D.code__ "map"
-          , text
+          , text_
               " over it. So far, we've been doing simple transformations like mapping over "
           , D.code__ "Event Int"
           , text_ " to turn it into "
           , D.code__ "Event String"
           , text_ ". Here, we're mapping over an "
           , D.code__ "Event"
-          , text
+          , text_
               " to transform it into a Deku component. So instead of streaming text to a text node, we're streaming components to the DOM, but it's the same pattern!"
           ]
       ]

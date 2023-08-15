@@ -5,7 +5,7 @@ import Prelude
 import Components.HTML2Deku.Component as HTML2Deku
 import Contracts (Subsection, subsection)
 import Deku.Attribute ((:=), (<:=>), (!:=))
-import Deku.Attributes (href)
+import Deku.Attributes (href, href_)
 import Deku.Control (text, text_)
 import Deku.DOM as D
 
@@ -15,12 +15,12 @@ html2deku = subsection
   , matter: pure
       [ D.p_
           [ D.a
-              [ href "https://mikesol.github.io/html2deku"
+              [ href_ "https://mikesol.github.io/html2deku"
               , D.Target :=
                   "_blank"
               ]
               [ D.code__ "html2deku" ]
-          , text
+          , text_
               " is a small web app that converts HTML to Deku. A miniature version of it is embedded below."
           ]
       , HTML2Deku.html2deku

@@ -18,7 +18,7 @@ customElements = page
           [ text_ "How to bend Deku to do your bidding."
           ]
       , D.p_
-          [ text
+          [ text_
               "Sometimes, Deku's representation of DOM elements doesn't fit with how you need them to be used. In some cases, the DOM's components are not enough. When you need a bit more out of your DOM, Deku provides a backdoor to define whatever component you want while adding a modicum of type safety to the affair."
           ]
       ]

@@ -18,10 +18,10 @@ removingElements = subsection
         [ D.p_
             [ text                "The "
             , D.code__ "useDyn"
-            , text
+            , text_
                 " hook can be destructured to get a "
             , D.code__ "remove"
-            , text
+            , text_
                 " effect that removes the component from the collection."
             ]
         , example

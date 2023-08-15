@@ -23,10 +23,10 @@ sampling = page
           , text_ " with FRP!"
           ]
       , D.p_
-          [ text
+          [ text_
               "The only sampling we've seen so far in the world of events is the "
           , D.code__ "<*>"
-          , text
+          , text_
               " operator, where both events sample the most recent value of the other one in order to produce a value. However, sampling can go much further than this, and you can use it to build subtle combinations of reactive elements that precisely express your game logic or business logic."
           ]
       ]

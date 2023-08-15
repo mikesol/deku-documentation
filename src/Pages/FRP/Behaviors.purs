@@ -25,10 +25,10 @@ polls = page
           [ D.code__ "Polls"
           , text_ " are continuous functions of time. "
           , D.code__ "Events"
-          , text
+          , text_
               " are discrete functions of time. Sounds like a marriage made in heaven! Or at least in PureScript. On this page, we'll start by defining the "
           , D.code__ "Poll"
-          , text
+          , text_
               ", exploring some of its useful typeclass instances and using it to model various time-domain equations."
           ]
       ]

@@ -19,12 +19,12 @@ components = page
           [ text_ "Learn how to make a static page with Deku."
           ]
       , D.p_
-          [ text
+          [ text_
               "In the "
           , D.b_ [ text_ "Hello world" ]
           , text_ " example, we saw how "
           , D.code_ [ text_ "text (\"Hello world\")" ]
-          , text
+          , text_
               " got transformed into something your eyeballs oggled or screenreader scraggled in the DOM. In Deku, as in most other frameworks from which Deku's ideas are liberally borrowed, we call these "
           , D.b_ [ text_ "Components" ]
           , text_ "."

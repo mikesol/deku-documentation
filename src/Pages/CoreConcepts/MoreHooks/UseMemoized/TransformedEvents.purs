@@ -14,7 +14,7 @@ transformedEvents = subsection
   , matter: do
       example <- getExample StartCollapsed Nothing Examples.MemoizedApplication
       pure [ D.p_
-          [ text
+          [ text_
               "To make a more efficient version of the example above, we use the "
           , D.code__ "useMemoized"
           , text_ " hook."
@@ -25,7 +25,7 @@ transformedEvents = subsection
           , D.code__ "composedEvent"
           , text_ " will draw from the "
           , D.i__ "same"
-          , text
+          , text_
               " event. This can help avoid lag, especially when belaboring under the constraint of a rendering loop that needs to execute at 60fps."
           ]
       ]

@@ -20,7 +20,7 @@ theResult = subsection
           , proTip
               { header: text_ "Code snippets"
               , message: D.div_
-                  [ text
+                  [ text_
                       "The code snippets in this documentation aren't just there to be purty. Dig in! You can open them on Gitpod, view them on Github, or run the command above the snippet (you can click on the clipboard to copy it) from the documentation project's root directory after having cloned it from Github via"
                   , D.code__
                       "git clone https://github.com/mikesol/deku-documentation"

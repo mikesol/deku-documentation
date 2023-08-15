@@ -15,7 +15,7 @@ definition = section
       [ D.p_
           [ text_ "Before we start working with the "
           , D.code__ "Event"
-          , text
+          , text_
               " type constructor, let's delve into the canonical definition of "
           , D.code__ "Event"
           , text_ "."

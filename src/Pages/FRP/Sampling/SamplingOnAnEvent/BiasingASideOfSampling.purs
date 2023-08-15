@@ -19,41 +19,41 @@ biasingASideOfSampling = subsection
           , D.code__ "sampleOnLeft"
           , text_ " and "
           , D.code__ "sampleOnRight"
-          , text
+          , text_
               " control the temporality of which side to sample from, there's an important corner case to consider: when the events are \"cotemporal.\""
           ]
       , D.p_
-          [ text
+          [ text_
               "Of course, in the browser, nothing can happen truly simultaneously on the UI thread - there will always be a before/after relationship. But from the viewpoint of a program, things may "
           , D.i__ "seem"
-          , text
+          , text_
               " cotemporal. The easiest way to see this is by using the same event as a source. Let's recreate both examples above using a "
           , D.i__ "single"
           , text_ " slider."
           ]
       , example
       , D.p_
-          [ text
+          [ text_
               "As you move the slider, a curious situation appears on lines 2 and 4, "
           , D.i__ "n'est-ce pas?"
-          , text
+          , text_
               " Even though the events are cotemporal, the second one lags after the first. What gives?"
           ]
       , D.p_
           [ text_ "In the browser, one thing "
           , D.i__ "always"
-          , text
+          , text_
               " happens after another thing. Technically that's probably true about everything. But let's stick to the browser. In examples 1 and 3 we use left-biased operators, and in examples 2 and 4, we use right-biased operators. In "
           , D.code__ "purescript-hyrule"
-          , text
+          , text_
               ", the left-biased operators always emit the left event first, which means that for cotemporal events, the left emits before the right. When we then use the right to control the timing, the left is hydrated with the most recent result."
           ]
       , D.p_
-          [ text
+          [ text_
               "On the other hand, the right-biased operators always emit the right value before the left one. So when we use the right to control the timing, the left does not have the most recent value yet and we perceive a lag."
           ]
       , D.p_
-          [ text
+          [ text_
               "So which one is better? You decide! The framework lets you opt into whichever poll suites your needs."
           ]
       ]

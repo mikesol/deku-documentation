@@ -16,7 +16,7 @@ samplingAPollWithACustomFunction = subsection
       samplePoll <- getExample StartCollapsed (Just "h-96") Examples.SamplingAPollWithACustomFunction
       pure
         [ D.p_
-            [ text
+            [ text_
                 "Last but not least, we can sample an event with an arbitrary function using "
             , D.code__ "sampleBy"
             , text_ "."

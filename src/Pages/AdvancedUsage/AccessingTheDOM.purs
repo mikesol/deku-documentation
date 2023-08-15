@@ -18,10 +18,10 @@ accessingTheDOM = page
           [ text_ "Raw-as-raw-gets DOM components"
           ]
       , D.p_
-          [ text
+          [ text_
               "Sometimes, we need direct access to a DOM element. For example, when dealing with forms, we need a way to get the contents of an "
           , D.code__ "input"
-          , text
+          , text_
               " element on submit. This section goes over how to access the DOM on a per-element basis and also how to work with global DOM APIs at the top-level of your application."
           ]
       ]

@@ -14,7 +14,7 @@ calculus = section
   { title: "Calculus"
   , topmatter: pure
       [ D.p_
-          [ text
+          [ text_
               "Because polls are continuous functions of time, one can perform classic time-domain operations on them like derivation and integration. You can even solve differential equations using polls. Let's see how!"
           ]
       ]

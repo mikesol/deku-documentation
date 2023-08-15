@@ -23,7 +23,7 @@ knowThySelfT = subsection
             , D.code__ "Self"
             , text_ " called "
             , D.code__ "SelfT"
-            , text
+            , text_
                 " that makes it a bit easier to work with the element using PureScript's DOM APIs."
             ]
         , example

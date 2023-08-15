@@ -14,10 +14,10 @@ componentsAsSemigroups = subsection
   , matter: do
       example <- getExample StartCollapsed Nothing Examples.ComponentsAsSemigroups
       pure [ D.p_
-          [ text
+          [ text_
               "Components can be appended together, and the result will be a component. This is the same as enclosing all of the components in a "
           , D.code__ "fixed"
-          , text
+          , text_
               " bloc. Let's see this in action with George Sand's famous letter to Alfred de Musset."
           ]
       , example

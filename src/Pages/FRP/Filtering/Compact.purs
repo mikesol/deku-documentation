@@ -13,7 +13,7 @@ compact = section
   { title: "Compact"
   , topmatter: pure
       [ D.p_
-          [ text
+          [ text_
               "Events are compactable as well, which is extremely useful for sketching out systems that occassionally fail before developing robust error handling. The "
           , D.code__ "compact"
           , text_ " function for "

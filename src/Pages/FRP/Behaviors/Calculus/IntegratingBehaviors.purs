@@ -18,12 +18,12 @@ integratingPolls = subsection
       pure [ D.p_
           [ text_ "We can use the function "
           , D.code__ "integrate' a b"
-          , text
+          , text_
               " to take the integral of a positional poll for the slider between 0.0 and 1.0 "
           , D.code__ "b"
           , text_ " with respect to a measure of time "
           , D.code__ "a"
-          , text
+          , text_
               ". This simulates a system as if the slider were a gas pedal, the left being your foot off the gas (in this system, no gas means no motion, so imagine a really heavy car going uphill) and 1 being pedal to the metal! The output is the current position."
           ]
       , example

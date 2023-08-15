@@ -16,7 +16,7 @@ determinism = subsection
       n <- getRandomNumber
       pure
         [ D.p_
-            [ text
+            [ text_
                 "Deku, like the universe, is deterministic, meaning that for a given Deku site, the SSR will always be rendered in the same way. This includes the various comments in the DOM, which are cruicial for the hydration engine as it goes through and fills in effectful bits of your web app. So, make sure the same exact Deku component is used for "
             , D.code__ "hydrate"
             , text_ " as for "
@@ -24,7 +24,7 @@ determinism = subsection
             , text_ "."
             ]
         , D.p_
-            [ text
+            [ text_
                 "And on that rather mundane and protean note, I'd like to congratulate you for making it to the end of this documentation. But is this the end, or is it just a beginning? Perhaps it is the beginning of your journey making websites with Deku and Hyrule. Or the beginning of"
             , let
                 o

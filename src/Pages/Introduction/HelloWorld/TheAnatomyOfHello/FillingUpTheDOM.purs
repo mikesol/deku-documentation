@@ -18,10 +18,10 @@ fillingUpTheDOM = subsection
           , D.code_ [ text_ "\"Hello world\"" ]
           , text_ ". To do so, we use the "
           , D.code_ [ text_ "text" ]
-          , text
+          , text_
               " function which takes a string and turns it into an abstract representation of a text node. "
           , D.code_ [ text_ "runInBody" ]
-          , text
+          , text_
               " interprets this instruction as something that should be rendered on a webpage."
           ]
       ]

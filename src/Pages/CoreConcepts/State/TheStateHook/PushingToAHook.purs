@@ -16,7 +16,7 @@ pushingToAHook = subsection
       pure [ D.p_
           [ text_ "As we saw in the "
           , routeLink Components
-          , text
+          , text_
               " section, we can call an arbitrary effect, like raising an alert or writing to the console, from a listener like "
           , D.code__ "click"
           , text_ ". We can "
@@ -29,14 +29,14 @@ pushingToAHook = subsection
       , D.p_
           [ text_ "Hook pushers (aka setters) are always on the "
           , D.i__ "left"
-          , text
+          , text_
               " of the tuple returned from a hook. They always have the type "
           , D.code__ "a -> Effect Unit"
           , text_ ". In the example above "
           , D.code__ "a"
           , text_ " is a "
           , D.code__ "Number"
-          , text
+          , text_
               ", but it could be a function, or an array, or really whatever you want to "
           , D.i__ "hook"
           , text_ " up to it."
@@ -44,7 +44,7 @@ pushingToAHook = subsection
       , D.p_
           [ text_ "Because pushers return something of type "
           , D.code__ "Effect Unit"
-          , text
+          , text_
               " you can use them in any effectful context, including any Deku listener like "
           , D.code__ "OnClick"
           , text_ " or "

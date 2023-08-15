@@ -16,18 +16,18 @@ passingAroundHooks = subsection
       let lt t = D.span [klass_ "line-through"] [ text t ]
       example <- getExample StartCollapsed Nothing Examples.PassingAroundHooks
       pure [ D.p_
-            [ text
+            [ text_
                 "As we saw in the first example on this page, we can send the results of hooks - events and pushers - down through our provider system. This "
             , lt "provides"
             , text_ " "
             , lt "provisions"
             , text_ " "
             , lt "provokes"
-            , text
+            , text_
                 " makes for an elegant and flexible inter-component communication mechanism. However, a case may arise where you accidentally over-wire your system so that you are pushing to a hook that could not possibly active because its element has disappeared. What happens in this case? Let's find out!"
             ]
       , D.p_
-          [ text
+          [ text_
               "The following example is slightly contrived (to be fair, they all are...), but we'll create a small UI where you have to follow the following steps in order."
           ]
       , D.ol_

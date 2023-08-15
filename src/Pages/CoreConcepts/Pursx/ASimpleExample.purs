@@ -57,7 +57,7 @@ aSimpleExample = section
   { title: "A simple example"
   , topmatter: pure
       [ D.p_
-          [ text
+          [ text_
               "Let's start with a simple example. The HTML will be a bit on the long side, but the Deku will be short and sweet! As a motivating example, we'll be developing breadcrumbs."
           ]
       , htmlCode (reflectSymbol myHtml)

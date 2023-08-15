@@ -13,10 +13,10 @@ toplevelConsiderations = section
   { title: "Top-level considerations"
   , topmatter: pure
       [ D.p_
-          [ text
+          [ text_
               "Every game or app in the wild uses some sort of global tear down and set up, often having to do with authenticating users, confirming hardware, adding third-party widgets, and setting up global app state like routing. In these cases, you'll need to do a bunch of stuff before invoking "
           , D.code__ "runInBody"
-          , text
+          , text_
               ". There's no special trick to how to organize this code, but we'll present a couple examples below just to give you a sense of how these things could be done."
           ]
       ]

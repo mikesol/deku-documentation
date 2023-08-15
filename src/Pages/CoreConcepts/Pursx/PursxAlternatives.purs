@@ -13,7 +13,7 @@ pursxAlternatives = section
   { title: "Pursx alternatives"
   , topmatter: pure
       [ D.p_
-          [ text
+          [ text_
               "Pursx is great, but sometimes, you need a little more juice. This section shows two alternative methods to achieve similar results."
           ]
       ]

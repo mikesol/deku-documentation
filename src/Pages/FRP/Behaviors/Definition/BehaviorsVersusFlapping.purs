@@ -16,7 +16,7 @@ pollsVersusFlapping = subsection
         Examples.PollsVersusFlapping
       pure
         [ D.p_
-            [ text
+            [ text_
                 "Let's see a poll in the wild. Our poll will observe a random phenomenon, and we'll consult it on a regular interval."
             ]
         , example

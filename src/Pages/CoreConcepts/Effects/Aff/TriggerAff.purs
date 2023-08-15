@@ -17,7 +17,7 @@ triggerAff = subsection
       example <- getExample StartCollapsed Nothing
         Examples.RunningAffsSequentiallyInResponseToAnEvent
       pure [ D.p_
-          [ text
+          [ text_
               "The following hook will emit an aff on each event. It does no cancellation, so if affs pile up, they will keep going until the element leaves the screen. If you're a glutton for punishment, click the link really fast ~20 times while watching your network tab."
           ]
       , example
@@ -26,10 +26,10 @@ triggerAff = subsection
               D.span_
                 [ D.code__ "Aff", text_ "able asynchronicity in PureScript" ]
           , message: D.div_
-              [ text
+              [ text_
                   "Up until now, the side-effects we have seen have all been synchronous. In PureScript, we also have "
               , D.code__ "Aff"
-              , text
+              , text_
                   " for asynchronous effects. You can think of them as "
               , targetedLink
                   "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise"

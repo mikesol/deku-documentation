@@ -16,18 +16,18 @@ movingElements = subsection
         Examples.MovingElements
       pure
         [ D.p_
-            [ text
+            [ text_
                 "The "
             , D.code__ "useDyn"
-            , text
+            , text_
                 " hook can be destructured to get some useful methods. In this section, we'll see how the "
             , D.code__ "sendTo"
-            , text
+            , text_
                 " function moves an element of a dynamic list to a different position."
             ]
         , example
         , D.p_
-            [ text
+            [ text_
                 "If the chosen position is larger than the length of the list, the element will be sent to the end."
             ]
         ]

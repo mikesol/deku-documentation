@@ -28,14 +28,14 @@ theStateHook = section
           , message: D.div_
               [ text_ "In Haskell-family languages, a "
               , D.code__ "do"
-              , text
+              , text_
                   " block is a way to write nested function calls as a sequence of instructions. This is why Haskell and its progeny are often collectively referred to as "
               , targetedLink
                   "https://stackoverflow.com/questions/6622524/why-is-haskell-sometimes-referred-to-as-best-imperative-language"
                   [ text_ "the best imperative language" ]
               , text_ ". Different types of instructions use different "
               , D.code__ "do"
-              , text
+              , text_
                   " blocks, and when you're working with Deku hooks, that block is "
               , D.code__ "Deku.do"
               , text_ "."

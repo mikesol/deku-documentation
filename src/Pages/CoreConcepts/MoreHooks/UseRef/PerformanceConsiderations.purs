@@ -13,7 +13,7 @@ performanceConsiderations = subsection
       [ D.p_
           [ text_ "The alternative to "
           , D.code__ "useRef"
-          , text
+          , text_
               " is pandemonium and chaos. No, just kidding, it's using an event to replace a listener."
           ]
       , D.p_
@@ -21,10 +21,10 @@ performanceConsiderations = subsection
           , D.code__ "click $ intRef >>= show >>> setButtonText"
           , text_ ", we could have written "
           , D.code__ "click $ num <#> show >>> setButton"
-          , text
+          , text_
               ". While the functionality would be the same, the performance would be much worse, as every click listener would be updated every time the slider moved. Who wants that? So use "
           , D.code__ "useRef"
-          , text
+          , text_
               " whenever you have a lot of listeners that depend on the content of a single value emitted by an event."
           ]
       ]

@@ -18,7 +18,7 @@ usingAnEffect = subsection
   { title: "Using an effect"
   , matter: pure
       [ D.p_
-          [ text
+          [ text_
               "The most straightforward event is that which triggers an effectful action, like an alert or an audio snippet."
           ]
       , psCodeWithLink Examples.UsingAnEffect

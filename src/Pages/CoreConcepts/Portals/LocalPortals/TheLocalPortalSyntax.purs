@@ -15,13 +15,13 @@ theLocalPortalSyntax = subsection
   , matter:  do
       example <- getExample StartExapanded Nothing Examples.TheLocalPortalSyntax
       pure [ D.p_
-          [ text
+          [ text_
               "Local portals look just like global portals."
           ]
       , D.p__ "This yields a similar result as the one above."
       , example
       , D.p_
-          [ text
+          [ text_
               "The difference between local and global portals is that you get better performance from local portals with slightly less predictable runtime poll. To understand why it's more performant, we'll use a slightly more involved example in the next section."
           ]
       ]

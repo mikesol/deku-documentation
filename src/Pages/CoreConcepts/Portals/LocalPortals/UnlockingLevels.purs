@@ -14,22 +14,22 @@ unlockingLevels = subsection
   , matter: do
       example <- getExample StartExapanded Nothing Examples.UnlockingLevels
       pure [ D.p_
-          [ text
+          [ text_
               "Local portals have one big advantage over global portals: they get cleaned up when the last reference to them is deleted. Because global portals can be used "
           , D.i__ "anywhere"
-          , text
+          , text_
               " in your application at any time, it's impossible to know when they can be safely deleted. Local portals, on the other hand, are tied to the scope in which they are created and cannot be used at a higher scope. If you try, for example by sending them to a hook, you'll get a type error."
           ]
 
       , D.p_
-          [ text
+          [ text_
               "Of course, there's no such thing as a free lunch, so you have to pay for this memory efficiency somehow. Where you pay is a slightly slower runtime API in theory. In practice, the slowdown is imperceptible."
           ]
       , D.p_
-          [ text
+          [ text_
               "In the code below, note how we use this mechanism to call "
           , D.code__ "lowerVid"
-          , text
+          , text_
               " when we want to use the video "
           , D.code__ "globalVid"
           , text_ " from the higher scope inside of the lower scope."

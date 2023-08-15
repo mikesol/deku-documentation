@@ -65,10 +65,10 @@ usingTheHookInAnAttribute = subsection
                 ]
           ]
       , D.p_
-          [ text
+          [ text_
               "In addition to controlling attributes of the anchor, these hooks "
           , D.i__ "also"
-          , text
+          , text_
               " control the click listeners. That is, each hook's value is stored in a listener, and whenever the hook updates, its new value is used to create a new listener that replaces the old one."
           ]
       ]

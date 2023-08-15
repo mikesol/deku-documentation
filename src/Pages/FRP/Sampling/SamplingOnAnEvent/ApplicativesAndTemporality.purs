@@ -26,10 +26,10 @@ applicativesAndTemporality = subsection
       , psCode
           """sampleOnRight :: forall a b. event a -> event (a -> b) -> event b"""
       , D.p_
-          [ text
+          [ text_
               "The function listens for changes to the event on the right, recalling the most recent value from the event on the left to produce a "
           , D.code__ "b"
-          , text
+          , text_
               ". The event on the left, on the other hand, has no incedence on the emission of "
           , D.code__ "b"
           , text_ " with one exception - it must fire at least once so that "
@@ -56,7 +56,7 @@ applicativesAndTemporality = subsection
           , D.code__ "Poll"
           , text_ " that we learned in "
           , routeLink Polls
-          , text
+          , text_
               ", you'll see an interesting similarity. When an argument of type "
           , D.code__ "Event a"
           , text_ " is applied to "

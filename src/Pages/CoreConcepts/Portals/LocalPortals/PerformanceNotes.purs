@@ -11,20 +11,20 @@ performanceNotes = subsection
   { title: "Performance notes"
   , matter: pure
       [ D.p_
-          [ text
+          [ text_
               "Had we used "
           , D.code__ "globalPortal"
-          , text
+          , text_
               " for the inner portal, every time the video was shuffled, a new portal would have been created "
           , D.i__ "without"
-          , text
+          , text_
               " the old one being cleaned up. That means that, if we clicked on "
           , D.b__ "Shuffle video"
-          , text
+          , text_
               " 100 times, 100 \"zombie\" videos would be hanging out in JavaScript."
           ]
       , D.p_
-          [ text
+          [ text_
               "That being said, 100 zombies aren't that bad. In fact, we've tested portals with thousands of videos and the difference between global and local is negligible. That's because modern JavaScript engines are smart enough to have a very low memory profile for DOM nodes that are not used, and Deku's internal representation only consumes a fistfull of bytes. We recommend using local portals in memory-constrained environments, in older browsers, or when working with custom DOM elements that have significant memory requirements or DOM elements that are tied to large framework-allocated resources (ie canvases that are filled with thousands of ThreeJS meshes)."
           ]
 

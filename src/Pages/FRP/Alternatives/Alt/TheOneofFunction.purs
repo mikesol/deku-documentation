@@ -15,10 +15,10 @@ theOneOfFunction = subsection
       example <- getExample StartCollapsed Nothing
         Examples.TheOneOfFunction
       pure [ D.p_
-          [ text
+          [ text_
               "Alting lots of events can get tedios. Too many tie fighters! To make life easier, there's the "
           , D.code__ "oneOf"
-          , text
+          , text_
               " function that will alt a bunch of events. Surveys consistently reveal that this is the technique most often used when coders create a text-only version of "
           , D.b__ "Harder, Better, Faster, Stronger"
           , text_ " in the browser."
