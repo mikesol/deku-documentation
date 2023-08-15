@@ -8,13 +8,13 @@ import ExampleAssitant (ExampleSignature)
 import Data.Int (floor)
 import Data.JSDate (getTime, now)
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute ((:=), (<:=>), (!:=))
-import Deku.Attributes (klass, klass_)
+import Deku.Attribute ((!:=))
+import Deku.Attributes (klass_)
 import Deku.Control (text, text_)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState, (<#~>))
-import Deku.Listeners (click, click_)
+import Deku.Listeners (click)
 import Deku.Pursx ((~~))
 
 import Effect.Aff (Milliseconds(..), delay, launchAff_)
@@ -79,9 +79,9 @@ app runExample = runExample Deku.do
         [ uiState <#~> case _ of
             Beginning -> mempty
             Image { url, watcherCount } -> D.div_
-              [ D.img [ D.Src := url ] []
+              [ D.img [ D.Src !:= url ] []
               , D.div_
-                  [ text $
+                  [ text_ $
                       "Watcher count (including you): " <> show
                         watcherCount
                   ]

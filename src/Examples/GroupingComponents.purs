@@ -5,8 +5,8 @@ import Effect (Effect)
 import Prelude
 import ExampleAssitant (ExampleSignature)
 
-import Deku.Attributes (klass, klass_)
-import Deku.Control (text, text_)
+import Deku.Attributes (klass_)
+import Deku.Control (text_)
 import Deku.Core (fixed)
 import Deku.DOM as D
 
@@ -26,7 +26,7 @@ app runExample = runExample do
     , eieio
     , text_ ". And on that farm he had a dog, "
     , eieio
-    , text
+    , text_
         ". With a woof-woof here and a woof-woof there. "
     , text_ "Here a woof, there a woof, everywhere a woof-woof. "
     , text_ "Old MacDonald had a farm, "
