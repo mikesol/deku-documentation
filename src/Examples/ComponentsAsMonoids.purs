@@ -62,7 +62,7 @@ toWord _ = "nth"
 app :: ExampleSignature
 app runExample = runExample do
   let
-    styleF s t = D.span [ klass s ] [ text t ]
+    styleF s t = D.span [ klass_ s ] [ text t ]
     zipStyles = zipWith styleF textColors
     lyrics0 = zipStyles lyrics
     lyrics1 = zipStyles (over (ix 11) ("and " <> _) lyrics)
