@@ -1,19 +1,18 @@
 module Examples.SwitchingOnPolls where
 
-import Deku.Toplevel (runInBody')
-import Effect (Effect)
 import Prelude
-import ExampleAssitant (ExampleSignature)
 
 import Data.DateTime.Instant (unInstant)
 import Data.Newtype (unwrap)
 import Data.Number ((%))
-import Data.Tuple (Tuple(..))
-import Deku.Control (text, text_)
-
+import Deku.Control (text)
+import Deku.Toplevel (runInBody')
+import Effect (Effect)
 import Effect.Random (random)
-import FRP.Poll (poll, sample_, switcher)
+import ExampleAssitant (ExampleSignature)
+import FRP.Event (bindToEffect)
 import FRP.Event.Time (interval)
+import FRP.Poll (poll, sample_, sham, switcher)
 
 app :: ExampleSignature
 app runExample = do
@@ -21,10 +20,9 @@ app runExample = do
   i1 <- interval 2000
   runExample do
     let
-      b i = poll
-        $ pure (Tuple (pure unit) (mul i <$> random))
+      b i = poll \e -> bindToEffect e \f -> (f <<< mul i) <$> random
     text
-      ( show <$>
+      ( show <$> sham
           ( sample_
               ( switcher (b 1.0)
                   ( i1.event <#> \i -> b
