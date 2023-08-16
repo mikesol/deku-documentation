@@ -2,6 +2,7 @@ module Examples.TheOneOfFunction where
 
 import Prelude
 
+import Control.Alt ((<|>))
 import Data.Either (hush)
 import Data.Foldable (oneOf)
 import Data.Tuple (snd)
@@ -11,7 +12,7 @@ import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
 import FRP.Event (delay, filterMap)
 import FRP.Event.Time (interval)
-import FRP.Poll (sham)
+import FRP.Poll (dredge, sham)
 
 app :: ExampleSignature
 app runExample = do
@@ -21,11 +22,10 @@ app runExample = do
   ivl <- interval loop
   let
     beat w t = filterMap (hush >>> map snd)
-      $ sham (delay (t * ms) (ivl.event $> w))
+      $ dredge (delay (t * ms)) (pure w <|> sham (ivl.event $> w))
   runExample do
     text $ oneOf
-      [ pure "Work it"
-      , beat "Work it" 0
+      [ beat "Work it" 0
       , beat "Make it" 1
       , beat "Do it" 2
       , beat "Makes us" 3

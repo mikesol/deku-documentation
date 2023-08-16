@@ -13,21 +13,22 @@ import Deku.Attributes (klass_)
 import Deku.Control (text)
 import Deku.DOM as D
 import Deku.Do as Deku
-import Deku.Hooks (useState)
+import Deku.Hooks (useRef, useState')
 import Deku.Listeners (slider_)
 import Deku.Toplevel (runInBody')
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
 import FRP.Event (fold)
 import FRP.Event.AnimationFrame (animationFrame)
-import FRP.Poll (derivative', sample_, sham)
+import FRP.Poll (derivative', effectToPoll, sample_, sham)
 import FRP.Poll.Time (seconds)
 
 app :: ExampleSignature
 app runExample = do
   af <- animationFrame
   runExample Deku.do
-    setNumber /\ number <- useState 0.5
+    setNumber /\ number <- useState'
+    nref <- useRef 0.5 number
     let
       average l
         | null l = 0.0
@@ -58,7 +59,7 @@ app runExample = do
                           ( sample_
                               ( derivative'
                                   (seconds <#> (\(Seconds s) -> s))
-                                  number
+                                  (effectToPoll nref)
                               )
                               af.event
                           )

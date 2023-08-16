@@ -9,20 +9,21 @@ import Deku.Attributes (klass_)
 import Deku.Control (text)
 import Deku.DOM as D
 import Deku.Do as Deku
-import Deku.Hooks (useState)
+import Deku.Hooks (useRef, useState')
 import Deku.Listeners (slider_)
 import Deku.Toplevel (runInBody')
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
 import FRP.Event.AnimationFrame (animationFrame)
-import FRP.Poll (integral', sample_, sham)
+import FRP.Poll (effectToPoll, integral', sample_, sham)
 import FRP.Poll.Time (seconds)
 
 app :: ExampleSignature
 app runExample = do
   af <- animationFrame
   runExample Deku.do
-    setNumber /\ number <- useState 0.0
+    setNumber /\ number <- useState'
+    nref <- useRef 0.0 number
     D.div_
       [ D.div_
           [ D.input
@@ -42,7 +43,7 @@ app runExample = do
                       ( ( sample_
                             ( integral' 0.0
                                 (seconds <#> (\(Seconds s) -> s))
-                                number
+                                (effectToPoll nref)
                             )
                             af.event
                         )

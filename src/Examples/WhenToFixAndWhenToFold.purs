@@ -17,7 +17,7 @@ import Deku.Toplevel (runInBody')
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
 import FRP.Event (delay)
-import FRP.Event.Class (fix, keepLatest, once)
+import FRP.Event.Class (fix, keepLatest)
 import FRP.Poll (dredge)
 import QualifiedDo.Alt as Alt
 
@@ -49,8 +49,8 @@ app runExample = runExample Deku.do
                       keepLatest $ e <#> \n -> do
                         let t = if n >= 375 then 15 else n + 15
                         filterMap (hush >>> map snd) $ dredge (delay t)
-                          (once switch $> t)
-                      once switch $> 0
+                          (pure t)
+                      pure 0
                   )
               )
             text_ "•​"
