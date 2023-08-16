@@ -5,7 +5,7 @@ import Prelude
 import Contracts (CollapseState(..), Subsection, getExample, subsection)
 import Data.Maybe (Maybe(..))
 import Data.String (replaceAll, Pattern(..), Replacement(..))
-import Deku.Control (text, text_)
+import Deku.Control (text_)
 import Deku.DOM as D
 import Examples as Examples
 
@@ -70,10 +70,15 @@ aNoteOnMemoization = subsection
           [ text_
               "It is indeed possible to have hooks that always supply their most recent value, but it requires using a hook we haven't learned about yet: "
           , D.code__ "useHot"
-          , text_ ". Fear not though, an example will thusly be presented, and we'll cover "
-          , D.code__ "useHot"
-          , text_ " later."
+          , text_ ". Fear not though, an example will thusly be presented."
           ]
       ,example2
+      , D.p_
+          [ D.code__ "useHot"
+          , text_
+              " is like "
+          , D.code__ "useState"
+          , text_ " except instead of replaying the initial event on subscription, it replays the most recent event."
+          ]
       ]
   }

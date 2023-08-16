@@ -4,6 +4,7 @@ import Prelude
 
 import Data.Foldable (for_, traverse_)
 import Data.Int (floor)
+import Data.Maybe (Maybe(..))
 import Data.String (Pattern(..), Replacement(..), replaceAll)
 import Data.Tuple (Tuple(..))
 import Data.Tuple.Nested ((/\))
@@ -12,8 +13,8 @@ import Deku.Attributes (klass_)
 import Deku.Control (text_)
 import Deku.DOM as D
 import Deku.Do as Deku
-import Deku.Hooks (useDyn, useState, useState')
-import Deku.Listeners (click, keyUp_)
+import Deku.Hooks (useDyn, useRef, useState, useState')
+import Deku.Listeners (click_, keyUp_)
 import Deku.Toplevel (runInBody')
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
@@ -47,6 +48,7 @@ app runExample = runExample Deku.do
   setPos /\ pos <- useState 0
   setItem /\ item <- useState'
   setInput /\ input <- useState'
+  iref <- useRef Nothing (Just <$> input)
   let
     guardAgainstEmpty e = do
       v <- value e
@@ -77,7 +79,8 @@ app runExample = runExample Deku.do
             ]
             []
         , D.button
-            [ click $ input <#> guardAgainstEmpty
+            [ click_ do
+                iref >>= traverse_ guardAgainstEmpty
             , klass_ $ buttonClass "green"
             ]
             [ text_ "Add" ]

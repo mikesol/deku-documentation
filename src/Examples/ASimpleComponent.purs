@@ -5,7 +5,7 @@ import Effect (Effect)
 import Prelude
 import ExampleAssitant (ExampleSignature)
 
-import Deku.Control (text, text_)
+import Deku.Control (text_)
 import Deku.Core (Nut)
 import Deku.DOM as D
 

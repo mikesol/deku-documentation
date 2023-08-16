@@ -2,7 +2,8 @@ module Examples.UseDyn where
 
 import Prelude
 
-import Data.Foldable (for_)
+import Data.Foldable (for_, traverse_)
+import Data.Maybe (Maybe(..))
 import Data.String (Pattern(..), Replacement(..), replaceAll)
 import Data.Tuple.Nested ((/\))
 import Deku.Attribute ((!:=))
@@ -10,8 +11,8 @@ import Deku.Attributes (klass_)
 import Deku.Control (text_)
 import Deku.DOM as D
 import Deku.Do as Deku
-import Deku.Hooks (useDynAtBeginning, useState')
-import Deku.Listeners (click, keyUp_)
+import Deku.Hooks (useDynAtBeginning, useRef, useState')
+import Deku.Listeners (click_, keyUp_)
 import Deku.Toplevel (runInBody')
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
@@ -43,6 +44,7 @@ app :: ExampleSignature
 app runExample = runExample Deku.do
   setItem /\ item <- useState'
   setInput /\ input <- useState'
+  iref <- useRef Nothing (Just <$> input)
   let
     guardAgainstEmpty e = do
       v <- value e
@@ -65,7 +67,8 @@ app runExample = runExample Deku.do
             ]
             []
         , D.button
-            [ click $ input <#> guardAgainstEmpty
+            [ click_ do
+                iref >>= traverse_ guardAgainstEmpty
             , klass_ $ buttonClass "green"
             ]
             [ text_ "Add" ]
