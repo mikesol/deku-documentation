@@ -6,7 +6,7 @@ import Components.ProTip (proTip)
 import Components.TargetedLink (targetedLink)
 import Contracts (CollapseState(..), Section, getExample, section)
 import Data.Maybe (Maybe(..))
-import Deku.Control (text, text_)
+import Deku.Control (text_)
 import Deku.DOM as D
 import Examples as Examples
 import Pages.CoreConcepts.State.TheStateHook.PushingToAHook (pushingToAHook)
@@ -26,10 +26,10 @@ theStateHook = section
       , proTip
           { header: text_ "Deku.do"
           , message: D.div_
-              [ text_ "In Haskell-family languages, a "
+              [ text_ "As previously mentioned, in PureScript and PureScript-inspired languages like Haskell, a "
               , D.code__ "do"
               , text_
-                  " block is a way to write nested function calls as a sequence of instructions. This is why Haskell and its progeny are often collectively referred to as "
+                  " block is a way to write nested function calls as a sequence of instructions. This is why PureScript and its progeny are often collectively referred to as "
               , targetedLink
                   "https://stackoverflow.com/questions/6622524/why-is-haskell-sometimes-referred-to-as-best-imperative-language"
                   [ text_ "the best imperative language" ]

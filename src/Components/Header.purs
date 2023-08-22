@@ -36,6 +36,7 @@ clipRule_ v = pure
       , value: Deku.Attribute.prop' v
       }
   )
+
 classBrightnessModeSelected :: String
 classBrightnessModeSelected =
   "flex cursor-pointer select-none items-center rounded-[0.625rem] p-1 text-sky-500"
@@ -119,8 +120,10 @@ header
       , D.div [ DA.klass_ "relative flex flex-grow basis-0 items-center" ]
           [ link' pushState GettingStarted empty
               [ D.img
-                  ( [ DA.src (darkBoolean <#> \dk ->
-                        if dk then dekulogodarkURL else dekulogoURL)
+                  ( [ DA.src
+                        ( darkBoolean <#> \dk ->
+                            if dk then dekulogodarkURL else dekulogoURL
+                        )
                     , DA.klass_ "w-20 object-contain"
                     ]
                   )

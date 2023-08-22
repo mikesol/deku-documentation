@@ -30,7 +30,7 @@ app runExample = runExample Deku.do
   D.div_
     [ D.a
         [ DA.target_ "_blank"
-        , DA.style $ filter identity styleSwitch $>  "color:magenta;"
+        , DA.style $ filter identity styleSwitch $> "color:magenta;"
         , DA.unset DA.style $ filter not styleSwitch
         ]
         [ text_ "Click me" ]

@@ -43,6 +43,7 @@ type HTMLDiscordMessages (r :: Row Type) =
   ( __tag :: Proxy "HTMLDiscordMessages"
   | HTMLElement r
   )
+
 discordMessages
   :: Array (Poll (Attribute (HTMLDiscordMessages ()))) -> Array Nut -> Nut
 discordMessages = elementify2 Nothing "discord-messages"

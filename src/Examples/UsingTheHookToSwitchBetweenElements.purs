@@ -59,12 +59,12 @@ app runExample = runExample Deku.do
                 , DSA.width_ "170"
                 ]
                 [ DS.circle
-                    [ DSA.cx_  "75"
-                    , DSA.cy_  "75"
-                    , DSA.r_  "70"
-                    , DSA.stroke_  "black"
-                    , DSA.strokeWidth_  "3"
-                    , DSA.fill_  "red"
+                    [ DSA.cx_ "75"
+                    , DSA.cy_ "75"
+                    , DSA.r_ "70"
+                    , DSA.stroke_ "black"
+                    , DSA.strokeWidth_ "3"
+                    , DSA.fill_ "red"
                     ]
                     []
                 ]

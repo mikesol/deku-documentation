@@ -16,14 +16,13 @@ import Web.HTML.Window (alert)
 import Web.PointerEvent.PointerEvent (toEvent)
 
 app :: ExampleSignature
-app runExample = runExample
-  ( D.span
-      [ DL.click_ \e -> do
-          window >>= alert (unwrap (type_ $ toEvent e))
-      , DA.klass_ "cursor-pointer"
-      ]
-      [ text_ "Click me!" ]
-  )
+app runExample = runExample do
+  D.span
+    [ DL.click_ \e -> do
+        window >>= alert (unwrap (type_ $ toEvent e))
+    , DA.klass_ "cursor-pointer"
+    ]
+    [ text_ "Click me!" ]
 
 main :: Effect Unit
 main = void $ app (map (map void) runInBody')

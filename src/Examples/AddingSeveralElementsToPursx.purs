@@ -84,9 +84,9 @@ app runExample = runExample Deku.do
         [ D.a [ DA.klass_ "cursor-pointer mr-4", toggleHome ]
             [ text_ "Go home" ]
         , D.a
-            [ DA.klass_ "cursor-pointer mr-4", toggleProjs  ]
+            [ DA.klass_ "cursor-pointer mr-4", toggleProjs ]
             [ text_ "Go to projects" ]
-        , D.a [ DA.klass_ "cursor-pointer", toggleNero  ]
+        , D.a [ DA.klass_ "cursor-pointer", toggleNero ]
             [ text_ "Go to nero" ]
         ]
     , D.div_
@@ -95,14 +95,14 @@ app runExample = runExample Deku.do
             , lis: fixed
                 [ liHtml ~~
                     { atts: oneOf
-                        [ toggleProjs 
+                        [ toggleProjs
                         , hideOnFalse projects
                         ]
                     , name: text_ "Projects"
                     }
                 , liHtml ~~
                     { atts: oneOf
-                        [ toggleNero , hideOnFalse nero ]
+                        [ toggleNero, hideOnFalse nero ]
                     , name: text_ "Project Nero"
                     }
                 ]

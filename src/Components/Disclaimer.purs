@@ -1,6 +1,5 @@
 module Components.Disclaimer where
 
-
 import Prelude
 
 import Deku.Attribute as Deku.Attribute
@@ -18,6 +17,7 @@ clipRule_ v = pure
       , value: Deku.Attribute.prop' v
       }
   )
+
 disclaimer
   :: { header :: Nut, message :: Nut }
   -> Nut

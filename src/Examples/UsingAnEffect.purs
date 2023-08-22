@@ -13,14 +13,13 @@ import Web.HTML (window)
 import Web.HTML.Window (alert)
 
 app :: ExampleSignature
-app runExample = runExample
-  ( D.span
-      [ DL.click_ \_ ->
-          window >>= alert "Thanks for clicking!"
-      , DA.klass_ "cursor-pointer"
-      ]
-      [ text_ "Click me!" ]
-  )
+app runExample = runExample do
+  D.span
+    [ DL.click_ \_ ->
+        window >>= alert "Thanks for clicking!"
+    , DA.klass_ "cursor-pointer"
+    ]
+    [ text_ "Click me!" ]
 
 main :: Effect Unit
 main = void $ app (map (map void) runInBody')

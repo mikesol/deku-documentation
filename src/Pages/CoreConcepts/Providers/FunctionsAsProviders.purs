@@ -3,9 +3,8 @@ module Pages.CoreConcepts.Providers.FunctionsAsProviders where
 import Prelude
 
 import Contracts (Section, section)
-import Deku.Control (text, text_)
+import Deku.Control (text_)
 import Deku.DOM as D
-import Pages.CoreConcepts.Providers.FunctionsAsProviders.MixingDoNotation (mixingDoNotation)
 import Pages.CoreConcepts.Providers.FunctionsAsProviders.PassingAroundHooks (passingAroundHooks)
 import Pages.CoreConcepts.Providers.FunctionsAsProviders.UsingFunctionsAsMonads (usingFunctionsAsMonads)
 
@@ -21,5 +20,5 @@ functionsAsProviders = section
           ]
       ]
   , subsections:
-      [ usingFunctionsAsMonads, mixingDoNotation, passingAroundHooks ]
+      [ usingFunctionsAsMonads, {-mixingDoNotation,-} passingAroundHooks ]
   }

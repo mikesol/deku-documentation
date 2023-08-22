@@ -23,7 +23,7 @@ focus:ring-COLOR-500 focus:ring-offset-2"""
 
 aNoteOnMemoization :: Subsection
 aNoteOnMemoization = subsection
-  { title: "Memoization and useHot"
+  { title: "The useHot hook"
   , matter: do
       example <- getExample StartCollapsed Nothing
         Examples.ANoteOnMemoization
@@ -34,7 +34,7 @@ aNoteOnMemoization = subsection
           [ text_ "It's important to know that the hooks above are "
           , D.i__ "not"
           , text_
-              " memoized, meaning that they do not store their most recent value. They simply pass through whatever comes down the pipe. This comes from Deku's tradition as an engine for games and interactive art, where events are often streams of data. However, in certain cases, like when an event holds a user profile, you always want to use the most recent value."
+              " memoized, meaning that they do not store their most recent value. They simply pass through whatever comes down the pipe. This comes from Deku's tradition as an engine for games and interactive art, where we need to compose together streams of data. However, in certain cases, like when we're polling a user profile, you always want to use the most recent value."
           ]
       , D.p_
           [ text_
@@ -78,7 +78,7 @@ aNoteOnMemoization = subsection
           , text_
               " is like "
           , D.code__ "useState"
-          , text_ " except instead of replaying the initial event on subscription, it replays the most recent event."
+          , text_ " except instead of replaying the initial value, it replays the most recent value."
           ]
       ]
   }

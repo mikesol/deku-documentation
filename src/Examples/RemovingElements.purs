@@ -79,7 +79,7 @@ app runExample = runExample Deku.do
         , D.button
             [ DL.click_ \_ -> do
                 iref >>= traverse_ guardAgainstEmpty
-                , DA.klass_ $ buttonClass "green"
+            , DA.klass_ $ buttonClass "green"
             ]
             [ text_ "Add" ]
         ]

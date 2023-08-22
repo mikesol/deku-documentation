@@ -5,7 +5,6 @@ import Effect (Effect)
 import Prelude
 import ExampleAssitant (ExampleSignature)
 
-
 import Deku.DOM.Attributes as DA
 import Deku.Control (text_)
 import Deku.DOM as D

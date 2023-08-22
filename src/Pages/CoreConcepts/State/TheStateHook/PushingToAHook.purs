@@ -46,9 +46,9 @@ pushingToAHook = subsection
           , D.code__ "Effect Unit"
           , text_
               " you can use them in any effectful context, including any Deku listener like "
-          , D.code__ "OnClick"
+          , D.code__ "DL.click"
           , text_ " or "
-          , D.code__ "OnInput"
+          , D.code__ "DL.input"
           , text_ ". In the example above, we generate a random number and use "
           , D.code__ "bind"
           , text_ ", aka "

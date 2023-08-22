@@ -17,9 +17,9 @@ unsettingAnAttributeWithAHook = subsection
       pure
         [ D.p_
             [ text_
-                "Sometimes, you need to unset an attribute. You can do that by setting the attribute to "
-            , D.code__ "unit"
-            , text_ " via your hook."
+                "Sometimes, you need to unset an attribute. You can do that by using the "
+            , D.code__ "DL.unset"
+            , text_ " combinator."
             ]
         , example
         , D.p_

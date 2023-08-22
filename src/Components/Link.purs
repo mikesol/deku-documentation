@@ -99,3 +99,17 @@ linkWithString
 linkWithString pushState route title attributes = link' pushState route
   attributes
   [ text_ title ]
+
+linkWithNut
+  :: (Foreign -> String -> Effect Unit)
+  -> Route
+  -> Array Nut
+  -> Array
+       ( Poll
+           ( Attribute
+               (HTMLAnchorElement ())
+           )
+       )
+  -> Nut
+linkWithNut pushState route title attributes = link' pushState route
+  attributes title

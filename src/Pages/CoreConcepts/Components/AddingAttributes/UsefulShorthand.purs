@@ -3,7 +3,6 @@ module Pages.CoreConcepts.Components.AddingAttributes.UsefulShorthand where
 import Prelude
 
 import Components.Code (psCode)
-import Components.Table (tableClass)
 import Contracts (Subsection, subsection)
 import Deku.DOM.Attributes as DA
 import Deku.Control (text_)

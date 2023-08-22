@@ -6,7 +6,7 @@ import Components.Banner (banner)
 import Components.BottomNav (bottomNav)
 import Components.Header (header)
 import Components.LeftMatter (leftMatter)
-import Components.Link (link, linkWithString)
+import Components.Link (link, linkWithString, linkWithNut)
 import Contracts (Content, Env(..), Page(..), Section(..), Subsection(..), EffectWithCancellers, contentToPoll, getEnv)
 import Control.Alt ((<|>))
 import Control.Monad.Free (foldFree)
@@ -73,7 +73,7 @@ pageToContent (Page cp) = do
                     ( [ DA.id_ section.id
                       , Self.self_
                           $ Tuple i >>>
-                          setRightSideNav
+                              setRightSideNav
                       ]
                     )
                     [ text_ section.title ]
@@ -177,6 +177,7 @@ app
     env = Env
       { routeLink: \r -> link pushState r empty
       , routeLinkWithText: \r s -> linkWithString pushState r s empty
+      , routeLinkWithNuts: \r s -> linkWithNut pushState r s empty
       , setRightSideNav
       }
   setDark /\ dark <- useState LightMode

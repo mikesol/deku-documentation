@@ -1,6 +1,5 @@
 module Components.TargetedLink where
 
-
 import Deku.DOM.Attributes as DA
 import Deku.Core (Nut)
 import Deku.DOM as D

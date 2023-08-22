@@ -36,7 +36,8 @@ app runExample = do
     D.div_
       [ D.div_
           [ D.input
-              [ DA.xtypeRange, DL.numberOn_ DL.input setNumber
+              [ DA.xtypeRange
+              , DL.numberOn_ DL.input setNumber
               , DA.klass_ "w-full"
               , DA.min_ "0.0"
               , DA.max_ "1.0"

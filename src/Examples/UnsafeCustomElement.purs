@@ -12,7 +12,6 @@ import ExampleAssitant (ExampleSignature)
 import FRP.Poll (Poll)
 import Type.Proxy (Proxy)
 
-
 type HTMLMyNiftyAnchor (r :: Row Type) =
   ( __tag :: Proxy "HTMLMyNiftyAnchor"
   | HTMLAnchorElement r

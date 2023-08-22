@@ -51,7 +51,8 @@ psCodeNoCollapse :: String -> Nut
 psCodeNoCollapse = psCode' " no-collapse" [ DA.klass_ "no-collapse" ]
 
 --
-psCodeWithLink' :: String -> Array (Poll (Attribute (HTMLElement ()))) -> ExampleADT -> Nut
+psCodeWithLink'
+  :: String -> Array (Poll (Attribute (HTMLElement ()))) -> ExampleADT -> Nut
 psCodeWithLink' s e ex = D.div_
   [ D.div_
       [ D.a

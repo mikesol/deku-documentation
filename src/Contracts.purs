@@ -23,6 +23,7 @@ import Web.DOM as DOM
 newtype Env = Env
   { routeLink :: Route -> Nut
   , routeLinkWithText :: Route -> String -> Nut
+  , routeLinkWithNuts :: Route -> Array Nut -> Nut
   , setRightSideNav :: (Tuple Int DOM.Element) -> Effect Unit
   }
 

@@ -30,7 +30,8 @@ app runExample = runExample Deku.do
       -> Poll c
     eventMaker f l r = f (l left <|> r right)
   D.div_
-    [ D.input [ DA.klass_ "mr-2", DA.xtypeRange, DL.numberOn_ DL.input setLeft ] []
+    [ D.input [ DA.klass_ "mr-2", DA.xtypeRange, DL.numberOn_ DL.input setLeft ]
+        []
     , D.input [ DA.xtypeRange, DL.numberOn_ DL.input setRight ] []
     , D.div_
         [ text_ "Responds to both channels: "
