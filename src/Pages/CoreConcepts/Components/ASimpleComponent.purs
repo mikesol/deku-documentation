@@ -61,10 +61,10 @@ aSimpleComponent = section
               , D.b__ "component"
               , text_
                   " is broader than a one-to-one relationship with DOM elements - it can also represent the absence of DOM elements using "
-              , D.code__ "blank"
+              , D.code__ "mempty"
               , text_
                   " (which we'll learn about later) or multiple DOM elements using "
-              , D.code__ "dyn"
+              , D.code__ "useDyn"
               , text_ " (which we'll also learn about later)."
               ]
           ]

@@ -12,12 +12,18 @@ aSingleAttribute = subsection
   { title: "Setting attributes"
   , matter: pure
       [ D.p_
-          [ text_ "Individual attributes are set with the "
-          , D.code_ [ text_ ":=" ]
-          , text_ " infix operator."
+          [ text_ "Individual attributes like "
+          , D.code_ [ text_ "style" ]
+          , text_ " or "
+          , D.code_ [ text_ "href" ]
+          , text_ " are set with the "
+          , D.code_ [ text_ "DA.style_" ]
+          , text_ " or "
+          , D.code_ [ text_ "DA.href_" ]
+          , text_ " functions."
           ]
       , psCode
-          "D.Style := \"color:teal;\""
+          "DA.style_ \"color:teal;\""
       , D.p_
           [ text_
               "To feed an attribute to Deku, it needs to be in an array. Several attributes can be set by including them all in an array."

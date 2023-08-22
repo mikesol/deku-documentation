@@ -11,35 +11,11 @@ import Deku.DOM as D
 
 usefulShorthand :: Subsection
 usefulShorthand = subsection
-  { title: "Useful shorthand"
+  { title: "¿Sì? Yes Yes!"
   , matter: pure
-      [ D.p_
+      [D.p_
           [ text_
-              "An ever-expanding library of shorthand functions is present in Deku to help you succinctly articulate various attributes and combinations of attributes. Here is what's currently available."
-          ]
-      , D.table [ tableClass ]
-          [ D.tr_
-              [ D.th [ tableClass ] [ text_ "Shorthand" ]
-              , D.th [ tableClass ] [ text_ "Longer version" ]
-              ]
-          , D.tr_
-              [ D.td [ tableClass ] [ D.code_ [ text_ "klass \"foo\"" ] ]
-              , D.td [ tableClass ] [ D.code_ [ text_ "D.Class := \"foo\"" ] ]
-              ]
-          , D.tr_
-              [ D.td [ tableClass ] [ D.code_ [ text_ "id_ \"foo\"" ] ]
-              , D.td [ tableClass ] [ D.code_ [ text_ "D.Id := \"foo\"" ] ]
-              ]
-          , D.tr_
-              [ D.td [ tableClass ]
-                  [ D.code_ [ text_ "style_ \"color:black;\"" ] ]
-              , D.td [ tableClass ]
-                  [ D.code_ [ text_ "D.Style := \"color:black;\"" ] ]
-              ]
-          ]
-      , D.p_
-          [ text_
-              "Additionally, PureScript has a delightful type-safe CSS library called "
+              "PureScript has a delightful type-safe CSS library called "
           , D.a
               [ DA.href_
                   "https://pursuit.purescript.org/packages/purescript-css/"
