@@ -4,7 +4,7 @@ import Prelude
 
 import Components.Code (psCode)
 import Contracts (Subsection, subsection)
-import Deku.Control (text, text_)
+import Deku.Control (text_)
 import Deku.DOM as D
 
 severalAttributes :: Subsection
@@ -17,8 +17,8 @@ severalAttributes = subsection
           ]
       , psCode
           """
-[ D.Id !:= "my-id"
-, D.Style !:= "background-color:silver;"
+[ DA.id_ "my-id"
+, DA.style_ "background-color:silver;"
 ]
 """
       ]

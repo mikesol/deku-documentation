@@ -5,20 +5,19 @@ import Prelude
 import Control.Alt ((<|>))
 import Control.Monad.ST.Class (liftST)
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute ((!:=))
-import Deku.Attributes (klass_)
+import Deku.DOM.Attributes as DA
 import Deku.Control (text_)
 import Deku.Core (Nut)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (guard, useState')
-import Deku.Listeners (click)
+import Deku.DOM.Listeners as DL
 import Deku.Toplevel (runInBody', runSSR)
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
 
 htmlCode :: String -> Nut
-htmlCode code = D.pre [ D.Class !:= "prism-code language-markup" ]
+htmlCode code = D.pre [ DA.klass_ "prism-code language-markup" ]
   [ D.code_
       [ text_ code
       ]
@@ -30,12 +29,12 @@ myApp s = Deku.do
   D.div_
     [ D.h4__ "Hi!"
     , D.a
-        [ klass_ "cursor-pointer"
-        , click $ (pure unit <|> image) <#> setImage
+        [ DA.klass_ "cursor-pointer"
+        , DL.runOn DL.click $ (pure unit <|> image) <#> setImage
         ]
         [ text_ "Click to reveal an image." ]
     , guard (image $> true)
-        (D.img [ D.Src !:= "https://picsum.photos/150" ] [])
+        (D.img [ DA.src_ "https://picsum.photos/150" ] [])
     , htmlCode s
     ]
 

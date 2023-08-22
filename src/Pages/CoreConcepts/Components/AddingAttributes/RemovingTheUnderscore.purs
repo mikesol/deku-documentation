@@ -5,7 +5,7 @@ import Prelude
 import Components.Code (psCode)
 import Components.ProTip (proTip)
 import Contracts (Subsection, subsection)
-import Deku.Control (text, text_)
+import Deku.Control (text_)
 import Deku.DOM as D
 
 removingTheUnderscore :: Subsection
@@ -24,7 +24,7 @@ removingTheUnderscore = subsection
           , text_ " to typeset the text."
           , psCode
               """D.span
-  [ D.Style !:= "color:teal;" ]
+  [ DA.style_ "color:teal;" ]
   [ text_ "I exist" ]"""
           ]
       , proTip

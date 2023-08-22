@@ -8,12 +8,12 @@ import Data.Maybe (Maybe(..))
 import Data.String (Pattern(..), Replacement(..), replaceAll)
 import Data.Tuple (Tuple(..), fst, snd)
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass_)
+import Deku.DOM.Attributes as DA
 import Deku.Control (text, text_)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState')
-import Deku.Listeners (click_)
+import Deku.DOM.Listeners as DL
 import Deku.Toplevel (runInBody')
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
@@ -33,7 +33,7 @@ app runExample = runExample Deku.do
   setWord /\ word <- useState'
   let
     button text color = D.button
-      [ klass_ (buttonClass color), click_ (setWord text) ]
+      [ DA.klass_ (buttonClass color), DL.click_ \_ -> (setWord text) ]
       [ text_ text ]
   D.div_
     [ D.div_

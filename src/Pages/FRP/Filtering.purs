@@ -3,8 +3,8 @@ module Pages.FRP.Filtering where
 import Prelude
 
 import Contracts (Page, page)
-import Deku.Attribute ((:=), (<:=>), (!:=))
-import Deku.Control (text, text_)
+import Deku.DOM.Attributes as DA
+import Deku.Control (text_)
 import Deku.DOM as D
 import Pages.FRP.Filtering.Compact (compact)
 import Pages.FRP.Filtering.Filter (filter)
@@ -14,7 +14,7 @@ filtering :: Page
 filtering = page
   { route: Filtering
   , topmatter: pure
-      [ D.p [D.Class !:= "lead"]
+      [ D.p [DA.klass_ "lead"]
           [ text_ "How to make events less eventful."
           ]
       , D.p_

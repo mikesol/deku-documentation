@@ -3,76 +3,71 @@ module Examples.MockDiscord where
 import Prelude
 
 import Assets (beluMomURL, belugaURL)
-import Control.Plus (empty)
-import Deku.Attribute (class Attr, Attribute, AttributeValue(..), unsafeAttribute, (!:=))
-import Deku.Control (text_)
+import Data.Maybe (Maybe(..))
+import Deku.Attribute (Attribute, prop', unsafeAttribute)
+import Deku.Control (elementify2, text_)
 import Deku.Core (Nut)
-import Deku.DOM (unsafeCustomElement)
+import Deku.DOM (HTMLElement)
 import Deku.Toplevel (runInBody')
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
 import FRP.Poll (Poll)
-import Type.Proxy (Proxy(..))
+import Type.Proxy (Proxy)
 
-data DiscordMessages_
-data DiscordMessage_
-data Author = Author
-data Avatar = Avatar
-data RoleColor = RoleColor
-
-instance Attr DiscordMessage_ Author String where
-  attr _ s = unsafeAttribute
-    { key: "author", value: Prop' s }
-
-instance Attr DiscordMessage_ Avatar String where
-  attr _ s = unsafeAttribute
-    { key: "avatar", value: Prop' s }
-
-instance Attr DiscordMessage_ RoleColor String where
-  attr _ s = unsafeAttribute
-    { key: "role-color", value: Prop' s }
-
-discordMessages
-  :: Array (Nut)
-  -> Nut
-discordMessages = unsafeCustomElement "discord-messages"
-  ( Proxy
-      :: Proxy
-           DiscordMessages_
+type HTMLDiscordMessage (r :: Row Type) =
+  ( __tag :: Proxy "HTMLDiscordMessage"
+  , author :: String
+  , avatar :: String
+  | HTMLElement r
   )
-  empty
 
 discordMessage
-  :: Array (Poll (Attribute DiscordMessage_))
-  -> Array (Nut)
-  -> Nut
-discordMessage = unsafeCustomElement "discord-message"
-  ( Proxy
-      :: Proxy
-           DiscordMessage_
+  :: Array (Poll (Attribute (HTMLDiscordMessage ()))) -> Array Nut -> Nut
+discordMessage = elementify2 Nothing "discord-message"
+
+author
+  :: forall r
+   . Poll String
+  -> Poll (Attribute (author :: String | r))
+author = map
+  (unsafeAttribute <<< { key: "author", value: _ } <<< prop')
+
+avatar
+  :: forall r
+   . Poll String
+  -> Poll (Attribute (author :: String | r))
+avatar = map
+  (unsafeAttribute <<< { key: "avatar", value: _ } <<< prop')
+
+type HTMLDiscordMessages (r :: Row Type) =
+  ( __tag :: Proxy "HTMLDiscordMessages"
+  | HTMLElement r
   )
+discordMessages
+  :: Array (Poll (Attribute (HTMLDiscordMessages ()))) -> Array Nut -> Nut
+discordMessages = elementify2 Nothing "discord-messages"
 
 app :: ExampleSignature
 app runExample = runExample do
-  discordMessages
+  discordMessages []
     [ discordMessage
-        [ Author !:= "beluga"
-        , Avatar !:= belugaURL
+        [ author $ pure "beluga"
+        , avatar $ pure belugaURL
         ]
         [ text_ "mom" ]
     , discordMessage
-        [ Author !:= "belu-mom🌸"
-        , Avatar !:= beluMomURL
+        [ author $ pure "belu-mom🌸"
+        , avatar $ pure beluMomURL
         ]
         [ text_ "yes beluga" ]
     , discordMessage
-        [ Author !:= "beluga"
-        , Avatar !:= belugaURL
+        [ author $ pure "beluga"
+        , avatar $ pure belugaURL
         ]
         [ text_ "whos my dad?" ]
     , discordMessage
-        [ Author !:= "belu-mom🌸"
-        , Avatar !:= beluMomURL
+        [ author $ pure "belu-mom🌸"
+        , avatar $ pure beluMomURL
         ]
         [ text_ "it's complicated..." ]
     ]

@@ -2,17 +2,20 @@ module Examples.AddingSeveralAttributesToPursx where
 
 import Deku.Toplevel (runInBody')
 import Prelude
+import Data.Foldable (oneOf)
 import ExampleAssitant (ExampleSignature)
+import Web.PointerEvent.PointerEvent (PointerEvent)
 
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute (class Attr, Attribute)
-import Deku.Attributes (klass, klass_)
+import Deku.Attribute (Attribute)
+import Deku.DOM.Attributes as DA
+
 import Deku.Control (text_)
 import Deku.DOM as D
 import Deku.Do as Deku
 import FRP.Poll (Poll)
 import Deku.Hooks (useState)
-import Deku.Listeners (click_)
+import Deku.DOM.Listeners as DL
 import Deku.Pursx ((~~))
 import Effect (Effect)
 
@@ -62,27 +65,25 @@ app runExample = runExample Deku.do
   setNero /\ nero <- useState true
   let
     hideOnFalse e =
-      klass $ e <#> (if _ then "" else "hidden ") >>>
+      DA.klass $ e <#> (if _ then "" else "hidden ") >>>
         (_ <> "flex")
 
     toggleHome
-      :: forall element
-       . Attr element D.OnClick (Effect Unit)
-      => Poll (Attribute element)
-    toggleHome = click_ (setProjects false *> setNero false)
+      :: forall r
+       . Poll (Attribute (click :: PointerEvent | r))
+    toggleHome = DL.click_ \_ -> (setProjects false *> setNero false)
 
     toggleProjs
-      :: forall element
-       . Attr element D.OnClick (Effect Unit)
-      => Poll (Attribute element)
-    toggleProjs = click_ (setProjects true *> setNero false)
+      :: forall r
+       . Poll (Attribute (click :: PointerEvent | r))
+    toggleProjs = DL.click_ \_ -> (setProjects true *> setNero false)
 
     toggleNero
-      :: forall element
-       . Attr element D.OnClick (Effect Unit)
-      => Poll (Attribute element)
-    toggleNero = click_ (setProjects true *> setNero true)
-    akls = append [ klass_ "cursor-pointer mr-4" ] <<< pure
+      :: forall r
+       . Poll (Attribute (click :: PointerEvent | r))
+    toggleNero = DL.click_ \_ -> (setProjects false *> setNero true)
+
+    akls = append [ DA.klass_ "cursor-pointer mr-4" ] <<< pure
   D.div_
     [ D.div_
         [ D.a (akls toggleHome) [ text_ "Go home" ]
@@ -91,9 +92,9 @@ app runExample = runExample Deku.do
         ]
     , D.div_
         [ myHtml ~~
-            { homeAtts: [ toggleHome, klass_ "flex h-12" ]
-            , projectsAtts: [ toggleProjs, hideOnFalse projects ]
-            , neroAtts: [ toggleNero, hideOnFalse nero ]
+            { homeAtts: oneOf [ toggleHome, DA.klass_ "flex h-12" ]
+            , projectsAtts: oneOf [ toggleProjs, hideOnFalse projects ]
+            , neroAtts: oneOf [ toggleNero, hideOnFalse nero ]
             }
         ]
     ]

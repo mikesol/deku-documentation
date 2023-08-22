@@ -20,24 +20,24 @@ shorthandListeners = subsection
             [ text_
                 "Similar to attributes, some event listeners also have shorthand versions in Deku."
             ]
-        , D.table [ pure tableClass ]
+        , D.table [ tableClass ]
             [ D.tr_
-                [ D.th [ pure tableClass ] [ text_ "Shorthand" ]
-                , D.th [ pure tableClass ] [ text_ "Longer version" ]
+                [ D.th [ tableClass ] [ text_ "Shorthand" ]
+                , D.th [ tableClass ] [ text_ "Longer version" ]
                 ]
             , D.tr_
-                [ D.td [ pure tableClass ]
-                    [ D.code_ [ text_ "click $ log \"foo\"" ] ]
-                , D.td [ pure tableClass ]
+                [ D.td [ tableClass ]
+                    [ D.code_ [ text_ "DL.runOn DL.click $ log \"foo\"" ] ]
+                , D.td [ tableClass ]
                     [ D.code_ [ text_ "D.OnClick := log \"foo\"" ] ]
                 ]
             , D.tr_
-                [ D.td [ pure tableClass ]
+                [ D.td [ tableClass ]
                     [ D.code_ [ text_ "slider logShow" ] ]
-                , D.td [ pure tableClass ]
+                , D.td [ tableClass ]
                     [ D.code_
                         [ text_
-                            """[D.Xtype !:= "range", D.OnInput :=
+                            """[DA.xtypeRange, D.OnInput :=
     cb \e ->
       for_
         (target e >>= fromEventTarget)
@@ -46,9 +46,9 @@ shorthandListeners = subsection
                     ]
                 ]
             , D.tr_
-                [ D.td [ pure tableClass ]
+                [ D.td [ tableClass ]
                     [ D.code_ [ text_ "textInput_ logShow" ] ]
-                , D.td [ pure tableClass ]
+                , D.td [ tableClass ]
                     [ D.code_
                         [ text_
                             """D.OnInput :=

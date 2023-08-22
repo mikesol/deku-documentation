@@ -2,20 +2,21 @@ module Examples.AddingSeveralElementsToPursx where
 
 import Deku.Toplevel (runInBody')
 import Prelude
+import Web.PointerEvent.PointerEvent (PointerEvent)
+import FRP.Poll (Poll)
 import ExampleAssitant (ExampleSignature)
-
-import Deku.Attribute (Attribute, class Attr)
+import Data.Foldable (oneOf)
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass, klass_)
+import Deku.DOM.Attributes as DA
+import Deku.Attribute (Attribute)
 import Deku.Control (text_)
 import Deku.Core (fixed)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState)
 import Effect (Effect)
-import Deku.Listeners (click_)
+import Deku.DOM.Listeners as DL
 import Deku.Pursx ((~~))
-import FRP.Poll (Poll)
 
 import Type.Proxy (Proxy(..))
 
@@ -60,45 +61,48 @@ app runExample = runExample Deku.do
   setNero /\ nero <- useState true
   let
     hideOnFalse e =
-      klass $ e <#> (if _ then "" else "hidden ") >>>
+      DA.klass $ e <#> (if _ then "" else "hidden ") >>>
         (_ <> "flex")
 
     toggleHome
-      :: forall element
-       . Attr element D.OnClick (Effect Unit)
-      => Poll (Attribute element)
-    toggleHome = click_ (setProjects false *> setNero false)
+      :: forall r
+       . Poll (Attribute (click :: PointerEvent | r))
+    toggleHome = DL.click_ \_ -> (setProjects false *> setNero false)
 
     toggleProjs
-      :: forall element
-       . Attr element D.OnClick (Effect Unit)
-      => Poll (Attribute element)
-    toggleProjs = click_ (setProjects true *> setNero false)
+      :: forall r
+       . Poll (Attribute (click :: PointerEvent | r))
+    toggleProjs = DL.click_ \_ -> (setProjects true *> setNero false)
 
     toggleNero
-      :: forall element
-       . Attr element D.OnClick (Effect Unit)
-      => Poll (Attribute element)
-    toggleNero = click_ (setProjects true *> setNero true)
+      :: forall r
+       . Poll (Attribute (click :: PointerEvent | r))
+    toggleNero = DL.click_ \_ -> (setProjects false *> setNero true)
+
   D.div_
     [ D.div_
-        [ D.a [ klass_ "cursor-pointer mr-4", toggleHome ]
+        [ D.a [ DA.klass_ "cursor-pointer mr-4", toggleHome ]
             [ text_ "Go home" ]
-        , D.a [ klass_ "cursor-pointer mr-4", toggleProjs ]
+        , D.a
+            [ DA.klass_ "cursor-pointer mr-4", toggleProjs  ]
             [ text_ "Go to projects" ]
-        , D.a [ klass_ "cursor-pointer", toggleNero ]
+        , D.a [ DA.klass_ "cursor-pointer", toggleNero  ]
             [ text_ "Go to nero" ]
         ]
     , D.div_
         [ myHtml ~~
-            { homeAtts: [ toggleHome, klass_ "flex h-12" ]
+            { homeAtts: oneOf [ toggleHome, DA.klass_ "flex h-12" ]
             , lis: fixed
                 [ liHtml ~~
-                    { atts: [ toggleProjs, hideOnFalse projects ]
+                    { atts: oneOf
+                        [ toggleProjs 
+                        , hideOnFalse projects
+                        ]
                     , name: text_ "Projects"
                     }
                 , liHtml ~~
-                    { atts: [ toggleNero, hideOnFalse nero ]
+                    { atts: oneOf
+                        [ toggleNero , hideOnFalse nero ]
                     , name: text_ "Project Nero"
                     }
                 ]

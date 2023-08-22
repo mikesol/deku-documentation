@@ -3,8 +3,8 @@ module Pages.FRP.FixAndFold where
 import Prelude
 
 import Contracts (Page, page)
-import Deku.Attribute ((:=), (<:=>), (!:=))
-import Deku.Control (text, text_)
+import Deku.DOM.Attributes as DA
+import Deku.Control (text_)
 import Deku.DOM as D
 import Pages.FRP.FixAndFold.FixedPoints (fixedPoints)
 import Pages.FRP.FixAndFold.FoldingEvents (foldingEvents)
@@ -14,7 +14,7 @@ fixAndFold :: Page
 fixAndFold = page
   { route: FixAndFold
   , topmatter: pure
-      [ D.p [D.Class !:= "lead"]
+      [ D.p [DA.klass_ "lead"]
           [ text_ "Behold the crown jewel of functional reactive programming!"
           ]
       , D.p_

@@ -3,36 +3,45 @@ module Components.Link where
 import Prelude
 
 import Contracts (Chapter(..), Page(..))
-import Deku.Attribute (Attribute, cb, (!:=))
 import Deku.Control (text_)
 import Deku.Core (Nut)
+import Deku.DOM (Attribute, HTMLAnchorElement)
 import Deku.DOM as D
-import Deku.Listeners (click_)
+import Deku.DOM.Attributes as DA
+import Deku.DOM.Listeners as DL
 import Effect (Effect)
 import FRP.Poll (Poll)
-import Navigation (PushState)
+import Foreign (Foreign)
 import Router.ADT (Route(..))
 import Router.Chapter (routeToChapter)
 import Router.Page (routeToPage)
 import Web.Event.Event (preventDefault)
-import Web.Event.Internal.Types as Web
 import Web.HTML (window)
 import Web.HTML.Window (scroll)
+import Web.PointerEvent.PointerEvent (PointerEvent, toEvent)
 import Yoga.JSON as JSON
 
 link''
-  :: (Web.Event -> Effect Unit)
-  -> PushState
+  :: forall a19 a26
+   . Discard a19
+  => Discard a26
+  => (PointerEvent -> Effect a19)
+  -> (Foreign -> String -> Effect a26)
   -> Route
-  -> Array (Poll (Attribute D.A_))
+  -> Array
+       ( Poll
+           ( Attribute
+               (HTMLAnchorElement ())
+           )
+       )
   -> Array Nut
   -> Nut
 link'' eff pushState route attributes children = D.a
   ( attributes <>
-      [ D.Href !:= url
-      , click_ $ cb \e -> do
+      [ DA.href_ url
+      , DL.click_ \e -> do
           eff e
-          preventDefault e
+          preventDefault (toEvent e)
           pushState (JSON.writeImpl {}) url
           window >>= scroll 0 0
       ]
@@ -47,17 +56,29 @@ link'' eff pushState route attributes children = D.a
     else chapter.path <> page.path
 
 link'
-  :: PushState
+  :: (Foreign -> String -> Effect Unit)
   -> Route
-  -> Array (Poll (Attribute D.A_))
+  -> Array
+       ( Poll
+           ( Attribute
+               (HTMLAnchorElement ())
+
+           )
+       )
   -> Array Nut
   -> Nut
 link' = link'' (const (pure unit))
 
 link
-  :: PushState
+  :: (Foreign -> String -> Effect Unit)
   -> Route
-  -> Array (Poll (Attribute D.A_))
+  -> Array
+       ( Poll
+           ( Attribute
+               (HTMLAnchorElement ())
+
+           )
+       )
   -> Nut
 link pushState route attributes = link' pushState route attributes
   [ text_ page.title ]
@@ -65,10 +86,15 @@ link pushState route attributes = link' pushState route attributes
   Page page = routeToPage route
 
 linkWithString
-  :: PushState
+  :: (Foreign -> String -> Effect Unit)
   -> Route
   -> String
-  -> Array (Poll (Attribute D.A_))
+  -> Array
+       ( Poll
+           ( Attribute
+               (HTMLAnchorElement ())
+           )
+       )
   -> Nut
 linkWithString pushState route title attributes = link' pushState route
   attributes

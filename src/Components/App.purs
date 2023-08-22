@@ -19,14 +19,14 @@ import Data.Newtype (unwrap)
 import Data.Traversable (oneOf, traverse)
 import Data.Tuple (Tuple(..), fst, snd)
 import Data.Tuple.Nested (type (/\), (/\))
-import Deku.Attribute ((!:=))
-import Deku.Attributes (klass, klass_)
 import Deku.Control (text_)
 import Deku.Core (Nut)
 import Deku.DOM as D
+import Deku.DOM.Attributes as DA
+import Deku.DOM.Listeners as DL
+import Deku.DOM.Self as Self
 import Deku.Do as Deku
 import Deku.Hooks (cycle, useState, (<#~>))
-import Deku.Listeners (click_)
 import Effect (Effect)
 import Effect.Ref as Ref
 import FRP.Event (bindToEffect)
@@ -57,8 +57,8 @@ pageToContent (Page cp) = do
                     smat <- lift subsection.matter
                     pure
                       ( [ D.h3
-                            ( [ D.Id !:= subsection.id
-                              , D.Self !:= Tuple j >>> setRightSideNav
+                            ( [ DA.id_ subsection.id
+                              , Self.self_ $ Tuple j >>> setRightSideNav
                               ]
                             )
                             [ text_ subsection.title
@@ -70,9 +70,9 @@ pageToContent (Page cp) = do
             pure
               ( [ D.hr_ []
                 , D.h2
-                    ( [ D.Id !:= section.id
-                      , D.Self !:=
-                          Tuple i >>>
+                    ( [ DA.id_ section.id
+                      , Self.self_
+                          $ Tuple i >>>
                           setRightSideNav
                       ]
                     )
@@ -85,13 +85,13 @@ pageToContent (Page cp) = do
     )
   pure $ D.article_
     [ D.header
-        ( [ D.Class !:= "mb-9 space-y-1"
+        ( [ DA.klass_ "mb-9 space-y-1"
           ]
         )
         ( ( if cp.route == FourOhFour then []
             else
               [ D.p
-                  ( [ D.Class !:=
+                  ( [ DA.klass_
                         "font-display text-sm font-medium text-sky-500"
                     ]
                   )
@@ -101,8 +101,8 @@ pageToContent (Page cp) = do
               ]
           ) <>
             [ D.h1
-                ( [ D.Id !:= "getting-started"
-                  , D.Class !:=
+                ( [ DA.id_ "getting-started"
+                  , DA.klass_
                       "font-display text-3xl tracking-tight text-slate-900 dark:text-white"
                   ]
                 )
@@ -110,7 +110,7 @@ pageToContent (Page cp) = do
             ]
         )
     , D.div
-        ( [ D.Class !:=
+        ( [ DA.klass_
               "prose prose-slate max-w-none dark:prose-invert dark:text-slate-400 prose-headings:scroll-mt-28 prose-headings:font-display prose-headings:font-normal lg:prose-headings:scroll-mt-[8.5rem] prose-lead:text-slate-500 dark:prose-lead:text-slate-400 prose-a:font-semibold dark:prose-a:text-sky-400 prose-a:no-underline prose-a:shadow-[inset_0_-2px_0_0_var(--tw-prose-background,#fff),inset_0_calc(-1*(var(--tw-prose-underline-size,4px)+2px))_0_0_var(--tw-prose-underline,theme(colors.sky.300))] hover:prose-a:[--tw-prose-underline-size:6px] dark:[--tw-prose-background:theme(colors.slate.900)] dark:prose-a:shadow-[inset_0_calc(-1*var(--tw-prose-underline-size,2px))_0_0_var(--tw-prose-underline,theme(colors.sky.800))] dark:hover:prose-a:[--tw-prose-underline-size:6px] prose-pre:rounded-xl prose-pre:bg-slate-900 prose-pre:shadow-lg dark:prose-pre:bg-slate-800/60 dark:prose-pre:shadow-none dark:prose-pre:ring-1 dark:prose-pre:ring-slate-300/10 dark:prose-hr:border-slate-800"
           ]
         )
@@ -205,10 +205,10 @@ app
     rightSideNavClass = rightSideNavClass' "dark:text-white"
     rightSideSubNavClass = rightSideNavClass' "dark:text-slate-400"
   D.div
-    ( [ klass $ darkBoolean <#> if _ then "dark" else ""
+    ( [ DA.klass $ darkBoolean <#> if _ then "dark" else ""
       ]
     )
-    [ D.div ([ klass_ "bg-white dark:bg-slate-900" ])
+    [ D.div ([ DA.klass_ "bg-white dark:bg-slate-900" ])
         [ header
             { pushState
             , darkBoolean
@@ -220,13 +220,13 @@ app
             }
         , banner { showBanner }
         , D.div
-            ( [ D.Class !:=
+            ( [ DA.klass_
                   "relative mx-auto flex max-w-8xl justify-center sm:px-2 lg:px-8 xl:px-12"
               ]
             )
             [ leftMatter { pushState, pageIs, pageWas }
             , D.div
-                [ D.Class !:=
+                [ DA.klass_
                     "min-w-0 max-w-2xl flex-auto px-4 py-16 lg:max-w-none lg:pr-0 lg:pl-8 xl:px-16"
                 ]
                 [ cycle (pageEventToNut env curPage)
@@ -237,24 +237,24 @@ app
                     }
                 ]
             , D.div
-                [ D.Class !:=
+                [ DA.klass_
                     "hidden xl:sticky xl:top-[4.5rem] xl:-mr-6 xl:block xl:h-[calc(100vh-4.5rem)] xl:flex-none xl:overflow-y-auto xl:py-16 xl:pr-6"
                 ]
                 [ curPage <#~> \(Page cp) ->
                     if cp.route == FourOhFour then mempty
                     else D.nav
-                      ( [ D.Class !:= "w-56" ]
+                      ( [ DA.klass_ "w-56" ]
                       )
                       [ D.h2
-                          ( [ D.Id !:= "on-this-page-title"
-                            , D.Class !:=
+                          ( [ DA.id_ "on-this-page-title"
+                            , DA.klass_
                                 "font-display text-sm font-medium text-slate-900 dark:text-white"
                             ]
                           )
                           [ text_ "On this page" ]
                       , D.ol
-                          ( [ D.Role !:= "list"
-                            , D.Class !:= "mt-4 space-y-3 text-sm"
+                          ( [ DA.role_ "list"
+                            , DA.klass_ "mt-4 space-y-3 text-sm"
                             ]
                           )
                           ( flip evalState 0
@@ -269,15 +269,15 @@ app
                                                   put (j + 1)
                                                   pure $ D.li_
                                                     [ D.a
-                                                        ( [ klass
+                                                        ( [ DA.klass
                                                               ( rightSideSubNavClass
                                                                   j
                                                               )
-                                                          , D.Href !:=
+                                                          , DA.href_
                                                               ( "#" <>
                                                                   subsection.id
                                                               )
-                                                          , click_
+                                                          , DL.click_ \_ ->
                                                               ( Ref.write
                                                                   (Just j)
                                                                   clickedSection
@@ -295,13 +295,13 @@ app
                                       pure $ D.li_
                                         ( [ D.h3_
                                               [ D.a
-                                                  ( ( [ klass
+                                                  ( ( [ DA.klass
                                                           ( rightSideNavClass
                                                               i
                                                           )
-                                                      , D.Href !:=
+                                                      , DA.href_
                                                           ("#" <> section.id)
-                                                      , click_
+                                                      , DL.click_ \_ ->
                                                           ( Ref.write (Just i)
                                                               clickedSection
                                                           )
@@ -311,8 +311,8 @@ app
                                                   [ text_ section.title ]
                                               ]
                                           , D.ol
-                                              ( [ D.Role !:= "list"
-                                                , D.Class !:=
+                                              ( [ DA.role_ "list"
+                                                , DA.klass_
                                                     "mt-2 space-y-3 pl-5 text-slate-500 dark:text-slate-400"
                                                 ]
                                               )

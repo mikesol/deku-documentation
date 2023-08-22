@@ -15,30 +15,30 @@ effectsOnInitialization = subsection
           [ text_
               "The following two effects exist on component initialization. These are mostly useful for logging, debugging, and analytics, for example counting how many times a component is displayed on the screen."
           ]
-      , D.table [ pure tableClass ]
+      , D.table [ tableClass ]
           [ D.tr_
-              [ D.th [ pure tableClass ] [ text_ "Name" ]
-              , D.th [ pure tableClass ] [ text_ "Purpose" ]
-              , D.th [ pure tableClass ] [ text_ "Signature" ]
+              [ D.th [ tableClass ] [ text_ "Name" ]
+              , D.th [ tableClass ] [ text_ "Purpose" ]
+              , D.th [ tableClass ] [ text_ "Signature" ]
               ]
           , D.tr_
-              [ D.td [ pure tableClass ] [ D.code__ "onWillMount" ]
-              , D.td [ pure tableClass ]
+              [ D.td [ tableClass ] [ D.code__ "onWillMount" ]
+              , D.td [ tableClass ]
                   [ text_
                       "The effect will run before the component mounts on the screen."
                   ]
-              , D.td [ pure tableClass ]
+              , D.td [ tableClass ]
                   [ D.code__
                       """ Effect Unit -> Nut -> Nut"""
                   ]
               ]
           , D.tr_
-              [ D.td [ pure tableClass ] [ D.code__ "onDidMount" ]
-              , D.td [ pure tableClass ]
+              [ D.td [ tableClass ] [ D.code__ "onDidMount" ]
+              , D.td [ tableClass ]
                   [ text_
                       "The effect will run directly after the component mounts on the screen."
                   ]
-              , D.td [ pure tableClass ]
+              , D.td [ tableClass ]
                   [ D.code__
                       """ Effect Unit -> Nut -> Nut"""
                   ]

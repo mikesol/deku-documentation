@@ -3,13 +3,13 @@ module Examples.BiasingASideOfSampling where
 import Prelude
 
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass_)
+import Deku.DOM.Attributes as DA
 import Deku.Control (text)
 import Deku.Core (fixed)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState')
-import Deku.Listeners (slider_)
+import Deku.DOM.Listeners as DL
 import Deku.Toplevel (runInBody')
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
@@ -19,8 +19,8 @@ app :: ExampleSignature
 app runExample = runExample Deku.do
   setSlider /\ slider <- useState'
   fixed
-    [ D.div [ klass_ "flex justify-around" ]
-        [ D.input [ slider_ setSlider ] [] ]
+    [ D.div [ DA.klass_ "flex justify-around" ]
+        [ D.input [ DA.xtypeRange, DL.numberOn_ DL.input setSlider ] [] ]
     , text
         ( slider <|**>
             ((\a b -> show b <> " " <> show a) <$> slider)

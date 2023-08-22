@@ -4,13 +4,13 @@ import Prelude
 
 import Control.Monad.Reader (ask)
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass_)
+import Deku.DOM.Attributes as DA
 import Deku.Control (text)
 import Deku.Core (NutWith)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState)
-import Deku.Listeners (click)
+import Deku.DOM.Listeners as DL
 import Deku.Toplevel (runInBody')
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
@@ -34,8 +34,8 @@ signIn :: AppMonad
 signIn = do
   { setIsSignedIn, isSignedIn } <- ask
   pure $ D.button
-    [ klass_ buttonClass
-    , click $ isSignedIn <#> not >>> setIsSignedIn
+    [ DA.klass_ buttonClass
+    , DL.runOn DL.click $ isSignedIn <#> not >>> setIsSignedIn
     ]
     [ text $ isSignedIn <#> if _ then "Sign out" else "Sign in" ]
 

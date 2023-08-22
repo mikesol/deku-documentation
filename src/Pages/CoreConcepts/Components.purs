@@ -3,8 +3,8 @@ module Pages.CoreConcepts.Components where
 import Prelude
 
 import Contracts (Page, page)
-import Deku.Attribute ((:=), (<:=>), (!:=))
-import Deku.Control (text, text_)
+import Deku.DOM.Attributes as DA
+import Deku.Control (text_)
 import Deku.DOM as D
 import Pages.CoreConcepts.Components.ASimpleComponent (aSimpleComponent)
 import Pages.CoreConcepts.Components.AddingAttributes (addingAttributes)
@@ -15,7 +15,7 @@ components :: Page
 components = page
   { route: Components
   , topmatter: pure
-      [ D.p [D.Class !:= "lead"]
+      [ D.p [DA.klass_ "lead"]
           [ text_ "Learn how to make a static page with Deku."
           ]
       , D.p_

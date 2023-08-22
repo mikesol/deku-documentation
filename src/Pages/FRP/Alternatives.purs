@@ -3,8 +3,8 @@ module Pages.FRP.Alternatives where
 import Prelude
 
 import Contracts (Page, page)
-import Deku.Attribute ((:=), (<:=>), (!:=))
-import Deku.Control (text, text_)
+import Deku.DOM.Attributes as DA
+import Deku.Control (text_)
 import Deku.DOM as D
 import Pages.FRP.Alternatives.Alt (alt)
 import Pages.FRP.Alternatives.Plus (plus)
@@ -14,7 +14,7 @@ alternatives :: Page
 alternatives = page
   { route: Alternatives
   , topmatter: pure
-      [ D.p [D.Class !:= "lead"]
+      [ D.p [DA.klass_ "lead"]
           [ text_ "How events function in an alternative universe."
           ]
       , D.p_

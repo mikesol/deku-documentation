@@ -1,24 +1,23 @@
 module Examples.UsingAnEffect where
 
-import Deku.Toplevel (runInBody')
-import Effect (Effect)
 import Prelude
-import ExampleAssitant (ExampleSignature)
 
-import Deku.Attributes (klass_)
 import Deku.Control (text_)
 import Deku.DOM as D
-import Deku.Attribute ((!:=))
-
+import Deku.DOM.Attributes as DA
+import Deku.DOM.Listeners as DL
+import Deku.Toplevel (runInBody')
+import Effect (Effect)
+import ExampleAssitant (ExampleSignature)
 import Web.HTML (window)
 import Web.HTML.Window (alert)
 
 app :: ExampleSignature
 app runExample = runExample
   ( D.span
-      [ D.OnClick !:= do
+      [ DL.click_ \_ ->
           window >>= alert "Thanks for clicking!"
-      , klass_ "cursor-pointer"
+      , DA.klass_ "cursor-pointer"
       ]
       [ text_ "Click me!" ]
   )

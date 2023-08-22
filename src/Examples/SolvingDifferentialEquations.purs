@@ -4,13 +4,12 @@ import Prelude
 
 import Data.Time.Duration (Seconds(..))
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute ((!:=), (<:=>))
-import Deku.Attributes (klass_)
 import Deku.Control (text_)
 import Deku.DOM as D
+import Deku.DOM.Attributes as DA
+import Deku.DOM.Listeners as DL
 import Deku.Do as Deku
 import Deku.Hooks (useState)
-import Deku.Listeners (click_)
 import Deku.Toplevel (runInBody')
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
@@ -35,34 +34,32 @@ app runExample = do
     let
       motion = keepLatest $ thunk $>
         ( sham
-            ( D.Value <:=>
-                ( map show $ sample_
-                    ( solve2' 1.0 0.0
-                        ( seconds <#>
-                            (\(Seconds s) -> s)
-                        )
-                        ( \x dx'dt -> pure (-0.5) * x -
-                            (pure 0.1) * dx'dt
-                        )
+            ( map show $ sample_
+                ( solve2' 1.0 0.0
+                    ( seconds <#>
+                        (\(Seconds s) -> s)
                     )
-                    af.event
+                    ( \x dx'dt -> pure (-0.5) * x -
+                        (pure 0.1) * dx'dt
+                    )
                 )
+                af.event
             )
         )
     D.div_
       [ D.div_
           [ D.button
-              [ klass_ buttonClass, click_ (setThunk unit) ]
+              [ DA.klass_ buttonClass, DL.click_ \_ -> (setThunk unit) ]
               [ text_ "Restart simulation" ]
           ]
       , D.div_
           [ D.input
-              [ D.Xtype !:= "range"
-              , klass_ "w-full"
-              , D.Min !:= "-1.0"
-              , D.Max !:= "1.0"
-              , D.Step !:= "0.01"
-              , motion
+              [ DA.xtype_ "range"
+              , DA.klass_ "w-full"
+              , DA.min_ "-1.0"
+              , DA.max_ "1.0"
+              , DA.step_ "0.01"
+              , DA.value motion
               ]
               []
           ]

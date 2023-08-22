@@ -6,9 +6,9 @@ module Pages.FRP.Events.InteractiveEvents.LifetimeAndGarbageCollection
 import Prelude
 
 import Contracts (Subsection, subsection)
-import Deku.Attribute ((:=), (<:=>), (!:=))
-import Deku.Attributes (href, href_)
-import Deku.Control (text, text_)
+import Deku.DOM.Attributes as DA
+
+import Deku.Control (text_)
 import Deku.DOM as D
 
 lifetimeAndGarbageCollection :: Subsection
@@ -20,9 +20,9 @@ lifetimeAndGarbageCollection = subsection
           , D.code__ "Effect"
           , text_ " context and have the same longevity as a "
           , D.a
-              [ href_
+              [ DA.href_
                   "https://pursuit.purescript.org/packages/purescript-refs/6.0.0/docs/Effect.Ref#t:Ref"
-                  , D.Target !:= "_blank"
+                  , DA.target_ "_blank"
               ]
               [ text_ "Ref" ]
           , text_

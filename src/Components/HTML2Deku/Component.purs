@@ -17,18 +17,19 @@ import Data.List (List(..))
 import Data.Maybe (Maybe(..))
 import Data.String (Pattern(..), Replacement(..), replaceAll, split, drop, take)
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute ((!:=), (<:=>))
 import Deku.Control (text_)
 import Deku.Core (Nut)
 import Deku.DOM as D
+import Deku.DOM.Attributes as DA
+import Deku.DOM.Listeners as DL
+import Deku.DOM.Self as Self
 import Deku.Do as Deku
 import Deku.Hooks (useState')
-import Deku.Listeners (click)
 import Dodo (plainText, print, twoSpaces)
 import Partial.Unsafe (unsafePartial)
 import Tidy (FormatOptions, defaultFormatOptions, formatExpr, toDoc)
 import Tidy.Codegen (binaryOp, exprApp, exprArray, exprCtor, exprIdent, exprOp, exprString)
-import Web.HTML.HTMLTextAreaElement (value)
+import Web.HTML.HTMLTextAreaElement (setValue, value)
 
 dekuizeU :: String -> String
 dekuizeU = dekuize true
@@ -122,11 +123,11 @@ html2deku = Deku.do
   setInput /\ input <- useState'
   D.div_
     [ D.div_
-        [ D.span [ D.Class !:= "text-xl" ] [ text_ "html2deku" ]
+        [ D.span [ DA.klass_ "text-xl" ] [ text_ "html2deku" ]
         , D.button
-            [ D.Class !:=
+            [ DA.klass_
                 "ml-2 inline-flex items-center rounded border border-transparent bg-indigo-600 px-2.5 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-            , click $ input <#> \i -> do
+            , DL.runOn DL.click $ input <#> \i -> do
                 v <- value i
                 let parsed = HalogenParser.parse v
                 case parsed of
@@ -138,18 +139,18 @@ html2deku = Deku.do
         ]
     , D.div_
         [ D.textarea
-            [ D.Rows !:= "6"
-            , D.Class !:= "border-2 w-full"
-            , D.SelfT !:= setInput
+            [ DA.rows_ "6"
+            , DA.klass_ "border-2 w-full"
+            , Self.selfT_ setInput
             ]
 
             [ text_ initialTxt ]
         ]
     , D.div_
         [ D.textarea
-            [ D.Rows !:= "6"
-            , D.Class !:= "border-2 w-full"
-            , D.Value <:=> purs
+            [ DA.rows_ "6"
+            , DA.klass_ "border-2 w-full"
+            , Self.selfT $ purs <#> setValue
             ]
 
             ( let

@@ -6,7 +6,7 @@ import Control.Alt ((<|>))
 import Data.DateTime.Instant (unInstant)
 import Data.Newtype (unwrap)
 import Data.Number ((%))
-import Deku.Attributes (klass)
+import Deku.DOM.Attributes as DA
 import Deku.Control (text_)
 import Deku.DOM as D
 import Deku.Toplevel (runInBody')
@@ -22,7 +22,7 @@ app runExample = do
   i1 <- interval 165
   runExample do
     D.div
-      [ klass
+      [ DA.klass
           ( sham
               ( gateBy
                   (\t _ -> (unwrap $ unInstant t) % 4000.0 < 2000.0)

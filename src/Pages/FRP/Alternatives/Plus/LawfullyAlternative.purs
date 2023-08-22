@@ -3,7 +3,8 @@ module Pages.FRP.Alternatives.Plus.LawfullyAlternative where
 import Prelude
 
 import Contracts (Env(..), Subsection, getEnv, subsection)
-import Deku.Attributes (klass, klass_)
+import Deku.DOM.Attributes as DA
+
 import Deku.Control (text, text_)
 import Deku.DOM as D
 import Router.ADT (Route(..))
@@ -66,7 +67,7 @@ lawfullyAlternative = subsection
           , text_
               " section, the composite event only fires after both sides are fired. As one side never fires, the whole thing never fires, so it is empty."
           ]
-      , D.div [ klass_ "text-right" ] [ text_ "∎" ]
+      , D.div [ DA.klass_ "text-right" ] [ text_ "∎" ]
 
       ]
   }

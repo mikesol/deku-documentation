@@ -3,12 +3,12 @@ module Examples.EmptyUntilFull where
 import Prelude
 
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass_)
+import Deku.DOM.Attributes as DA
 import Deku.Control (text, text_)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState')
-import Deku.Listeners (click_)
+import Deku.DOM.Listeners as DL
 import Deku.Toplevel (runInBody')
 import Effect (Effect)
 import Effect.Random (random)
@@ -26,8 +26,8 @@ app runExample = runExample Deku.do
   setNumber /\ number <- useState'
   D.div_
     [ D.button
-        [ klass_ buttonClass
-        , click_ $ random >>= setNumber
+        [ DA.klass_ buttonClass
+        , DL.click_ \_ -> random >>= setNumber
         ]
         [ text_ "Update number" ]
     , text $ number <#>

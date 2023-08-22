@@ -3,13 +3,13 @@ module Examples.HowSamplingWorks where
 import Prelude
 
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass_)
+import Deku.DOM.Attributes as DA
 import Deku.Control (text)
 import Deku.Core (fixed)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState')
-import Deku.Listeners (slider_)
+import Deku.DOM.Listeners as DL
 import Deku.Toplevel (runInBody')
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
@@ -20,9 +20,9 @@ app runExample = runExample Deku.do
   setSlider1 /\ slider1 <- useState'
   setSlider2 /\ slider2 <- useState'
   fixed
-    [ D.div [ klass_ "flex justify-around" ]
-        [ D.input [ slider_ setSlider1 ] []
-        , D.input [ slider_ setSlider2 ] []
+    [ D.div [ DA.klass_ "flex justify-around" ]
+        [ D.input [ DA.xtypeRange, DL.numberOn_ DL.input setSlider1 ] []
+        , D.input [ DA.xtypeRange, DL.numberOn_ DL.input setSlider2 ] []
         ]
     , text
         ( slider1 <|**>

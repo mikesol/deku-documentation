@@ -6,8 +6,8 @@ import Components.Link (link)
 import Contracts (Chapter(..), Page(..))
 import Data.Foldable (oneOf)
 import Data.Newtype (unwrap)
-import Deku.Attribute ((!:=))
-import Deku.Attributes (klass)
+
+import Deku.DOM.Attributes as DA
 import Deku.Control (text_)
 import Deku.Core (Nut)
 import Deku.DOM as D
@@ -24,9 +24,9 @@ pageLi
   -> Page
   -> Nut
 pageLi { pushState, pageIs, pageWas } (Page { route }) = D.li
-  [ D.Class !:= "relative" ]
+  [ DA.klass_ "relative" ]
   [ link pushState route
-      [ klass $
+      [ DA.klass $
           ( oneOf
               [ pure false
               , pageIs route $> true
@@ -50,13 +50,13 @@ chapterLi
   -> Nut
 chapterLi opts (Chapter { title, pages }) = D.li_
   [ D.h2
-      [ D.Class !:=
+      [ DA.klass_
           "font-display font-medium text-slate-900 dark:text-white"
       ]
       [ text_ title ]
   , D.ul
-      ( [ D.Role !:= "list"
-        , D.Class !:=
+      ( [ DA.role_ "list"
+        , DA.klass_
             "mt-2 space-y-2 border-l-2 border-slate-100 dark:border-slate-800 lg:mt-4 lg:space-y-4 lg:border-slate-200"
         ]
       )
@@ -70,31 +70,31 @@ leftMatter
      }
   -> Nut
 leftMatter opts = D.div
-  [ D.Class !:= "hidden lg:relative lg:block lg:flex-none" ]
+  [ DA.klass_ "hidden lg:relative lg:block lg:flex-none" ]
   [ D.div
-      [ D.Class !:=
+      [ DA.klass_
           "absolute inset-y-0 right-0 w-[50vw] bg-slate-50 dark:hidden"
       ]
       []
   , D.div
-      [ D.Class !:=
+      [ DA.klass_
           "absolute top-16 bottom-0 right-0 hidden h-12 w-px bg-gradient-to-t from-slate-800 dark:block"
       ]
       []
   , D.div
-      [ D.Class !:=
+      [ DA.klass_
           "absolute top-28 bottom-0 right-0 hidden w-px bg-slate-800 dark:block"
       ]
       []
   , D.div
-      [ D.Class !:=
+      [ DA.klass_
           "sticky top-[4.5rem] -ml-0.5 h-[calc(100vh-4.5rem)] overflow-y-auto overflow-x-hidden py-16 pl-0.5"
       ]
       [ D.nav
-          [ D.Class !:=
+          [ DA.klass_
               "text-base lg:text-sm w-64 pr-8 xl:w-72 xl:pr-16"
           ]
-          [ D.ul ([ D.Role !:= "list", D.Class !:= "space-y-9" ])
+          [ D.ul ([ DA.role_ "list", DA.klass_ "space-y-9" ])
               (chapterLi opts <$> unwrap docs)
           ]
       ]

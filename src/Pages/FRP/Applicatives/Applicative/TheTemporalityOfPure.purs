@@ -4,7 +4,8 @@ import Prelude
 
 import Contracts (CollapseState(..), Env(..), Subsection, getEnv, getExample, subsection)
 import Data.Maybe (Maybe(..))
-import Deku.Attributes (klass, klass_)
+import Deku.DOM.Attributes as DA
+
 import Deku.Control (text, text_)
 import Deku.DOM as D
 import Examples as Examples
@@ -130,7 +131,7 @@ theTemporalityOfPure = subsection
                     " is immaterial, and as the final value will only be emitted once both events have fired at least once, the two formulations are equivalent."
                 ]
             ]
-        , D.div [ klass_ "text-right" ] [ text_ "∎" ]
+        , D.div [ DA.klass_ "text-right" ] [ text_ "∎" ]
         , D.p_
             [ text_
                 "Now that we've gotten that out of the way, let's do what y'all came here for - a giant fizz-bang using applicatives! Specifically, we'll use the fact that "

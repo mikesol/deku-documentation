@@ -3,8 +3,8 @@ module Pages.AdvancedUsage.CustomElements where
 import Prelude
 
 import Contracts (Page, page)
-import Deku.Attribute ((:=), (<:=>), (!:=))
-import Deku.Control (text, text_)
+import Deku.DOM.Attributes as DA
+import Deku.Control (text_)
 import Deku.DOM as D
 import Pages.AdvancedUsage.CustomElements.DefiningCustomElements (definingCustomElements)
 import Pages.AdvancedUsage.CustomElements.UsingIonic (usingIonic)
@@ -14,7 +14,7 @@ customElements :: Page
 customElements = page
   { route: CustomElements
   , topmatter: pure
-      [ D.p [D.Class !:= "lead"]
+      [ D.p [DA.klass_ "lead"]
           [ text_ "How to bend Deku to do your bidding."
           ]
       , D.p_

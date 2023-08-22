@@ -3,12 +3,12 @@ module Examples.ASimpleCounter where
 import Prelude
 
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass_)
+import Deku.DOM.Attributes as DA
 import Deku.Control (text, text_)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState)
-import Deku.Listeners (click)
+import Deku.DOM.Listeners as DL
 import Deku.Toplevel (runInBody')
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
@@ -26,8 +26,8 @@ app runExample = runExample Deku.do
   setCount /\ count <- useState 0
   D.div_
     [ D.button
-        [ klass_ buttonClass
-        , click $ count <#> (add 1 >>> setCount)
+        [ DA.klass_ buttonClass
+        , DL.runOn DL.click $ count <#> (add 1 >>> setCount)
         ]
         [ text_ "Increment" ]
     , D.div_

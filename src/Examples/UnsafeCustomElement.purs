@@ -1,21 +1,30 @@
 module Examples.UnsafeCustomElement where
 
+import Prelude
+
+import Data.Maybe (Maybe(..))
+import Deku.Control (elementify2, text_)
+import Deku.Core (Nut)
+import Deku.DOM (Attribute, HTMLAnchorElement)
 import Deku.Toplevel (runInBody')
 import Effect (Effect)
-import Prelude
 import ExampleAssitant (ExampleSignature)
+import FRP.Poll (Poll)
+import Type.Proxy (Proxy)
 
-import Deku.Control (text, text_)
-import Deku.DOM (unsafeCustomElement)
 
-import Type.Proxy (Proxy(..))
+type HTMLMyNiftyAnchor (r :: Row Type) =
+  ( __tag :: Proxy "HTMLMyNiftyAnchor"
+  | HTMLAnchorElement r
+  )
 
-data MyNiftyAnchor_
+myNiftyAnchor
+  :: Array (Poll (Attribute (HTMLMyNiftyAnchor ()))) -> Array Nut -> Nut
+myNiftyAnchor = elementify2 Nothing "a"
 
 app :: ExampleSignature
 app runExample = runExample do
-  unsafeCustomElement "a" (Proxy :: _ MyNiftyAnchor_) []
-    [ text_ "hi" ]
+  myNiftyAnchor [] [ text_ "hi" ]
 
 main :: Effect Unit
 main = void $ app (map (map void) runInBody')

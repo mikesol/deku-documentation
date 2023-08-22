@@ -6,13 +6,13 @@ import Data.Foldable (for_, traverse_)
 import Data.Maybe (Maybe(..))
 import Data.String (Pattern(..), Replacement(..), replaceAll)
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute ((!:=))
-import Deku.Attributes (klass_)
 import Deku.Control (text_)
 import Deku.DOM as D
+import Deku.DOM.Attributes as DA
+import Deku.DOM.Listeners as DL
+import Deku.DOM.Self as Self
 import Deku.Do as Deku
 import Deku.Hooks (useDynAtBeginning, useRef, useState')
-import Deku.Listeners (click_, keyUp_)
 import Deku.Toplevel (runInBody')
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
@@ -54,22 +54,22 @@ app runExample = runExample Deku.do
     top =
       D.div_
         [ D.input
-            [ D.Value !:= "Tasko primo"
-            , keyUp_ \evt -> do
+            [ DA.value_ "Tasko primo"
+            , DL.keyup_ \evt -> do
                 when (code evt == "Enter") $
                   for_
                     ( (target >=> fromEventTarget)
                         (toEvent evt)
                     )
                     guardAgainstEmpty
-            , D.SelfT !:= setInput
-            , klass_ inputKls
+            , Self.selfT_ setInput
+            , DA.klass_ inputKls
             ]
             []
         , D.button
-            [ click_ do
+            [ DL.click_ \_ -> do
                 iref >>= traverse_ guardAgainstEmpty
-            , klass_ $ buttonClass "green"
+            , DA.klass_ $ buttonClass "green"
             ]
             [ text_ "Add" ]
         ]

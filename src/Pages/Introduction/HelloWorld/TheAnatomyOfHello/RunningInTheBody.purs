@@ -4,8 +4,8 @@ import Prelude
 
 import Components.Code (psCode)
 import Contracts (Env(..), Subsection, getEnv, subsection)
-import Deku.Attribute ((:=), (<:=>), (!:=))
-import Deku.Control (text, text_)
+import Deku.DOM.Attributes as DA
+import Deku.Control (text_)
 import Deku.DOM as D
 import Router.ADT (Route(..))
 
@@ -21,7 +21,7 @@ runningInTheBody = subsection
             [ text_
                 "The most common way to run a Deku app is to embed it in the "
             , D.a
-                [ D.Href !:=
+                [ DA.href_
                     "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body"
                 ]
                 [ text_ "body" ]

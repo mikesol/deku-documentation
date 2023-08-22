@@ -4,8 +4,8 @@ import Prelude
 
 import Components.TargetedLink (targetedLink)
 import Contracts (Page, page)
-import Deku.Attribute ((:=), (<:=>), (!:=))
-import Deku.Control (text, text_)
+import Deku.DOM.Attributes as DA
+import Deku.Control (text_)
 import Deku.DOM as D
 import Pages.FRP.Sampling.Gating (gating)
 import Pages.FRP.Sampling.SamplingOnAnEvent (samplingOnAnEvent)
@@ -16,7 +16,7 @@ sampling :: Page
 sampling = page
   { route: Sampling
   , topmatter: pure
-      [ D.p [D.Class !:= "lead"]
+      [ D.p [DA.klass_ "lead"]
           [ text_ "Build your next "
           , targetedLink "https://www.youtube.com/watch?v=cvpMSXjR10M"
               [ text_ "sampler" ]

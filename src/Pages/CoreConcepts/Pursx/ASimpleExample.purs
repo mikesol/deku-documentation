@@ -5,7 +5,7 @@ import Prelude
 import Components.Code (htmlCode)
 import Contracts (Section, section)
 import Data.Symbol (reflectSymbol)
-import Deku.Attributes (klass_)
+import Deku.DOM.Attributes as DA
 import Deku.Control (text_)
 import Deku.DOM as D
 import Deku.Pursx ((~~))
@@ -63,7 +63,7 @@ aSimpleExample = section
       , htmlCode (reflectSymbol myHtml)
       , D.p__ "This renders in the DOM like so."
       , D.div
-          [klass_
+          [DA.klass_
               "border-solid border-2 border-slate-200 dark:border-white-200 flex justify-center"
           ]
           [ myHtml ~~ {} ]

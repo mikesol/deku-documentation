@@ -3,8 +3,8 @@ module Pages.FRP.Polls where
 import Prelude
 
 import Contracts (Page, page)
-import Deku.Attribute ((:=), (<:=>), (!:=))
-import Deku.Control (text, text_)
+import Deku.DOM.Attributes as DA
+import Deku.Control (text_)
 import Deku.DOM as D
 import Pages.FRP.Polls.Applicative (applicative)
 import Pages.FRP.Polls.Calculus (calculus)
@@ -16,9 +16,9 @@ polls :: Page
 polls = page
   { route: Polls
   , topmatter: pure
-      [ D.p [D.Class !:= "lead"]
+      [ D.p [DA.klass_ "lead"]
           [ text_ "Or "
-          , D.span [D.Class !:= "font-bold"] [ text_ "Behaviours" ]
+          , D.span [DA.klass_ "font-bold"] [ text_ "Behaviours" ]
           , text_ " if you're in 🇬🇧, 🇮🇪, 🇦🇺, 🇨🇦, 🇿🇦, 🇳🇿, 🇧🇼, 🇬🇲, 🇳🇦, 🇿🇲, ..."
           ]
       , D.p_

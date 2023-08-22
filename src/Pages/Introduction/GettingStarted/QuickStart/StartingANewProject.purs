@@ -4,7 +4,8 @@ import Prelude
 
 import Components.Code (shSessionCode)
 import Contracts (Env(..), Subsection, getEnv, subsection)
-import Deku.Attributes (klass, klass_)
+import Deku.DOM.Attributes as DA
+
 import Deku.Control (text, text_)
 import Deku.DOM as D
 import Router.ADT (Route(..))
@@ -27,7 +28,7 @@ startingANewProject = subsection
             , D.code_ [ text_ "my-awesome-app" ]
             , text_
                 " using a template with "
-            , D.span [ klass_ "line-through" ] [ text_ "very opinionated" ]
+            , D.span [ DA.klass_ "line-through" ] [ text_ "very opinionated" ]
             , text_ " sensible defaults."
             ]
         , D.p_

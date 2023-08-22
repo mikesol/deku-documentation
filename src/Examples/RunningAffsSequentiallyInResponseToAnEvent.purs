@@ -6,12 +6,13 @@ import Prelude
 import ExampleAssitant (ExampleSignature)
 
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass, klass_)
+import Deku.DOM.Attributes as DA
+
 import Deku.Control (text, text_)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState, useState')
-import Deku.Listeners (click, click_)
+import Deku.DOM.Listeners as DL
 
 import Effect.Aff (joinFiber, launchAff, try)
 import Effect.Class (liftEffect)
@@ -23,7 +24,7 @@ app runExample = runExample Deku.do
   setFiber /\ fiber <- useState (pure unit)
   D.div_
     [ D.a
-        [ click $ fiber <#> \f -> setFiber =<< launchAff do
+        [ DL.runOn DL.click $ fiber <#> \f -> setFiber =<< launchAff do
             _ <- try $ joinFiber f
             { text: t } <- fetch "https://httpbin.org/post"
               { method: POST
@@ -33,7 +34,7 @@ app runExample = runExample Deku.do
             t' <- t
             liftEffect $ setResponse t'
 
-        , klass_ "cursor-pointer"
+        , DA.klass_ "cursor-pointer"
         ]
         [ text_ "Click for a random http response" ]
     , text_ ": "

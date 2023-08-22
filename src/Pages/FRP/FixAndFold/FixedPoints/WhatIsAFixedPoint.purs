@@ -8,12 +8,12 @@ import Contracts (Subsection, subsection)
 import Control.Alt ((<|>))
 import Control.Lazy (fix)
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass_)
+import Deku.DOM.Attributes as DA
 import Deku.Control (text_)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useDyn, useMailboxed, useState, (<#~>))
-import Deku.Listeners (click_)
+import Deku.DOM.Listeners as DL
 
 whatIsAFixedPoint :: Subsection
 whatIsAFixedPoint = subsection
@@ -64,26 +64,26 @@ myFunction = fix (\f a -> if a > 100 then 100 else f (a + 1))
       , let
           myFunction = fix (\f a -> if a > 100 then 100 else f (a + 1))
         in
-          D.table [ pure tableClass ]
+          D.table [ tableClass ]
             [ D.tr_
-                [ D.th [ pure tableClass ] [ text_ "Function call" ]
-                , D.th [ pure tableClass ] [ text_ "Result" ]
+                [ D.th [ tableClass ] [ text_ "Function call" ]
+                , D.th [ tableClass ] [ text_ "Result" ]
                 ]
             , D.tr_
-                [ D.th [ pure tableClass ] [ D.code__ "myFunction 0" ]
-                , D.th [ pure tableClass ] [ text_ (show (myFunction 0)) ]
+                [ D.th [ tableClass ] [ D.code__ "myFunction 0" ]
+                , D.th [ tableClass ] [ text_ (show (myFunction 0)) ]
                 ]
             , D.tr_
-                [ D.th [ pure tableClass ] [ D.code__ "myFunction 42" ]
-                , D.th [ pure tableClass ] [ text_ (show (myFunction 42)) ]
+                [ D.th [ tableClass ] [ D.code__ "myFunction 42" ]
+                , D.th [ tableClass ] [ text_ (show (myFunction 42)) ]
                 ]
             , D.tr_
-                [ D.th [ pure tableClass ] [ D.code__ "myFunction1000" ]
-                , D.th [ pure tableClass ] [ text_ (show (myFunction 1000)) ]
+                [ D.th [ tableClass ] [ D.code__ "myFunction1000" ]
+                , D.th [ tableClass ] [ text_ (show (myFunction 1000)) ]
                 ]
             ]
-      , D.div [ klass_ "w-full flex justify-end" ]
-          [ D.span [ klass_ "text-sm pr-2" ]
+      , D.div [ DA.klass_ "w-full flex justify-end" ]
+          [ D.span [ DA.klass_ "text-sm pr-2" ]
               [ text_
                   "* All values are calculated dynamically by the actual function."
               ]
@@ -126,8 +126,8 @@ myFunction = fix (\f a -> if a > 100 then 100 else f (a + 1))
                   D.span_
                     [ text_ t
                     , D.a
-                        [ klass_ "cursor-pointer"
-                        , click_ do
+                        [ DA.klass_ "cursor-pointer"
+                        , DL.click_ \_ -> do
                             setElt (v + 1)
                             disactivatePreviousElt
                               { address: v, payload: unit }

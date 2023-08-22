@@ -3,8 +3,8 @@ module Pages.Introduction.HelloWorld where
 import Prelude
 
 import Contracts (Page, page)
-import Deku.Attribute ((:=), (<:=>), (!:=))
-import Deku.Control (text, text_)
+import Deku.DOM.Attributes as DA
+import Deku.Control (text_)
 import Deku.DOM as D
 import Pages.Introduction.HelloWorld.SayingHello (sayingHello)
 import Pages.Introduction.HelloWorld.TheAnatomyOfHello (theAnatomyOfHello)
@@ -14,7 +14,7 @@ helloWorld :: Page
 helloWorld = page
   { route: HelloWorld
   , topmatter: pure
-      [ D.p [D.Class !:= "lead"]
+      [ D.p [DA.klass_ "lead"]
           [ text_ "Let's teach Deku to say hello."
           ]
       , D.p_

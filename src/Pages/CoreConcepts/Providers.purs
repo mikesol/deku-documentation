@@ -3,9 +3,9 @@ module Pages.CoreConcepts.Providers where
 import Prelude
 
 import Contracts (Page, page)
-import Deku.Attribute ((:=), (<:=>), (!:=))
-import Deku.Attributes (href, href_)
-import Deku.Control (text, text_)
+import Deku.DOM.Attributes as DA
+
+import Deku.Control (text_)
 import Deku.DOM as D
 import Pages.CoreConcepts.Providers.FunctionsAsProviders (functionsAsProviders)
 import Pages.CoreConcepts.Providers.RowPolymorphism (rowPolymorphism)
@@ -15,7 +15,7 @@ providers :: Page
 providers = page
   { route: Providers
   , topmatter: pure
-      [ D.p [D.Class !:= "lead"]
+      [ D.p [DA.klass_ "lead"]
           [ text_ "Shuttling stuff through the DOM."
           ]
       , D.p_
@@ -27,7 +27,7 @@ providers = page
               "Deku has no built-in mechanism to deal with these things, but rather encourages certain practices based on classic functional programming patterns. All of these can be thought of as "
           , D.b__ "Providers"
           , text_ ", to borrow a term from "
-          , D.a [href_ "https://reactjs.org/docs/context.html"]
+          , D.a [DA.href_ "https://reactjs.org/docs/context.html"]
               [ text_ "React" ]
           , text_ ", but with a more powerful and generic API."
           ]

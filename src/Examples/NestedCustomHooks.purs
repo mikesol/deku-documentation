@@ -3,13 +3,13 @@ module Examples.NestedCustomHooks where
 import Prelude
 
 import Data.Tuple.Nested (type (/\), (/\))
-import Deku.Attributes (klass_)
+import Deku.DOM.Attributes as DA
 import Deku.Control (text, text_)
 import Deku.Core (Hook)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useRant, useState)
-import Deku.Listeners (click)
+import Deku.DOM.Listeners as DL
 import Deku.Toplevel (runInBody')
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
@@ -41,8 +41,8 @@ app runExample = runExample Deku.do
   setMinimus /\ minimus /\ maximus <- hookusMaximus 0
   D.div_
     [ D.button
-        [ klass_ buttonClass
-        , click $ minimus <#> (add 1 >>> setMinimus)
+        [ DA.klass_ buttonClass
+        , DL.runOn DL.click $ minimus <#> (add 1 >>> setMinimus)
         ]
         [ text_ "Increment" ]
     , D.div_

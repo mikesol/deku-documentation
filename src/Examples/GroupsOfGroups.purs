@@ -5,14 +5,13 @@ import Prelude
 import Assets (alexanderURL)
 import Data.String (Pattern(..), Replacement(..), replaceAll)
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute ((!:=))
-import Deku.Attributes (klass_)
+import Deku.DOM.Attributes as DA
 import Deku.Control (text_)
 import Deku.Core (fixed)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (guard, useState)
-import Deku.Listeners (click_)
+import Deku.DOM.Listeners as DL
 import Deku.Toplevel (runInBody')
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
@@ -35,27 +34,27 @@ app :: ExampleSignature
 app runExample = runExample Deku.do
   setBadness /\ badness <- useState Bad
   D.div_
-    [ D.div [ klass_ "flex justify-between" ]
+    [ D.div [ DA.klass_ "flex justify-between" ]
         [ D.button
-            [ klass_ $ buttonClass "indigo"
-            , click_ $ setBadness Bad
+            [ DA.klass_ $ buttonClass "indigo"
+            , DL.click_ \_ -> setBadness Bad
             ]
             [ text_ "Bad" ]
         , D.button
-            [ klass_ $ buttonClass "pink"
-            , click_ $ setBadness Worse
+            [ DA.klass_ $ buttonClass "pink"
+            , DL.click_ \_ -> setBadness Worse
             ]
             [ text_ "Worse" ]
         , D.button
-            [ klass_ $ buttonClass "green"
-            , click_ $ setBadness Worst
+            [ DA.klass_ $ buttonClass "green"
+            , DL.click_ \_ -> setBadness Worst
             ]
             [ text_ "Worst" ]
         ]
-    , D.div [ klass_ "bg-alexander" ]
-        [ D.div [ klass_ "p-3" ]
+    , D.div [ DA.klass_ "bg-alexander" ]
+        [ D.div [ DA.klass_ "p-3" ]
             [ D.span
-                [ klass_ "font-aldine text-4xl text-alexander" ]
+                [ DA.klass_ "font-aldine text-4xl text-alexander" ]
                 [ text_
                     "Alexander and the Terrible, Horrible,"
                 , guard (badness <#> (_ > Bad)) $ fixed
@@ -70,7 +69,7 @@ app runExample = runExample Deku.do
                 , text_ " Very Bad Day"
                 ]
             ]
-        , D.div_ [ D.img [ D.Src !:= alexanderURL ] [] ]
+        , D.div_ [ D.img [ DA.src_ alexanderURL ] [] ]
         ]
     ]
 

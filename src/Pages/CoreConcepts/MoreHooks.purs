@@ -3,8 +3,8 @@ module Pages.CoreConcepts.MoreHooks where
 import Prelude
 
 import Contracts (Page, page)
-import Deku.Attribute ((:=), (<:=>), (!:=))
-import Deku.Control (text, text_)
+import Deku.DOM.Attributes as DA
+import Deku.Control (text_)
 import Deku.DOM as D
 import Pages.CoreConcepts.MoreHooks.CustomHooks (customHooks)
 import Pages.CoreConcepts.MoreHooks.UseRef (useRef)
@@ -16,7 +16,7 @@ moreHooks :: Page
 moreHooks = page
   { route: MoreHooks
   , topmatter: pure
-      [ D.p [D.Class !:= "lead"]
+      [ D.p [DA.klass_ "lead"]
           [ text_ "Specialized hooks for faster rendering."
           ]
       , D.p_

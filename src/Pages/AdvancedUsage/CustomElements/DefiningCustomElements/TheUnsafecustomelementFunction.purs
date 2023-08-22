@@ -2,23 +2,18 @@ module Pages.AdvancedUsage.CustomElements.DefiningCustomElements.TheUnsafeCustom
 
 import Prelude
 
-import Components.Code (psCodeNoCollapseWithLink)
-import Components.ExampleBlockquote (exampleBlockquote)
-import Contracts (Subsection, subsection)
-import Control.Plus (empty)
-import Deku.Control (text, text_)
-import Deku.DOM (unsafeCustomElement)
+import Contracts (CollapseState(..), Subsection, getExample, subsection)
+import Data.Maybe (Maybe(..))
+import Deku.Control (text_)
 import Deku.DOM as D
 import Examples as Examples
-import Type.Proxy (Proxy(..))
-
-data MyNiftyAnchor_
 
 theUnsafeCustomElementFunction :: Subsection
 theUnsafeCustomElementFunction = subsection
   { title: "The unsafeCustomElement function"
-  , matter: pure
-      [ D.p_
+  , matter: do
+      example <- getExample StartExapanded Nothing Examples.UnsafeCustomElement
+      pure [ D.p_
           [ text_ "In order to create a custom element, use the "
           , D.code__ "unsafeCustomElement"
           , text_
@@ -30,10 +25,6 @@ theUnsafeCustomElementFunction = subsection
           , D.i__ "or"
           , text_ " to add new tags if Deku is out of line with the DOM spec."
           ]
-      , psCodeNoCollapseWithLink Examples.UnsafeCustomElement
-      , exampleBlockquote
-          [ unsafeCustomElement "a" (Proxy :: _ MyNiftyAnchor_) empty
-              [ text_ "hi" ]
-          ]
+      , example
       ]
   }

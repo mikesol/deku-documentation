@@ -2,35 +2,54 @@ module Examples.AddingCustomElements where
 
 import Prelude
 
-import Deku.Attribute (class Attr, AttributeValue(..), unsafeAttribute, (!:=))
-import Deku.Control (text_)
-import Deku.DOM (unsafeCustomElement)
-import Deku.DOM as D
+import Data.Maybe (Maybe(..))
+import Deku.Attribute (Attribute, prop', unsafeAttribute)
+import Deku.Control (elementify2, text_)
+import Deku.Core (Nut)
+import Deku.DOM (HTMLAnchorElement)
 import Deku.Toplevel (runInBody')
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
-import Type.Proxy (Proxy(..))
+import FRP.Poll (Poll)
+import Type.Proxy (Proxy)
 
-data MyNiftyAnchor_
+type HTMLMyNiftyAnchor (r :: Row Type) =
+  ( __tag :: Proxy "HTMLMyNiftyAnchor"
+  , href :: MyPages
+  , target :: MyTarget
+  | HTMLAnchorElement r
+  )
+
+myNiftyAnchor
+  :: Array (Poll (Attribute (HTMLMyNiftyAnchor ()))) -> Array Nut -> Nut
+myNiftyAnchor = elementify2 Nothing "a"
 
 data MyPages = JoyrideFM | MikeSolomonOrg
 data MyTarget = Blank
 
-instance Attr MyNiftyAnchor_ D.Href MyPages where
-  attr _ JoyrideFM = unsafeAttribute
-    { key: "href", value: Prop' "https://joyride.fm" }
-  attr _ MikeSolomonOrg = unsafeAttribute
-    { key: "href", value: Prop' "https://mikesolomon.org" }
+myNiftyHref
+  :: forall r
+   . Poll MyPages
+  -> Poll (Attribute (href :: MyPages | r))
+myNiftyHref = map
+  ( unsafeAttribute <<< { key: "class", value: _ } <<< prop' <<< case _ of
+      JoyrideFM -> "https://joyride.fm"
+      MikeSolomonOrg -> "https://mikesolomon.org"
+  )
 
-instance Attr MyNiftyAnchor_ D.Target MyTarget where
-  attr _ _ = unsafeAttribute
-    { key: "target", value: Prop' "_blank" }
+myNiftyTarget
+  :: forall r
+   . Poll MyTarget
+  -> Poll (Attribute (target :: MyTarget | r))
+myNiftyTarget = map
+  ( unsafeAttribute <<< { key: "class", value: _ } <<< prop' <<< const "_blank"
+  )
 
 app :: ExampleSignature
 app runExample = runExample do
-  unsafeCustomElement "a" (Proxy :: _ MyNiftyAnchor_)
-    [ D.Href !:= JoyrideFM
-    , D.Target !:= Blank
+  myNiftyAnchor
+    [ myNiftyHref $ pure JoyrideFM
+    , myNiftyTarget $ pure Blank
     ]
     [ text_ "hi" ]
 

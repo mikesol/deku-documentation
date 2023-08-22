@@ -4,13 +4,12 @@ import Prelude
 
 import Data.Time.Duration (Seconds(..))
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute ((!:=))
-import Deku.Attributes (klass_)
 import Deku.Control (text)
 import Deku.DOM as D
+import Deku.DOM.Attributes as DA
+import Deku.DOM.Listeners as DL
 import Deku.Do as Deku
 import Deku.Hooks (useRef, useState')
-import Deku.Listeners (slider_)
 import Deku.Toplevel (runInBody')
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
@@ -27,12 +26,13 @@ app runExample = do
     D.div_
       [ D.div_
           [ D.input
-              [ slider_ setNumber
-              , klass_ "w-full"
-              , D.Min !:= "0.0"
-              , D.Max !:= "1.0"
-              , D.Step !:= "0.01"
-              , D.Value !:= "0.0"
+              [ DA.xtypeRange
+              , DL.numberOn_ DL.input setNumber
+              , DA.klass_ "w-full"
+              , DA.min_ "0.0"
+              , DA.max_ "1.0"
+              , DA.step_ "0.01"
+              , DA.value_ "0.0"
               ]
               []
           ]

@@ -4,7 +4,7 @@ import Prelude
 
 import Contracts (Subsection, subsection)
 import Deku.Control (text, text_)
-import Deku.Attribute ((:=), (<:=>), (!:=))
+import Deku.DOM.Attributes as DA
 import Deku.DOM as D
 
 partitioningAnEvent :: Subsection
@@ -13,7 +13,7 @@ partitioningAnEvent = subsection
   , matter: pure
       [ D.p_
           [ text_ "This subsection will be about "
-          , D.span [ D.Class !:= "font-bold" ] [ text_ "Partitioning an event" ]
+          , D.span [ DA.klass_ "font-bold" ] [ text_ "Partitioning an event" ]
           , text_ "."
           ]
       ]

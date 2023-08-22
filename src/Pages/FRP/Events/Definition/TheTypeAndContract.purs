@@ -4,9 +4,9 @@ import Prelude
 
 import Components.Code (psCode)
 import Contracts (Subsection, subsection)
-import Deku.Attribute ((:=), (<:=>), (!:=))
-import Deku.Attributes (href, href_)
-import Deku.Control (text, text_)
+import Deku.DOM.Attributes as DA
+
+import Deku.Control (text_)
 import Deku.DOM as D
 
 theTypeAndContract :: Subsection
@@ -30,8 +30,8 @@ theTypeAndContract = subsection
           , D.code__ "Event"
           , text_ " from the seminal 1997 paper "
           , D.a
-              [ href_ "http://conal.net/papers/icfp97/"
-              , D.Target !:= "blank"
+              [ DA.href_ "http://conal.net/papers/icfp97/"
+              , DA.target_ "blank"
               ]
               [ D.i__ "Functional reactive animation" ]
           , text_

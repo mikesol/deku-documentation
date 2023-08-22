@@ -7,12 +7,12 @@ import Data.Either (hush)
 import Data.Filterable (filterMap)
 import Data.Tuple (snd)
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass_)
+import Deku.DOM.Attributes as DA
 import Deku.Control (text, text_)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useDynAtBeginning, useState', (<#~>))
-import Deku.Listeners (click_)
+import Deku.DOM.Listeners as DL
 import Deku.Toplevel (runInBody')
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
@@ -34,14 +34,14 @@ app runExample = runExample Deku.do
   D.div_
     [ D.div_
         [ D.button
-            [ click_ (setSwitch unit)
-            , klass_ buttonClass
+            [ DL.click_ \_ -> (setSwitch unit)
+            , DA.klass_ buttonClass
             ]
             [ text
                 (pure "Start simulation" <|> (switch $> "Restart simulation"))
             ]
         ]
-    , switch <#~> \_ -> D.div [ klass_ "h-24 overflow-y-scroll" ]
+    , switch <#~> \_ -> D.div [ DA.klass_ "h-24 overflow-y-scroll" ]
         [ Deku.do
             _ <- useDynAtBeginning
               ( fix

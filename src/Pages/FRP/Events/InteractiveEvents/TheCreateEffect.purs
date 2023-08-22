@@ -5,10 +5,11 @@ import Prelude
 import Components.Code (psCode)
 import Contracts (Env(..), Subsection, getEnv, subsection)
 import Control.Monad.ST.Class (liftST)
-import Deku.Attributes (klass, klass_)
-import Deku.Control (text, text_)
+import Deku.DOM.Attributes as DA
+
+import Deku.Control (text_)
 import Deku.DOM as D
-import Deku.Listeners (click, click_)
+import Deku.DOM.Listeners as DL
 import Effect.Console (log)
 import FRP.Event (create, subscribe)
 import Router.ADT (Route(..))
@@ -59,8 +60,8 @@ theCreateEffect = subsection
   liftST u
   push "fum" """
         , D.button
-            [ klass_ buttonClass
-            , click_ do
+            [ DA.klass_ buttonClass
+            , DL.click_ \_ -> do
                 { push, event } <- liftST create
                 u <- liftST $ subscribe event log
                 push "fee"

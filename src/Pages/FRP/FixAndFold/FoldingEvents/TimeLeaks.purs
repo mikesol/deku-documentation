@@ -4,7 +4,7 @@ import Prelude
 
 import Components.TargetedLink (targetedLink)
 import Contracts (Env(..), Subsection, getEnv, subsection)
-import Deku.Control (text, text_)
+import Deku.Control (text_)
 import Deku.DOM as D
 import Router.ADT (Route(..))
 
@@ -126,7 +126,7 @@ timeLeaks = subsection
               , D.code__ "slider"
               , text_
                   ". For example, if you have a game state that updates whenever you click a button based on the previous game state and a current timestamp, this can be modeled as "
-              , D.code__ "click $ state <#> \\s -> now >>= newState s"
+              , D.code__ "DL.runOn DL.click $ state <#> \\s -> now >>= newState s"
               , text_ "."
               ]
           ]

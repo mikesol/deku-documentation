@@ -4,7 +4,7 @@ import Prelude
 
 import Components.Code (psCode)
 import Contracts (Subsection, subsection)
-import Deku.Control (text, text_)
+import Deku.Control (text_)
 import Deku.DOM as D
 
 mixingDoNotation :: Subsection
@@ -46,8 +46,8 @@ mixingDoNotation = subsection
     setHook /\ hook <- useState unit
     D.button
       Alt.do
-        klass_ "button"
-        click $ hook <#> setHook
+        DA.klass_ "button"
+        DL.runOn DL.click $ hook <#> setHook
       [ "hi" ]"""
       , D.p_
           [ text_ "Can be rewritten in "
@@ -57,7 +57,7 @@ mixingDoNotation = subsection
       , psCode
           """component \myComponent ->
   useState unit \(setHook /\ hook) ->
-    D.button (klass_ "button" <|> (click $ hook <#> setHook))
+    D.button (DA.klass_ "button" <|> (DL.runOn DL.click $ hook <#> setHook))
       [ "hi" ]"""
       , D.p_ [ text_ "It's up to you what to ", D.code__ "do", text_ "!" ]
       ]

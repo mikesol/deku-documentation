@@ -5,12 +5,12 @@ import Prelude
 import Data.Array (replicate)
 import Data.Number.Format (fixed, toStringWith)
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass_)
+import Deku.DOM.Attributes as DA
 import Deku.Control (text)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState, guard)
-import Deku.Listeners (click)
+import Deku.DOM.Listeners as DL
 import Deku.Toplevel (runInBody')
 import Effect (Effect)
 import Effect.Random (random)
@@ -26,8 +26,8 @@ app runExample = do
     let e = sham (sample_ (effectToPoll random) i.event)
     D.div_
       [ D.a
-          [ click $ onOff <#> not >>> setOnOff
-          , klass_ "cursor-pointer"
+          [ DL.runOn DL.click $ onOff <#> not >>> setOnOff
+          , DA.klass_ "cursor-pointer"
           ]
           [ text $ onOff <#> if _ then "Turn me off" else "Turn me on"
           ]

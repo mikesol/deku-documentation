@@ -3,7 +3,7 @@ module Examples.AltAsAMuxer where
 import Prelude
 
 import Control.Alt ((<|>))
-import Deku.Attributes (klass)
+import Deku.DOM.Attributes as DA
 import Deku.Control (text_)
 import Deku.DOM as D
 import Deku.Toplevel (runInBody')
@@ -18,7 +18,7 @@ app runExample = do
   i1 <- interval 165
   runExample do
     D.div
-      [ klass
+      [ DA.klass
           ( sham
               ( (i0.event $> "bg-pink-300")
                   <|> (i1.event $> "bg-green-300")

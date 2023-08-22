@@ -8,13 +8,12 @@ import ExampleAssitant (ExampleSignature)
 import Data.Int (floor)
 import Data.JSDate (getTime, now)
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute ((!:=))
-import Deku.Attributes (klass_)
+import Deku.DOM.Attributes as DA
 import Deku.Control (text, text_)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState, (<#~>))
-import Deku.Listeners (click)
+import Deku.DOM.Listeners as DL
 import Deku.Pursx ((~~))
 
 import Effect.Aff (Milliseconds(..), delay, launchAff_)
@@ -52,14 +51,14 @@ app runExample = runExample Deku.do
   setUIState /\ uiState <- useState Beginning
   D.div_
     [ D.button
-        [ klass_ buttonClass
+        [ DA.klass_ buttonClass
         , let
             fetcher = do
               newRandomImage <- fetchNewRandomImage
               liftEffect $ setUIState $ Image newRandomImage
             loader = liftEffect $ setUIState Loading
           in
-            click $ uiState <#> case _ of
+            DL.runOn DL.click $ uiState <#> case _ of
               Beginning -> do
                 launchAff_ do
                   loader
@@ -79,7 +78,7 @@ app runExample = runExample Deku.do
         [ uiState <#~> case _ of
             Beginning -> mempty
             Image { url, watcherCount } -> D.div_
-              [ D.img [ D.Src !:= url ] []
+              [ D.img [ DA.src_ url ] []
               , D.div_
                   [ text_ $
                       "Watcher count (including you): " <> show
@@ -87,7 +86,7 @@ app runExample = runExample Deku.do
                   ]
               ]
             Loading ->
-              D.div [ klass_ "p-10" ]
+              D.div [ DA.klass_ "p-10" ]
                 [ ((Proxy :: _ Loading) ~~ {}) ]
         ]
     ]

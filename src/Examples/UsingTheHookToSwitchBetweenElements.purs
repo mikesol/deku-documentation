@@ -1,19 +1,20 @@
 module Examples.UsingTheHookToSwitchBetweenElements where
 
-import Deku.Toplevel (runInBody')
-import Effect (Effect)
 import Prelude
-import ExampleAssitant (ExampleSignature)
 
 import Data.String (Pattern(..), Replacement(..), replaceAll)
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute ((!:=), (:=))
-import Deku.Attributes (klass_)
 import Deku.Control (text_)
+import Deku.DOM.SVG as DS
+import Deku.DOM.SVG.Attributes as DSA
 import Deku.DOM as D
+import Deku.DOM.Attributes as DA
+import Deku.DOM.Listeners as DL
 import Deku.Do as Deku
 import Deku.Hooks (useState, (<#~>))
-import Deku.Listeners (click_)
+import Deku.Toplevel (runInBody')
+import Effect (Effect)
+import ExampleAssitant (ExampleSignature)
 
 buttonClass :: String -> String
 buttonClass color =
@@ -39,49 +40,49 @@ app runExample = runExample Deku.do
     [ D.div_
         [ imageType <#~>
             case _ of
-              Image -> D.img [ pure $ D.Src := pic ] []
+              Image -> D.img [ DA.src_ pic ] []
               Video -> D.video
-                [ D.Controls !:= "controls"
-                , D.Preload !:= "none"
-                , D.Width !:= "250"
-                , D.Height !:= "250"
-                , D.Autoplay !:= "true"
+                [ DA.controls_ "controls"
+                , DA.preload_ "none"
+                , DA.width_ "250"
+                , DA.height_ "250"
+                , DA.autoplay_ "true"
                 ]
                 [ D.source
-                    [ D.Src !:= bunny
-                    , D.Xtype !:= "video/webm"
+                    [ DA.src_ bunny
+                    , DA.xtype_ "video/webm"
                     ]
                     []
                 ]
-              SVG -> D.svg
-                [ D.Height !:= "170"
-                , D.Width !:= "170"
+              SVG -> DS.svg
+                [ DSA.height_ "170"
+                , DSA.width_ "170"
                 ]
-                [ D.circle
-                    [ D.Cx !:= "75"
-                    , D.Cy !:= "75"
-                    , D.R !:= "70"
-                    , D.Stroke !:= "black"
-                    , D.StrokeWidth !:= "3"
-                    , D.Fill !:= "red"
+                [ DS.circle
+                    [ DSA.cx_  "75"
+                    , DSA.cy_  "75"
+                    , DSA.r_  "70"
+                    , DSA.stroke_  "black"
+                    , DSA.strokeWidth_  "3"
+                    , DSA.fill_  "red"
                     ]
                     []
                 ]
         ]
     , D.div_
         [ D.button
-            [ klass_ $ buttonClass "amber"
-            , click_ $ setImageType Image
+            [ DA.klass_ $ buttonClass "amber"
+            , DL.click_ \_ -> setImageType Image
             ]
             [ text_ "Image" ]
         , D.button
-            [ klass_ $ buttonClass "cyan"
-            , click_ $ setImageType Video
+            [ DA.klass_ $ buttonClass "cyan"
+            , DL.click_ \_ -> setImageType Video
             ]
             [ text_ "Video" ]
         , D.button
-            [ klass_ $ buttonClass "green"
-            , click_ $ setImageType SVG
+            [ DA.klass_ $ buttonClass "green"
+            , DL.click_ \_ -> setImageType SVG
             ]
             [ text_ "SVG" ]
         ]

@@ -6,12 +6,12 @@ import Control.Alt ((<|>))
 import Data.Filterable (compact)
 import Data.Maybe (Maybe(..))
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass_)
+import Deku.DOM.Attributes as DA
 import Deku.Control (text, text_)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState)
-import Deku.Listeners (slider_)
+import Deku.DOM.Listeners as DL
 import Deku.Toplevel (runInBody')
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
@@ -30,8 +30,8 @@ app runExample = runExample Deku.do
       -> Poll c
     eventMaker f l r = f (l left <|> r right)
   D.div_
-    [ D.input [ klass_ "mr-2", slider_ setLeft ] []
-    , D.input [ slider_ setRight ] []
+    [ D.input [ DA.klass_ "mr-2", DA.xtypeRange, DL.numberOn_ DL.input setLeft ] []
+    , D.input [ DA.xtypeRange, DL.numberOn_ DL.input setRight ] []
     , D.div_
         [ text_ "Responds to both channels: "
         , text (eventMaker identity identity identity <#> show)

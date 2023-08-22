@@ -3,8 +3,8 @@ module Pages.CoreConcepts.Effects where
 import Prelude
 
 import Contracts (Page, page)
-import Deku.Attribute ((!:=))
-import Deku.Attributes (href_)
+
+import Deku.DOM.Attributes as DA
 import Deku.Control (text_)
 import Deku.DOM as D
 import Pages.CoreConcepts.Effects.BindingToEffects (bindingToEffects)
@@ -16,7 +16,7 @@ effects :: Page
 effects = page
   { route: Effects
   , topmatter: pure
-      [ D.p [ D.Class !:= "lead" ]
+      [ D.p [ DA.klass_ "lead" ]
           [ text_ "How Deku manages side effects."
           ]
       , D.p_
@@ -27,15 +27,15 @@ effects = page
           [ D.li_
               [ text_ "Lifecycle effects ("
               , D.a
-                  [ D.Target !:= "_blank"
-                  , href_
+                  [ DA.target_ "_blank"
+                  , DA.href_
                       "https://reactjs.org/docs/hooks-effect.html#example-using-hooks-1"
                   ]
                   [ text_ "React" ]
               , text_ " | "
               , D.a
-                  [ D.Target !:= "_blank"
-                  , href_
+                  [ DA.target_ "_blank"
+                  , DA.href_
                       "https://purescript-halogen.github.io/purescript-halogen/guide/04-Lifecycles-Subscriptions.html"
                   ]
                   [ text_ "Halogen" ]
@@ -44,15 +44,15 @@ effects = page
           , D.li_
               [ text_ "Effect hooks ("
               , D.a
-                  [ D.Target !:= "_blank"
-                  , href_
+                  [ DA.target_ "_blank"
+                  , DA.href_
                       "https://reactjs.org/docs/hooks-effect.html"
                   ]
                   [ text_ "React" ]
               , text_ " | "
               , D.a
-                  [ D.Target !:= "_blank"
-                  , href_
+                  [ DA.target_ "_blank"
+                  , DA.href_
                       "https://github.com/thomashoneyman/purescript-halogen-hooks/blob/main/docs/03-Effect-Hook.md"
                   ]
                   [ text_ "Halogen" ]

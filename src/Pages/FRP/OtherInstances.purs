@@ -3,8 +3,8 @@ module Pages.FRP.OtherInstances where
 import Prelude
 
 import Contracts (Page, page)
-import Deku.Attribute ((:=), (<:=>), (!:=))
-import Deku.Control (text, text_)
+import Deku.DOM.Attributes as DA
+import Deku.Control (text_)
 import Deku.DOM as D
 import Pages.FRP.OtherInstances.Semigroup (semigroup)
 import Router.ADT (Route(..))
@@ -13,7 +13,7 @@ otherInstances :: Page
 otherInstances = page
   { route: OtherInstances
   , topmatter: pure
-      [ D.p [D.Class !:= "lead"]
+      [ D.p [DA.klass_ "lead"]
           [ text_ "Because who likes to lift2 over append when you can just append?"
           ]
       , D.p_

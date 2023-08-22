@@ -5,7 +5,7 @@ import Effect (Effect)
 import Prelude
 import ExampleAssitant (ExampleSignature)
 
-import Deku.Attributes (klass_)
+import Deku.DOM.Attributes as DA
 import Deku.Control (text_)
 import Deku.Core (fixed)
 import Deku.DOM as D
@@ -14,11 +14,11 @@ app :: ExampleSignature
 app runExample = runExample do
   let
     eieio = fixed
-      [ D.span [ klass_ "text-blue-400" ] [ text_ "e " ]
-      , D.span [ klass_ "text-red-400" ] [ text_ "i " ]
-      , D.span [ klass_ "text-green-400" ] [ text_ "e " ]
-      , D.span [ klass_ "text-teal-400" ] [ text_ "i " ]
-      , D.span [ klass_ "text-orange-400" ] [ text_ "o" ]
+      [ D.span [ DA.klass_ "text-blue-400" ] [ text_ "e " ]
+      , D.span [ DA.klass_ "text-red-400" ] [ text_ "i " ]
+      , D.span [ DA.klass_ "text-green-400" ] [ text_ "e " ]
+      , D.span [ DA.klass_ "text-teal-400" ] [ text_ "i " ]
+      , D.span [ DA.klass_ "text-orange-400" ] [ text_ "o" ]
       ]
 
   D.div_

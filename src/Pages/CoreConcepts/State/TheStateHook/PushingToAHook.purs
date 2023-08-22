@@ -4,7 +4,7 @@ import Prelude
 
 import Components.Code (psCode)
 import Contracts (Env(..), Subsection, getEnv, subsection)
-import Deku.Control (text, text_)
+import Deku.Control (text_)
 import Deku.DOM as D
 import Router.ADT (Route(..))
 
@@ -57,6 +57,6 @@ pushingToAHook = subsection
           , D.code__ "setNumber"
           , text_ "."
           ]
-      , psCode """click $ random >>= setNumber"""
+      , psCode """DL.runOn DL.click $ random >>= setNumber"""
       ]
   }

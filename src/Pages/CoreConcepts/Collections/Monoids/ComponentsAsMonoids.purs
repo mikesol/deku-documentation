@@ -4,7 +4,8 @@ import Prelude
 
 import Contracts (CollapseState(..), Subsection, getExample, subsection)
 import Data.Maybe (Maybe(..))
-import Deku.Attributes (href, href_)
+import Deku.DOM.Attributes as DA
+
 import Deku.Control (text, text_)
 import Deku.DOM as D
 import Examples as Examples
@@ -21,7 +22,7 @@ componentsAsMonoids = subsection
           , text_
               ". Because it's a monoid, we can use all sorts of cool functions on Deku components, like "
           , D.a
-              [href_
+              [DA.href_
                   "https://pursuit.purescript.org/packages/purescript-foldable-traversable/6.0.0/docs/Data.Foldable#v:intercalate"
               ]
               [ D.code__ "intercalate" ]

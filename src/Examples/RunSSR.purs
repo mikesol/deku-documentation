@@ -3,16 +3,16 @@ module Examples.RunSSR where
 import Prelude
 
 import Control.Monad.ST.Class (liftST)
-import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.Core (Nut)
 import Deku.DOM as D
+import Deku.DOM.Attributes as DA
 import Deku.Toplevel (runInBody', runSSR)
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
 
 htmlCode :: String -> Nut
-htmlCode code = D.pre [ D.Class !:= "prism-code language-markup" ]
+htmlCode code = D.pre [ DA.klass_ "prism-code language-markup" ]
   [ D.code_ [ text_ code ] ]
 
 myApp :: String -> Nut

@@ -1,18 +1,18 @@
 module Examples.KnowThySelfT where
 
-import Deku.Toplevel (runInBody')
-import Effect (Effect)
 import Prelude
-import ExampleAssitant (ExampleSignature)
 
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute ((!:=), (<:=>))
-import Deku.Attributes (klass_)
 import Deku.Control (text)
 import Deku.DOM as D
+import Deku.DOM.Attributes as DA
+import Deku.DOM.Listeners as DL
+import Deku.DOM.Self as Self
 import Deku.Do as Deku
 import Deku.Hooks (useState')
-
+import Deku.Toplevel (runInBody')
+import Effect (Effect)
+import ExampleAssitant (ExampleSignature)
 import Web.HTML.HTMLInputElement (value)
 
 inputKls :: String
@@ -30,9 +30,9 @@ app runExample = runExample Deku.do
   setInput /\ input <- useState'
   D.div_
     [ D.input
-        [ klass_ inputKls
-        , D.OnInput <:=> (input <#> \i -> (value i >>= setTxt))
-        , D.SelfT !:= setInput
+        [ DA.klass_ inputKls
+        , DL.input $ input <#> \i _ -> value i >>= setTxt
+        , Self.selfT_ setInput
         ]
         []
     , D.div_ [ text txt ]

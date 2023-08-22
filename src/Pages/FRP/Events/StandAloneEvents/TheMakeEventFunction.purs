@@ -4,9 +4,9 @@ import Prelude
 
 import Components.Code (psCode)
 import Contracts (Subsection, subsection)
-import Deku.Attribute ((:=), (<:=>), (!:=))
-import Deku.Attributes (href, href_)
-import Deku.Control (text, text_)
+import Deku.DOM.Attributes as DA
+
+import Deku.Control (text_)
 import Deku.DOM as D
 
 theMakeEventFunction :: Subsection
@@ -34,9 +34,9 @@ theMakeEventFunction = subsection
           [ text_
               "As an example, supposed you wanted an event to fire every time the browser requested an animation frame via "
           , D.a
-              [href_
+              [DA.href_
                   "https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame"
-                  , (D.Target !:= "_blank")
+                  , (DA.target_ "_blank")
               ]
               [ D.code__ "requestAnimationFrame" ]
           , text_ ". One way to accomplish that would be via "
