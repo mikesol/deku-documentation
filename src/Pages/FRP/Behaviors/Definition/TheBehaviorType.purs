@@ -5,7 +5,7 @@ import Prelude
 import Components.Code (psCode)
 import Components.TargetedLink (targetedLink)
 import Contracts (Subsection, subsection)
-import Deku.Control (text, text_)
+import Deku.Control (text_)
 import Deku.DOM as D
 
 thePollType :: Subsection
@@ -19,18 +19,22 @@ thePollType = subsection
       , D.p_
           [ text_ "Like "
           , D.code__ "Event"
+          , text_ ", "
+          , D.code__ "Poll"
           , text_
-              " poll defines a contract. It's saying, \"If you give me any event that produces a "
+              " defines a contract. It's saying, \"If you give me any event that produces a "
           , D.code__ "b"
           , text_ " in exchange for an "
           , D.code__ "a"
-          , text_ ", I'll give you a "
+          , text_ ", I'll give you an event-ful of "
           , D.code__ "b"
           , text_
-              " back.\" Importantly, to fulfill the contract, you don't know what "
+              "s back.\" Importantly, to fulfill the contract, you don't know what "
           , D.code__ "b"
           , text_
-              " is, and yet you have to produce one. The only way we can do this, then, is with an "
+              " is, and yet you have to produce one. The only way we can do this, then, is by applying our function of type "
+          , D.code__ "a -> b"
+          , text_ " to "
           , D.code__ "a"
           , text_
               "."
