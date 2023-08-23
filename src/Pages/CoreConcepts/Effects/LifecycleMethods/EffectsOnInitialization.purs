@@ -4,16 +4,16 @@ import Prelude
 
 import Components.Table (tableClass)
 import Contracts (Subsection, subsection)
-import Deku.Control (text, text_)
+import Deku.Control (text_)
 import Deku.DOM as D
 
 effectsOnInitialization :: Subsection
 effectsOnInitialization = subsection
-  { title: "Effects on initialization"
+  { title: "Creating our effect system"
   , matter: pure
       [ D.p_
           [ text_
-              "The following two effects exist on component initialization. These are mostly useful for logging, debugging, and analytics, for example counting how many times a component is displayed on the screen."
+              "Let's create a little game where a bunch of svg sprites move across the screen and you have to click them to score points."
           ]
       , D.table [ tableClass ]
           [ D.tr_
