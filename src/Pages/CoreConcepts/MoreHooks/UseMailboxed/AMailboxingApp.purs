@@ -29,7 +29,7 @@ aMailboxingApp = subsection
           , text_ " time thanks to the "
           , D.code__ "Ord"
           , text_
-              " constraint on the input. So when woring with collections where you'll have to update a single addressable element in response to an event, use mailboxes!"
+              " constraint on the input. So when working with collections where you'll have to update a single addressable element in response to an event, use mailboxes!"
           ]
       ]
   }
