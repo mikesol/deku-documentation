@@ -23,7 +23,7 @@ with open('./src/Examples.js','w') as ofi:
                         if x.split(' ')[0] == 'main':
                             break
                         O.append(x)
-            joined = '\n'.join(O).replace('app :: ExampleSignature','main :: Effect Unit').replace('app :: ExampleSignatureWithCancellation','main :: Effect Unit').replace('app runExample =','main =').replace('runExample.t','runInBody').replace('runExample.h quit','runInBody')
+            joined = '\n'.join(O).replace('app :: ExampleSignatureWithCancellation','main :: Effect Unit').replace('app :: ExampleSignature','main :: Effect Unit').replace('app runExample =','main =').replace('runExample.t','runInBody').replace('runExample.h quit','runInBody')
             ofi.write(f'export const {lex}URL = {json.dumps(joined)};\n')
 
 with open('./src/Examples.purs','w') as ofi:

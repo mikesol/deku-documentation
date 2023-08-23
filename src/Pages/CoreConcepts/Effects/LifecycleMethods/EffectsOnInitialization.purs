@@ -21,9 +21,9 @@ effectsOnInitialization = subsection
         , example
         , D.p_
             [ text_
-                "That example is a bit heftier than the other ones, clocking in at around 300 lines of code. But we've created a full-fledged engine in it, so that's not "
+                "That example is a bit heftier than the other ones, clocking in at around 300 lines of code. But we've created a full-fledged game engine, so that's not "
             , D.i__ "that"
-            , text_ "bad. Let's unpack what's going on."
+            , text_ " bad. Let's unpack what's going on."
             ]
         , D.ul_
             [ D.li_
