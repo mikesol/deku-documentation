@@ -2,12 +2,12 @@ module Pages.FRP.Applicatives.Applicative.PurityOutOfThinAir where
 
 import Prelude
 
+import Components.Disclaimer (disclaimer)
 import Contracts (CollapseState(..), Env(..), Subsection, getEnv, getExample, subsection)
 import Data.Maybe (Maybe(..))
-import Deku.DOM.Attributes as DA
-
-import Deku.Control (text, text_)
+import Deku.Control (text_)
 import Deku.DOM as D
+import Deku.DOM.Attributes as DA
 import Examples as Examples
 import Router.ADT (Route(..))
 
@@ -151,5 +151,29 @@ theTemporalityOfPure = subsection
             , routeLink FixAndFold
             , text_ "."
             ]
+        , disclaimer
+            { header: text_ "A sham event"
+            , message: D.p_
+                [ text_ "In the example above, we use the function "
+                , D.code__ "sham"
+                , text_ " to turn an "
+                , D.code__ "Event"
+                , text_ " into a "
+                , D.code__ "Poll"
+                , text_ ". Deku runs on "
+                , D.code__ "Poll"
+                , text_ "s, so to show off various features of "
+                , D.code__ "Event"
+                , text_ " via Deku, we need to use "
+                , D.code__ "sham"
+                , text_ ". "
+                , D.code__ "Poll"
+                , text_
+                    "s are closely related to "
+                , D.code__ "Event"
+                , text_
+                    "s, however, and have been since the dawn of FRP. As promised, we'll learn more about them later in the docs."
+                ]
+            }
         ]
   }
