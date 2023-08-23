@@ -26,10 +26,8 @@ effectsOnInitialization = subsection
                 "That example is a bit heftier than the other ones, clocking in at around 300 lines of code. But we've created a full-fledged game engine, so that's not "
             , D.i__ "that"
             , text_
-                " bad. Even more improtantly, it cruises at 60fps and, on my Mac running on battery power with too many tabs open, barely eats up any of the scripting in the rendering loop, leaving ample headroom for experience (clicking around) and whatever else you wanna add to the game."
+                " bad. Let's unpack what's going on."
             ]
-        , D.img [ DA.src_ profileURL ] []
-        , D.p__ "Let's unpack what's going on."
         , D.ul_
             [ D.li_
                 [ text_ "Just like Unreal, we have "
@@ -59,5 +57,8 @@ effectsOnInitialization = subsection
                     ". The actors, at the end of the day, are just dynamic elements in a Deku app."
                 ]
             ]
+        , D.p__
+            "Even more improtantly, it cruises at 60fps and, on my Mac running on battery power with too many tabs open, barely eats up any of the scripting in the rendering loop, leaving ample headroom for experience (clicking around) and whatever else you wanna add to the game."
+        , D.img [ DA.src_ profileURL ] []
         ]
   }
