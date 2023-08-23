@@ -19,11 +19,13 @@ with open('./src/Examples.js','w') as ofi:
                         O.append('import Deku.Toplevel (runInBody)')
                         IN_IMPORTS = False
                         O.append(x)
-                    else:
-                        if x.split(' ')[0] == 'main':
+                    elif x.split(' ')[0] == 'main':
                             break
+                    elif 'let quit' in x:
+                       continue 
+                    else:
                         O.append(x)
-            joined = '\n'.join(O).replace('app :: ExampleSignature','main :: Effect Unit').replace('app runExample =','main =').replace('runExample','runInBody').replace('append <$> pure quit <*> runExample','runInBody')
+            joined = '\n'.join(O).replace('app :: ExampleSignature','main :: Effect Unit').replace('app runExample =','main =').replace('append <$> pure quit <*> runExample','runInBody').replace('runExample','runInBody')
             ofi.write(f'export const {lex}URL = {json.dumps(joined)};\n')
 
 with open('./src/Examples.purs','w') as ofi:

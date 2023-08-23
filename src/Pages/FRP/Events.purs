@@ -33,7 +33,7 @@ events = page
           [
            text_ "As we'll see later, the "
           , D.code__ "Poll"
-          , text_ " type is defined in terms of events. So, to get the next stripe on your Deku black-belt, you have to understand the Tao of "
+          , text_ " type is defined in terms of events. You have to understand the Tao of "
           , D.code__ "Event"
           , text_ " before you understand the Te of "
           , D.code__ "Poll"

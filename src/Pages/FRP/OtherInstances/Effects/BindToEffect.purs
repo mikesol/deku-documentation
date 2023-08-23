@@ -32,15 +32,6 @@ b2e = subsection
             ]
         , example
         , D.p_
-            [ text_ "Note the use of "
-            , D.code__ "dredge"
-            , text_ "which takes a function on "
-            , D.code__ "Event"
-            , text_ "s and transforms it to work on"
-            , D.code__ "Poll"
-            , text_ "s."
-            ]
-        , D.p_
             [ text_ "As you likely noticed, the effect in "
             , D.code__ "bindToEffect"
             , text_ "runs "

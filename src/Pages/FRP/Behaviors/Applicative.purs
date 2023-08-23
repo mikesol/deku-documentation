@@ -19,5 +19,5 @@ applicative = section
           ]
       ]
   , subsections:
-      [ pollsAsFunctors, pollsAsApplicatives, whyPollsAreNotMonads ]
+      [ pollsAsFunctors, pollsAsApplicatives ]
   }

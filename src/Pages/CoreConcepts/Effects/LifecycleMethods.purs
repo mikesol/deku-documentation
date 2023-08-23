@@ -21,7 +21,7 @@ lifecycleMethods = section
             , D.code__ "GameObject"
             , text_ "s (Unity) or "
             , D.code__ "Actor"
-            , text_ "s (Unreal). I'll use Unreal terminology below because:"
+            , text_ "s (Unreal). Using Unreal's terminology, these two functions are:"
             ]
         , D.ul_
             [ D.li_

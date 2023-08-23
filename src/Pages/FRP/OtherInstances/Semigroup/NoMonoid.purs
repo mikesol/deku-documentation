@@ -11,7 +11,7 @@ noMonoid = subsection
   { title: "Events aren't monoids"
   , matter: pure
         [ D.p_
-            [ text_ ". Alas, "
+            [ text_ "Alas, "
           , D.code__ "Event a"
           , text_ " is not a "
           , D.code__ "Monoid"
