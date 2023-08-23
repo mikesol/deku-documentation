@@ -107,13 +107,13 @@ contentToPoll env = case _ of
     let
       m = WriterT do
         i <- new mempty
-        u <- exampleToApp e (\w -> write w i *> mempty)
+        u <- exampleToApp e { t: \w -> write w i *> mempty, h: \c w -> write w i $> c }
         n <- read i
         pure $ (flip Tuple) u $ fixed
           [ e #
               case b of
                 StartCollapsed -> psCodeWithLink
-                StartExapanded -> psCodeNoCollapseWithLink
+                StartExpanded -> psCodeNoCollapseWithLink
           , case k of
               Just x -> exampleBlockquoteWithHeight x [ n ]
               Nothing -> exampleBlockquote [ n ]
@@ -126,7 +126,7 @@ getEnv = liftF $ GetEnv identity
 getRandomNumber :: Content Number
 getRandomNumber = liftF $ GetRandomNumber identity
 
-data CollapseState = StartCollapsed | StartExapanded
+data CollapseState = StartCollapsed | StartExpanded
 
 getExample :: CollapseState -> Maybe String -> ExampleADT -> Content Nut
 getExample b k e = liftF $ GetExample b k e identity

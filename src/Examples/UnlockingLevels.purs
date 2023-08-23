@@ -78,7 +78,7 @@ focus:ring-COLOR-500 focus:ring-offset-2"""
 data WhichVideo = Video1 | Video2 | Video3 | Video4
 
 app :: ExampleSignature
-app runExample = runExample Deku.do
+app runExample = runExample.t Deku.do
   setVideoURL /\ videoURL <- useHot Video1
   setGlobalVideoPresence /\ globalVideoPresence <- useHot true
   let
@@ -130,4 +130,4 @@ app runExample = runExample Deku.do
     ]
 
 main :: Effect Unit
-main = void $ app (map (map void) runInBody')
+main = void $ app { t: map (map void) runInBody' }

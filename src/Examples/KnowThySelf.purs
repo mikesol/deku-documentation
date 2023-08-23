@@ -19,7 +19,7 @@ import Web.DOM.HTMLCollection as HTMLCollection
 import Web.DOM.ParentNode (children)
 
 app :: ExampleSignature
-app runExample = runExample Deku.do
+app runExample = runExample.t Deku.do
   setLength /\ length <- useState'
   D.div
     [ Self.self_ \e -> launchAff_ do
@@ -33,4 +33,4 @@ app runExample = runExample Deku.do
     )
 
 main :: Effect Unit
-main = void $ app (map (map void) runInBody')
+main = void $ app { t: map (map void) runInBody' }

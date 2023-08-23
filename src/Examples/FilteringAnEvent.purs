@@ -15,7 +15,7 @@ import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
 
 app :: ExampleSignature
-app runExample = runExample Deku.do
+app runExample = runExample.t Deku.do
   setNumber /\ number <- useState 50.0
   D.div_
     [ D.input [ DA.xtypeRange, DL.numberOn_ DL.input setNumber ] []
@@ -30,4 +30,4 @@ app runExample = runExample Deku.do
     ]
 
 main :: Effect Unit
-main = void $ app (map (map void) runInBody')
+main = void $ app { t: map (map void) runInBody' }

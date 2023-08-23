@@ -64,7 +64,7 @@ rowPolymorphismAndProviders :: Subsection
 rowPolymorphismAndProviders = subsection
   { title: "Row polymorphism and providers"
   , matter: do
-      example <- getExample StartExapanded Nothing Examples.RowPolymorphismAndProviders
+      example <- getExample StartExpanded Nothing Examples.RowPolymorphismAndProviders
       pure [ D.p_
           [ text_
               "Now that we've explored what Row Polymorphism looks like, let's see it in the case of a Deku provider. We'll explore two scenarios:"

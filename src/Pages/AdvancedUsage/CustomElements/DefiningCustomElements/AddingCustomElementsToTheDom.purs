@@ -11,7 +11,7 @@ addingCustomElementsToTheDOM :: Subsection
 addingCustomElementsToTheDOM = subsection
   { title: "Defining attributes"
   , matter: do
-      example <- getExample StartExapanded Nothing Examples.AddingCustomElements
+      example <- getExample StartExpanded Nothing Examples.AddingCustomElements
       pure
         [ D.p__
             "Things get more interesting when custom attributes are involved. By defining what attributes are settable for your custom element and how they should be marshaled into strings or listeners, you can create domain-specific logic for your DOM."

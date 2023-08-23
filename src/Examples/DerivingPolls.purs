@@ -25,7 +25,7 @@ import FRP.Poll.Time (seconds)
 app :: ExampleSignature
 app runExample = do
   af <- animationFrame
-  runExample Deku.do
+  runExample.t Deku.do
     setNumber /\ number <- useState'
     nref <- useRef 0.5 number
     let
@@ -70,4 +70,4 @@ app runExample = do
       ]
 
 main :: Effect Unit
-main = void $ app (map (map void) runInBody')
+main = void $ app { t: map (map void) runInBody' }

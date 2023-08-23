@@ -16,7 +16,7 @@ app :: ExampleSignature
 app runExample = do
   i0 <- interval 1600
   i1 <- interval 600
-  runExample do
+  runExample.t do
     let count = fold (pure <$> add 1) 0
     text $ sham
       ( show <$> keepLatest
@@ -26,4 +26,4 @@ app runExample = do
       )
 
 main :: Effect Unit
-main = void $ app (map (map void) runInBody')
+main = void $ app { t: map (map void) runInBody' }

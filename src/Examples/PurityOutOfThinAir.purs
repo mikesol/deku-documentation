@@ -16,7 +16,7 @@ app runExample = do
   i0 <- interval 804
   i1 <- interval 1222
   i2 <- interval 568
-  runExample do
+  runExample.t do
     let
       alternate e a b = sham $
         map
@@ -31,4 +31,4 @@ app runExample = do
           ]
 
 main :: Effect Unit
-main = void $ app (map (map void) runInBody')
+main = void $ app { t: map (map void) runInBody' }

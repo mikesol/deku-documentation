@@ -12,7 +12,7 @@ theRunSSRFunction :: Subsection
 theRunSSRFunction = subsection
   { title: "The runSSR function"
   , matter: do
-      example <- getExample StartExapanded Nothing Examples.RunSSR
+      example <- getExample StartExpanded Nothing Examples.RunSSR
       pure [ D.p_
           [ text_ "In order to turn a Deku site into a static site, use "
           , D.code__ "runSSR"

@@ -12,7 +12,7 @@ addingAnAttribute :: Subsection
 addingAnAttribute = subsection
   { title: "Adding an attribute"
   , matter: do
-      example <- getExample StartExapanded Nothing
+      example <- getExample StartExpanded Nothing
         Examples.AddingAnAttributeToPursx
       pure
         [ D.p__

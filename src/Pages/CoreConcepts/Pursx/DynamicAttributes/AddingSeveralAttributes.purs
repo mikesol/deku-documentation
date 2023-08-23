@@ -13,7 +13,7 @@ addingSeveralAttributes :: Subsection
 addingSeveralAttributes = subsection
   { title: "Adding several attributes"
   , matter: do
-      example <- getExample StartExapanded Nothing
+      example <- getExample StartExpanded Nothing
         Examples.AddingSeveralAttributesToPursx
       pure
         [ D.p__

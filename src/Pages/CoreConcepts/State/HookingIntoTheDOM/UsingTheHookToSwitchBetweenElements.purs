@@ -13,7 +13,7 @@ usingTheHookToSwitchBetweenElements
 usingTheHookToSwitchBetweenElements = subsection
   { title: "Using a hook to switch between elements"
   , matter: do
-      example <- getExample StartExapanded Nothing
+      example <- getExample StartExpanded Nothing
         Examples.UsingTheHookToSwitchBetweenElements
       pure
         [ D.p_

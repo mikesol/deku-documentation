@@ -23,7 +23,7 @@ app runExample = do
   let
     beat w t = filterMap (hush >>> map snd)
       $ dredge (delay (t * ms)) (pure w <|> sham (ivl.event $> w))
-  runExample do
+  runExample.t do
     text $ oneOf
       [ beat "Work it" 0
       , beat "Make it" 1
@@ -36,4 +36,4 @@ app runExample = do
       ]
 
 main :: Effect Unit
-main = void $ app (map (map void) runInBody')
+main = void $ app { t: map (map void) runInBody' }

@@ -18,7 +18,7 @@ aSimpleComponent = section
   { title: "A simple component"
   , topmatter:do
       Env { routeLink } <- getEnv
-      example <- getExample StartExapanded Nothing Examples.ASimpleComponent
+      example <- getExample StartExpanded Nothing Examples.ASimpleComponent
       pure [ D.p_
           [ text_
               "Let's start by making a simple comonent. It will result in a few different DOM elements being rendered, and we'll build upon it throughout this page. Here's the code."

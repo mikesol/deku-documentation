@@ -22,7 +22,7 @@ import Fetch (Method(..))
 app :: ExampleSignature
 app runExample = do
   i <- interval 7562
-  runExample do
+  runExample.t do
     text
       ( sham
           ( sampleBy (flip append)
@@ -53,4 +53,4 @@ app runExample = do
       )
 
 main :: Effect Unit
-main = void $ app (map (map void) runInBody')
+main = void $ app { t: map (map void) runInBody' }

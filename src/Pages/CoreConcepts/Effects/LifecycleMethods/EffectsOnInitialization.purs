@@ -2,47 +2,22 @@ module Pages.CoreConcepts.Effects.LifecycleMethods.EffectsOnInitialization where
 
 import Prelude
 
-import Components.Table (tableClass)
-import Contracts (Subsection, subsection)
+import Contracts (CollapseState(..), Subsection, getExample, subsection)
+import Data.Maybe (Maybe(..))
 import Deku.Control (text_)
 import Deku.DOM as D
+import Examples as Examples
 
 effectsOnInitialization :: Subsection
 effectsOnInitialization = subsection
   { title: "Creating our effect system"
-  , matter: pure
-      [ D.p_
-          [ text_
-              "Let's create a little game where a bunch of svg sprites move across the screen and you have to click them to score points."
-          ]
-      , D.table [ tableClass ]
-          [ D.tr_
-              [ D.th [ tableClass ] [ text_ "Name" ]
-              , D.th [ tableClass ] [ text_ "Purpose" ]
-              , D.th [ tableClass ] [ text_ "Signature" ]
-              ]
-          , D.tr_
-              [ D.td [ tableClass ] [ D.code__ "onWillMount" ]
-              , D.td [ tableClass ]
-                  [ text_
-                      "The effect will run before the component mounts on the screen."
-                  ]
-              , D.td [ tableClass ]
-                  [ D.code__
-                      """ Effect Unit -> Nut -> Nut"""
-                  ]
-              ]
-          , D.tr_
-              [ D.td [ tableClass ] [ D.code__ "onDidMount" ]
-              , D.td [ tableClass ]
-                  [ text_
-                      "The effect will run directly after the component mounts on the screen."
-                  ]
-              , D.td [ tableClass ]
-                  [ D.code__
-                      """ Effect Unit -> Nut -> Nut"""
-                  ]
-              ]
-          ]
-      ]
+  , matter: do
+      example <- getExample StartExpanded Nothing Examples.Game
+      pure
+        [ D.p_
+            [ text_
+                "Let's create a little game where a bunch of svg sprites move across the screen. Click them before they turn red to score points! If they turn red, you lose a point. Try not to dip below 0!"
+            ]
+        , example
+        ]
   }

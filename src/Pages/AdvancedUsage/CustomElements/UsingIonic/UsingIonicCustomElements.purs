@@ -11,7 +11,7 @@ usingIonicCustomElements :: Subsection
 usingIonicCustomElements = subsection
   { title: "Using our custom elements"
   , matter: do
-      example <- getExample StartExapanded Nothing Examples.MockDiscord
+      example <- getExample StartExpanded Nothing Examples.MockDiscord
       pure
         [ D.p__
             "We can define our Discord elements the same way we defined our custom anchor element above."

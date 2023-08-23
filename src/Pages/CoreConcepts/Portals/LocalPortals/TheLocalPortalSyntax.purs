@@ -13,7 +13,7 @@ theLocalPortalSyntax :: Subsection
 theLocalPortalSyntax = subsection
   { title: "The local portal syntax"
   , matter:  do
-      example <- getExample StartExapanded Nothing Examples.TheLocalPortalSyntax
+      example <- getExample StartExpanded Nothing Examples.TheLocalPortalSyntax
       pure [ D.p_
           [ text_
               "Local portals look just like global portals."

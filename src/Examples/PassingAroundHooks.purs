@@ -15,7 +15,7 @@ import ExampleAssitant (ExampleSignature)
 import FRP.Event (keepLatest)
 
 app :: ExampleSignature
-app runExample = runExample Deku.do
+app runExample = runExample.t Deku.do
   setIncrementer /\ incrementer <- useState'
   setGoodbye /\ goodbye <- useState true
   D.div_
@@ -53,4 +53,4 @@ app runExample = runExample Deku.do
     ]
 
 main :: Effect Unit
-main = void $ app (map (map void) runInBody')
+main = void $ app { t: map (map void) runInBody' }

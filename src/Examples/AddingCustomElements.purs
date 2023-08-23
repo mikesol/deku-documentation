@@ -46,7 +46,7 @@ myNiftyTarget = map
   )
 
 app :: ExampleSignature
-app runExample = runExample do
+app runExample = runExample.t do
   myNiftyAnchor
     [ myNiftyHref $ pure JoyrideFM
     , myNiftyTarget $ pure Blank
@@ -54,4 +54,4 @@ app runExample = runExample do
     [ text_ "hi" ]
 
 main :: Effect Unit
-main = void $ app (map (map void) runInBody')
+main = void $ app { t: map (map void) runInBody' }

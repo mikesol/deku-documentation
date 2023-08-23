@@ -15,7 +15,7 @@ import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
 
 app :: ExampleSignature
-app runExample = runExample Deku.do
+app runExample = runExample.t Deku.do
   aa <- useState true
   bb <- useState false
   cc <- useState true
@@ -52,4 +52,4 @@ app runExample = runExample Deku.do
     ]
 
 main :: Effect Unit
-main = void $ app (map (map void) runInBody')
+main = void $ app { t: map (map void) runInBody' }

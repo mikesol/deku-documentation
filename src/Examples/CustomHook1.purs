@@ -11,7 +11,7 @@ import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
 
 app :: ExampleSignature
-app runExample = runExample Deku.do
+app runExample = runExample.t Deku.do
   let
     myFortyTwoHook :: Hook String
     myFortyTwoHook makeHook = makeHook "forty-two"
@@ -20,4 +20,4 @@ app runExample = runExample Deku.do
     [ text_ fortyTwo ]
 
 main :: Effect Unit
-main = void $ app (map (map void) runInBody')
+main = void $ app { t: map (map void) runInBody' }

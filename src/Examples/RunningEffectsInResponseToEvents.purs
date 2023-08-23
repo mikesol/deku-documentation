@@ -15,7 +15,7 @@ import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
 
 app :: ExampleSignature
-app runExample = runExample Deku.do
+app runExample = runExample.t Deku.do
   setCurrentTime /\ currentTime <- useState'
   D.div_
     [ D.a
@@ -28,4 +28,4 @@ app runExample = runExample Deku.do
     ]
 
 main :: Effect Unit
-main = void $ app (map (map void) runInBody')
+main = void $ app { t: map (map void) runInBody' }

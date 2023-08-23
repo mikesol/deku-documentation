@@ -7,7 +7,6 @@ import Deku.Control (text_)
 import Deku.DOM as D
 import Pages.CoreConcepts.Effects.LifecycleMethods.Bravo (bravo)
 import Pages.CoreConcepts.Effects.LifecycleMethods.EffectsOnInitialization (effectsOnInitialization)
-import Pages.CoreConcepts.Effects.LifecycleMethods.EffectsOnTeardown (effectsOnTeardown)
 import Router.ADT (Route(..))
 
 lifecycleMethods :: Section
@@ -60,5 +59,5 @@ lifecycleMethods = section
             ]
         ]
   , subsections:
-      [ effectsOnInitialization, effectsOnTeardown, bravo ]
+      [ effectsOnInitialization, {-effectsOnTeardown,-} bravo ]
   }

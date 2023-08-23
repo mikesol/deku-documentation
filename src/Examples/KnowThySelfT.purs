@@ -25,7 +25,7 @@ focus:border-indigo-500 focus:ring-indigo-500
 sm:text-sm """
 
 app :: ExampleSignature
-app runExample = runExample Deku.do
+app runExample = runExample.t Deku.do
   setTxt /\ txt <- useState'
   setInput /\ input <- useState'
   D.div_
@@ -39,4 +39,4 @@ app runExample = runExample Deku.do
     ]
 
 main :: Effect Unit
-main = void $ app (map (map void) runInBody')
+main = void $ app { t: map (map void) runInBody' }

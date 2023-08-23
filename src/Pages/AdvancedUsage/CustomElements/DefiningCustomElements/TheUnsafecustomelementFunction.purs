@@ -12,7 +12,7 @@ theUnsafeCustomElementFunction :: Subsection
 theUnsafeCustomElementFunction = subsection
   { title: "The elementify2 function"
   , matter: do
-      example <- getExample StartExapanded Nothing Examples.UnsafeCustomElement
+      example <- getExample StartExpanded Nothing Examples.UnsafeCustomElement
       pure [ D.p_
           [ text_ "In order to create a custom element, use the "
           , D.code__ "elementify2"

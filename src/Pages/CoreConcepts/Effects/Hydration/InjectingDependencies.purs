@@ -12,7 +12,7 @@ injectingDependencies :: Subsection
 injectingDependencies = subsection
   { title: "Injecting dependencies"
   , matter: do
-      example <- getExample StartExapanded Nothing Examples.InjectingDependencies
+      example <- getExample StartExpanded Nothing Examples.InjectingDependencies
       pure [ D.p_
           [ text_
               "Let's explore the Deku-ian effect model with a concrete example. Imagine that you are building an app called Image Roulette that reports when a user is watching or not watching an image. Whenever an image comes into focus, you need to ping the backend that it is being viewed, and whenever an image goes offscreen, you need to report that it is no longer being viewed."

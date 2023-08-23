@@ -12,7 +12,7 @@ addingSeveralElements :: Subsection
 addingSeveralElements = subsection
   { title: "Adding several DOM elements as a component"
   , matter: do
-      example <- getExample StartExapanded Nothing
+      example <- getExample StartExpanded Nothing
         Examples.AddingSeveralElementsToPursx
       pure
         [ D.p_

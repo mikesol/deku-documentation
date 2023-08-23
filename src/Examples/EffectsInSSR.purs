@@ -41,7 +41,7 @@ myApp s = Deku.do
 app :: ExampleSignature
 app runExample = do
   res <- liftST $ runSSR (myApp "innnceeeppption")
-  runExample (myApp res)
+  runExample.t (myApp res)
 
 main :: Effect Unit
-main = void $ app (map (map void) runInBody')
+main = void $ app { t: map (map void) runInBody' }

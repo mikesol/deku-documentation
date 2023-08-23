@@ -29,7 +29,7 @@ focus:ring-indigo-500 focus:ring-offset-2 mr-6"""
 app :: ExampleSignature
 app runExample = do
   af <- animationFrame
-  runExample Deku.do
+  runExample.t Deku.do
     setThunk /\ thunk <- useState unit
     let
       motion = keepLatest $ thunk $>
@@ -66,4 +66,4 @@ app runExample = do
       ]
 
 main :: Effect Unit
-main = void $ app (map (map void) runInBody')
+main = void $ app { t: map (map void) runInBody' }

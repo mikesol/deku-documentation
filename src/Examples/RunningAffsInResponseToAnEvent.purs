@@ -17,7 +17,7 @@ import ExampleAssitant (ExampleSignature)
 import Fetch (Method(..), fetch)
 
 app :: ExampleSignature
-app runExample = runExample Deku.do
+app runExample = runExample.t Deku.do
   setResponse /\ response <- useState'
   D.div_
     [ D.a
@@ -37,4 +37,4 @@ app runExample = runExample Deku.do
     ]
 
 main :: Effect Unit
-main = void $ app (map (map void) runInBody')
+main = void $ app { t: map (map void) runInBody' }

@@ -24,7 +24,7 @@ hover:bg-COLOR-700 focus:outline-none focus:ring-2
 focus:ring-COLOR-500 focus:ring-offset-2"""
 
 app :: ExampleSignature
-app runExample = runExample Deku.do
+app runExample = runExample.t Deku.do
   setHrefSwitch /\ hrefSwitch <- useState false
   setStyleSwitch /\ styleSwitch <- useState false
   D.div_
@@ -49,4 +49,4 @@ app runExample = runExample Deku.do
     ]
 
 main :: Effect Unit
-main = void $ app (map (map void) runInBody')
+main = void $ app { t: map (map void) runInBody' }

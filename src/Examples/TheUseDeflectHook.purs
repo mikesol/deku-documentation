@@ -23,7 +23,7 @@ focus:ring-indigo-500 focus:ring-offset-2 mr-6""" :: String
 
 app :: ExampleSignature
 app runExample = do
-  runExample Deku.do
+  runExample.t Deku.do
     thunkMe /\ thunked <- useState unit
     setPresence /\ presence <- useHot false
     let counter = fold (\a _ -> a + 1) 0 thunked
@@ -60,4 +60,4 @@ app runExample = do
       ]
 
 main :: Effect Unit
-main = void $ app (map (map void) runInBody')
+main = void $ app { t: map (map void) runInBody' }

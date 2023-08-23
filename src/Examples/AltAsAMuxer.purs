@@ -16,7 +16,7 @@ app :: ExampleSignature
 app runExample = do
   i0 <- interval 200
   i1 <- interval 165
-  runExample do
+  runExample.t do
     D.div
       [ DA.klass
           ( sham
@@ -28,4 +28,4 @@ app runExample = do
       [ text_ "Par-tay!" ]
 
 main :: Effect Unit
-main = void $ app (map (map void) runInBody')
+main = void $ app { t: map (map void) runInBody' }

@@ -49,7 +49,7 @@ discordMessages
 discordMessages = elementify2 Nothing "discord-messages"
 
 app :: ExampleSignature
-app runExample = runExample do
+app runExample = runExample.t do
   discordMessages []
     [ discordMessage
         [ author $ pure "beluga"
@@ -74,4 +74,4 @@ app runExample = runExample do
     ]
 
 main :: Effect Unit
-main = void $ app (map (map void) runInBody')
+main = void $ app { t: map (map void) runInBody' }

@@ -19,9 +19,9 @@ theAnatomyOfAHook :: Subsection
 theAnatomyOfAHook = subsection
   { title: "Hooked on hooks"
   , matter: do
-      example <- getExample StartExapanded Nothing
+      example <- getExample StartExpanded Nothing
         Examples.CustomHook1
-      example2 <- getExample StartExapanded Nothing
+      example2 <- getExample StartExpanded Nothing
         Examples.CustomHook2
 
       pure [ D.p_

@@ -12,7 +12,7 @@ unlockingLevels :: Subsection
 unlockingLevels = subsection
   { title: "Unlocking levels"
   , matter: do
-      example <- getExample StartExapanded Nothing Examples.UnlockingLevels
+      example <- getExample StartExpanded Nothing Examples.UnlockingLevels
       pure [ D.p_
           [ text_
               "Local portals have one big advantage over global portals: they get cleaned up when the last reference to them is deleted. Because global portals can be used "

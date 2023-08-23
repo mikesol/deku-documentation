@@ -29,7 +29,7 @@ doAuth f = do
 app :: ExampleSignature
 app runExample = do
   authEvent <- liftST create
-  u <- runExample
+  u <- runExample.t
     ( text $ authEvent.poll <#>
         if _ then "Welcome back!" else "Please log in."
     )
@@ -37,4 +37,4 @@ app runExample = do
   pure u
 
 main :: Effect Unit
-main = void $ app (map (map void) runInBody')
+main = void $ app { t: map (map void) runInBody' }

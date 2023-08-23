@@ -13,7 +13,7 @@ theGlobalPortalSyntax :: Subsection
 theGlobalPortalSyntax = subsection
   { title: "The global portal syntax"
   , matter: do
-      example <- getExample StartExapanded Nothing Examples.TheGlobalPortalSyntax
+      example <- getExample StartExpanded Nothing Examples.TheGlobalPortalSyntax
       pure [ D.p_
           [ text_
               "The global portal syntax looks a lot like the hooks syntax. We use a left-bind in a "

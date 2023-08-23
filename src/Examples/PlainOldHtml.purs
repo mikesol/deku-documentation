@@ -47,7 +47,7 @@ myHtml =
 </nav>"""
 
 app :: ExampleSignature
-app runExample = runExample (myHtml ~~ {})
+app runExample = runExample.t (myHtml ~~ {})
 
 main :: Effect Unit
-main = void $ app (map (map void) runInBody')
+main = void $ app { t: map (map void) runInBody' }

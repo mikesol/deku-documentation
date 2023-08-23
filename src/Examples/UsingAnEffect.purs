@@ -13,7 +13,7 @@ import Web.HTML (window)
 import Web.HTML.Window (alert)
 
 app :: ExampleSignature
-app runExample = runExample do
+app runExample = runExample.t do
   D.span
     [ DL.click_ \_ ->
         window >>= alert "Thanks for clicking!"
@@ -22,4 +22,4 @@ app runExample = runExample do
     [ text_ "Click me!" ]
 
 main :: Effect Unit
-main = void $ app (map (map void) runInBody')
+main = void $ app { t: map (map void) runInBody' }
