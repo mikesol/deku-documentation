@@ -10,7 +10,7 @@ import Deku.Core (Nut)
 import Deku.DOM as D
 
 app :: ExampleSignature
-app runExample = runExample.t mySimpleComponent
+app runExample = runExample mySimpleComponent
   where
   -- `Nut` is the type of Deku components
   mySimpleComponent :: Nut
@@ -27,4 +27,4 @@ app runExample = runExample.t mySimpleComponent
       ]
 
 main :: Effect Unit
-main = void $ app { t: map (map void) runInBody' }
+main = void $ app (map (map void) runInBody')

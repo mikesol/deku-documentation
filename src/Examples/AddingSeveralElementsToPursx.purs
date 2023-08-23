@@ -56,7 +56,7 @@ myHtml =
   )
 
 app :: ExampleSignature
-app runExample = runExample.t Deku.do
+app runExample = runExample Deku.do
   setProjects /\ projects <- useState true
   setNero /\ nero <- useState true
   let
@@ -111,4 +111,4 @@ app runExample = runExample.t Deku.do
     ]
 
 main :: Effect Unit
-main = void $ app { t: map (map void) runInBody' }
+main = void $ app (map (map void) runInBody')

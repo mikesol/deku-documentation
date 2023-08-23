@@ -10,7 +10,7 @@ import Deku.Control (text_)
 import Deku.DOM as D
 
 app :: ExampleSignature
-app runExample = runExample.t
+app runExample = runExample
   ( D.div_
       [ D.span
           [ DA.style_ "color:teal;" ]
@@ -31,4 +31,4 @@ app runExample = runExample.t
   )
 
 main :: Effect Unit
-main = void $ app { t: map (map void) runInBody' }
+main = void $ app (map (map void) runInBody')

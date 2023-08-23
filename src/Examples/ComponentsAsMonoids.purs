@@ -60,7 +60,7 @@ toWord 12 = "twelfth"
 toWord _ = "nth"
 
 app :: ExampleSignature
-app runExample = runExample.t do
+app runExample = runExample do
   let
     styleF s t = D.span [ DA.klass_ s ] [ text_ t ]
     zipStyles = zipWith styleF textColors
@@ -84,4 +84,4 @@ app runExample = runExample.t do
     ]
 
 main :: Effect Unit
-main = void $ app { t: map (map void) runInBody' }
+main = void $ app (map (map void) runInBody')

@@ -7,7 +7,7 @@ import ExampleAssitant (ExampleSignature)
 import Deku.Control (text_)
 
 app :: ExampleSignature
-app runExample = runExample.t (text_ "Hello world")
+app runExample = runExample (text_ "Hello world")
 
 main :: Effect Unit
-main = void $ app { t: map (map void) runInBody' }
+main = void $ app (map (map void) runInBody')

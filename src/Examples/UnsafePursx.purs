@@ -8,7 +8,7 @@ import ExampleAssitant (ExampleSignature)
 import Deku.Pursx ((~!~))
 
 app :: ExampleSignature
-app runExample = runExample.t ("<h4>(un)safe!</h4>" ~!~ {})
+app runExample = runExample ("<h4>(un)safe!</h4>" ~!~ {})
 
 main :: Effect Unit
-main = void $ app { t: map (map void) runInBody' }
+main = void $ app (map (map void) runInBody')

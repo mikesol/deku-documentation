@@ -15,7 +15,7 @@ import Deku.DOM.Attributes as DA
 import Deku.DOM.Listeners as DL
 
 app :: ExampleSignature
-app runExample = runExample.t Deku.do
+app runExample = runExample Deku.do
   setPresence /\ presence <- useState true
   D.div_
     [ guard presence (text_ "Now you see me, ")
@@ -29,4 +29,4 @@ app runExample = runExample.t Deku.do
     ]
 
 main :: Effect Unit
-main = void $ app { t: map (map void) runInBody' }
+main = void $ app (map (map void) runInBody')

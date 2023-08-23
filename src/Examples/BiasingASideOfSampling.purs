@@ -16,7 +16,7 @@ import ExampleAssitant (ExampleSignature)
 import FRP.Event.Class ((<|**>), (<|*>), (<**|>), (<*|>))
 
 app :: ExampleSignature
-app runExample = runExample.t Deku.do
+app runExample = runExample Deku.do
   setSlider /\ slider <- useState'
   fixed
     [ D.div [ DA.klass_ "flex justify-around" ]
@@ -43,4 +43,4 @@ app runExample = runExample.t Deku.do
     ]
 
 main :: Effect Unit
-main = void $ app { t: map (map void) runInBody' }
+main = void $ app (map (map void) runInBody')

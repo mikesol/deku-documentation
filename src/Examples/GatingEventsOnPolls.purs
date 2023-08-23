@@ -20,7 +20,8 @@ app :: ExampleSignature
 app runExample = do
   i0 <- interval 200
   i1 <- interval 165
-  runExample.t do
+  let quit = i0.unsubscribe *> i1.unsubscribe
+  append <$> pure quit <*> runExample do
     D.div
       [ DA.klass
           ( sham
@@ -36,4 +37,4 @@ app runExample = do
       [ text_ "Par-tay!" ]
 
 main :: Effect Unit
-main = void $ app { t: map (map void) runInBody' }
+main = void $ app (map (map void) runInBody')

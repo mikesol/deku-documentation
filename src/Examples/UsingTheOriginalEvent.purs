@@ -16,7 +16,7 @@ import Web.HTML.Window (alert)
 import Web.PointerEvent.PointerEvent (toEvent)
 
 app :: ExampleSignature
-app runExample = runExample.t do
+app runExample = runExample do
   D.span
     [ DL.click_ \e -> do
         window >>= alert (unwrap (type_ $ toEvent e))
@@ -25,4 +25,4 @@ app runExample = runExample.t do
     [ text_ "Click me!" ]
 
 main :: Effect Unit
-main = void $ app { t: map (map void) runInBody' }
+main = void $ app (map (map void) runInBody')

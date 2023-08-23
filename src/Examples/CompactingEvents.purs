@@ -18,7 +18,7 @@ import ExampleAssitant (ExampleSignature)
 import FRP.Poll (Poll)
 
 app :: ExampleSignature
-app runExample = runExample.t Deku.do
+app runExample = runExample Deku.do
   setLeft /\ left <- useState 50.0
   setRight /\ right <- useState 50.0
   let
@@ -47,4 +47,4 @@ app runExample = runExample.t Deku.do
     ]
 
 main :: Effect Unit
-main = void $ app { t: map (map void) runInBody' }
+main = void $ app (map (map void) runInBody')

@@ -107,7 +107,7 @@ contentToPoll env = case _ of
     let
       m = WriterT do
         i <- new mempty
-        u <- exampleToApp e { t: \w -> write w i *> mempty, h: \c w -> write w i $> c }
+        u <- exampleToApp e (\w -> write w i *> mempty)
         n <- read i
         pure $ (flip Tuple) u $ fixed
           [ e #

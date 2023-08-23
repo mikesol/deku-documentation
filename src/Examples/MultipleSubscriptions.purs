@@ -21,7 +21,7 @@ import FRP.Poll (effectToPoll, sample_, sham)
 app :: ExampleSignature
 app runExample = do
   i <- interval 250
-  runExample.t Deku.do
+  runExample Deku.do
     setOnOff /\ onOff <- useState false
     let e = sham (sample_ (effectToPoll random) i.event)
     D.div_
@@ -43,4 +43,4 @@ app runExample = do
       ]
 
 main :: Effect Unit
-main = void $ app { t: map (map void) runInBody' }
+main = void $ app (map (map void) runInBody')

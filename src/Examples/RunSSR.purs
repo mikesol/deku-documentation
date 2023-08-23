@@ -25,7 +25,7 @@ myApp s = D.div_
 app :: ExampleSignature
 app runExample = do
   txt <- liftST $ runSSR (myApp "hello")
-  runExample.t do myApp txt
+  runExample do myApp txt
 
 main :: Effect Unit
-main = void $ app { t: map (map void) runInBody' }
+main = void $ app (map (map void) runInBody')

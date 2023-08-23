@@ -22,8 +22,8 @@ myNiftyAnchor
 myNiftyAnchor = elementify2 Nothing "a"
 
 app :: ExampleSignature
-app runExample = runExample.t do
+app runExample = runExample do
   myNiftyAnchor [] [ text_ "hi" ]
 
 main :: Effect Unit
-main = void $ app { t: map (map void) runInBody' }
+main = void $ app (map (map void) runInBody')

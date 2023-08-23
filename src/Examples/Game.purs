@@ -31,7 +31,7 @@ import Deku.Hooks (guardWith, useDynAtEnd, useHot, useState)
 import Deku.Toplevel (runInBody')
 import Effect (Effect)
 import Effect.Random (randomBool, randomRange)
-import ExampleAssitant (ExampleSignatureWithCancellation)
+import ExampleAssitant (ExampleSignature)
 import FRP.Event (Event, bindToEffect, bindToST, fold, mapAccum, subscribe, thankTheDriver)
 import FRP.Event.AnimationFrame (animationFrame)
 import FRP.Event.Time (interval)
@@ -172,11 +172,11 @@ mean ar =
 meanDiff :: Array Number -> Number
 meanDiff ar = mean $ zipWith (\a b -> 1.0 / ((a - b) / 1000.0)) (dropEnd 1 ar) (drop 1 ar)
 
-app :: ExampleSignatureWithCancellation
+app :: ExampleSignature
 app runExample = do
   unsub <- liftST $ new (pure unit)
-  let quit = join $ liftST $ read unsub
-  runExample.h quit Deku.do
+  let quit = join (liftST $ read unsub)
+  append <$> pure quit <*> runExample Deku.do
     setGameStarted /\ gameStarted <- useHot Nothing
     setScoreBudge /\ scoreBudge <- useState $ Just true
     let
@@ -281,4 +281,4 @@ app runExample = do
       )
 
 main :: Effect Unit
-main = void $ app { h: const $ map void <<< runInBody' }
+main = void $ app (map (map void) runInBody')

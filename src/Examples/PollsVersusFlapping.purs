@@ -15,7 +15,8 @@ import FRP.Poll (poll, sample, sham)
 app :: ExampleSignature
 app runExample = do
   i <- interval 250
-  runExample.t do
+  let quit = i.unsubscribe
+  append <$> pure quit <*> runExample do
     D.div_
       [ D.p_
           [ text
@@ -32,4 +33,4 @@ app runExample = do
       ]
 
 main :: Effect Unit
-main = void $ app { t: map (map void) runInBody' }
+main = void $ app (map (map void) runInBody')

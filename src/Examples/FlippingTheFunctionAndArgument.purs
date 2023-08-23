@@ -16,7 +16,7 @@ import ExampleAssitant (ExampleSignature)
 import FRP.Event.Class ((<**|>))
 
 app :: ExampleSignature
-app runExample = runExample.t Deku.do
+app runExample = runExample Deku.do
   setSlider1 /\ slider1 <- useState'
   setSlider2 /\ slider2 <- useState'
   fixed
@@ -31,4 +31,4 @@ app runExample = runExample.t Deku.do
     ]
 
 main :: Effect Unit
-main = void $ app { t: map (map void) runInBody' }
+main = void $ app (map (map void) runInBody')

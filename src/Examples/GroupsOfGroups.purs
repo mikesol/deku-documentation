@@ -31,7 +31,7 @@ derive instance Eq AlexandersDay
 derive instance Ord AlexandersDay
 
 app :: ExampleSignature
-app runExample = runExample.t Deku.do
+app runExample = runExample Deku.do
   setBadness /\ badness <- useState Bad
   D.div_
     [ D.div [ DA.klass_ "flex justify-between" ]
@@ -74,4 +74,4 @@ app runExample = runExample.t Deku.do
     ]
 
 main :: Effect Unit
-main = void $ app { t: map (map void) runInBody' }
+main = void $ app (map (map void) runInBody')

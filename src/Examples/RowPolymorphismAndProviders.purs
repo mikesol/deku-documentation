@@ -61,7 +61,7 @@ newtype Env = Env
 derive instance Newtype (Env) _
 
 app :: ExampleSignature
-app runExample = runExample.t Deku.do
+app runExample = runExample Deku.do
   let
     cont = do
       lg <- libGreat
@@ -84,4 +84,4 @@ app runExample = runExample.t Deku.do
     pure $ D.div_ [ text_ "In all honesty...", awe ]
 
 main :: Effect Unit
-main = void $ app { t: map (map void) runInBody' }
+main = void $ app (map (map void) runInBody')

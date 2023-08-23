@@ -65,9 +65,9 @@ fullApp = do
   pure $ D.div_ [ D.div_ [ mySignIn ], D.div_ [ myTable ] ]
 
 app :: ExampleSignature
-app runExample = runExample.t Deku.do
+app runExample = runExample Deku.do
   setIsSignedIn /\ isSignedIn <- useState false
   fullApp { setIsSignedIn, isSignedIn }
 
 main :: Effect Unit
-main = void $ app { t: map (map void) runInBody' }
+main = void $ app (map (map void) runInBody')

@@ -34,7 +34,7 @@ data UIState
   | Image { url :: String, watcherCount :: Int }
 
 app :: ExampleSignature
-app runExample = runExample.t Deku.do
+app runExample = runExample Deku.do
   let
     fetchNewRandomImage = do
       delay (Milliseconds 300.0)
@@ -101,4 +101,4 @@ type Loading =
 </div>"""
 
 main :: Effect Unit
-main = void $ app { t: map (map void) runInBody' }
+main = void $ app (map (map void) runInBody')

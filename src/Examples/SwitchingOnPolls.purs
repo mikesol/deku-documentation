@@ -18,7 +18,7 @@ app :: ExampleSignature
 app runExample = do
   i0 <- interval 250
   i1 <- interval 2000
-  runExample.t do
+  runExample do
     let
       b i = poll \e -> bindToEffect e \f -> (f <<< mul i) <$> random
     text
@@ -34,4 +34,4 @@ app runExample = do
       )
 
 main :: Effect Unit
-main = void $ app { t: map (map void) runInBody' }
+main = void $ app (map (map void) runInBody')

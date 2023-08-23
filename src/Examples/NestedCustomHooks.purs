@@ -23,7 +23,7 @@ hover:bg-pink-700 focus:outline-none focus:ring-2
 focus:ring-pink-500 focus:ring-offset-2 m-2""" :: String
 
 app :: ExampleSignature
-app runExample = runExample.t Deku.do
+app runExample = runExample Deku.do
   let
     hookusMinimus :: Int -> Hook ((Int -> Effect Unit) /\ Poll Int)
     hookusMinimus i makeHook = Deku.do
@@ -56,4 +56,4 @@ app runExample = runExample.t Deku.do
     ]
 
 main :: Effect Unit
-main = void $ app { t: map (map void) runInBody' }
+main = void $ app (map (map void) runInBody')

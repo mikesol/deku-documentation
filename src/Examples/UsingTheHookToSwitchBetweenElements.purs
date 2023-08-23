@@ -34,7 +34,7 @@ pic :: String
 pic = "https://picsum.photos/150"
 
 app :: ExampleSignature
-app runExample = runExample.t Deku.do
+app runExample = runExample Deku.do
   setImageType /\ imageType <- useState Image
   D.div_
     [ D.div_
@@ -89,4 +89,4 @@ app runExample = runExample.t Deku.do
     ]
 
 main :: Effect Unit
-main = void $ app { t: map (map void) runInBody' }
+main = void $ app (map (map void) runInBody')

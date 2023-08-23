@@ -26,7 +26,7 @@ focus:border-indigo-500 focus:ring-indigo-500
 sm:text-sm"""
 
 app :: ExampleSignature
-app runExample = runExample.t Deku.do
+app runExample = runExample Deku.do
   setNumber /\ number <- useRant' (map (_ `pow` 2))
   D.div_
     [ D.div_
@@ -47,4 +47,4 @@ app runExample = runExample.t Deku.do
     ]
 
 main :: Effect Unit
-main = void $ app { t: map (map void) runInBody' }
+main = void $ app (map (map void) runInBody')

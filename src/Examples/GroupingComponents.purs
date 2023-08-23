@@ -11,7 +11,7 @@ import Deku.Core (fixed)
 import Deku.DOM as D
 
 app :: ExampleSignature
-app runExample = runExample.t do
+app runExample = runExample do
   let
     eieio = fixed
       [ D.span [ DA.klass_ "text-blue-400" ] [ text_ "e " ]
@@ -35,4 +35,4 @@ app runExample = runExample.t do
     ]
 
 main :: Effect Unit
-main = void $ app { t: map (map void) runInBody' }
+main = void $ app (map (map void) runInBody')

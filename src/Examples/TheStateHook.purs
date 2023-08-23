@@ -24,7 +24,7 @@ focus:ring-indigo-500 focus:ring-offset-2 mr-6""" :: String
 app :: ExampleSignature
 app runExample = do
   n <- random
-  runExample.t Deku.do
+  runExample Deku.do
     setNumber /\ number <- useState n
     D.div_
       [ D.button
@@ -37,4 +37,4 @@ app runExample = do
       ]
 
 main :: Effect Unit
-main = void $ app { t: map (map void) runInBody' }
+main = void $ app (map (map void) runInBody')

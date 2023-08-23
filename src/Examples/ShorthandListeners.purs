@@ -11,8 +11,8 @@ import Effect.Class.Console (logShow)
 import ExampleAssitant (ExampleSignature)
 
 app :: ExampleSignature
-app runExample = runExample.t
+app runExample = runExample
   (D.input [ DA.xtypeRange, DL.numberOn_ DL.input logShow ] [])
 
 main :: Effect Unit
-main = void $ app { t: map (map void) runInBody' }
+main = void $ app (map (map void) runInBody')

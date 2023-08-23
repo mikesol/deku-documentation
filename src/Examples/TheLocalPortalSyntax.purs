@@ -54,7 +54,7 @@ myVideo = D.video
   ]
 
 app :: ExampleSignature
-app runExample = runExample.t Deku.do
+app runExample = runExample Deku.do
   vid <- portal1 myVideo
   setSquare /\ square <- useState TL
   D.div [ DA.klass_ "grid grid-cols-2" ]
@@ -65,4 +65,4 @@ app runExample = runExample.t Deku.do
     ]
 
 main :: Effect Unit
-main = void $ app { t: map (map void) runInBody' }
+main = void $ app (map (map void) runInBody')
