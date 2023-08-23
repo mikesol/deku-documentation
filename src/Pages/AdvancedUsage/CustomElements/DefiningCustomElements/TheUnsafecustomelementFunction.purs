@@ -10,12 +10,12 @@ import Examples as Examples
 
 theUnsafeCustomElementFunction :: Subsection
 theUnsafeCustomElementFunction = subsection
-  { title: "The unsafeCustomElement function"
+  { title: "The elementify2 function"
   , matter: do
       example <- getExample StartExapanded Nothing Examples.UnsafeCustomElement
       pure [ D.p_
           [ text_ "In order to create a custom element, use the "
-          , D.code__ "unsafeCustomElement"
+          , D.code__ "elementify2"
           , text_
               " function. It's actually pretty safe all things considered, as the worst it can do is crash your app. Unless your app is controlling traffic lights or something, in which case it is definitely not safe."
           ]

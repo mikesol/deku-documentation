@@ -40,7 +40,7 @@ workspace:
   extra_packages:
     hyrule:
       git: "https://github.com/mikesol/purescript-hyrule.git"
-      ref: "94eaa62"
+      ref: "8557fa8"
       dependencies:
         - effect
         - js-timers
@@ -55,20 +55,20 @@ workspace:
     deku:
       git: "https://github.com/mikesol/purescript-deku.git"
       subdir: deku
-      ref: "1bda1933822717328ff73b93394d35433f4e6e81"
+      ref: "9968d6ff"
       dependencies:
         - bolson
     deku-core:
       git: "https://github.com/mikesol/purescript-deku.git"
       subdir: deku-core
-      ref: "1bda1933822717328ff73b93394d35433f4e6e81"
+      ref: "9968d6ff"
       dependencies:
         - bolson
         - fast-vect
     deku-dom:
       git: "https://github.com/mikesol/purescript-deku.git"
       subdir: deku-dom
-      ref: "1bda1933822717328ff73b93394d35433f4e6e81"
+      ref: "9968d6ff"
       dependencies:
         - bolson
     tidy: 
@@ -88,7 +88,7 @@ workspace:
       - tuples
     tidy-codegen:
       repo: "https://github.com/natefaubion/purescript-tidy-codegen"
-      version: "type-applications"
+      version: "main"
       dependencies:
       - aff
       - ansi

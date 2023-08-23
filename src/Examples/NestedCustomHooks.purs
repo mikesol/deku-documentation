@@ -3,13 +3,13 @@ module Examples.NestedCustomHooks where
 import Prelude
 
 import Data.Tuple.Nested (type (/\), (/\))
-import Deku.DOM.Attributes as DA
 import Deku.Control (text, text_)
 import Deku.Core (Hook)
 import Deku.DOM as D
-import Deku.Do as Deku
-import Deku.Hooks (useRant, useState)
+import Deku.DOM.Attributes as DA
 import Deku.DOM.Listeners as DL
+import Deku.Do as Deku
+import Deku.Hooks (useHotRant, useState)
 import Deku.Toplevel (runInBody')
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
@@ -36,7 +36,7 @@ app runExample = runExample Deku.do
     hookusMaximus i makeHook = Deku.do
       setMinimus /\ minimus <- hookusMinimus i
       let added = add 1000 <$> minimus
-      maximus <- useRant added
+      maximus <- useHotRant added
       makeHook (setMinimus /\ minimus /\ maximus)
   setMinimus /\ minimus /\ maximus <- hookusMaximus 0
   D.div_

@@ -16,26 +16,35 @@ events :: Page
 events = page
   { route: Events
   , topmatter: pure
-      [ D.p [DA.klass_ "lead"]
+      [ D.p [ DA.klass_ "lead" ]
           [ text_ "The original FRP type. Always imitated, never duplicated."
           ]
       , D.p_
           [ text_
-              "If you've been following these docs from the beginning, you've been working with events for several pages already. Every time you used a state hook, you created an event as well as a pusher to that event."
+              "If you've been following these docs from the beginning, you've been working with events for several pages already. Every time you used a state hook, you created a "
+          , D.code__ "Poll"
+          , text_ " as well as a pusher to that "
+          , D.code__ "Poll."
           ]
       , psCode
           """Deku.do
   pusher /\ event <- useState 42"""
-      , D.p_
-          [ text_
-              "We've also seen that events can be mapped over, which is how we turned their raw data into assets like text and attributes."
+      ,  D.p_
+          [
+           text_ "As we'll see later, the "
+          , D.code__ "Poll"
+          , text_ " type is defined in terms of events. So, to get the next stripe on your Deku black-belt, you have to understand the Tao of "
+          , D.code__ "Event"
+          , text_ " before you understand the Te of "
+          , D.code__ "Poll"
+          , text_ "."
           ]
       , D.p_
           [ text_
-              " To create robust web apps with Deku, however, it's important to go to the heart of the "
+              "In this section, we'll look at the "
           , D.code__ "Event"
           , text_
-              " type constructor and understand its strengths and limitations. Armed with that knowledge, you'll be able to create truly reactive sites for the ages!"
+              " type constructor and canvas its strengths and limitations. Armed with that knowledge, you'll be able to create truly reactive sites for the ages!"
           ]
       ]
   , sections:

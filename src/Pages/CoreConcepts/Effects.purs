@@ -17,11 +17,14 @@ effects = page
   { route: Effects
   , topmatter: pure
       [ D.p [ DA.klass_ "lead" ]
-          [ text_ "How Deku manages side effects."
+          [ text_
+              "A lesson on inverting control, or \"noctlor\" (that's control inverted)."
           ]
       , D.p_
           [ text_
-              "If you're familiar with React or Halogen, the word \"effect\" is often used to refer to one of two related concepts:"
+              "If you're familiar with React or Halogen, the word "
+          , D.i__ "effect"
+          , text_ " is often used to refer to one of two related concepts:"
           ]
       , D.ul_
           [ D.li_
@@ -61,11 +64,31 @@ effects = page
           ]
       , D.p_
           [ text_
-              "While these patterns are possible in Deku, the framework prefers an alternate model of effect management where side effects are completely determined by the enclosing scope. For example, if there is a component X that requires the result of effect Y in order to mount and should perform effect Z when it leaves the page, those effects should be the responsibility of the element that controls the component's presence and absence."
+              "In both frameworks, the mere presence or absence of a component can trigger all sorts of side effects like REST API calls or robot arms moving. Deku offers no such accoutrements (sorry, robots). Instead, "
+          , D.i__
+              "side effects are completely initiated by a component's enclosing scope."
           ]
       , D.p_
           [ text_
-              "This section will explore Deku's effect philosophy and also present some methods to use when you need tools closer to the React/Halogen model."
+              "Consider the following typical flow in a garden-variety web app:"
+          ]
+      , D.ul_
+          [ D.li_
+              [ text_ "Someone clicks on a button, revealing a component." ]
+          , D.li_
+              [ text_ "This component has some effectful initialization code." ]
+          , D.li_
+              [ text_
+                  "When the component goes off the page, it also has some effectful teardown code."
+              ]
+          ]
+      , D.p_
+          [ text_
+              "In Deku, those effects are the responsibility of the parent component. If there's no parent, it's the responsibility of the app's initialization code."
+          ]
+      , D.p_
+          [ text_
+              "This section will explore Deku's effect philosophy and also present some strategies to use when you just can't shake those old React/Halogen effectful habits (we've all been there, you're not alone)."
           ]
       ]
   , sections:
