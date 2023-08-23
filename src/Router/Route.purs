@@ -24,7 +24,7 @@ route = root $ sum
   , "Alternatives": "functional-reactive-programming" / "alternatives" / noArgs
   , "Filtering": "functional-reactive-programming" / "filtering" / noArgs
   , "Sampling": "functional-reactive-programming" / "sampling" / noArgs
-  , "OtherInstances": "functional-reactive-programming" / "other-instances" /
+  , "OtherInstances": "functional-reactive-programming" / "event-miscellany" /
       noArgs
   , "Busses": "functional-reactive-programming" / "busses" / noArgs
   , "FixAndFold": "functional-reactive-programming" / "fix-and-fold" / noArgs

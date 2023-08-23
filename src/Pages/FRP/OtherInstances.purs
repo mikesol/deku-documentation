@@ -3,9 +3,10 @@ module Pages.FRP.OtherInstances where
 import Prelude
 
 import Contracts (Page, page)
-import Deku.DOM.Attributes as DA
 import Deku.Control (text_)
 import Deku.DOM as D
+import Deku.DOM.Attributes as DA
+import Pages.FRP.OtherInstances.Effects (effects)
 import Pages.FRP.OtherInstances.Semigroup (semigroup)
 import Router.ADT (Route(..))
 
@@ -34,5 +35,5 @@ otherInstances = page
           ]
       ]
   , sections:
-      [ semigroup ]
+      [ semigroup, effects ]
   }

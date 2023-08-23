@@ -13,7 +13,7 @@ usingFunctionsAsMonads :: Subsection
 usingFunctionsAsMonads = subsection
   { title: "Using functions as monads"
   , matter: do
-      example <- getExample StartExapanded Nothing
+      example <- getExample StartExpanded Nothing
         Examples.UsingFunctionsAsMonads
       pure
         [ D.p_
