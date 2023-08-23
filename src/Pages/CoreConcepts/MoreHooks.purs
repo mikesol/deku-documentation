@@ -3,13 +3,14 @@ module Pages.CoreConcepts.MoreHooks where
 import Prelude
 
 import Contracts (Page, page)
-import Deku.DOM.Attributes as DA
 import Deku.Control (text_)
 import Deku.DOM as D
+import Deku.DOM.Attributes as DA
 import Pages.CoreConcepts.MoreHooks.CustomHooks (customHooks)
-import Pages.CoreConcepts.MoreHooks.UseRef (useRef)
+import Pages.CoreConcepts.MoreHooks.FauxHooks (fauxHooks)
 import Pages.CoreConcepts.MoreHooks.UseMailboxed (useMailboxed)
 import Pages.CoreConcepts.MoreHooks.UseMemoized (useMemoized)
+import Pages.CoreConcepts.MoreHooks.UseRef (useRef)
 import Router.ADT (Route(..))
 
 moreHooks :: Page
@@ -25,5 +26,5 @@ moreHooks = page
           ]
       ]
   , sections:
-      [ useMemoized, useMailboxed, useRef, customHooks ]
+      [ useMemoized, useMailboxed, useRef, customHooks, fauxHooks ]
   }
