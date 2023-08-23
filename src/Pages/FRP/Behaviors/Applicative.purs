@@ -3,9 +3,8 @@ module Pages.FRP.Polls.Applicative where
 import Prelude
 
 import Contracts (Section, section)
-import Deku.Control (text, text_)
+import Deku.Control (text_)
 import Deku.DOM as D
-import Pages.FRP.Polls.Applicative.WhyPollsAreNotMonads (whyPollsAreNotMonads)
 import Pages.FRP.Polls.Applicative.PollsAsApplicatives (pollsAsApplicatives)
 import Pages.FRP.Polls.Applicative.PollsAsFunctors (pollsAsFunctors)
 
