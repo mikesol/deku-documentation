@@ -10,3 +10,4 @@ foreign import cruiseURL :: String
 foreign import nicholsonURL :: String
 foreign import belugaURL :: String
 foreign import beluMomURL :: String
+foreign import profileURL :: String
