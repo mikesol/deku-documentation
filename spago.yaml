@@ -40,35 +40,35 @@ workspace:
   extra_packages:
     hyrule:
       git: "https://github.com/mikesol/purescript-hyrule.git"
-      ref: "737c546"
+      ref: "f388528a9aaa25a5307bf67f6ed12d2097620929"
       dependencies:
         - effect
         - js-timers
-        - web-html
         - unsafe-reference
+        - web-html
         - web-uievents
     bolson:
-      repo: "https://github.com/mikesol/purescript-bolson.git"
-      version: "fantasy-land2"
+      git: "https://github.com/mikesol/purescript-bolson.git"
+      ref: "d87900ceedfb81814bd282be464fa4c8a55677c2"
       dependencies:
         - hyrule
+        - fast-vect
     deku:
       git: "https://github.com/mikesol/purescript-deku.git"
       subdir: deku
-      ref: "9968d6ff"
+      ref: "22d4756f831ac57c17286bae86a5799a0377239a"
       dependencies:
         - bolson
     deku-core:
       git: "https://github.com/mikesol/purescript-deku.git"
       subdir: deku-core
-      ref: "9968d6ff"
+      ref: "22d4756f831ac57c17286bae86a5799a0377239a"
       dependencies:
         - bolson
-        - fast-vect
     deku-dom:
       git: "https://github.com/mikesol/purescript-deku.git"
       subdir: deku-dom
-      ref: "9968d6ff"
+      ref: "22d4756f831ac57c17286bae86a5799a0377239a"
       dependencies:
         - bolson
     tidy: 
@@ -88,7 +88,7 @@ workspace:
       - tuples
     tidy-codegen:
       repo: "https://github.com/natefaubion/purescript-tidy-codegen"
-      version: "main"
+      version: "type-applications"
       dependencies:
       - aff
       - ansi
