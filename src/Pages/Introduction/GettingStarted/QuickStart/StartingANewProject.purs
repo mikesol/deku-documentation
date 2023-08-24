@@ -19,9 +19,11 @@ startingANewProject = subsection
         [ D.p_
             [ text_ "The easiest way to get up-and-running with Deku is to use "
             , D.code_ [ text_ "create-deku-app" ]
-            , text_ "."
+            , text_ " via "
+            , D.code_ [ text_ "npx" ]
+            , text_ " from your shell of choice."
             ]
-        , shSessionCode "$ npx create-deku-app my-awesome-app"
+        , shSessionCode "npx create-deku-app@0.0.8 my-awesome-app"
         , D.p_
             [ text_
                 "This will create a new Deku app in the directory "
