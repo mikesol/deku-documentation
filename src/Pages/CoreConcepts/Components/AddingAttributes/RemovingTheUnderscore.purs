@@ -20,11 +20,11 @@ removingTheUnderscore = subsection
           , psCode "D.span__ \"I exist\""
           , text_
               "When we added the style attribute to make the color teal, we dropped the underscores. Furthermore, we added a "
-          , D.code_ [ text_ "text_" ]
+          , D.code_ [ text_ "text" ]
           , text_ " to typeset the text."
           , psCode
               """D.span
-  [ D.Style !:= "color:teal;" ]
+  [ DA.style_ "color:teal;" ]
   [ text_ "I exist" ]"""
           ]
       , proTip
@@ -36,11 +36,11 @@ removingTheUnderscore = subsection
               , text_ ", make sure to "
               , D.i_ [ text_ "also" ]
               , text_ " add an array with "
-              , D.code_ [ text_ "text_" ]
+              , D.code_ [ text_ "text" ]
               , text_ " followed by your text inside of it. This is because "
               , D.code_ [ text_ "D.span__ \"foo\"" ]
               , text_ " is shorthand for "
-              , D.code_ [ text_ "D.span_ [ text_ \"foo\" ]" ]
+              , D.code_ [ text_ "D.span_ [ text \"foo\" ]" ]
               , text_ "."
               ]
           }

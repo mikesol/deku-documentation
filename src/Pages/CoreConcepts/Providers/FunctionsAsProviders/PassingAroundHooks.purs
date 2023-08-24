@@ -2,27 +2,20 @@ module Pages.CoreConcepts.Providers.FunctionsAsProviders.PassingAroundHooks wher
 
 import Prelude
 
-import Components.Code (psCodeWithLink)
-import Components.ExampleBlockquote (exampleBlockquote)
-import Contracts (Subsection, subsection)
-import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass_)
-import Deku.Control (guard, text, text_)
+import Contracts (CollapseState(..), Subsection, getExample, subsection)
+import Data.Maybe (Maybe(..))
+import Deku.DOM.Attributes as DA
+import Deku.Control (text_)
 import Deku.DOM as D
-import Deku.Do as Deku
-import Deku.Hooks (useHot, useState, useState')
-import Deku.Listeners (click, click_)
 import Examples as Examples
-import FRP.Event (keepLatest)
 
 passingAroundHooks :: Subsection
 passingAroundHooks = subsection
   { title: "Passing around hooks"
-  , matter: pure
-      [ let
-          lt t = D.span [klass_ "line-through"] [ text_ t ]
-        in
-          D.p_
+  , matter: do
+      let lt t = D.span [DA.klass_ "line-through"] [ text_ t ]
+      example <- getExample StartCollapsed Nothing Examples.PassingAroundHooks
+      pure [ D.p_
             [ text_
                 "As we saw in the first example on this page, we can send the results of hooks - events and pushers - down through our provider system. This "
             , lt "provides"
@@ -37,53 +30,13 @@ passingAroundHooks = subsection
           [ text_
               "The following example is slightly contrived (to be fair, they all are...), but we'll create a small UI where you have to follow the following steps in order."
           ]
-      , psCodeWithLink Examples.PassingAroundHooks
       , D.ol_
           [ D.li_ [ text_ "Click ", D.b__ "Cede control." ]
           , D.li_ [ text_ "Click ", D.b__ "Increment", text_ " several times." ]
           , D.li_ [ text_ "Click ", D.b__ "Goodbye" ]
           , D.li_ [ text_ "Click ", D.b__ "Increment", text_ " again." ]
           ]
-      , exampleBlockquote
-          [ Deku.do
-              setIncrementer /\ incrementer <- useState'
-              setGoodbye /\ goodbye <- useState true
-              D.div_
-                [ D.a
-                    [klass_ "cursor-pointer",
-                        ( click $ keepLatest $ incrementer <#>
-                            \{ setNumber, number } -> number <#>
-                              (add 1 >>> setNumber)
-                        )
-                    ]
-                    [ text_ "Increment" ]
-                , D.div_
-                    [ D.a
-                        [klass_ "cursor-pointer"
-                            , (click_ (setGoodbye false))
-                        ]
-                        [ text_ "Goodbye" ]
-                    ]
-                , D.div_
-                    [ guard goodbye Deku.do
-                        setNumber /\ number <- useHot 0
-                        D.div_
-                          [ D.div_
-                              [ text (number <#> show >>> ("n = " <> _))
-                              ]
-                          , D.div_
-                              [ D.a
-                                  [klass_ "cursor-pointer" 
-                                      , click_
-                                          (setIncrementer { setNumber, number })
-                                      
-                                  ]
-                                  [ text_ "Cede control" ]
-                              ]
-                          ]
-                    ]
-                ]
-          ]
+      , example
       , D.p__
           "In this code, we've gotten ourselves into the curious situation where increment is wired up to a listener that can no longer possibly listen: there is no path in the UI that would lead to the counter reappearing."
       , D.p__

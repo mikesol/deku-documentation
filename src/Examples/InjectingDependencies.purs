@@ -1,20 +1,21 @@
 module Examples.InjectingDependencies where
 
+import Deku.Toplevel (runInBody')
+import Effect (Effect)
 import Prelude
+import ExampleAssitant (ExampleSignature)
 
 import Data.Int (floor)
 import Data.JSDate (getTime, now)
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute ((!:=))
-import Deku.Attributes (klass_)
-import Deku.Control (blank, text, text_, (<#~>))
+import Deku.DOM.Attributes as DA
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Deku.Do as Deku
-import Deku.Hooks (useState)
-import Deku.Listeners (click)
+import Deku.Hooks (useState, (<#~>))
+import Deku.DOM.Listeners as DL
 import Deku.Pursx ((~~))
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
+
 import Effect.Aff (Milliseconds(..), delay, launchAff_)
 import Effect.Class (liftEffect)
 import Effect.Random (random)
@@ -32,8 +33,8 @@ data UIState
   | Loading
   | Image { url :: String, watcherCount :: Int }
 
-main :: Effect Unit
-main = runInBody Deku.do
+app :: ExampleSignature
+app runExample = runExample Deku.do
   let
     fetchNewRandomImage = do
       delay (Milliseconds 300.0)
@@ -50,14 +51,14 @@ main = runInBody Deku.do
   setUIState /\ uiState <- useState Beginning
   D.div_
     [ D.button
-        [ klass_ buttonClass
+        [ DA.klass_ buttonClass
         , let
             fetcher = do
               newRandomImage <- fetchNewRandomImage
               liftEffect $ setUIState $ Image newRandomImage
             loader = liftEffect $ setUIState Loading
           in
-            click $ uiState <#> case _ of
+            DL.runOn DL.click $ uiState <#> case _ of
               Beginning -> do
                 launchAff_ do
                   loader
@@ -75,9 +76,9 @@ main = runInBody Deku.do
         ]
     , D.div_
         [ uiState <#~> case _ of
-            Beginning -> blank
+            Beginning -> mempty
             Image { url, watcherCount } -> D.div_
-              [ D.img [ D.Src !:= url ] []
+              [ D.img [ DA.src_ url ] []
               , D.div_
                   [ text_ $
                       "Watcher count (including you): " <> show
@@ -85,7 +86,7 @@ main = runInBody Deku.do
                   ]
               ]
             Loading ->
-              D.div [ klass_ "p-10" ]
+              D.div [ DA.klass_ "p-10" ]
                 [ ((Proxy :: _ Loading) ~~ {}) ]
         ]
     ]
@@ -98,3 +99,6 @@ type Loading =
     </svg>
     <span class="sr-only">Loading...</span>
 </div>"""
+
+main :: Effect Unit
+main = void $ app (map (map void) runInBody')

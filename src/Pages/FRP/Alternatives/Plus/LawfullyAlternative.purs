@@ -2,17 +2,19 @@ module Pages.FRP.Alternatives.Plus.LawfullyAlternative where
 
 import Prelude
 
-import Contracts (Env(..), Subsection, subsection)
-import Deku.Attributes (klass_)
-import Deku.Control (text_)
+import Contracts (Env(..), Subsection, getEnv, subsection)
+import Deku.DOM.Attributes as DA
+
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Router.ADT (Route(..))
 
 lawfullyAlternative :: Subsection
 lawfullyAlternative = subsection
   { title: "Lawfully alternative"
-  , matter: \(Env { routeLink }) ->
-      [ D.p_
+  , matter: do
+      Env { routeLink } <- getEnv
+      pure [ D.p_
           [ text_ "Let's verify that "
           , D.code__ "alt"
           , text_ " and "
@@ -65,7 +67,7 @@ lawfullyAlternative = subsection
           , text_
               " section, the composite event only fires after both sides are fired. As one side never fires, the whole thing never fires, so it is empty."
           ]
-      , D.div [ klass_ "text-right" ] [ text_ "∎" ]
+      , D.div [ DA.klass_ "text-right" ] [ text_ "∎" ]
 
       ]
   }

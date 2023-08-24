@@ -3,7 +3,7 @@ module Pages.FRP.Filtering.Filter where
 import Prelude
 
 import Contracts (Section, section)
-import Deku.Control (text_)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Pages.FRP.Filtering.Filter.FilteringAnEvent (filteringAnEvent)
 import Pages.FRP.Filtering.Filter.PerformanceConsiderations (performanceConsiderations)

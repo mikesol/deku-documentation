@@ -3,7 +3,7 @@ module Pages.FRP.Applicatives.MonadsAndFlattening where
 import Prelude
 
 import Contracts (Section, section)
-import Deku.Control (text_)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Pages.FRP.Applicatives.MonadsAndFlattening.TheKeepLatestFunction (theKeepLatestFunction)
 import Pages.FRP.Applicatives.MonadsAndFlattening.EventAsAMonad (eventAsAMonad)

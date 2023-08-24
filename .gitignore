@@ -39,3 +39,8 @@ output-es
 
 # vite
 /dist
+
+# homegrown
+src/index.js
+src/Examples.purs
+src/Examples.js

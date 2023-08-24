@@ -5,6 +5,10 @@ module Components.HTML2Deku.Component
 
 import Prelude
 
+import Components.HTML2Deku.HalogenParser (HtmlAttribute(..), HtmlNode(..))
+import Components.HTML2Deku.HalogenParser as HalogenParser
+import Components.HTML2Deku.Swal (swal)
+import Components.HTML2Deku.Yarn (capitalize)
 import Data.Array (intercalate, uncons)
 import Data.Array as A
 import Data.Compactable (compact)
@@ -13,22 +17,19 @@ import Data.List (List(..))
 import Data.Maybe (Maybe(..))
 import Data.String (Pattern(..), Replacement(..), replaceAll, split, drop, take)
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute ((!:=), (:=))
 import Deku.Control (text_)
 import Deku.Core (Nut)
 import Deku.DOM as D
-import Deku.Hooks (useState')
+import Deku.DOM.Attributes as DA
+import Deku.DOM.Listeners as DL
+import Deku.DOM.Self as Self
 import Deku.Do as Deku
-import Deku.Listeners (click)
+import Deku.Hooks (useState')
 import Dodo (plainText, print, twoSpaces)
-import Components.HTML2Deku.HalogenParser (HtmlAttribute(..), HtmlNode(..))
-import Components.HTML2Deku.HalogenParser as HalogenParser
 import Partial.Unsafe (unsafePartial)
-import Components.HTML2Deku.Swal (swal)
 import Tidy (FormatOptions, defaultFormatOptions, formatExpr, toDoc)
 import Tidy.Codegen (binaryOp, exprApp, exprArray, exprCtor, exprIdent, exprOp, exprString)
-import Web.HTML.HTMLTextAreaElement (value)
-import Components.HTML2Deku.Yarn (capitalize)
+import Web.HTML.HTMLTextAreaElement (setValue, value)
 
 dekuizeU :: String -> String
 dekuizeU = dekuize true
@@ -81,7 +82,7 @@ toDeku l = print plainText
                 in
                   exprOp
                     (exprCtor ("D." <> dekuizeU k))
-                    [ binaryOp "!:=" (exprString v) ]
+                    [ binaryOp ":=" (exprString v) ]
           in
             case attributes of
               Nil -> []
@@ -106,7 +107,7 @@ toDeku l = print plainText
     in
       if nw == "" then Nothing
       else Just
-        (unsafePartial $ exprApp (exprIdent "text_") [ exprString str ])
+        (unsafePartial $ exprApp (exprIdent "text") [ exprString str ])
   go (HtmlComment _) = Nothing
 
 initialTxt :: String
@@ -122,11 +123,11 @@ html2deku = Deku.do
   setInput /\ input <- useState'
   D.div_
     [ D.div_
-        [ D.span [ D.Class !:= "text-xl" ] [ text_ "html2deku" ]
+        [ D.span [ DA.klass_ "text-xl" ] [ text_ "html2deku" ]
         , D.button
-            [ D.Class !:=
+            [ DA.klass_
                 "ml-2 inline-flex items-center rounded border border-transparent bg-indigo-600 px-2.5 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-            , click $ input <#> \i -> do
+            , DL.runOn DL.click $ input <#> \i -> do
                 v <- value i
                 let parsed = HalogenParser.parse v
                 case parsed of
@@ -138,18 +139,18 @@ html2deku = Deku.do
         ]
     , D.div_
         [ D.textarea
-            [ D.Rows !:= "6"
-            , D.Class !:= "border-2 w-full"
-            , D.SelfT !:= setInput
+            [ DA.rows_ "6"
+            , DA.klass_ "border-2 w-full"
+            , Self.selfT_ setInput
             ]
 
             [ text_ initialTxt ]
         ]
     , D.div_
         [ D.textarea
-            [ D.Rows !:= "6"
-            , D.Class !:= "border-2 w-full"
-            , purs <#> (D.Value := _)
+            [ DA.rows_ "6"
+            , DA.klass_ "border-2 w-full"
+            , Self.selfT $ purs <#> setValue
             ]
 
             ( let

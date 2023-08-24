@@ -1,5 +1,6 @@
 module Examples.HandRolledEvent where
 
+import Deku.Toplevel (runInBody')
 import Prelude
 
 import Control.Monad.Error.Class (throwError)
@@ -9,6 +10,7 @@ import Effect.Exception (error)
 import Effect.Random (random)
 import Effect.Ref (new, read, write)
 import Effect.Timer (clearInterval, setInterval)
+import ExampleAssitant (ExampleSignature)
 import Web.DOM.Document (createElement, createTextNode)
 import Web.DOM.Element (setAttribute, toEventTarget, toNode)
 import Web.DOM.Node (appendChild, setTextContent)
@@ -22,8 +24,8 @@ import Web.HTML.Window (document)
 
 type Event a = (a -> Effect Unit) -> Effect (Effect Unit)
 
-main :: Effect Unit
-main = do
+app :: ExampleSignature
+app runExample = do
   bod <- window >>= document >>= body >>= maybe
     (throwError $ error "Could not find body")
     pure
@@ -60,3 +62,7 @@ main = do
         setTextContent "Turn on event" (toNode anchor)
   addEventListener (EventType "click") el true
     (toEventTarget anchor)
+  pure (pure unit)
+
+main :: Effect Unit
+main = void $ app (map (map void) runInBody')

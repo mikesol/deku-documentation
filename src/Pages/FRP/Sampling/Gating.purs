@@ -2,27 +2,28 @@ module Pages.FRP.Sampling.Gating where
 
 import Prelude
 
-import Contracts (Env(..), Section, section)
-import Deku.Control (text_)
+import Contracts (Env(..), Section, getEnv, section)
+import Deku.Control (text, text_)
 import Deku.DOM as D
-import Pages.FRP.Sampling.Gating.GatingEventsOnBehaviors (gatingEventsOnBehaviors)
-import Pages.FRP.Sampling.Gating.SwitchingOnBehaviors (switchingOnBehaviors)
+import Pages.FRP.Sampling.Gating.GatingEventsOnPolls (gatingEventsOnPolls)
+import Pages.FRP.Sampling.Gating.SwitchingOnPolls (switchingOnPolls)
 import Router.ADT (Route(..))
 
 gating :: Section
 gating = section
   { title: "Gating"
-  , topmatter: \(Env { routeLink }) ->
-      [ D.p_
+  , topmatter: do
+      Env { routeLink } <- getEnv
+      pure [ D.p_
           [ text_ "A close cousin of sampling is "
           , D.b__ "gating"
           , text_
-              " whereby an event's emission is gated by the value of a behavior. This is a close cousin of "
+              " whereby an event's emission is gated by the value of a poll. This is a close cousin of "
           , routeLink Filtering
           , text_
               " with the difference that the filter is dynamic instead of static."
           ]
       ]
   , subsections:
-      [ gatingEventsOnBehaviors, switchingOnBehaviors ]
+      [ gatingEventsOnPolls, switchingOnPolls ]
   }

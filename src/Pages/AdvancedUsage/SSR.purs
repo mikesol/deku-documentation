@@ -3,7 +3,7 @@ module Pages.AdvancedUsage.SSR where
 import Prelude
 
 import Contracts (Page, page)
-import Deku.Attribute ((!:=))
+import Deku.DOM.Attributes as DA
 import Deku.Control (text_)
 import Deku.DOM as D
 import Pages.AdvancedUsage.SSR.HydratingAStaticSite (hydratingAStaticSite)
@@ -14,7 +14,7 @@ sSR :: Page
 sSR = page
   { route: SSR
   , topmatter: pure
-      [ D.p [D.Class !:= "lead"]
+      [ D.p [DA.klass_ "lead"]
           [ text_ "Server-side rendering or Static site rendering? Choose two!"
           ]
       , D.p_

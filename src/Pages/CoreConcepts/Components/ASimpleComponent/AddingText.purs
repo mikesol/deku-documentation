@@ -3,7 +3,7 @@ module Pages.CoreConcepts.Components.ASimpleComponent.AddingText where
 import Prelude
 
 import Contracts (Subsection, subsection)
-import Deku.Control (text_)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 
 addingText :: Subsection
@@ -12,7 +12,7 @@ addingText = subsection
   , matter: pure
       [ D.p_
           [ text_ "Text in deku is created via the "
-          , D.code_ [ text_ "text_" ]
+          , D.code_ [ text_ "text" ]
           , text_ " function. Additionally, for elements that "
           , D.i_ [ text_ "only" ]
           , text_

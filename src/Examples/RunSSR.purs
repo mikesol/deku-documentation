@@ -2,12 +2,18 @@ module Examples.RunSSR where
 
 import Prelude
 
-import Components.Code (htmlCode)
-import Control.Monad.ST (run)
+import Control.Monad.ST.Class (liftST)
+import Deku.Control (text_)
 import Deku.Core (Nut)
 import Deku.DOM as D
-import Deku.Toplevel (runInBody, runSSR)
+import Deku.DOM.Attributes as DA
+import Deku.Toplevel (runInBody', runSSR)
 import Effect (Effect)
+import ExampleAssitant (ExampleSignature)
+
+htmlCode :: String -> Nut
+htmlCode code = D.pre [ DA.klass_ "prism-code language-markup" ]
+  [ D.code_ [ text_ code ] ]
 
 myApp :: String -> Nut
 myApp s = D.div_
@@ -16,7 +22,10 @@ myApp s = D.div_
   , htmlCode s
   ]
 
+app :: ExampleSignature
+app runExample = do
+  txt <- liftST $ runSSR (myApp "hello")
+  runExample do myApp txt
+
 main :: Effect Unit
-main = runInBody do
-  myApp
-    (run (runSSR (myApp "hello")))
+main = void $ app (map (map void) runInBody')

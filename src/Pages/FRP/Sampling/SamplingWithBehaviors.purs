@@ -1,26 +1,27 @@
-module Pages.FRP.Sampling.SamplingWithBehaviors where
+module Pages.FRP.Sampling.SamplingWithPolls where
 
 import Prelude
 
 import Components.ProTip (proTip)
 import Components.TargetedLink (targetedLink)
-import Contracts (Env(..), Section, section)
-import Deku.Control (text_)
+import Contracts (Env(..), Section, getEnv, section)
+import Deku.Control (text, text_)
 import Deku.DOM as D
-import Pages.FRP.Sampling.SamplingWithBehaviors.SamplingABehaviorAndDiscardingTheEvent (samplingABehaviorAndDiscardingTheEvent)
-import Pages.FRP.Sampling.SamplingWithBehaviors.SamplingABehaviorWithACustomFunction (samplingABehaviorWithACustomFunction)
-import Pages.FRP.Sampling.SamplingWithBehaviors.SamplingABehaviorWithAnEvent (samplingABehaviorWithAnEvent)
+import Pages.FRP.Sampling.SamplingWithPolls.SamplingAPollAndDiscardingTheEvent (samplingAPollAndDiscardingTheEvent)
+import Pages.FRP.Sampling.SamplingWithPolls.SamplingAPollWithACustomFunction (samplingAPollWithACustomFunction)
+import Pages.FRP.Sampling.SamplingWithPolls.SamplingAPollWithAnEvent (samplingAPollWithAnEvent)
 import Router.ADT (Route(..))
 
-samplingWithBehaviors :: Section
-samplingWithBehaviors = section
-  { title: "Sampling with behaviors"
-  , topmatter: \(Env { routeLink }) ->
-      [ D.p_
+samplingWithPolls :: Section
+samplingWithPolls = section
+  { title: "Sampling with polls"
+  , topmatter: do
+      Env { routeLink } <- getEnv
+      pure [ D.p_
           [ text_ "As we saw in the section on "
-          , routeLink Behaviors
+          , routeLink Polls
           , text_
-              " , we need to sample a behavior on an event to see how it behaves. In this section, we'll go over the various behavior-sampling functions provided by "
+              " , we need to sample a poll on an event to see how it behaves. In this section, we'll go over the various poll-sampling functions provided by "
           , D.code__ "purescript-hyrule"
           , text_ "."
           ]
@@ -43,8 +44,8 @@ samplingWithBehaviors = section
           }
       ]
   , subsections:
-      [ samplingABehaviorWithAnEvent
-      , samplingABehaviorAndDiscardingTheEvent
-      , samplingABehaviorWithACustomFunction
+      [ samplingAPollWithAnEvent
+      , samplingAPollAndDiscardingTheEvent
+      , samplingAPollWithACustomFunction
       ]
   }

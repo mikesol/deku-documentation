@@ -3,16 +3,17 @@ module Examples.CustomHook2 where
 import Prelude
 
 import Assets (cruiseURL, nicholsonURL)
-import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.Core (Hook)
 import Deku.DOM as D
+import Deku.DOM.Attributes as DA
 import Deku.Do as Deku
-import Deku.Toplevel (runInBody)
+import Deku.Toplevel (runInBody')
 import Effect (Effect)
+import ExampleAssitant (ExampleSignature)
 
-main :: Effect Unit
-main = runInBody Deku.do
+app :: ExampleSignature
+app runExample = runExample Deku.do
   let
     hook1 :: Hook Boolean
     hook1 cruise = cruise true
@@ -23,11 +24,14 @@ main = runInBody Deku.do
   r2 <- hook2
   D.div_
     [ D.p_ [ text_ "I want the ", D.code__ $ show r1, text_ "th!" ]
-    , D.img [ D.Src !:= cruiseURL ] []
+    , D.img [ DA.src_ cruiseURL ] []
     , D.p_
         [ text_ "You can't handle the "
         , D.code__ $ show r2
         , text_ "th!"
         ]
-    , D.img [ D.Src !:= nicholsonURL ] []
+    , D.img [ DA.src_ nicholsonURL ] []
     ]
+
+main :: Effect Unit
+main = void $ app (map (map void) runInBody')

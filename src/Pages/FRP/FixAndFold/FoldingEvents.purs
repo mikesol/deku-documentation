@@ -3,7 +3,7 @@ module Pages.FRP.FixAndFold.FoldingEvents where
 import Prelude
 
 import Contracts (Section, section)
-import Deku.Control (text_)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Pages.FRP.FixAndFold.FoldingEvents.ASimpleCounter (aSimpleCounter)
 import Pages.FRP.FixAndFold.FoldingEvents.TheFoldFunction (theFoldFunction)

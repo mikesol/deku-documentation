@@ -2,21 +2,12 @@ module Pages.CoreConcepts.State.StateWithoutInitialValues.ANoteOnMemoization whe
 
 import Prelude
 
-import Components.Code (psCode, psCodeWithLink)
-import Components.ExampleBlockquote (exampleBlockquote)
-import Contracts (Subsection, subsection)
-import Control.Alt ((<|>))
+import Contracts (CollapseState(..), Subsection, getExample, subsection)
+import Data.Maybe (Maybe(..))
 import Data.String (replaceAll, Pattern(..), Replacement(..))
-import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass_)
-import Deku.Control (guard, text, text_)
+import Deku.Control (text_)
 import Deku.DOM as D
-import Deku.Do as Deku
-import Deku.Hooks (useHot', useState, useState')
-import Deku.Listeners (click, click_)
-import Effect.Random (random)
 import Examples as Examples
-import FRP.Event.Effect (bindToEffect)
 
 -- bg-fuchsia-600
 -- hover:bg-fuchsia-700 
@@ -32,13 +23,18 @@ focus:ring-COLOR-500 focus:ring-offset-2"""
 
 aNoteOnMemoization :: Subsection
 aNoteOnMemoization = subsection
-  { title: "Memoization and useHot"
-  , matter: pure
-      [ D.p_
+  { title: "The useHot hook"
+  , matter: do
+      example <- getExample StartCollapsed Nothing
+        Examples.ANoteOnMemoization
+      example2 <- getExample StartCollapsed Nothing
+        Examples.AWayToMemoize
+      pure
+       [ D.p_
           [ text_ "It's important to know that the hooks above are "
           , D.i__ "not"
           , text_
-              " memoized, meaning that they do not store their most recent value. They simply pass through whatever comes down the pipe. This comes from Deku's tradition as an engine for games and interactive art, where events are often streams of data. However, in certain cases, like when an event holds a user profile, you always want to use the most recent value."
+              " memoized, meaning that they do not store their most recent value. They simply pass through whatever comes down the pipe. This comes from Deku's tradition as an engine for games and interactive art, where we need to compose together streams of data. However, in certain cases, like when we're polling a user profile, you always want to use the most recent value."
           ]
       , D.p_
           [ text_
@@ -52,37 +48,7 @@ aNoteOnMemoization = subsection
           , D.b__ "A"
           , text_ " again a few times. What do you think will happen?"
           ]
-      , psCodeWithLink Examples.ANoteOnMemoization
-      , exampleBlockquote
-          [ Deku.do
-              setNumber /\ number <- useState'
-              setPresence /\ presence <- useState false
-              D.div_
-                [ D.div_
-                    [ text $ (bindToEffect (pure unit) (pure random) <|> number)
-                        <#> show >>>
-                          ("Here's a random number: " <> _)
-                    ]
-                , D.div_
-                    [ D.button
-                        [klass_ $ buttonClass "pink",
-                          click_ $ random >>= setNumber]
-                        [ text_ "A"
-                        ]
-                    , D.button
-                        [klass_ $ buttonClass "green",
-                          click $ presence <#> not >>> setPresence]
-                        [ text_ "B"
-                        ]
-                    ]
-                , D.div_
-                    [ guard presence
-                        $ text
-                        $ (number) <#> show >>>
-                            ("Here's the same random number: " <> _)
-                    ]
-                ]
-          ]
+      , example
       , D.p_
           [ text_
               "Because the hook simply passes through values as it receives them, as there was no simultaneous value coming from "
@@ -102,51 +68,17 @@ aNoteOnMemoization = subsection
           ]
       , D.p_
           [ text_
-              "It is indeed possible to have hooks that always supply their most recent value, but it comes with a slight performance penalty. Note that the performance penalty is negligible for most real-world applciations. You won't feel any lag in the example below, which is a memoized version of the example above. The only change is to use "
+              "It is indeed possible to have hooks that always supply their most recent value, but it requires using a hook we haven't learned about yet: "
           , D.code__ "useHot"
-          , text_ " instead of "
-          , D.code__ "useState"
-          , text_ "."
+          , text_ ". Fear not though, an example will thusly be presented."
           ]
-      , psCode
-          """-- change this line
-setNumber /\ number <- useHot n"""
-      , D.p__ "And voilà the result."
-      , exampleBlockquote
-          [ Deku.do
-              setNumber /\ number <- useHot'
-              setPresence /\ presence <- useState false
-              D.div_
-                [ D.div_
-                    [ text $ (bindToEffect (pure unit) (pure random) <|> number)
-                        <#> show >>>
-                          ("Here's a random number: " <> _)
-                    ]
-                , D.div_
-                    [ D.button
-                        [klass_ $ buttonClass "pink",
-                          click_ $ random >>= setNumber]
-                        [ text_ "A"
-                        ]
-                    , D.button
-                        [klass_ $ buttonClass "green",
-                          click $ presence <#> not >>> setPresence]
-                        [ text_ "B"
-                        ]
-                    ]
-                , D.div_
-                    [ guard presence
-                        $ text
-                        $ (number) <#> show >>>
-                            ("Here's the same random number: " <> _)
-                    ]
-                ]
-          ]
+      ,example2
       , D.p_
-          [ text_
-              "As you work more with the framework, you'll get a sense of when "
-          , D.code__ "useHot"
-          , text_ " is necessary to achieve the outcome you want."
+          [ D.code__ "useHot"
+          , text_
+              " is like "
+          , D.code__ "useState"
+          , text_ " except instead of replaying the initial value, it replays the most recent value."
           ]
       ]
   }

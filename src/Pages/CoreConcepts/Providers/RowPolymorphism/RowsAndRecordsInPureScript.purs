@@ -5,7 +5,7 @@ import Prelude
 import Components.Code (psCode)
 import Components.TargetedLink (targetedLink)
 import Contracts (Subsection, subsection)
-import Deku.Control (text_)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 
 rowsAndRecordsInPureScript :: Subsection

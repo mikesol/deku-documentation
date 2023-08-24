@@ -22,9 +22,8 @@ data Route
   | Filtering
   | Sampling
   | OtherInstances
-  | Busses
   | FixAndFold
-  | Behaviors
+  | Polls
   | CustomElements
   | AccessingTheDOM
   | SSR
@@ -53,10 +52,9 @@ routeToTitle Applicatives = "Applicatives"
 routeToTitle Alternatives = "Alternatives"
 routeToTitle Filtering = "Filtering"
 routeToTitle Sampling = "Sampling"
-routeToTitle OtherInstances = "Other instances"
-routeToTitle Busses = "Busses"
+routeToTitle OtherInstances = "Event miscellany"
 routeToTitle FixAndFold = "Fix and fold"
-routeToTitle Behaviors = "Behaviors"
+routeToTitle Polls = "Polls"
 routeToTitle CustomElements = "Custom elements"
 routeToTitle AccessingTheDOM = "Accessing the DOM"
 routeToTitle SSR = "SSR"

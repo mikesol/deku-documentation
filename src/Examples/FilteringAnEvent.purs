@@ -2,21 +2,23 @@ module Examples.FilteringAnEvent where
 
 import Prelude
 
-import Data.Tuple.Nested ((/\))
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
 import Data.Filterable (filter)
+import Data.Tuple.Nested ((/\))
 import Deku.Control (text, text_)
 import Deku.DOM as D
+import Deku.DOM.Attributes as DA
+import Deku.DOM.Listeners as DL
 import Deku.Do as Deku
 import Deku.Hooks (useState)
-import Deku.Listeners (slider_)
+import Deku.Toplevel (runInBody')
+import Effect (Effect)
+import ExampleAssitant (ExampleSignature)
 
-main :: Effect Unit
-main = runInBody Deku.do
+app :: ExampleSignature
+app runExample = runExample Deku.do
   setNumber /\ number <- useState 50.0
   D.div_
-    [ D.input [ slider_ setNumber ] []
+    [ D.input [ DA.xtypeRange, DL.numberOn_ DL.input setNumber ] []
     , D.div_
         [ text_ "Latest less than 50: "
         , text (filter (_ < 50.0) number <#> show)
@@ -26,3 +28,6 @@ main = runInBody Deku.do
         , text (filter (_ > 50.0) number <#> show)
         ]
     ]
+
+main :: Effect Unit
+main = void $ app (map (map void) runInBody')

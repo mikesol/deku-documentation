@@ -5,14 +5,15 @@ import Prelude
 import Control.Alt ((<|>))
 import Data.Array ((..))
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass, klass_)
+import Deku.DOM.Attributes as DA
 import Deku.Control (text_)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useMailboxed, useState)
-import Deku.Listeners (click)
-import Deku.Toplevel (runInBody)
+import Deku.DOM.Listeners as DL
+import Deku.Toplevel (runInBody')
 import Effect (Effect)
+import ExampleAssitant (ExampleSignature)
 
 buttonClass =
   """inline-flex items-center rounded-md
@@ -21,21 +22,21 @@ text-sm font-medium leading-4 text-white shadow-sm
 hover:bg-indigo-700 focus:outline-none focus:ring-2
 focus:ring-indigo-500 focus:ring-offset-2 mr-6""" :: String
 
-main :: Effect Unit
-main = runInBody Deku.do
+app :: ExampleSignature
+app runExample = runExample Deku.do
   setInt /\ int <- useState 0
   setMailbox /\ mailbox <- useMailboxed
   D.div_
     [ D.button
-        [ klass_ buttonClass
-        , click $ int <#> \i -> do
+        [ DA.klass_ buttonClass
+        , DL.runOn DL.click $ int <#> \i -> do
             setMailbox { address: i, payload: unit }
             setInt ((i + 1) `mod` 100)
         ]
         [ text_ "Bang!" ]
     , D.div_
         ( (0 .. 99) <#> \n -> D.span
-            [ klass $ (pure false <|> (mailbox n $> true)) <#>
+            [ DA.klass $ (pure false <|> (mailbox n $> true)) <#>
                 if _ then "" else "hidden"
             ]
             [ text_
@@ -46,3 +47,6 @@ main = runInBody Deku.do
             ]
         )
     ]
+
+main :: Effect Unit
+main = void $ app (map (map void) runInBody')

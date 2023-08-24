@@ -1,18 +1,24 @@
 module Examples.AddingSeveralAttributesToPursx where
 
+import Deku.Toplevel (runInBody')
 import Prelude
+import Data.Foldable (oneOf)
+import ExampleAssitant (ExampleSignature)
+import Web.PointerEvent.PointerEvent (PointerEvent)
 
-import Control.Alt (alt, (<|>))
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass, klass_)
+import Deku.Attribute (Attribute)
+import Deku.DOM.Attributes as DA
+
 import Deku.Control (text_)
 import Deku.DOM as D
 import Deku.Do as Deku
+import FRP.Poll (Poll)
 import Deku.Hooks (useState)
-import Deku.Listeners (click_)
+import Deku.DOM.Listeners as DL
 import Deku.Pursx ((~~))
-import Deku.Toplevel (runInBody)
 import Effect (Effect)
+
 import Type.Proxy (Proxy(..))
 
 myHtml =
@@ -53,35 +59,45 @@ myHtml =
 </nav>"""
   )
 
-main :: Effect Unit
-main = runInBody Deku.do
+app :: ExampleSignature
+app runExample = runExample Deku.do
   setProjects /\ projects <- useState true
   setNero /\ nero <- useState true
   let
     hideOnFalse e =
-      klass $ e <#> (if _ then "" else "hidden ") >>>
+      DA.klass $ e <#> (if _ then "" else "hidden ") >>>
         (_ <> "flex")
 
-    toggleHome :: D.OnClickEffect
-    toggleHome = click_ (setProjects false *> setNero false)
+    toggleHome
+      :: forall r
+       . Poll (Attribute (click :: PointerEvent | r))
+    toggleHome = DL.click_ \_ -> (setProjects false *> setNero false)
 
-    toggleProjs :: D.OnClickEffect
-    toggleProjs = click_ (setProjects true *> setNero false)
+    toggleProjs
+      :: forall r
+       . Poll (Attribute (click :: PointerEvent | r))
+    toggleProjs = DL.click_ \_ -> (setProjects true *> setNero false)
 
-    toggleNero :: D.OnClickEffect
-    toggleNero = click_ (setProjects true *> setNero true)
-    akls = alt (klass_ "cursor-pointer mr-4")
+    toggleNero
+      :: forall r
+       . Poll (Attribute (click :: PointerEvent | r))
+    toggleNero = DL.click_ \_ -> (setProjects false *> setNero true)
+
+    akls = append [ DA.klass_ "cursor-pointer mr-4" ] <<< pure
   D.div_
     [ D.div_
-        [ D.a [ akls toggleHome ] [ text_ "Go home" ]
-        , D.a [ akls toggleProjs ] [ text_ "Go to projects" ]
-        , D.a [ akls toggleNero ] [ text_ "Go to nero" ]
+        [ D.a (akls toggleHome) [ text_ "Go home" ]
+        , D.a (akls toggleProjs) [ text_ "Go to projects" ]
+        , D.a (akls toggleNero) [ text_ "Go to nero" ]
         ]
     , D.div_
         [ myHtml ~~
-            { homeAtts: toggleHome <|> klass_ "flex h-12"
-            , projectsAtts: toggleProjs <|> hideOnFalse projects
-            , neroAtts: toggleNero <|> hideOnFalse nero
+            { homeAtts: oneOf [ toggleHome, DA.klass_ "flex h-12" ]
+            , projectsAtts: oneOf [ toggleProjs, hideOnFalse projects ]
+            , neroAtts: oneOf [ toggleNero, hideOnFalse nero ]
             }
         ]
     ]
+
+main :: Effect Unit
+main = void $ app (map (map void) runInBody')

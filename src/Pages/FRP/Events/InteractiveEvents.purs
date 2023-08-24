@@ -3,7 +3,7 @@ module Pages.FRP.Events.InteractiveEvents where
 import Prelude
 
 import Contracts (Section, section)
-import Deku.Control (text_)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Pages.FRP.Events.InteractiveEvents.TheCreateEffect (theCreateEffect)
 import Pages.FRP.Events.InteractiveEvents.PerformanceNotes (performanceNotes)

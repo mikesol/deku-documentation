@@ -3,7 +3,7 @@ module Pages.CoreConcepts.Pursx.PursxAlternatives where
 import Prelude
 
 import Contracts (Section, section)
-import Deku.Control (text_)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Pages.CoreConcepts.Pursx.PursxAlternatives.Html2deku (html2deku)
 import Pages.CoreConcepts.Pursx.PursxAlternatives.UnsafePursx (unsafePursx)

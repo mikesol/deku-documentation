@@ -18,9 +18,9 @@ performanceConsiderations = subsection
           ]
       , D.p_
           [ text_ "In the example above, instead of "
-          , D.code__ "click_ $ intRef >>= show >>> setButtonText"
+          , D.code__ "DL.runOn DL.click $ intRef >>= show >>> setButtonText"
           , text_ ", we could have written "
-          , D.code__ "click $ num <#> show >>> setButton"
+          , D.code__ "DL.runOn DL.click $ num <#> show >>> setButton"
           , text_
               ". While the functionality would be the same, the performance would be much worse, as every click listener would be updated every time the slider moved. Who wants that? So use "
           , D.code__ "useRef"

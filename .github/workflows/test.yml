@@ -23,8 +23,7 @@ jobs:
             output
           key: >-
             ${{ hashFiles('pnpm-lock.yaml') }}-
-            ${{ hashFiles('spago.dhall') }}-
-            ${{ hashFiles('packages.dhall') }}
+            ${{ hashFiles('spago.yaml') }}
       - uses: pnpm/action-setup@v2.2.4
         name: Install pnpm
         id: pnpm-install
@@ -43,7 +42,9 @@ jobs:
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
+      - name: Codegen
+        run: python genExamples.py
       - name: Install dependencies
         run: pnpm i
       - name: Test
-        run: pnpm test
+        run: pnpm spago build

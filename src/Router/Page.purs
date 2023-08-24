@@ -16,8 +16,7 @@ import Pages.CoreConcepts.Pursx (pursx)
 import Pages.CoreConcepts.State (state)
 import Pages.FRP.Alternatives (alternatives)
 import Pages.FRP.Applicatives (applicatives)
-import Pages.FRP.Behaviors (behaviors)
-import Pages.FRP.Busses (busses)
+import Pages.FRP.Polls (polls)
 import Pages.FRP.Events (events)
 import Pages.FRP.Filtering (filtering)
 import Pages.FRP.FixAndFold (fixAndFold)
@@ -45,9 +44,8 @@ routeToPage Alternatives = alternatives
 routeToPage Filtering = filtering
 routeToPage Sampling = sampling
 routeToPage OtherInstances = otherInstances
-routeToPage Busses = busses
 routeToPage FixAndFold = fixAndFold
-routeToPage Behaviors = behaviors
+routeToPage Polls = polls
 routeToPage CustomElements = customElements
 routeToPage AccessingTheDOM = accessingTheDOM
 routeToPage SSR = sSR

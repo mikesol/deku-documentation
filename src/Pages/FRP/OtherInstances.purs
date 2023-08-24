@@ -3,20 +3,19 @@ module Pages.FRP.OtherInstances where
 import Prelude
 
 import Contracts (Page, page)
-import Deku.Attribute ((!:=))
 import Deku.Control (text_)
 import Deku.DOM as D
-import Pages.FRP.OtherInstances.HeytingAlgebra (heytingAlgebra)
-import Pages.FRP.OtherInstances.Monoid (monoid)
-import Pages.FRP.OtherInstances.Ring (ring)
+import Deku.DOM.Attributes as DA
+import Pages.FRP.OtherInstances.Effects (effects)
+import Pages.FRP.OtherInstances.Semigroup (semigroup)
 import Router.ADT (Route(..))
 
 otherInstances :: Page
 otherInstances = page
   { route: OtherInstances
   , topmatter: pure
-      [ D.p [D.Class !:= "lead"]
-          [ text_ "Because who likes to lift2 over add when you can just add?"
+      [ D.p [DA.klass_ "lead"]
+          [ text_ "Because who likes to lift2 over append when you can just append?"
           ]
       , D.p_
           [ text_
@@ -36,5 +35,5 @@ otherInstances = page
           ]
       ]
   , sections:
-      [ monoid, heytingAlgebra, ring ]
+      [ semigroup, effects ]
   }

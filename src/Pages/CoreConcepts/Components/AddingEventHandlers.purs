@@ -3,7 +3,7 @@ module Pages.CoreConcepts.Components.AddingEventHandlers where
 import Prelude
 
 import Contracts (Section, section)
-import Deku.Control (text_)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Pages.CoreConcepts.Components.AddingEventHandlers.ShorthandListeners (shorthandListeners)
 import Pages.CoreConcepts.Components.AddingEventHandlers.UsingAnEffect (usingAnEffect)

@@ -1,13 +1,12 @@
-module Pages.FRP.Behaviors.Applicative where
+module Pages.FRP.Polls.Applicative where
 
 import Prelude
 
 import Contracts (Section, section)
 import Deku.Control (text_)
 import Deku.DOM as D
-import Pages.FRP.Behaviors.Applicative.WhyBehaviorsAreNotMonads (whyBehaviorsAreNotMonads)
-import Pages.FRP.Behaviors.Applicative.BehaviorsAsApplicatives (behaviorsAsApplicatives)
-import Pages.FRP.Behaviors.Applicative.BehaviorsAsFunctors (behaviorsAsFunctors)
+import Pages.FRP.Polls.Applicative.PollsAsApplicatives (pollsAsApplicatives)
+import Pages.FRP.Polls.Applicative.PollsAsFunctors (pollsAsFunctors)
 
 applicative :: Section
 applicative = section
@@ -15,9 +14,9 @@ applicative = section
   , topmatter: pure
       [ D.p_
           [ text_
-              "Behaviors are applicative functors. Let's see what that means in practice, starting at functors and stopping just shy of monads."
+              "Polls are applicative functors. Let's see what that means in practice, starting at functors and stopping just shy of monads."
           ]
       ]
   , subsections:
-      [ behaviorsAsFunctors, behaviorsAsApplicatives, whyBehaviorsAreNotMonads ]
+      [ pollsAsFunctors, pollsAsApplicatives ]
   }

@@ -1,15 +1,16 @@
 module Examples.ASimpleComponent where
 
+import Deku.Toplevel (runInBody')
+import Effect (Effect)
 import Prelude
+import ExampleAssitant (ExampleSignature)
 
 import Deku.Control (text_)
 import Deku.Core (Nut)
 import Deku.DOM as D
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
 
-main :: Effect Unit
-main = runInBody mySimpleComponent
+app :: ExampleSignature
+app runExample = runExample mySimpleComponent
   where
   -- `Nut` is the type of Deku components
   mySimpleComponent :: Nut
@@ -24,3 +25,6 @@ main = runInBody mySimpleComponent
           , D.b__ "baz"
           ]
       ]
+
+main :: Effect Unit
+main = void $ app (map (map void) runInBody')

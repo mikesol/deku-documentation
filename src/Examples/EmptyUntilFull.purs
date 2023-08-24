@@ -3,15 +3,16 @@ module Examples.EmptyUntilFull where
 import Prelude
 
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass_)
+import Deku.DOM.Attributes as DA
 import Deku.Control (text, text_)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState')
-import Deku.Listeners (click_)
-import Deku.Toplevel (runInBody)
+import Deku.DOM.Listeners as DL
+import Deku.Toplevel (runInBody')
 import Effect (Effect)
 import Effect.Random (random)
+import ExampleAssitant (ExampleSignature)
 
 buttonClass =
   """inline-flex items-center rounded-md
@@ -20,15 +21,18 @@ text-sm font-medium leading-4 text-white shadow-sm
 hover:bg-indigo-700 focus:outline-none focus:ring-2
 focus:ring-indigo-500 focus:ring-offset-2 mr-6""" :: String
 
-main :: Effect Unit
-main = runInBody Deku.do
+app :: ExampleSignature
+app runExample = runExample Deku.do
   setNumber /\ number <- useState'
   D.div_
     [ D.button
-        [ klass_ buttonClass
-        , click_ $ random >>= setNumber
+        [ DA.klass_ buttonClass
+        , DL.click_ \_ -> random >>= setNumber
         ]
         [ text_ "Update number" ]
     , text $ number <#>
         show >>> ("Here's a random number: " <> _)
     ]
+
+main :: Effect Unit
+main = void $ app (map (map void) runInBody')

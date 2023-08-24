@@ -2,63 +2,32 @@ module Pages.CoreConcepts.Providers.FunctionsAsProviders.MixingDoNotation where
 
 import Prelude
 
-import Components.Code (psCode)
-import Contracts (Subsection, subsection)
+import Contracts (CollapseState(..), Subsection, getExample, subsection)
+import Data.Maybe (Maybe(..))
 import Deku.Control (text_)
 import Deku.DOM as D
+import Examples as Examples
 
 mixingDoNotation :: Subsection
 mixingDoNotation = subsection
-  { title: "Mixing do notation"
-  , matter: pure
-      [ D.p_
-          [ text_ "We've seen at least three variations of "
-          , D.code__ "do"
-          , text_ " notation in various parts of the documentation."
-          ]
-      , D.ol_
-          [ D.li_ [ D.code__ "Alt.do" ]
-          , D.li_ [ D.code__ "Deku.do" ]
-          , D.li_
-              [ D.span_
-                  [ D.code__ "do", text_ " without any special qualifiers" ]
-              ]
-          ]
-      , D.p_
-          [ text_ "Each one of these "
-          , D.code__ "do"
-          , text_
-              "s denote a different computational context, so a left-bind in one won't work in another one!"
-          ]
-      , D.p_
-          [ text_ "When working with providers, we introduce another layer of "
-          , D.code__ "do"
-          , text_ ", which for some may be one "
-          , D.code__ "do"
-          , text_ " too many. If you're "
-          , D.code__ "do"
-          , text_ "'d out, the following example:"
-          ]
-      , psCode
-          """do
-  myComponent <- component
-  Deku.do
-    setHook /\ hook <- useState unit
-    D.button
-      Alt.do
-        klass_ "button"
-        click $ hook <#> setHook
-      [ "hi" ]"""
-      , D.p_
-          [ text_ "Can be rewritten in "
-          , D.code__ "do"
-          , text_ "-less form like so:"
-          ]
-      , psCode
-          """component \myComponent ->
-  useState unit \(setHook /\ hook) ->
-    D.button (klass_ "button" <|> (click $ hook <#> setHook))
-      [ "hi" ]"""
-      , D.p_ [ text_ "It's up to you what to ", D.code__ "do", text_ "!" ]
-      ]
+  { title: "Effect systems"
+  , matter: do
+      example <- getExample StartExpanded Nothing
+        Examples.EffectSystem
+      pure
+        [ D.p_
+            [ text_
+                "Providers are one example of a broader functional pattern called "
+            , D.i__ "effect systems"
+            , text_
+                ". In effect systems, there's some collection of side effects that you interpret. The side effect of providers is function application, but we can go wild with whatever effects we want."
+            ]
+        , D.p_
+            [ text_ "Let's create an effect system that contains a provider "
+            , D.i__ "and"
+            , text_
+                " a ticker that increments as we create checkboxes. There are several ways to do this in PureScript, but we'll use a Free Monad in the following example. The nice thing about Free Monads is that you can start small with a couple effects and gradually expand them to an effect system of epic proportions about which funcitonal troubadours will sing for ages to come."
+            ]
+        , example
+        ]
   }

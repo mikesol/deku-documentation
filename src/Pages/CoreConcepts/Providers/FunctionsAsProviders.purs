@@ -21,5 +21,5 @@ functionsAsProviders = section
           ]
       ]
   , subsections:
-      [ usingFunctionsAsMonads, mixingDoNotation, passingAroundHooks ]
+      [ usingFunctionsAsMonads, passingAroundHooks, mixingDoNotation ]
   }

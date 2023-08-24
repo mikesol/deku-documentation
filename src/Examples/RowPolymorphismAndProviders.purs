@@ -7,8 +7,9 @@ import Data.Newtype (class Newtype, unwrap)
 import Deku.Control (text_)
 import Deku.Core (Nut)
 import Deku.DOM as D
-import Deku.Toplevel (runInBody)
+import Deku.Toplevel (runInBody')
 import Effect (Effect)
+import ExampleAssitant (ExampleSignature)
 
 libAwesome
   :: forall n r
@@ -59,8 +60,8 @@ newtype Env = Env
 
 derive instance Newtype (Env) _
 
-main :: Effect Unit
-main = runInBody Deku.do
+app :: ExampleSignature
+app runExample = runExample Deku.do
   let
     cont = do
       lg <- libGreat
@@ -81,3 +82,6 @@ main = runInBody Deku.do
     } # do
     awe <- libAwesome
     pure $ D.div_ [ text_ "In all honesty...", awe ]
+
+main :: Effect Unit
+main = void $ app (map (map void) runInBody')

@@ -5,13 +5,23 @@ import Prelude
 import Data.Compactable (compact)
 import Data.Maybe (Maybe(..))
 import Data.Tuple (Tuple(..))
-import FRP.Event (Event, mapAccum)
+import FRP.Event (class IsEvent, mapAccum)
 
-dedup :: forall a. Eq a => Event a -> Event a
+dedup :: forall a event. IsEvent event => Eq a => event a -> event a
 dedup = dedup' eq
 
-dedup' :: forall a. (a -> a -> Boolean) -> Event a -> Event a
-dedup' eqq e = compact $
+dedup'
+  :: forall a event. IsEvent event => (a -> a -> Boolean) -> event a -> event a
+dedup' = dedup'' Nothing
+
+dedup''
+  :: forall a event
+   . IsEvent event
+  => Maybe a
+  -> (a -> a -> Boolean)
+  -> event a
+  -> event a
+dedup'' iv eqq e = compact $
   mapAccum
     ( \b a ->
         let
@@ -25,5 +35,5 @@ dedup' eqq e = compact $
                   | otherwise -> Just a
             )
     )
-    Nothing
+    iv
     e

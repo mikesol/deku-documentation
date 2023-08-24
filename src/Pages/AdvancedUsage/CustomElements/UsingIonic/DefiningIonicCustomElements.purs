@@ -4,7 +4,7 @@ import Prelude
 
 import Components.Code (jsCode, shSessionCode)
 import Contracts (Subsection, subsection)
-import Deku.Control (text_)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 
 definingIonicCustomElements :: Subsection

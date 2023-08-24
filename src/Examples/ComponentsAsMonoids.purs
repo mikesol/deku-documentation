@@ -1,17 +1,18 @@
 module Examples.ComponentsAsMonoids where
 
+import Deku.Toplevel (runInBody')
+import Effect (Effect)
 import Prelude
+import ExampleAssitant (ExampleSignature)
 
 import Data.Array (drop, intercalate, zipWith)
 import Data.FunctorWithIndex (mapWithIndex)
 import Data.Lens (over)
 import Data.Lens.Index (ix)
 import Data.String (Pattern(..), split)
-import Deku.Attributes (klass_)
+import Deku.DOM.Attributes as DA
 import Deku.Control (text_)
 import Deku.DOM as D
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
 
 lyrics :: Array String
 lyrics = split (Pattern "\n")
@@ -58,10 +59,10 @@ toWord 11 = "eleventh"
 toWord 12 = "twelfth"
 toWord _ = "nth"
 
-main :: Effect Unit
-main = runInBody do
+app :: ExampleSignature
+app runExample = runExample do
   let
-    styleF s t = D.span [ klass_ s ] [ text_ t ]
+    styleF s t = D.span [ DA.klass_ s ] [ text_ t ]
     zipStyles = zipWith styleF textColors
     lyrics0 = zipStyles lyrics
     lyrics1 = zipStyles (over (ix 11) ("and " <> _) lyrics)
@@ -81,3 +82,6 @@ main = runInBody do
               ]
         )
     ]
+
+main :: Effect Unit
+main = void $ app (map (map void) runInBody')

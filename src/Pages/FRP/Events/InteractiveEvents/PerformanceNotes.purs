@@ -3,7 +3,7 @@ module Pages.FRP.Events.InteractiveEvents.PerformanceNotes where
 import Prelude
 
 import Contracts (Subsection, subsection)
-import Deku.Control (text_)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 
 performanceNotes :: Subsection

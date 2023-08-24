@@ -2,10 +2,9 @@ module Pages.CoreConcepts.Components.ASimpleComponent where
 
 import Prelude
 
-import Components.Code (psCodeWithLink)
-import Components.ExampleBlockquote (exampleBlockquote)
 import Components.TargetedLink (targetedLink)
-import Contracts (Env(..), Section, section)
+import Contracts (CollapseState(..), Env(..), Section, getEnv, getExample, section)
+import Data.Maybe (Maybe(..))
 import Deku.Control (text_)
 import Deku.DOM as D
 import Examples as Examples
@@ -17,25 +16,14 @@ import Router.ADT (Route(..))
 aSimpleComponent :: Section
 aSimpleComponent = section
   { title: "A simple component"
-  , topmatter: \(Env { routeLink }) ->
-      [ D.p_
+  , topmatter:do
+      Env { routeLink } <- getEnv
+      example <- getExample StartExpanded Nothing Examples.ASimpleComponent
+      pure [ D.p_
           [ text_
               "Let's start by making a simple comonent. It will result in a few different DOM elements being rendered, and we'll build upon it throughout this page. Here's the code."
           ]
-      , psCodeWithLink Examples.ASimpleComponent
-      , text_ "And here's the result."
-      , exampleBlockquote
-          [ D.div_
-              [ D.span_ [ text_ "I exist" ]
-              , D.ul_ $ map D.li__ [ "A", "B", "C" ]
-              , D.div_
-                  [ D.h3__ "foo"
-                  , D.i__ "bar"
-                  , text_ " "
-                  , D.b__ "baz"
-                  ]
-              ]
-          ]
+      , example
       , D.p_
           [ text_
               "Before we proceed, it's important to establish a bit of Deku terminology that will come in handy as you shred through this documentation."
@@ -73,10 +61,10 @@ aSimpleComponent = section
               , D.b__ "component"
               , text_
                   " is broader than a one-to-one relationship with DOM elements - it can also represent the absence of DOM elements using "
-              , D.code__ "blank"
+              , D.code__ "mempty"
               , text_
                   " (which we'll learn about later) or multiple DOM elements using "
-              , D.code__ "dyn"
+              , D.code__ "useDyn"
               , text_ " (which we'll also learn about later)."
               ]
           ]

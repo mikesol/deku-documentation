@@ -4,8 +4,8 @@ import Prelude
 
 import Components.TargetedLink (targetedLink)
 import Contracts (Section, section)
-import Deku.Attribute ((!:=))
-import Deku.Attributes (href_)
+import Deku.DOM.Attributes as DA
+
 import Deku.Control (text_)
 import Deku.DOM as D
 
@@ -25,8 +25,8 @@ whyDeku = section
           [ text_
               "This documentation was created with Deku and is available on "
           , D.a
-              [href_ "https://github.com/mikesol/deku-documentation"
-                  ,D.Target !:= "_blank"
+              [DA.href_ "https://github.com/mikesol/deku-documentation"
+                  ,DA.target_ "_blank"
               ]
               [ text_ "GitHub" ]
           , text_

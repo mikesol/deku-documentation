@@ -1,17 +1,18 @@
 module Examples.ComponentsAsSemigroups where
 
+import Deku.Toplevel (runInBody')
+import Effect (Effect)
 import Prelude
 
 import Data.String (Pattern(..), Replacement(..), replaceAll)
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass_)
-import Deku.Control (guard, text_)
+import Deku.DOM.Attributes as DA
+import Deku.Control (text_)
 import Deku.DOM as D
 import Deku.Do as Deku
-import Deku.Hooks (useState)
-import Deku.Listeners (click_)
-import Deku.Toplevel (runInBody)
-import Effect (Effect)
+import Deku.Hooks (guard, useState)
+import Deku.DOM.Listeners as DL
+import ExampleAssitant (ExampleSignature)
 
 buttonClass :: String -> String
 buttonClass color =
@@ -22,19 +23,19 @@ text-sm font-medium leading-4 text-white shadow-sm
 hover:bg-COLOR-700 focus:outline-none focus:ring-2
 focus:ring-COLOR-500 focus:ring-offset-2"""
 
-main :: Effect Unit
-main = runInBody Deku.do
+app :: ExampleSignature
+app runExample = runExample Deku.do
   setAstuce /\ astuce <- useState true
   D.div_
-    [ D.div [ klass_ "space-x-2" ]
+    [ D.div [ DA.klass_ "space-x-2" ]
         [ D.button
-            [ klass_ $ buttonClass "indigo"
-            , click_ $ setAstuce true
+            [ DA.klass_ $ buttonClass "indigo"
+            , DL.click_ \_ -> setAstuce true
             ]
             [ text_ "Sage" ]
         , D.button
-            [ klass_ $ buttonClass "green"
-            , click_ $ setAstuce false
+            [ DA.klass_ $ buttonClass "green"
+            , DL.click_ \_ -> setAstuce false
             ]
             [ text_ "Pas sage" ]
         ]
@@ -77,3 +78,6 @@ main = runInBody Deku.do
             <> D.p__ "Votre poupée"
         ]
     ]
+
+main :: Effect Unit
+main = void $ app (map (map void) runInBody')

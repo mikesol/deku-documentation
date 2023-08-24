@@ -3,7 +3,7 @@ module Pages.FRP.Filtering.Compact where
 import Prelude
 
 import Contracts (Section, section)
-import Deku.Control (text_)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Pages.FRP.Filtering.Compact.CompactingEvents (compactingEvents)
 import Pages.FRP.Filtering.Compact.WhyEventsCannotWither (whyEventsCannotWither)

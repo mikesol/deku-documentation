@@ -2,17 +2,19 @@ module Examples.ANoteOnMemoization where
 
 import Prelude
 
+import Control.Alt ((<|>))
 import Data.String (replaceAll, Pattern(..), Replacement(..))
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass_)
-import Deku.Control (guard, text, text_)
+import Deku.DOM.Attributes as DA
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Deku.Do as Deku
-import Deku.Hooks (useState)
-import Deku.Listeners (click, click_)
-import Deku.Toplevel (runInBody)
+import Deku.Hooks (guard, useState, useState')
+import Deku.DOM.Listeners as DL
+import Deku.Toplevel (runInBody')
 import Effect (Effect)
 import Effect.Random (random)
+import ExampleAssitant (ExampleSignature)
 
 buttonClass :: String -> String
 buttonClass color =
@@ -23,26 +25,26 @@ text-sm font-medium leading-4 text-white shadow-sm
 hover:bg-COLOR-700 focus:outline-none focus:ring-2
 focus:ring-COLOR-500 focus:ring-offset-2"""
 
-main :: Effect Unit
-main = do
+app :: ExampleSignature
+app runExample = do
   n <- random
-  runInBody Deku.do
-    setNumber /\ number <- useState n
+  runExample Deku.do
+    setNumber /\ number <- useState'
     setPresence /\ presence <- useState false
     D.div_
       [ D.div_
-          [ text $ number <#> show >>>
+          [ text $ (pure n <|> number) <#> show >>>
               ("Here's a random number: " <> _)
           ]
       , D.div_
           [ D.button
-              [ klass_ $ buttonClass "pink"
-              , click_ $ random >>= setNumber
+              [ DA.klass_ $ buttonClass "pink"
+              , DL.click_ \_ -> random >>= setNumber
               ]
               [ text_ "A" ]
           , D.button
-              [ klass_ $ buttonClass "green"
-              , click $ presence <#> not >>> setPresence
+              [ DA.klass_ $ buttonClass "green"
+              , DL.runOn DL.click $ presence <#> not >>> setPresence
               ]
               [ text_ "B" ]
           ]
@@ -53,3 +55,6 @@ main = do
                   ("Here's the same random number: " <> _)
           ]
       ]
+
+main :: Effect Unit
+main = void $ app (map (map void) runInBody')

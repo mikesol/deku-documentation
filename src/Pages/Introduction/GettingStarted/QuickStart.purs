@@ -3,7 +3,7 @@ module Pages.Introduction.GettingStarted.QuickStart where
 import Prelude
 
 import Contracts (Section, section)
-import Deku.Control (text_)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Pages.Introduction.GettingStarted.QuickStart.StartingANewProject (startingANewProject)
 import Pages.Introduction.GettingStarted.QuickStart.UsingAnExistingProject (usingAnExistingProject)

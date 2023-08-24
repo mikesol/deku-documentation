@@ -5,7 +5,7 @@ import Prelude
 import Components.Code (psCode)
 import Components.ProTip (proTip)
 import Contracts (Subsection, subsection)
-import Deku.Control (text_)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 
 imports :: Subsection
@@ -15,7 +15,7 @@ imports = subsection
       [ psCode
           """import Prelude
 
-import Deku.Control (text_)
+import Deku.Control (text, text_)
 import Deku.Toplevel (runInBody)
 import Effect (Effect)"""
       , D.p_
@@ -49,7 +49,7 @@ import Effect (Effect)"""
               "After this, there are three more imports, all of which will be crucial in any Deku app of repute."
           , D.ul_
               [ D.li_
-                  [ D.code_ [ text_ "text_" ]
+                  [ D.code_ [ text_ "text" ]
                   , text_ ": A way to write a text string to the DOM."
                   ]
               , D.li_

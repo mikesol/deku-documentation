@@ -1,7 +1,9 @@
 module Pages.CoreConcepts.State.TheStateHook.PushingToAHook where
 
+import Prelude
+
 import Components.Code (psCode)
-import Contracts (Env(..), Subsection, subsection)
+import Contracts (Env(..), Subsection, getEnv, subsection)
 import Deku.Control (text_)
 import Deku.DOM as D
 import Router.ADT (Route(..))
@@ -9,13 +11,14 @@ import Router.ADT (Route(..))
 pushingToAHook :: Subsection
 pushingToAHook = subsection
   { title: "Pushing to a hook"
-  , matter: \(Env { routeLink }) ->
-      [ D.p_
+  , matter: do
+      Env { routeLink } <- getEnv
+      pure [ D.p_
           [ text_ "As we saw in the "
           , routeLink Components
           , text_
               " section, we can call an arbitrary effect, like raising an alert or writing to the console, from a listener like "
-          , D.code__ "click_"
+          , D.code__ "click"
           , text_ ". We can "
           , D.i__ "also"
           , text_ " push to a hook setter."
@@ -43,9 +46,9 @@ pushingToAHook = subsection
           , D.code__ "Effect Unit"
           , text_
               " you can use them in any effectful context, including any Deku listener like "
-          , D.code__ "OnClick"
+          , D.code__ "DL.click"
           , text_ " or "
-          , D.code__ "OnInput"
+          , D.code__ "DL.input"
           , text_ ". In the example above, we generate a random number and use "
           , D.code__ "bind"
           , text_ ", aka "
@@ -54,6 +57,6 @@ pushingToAHook = subsection
           , D.code__ "setNumber"
           , text_ "."
           ]
-      , psCode """click_ $ random >>= setNumber"""
+      , psCode """DL.runOn DL.click $ random >>= setNumber"""
       ]
   }

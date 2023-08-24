@@ -1,19 +1,19 @@
-module Pages.FRP.Behaviors.Definition.BehaviorsAndYoneda where
+module Pages.FRP.Polls.Definition.PollsAndYoneda where
 
 import Prelude
 
 import Contracts (Subsection, subsection)
 import Deku.Control (text_)
-import Deku.Attribute ((!:=))
+import Deku.DOM.Attributes as DA
 import Deku.DOM as D
 
-behaviorsAndYoneda :: Subsection
-behaviorsAndYoneda = subsection
-  { title: "Behaviors and Yoneda"
+pollsAndYoneda :: Subsection
+pollsAndYoneda = subsection
+  { title: "Polls and Yoneda"
   , matter: pure
       [ D.p_
           [ text_ "This subsection will be about "
-          , D.span [ D.Class !:= "font-bold" ] [ text_ "Behaviors and Yoneda" ]
+          , D.span [ DA.klass_ "font-bold" ] [ text_ "Polls and Yoneda" ]
           , text_ "."
           ]
       ]

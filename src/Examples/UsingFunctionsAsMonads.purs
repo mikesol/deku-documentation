@@ -4,19 +4,20 @@ import Prelude
 
 import Control.Monad.Reader (ask)
 import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass_)
+import Deku.DOM.Attributes as DA
 import Deku.Control (text)
 import Deku.Core (NutWith)
 import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState)
-import Deku.Listeners (click)
-import Deku.Toplevel (runInBody)
+import Deku.DOM.Listeners as DL
+import Deku.Toplevel (runInBody')
 import Effect (Effect)
-import FRP.Event (Event)
+import ExampleAssitant (ExampleSignature)
+import FRP.Poll (Poll)
 
 type Env =
-  { isSignedIn :: Event Boolean
+  { isSignedIn :: Poll Boolean
   , setIsSignedIn :: Boolean -> Effect Unit
   }
 
@@ -33,8 +34,8 @@ signIn :: AppMonad
 signIn = do
   { setIsSignedIn, isSignedIn } <- ask
   pure $ D.button
-    [ klass_ buttonClass
-    , click $ isSignedIn <#> not >>> setIsSignedIn
+    [ DA.klass_ buttonClass
+    , DL.runOn DL.click $ isSignedIn <#> not >>> setIsSignedIn
     ]
     [ text $ isSignedIn <#> if _ then "Sign out" else "Sign in" ]
 
@@ -57,13 +58,16 @@ table = do
     , D.tr_ [ myName, myBalance ]
     ]
 
-app :: AppMonad
-app = do
+fullApp :: AppMonad
+fullApp = do
   mySignIn <- signIn
   myTable <- table
   pure $ D.div_ [ D.div_ [ mySignIn ], D.div_ [ myTable ] ]
 
-main :: Effect Unit
-main = runInBody Deku.do
+app :: ExampleSignature
+app runExample = runExample Deku.do
   setIsSignedIn /\ isSignedIn <- useState false
-  app { setIsSignedIn, isSignedIn }
+  fullApp { setIsSignedIn, isSignedIn }
+
+main :: Effect Unit
+main = void $ app (map (map void) runInBody')

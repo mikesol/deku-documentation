@@ -1,11 +1,13 @@
-module Pages.FRP.Events.InteractiveEvents.LifetimeAndGarbageCollection where
+module Pages.FRP.Events.InteractiveEvents.LifetimeAndGarbageCollection
+  ( lifetimeAndGarbageCollection
+  )
+  where
 
 import Prelude
 
 import Contracts (Subsection, subsection)
-import Control.Alt ((<|>))
-import Deku.Attribute ((!:=))
-import Deku.Attributes (href_)
+import Deku.DOM.Attributes as DA
+
 import Deku.Control (text_)
 import Deku.DOM as D
 
@@ -18,9 +20,9 @@ lifetimeAndGarbageCollection = subsection
           , D.code__ "Effect"
           , text_ " context and have the same longevity as a "
           , D.a
-              [ href_
+              [ DA.href_
                   "https://pursuit.purescript.org/packages/purescript-refs/6.0.0/docs/Effect.Ref#t:Ref"
-                  <|> (D.Target !:= "_blank")
+                  , DA.target_ "_blank"
               ]
               [ text_ "Ref" ]
           , text_

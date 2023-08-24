@@ -17,8 +17,8 @@ severalAttributes = subsection
           ]
       , psCode
           """
-[ D.Id !:= "my-id"
-, D.Style !:= "background-color:silver;"
+[ DA.id_ "my-id"
+, DA.style_ "background-color:silver;"
 ]
 """
       ]

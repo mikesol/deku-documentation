@@ -4,22 +4,24 @@ import Prelude
 
 import Data.Foldable (for_, traverse_)
 import Data.Int (floor)
+import Data.Maybe (Maybe(..))
 import Data.String (Pattern(..), Replacement(..), replaceAll)
 import Data.Tuple (Tuple(..))
 import Data.Tuple.Nested ((/\))
-import Deku.Attribute (cb, (!:=))
-import Deku.Attributes (klass_)
 import Deku.Control (text_)
 import Deku.DOM as D
+import Deku.DOM.Attributes as DA
+import Deku.DOM.Listeners as DL
+import Deku.DOM.Self as Self
 import Deku.Do as Deku
-import Deku.Hooks (useDyn, useHot', useState, useState')
-import Deku.Listeners (click, keyUp)
-import Deku.Toplevel (runInBody)
+import Deku.Hooks (useDyn, useRef, useState, useState')
+import Deku.Toplevel (runInBody')
 import Effect (Effect)
+import ExampleAssitant (ExampleSignature)
 import FRP.Event.Class ((<|*>))
 import Web.Event.Event (target)
 import Web.HTML (window)
-import Web.HTML.HTMLInputElement (fromEventTarget, value, valueAsNumber)
+import Web.HTML.HTMLInputElement (fromEventTarget, value)
 import Web.HTML.Window (alert)
 import Web.UIEvent.KeyboardEvent (code, toEvent)
 
@@ -41,11 +43,12 @@ text-sm font-medium leading-4 text-white shadow-sm
 hover:bg-COLOR-700 focus:outline-none focus:ring-2
 focus:ring-COLOR-500 focus:ring-offset-2"""
 
-main :: Effect Unit
-main = runInBody Deku.do
+app :: ExampleSignature
+app runExample = runExample Deku.do
   setPos /\ pos <- useState 0
   setItem /\ item <- useState'
-  setInput /\ input <- useHot'
+  setInput /\ input <- useState'
+  iref <- useRef Nothing (Just <$> input)
   let
     guardAgainstEmpty e = do
       v <- value e
@@ -55,29 +58,28 @@ main = runInBody Deku.do
     top =
       D.div_
         [ D.input
-            [ D.Value !:= "Tasko primo"
-            , keyUp $ pure \evt -> do
+            [ DA.value_ "Tasko primo"
+            , DL.keyup_ $ \evt -> do
                 when (code evt == "Enter") $
                   for_
                     ((target >=> fromEventTarget) (toEvent evt))
                     guardAgainstEmpty
-            , D.SelfT !:= setInput
-            , klass_ inputKls
+            , Self.selfT_ setInput
+            , DA.klass_ inputKls
             ]
             []
         , D.input
-            [ klass_ inputKls
-            , D.Xtype !:= "number"
-            , D.Min !:= "0"
-            , D.Value !:= "0"
-            , D.OnChange !:= cb \evt ->
-                traverse_ (valueAsNumber >=> floor >>> setPos) $
-                  (target >=> fromEventTarget) evt
+            [ DA.klass_ inputKls
+            , DA.xtypeNumber
+            , DA.min_ "0"
+            , DA.value_ "0"
+            , DL.numberOn_ DL.change (floor >>> setPos)
             ]
             []
         , D.button
-            [ click $ input <#> guardAgainstEmpty
-            , klass_ $ buttonClass "green"
+            [ DL.click_ \_ -> do
+                iref >>= traverse_ guardAgainstEmpty
+            , DA.klass_ $ buttonClass "green"
             ]
             [ text_ "Add" ]
         ]
@@ -88,3 +90,6 @@ main = runInBody Deku.do
           (Tuple <$> pos <|*> item)
         D.div_ [ text_ t ]
     ]
+
+main :: Effect Unit
+main = void $ app (map (map void) runInBody')

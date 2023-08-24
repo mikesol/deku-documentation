@@ -4,10 +4,10 @@ import Prelude
 
 import Components.TargetedLink (targetedLink)
 import Contracts (Section, section)
-import Deku.Control (text_)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Pages.FRP.Applicatives.Applicative.ApplicativeAsBiSampling (applicativeAsBiSampling)
-import Pages.FRP.Applicatives.Applicative.TheTemporalityOfPure (theTemporalityOfPure)
+import Pages.FRP.Applicatives.Applicative.PurityOutOfThinAir (theTemporalityOfPure)
 
 applicative :: Section
 applicative = section

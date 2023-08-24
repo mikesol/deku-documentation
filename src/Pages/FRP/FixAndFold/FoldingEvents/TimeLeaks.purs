@@ -2,45 +2,18 @@ module Pages.FRP.FixAndFold.FoldingEvents.TimeLeaks where
 
 import Prelude
 
-import Components.Code (psCodeNoCollapseWithLink)
-import Components.ExampleBlockquote (exampleBlockquote)
 import Components.TargetedLink (targetedLink)
-import Contracts (Env(..), Subsection, subsection)
-import Control.Alt ((<|>))
-import Control.Bind (bindFlipped)
-import Data.Tuple.Nested ((/\))
-import Deku.Attributes (klass_)
-import Deku.Control (text, text_)
+import Contracts (Env(..), Subsection, getEnv, subsection)
+import Deku.Control (text_)
 import Deku.DOM as D
-import Deku.Do as Deku
-import Deku.Hooks (useState)
-import Deku.Listeners (click_)
-import Effect (Effect)
-import Examples as Examples
-import FRP.Event (Event, fix, fold, sampleOnRight)
-import FRP.Event.Effect (bindToEffect)
 import Router.ADT (Route(..))
-
-buttonClass =
-  """inline-flex items-center rounded-md
-border border-transparent bg-indigo-600 px-3 py-2
-text-sm font-medium leading-4 text-white shadow-sm
-hover:bg-indigo-700 focus:outline-none focus:ring-2
-focus:ring-indigo-500 focus:ring-offset-2 mr-6""" :: String
-
-foldEBad :: forall a b. (b -> a -> Effect b) -> b -> Event a -> Event b
-foldEBad f b e = flip bindToEffect identity $ fix \i ->
-  (sampleOnRight (i <|> pure (pure b)) (e <#> bindFlipped <<< flip f))
-
-foldEGood :: forall a b. (b -> a -> Effect b) -> b -> Event a -> Event b
-foldEGood f b e = fix \i -> flip bindToEffect identity
-  (sampleOnRight (i <|> pure b) (e <#> flip f))
 
 timeLeaks :: Subsection
 timeLeaks = subsection
   { title: "Time leaks"
-  , matter: \(Env { routeLink }) ->
-      [ D.p_
+  , matter: do
+      Env { routeLink } <- getEnv
+      pure [ D.p_
           [ text_
               "We've seen that fixed points can be dangerous because they lead to potentially infinite loops. But there's another, even more devious way that they're dangerous - "
           , D.i__ "time leaks"
@@ -94,55 +67,6 @@ timeLeaks = subsection
           [ text_
               "Let's see this in action. We'll set up two fixed points, one with a time leak and one without. Both fixed points will run an effectful computation on each tick, which will cause one counter to spin out of control whereas the other one stays tame."
           ]
-      , psCodeNoCollapseWithLink Examples.FoldEffect
-      , exampleBlockquote
-          [ Deku.do
-              setThunk1 /\ thunk1 <- useState unit
-              setThunk2 /\ thunk2 <- useState unit
-              setThunk3 /\ thunk3 <- useState unit
-              setThunk4 /\ thunk4 <- useState unit
-              let
-                thunker p b _ = do
-                  p unit
-                  pure (b + 1)
-              D.div_
-                [ D.button
-                    [ klass_ buttonClass
-                    , click_ do
-                        setThunk1 unit
-                        setThunk2 unit
-                    ]
-                    [ text_ "Increment" ]
-                , D.div_
-                    [ text_ "Counter 1 using \"bad\" "
-                    , D.code__ "foldE"
-                    , text_ ": "
-                    , text
-                        (show <$> (foldEBad (thunker setThunk3) (-1) thunk1))
-                    ]
-                , D.div_
-                    [ text_ "Counter 2 using \"good\" "
-                    , D.code__ "foldE"
-                    , text_ ": "
-                    , text
-                        (show <$> (foldEGood (thunker setThunk4) (-1) thunk2))
-                    ]
-                , D.div_
-                    [ text_ "Result of \"bad\" "
-                    , D.code__ "foldE has a time leak"
-                    , text_ ": "
-                    , text
-                        (show <$> (fold (pure <$> add 1) (-1) thunk3))
-                    ]
-                , D.div_
-                    [ text_ "Result of \"good\" "
-                    , D.code__ "foldE behaves"
-                    , text_ ": "
-                    , text
-                        (show <$> (fold (pure <$> add 1) (-1) thunk4))
-                    ]
-                ]
-          ]
       , D.p_
           [ text_
               "Yikes, that's leakier than an abstraction created by an object-oriented programmer!"
@@ -187,12 +111,12 @@ timeLeaks = subsection
               "As much as possible, use primitives from your FRP library that already exist for these purposes. These have been heavily tested and vetted."
           , D.li_
               [ text_ "When possible, use "
-              , D.code__ "Behavior"
+              , D.code__ "Poll"
               , text_
-                  "s to separate out the read-only effectful parts of a computation from the pure ones. A behavior is a continuous function of time, so one way to think of anything effectful in FRP is how it is behaving at any given moment, be it a random-number generator or a "
+                  "s to separate out the read-only effectful parts of a computation from the pure ones. A poll is a continuous function of time, so one way to think of anything effectful in FRP is how it is behaving at any given moment, be it a random-number generator or a "
               , D.code__ "GET"
               , text_
-                  " request to an API. Sampling behaviors on events, doing some work, and then sampling more behaviors as you need them is not only a better way to write FRP - it makes the use of side effects crystal clear to those reading your code, which makes refactoring easier."
+                  " request to an API. Sampling polls on events, doing some work, and then sampling more polls as you need them is not only a better way to write FRP - it makes the use of side effects crystal clear to those reading your code, which makes refactoring easier."
               ]
           , D.li_
               [ text_
@@ -202,7 +126,7 @@ timeLeaks = subsection
               , D.code__ "slider"
               , text_
                   ". For example, if you have a game state that updates whenever you click a button based on the previous game state and a current timestamp, this can be modeled as "
-              , D.code__ "click $ state <#> \\s -> now >>= newState s"
+              , D.code__ "DL.runOn DL.click $ state <#> \\s -> now >>= newState s"
               , text_ "."
               ]
           ]

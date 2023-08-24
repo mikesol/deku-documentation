@@ -3,7 +3,7 @@ module Pages.CoreConcepts.State where
 import Prelude
 
 import Contracts (Page, page)
-import Deku.Attribute ((!:=))
+import Deku.DOM.Attributes as DA
 import Deku.Control (text_)
 import Deku.DOM as D
 import Pages.CoreConcepts.State.HookingIntoTheDOM (hookingIntoTheDOM)
@@ -15,7 +15,7 @@ state :: Page
 state = page
   { route: State
   , topmatter: pure
-      [ D.p [D.Class !:= "lead"]
+      [ D.p [DA.klass_ "lead"]
           [ text_ "Learn how to use State Hooks in Deku."
           ]
       , D.p__

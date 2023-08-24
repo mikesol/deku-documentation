@@ -3,7 +3,7 @@ module Pages.Introduction.HelloWorld.TheAnatomyOfHello where
 import Prelude
 
 import Contracts (Section, section)
-import Deku.Control (text_)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Pages.Introduction.HelloWorld.TheAnatomyOfHello.FillingUpTheDOM (fillingUpTheDOM)
 import Pages.Introduction.HelloWorld.TheAnatomyOfHello.Imports (imports)

@@ -2,50 +2,52 @@ module Pages.FRP.Alternatives.Alt.TheOneOfFunction where
 
 import Prelude
 
-import Components.Code (psCodeWithLink)
-import Components.ExampleBlockquote (exampleBlockquote)
-import Contracts (Subsection, subsection)
-import Control.Alt ((<|>))
-import Data.Foldable (oneOf)
-import Data.Tuple.Nested ((/\))
-import Deku.Control (text, text_)
+import Components.Disclaimer (disclaimer)
+import Contracts (CollapseState(..), Subsection, getExample, subsection)
+import Data.Maybe (Maybe(..))
+import Deku.Control (text_)
 import Deku.DOM as D
 import Examples as Examples
-import FRP.Event (delay)
-import FRP.Event.Time (interval)
 
 theOneOfFunction :: Subsection
 theOneOfFunction = subsection
   { title: "The oneOf function"
-  , matter: pure
-      [ D.p_
-          [ text_
-              "Alting lots of events can get tedios. Too many tie fighters! To make life easier, there's the "
-          , D.code__ "oneOf"
-          , text_
-              " function that will alt a bunch of events. Surveys consistently reveal that this is the technique most often used when coders create a text-only version of "
-          , D.b__ "Harder, Better, Faster, Stronger"
-          , text_ " in the browser."
-          ]
-      , psCodeWithLink Examples.TheOneOfFunction
-      , exampleBlockquote
-          [ do
-              let
-                ms = 967
-                lyrics =
-                  [ "Work it" /\ 0
-                  , "Make it" /\ 1
-                  , "Do it" /\ 2
-                  , "Makes us" /\ 3
-                  , "Harder" /\ 8
-                  , "Better" /\ 9
-                  , "Faster" /\ 10
-                  , "Stronger" /\ 11
-                  ]
-                loop = 16 * ms
-                beat (w /\ t) =
-                  delay (t * ms) (pure w <|> (interval loop $> w))
-              text (oneOf (beat <$> lyrics))
-          ]
-      ]
+  , matter: do
+      example <- getExample StartCollapsed Nothing
+        Examples.TheOneOfFunction
+      pure
+        [ D.p_
+            [ D.code__ "Alt"
+            , text_
+                "ing lots of events can get tedios. Too many tie fighters! To make life easier, there's the "
+            , D.code__ "oneOf"
+            , text_
+                " function that will alt a bunch of events. Surveys consistently reveal that this is the technique most often used when coders create a text-only version of "
+            , D.b__ "Harder, Better, Faster, Stronger"
+            , text_ " in the browser."
+            ]
+        , example
+        , disclaimer
+            { header: D.span_ [ text_ "Dredging" ]
+            , message: D.p_
+                [ text_ "The function"
+                , D.code__ "dredge"
+                , text_ " is like the function"
+                , D.code__ "sham"
+                , text_ " except that, instead of taking an "
+                , D.code__ "Event"
+                , text_ " and returning a "
+                , D.code__ "Poll"
+                , text_ ", it takes an "
+                , D.code__ "Event"
+                , text_ " constructor of type "
+                , D.code__ "Event a -> Event b"
+                , text_ " and returns a "
+                , D.code__ "Poll"
+                , text_ " constructor of type"
+                , D.code__ "Poll a -> Poll b"
+                , text_ "."
+                ]
+            }
+        ]
   }

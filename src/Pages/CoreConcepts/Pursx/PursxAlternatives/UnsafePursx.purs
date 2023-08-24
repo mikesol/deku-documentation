@@ -5,7 +5,7 @@ import Prelude
 import Components.Code (psCodeWithLink)
 import Components.ExampleBlockquote (exampleBlockquote)
 import Contracts (Subsection, subsection)
-import Deku.Control (text_)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Deku.Pursx ((~~))
 import Examples as Examples

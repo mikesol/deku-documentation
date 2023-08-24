@@ -3,7 +3,7 @@ module Pages.CoreConcepts.Collections where
 import Prelude
 
 import Contracts (Page, page)
-import Deku.Attribute ((!:=))
+import Deku.DOM.Attributes as DA
 import Deku.Control (text_)
 import Deku.DOM as D
 import Pages.CoreConcepts.Collections.DynamicElements (dynamicElements)
@@ -15,7 +15,7 @@ collections :: Page
 collections = page
   { route: Collections
   , topmatter: pure
-      [ D.p [D.Class !:= "lead"]
+      [ D.p [DA.klass_ "lead"]
           [ text_ "Working with lists and dynamic elements."
           ]
       , D.p_

@@ -3,7 +3,7 @@ module Pages.CoreConcepts.Effects.Hydration where
 import Prelude
 
 import Contracts (Section, section)
-import Deku.Control (text_)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Pages.CoreConcepts.Effects.Hydration.InjectingDependencies (injectingDependencies)
 import Pages.CoreConcepts.Effects.Hydration.AnAlternativeEffectModel (anAlternativeEffectModel)

@@ -3,7 +3,7 @@ module Pages.CoreConcepts.Portals.LocalPortals where
 import Prelude
 
 import Contracts (Section, section)
-import Deku.Control (text_)
+import Deku.Control (text, text_)
 import Deku.DOM as D
 import Pages.CoreConcepts.Portals.LocalPortals.PerformanceNotes (performanceNotes)
 import Pages.CoreConcepts.Portals.LocalPortals.TheLocalPortalSyntax (theLocalPortalSyntax)
