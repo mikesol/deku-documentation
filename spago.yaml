@@ -88,7 +88,7 @@ workspace:
       - tuples
     tidy-codegen:
       repo: "https://github.com/natefaubion/purescript-tidy-codegen"
-      version: "type-applications"
+      version: "main"
       dependencies:
       - aff
       - ansi
