@@ -17,7 +17,7 @@ usingAnExistingProject = subsection
               "If you have an existing project that does not yet have PureScript installed, you can install PureScript and related tooling with the following command."
           ]
       , shSessionCode
-          "$ npm install -D purescript spago purs-tidy && npx spago init"
+          "$ npm install -D purescript spago@next purs-tidy && npx spago init"
       , D.p_
           [ text_
               "Once PureScript is installed, or if you're working from a project with PureScript already installed, you can install Deku with the following command."
