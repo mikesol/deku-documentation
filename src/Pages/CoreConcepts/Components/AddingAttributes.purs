@@ -26,15 +26,15 @@ addingAttributes = section
       , text_ "And here's the result."
       , exampleBlockquote
           [ D.div_
-              [ D.span [DA.style_ "color:teal;"] [ text_ "I exist" ]
+              [ D.span [ DA.style_ "color:teal;" ] [ text_ "I exist" ]
               , D.ul_ $ map D.li__ [ "A", "B", "C" ]
               , D.div_
                   [ D.h3
-                          [ DA.id_ "my-id"
-                          , DA.style_ "background-color:silver;"
-                          ]
+                      [ DA.id_ "my-id"
+                      , DA.style_ "background-color:silver;"
+                      ]
                       [ text_ "foo" ]
-                  , D.i [DA.klass_ "text-2xl"] [ text_ "bar" ]
+                  , D.i [ DA.klass_ "text-2xl" ] [ text_ "bar" ]
                   , text_ " "
                   , D.b_ [ text_ "baz" ]
                   ]

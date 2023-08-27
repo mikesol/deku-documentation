@@ -14,16 +14,17 @@ gating = section
   { title: "Gating"
   , topmatter: do
       Env { routeLink } <- getEnv
-      pure [ D.p_
-          [ text_ "A close cousin of sampling is "
-          , D.b__ "gating"
-          , text_
-              " whereby an event's emission is gated by the value of a poll. This is a close cousin of "
-          , routeLink Filtering
-          , text_
-              " with the difference that the filter is dynamic instead of static."
-          ]
-      ]
+      pure
+        [ D.p_
+            [ text_ "A close cousin of sampling is "
+            , D.b__ "gating"
+            , text_
+                " whereby an event's emission is gated by the value of a poll. This is a close cousin of "
+            , routeLink Filtering
+            , text_
+                " with the difference that the filter is dynamic instead of static."
+            ]
+        ]
   , subsections:
       [ gatingEventsOnPolls, switchingOnPolls ]
   }

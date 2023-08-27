@@ -17,9 +17,10 @@ triggerAffInParallel = subsection
       pure
         [ D.p_
             [ text_
-                "In PureScript, asynchronous effects can be triggered by using ",
-              D.code_ [D.text_ "launchAff"],
-              text_ " in an effectful context like a click listener. This allows us to use the same flow from the timestamp example above and adapt it to asynchronous code."
+                "In PureScript, asynchronous effects can be triggered by using "
+            , D.code_ [ D.text_ "launchAff" ]
+            , text_
+                " in an effectful context like a click listener. This allows us to use the same flow from the timestamp example above and adapt it to asynchronous code."
             ]
         , example
         ]

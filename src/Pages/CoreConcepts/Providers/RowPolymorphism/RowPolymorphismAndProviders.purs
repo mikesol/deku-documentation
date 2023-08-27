@@ -64,47 +64,49 @@ rowPolymorphismAndProviders :: Subsection
 rowPolymorphismAndProviders = subsection
   { title: "Row polymorphism and providers"
   , matter: do
-      example <- getExample StartExpanded Nothing Examples.RowPolymorphismAndProviders
-      pure [ D.p_
-          [ text_
-              "Now that we've explored what Row Polymorphism looks like, let's see it in the case of a Deku provider. We'll explore two scenarios:"
-          ]
-      , D.ol_
-          [ D.li_
-              [ text_ "A third-party library called "
-              , D.code__ "libGreat"
-              , text_ " that's a terminal node in our Deku tree."
-              ]
-          , D.li_
-              [ text_ "A third-party library called "
-              , D.code__ "libAwesome"
-              , text_ " that's an intermediary node in our Deku tree."
-              ]
-          ]
-      , D.p__ "Here's the example."
-      , example
-      , D.p_
-          [ text_ "By using Row Polymorphism, both "
-          , D.code__ "libGreat"
-          , text_ " and "
-          , D.code__ "libAwesome"
-          , text_
-              " are able to exist in the Deku tree without knowing much about the environment into which they're inserted aside from the fact that it's a "
-          , D.code__ "Record"
-          , text_ " in a "
-          , D.code__ "newtype"
-          , text_ ". So long as their dependencies are present, they compile."
-          ]
-      , D.p_
-          [ text_ "Because "
-          , D.code__ "libAwesome"
-          , text_
-              " refers to additional nodes in the Deku tree, it must provide an environment to these nodes. However, because it cannot know the type of this environment, we're in a bind. Enter the "
-          , D.code__ "Newtype"
-          , text_ " constraint. "
-          , D.code__ "Newtype"
-          , text_
-              "s allow you to use recursive Row Polymorphism in a library without committing to a concrete type upfront. Armed with this knowledge, you'll be able to create all sorts of neat Deku libraries. I expect to see the market flooded with Deku image carousel implementations any day now!"
-          ]
-      ]
+      example <- getExample StartExpanded Nothing
+        Examples.RowPolymorphismAndProviders
+      pure
+        [ D.p_
+            [ text_
+                "Now that we've explored what Row Polymorphism looks like, let's see it in the case of a Deku provider. We'll explore two scenarios:"
+            ]
+        , D.ol_
+            [ D.li_
+                [ text_ "A third-party library called "
+                , D.code__ "libGreat"
+                , text_ " that's a terminal node in our Deku tree."
+                ]
+            , D.li_
+                [ text_ "A third-party library called "
+                , D.code__ "libAwesome"
+                , text_ " that's an intermediary node in our Deku tree."
+                ]
+            ]
+        , D.p__ "Here's the example."
+        , example
+        , D.p_
+            [ text_ "By using Row Polymorphism, both "
+            , D.code__ "libGreat"
+            , text_ " and "
+            , D.code__ "libAwesome"
+            , text_
+                " are able to exist in the Deku tree without knowing much about the environment into which they're inserted aside from the fact that it's a "
+            , D.code__ "Record"
+            , text_ " in a "
+            , D.code__ "newtype"
+            , text_ ". So long as their dependencies are present, they compile."
+            ]
+        , D.p_
+            [ text_ "Because "
+            , D.code__ "libAwesome"
+            , text_
+                " refers to additional nodes in the Deku tree, it must provide an environment to these nodes. However, because it cannot know the type of this environment, we're in a bind. Enter the "
+            , D.code__ "Newtype"
+            , text_ " constraint. "
+            , D.code__ "Newtype"
+            , text_
+                "s allow you to use recursive Row Polymorphism in a library without committing to a concrete type upfront. Armed with this knowledge, you'll be able to create all sorts of neat Deku libraries. I expect to see the market flooded with Deku image carousel implementations any day now!"
+            ]
+        ]
   }

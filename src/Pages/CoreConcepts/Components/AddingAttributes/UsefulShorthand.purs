@@ -12,7 +12,7 @@ usefulShorthand :: Subsection
 usefulShorthand = subsection
   { title: "¿Sì? Yes Yes!"
   , matter: pure
-      [D.p_
+      [ D.p_
           [ text_
               "PureScript has a delightful type-safe CSS library called "
           , D.a

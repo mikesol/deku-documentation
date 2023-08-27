@@ -13,7 +13,8 @@ effects = section
   { title: "Effects"
   , topmatter: pure
       [ D.p_
-          [ text_ "There are two functions you can use to hitch any ol' side effect onto an event. We've seen them used here and there in the docs already, but let's give them the long-overdue section that they deserve"
+          [ text_
+              "There are two functions you can use to hitch any ol' side effect onto an event. We've seen them used here and there in the docs already, but let's give them the long-overdue section that they deserve"
           ]
       ]
   , subsections:

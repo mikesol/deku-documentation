@@ -36,7 +36,7 @@ const x = foo;
               , D.code_ [ text_ "code" ]
               , text_
                   " in it. Or maybe you’ll want to include a "
-              , D.a [DA.href_ "/"] [ text_ "link" ]
+              , D.a [ DA.href_ "/" ] [ text_ "link" ]
               , text_
                   " in it. I don’t think we should get too carried away with other scenarios like lists or tables — that would be silly."
               ]

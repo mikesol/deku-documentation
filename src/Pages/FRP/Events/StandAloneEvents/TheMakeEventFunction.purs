@@ -34,9 +34,9 @@ theMakeEventFunction = subsection
           [ text_
               "As an example, supposed you wanted an event to fire every time the browser requested an animation frame via "
           , D.a
-              [DA.href_
+              [ DA.href_
                   "https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame"
-                  , (DA.target_ "_blank")
+              , (DA.target_ "_blank")
               ]
               [ D.code__ "requestAnimationFrame" ]
           , text_ ". One way to accomplish that would be via "

@@ -1,7 +1,6 @@
 module Pages.FRP.Events.InteractiveEvents.LifetimeAndGarbageCollection
   ( lifetimeAndGarbageCollection
-  )
-  where
+  ) where
 
 import Prelude
 
@@ -22,7 +21,7 @@ lifetimeAndGarbageCollection = subsection
           , D.a
               [ DA.href_
                   "https://pursuit.purescript.org/packages/purescript-refs/6.0.0/docs/Effect.Ref#t:Ref"
-                  , DA.target_ "_blank"
+              , DA.target_ "_blank"
               ]
               [ text_ "Ref" ]
           , text_

@@ -14,7 +14,7 @@ alternatives :: Page
 alternatives = page
   { route: Alternatives
   , topmatter: pure
-      [ D.p [DA.klass_ "lead"]
+      [ D.p [ DA.klass_ "lead" ]
           [ text_ "How events function in an alternative universe."
           ]
       , D.p_

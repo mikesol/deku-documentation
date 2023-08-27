@@ -48,7 +48,8 @@ theCreateEffect = subsection
             , text_
                 ". Our program will use the created event to write a message to the console. When clicking on "
             , D.b__ "Run program"
-            , text_ " below, make sure to open up the console to see the result!"
+            , text_
+                " below, make sure to open up the console to see the result!"
             ]
         , psCode
             """main = do

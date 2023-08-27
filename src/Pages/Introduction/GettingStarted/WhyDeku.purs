@@ -25,8 +25,8 @@ whyDeku = section
           [ text_
               "This documentation was created with Deku and is available on "
           , D.a
-              [DA.href_ "https://github.com/mikesol/deku-documentation"
-                  ,DA.target_ "_blank"
+              [ DA.href_ "https://github.com/mikesol/deku-documentation"
+              , DA.target_ "_blank"
               ]
               [ text_ "GitHub" ]
           , text_

@@ -112,4 +112,5 @@ linkWithNut
        )
   -> Nut
 linkWithNut pushState route title attributes = link' pushState route
-  attributes title
+  attributes
+  title

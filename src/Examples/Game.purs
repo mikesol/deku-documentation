@@ -170,7 +170,8 @@ mean ar =
     else (sum ar) / (toNumber alen)
 
 meanDiff :: Array Number -> Number
-meanDiff ar = mean $ zipWith (\a b -> 1.0 / ((a - b) / 1000.0)) (dropEnd 1 ar) (drop 1 ar)
+meanDiff ar = mean $ zipWith (\a b -> 1.0 / ((a - b) / 1000.0)) (dropEnd 1 ar)
+  (drop 1 ar)
 
 app :: ExampleSignature
 app runExample = do

@@ -19,18 +19,26 @@ polls = page
       [ D.p [ DA.klass_ "lead" ]
           [ text_
               "How much wood could a woodchuck chuck if a woodchuck could chuck wood?"
-          , D.ul [DA.klass_ "list-none"]
-              [ D.li_ [ D.input [ DA.xtypeCheckbox ] [], D.span [DA.klass_ "ml-2"][ text_ "A little"] ]
-              , D.li_ [ D.input [ DA.xtypeCheckbox ] [], D.span [DA.klass_ "ml-2"][ text_ "A lot"] ]
+          , D.ul [ DA.klass_ "list-none" ]
+              [ D.li_
+                  [ D.input [ DA.xtypeCheckbox ] []
+                  , D.span [ DA.klass_ "ml-2" ] [ text_ "A little" ]
+                  ]
               , D.li_
                   [ D.input [ DA.xtypeCheckbox ] []
-                  ,  D.span [DA.klass_ "ml-2"][ text_ "Ok, I get it, this is an example of a poll"]
+                  , D.span [ DA.klass_ "ml-2" ] [ text_ "A lot" ]
+                  ]
+              , D.li_
+                  [ D.input [ DA.xtypeCheckbox ] []
+                  , D.span [ DA.klass_ "ml-2" ]
+                      [ text_ "Ok, I get it, this is an example of a poll" ]
                   ]
               ]
           ]
       , D.p_
           [ D.code__ "Polls"
-          , text_ " are discrete functions of time that are initiated by other discrete functions of time. "
+          , text_
+              " are discrete functions of time that are initiated by other discrete functions of time. "
           , D.code__ "Events"
           , text_
               " are discrete functions of time. Sounds like a marriage made in heaven! Or at least in PureScript. On this page, we'll start by defining the "

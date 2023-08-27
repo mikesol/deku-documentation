@@ -15,7 +15,7 @@ basicUsage = section
   , topmatter: pure
       [ D.p_
           [ text_ "This section will be about "
-          , D.span [DA.klass_ "font-bold"] [ text_ "Basic usage" ]
+          , D.span [ DA.klass_ "font-bold" ] [ text_ "Basic usage" ]
           , text_ "."
           ]
       , D.p_

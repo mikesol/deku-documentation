@@ -13,7 +13,8 @@ severalAttributes = subsection
   , matter: pure
 
       [ D.p_
-          [ text_ "Several attributes can be set by including them all in an array."
+          [ text_
+              "Several attributes can be set by including them all in an array."
           ]
       , psCode
           """

@@ -12,15 +12,18 @@ triggerEffect :: Subsection
 triggerEffect = subsection
   { title: "A time-stamper"
   , matter: do
-      example <- getExample StartCollapsed Nothing Examples.RunningEffectsInResponseToEvents
-      pure [ D.p_
-          [ text_ "In the example below, we mint a very-effectful fresh timestamp every time the text "
-          , D.b__ "Current timestamp"
-          , text_ " is clicked. The same pattern is accomplishable via "
-          , D.code__ "useRef"
-          , text_
-              ". As is the case with many things in Deku, there is more than one way to skin a Gerudian Lizalfos."
-          ]
-      , example
-      ]
+      example <- getExample StartCollapsed Nothing
+        Examples.RunningEffectsInResponseToEvents
+      pure
+        [ D.p_
+            [ text_
+                "In the example below, we mint a very-effectful fresh timestamp every time the text "
+            , D.b__ "Current timestamp"
+            , text_ " is clicked. The same pattern is accomplishable via "
+            , D.code__ "useRef"
+            , text_
+                ". As is the case with many things in Deku, there is more than one way to skin a Gerudian Lizalfos."
+            ]
+        , example
+        ]
   }

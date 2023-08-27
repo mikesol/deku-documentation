@@ -15,7 +15,7 @@ components :: Page
 components = page
   { route: Components
   , topmatter: pure
-      [ D.p [DA.klass_ "lead"]
+      [ D.p [ DA.klass_ "lead" ]
           [ text_ "Learn how to make a static page with Deku."
           ]
       , D.p_

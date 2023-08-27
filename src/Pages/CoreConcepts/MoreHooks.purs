@@ -17,7 +17,7 @@ moreHooks :: Page
 moreHooks = page
   { route: MoreHooks
   , topmatter: pure
-      [ D.p [DA.klass_ "lead"]
+      [ D.p [ DA.klass_ "lead" ]
           [ text_ "Specialized hooks for faster rendering."
           ]
       , D.p_

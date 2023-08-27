@@ -12,8 +12,9 @@ samplingAPollAndDiscardingTheEvent
   :: Subsection
 samplingAPollAndDiscardingTheEvent = subsection
   { title: "Sampling a poll and discarding the event"
-  , matter: do 
-      samplePoll <- getExample StartCollapsed (Just "h-96") Examples.SamplingAPollAndDiscardingTheEvent
+  , matter: do
+      samplePoll <- getExample StartCollapsed (Just "h-96")
+        Examples.SamplingAPollAndDiscardingTheEvent
       pure
         [ D.p_
             [ text_

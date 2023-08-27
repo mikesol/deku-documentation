@@ -15,7 +15,7 @@ state :: Page
 state = page
   { route: State
   , topmatter: pure
-      [ D.p [DA.klass_ "lead"]
+      [ D.p [ DA.klass_ "lead" ]
           [ text_ "Learn how to use State Hooks in Deku."
           ]
       , D.p__

@@ -16,7 +16,7 @@ applicatives :: Page
 applicatives = page
   { route: Applicatives
   , topmatter: pure
-      [ D.p [DA.klass_ "lead"]
+      [ D.p [ DA.klass_ "lead" ]
           [ targetedLink "https://www.youtube.com/watch?v=4AyjKgz9tKg"
               [ text_ "Conjunction junctor, what's your functor?" ]
           ]

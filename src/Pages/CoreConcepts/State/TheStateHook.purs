@@ -19,29 +19,30 @@ theStateHook = section
       example <- getExample StartCollapsed Nothing
         Examples.TheStateHook
       pure
-       [ D.p__
-          "Deku's state hooks fit comfortably on a single line and pack a lot of power. Let's see one now!"
+        [ D.p__
+            "Deku's state hooks fit comfortably on a single line and pack a lot of power. Let's see one now!"
 
-      , example
-      , proTip
-          { header: text_ "Deku.do"
-          , message: D.div_
-              [ text_ "As previously mentioned, in PureScript and PureScript-inspired languages like Haskell, a "
-              , D.code__ "do"
-              , text_
-                  " block is a way to write nested function calls as a sequence of instructions. This is why PureScript and its progeny are often collectively referred to as "
-              , targetedLink
-                  "https://stackoverflow.com/questions/6622524/why-is-haskell-sometimes-referred-to-as-best-imperative-language"
-                  [ text_ "the best imperative language" ]
-              , text_ ". Different types of instructions use different "
-              , D.code__ "do"
-              , text_
-                  " blocks, and when you're working with Deku hooks, that block is "
-              , D.code__ "Deku.do"
-              , text_ "."
-              ]
-          }
-      ]
+        , example
+        , proTip
+            { header: text_ "Deku.do"
+            , message: D.div_
+                [ text_
+                    "As previously mentioned, in PureScript and PureScript-inspired languages like Haskell, a "
+                , D.code__ "do"
+                , text_
+                    " block is a way to write nested function calls as a sequence of instructions. This is why PureScript and its progeny are often collectively referred to as "
+                , targetedLink
+                    "https://stackoverflow.com/questions/6622524/why-is-haskell-sometimes-referred-to-as-best-imperative-language"
+                    [ text_ "the best imperative language" ]
+                , text_ ". Different types of instructions use different "
+                , D.code__ "do"
+                , text_
+                    " blocks, and when you're working with Deku hooks, that block is "
+                , D.code__ "Deku.do"
+                , text_ "."
+                ]
+            }
+        ]
   , subsections:
       [ pushingToAHook
       , usingTheHookInText

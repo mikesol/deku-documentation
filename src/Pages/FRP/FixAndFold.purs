@@ -14,7 +14,7 @@ fixAndFold :: Page
 fixAndFold = page
   { route: FixAndFold
   , topmatter: pure
-      [ D.p [DA.klass_ "lead"]
+      [ D.p [ DA.klass_ "lead" ]
           [ text_ "Behold the crown jewel of functional reactive programming!"
           ]
       , D.p_

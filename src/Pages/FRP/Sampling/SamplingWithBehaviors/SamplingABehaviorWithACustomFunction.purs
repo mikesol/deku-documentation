@@ -13,7 +13,8 @@ samplingAPollWithACustomFunction
 samplingAPollWithACustomFunction = subsection
   { title: "Sampling a poll with a function"
   , matter: do
-      samplePoll <- getExample StartCollapsed (Just "h-96") Examples.SamplingAPollWithACustomFunction
+      samplePoll <- getExample StartCollapsed (Just "h-96")
+        Examples.SamplingAPollWithACustomFunction
       pure
         [ D.p_
             [ text_

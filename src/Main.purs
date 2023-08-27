@@ -58,7 +58,7 @@ getScrolledSection :: Int -> (Int -> Effect ScrolledSection) -> Effect Int
 getScrolledSection startingAt f = go 0 ScrollCheckStart startingAt startingAt
   where
   go rc checkDir n head = case rc of
-    7 -> {-Log.error "Infinite loop, ping Mike." *>-} pure 0
+    7 -> {-Log.error "Infinite loop, ping Mike." *>-}  pure 0
     _ -> do
       scrolledSection <- f head
       case scrolledSection of

@@ -14,7 +14,7 @@ filtering :: Page
 filtering = page
   { route: Filtering
   , topmatter: pure
-      [ D.p [DA.klass_ "lead"]
+      [ D.p [ DA.klass_ "lead" ]
           [ text_ "How to make events less eventful."
           ]
       , D.p_

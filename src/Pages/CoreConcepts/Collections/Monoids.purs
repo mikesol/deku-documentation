@@ -35,7 +35,8 @@ monoids = section
                 , text_
                     " instances for Deku components, we're referring to components as defined in the "
                 , routeLink Components
-                , text_ " section. That is, they are PureScript terms with type "
+                , text_
+                    " section. That is, they are PureScript terms with type "
                 , D.code__ "Nut"
                 , text_ ". As "
                 , D.code__ "Nut"

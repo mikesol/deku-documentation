@@ -14,7 +14,7 @@ sSR :: Page
 sSR = page
   { route: SSR
   , topmatter: pure
-      [ D.p [DA.klass_ "lead"]
+      [ D.p [ DA.klass_ "lead" ]
           [ text_ "Server-side rendering or Static site rendering? Choose two!"
           ]
       , D.p_

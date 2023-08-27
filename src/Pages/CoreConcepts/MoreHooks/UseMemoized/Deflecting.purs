@@ -53,17 +53,18 @@ deflecting = subsection
             , D.code__ "pure"
             , text_ " and nothing else."
             ]
-        , D.p_ [
-            text_ "Usually, this feature of "
+        , D.p_
+            [ text_ "Usually, this feature of "
             , D.code__ "useRant"
-            , text_ " is not an issue because we're dealing with some sort of stream like clicks and the initial value is context specific, so purity doesn't enter the equation. However, sometimes we want to find "
+            , text_
+                " is not an issue because we're dealing with some sort of stream like clicks and the initial value is context specific, so purity doesn't enter the equation. However, sometimes we want to find "
             , D.i__ "only"
             , text_ " the pure values of a "
             , D.code__ "Poll"
             , text_ ". For this, we have the "
             , D.code__ "useDeflect"
             , text_ " hook."
-        ]
+            ]
         , example
         ]
   }

@@ -29,11 +29,11 @@ events = page
       , psCode
           """Deku.do
   pusher /\ event <- useState 42"""
-      ,  D.p_
-          [
-           text_ "As we'll see later, the "
+      , D.p_
+          [ text_ "As we'll see later, the "
           , D.code__ "Poll"
-          , text_ " type is defined in terms of events. You have to understand the Tao of "
+          , text_
+              " type is defined in terms of events. You have to understand the Tao of "
           , D.code__ "Event"
           , text_ " before you understand the Te of "
           , D.code__ "Poll"

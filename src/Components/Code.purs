@@ -85,9 +85,12 @@ psCodeWithLink' s e ex = D.div_
       , D.code
           [ DA.klass_ textSize ]
           [ do
-             let lmt = 30
-             text_ $ if String.length startTxt > lmt then String.take (lmt-2) startTxt <> "…" else startTxt 
-             ]
+              let lmt = 30
+              text_ $
+                if String.length startTxt > lmt then
+                  String.take (lmt - 2) startTxt <> "…"
+                else startTxt
+          ]
       , D.button
           [ DL.click_ \_ -> do
               copyToClipboard startTxt

@@ -42,7 +42,7 @@ pursx :: Page
 pursx = page
   { route: Pursx
   , topmatter: pure
-      [ D.p [DA.klass_ "lead"]
+      [ D.p [ DA.klass_ "lead" ]
           [ text_ "Or how I learned to stop worrying and copy-paste the DOM."
           ]
       , D.p_

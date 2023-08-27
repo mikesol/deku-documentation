@@ -1,4 +1,5 @@
 module TailwindHack where
+
 -- bg-fuchsia-600
 -- focus:ring-fuchsia-500
 -- bg-amber-600
@@ -19,4 +20,5 @@ module TailwindHack where
 -- focus:ring-pink-500
 -- bg-magenta-600
 -- focus:ring-magenta-500
--- 
+
+hacky = "yes" :: String

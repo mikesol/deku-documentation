@@ -14,7 +14,7 @@ customElements :: Page
 customElements = page
   { route: CustomElements
   , topmatter: pure
-      [ D.p [DA.klass_ "lead"]
+      [ D.p [ DA.klass_ "lead" ]
           [ text_ "How to bend Deku to do your bidding."
           ]
       , D.p_

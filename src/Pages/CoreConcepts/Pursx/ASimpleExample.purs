@@ -63,7 +63,7 @@ aSimpleExample = section
       , htmlCode (reflectSymbol myHtml)
       , D.p__ "This renders in the DOM like so."
       , D.div
-          [DA.klass_
+          [ DA.klass_
               "border-solid border-2 border-slate-200 dark:border-white-200 flex justify-center"
           ]
           [ myHtml ~~ {} ]

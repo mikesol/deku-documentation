@@ -114,7 +114,7 @@ myFunction = fix (\f a -> if a > 100 then 100 else f (a + 1))
           , Deku.do
               setElt /\ elt <- useState 0
               disactivatePreviousElt /\ previousElt <- useMailboxed
-              { value: v } <- useDyn ((\i -> (i + 1) /\ i) <$> elt)  
+              { value: v } <- useDyn ((\i -> (i + 1) /\ i) <$> elt)
               (pure true <|> (previousElt v $> false)) <#~> do
                 let
                   t = case v of
