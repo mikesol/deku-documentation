@@ -5,6 +5,7 @@ import Prelude
 import Clipboard (copyToClipboard)
 import Components.Toast (toast)
 import Control.Plus (empty)
+import Data.String as String
 import Deku.Control (text_)
 import Deku.Core (Nut)
 import Deku.DOM (Attribute, HTMLElement)
@@ -83,7 +84,10 @@ psCodeWithLink' s e ex = D.div_
           [ text_ " | " ]
       , D.code
           [ DA.klass_ textSize ]
-          [ text_ startTxt ]
+          [ do
+             let lmt = 30
+             text_ $ if String.length startTxt > lmt then String.take (lmt-2) startTxt <> "…" else startTxt 
+             ]
       , D.button
           [ DL.click_ \_ -> do
               copyToClipboard startTxt
