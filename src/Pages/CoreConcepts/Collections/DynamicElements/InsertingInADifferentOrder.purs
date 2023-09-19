@@ -22,7 +22,7 @@ insertingInADifferentOrder = subsection
             [ text_
                 "Sometimes, you want to insert elements in a particular order instead of the first element being inserted at the top of a list. There's a hook for that! Instead of "
             , D.code__ "useDynAtBeginning"
-            , text_ " or its homolog "
+            , text_ " or its homologue "
             , D.code__ "useDynAtEnd"
             , text_ ", we'll use plain old "
             , D.code__ "useDyn"

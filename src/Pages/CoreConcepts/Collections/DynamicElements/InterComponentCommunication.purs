@@ -19,7 +19,7 @@ interComponentCommunication = subsection
       pure
         [ D.p_
             [ text_
-                "Sometimes, you need to communicate between components in a dynamic structure. As we've seen in other examples, this possible by pushing to a hook at a higher level and subscribing to that hook at a lower level. However, because "
+                "Sometimes, you need to communicate between components in a dynamic structure. As we've seen in other examples, this is possible by pushing to a hook at a higher level and subscribing to that hook at a lower level. However, because "
             , D.code__ "sendTo"
             , text_ " and "
             , D.code__ "remove"

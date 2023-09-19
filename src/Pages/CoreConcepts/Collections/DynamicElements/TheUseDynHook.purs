@@ -18,9 +18,9 @@ theUseDynHook = subsection
       pure
         [ D.p_
             [ text_
-                "To render dynamic components with the most recent component appearing at the top of a collection, look no further then the "
+                "To render dynamic components with the most recent component appearing at the top of a collection, look no further than the "
             , D.code__ "useDynAtBeginning"
-            , text_ " hook. The hook takes an event outputs a value called "
+            , text_ " hook. The hook takes an event and outputs a value called "
             , D.code__ "value"
             , text_
                 " that can be used to render the most recent component. Here's an example:"

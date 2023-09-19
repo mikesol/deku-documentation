@@ -31,7 +31,7 @@ removingTheUnderscore = subsection
           { header: text_ "Expand the text"
           , message: D.div_
               [ text_
-                  "When adding attirubtes to a double-underscored element like "
+                  "When adding attributes to a double-underscored element like "
               , D.code_ [ text_ "D.span__" ]
               , text_ ", make sure to "
               , D.i_ [ text_ "also" ]
