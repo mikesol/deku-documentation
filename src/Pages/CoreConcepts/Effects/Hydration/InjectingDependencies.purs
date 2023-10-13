@@ -19,8 +19,8 @@ injectingDependencies = subsection
                 "Let's explore the Deku-ian effect model with a concrete example. Imagine that you are building an app called Image Roulette that reports when a user is watching or not watching an image. Whenever an image comes into focus, you need to ping the backend that it is being viewed, and whenever an image goes offscreen, you need to report that it is no longer being viewed."
             ]
         , D.p_
-            [ text_ "In React, we would likely make a component called ie "
-            , D.code__ "smartImage"
+            [ text_ "In React, we would likely make a component called "
+            , D.code__ "SmartImage"
             , text_
                 " that reports its own presence or absence via a REST API call on mount and dismount."
             ]

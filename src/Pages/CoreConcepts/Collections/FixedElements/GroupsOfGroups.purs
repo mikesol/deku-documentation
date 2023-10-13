@@ -12,7 +12,7 @@ groupsOfGroups :: Subsection
 groupsOfGroups = subsection
   { title: "Groups of groups"
   , matter: do
-      example <- getExample StartCollapsed Nothing Examples.ComponentsAsMonoids
+      example <- getExample StartCollapsed Nothing Examples.GroupsOfGroups
       pure
         [ D.p_
             [ text_ "Because "
@@ -25,7 +25,7 @@ groupsOfGroups = subsection
             ]
         , D.p_
             [ text_ "Here's an example of nested "
-            , D.code__ "flatten"
+            , D.code__ "fixed"
             , text_ "s going into the same container element."
             ]
         , example
@@ -46,7 +46,7 @@ groupsOfGroups = subsection
                 ", the click event has already fired, so the inner listener does not evaluate the statement "
             , D.code__ "(_ > Worse)"
             , text_ ". To provide the nested "
-            , D.code__ "flatten"
+            , D.code__ "fixed"
             , text_ " with the most recent event, we use "
             , D.code__ "useHot"
             , text_ "."

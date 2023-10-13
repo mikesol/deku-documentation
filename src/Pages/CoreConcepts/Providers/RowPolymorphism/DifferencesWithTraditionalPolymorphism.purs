@@ -21,7 +21,7 @@ differencesWithTraditionalPolymorphism = subsection
           , text_ " types, we can encode that "
           , D.i__ "n"
           , text_
-              " using polymorphism. In PureScript, when I want to indicate a row that has certain givesn plus "
+              " using polymorphism. In PureScript, when I want to indicate a row that has two certain types plus "
           , D.i__ "n"
           , text_ " other types, where "
           , D.i__ "n"

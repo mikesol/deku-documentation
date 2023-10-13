@@ -20,7 +20,7 @@ theGlobalPortalSyntax = subsection
                 "The global portal syntax looks a lot like the hooks syntax. We use a left-bind in a "
             , D.code__ "Deku.do"
             , text_
-                " bloc to create a value that will be used later. But instead of creating a hook, we create a component. In the example below, look how "
+                " block to create a value that will be used later. But instead of creating a hook, we create a component. In the example below, look how "
             , D.code__ "globalPortal1"
             , text_
                 "is used to create a single component that is consumed by other components."

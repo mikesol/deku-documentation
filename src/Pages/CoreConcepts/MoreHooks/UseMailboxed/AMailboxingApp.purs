@@ -26,7 +26,7 @@ aMailboxingApp = subsection
             ]
         , D.p_
             [ text_
-                "With mailbox, the postwoman is pre-sorting the mail and only delivring it to valid destinations. The sorting function executes in "
+                "With mailbox, the postwoman is pre-sorting the mail and only delivering it to valid destinations. The sorting function executes in "
             , D.i__ "O(log n)"
             , text_ " time thanks to the "
             , D.code__ "Ord"

@@ -44,7 +44,7 @@ usingAnEffect = subsection
                     , D.b__ "です"
                     , text_ " means in Japanese. It makes "
                     , D.code__ "do"
-                    , text_ " look tame by comaprison."
+                    , text_ " look tame by comparison."
                     ]
                 ]
             }

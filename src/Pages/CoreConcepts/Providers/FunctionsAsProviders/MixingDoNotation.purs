@@ -26,7 +26,7 @@ mixingDoNotation = subsection
             [ text_ "Let's create an effect system that contains a provider "
             , D.i__ "and"
             , text_
-                " a ticker that increments as we create checkboxes. There are several ways to do this in PureScript, but we'll use a Free Monad in the following example. The nice thing about Free Monads is that you can start small with a couple effects and gradually expand them to an effect system of epic proportions about which funcitonal troubadours will sing for ages to come."
+                " a ticker that increments as we create checkboxes. There are several ways to do this in PureScript, but we'll use a Free Monad in the following example. The nice thing about Free Monads is that you can start small with a couple effects and gradually expand them to an effect system of epic proportions about which functional troubadours will sing for ages to come."
             ]
         , example
         ]

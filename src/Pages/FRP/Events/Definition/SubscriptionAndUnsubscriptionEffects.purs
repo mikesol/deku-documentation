@@ -116,7 +116,7 @@ write u unsubscribe"""
           , text_ ". "
           , D.i__ "This is our callback"
           , text_
-              "! It's challenging to follow the control flow because it is not linear, but read through the code bloc again and convince yourself that this function "
+              "! It's challenging to follow the control flow because it is not linear, but read through the code block again and convince yourself that this function "
           , D.i__ "is"
           , text_ " the callback in the defintion of "
           , D.code__ "Event"
