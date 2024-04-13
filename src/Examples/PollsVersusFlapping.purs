@@ -4,7 +4,7 @@ import Prelude
 
 import Deku.Control (text)
 import Deku.DOM as D
-import Deku.Toplevel (runInBody')
+import Deku.Toplevel (runInBody)
 import Effect (Effect)
 import Effect.Random (random)
 import ExampleAssitant (ExampleSignature)
@@ -33,4 +33,4 @@ app runExample = do
       ]
 
 main :: Effect Unit
-main = void $ app (map (map void) runInBody')
+main = void $ app $ map pure runInBody

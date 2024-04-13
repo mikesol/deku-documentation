@@ -1,6 +1,6 @@
 module Examples.PlainOldHtml where
 
-import Deku.Toplevel (runInBody')
+import Deku.Toplevel (runInBody)
 import Effect (Effect)
 import Prelude
 import ExampleAssitant (ExampleSignature)
@@ -50,4 +50,4 @@ app :: ExampleSignature
 app runExample = runExample (myHtml ~~ {})
 
 main :: Effect Unit
-main = void $ app (map (map void) runInBody')
+main = void $ app $ map pure runInBody

@@ -28,7 +28,7 @@ import Deku.DOM.SVG.Attributes as DSA
 import Deku.Do as Deku
 import Deku.Effect as DE
 import Deku.Hooks (guardWith, useDynAtEnd, useHot, useState)
-import Deku.Toplevel (runInBody')
+import Deku.Toplevel (runInBody)
 import Effect (Effect)
 import Effect.Random (randomBool, randomRange)
 import ExampleAssitant (ExampleSignature)
@@ -282,4 +282,4 @@ app runExample = do
       )
 
 main :: Effect Unit
-main = void $ app (map (map void) runInBody')
+main = void $ app $ map pure runInBody

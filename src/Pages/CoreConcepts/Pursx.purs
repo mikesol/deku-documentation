@@ -13,7 +13,6 @@ import Deku.Pursx ((~~))
 import Pages.CoreConcepts.Pursx.ASimpleExample (aSimpleExample)
 import Pages.CoreConcepts.Pursx.DynamicAttributes (dynamicAttributes)
 import Pages.CoreConcepts.Pursx.DynamicElements (dynamicElements)
-import Pages.CoreConcepts.Pursx.PursxAlternatives (pursxAlternatives)
 import Router.ADT (Route(..))
 import Type.Proxy (Proxy(..))
 
@@ -70,5 +69,5 @@ pursx = page
           ]
       ]
   , sections:
-      [ aSimpleExample, dynamicAttributes, dynamicElements, pursxAlternatives ]
+      [ aSimpleExample, dynamicAttributes, dynamicElements ]
   }

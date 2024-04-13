@@ -7,7 +7,7 @@ import Data.Either (hush)
 import Data.Foldable (oneOf)
 import Data.Tuple (snd)
 import Deku.Control (text)
-import Deku.Toplevel (runInBody')
+import Deku.Toplevel (runInBody)
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
 import FRP.Event (delay, filterMap)
@@ -36,4 +36,4 @@ app runExample = do
       ]
 
 main :: Effect Unit
-main = void $ app (map (map void) runInBody')
+main = void $ app $ map pure runInBody

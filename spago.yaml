@@ -40,37 +40,34 @@ workspace:
   extra_packages:
     hyrule:
       git: "https://github.com/mikesol/purescript-hyrule.git"
-      ref: "f388528a9aaa25a5307bf67f6ed12d2097620929"
+      ref: "9d9f0e354c04f3e1f6087f1664302d283430321c"
       dependencies:
         - effect
         - js-timers
         - unsafe-reference
         - web-html
         - web-uievents
-    bolson:
-      git: "https://github.com/mikesol/purescript-bolson.git"
-      ref: "d87900ceedfb81814bd282be464fa4c8a55677c2"
-      dependencies:
-        - hyrule
-        - fast-vect
     deku:
       git: "https://github.com/mikesol/purescript-deku.git"
       subdir: deku
-      ref: "22d4756f831ac57c17286bae86a5799a0377239a"
+      ref: "1314f14f72542661826a7a718298f5cf2a279326"
       dependencies:
-        - bolson
+        - hyrule
+        - untagged-union
     deku-core:
       git: "https://github.com/mikesol/purescript-deku.git"
       subdir: deku-core
-      ref: "22d4756f831ac57c17286bae86a5799a0377239a"
+      ref: "1314f14f72542661826a7a718298f5cf2a279326"
       dependencies:
-        - bolson
+        - hyrule
+        - untagged-union
     deku-dom:
       git: "https://github.com/mikesol/purescript-deku.git"
       subdir: deku-dom
-      ref: "22d4756f831ac57c17286bae86a5799a0377239a"
+      ref: "1314f14f72542661826a7a718298f5cf2a279326"
       dependencies:
-        - bolson
+        - hyrule
+        - untagged-union
     tidy: 
       repo: "https://github.com/natefaubion/purescript-tidy.git"
       version: "v0.10.0"

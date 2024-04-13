@@ -7,7 +7,7 @@ import Data.Newtype (class Newtype, unwrap)
 import Deku.Control (text_)
 import Deku.Core (Nut)
 import Deku.DOM as D
-import Deku.Toplevel (runInBody')
+import Deku.Toplevel (runInBody)
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
 
@@ -84,4 +84,4 @@ app runExample = runExample Deku.do
     pure $ D.div_ [ text_ "In all honesty...", awe ]
 
 main :: Effect Unit
-main = void $ app (map (map void) runInBody')
+main = void $ app $ map pure runInBody

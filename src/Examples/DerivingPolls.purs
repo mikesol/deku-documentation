@@ -14,17 +14,16 @@ import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useRef, useState')
 import Deku.DOM.Listeners as DL
-import Deku.Toplevel (runInBody')
+import Deku.Toplevel (runInBody)
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
 import FRP.Event (fold)
-import FRP.Event.AnimationFrame (animationFrame)
-import FRP.Poll (derivative', effectToPoll, sample_, sham)
-import FRP.Poll.Time (seconds)
+import FRP.Event.AnimationFrame (animationFrame')
+import FRP.Poll (derivative', sample_, sham)
 
 app :: ExampleSignature
 app runExample = do
-  af <- animationFrame
+  af <- animationFrame'
   runExample Deku.do
     setNumber /\ number <- useState'
     nref <- useRef 0.5 number
@@ -58,7 +57,7 @@ app runExample = do
                           []
                           ( sample_
                               ( derivative'
-                                  (seconds <#> (\(Seconds s) -> s))
+                                  (?hole <#> (\(Seconds s) -> s))
                                   (effectToPoll nref)
                               )
                               af.event
@@ -70,4 +69,4 @@ app runExample = do
       ]
 
 main :: Effect Unit
-main = void $ app (map (map void) runInBody')
+main = void $ app $ map pure runInBody

@@ -6,7 +6,7 @@ import Control.Alt ((<|>))
 import Deku.DOM.Attributes as DA
 import Deku.Control (text_)
 import Deku.DOM as D
-import Deku.Toplevel (runInBody')
+import Deku.Toplevel (runInBody)
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
 import FRP.Event.Time (interval)
@@ -29,4 +29,4 @@ app runExample = do
       [ text_ "Par-tay!" ]
 
 main :: Effect Unit
-main = void $ app (map (map void) runInBody')
+main = void $ app $ map pure runInBody

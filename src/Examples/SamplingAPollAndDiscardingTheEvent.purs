@@ -10,7 +10,7 @@ import Control.Monad.ST.Internal (new, read, write)
 import Data.Argonaut.Core (stringifyWithIndent)
 import Data.Either (Either(..))
 import Deku.Control (text)
-import Deku.Toplevel (runInBody')
+import Deku.Toplevel (runInBody)
 import Effect (Effect)
 import Effect.Aff (error, killFiber, launchAff)
 import Effect.Class (liftEffect)
@@ -54,4 +54,4 @@ app runExample = do
       )
 
 main :: Effect Unit
-main = void $ app (map (map void) runInBody')
+main = void $ app $ map pure runInBody

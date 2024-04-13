@@ -6,7 +6,7 @@ import Data.DateTime.Instant (unInstant)
 import Data.Newtype (unwrap)
 import Data.Number ((%))
 import Deku.Control (text)
-import Deku.Toplevel (runInBody')
+import Deku.Toplevel (runInBody)
 import Effect (Effect)
 import Effect.Random (random)
 import ExampleAssitant (ExampleSignature)
@@ -34,4 +34,4 @@ app runExample = do
       )
 
 main :: Effect Unit
-main = void $ app (map (map void) runInBody')
+main = void $ app $ map pure runInBody

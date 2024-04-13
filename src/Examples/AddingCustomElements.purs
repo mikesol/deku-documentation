@@ -7,7 +7,7 @@ import Deku.Attribute (Attribute, prop', unsafeAttribute)
 import Deku.Control (elementify2, text_)
 import Deku.Core (Nut)
 import Deku.DOM (HTMLAnchorElement)
-import Deku.Toplevel (runInBody')
+import Deku.Toplevel (runInBody)
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
 import FRP.Poll (Poll)
@@ -54,4 +54,4 @@ app runExample = runExample do
     [ text_ "hi" ]
 
 main :: Effect Unit
-main = void $ app (map (map void) runInBody')
+main = void $ app $ map pure runInBody

@@ -10,12 +10,11 @@ import Deku.DOM.Attributes as DA
 import Deku.DOM.Listeners as DL
 import Deku.Do as Deku
 import Deku.Hooks (useRef, useState')
-import Deku.Toplevel (runInBody')
+import Deku.Toplevel (runInBody)
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
 import FRP.Event.AnimationFrame (animationFrame)
 import FRP.Poll (effectToPoll, integral', sample_, sham)
-import FRP.Poll.Time (seconds)
 
 app :: ExampleSignature
 app runExample = do
@@ -42,7 +41,7 @@ app runExample = do
                   ( show <$>
                       ( ( sample_
                             ( integral' 0.0
-                                (seconds <#> (\(Seconds s) -> s))
+                                (?hole <#> (\(Seconds s) -> s))
                                 (effectToPoll nref)
                             )
                             af.event
@@ -55,4 +54,4 @@ app runExample = do
       ]
 
 main :: Effect Unit
-main = void $ app (map (map void) runInBody')
+main = void $ app $ map pure runInBody

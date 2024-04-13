@@ -11,7 +11,7 @@ import Deku.DOM.Attributes as DA
 import Deku.DOM.Listeners as DL
 import Deku.Do as Deku
 import Deku.Hooks (useState)
-import Deku.Toplevel (runInBody')
+import Deku.Toplevel (runInBody)
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
 
@@ -31,7 +31,7 @@ app runExample = runExample Deku.do
     [ D.a
         [ DA.target_ "_blank"
         , DA.style $ filter identity styleSwitch $> "color:magenta;"
-        , DA.unset DA.style $ filter not styleSwitch
+        , DA.unset @"style" $ filter not styleSwitch
         ]
         [ text_ "Click me" ]
     , D.button
@@ -42,4 +42,4 @@ app runExample = runExample Deku.do
     ]
 
 main :: Effect Unit
-main = void $ app (map (map void) runInBody')
+main = void $ app $ map pure runInBody

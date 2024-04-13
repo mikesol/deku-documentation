@@ -1,6 +1,6 @@
 module Examples.UsingAHookToControlPresence where
 
-import Deku.Toplevel (runInBody')
+import Deku.Toplevel (runInBody)
 import Effect (Effect)
 import Prelude
 import ExampleAssitant (ExampleSignature)
@@ -29,4 +29,4 @@ app runExample = runExample Deku.do
     ]
 
 main :: Effect Unit
-main = void $ app (map (map void) runInBody')
+main = void $ app $ map pure runInBody

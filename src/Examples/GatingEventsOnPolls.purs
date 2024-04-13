@@ -9,12 +9,11 @@ import Data.Number ((%))
 import Deku.DOM.Attributes as DA
 import Deku.Control (text_)
 import Deku.DOM as D
-import Deku.Toplevel (runInBody')
+import Deku.Toplevel (runInBody)
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
 import FRP.Event.Time (interval)
 import FRP.Poll (gateBy, sham)
-import FRP.Poll.Time (instant)
 
 app :: ExampleSignature
 app runExample = do
@@ -27,7 +26,7 @@ app runExample = do
           ( sham
               ( gateBy
                   (\t _ -> (unwrap $ unInstant t) % 4000.0 < 2000.0)
-                  instant
+                  ?hole
                   ( (i0.event $> "bg-pink-300") <|>
                       (i1.event $> "bg-green-300")
                   )
@@ -37,4 +36,4 @@ app runExample = do
       [ text_ "Par-tay!" ]
 
 main :: Effect Unit
-main = void $ app (map (map void) runInBody')
+main = void $ app $ map pure runInBody

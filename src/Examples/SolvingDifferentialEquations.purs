@@ -10,13 +10,12 @@ import Deku.DOM.Attributes as DA
 import Deku.DOM.Listeners as DL
 import Deku.Do as Deku
 import Deku.Hooks (useState)
-import Deku.Toplevel (runInBody')
+import Deku.Toplevel (runInBody)
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
 import FRP.Event (keepLatest)
-import FRP.Event.AnimationFrame (animationFrame)
+import FRP.Event.AnimationFrame (animationFrame')
 import FRP.Poll (sample_, sham, solve2')
-import FRP.Poll.Time (seconds)
 
 buttonClass :: String
 buttonClass =
@@ -28,7 +27,7 @@ focus:ring-indigo-500 focus:ring-offset-2 mr-6"""
 
 app :: ExampleSignature
 app runExample = do
-  af <- animationFrame
+  af <- animationFrame' withTime
   runExample Deku.do
     setThunk /\ thunk <- useState unit
     let
@@ -36,7 +35,7 @@ app runExample = do
         ( sham
             ( map show $ sample_
                 ( solve2' 1.0 0.0
-                    ( seconds <#>
+                    ( ?hole <#>
                         (\(Seconds s) -> s)
                     )
                     ( \x dx'dt -> pure (-0.5) * x -
@@ -66,4 +65,4 @@ app runExample = do
       ]
 
 main :: Effect Unit
-main = void $ app (map (map void) runInBody')
+main = void $ app $ map pure runInBody

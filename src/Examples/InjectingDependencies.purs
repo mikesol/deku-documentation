@@ -1,6 +1,6 @@
 module Examples.InjectingDependencies where
 
-import Deku.Toplevel (runInBody')
+import Deku.Toplevel (runInBody)
 import Effect (Effect)
 import Prelude
 import ExampleAssitant (ExampleSignature)
@@ -14,12 +14,11 @@ import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (useState, (<#~>))
 import Deku.DOM.Listeners as DL
-import Deku.Pursx ((~~))
+import Deku.Pursx (pursx)
 
 import Effect.Aff (Milliseconds(..), delay, launchAff_)
 import Effect.Class (liftEffect)
 import Effect.Random (random)
-import Type.Proxy (Proxy(..))
 
 buttonClass =
   """inline-flex items-center rounded-md
@@ -87,7 +86,7 @@ app runExample = runExample Deku.do
               ]
             Loading ->
               D.div [ DA.klass_ "p-10" ]
-                [ ((Proxy :: _ Loading) ~~ {}) ]
+                [ pursx @Loading {} ]
         ]
     ]
 
@@ -101,4 +100,4 @@ type Loading =
 </div>"""
 
 main :: Effect Unit
-main = void $ app (map (map void) runInBody')
+main = void $ app $ map pure runInBody

@@ -2,7 +2,6 @@ module Examples.FauxHooks where
 
 import Prelude
 
-import Control.Monad.ST.Class (liftST)
 import Data.Tuple.Nested ((/\))
 import Deku.Control (text, text_)
 import Deku.DOM as D
@@ -11,7 +10,7 @@ import Deku.DOM.Listeners as DL
 import Deku.Do as Deku
 import Deku.Effect as DE
 import Deku.Hooks as DH
-import Deku.Toplevel (runInBody')
+import Deku.Toplevel (runInBody)
 import Effect (Effect)
 import Effect.Random (random)
 import ExampleAssitant (ExampleSignature)
@@ -26,7 +25,7 @@ focus:ring-indigo-500 focus:ring-offset-2 mr-6""" :: String
 app :: ExampleSignature
 app runExample = do
   nD <- random
-  setNumberE /\ numberE <- random >>= liftST <<< DE.useState
+  setNumberE /\ numberE <- random >>= DE.useState
   runExample Deku.do
     setNumberD /\ numberD <- DH.useState nD
     D.div_
@@ -47,4 +46,4 @@ app runExample = do
       ]
 
 main :: Effect Unit
-main = void $ app (map (map void) runInBody')
+main = void $ app $ map pure runInBody

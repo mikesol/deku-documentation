@@ -15,7 +15,6 @@ import Deku.DOM.Listeners as DL
 import Effect (Effect)
 import FRP.Poll (Poll)
 import Pages.CoreConcepts.Portals.GlobalPortals (globalPortals)
-import Pages.CoreConcepts.Portals.LocalPortals (localPortals)
 import Router.ADT (Route(..))
 
 data Square = TL | BL | TR | BR
@@ -105,5 +104,5 @@ portals = page
           "The rest of this section will explore various ways to make portals in Deku."
       ]
   , sections:
-      [ globalPortals, localPortals ]
+      [ globalPortals ]
   }

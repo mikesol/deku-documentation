@@ -9,7 +9,7 @@ import Deku.DOM as D
 import Deku.DOM.Self as Self
 import Deku.Do as Deku
 import Deku.Hooks (useState')
-import Deku.Toplevel (runInBody')
+import Deku.Toplevel (runInBody)
 import Effect (Effect)
 import Effect.Aff (Milliseconds(..), delay, launchAff_)
 import Effect.Class (liftEffect)
@@ -33,4 +33,4 @@ app runExample = runExample Deku.do
     )
 
 main :: Effect Unit
-main = void $ app (map (map void) runInBody')
+main = void $ app $ map pure runInBody

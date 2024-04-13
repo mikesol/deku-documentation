@@ -7,7 +7,7 @@ import Deku.Control (text_)
 import Deku.Core (Nut)
 import Deku.DOM as D
 import Deku.DOM.Attributes as DA
-import Deku.Toplevel (runInBody', runSSR)
+import Deku.Toplevel (runInBody, runSSR)
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
 
@@ -28,4 +28,4 @@ app runExample = do
   runExample do myApp txt
 
 main :: Effect Unit
-main = void $ app (map (map void) runInBody')
+main = void $ app $ map pure runInBody
