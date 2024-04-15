@@ -7,10 +7,14 @@ module Main
 import Prelude
 
 import Components.App (app)
+import Components.Link (link, linkWithString, linkWithNut)
+import Components.PageToContent (pageToContent)
+import Contracts (EffectWithCancellers, Env(..), Page, contentToPoll)
 import Control.Alt ((<|>))
-import Control.Monad.ST (ST)
+import Control.Monad.Free (foldFree)
 import Control.Monad.ST.Class (liftST)
-import Control.Monad.ST.Global (Global)
+import Control.Monad.Writer (runWriterT)
+import Control.Plus (empty)
 import DarkModePreference (OnDark(..), OnLight(..), darkModeListener, prefersDarkMode)
 import Data.Compactable (compact)
 import Data.Foldable (traverse_)
@@ -19,6 +23,7 @@ import Data.Map as Map
 import Data.Maybe (Maybe(..), maybe)
 import Data.Show.Generic (genericShow)
 import Data.Tuple (Tuple(..), curry, fst, snd, uncurry)
+import Deku.Core (Nut)
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
 import Effect.Class.Console (logShow)
@@ -76,20 +81,25 @@ boxMe
   :: forall a b
    . Ord a
   => Event { address :: a, payload :: b }
-  -> ST Global { event :: a -> Event b, unsubscribe :: ST Global Unit }
+  -> Effect { event :: a -> Event b, unsubscribe :: Effect Unit }
 boxMe e = do
-  { push, event } <- mailbox
+  { push, event } <- liftST mailbox
   unsubscribe <- subscribe e push
   pure { event, unsubscribe }
 
 memoizeMe
   :: forall a
    . Event a
-  -> ST Global { event :: Event a, unsubscribe :: ST Global Unit }
+  -> Effect { event :: Event a, unsubscribe :: Effect Unit }
 memoizeMe e = do
-  { push, event } <- create
+  { push, event } <- liftST create
   unsubscribe <- subscribe e push
   pure { event, unsubscribe }
+
+pageToPollWithCancellers :: Env -> Page -> EffectWithCancellers Nut
+pageToPollWithCancellers env = runWriterT
+  <<< foldFree (contentToPoll env)
+  <<< pageToContent
 
 main :: Effect Unit
 main = do
@@ -104,6 +114,7 @@ main = do
   psi <- makeInterface
   initialListener <- eventListener (\_ -> pure unit)
   scrollListenerRef <- Ref.new initialListener
+  cancelMe <- Ref.new (pure unit)
   let scrollType = EventType "scroll"
   let
     removeScroll oldListener = toEventTarget <$> window >>= removeEventListener
@@ -127,7 +138,7 @@ main = do
     makeMap inMap = case _ of
       Nothing -> Map.empty
       Just (Tuple key val) -> Map.insert key val inMap
-  void $ liftST $ subscribe
+  void $ subscribe
     ( { header: _, mapOfElts: _ }
         <$> headerElement.event
         <*> fold makeMap
@@ -165,38 +176,47 @@ main = do
         logShow { goHere }
         rightSideNavSelectE.push goHere
       changeListener newListener
-  rightSideLagged <- liftST $ memoizeMe (lag (dedup rightSideNavSelectE.event))
-  pageWas <- liftST $ boxMe
+  rightSideLagged <-  memoizeMe (lag (dedup rightSideNavSelectE.event))
+  pageWas <-  boxMe
     ({ address: _, payload: unit } <$> previousRouteMailbox.event)
-  pageIs <- liftST $ boxMe
+  pageIs <- boxMe
     ({ address: _, payload: unit } <$> currentRouteMailbox.event)
-  rightSideNavSelect <- liftST $ boxMe
+  rightSideNavSelect <- boxMe
     ({ address: _, payload: unit } <$> (snd <$> rightSideLagged.event))
-  rightSideNavDeselect <- liftST $ boxMe
+  rightSideNavDeselect <-  boxMe
     ({ address: _, payload: unit } <$> compact (fst <$> rightSideLagged.event))
-  runInBody
-    ( Deku.do
-
-        app
-          { pageIs: map sham pageIs.event
-          , pageWas: map sham pageWas.event
-          , rightSideNavSelect: map sham rightSideNavSelect.event
-          , rightSideNavDeselect: map sham rightSideNavDeselect.event
-          , pushState: psi.pushState
-          , curPage: sham $ routeToPage <$> currentRoute.event
-          , showBanner: dedup (eq GettingStarted <$> sham currentRoute.event)
-          , setHeaderElement: headerElement.push
-          , setRightSideNav: Just >>> rightSideNav.push
-          , clickedSection
-          , darkModePreference: sham darkModePreferenceE.event
-          }
-    )
+  let
+    env = Env
+      { routeLink: \r -> link psi.pushState r empty
+      , routeLinkWithText: \r s -> linkWithString psi.pushState r s empty
+      , routeLinkWithNuts: \r s -> linkWithNut psi.pushState r s empty
+      , setRightSideNav: Just >>> rightSideNav.push
+      }
+  runInBody do
+    app
+      { pageIs: map sham pageIs.event
+      , pageWas: map sham pageWas.event
+      , rightSideNavSelect: map sham rightSideNavSelect.event
+      , rightSideNavDeselect: map sham rightSideNavDeselect.event
+      , pushState: psi.pushState
+      , curPage: sham $ _.page <$> currentRoute.event
+      , curNut: sham $ _.nut <$> currentRoute.event
+      , showBanner: dedup (_.route >>> eq GettingStarted <$> sham currentRoute.event)
+      , setHeaderElement: headerElement.push
+      , clickedSection
+      , darkModePreference: sham darkModePreferenceE.event
+      , env
+      }
   dedupRoute <- liftST $ create
-  void $ liftST $ subscribe (dedup dedupRoute.event) $ uncurry \old new -> do
+  void $ subscribe (dedup dedupRoute.event) $ uncurry \old new -> do
+    join $ Ref.read cancelMe
     rightSideNav.push Nothing
     traverse_ previousRouteMailbox.push old
     currentRouteMailbox.push new
-    currentRoute.push new
+    let page = routeToPage new
+    Tuple nut toCancel <- pageToPollWithCancellers env page
+    Ref.write toCancel cancelMe
+    currentRoute.push { route: new, page, nut }
   void $ matchesWith (map (\e -> e <|> pure FourOhFour) (parse route))
     (curry dedupRoute.push)
     psi
