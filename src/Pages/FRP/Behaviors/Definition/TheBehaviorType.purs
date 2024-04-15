@@ -67,7 +67,7 @@ thePollType = subsection
           , D.b__ "yes"
           , text_ ". This is a perfectly valid way to create a poll."
           ]
-      , psCode "always42 :: Poll Int\nalways42 e = e <@> 42"
+      , psCode "always42 :: Poll Int\nalways42 = poll \\e -> e <@> 42"
       , D.p_
           [ text_
               "However, this is not the only way to create a poll. Polls encapsulate a broader notion than "
@@ -79,8 +79,6 @@ thePollType = subsection
           ]
       , D.ol_
           [ D.li__
-              "The value being measured may require some sort of effectful lookup like making a network request; and"
-          , D.li__
               "The poll may never return a result, in which case our event is muted."
           , D.li__
               "The poll may return multiple values by calling the callback of the resultant event multiple times."
@@ -94,7 +92,7 @@ thePollType = subsection
               "Therefore, even though polls are continuous functions of time, they effectively produce two pieces of information - a new value "
           , D.i__ "and"
           , text_
-              " a new point in time, which at the earliest is simultaneous to the emitted value and at the latest is never. Meaning that if you want to create a misbehaving poll, you can!"
+              " a new arity to that value, which at a minimum is nothing and at its maximum is more than you or I can count. Let's focus on the minimum:"
           ]
       , psCode
           """proximalObservationOfABlackHole :: Poll Void

@@ -40,7 +40,7 @@ workspace:
   extra_packages:
     hyrule:
       git: "https://github.com/mikesol/purescript-hyrule.git"
-      ref: "9d9f0e354c04f3e1f6087f1664302d283430321c"
+      ref: "3cee644"
       dependencies:
         - effect
         - js-timers
@@ -50,21 +50,21 @@ workspace:
     deku:
       git: "https://github.com/mikesol/purescript-deku.git"
       subdir: deku
-      ref: "1314f14f72542661826a7a718298f5cf2a279326"
+      ref: "aedd4dc037b9e12b344c74652188545d3ca733a5"
       dependencies:
         - hyrule
         - untagged-union
     deku-core:
       git: "https://github.com/mikesol/purescript-deku.git"
       subdir: deku-core
-      ref: "1314f14f72542661826a7a718298f5cf2a279326"
+      ref: "aedd4dc037b9e12b344c74652188545d3ca733a5"
       dependencies:
         - hyrule
         - untagged-union
     deku-dom:
       git: "https://github.com/mikesol/purescript-deku.git"
       subdir: deku-dom
-      ref: "1314f14f72542661826a7a718298f5cf2a279326"
+      ref: "aedd4dc037b9e12b344c74652188545d3ca733a5"
       dependencies:
         - hyrule
         - untagged-union

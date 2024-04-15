@@ -3,7 +3,7 @@ module Examples.UnsafeCustomElement where
 import Prelude
 
 import Data.Maybe (Maybe(..))
-import Deku.Control (elementify2, text_)
+import Deku.Control (elementify, text_)
 import Deku.Core (Nut)
 import Deku.DOM (Attribute, HTMLAnchorElement)
 import Deku.Toplevel (runInBody)
@@ -19,7 +19,7 @@ type HTMLMyNiftyAnchor (r :: Row Type) =
 
 myNiftyAnchor
   :: Array (Poll (Attribute (HTMLMyNiftyAnchor ()))) -> Array Nut -> Nut
-myNiftyAnchor = elementify2 Nothing "a"
+myNiftyAnchor = elementify Nothing "a"
 
 app :: ExampleSignature
 app runExample = runExample do

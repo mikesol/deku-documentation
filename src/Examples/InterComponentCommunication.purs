@@ -89,7 +89,8 @@ app runExample = runExample Deku.do
     , Deku.do
         { value: t, sendTo, remove } <-
           useDynWith
-            (Tuple <$> pos <|*> item) $ dynOptions { remove = const removeAll }
+            (Tuple <$> (pure <$> pos) <|*> item) $ dynOptions
+            { remove = const removeAll }
         D.div_
           [ text_ t
           , D.button

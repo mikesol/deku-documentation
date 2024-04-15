@@ -3,9 +3,9 @@ module Examples.AddingCustomElements where
 import Prelude
 
 import Data.Maybe (Maybe(..))
-import Deku.Attribute (Attribute, prop', unsafeAttribute)
-import Deku.Control (elementify2, text_)
-import Deku.Core (Nut)
+import Deku.Attribute (Attribute)
+import Deku.Control (elementify, text_)
+import Deku.Core (Nut, attributeAtYourOwnRisk)
 import Deku.DOM (HTMLAnchorElement)
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
@@ -22,9 +22,9 @@ type HTMLMyNiftyAnchor (r :: Row Type) =
 
 myNiftyAnchor
   :: Array (Poll (Attribute (HTMLMyNiftyAnchor ()))) -> Array Nut -> Nut
-myNiftyAnchor = elementify2 Nothing "a"
+myNiftyAnchor = elementify Nothing "a"
 
-data MyPages = JoyrideFM | MikeSolomonOrg
+data MyPages = PureScript | MikeSolomonOrg
 data MyTarget = Blank
 
 myNiftyHref
@@ -32,8 +32,8 @@ myNiftyHref
    . Poll MyPages
   -> Poll (Attribute (href :: MyPages | r))
 myNiftyHref = map
-  ( unsafeAttribute <<< { key: "class", value: _ } <<< prop' <<< case _ of
-      JoyrideFM -> "https://joyride.fm"
+  ( attributeAtYourOwnRisk "class" <<< case _ of
+      PureScript -> "https://purescript.org"
       MikeSolomonOrg -> "https://mikesolomon.org"
   )
 
@@ -42,13 +42,13 @@ myNiftyTarget
    . Poll MyTarget
   -> Poll (Attribute (target :: MyTarget | r))
 myNiftyTarget = map
-  ( unsafeAttribute <<< { key: "class", value: _ } <<< prop' <<< const "_blank"
+  ( attributeAtYourOwnRisk "target" <<< const "_blank"
   )
 
 app :: ExampleSignature
 app runExample = runExample do
   myNiftyAnchor
-    [ myNiftyHref $ pure JoyrideFM
+    [ myNiftyHref $ pure PureScript
     , myNiftyTarget $ pure Blank
     ]
     [ text_ "hi" ]

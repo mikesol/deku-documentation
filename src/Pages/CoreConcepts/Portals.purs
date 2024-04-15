@@ -6,7 +6,7 @@ import Contracts (Page, page)
 import Data.Tuple.Nested ((/\))
 
 import Deku.DOM.Attributes as DA
-import Deku.Control (globalPortal1, text_)
+import Deku.Control (portal, text_)
 import Deku.Core (Nut)
 import Deku.DOM as D
 import Deku.Do as Deku
@@ -92,7 +92,7 @@ portals = page
               "Let's redo the example above with portals. As you click on the squares, you'll see that the video continues uninterrupted."
           ]
       , Deku.do
-          ifr <- globalPortal1 myIframe
+          ifr <- portal myIframe
           setSquare /\ square <- useState TL
           D.div [ DA.klass_ "grid grid-cols-2" ]
             [ moveSpriteHere { iframe: ifr, square, setSquare, at: TL }

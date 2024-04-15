@@ -7,9 +7,8 @@ import Control.Alt ((<|>))
 import Data.Monoid (guard)
 import Data.Tuple.Nested ((/\))
 import Deku.Attribute (Attribute, xdata)
-import Deku.Attribute as Deku.Attribute
 import Deku.Control (text_)
-import Deku.Core (Nut)
+import Deku.Core (Nut, attributeAtYourOwnRisk)
 import Deku.DOM as D
 import Deku.DOM.Attributes as DA
 import Deku.DOM.Listeners as DL
@@ -44,12 +43,7 @@ bannerExampleInnerNotSelected :: String
 bannerExampleInnerNotSelected = "flex items-center rounded-full px-2.5"
 
 transform_ :: forall f4 e7. Applicative f4 => String -> f4 (Attribute e7)
-transform_ v = pure
-  ( Deku.Attribute.unsafeAttribute
-      { key: "transform"
-      , value: Deku.Attribute.prop' v
-      }
-  )
+transform_ v = pure (attributeAtYourOwnRisk "transform" v)
 
 banner
   :: { showBanner :: Poll Boolean }
@@ -137,27 +131,18 @@ banner { showBanner } = D.div
                               ]
                           ]
                       , DS.g
-                          [ pure
-                              ( Deku.Attribute.unsafeAttribute
-                                  { key: "opacity"
-                                  , value: Deku.Attribute.prop' ".4"
-                                  }
-                              )
+                          [ pure (attributeAtYourOwnRisk "opacity" ".4")
                           , pure
-                              ( Deku.Attribute.unsafeAttribute
-                                  { key: "clip-path"
-                                  , value: Deku.Attribute.prop'
-                                      "url(#:R6km:-clip-path)"
-                                  }
+                              ( attributeAtYourOwnRisk "clip-path"
+                                  "url(#:R6km:-clip-path)"
+
                               )
                           , DSA.strokeWidth_ "4"
                           ]
                           [ DS.path
                               [ pure
-                                  ( Deku.Attribute.unsafeAttribute
-                                      { key: "opacity"
-                                      , value: Deku.Attribute.prop' ".3"
-                                      }
+                                  ( attributeAtYourOwnRisk
+                                    "opacity" ".3"
                                   )
                               , DSA.d_
                                   "M584.5 770.4v-474M484.5 770.4v-474M384.5 770.4v-474M283.5 769.4v-474M183.5 768.4v-474M83.5 767.4v-474"

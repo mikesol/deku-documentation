@@ -9,7 +9,8 @@ import Control.Plus (empty)
 import DarkModePreference (DarkModePreference(..))
 import Data.Tuple.Nested ((/\))
 import Deku.Control (text_)
-import Deku.Core (Nut)
+import Deku.Core (Nut, attributeAtYourOwnRisk)
+import Deku.DOM (Attribute)
 import Deku.DOM as D
 import Deku.DOM.Attributes as DA
 import Deku.DOM.Listeners as DL
@@ -26,16 +27,9 @@ import Navigation (PushState)
 import Router.ADT (Route(..))
 import Web.DOM as DOM
 
-import Deku.Attribute as Deku.Attribute
-import Deku.DOM (Attribute)
-
-clipRule_ :: forall f4 e7. Applicative f4 => String -> f4 (Attribute e7)
-clipRule_ v = pure
-  ( Deku.Attribute.unsafeAttribute
-      { key: "clip-rule"
-      , value: Deku.Attribute.prop' v
-      }
-  )
+clipRule_ :: forall f a. Applicative f => String -> f (Attribute a)
+clipRule_ v = pure  $ attributeAtYourOwnRisk "clip-rule" v
+      
 
 classBrightnessModeSelected :: String
 classBrightnessModeSelected =

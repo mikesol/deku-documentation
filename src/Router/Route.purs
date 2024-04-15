@@ -31,6 +31,5 @@ route = root $ sum
   , "Polls": "functional-reactive-programming" / "polls" / noArgs
   , "CustomElements": "advanced-usage" / "custom-elements" / noArgs
   , "AccessingTheDOM": "advanced-usage" / "accessing-the-dom" / noArgs
-  , "SSR": "advanced-usage" / "ssr" / noArgs
   , "FourOhFour": "404" / noArgs
   }

@@ -9,17 +9,14 @@ import Data.Symbol (reflectSymbol)
 import Deku.DOM.Attributes as DA
 import Deku.Control (text_)
 import Deku.DOM as D
-import Deku.Pursx ((~~))
 import Pages.CoreConcepts.Pursx.ASimpleExample (aSimpleExample)
 import Pages.CoreConcepts.Pursx.DynamicAttributes (dynamicAttributes)
 import Pages.CoreConcepts.Pursx.DynamicElements (dynamicElements)
 import Router.ADT (Route(..))
+import Deku.Pursx as Px
 import Type.Proxy (Proxy(..))
 
-myHtml =
-  ( Proxy
-      :: Proxy
-           """<div class="bg-white">
+type MyHtml =  """<div class="bg-white">
   <div class="mx-auto max-w-7xl py-12 px-4 text-center sm:px-6 lg:py-16 lg:px-8">
     <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
       <span class="block">Ready to dive in?</span>
@@ -35,7 +32,6 @@ myHtml =
     </div>
   </div>
 </div>"""
-  )
 
 pursx :: Page
 pursx = page
@@ -48,13 +44,13 @@ pursx = page
           [ text_
               "Sometimes, you procure a quality snippet of HTML that you would like to throw in a Deku project with minimal hassle. For example, imagine that I get the following chunk of HTML from a designer."
           ]
-      , htmlCode (reflectSymbol myHtml)
+      , htmlCode (reflectSymbol (Proxy :: _ MyHtml))
       , D.p__ "This renders in the DOM like so."
       , D.div
           [ DA.klass_
               "border-solid border-2 border-slate-200 dark:border-white-200"
           ]
-          [ myHtml ~~ {} ]
+          [ Px.pursx @MyHtml {} ]
       , D.p__
           "I could meticulously rewrite the entire thing in Deku, at which point my designer would complain to our boss:"
       , D.blockquote__

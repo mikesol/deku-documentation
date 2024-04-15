@@ -87,7 +87,7 @@ app runExample = runExample Deku.do
     [ top
     , Deku.do
         { value: t, sendTo } <- useDyn
-          (Tuple <$> pos <|*> item)
+          (Tuple <$> (pure <$> pos) <|*> item)
         D.div_
           [ text_ t
           , D.button

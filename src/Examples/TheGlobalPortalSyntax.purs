@@ -4,7 +4,7 @@ import Prelude
 
 import Data.Tuple.Nested ((/\))
 import Deku.DOM.Attributes as DA
-import Deku.Control (globalPortal1, text_)
+import Deku.Control (portal, text_)
 import Deku.Core (Nut)
 import Deku.DOM as D
 import Deku.Do as Deku
@@ -55,7 +55,7 @@ myVideo = D.video
 
 app :: ExampleSignature
 app runExample = runExample Deku.do
-  vid <- globalPortal1 myVideo
+  vid <- portal myVideo
   setSquare /\ square <- useState TL
   D.div [ DA.klass_ "grid grid-cols-2" ]
     [ moveSpriteHere { video: vid, square, setSquare, at: TL }

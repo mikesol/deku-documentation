@@ -2,21 +2,14 @@ module Components.ProTip where
 
 import Prelude
 
-import Deku.Attribute as Deku.Attribute
-import Deku.Core (Nut)
-import Deku.DOM (Attribute)
+import Deku.Core (Nut, attributeAtYourOwnRisk, Attribute)
 import Deku.DOM as D
 import Deku.DOM.Attributes as DA
 import Deku.DOM.SVG as DS
 import Deku.DOM.SVG.Attributes as DSA
 
-clipRule_ :: forall f4 e7. Applicative f4 => String -> f4 (Attribute e7)
-clipRule_ v = pure
-  ( Deku.Attribute.unsafeAttribute
-      { key: "clip-rule"
-      , value: Deku.Attribute.prop' v
-      }
-  )
+clipRule_ :: forall e a. Applicative e => String -> e (Attribute a)
+clipRule_ v = pure $ attributeAtYourOwnRisk "clip-rule" v
 
 proTip
   :: { header :: Nut, message :: Nut }

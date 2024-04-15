@@ -4,13 +4,13 @@ import Prelude
 
 import Control.Monad.Reader (ask)
 import Data.Tuple.Nested ((/\))
-import Deku.DOM.Attributes as DA
 import Deku.Control (text)
-import Deku.Core (NutWith)
+import Deku.Core (Nut)
 import Deku.DOM as D
+import Deku.DOM.Attributes as DA
+import Deku.DOM.Listeners as DL
 import Deku.Do as Deku
 import Deku.Hooks (useState)
-import Deku.DOM.Listeners as DL
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
@@ -28,7 +28,7 @@ text-sm font-medium leading-4 text-white shadow-sm
 hover:bg-indigo-700 focus:outline-none focus:ring-2
 focus:ring-indigo-500 focus:ring-offset-2 mr-6""" :: String
 
-type AppMonad = NutWith Env
+type AppMonad = Env -> Nut
 
 signIn :: AppMonad
 signIn = do
