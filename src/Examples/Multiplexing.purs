@@ -24,10 +24,9 @@ app runExample = do
   let
     ms = 967
     loop = 16 * ms
-    workIt = "Work it"
     beat w t op = withDelay (t * ms) (cmap (hush >>> (_ $> w)) op)
     beats =
-      [ beat workIt 0
+      [ beat "Work it" 0
       , beat "Make it" 1
       , beat "Do it" 2
       , beat "Makes us" 3
@@ -39,7 +38,7 @@ app runExample = do
   dj <- interval' (withMultiplexing beats) loop
   let quit = dj.unsubscribe
   append <$> pure quit <*> runExample do
-    text $ (pure workIt) <|> sham (compact dj.event)
+    text $ (pure "Wait for it") <|> sham (compact dj.event)
 
 main :: Effect Unit
 main = void $ app $ map pure runInBody

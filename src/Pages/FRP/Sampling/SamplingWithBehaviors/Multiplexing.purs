@@ -2,19 +2,15 @@ module Pages.FRP.Sampling.SamplingWithPolls.Multiplexing where
 
 import Prelude
 
-import Components.Code (psCode)
-import Contracts (CollapseState(..), Env(..), Subsection, getEnv, getExample, subsection)
+import Contracts (CollapseState(..), Subsection, getExample, subsection)
 import Data.Maybe (Maybe(..))
-import Deku.Control (text, text_)
 import Deku.DOM as D
 import Examples as Examples
-import Router.ADT (Route(..))
 
 multiplexing :: Subsection
 multiplexing = subsection
-  { title: "Gating events on polls"
+  { title: "Multiplexing"
   , matter: do
-      Env { routeLink } <- getEnv
       example <- getExample StartExpanded Nothing Examples.Multiplexing
       pure
         [ D.p_

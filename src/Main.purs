@@ -26,7 +26,6 @@ import Data.Tuple (Tuple(..), curry, fst, snd, uncurry)
 import Deku.Core (Nut)
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
-import Effect.Class.Console (logShow)
 import Effect.Ref as Ref
 import FRP.Dedup (dedup)
 import FRP.Event (Event, create, fold, mailbox, subscribe)
@@ -173,7 +172,6 @@ main = do
             pure goHere
           Nothing -> getScrolledSection wasHere toVerify
         Ref.write goHere currentSectionRef
-        logShow { goHere }
         rightSideNavSelectE.push goHere
       changeListener newListener
   rightSideLagged <-  memoizeMe (lag (dedup rightSideNavSelectE.event))
