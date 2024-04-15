@@ -11,7 +11,7 @@ import Data.Compactable (compact)
 import Data.DateTime.Instant (Instant, unInstant)
 import Data.Either (Either(..), either)
 import Data.Foldable (sum)
-import Data.Int (toNumber)
+import Data.Int (round, toNumber)
 import Data.Maybe (Maybe(..), isJust, maybe)
 import Data.Newtype (unwrap)
 import Data.Number (floor, sign)
@@ -31,11 +31,13 @@ import Deku.Hooks (guardWith, useDynAtEnd, useHot, useState)
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
 import Effect.Random (randomBool, randomRange)
+import Effect.Timer (clearTimeout)
 import ExampleAssitant (ExampleSignature)
 import FRP.Event (Event, fold, mapAccum, sampleOnRight)
 import FRP.Event.AnimationFrame (animationFrame')
-import FRP.Event.Time (interval', withTime)
+import FRP.Event.Time (interval', withDelay, withTime)
 import FRP.Poll (sham)
+import Record (union)
 
 buttonClass =
   """inline-flex items-center rounded-md
@@ -44,8 +46,8 @@ text-sm font-medium leading-4 text-white shadow-sm
 hover:bg-indigo-700 focus:outline-none focus:ring-2
 focus:ring-indigo-500 focus:ring-offset-2 mr-6""" :: String
 
-type SpriteInit =
-  { positionX :: Number
+type SpriteInit' =
+  ( positionX :: Number
   , positionY :: Number
   , diameter :: Number
   , velocityX :: Number
@@ -53,6 +55,11 @@ type SpriteInit =
   , startingTime :: Number
   , lifespan :: Number
   , bounds :: Number
+  )
+
+type SpriteInit =
+  { canceller :: Effect Unit
+  | SpriteInit'
   }
 
 type SpriteEnv = { time :: Number }
@@ -72,8 +79,20 @@ type SpriteInfo =
   , time :: Number
   }
 
+withSpriteDelay
+  :: Effect Unit
+  -> Op (Effect Unit) SpriteInit
+  -> Op (Effect Unit) { | SpriteInit' }
+withSpriteDelay scoreDown (Op f) = Op \i -> do
+  -- change
+  let
+    Op wd = withDelay (round (i.lifespan * 1000.0)) $ Op case _ of
+      Left tid -> f (i `union` { canceller: clearTimeout tid })
+      Right _ -> scoreDown
+  wd unit
+
 withSpriteInit
-  :: Number -> Op (Effect Unit) SpriteInit -> Op (Effect Unit) Instant
+  :: Number -> Op (Effect Unit) { | SpriteInit' } -> Op (Effect Unit) Instant
 withSpriteInit bounds (Op f) = Op \i -> do
   diameter <- randomRange (min bounds 40.0) (min bounds 100.0)
   lifespan <- randomRange 3.0 9.0
@@ -146,7 +165,7 @@ tick env i' = do
     _ -> do
       if i.isClicked then i { dying = Just (Right env.time) }
       else do
-        let dTime = env.time - i.time
+        let dTime = env.time - i'.time
         let span = env.time - i.startingTime
         if span > i.lifespan then do
           i { dying = Just $ Left env.time }
@@ -194,7 +213,7 @@ app runExample = do
   let quit = join (liftST $ read unsub) *> af.unsubscribe
   append <$> pure quit <*> runExample Deku.do
     setGameStarted /\ gameStarted <- useHot Nothing
-    setScoreBudge /\ scoreBudge <- useState $ Just true
+    setScoreBudge /\ scoreBudge <- useState $ Nothing
     let
       score = fold (\a b -> maybe 0 ((if _ then 1 else (-1)) >>> add a) b)
         0
@@ -210,7 +229,11 @@ app runExample = do
                     setGameStarted Nothing
                     setScoreBudge Nothing
                   else do
-                    i <- interval' (withSpriteInit (toNumber bounds)) 400
+                    i <- interval'
+                      ( withSpriteDelay (setScoreBudge $ Just false) >>>
+                          (withSpriteInit (toNumber bounds))
+                      )
+                      400
                     void $ liftST $ write i.unsubscribe unsub
                     setGameStarted (Just i.event)
               ]
@@ -237,7 +260,7 @@ app runExample = do
           ]
           [ Deku.do
               { value } <- useDynAtEnd
-                ( sham emitter <#> makeFreshSprite
+                ( sham emitter <#> makeFreshSprite (setScoreBudge (Just true))
                     (af.event <#> _.time)
                 )
               value
@@ -246,10 +269,11 @@ app runExample = do
   where
 
   makeFreshSprite
-    :: Event Instant
+    :: Effect Unit
+    -> Event Instant
     -> SpriteInit
     -> Nut
-  makeFreshSprite animate si = Deku.do
+  makeFreshSprite scoreUp animate si = Deku.do
     setClicked /\ clicked <- useState false
     let bp = beginPlay si
     ticked <- useRant $
@@ -260,7 +284,10 @@ app runExample = do
             (Tuple <$> (sham animate <#> unInstant >>> unwrap >>> (_ / 1000.0)))
         )
     DS.circle
-      [ DL.click_ \_ -> setClicked true
+      [ DL.click_ \_ -> do
+          setClicked true
+          si.canceller
+          scoreUp
       , DSA.cx $ _.positionX >>> show <$> ticked
       , DSA.cy $ _.positionY >>> show <$> ticked
       , DSA.r $ _.diameter >>> (_ / 2.0) >>> show <$> ticked

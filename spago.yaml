@@ -4,32 +4,33 @@ package:
     version: 0.9.24
     license: "Apache-2.0"
   dependencies:
-  - free
-  - deku
-  - deku-core
-  - yoga-fetch
-  - yoga-json
-  - affjax-web
-  - affjax
-  - profunctor-lenses
-  - string-parsers
-  - tidy-codegen
-  - aff
-  - routing-duplex
-  - random
-  - argonaut-core
-  - fetch
-  - routing
-  - filterable
-  - deku-dom
-  - qualified-do
-  - canvas
-  - uint
-  - arraybuffer
-  - avar
-  - web-pointerevents
-  - web-touchevents
-  - stringutils
+    - aff
+    - affjax
+    - affjax-web
+    - argonaut-core
+    - arraybuffer
+    - avar
+    - canvas
+    - debug
+    - deku
+    - deku-core
+    - deku-dom
+    - fetch
+    - filterable
+    - free
+    - profunctor-lenses
+    - qualified-do
+    - random
+    - routing
+    - routing-duplex
+    - string-parsers
+    - stringutils
+    - tidy-codegen
+    - uint
+    - web-pointerevents
+    - web-touchevents
+    - yoga-fetch
+    - yoga-json
 workspace:
   backend:
     cmd: purs-backend-es
@@ -40,7 +41,7 @@ workspace:
   extra_packages:
     hyrule:
       git: "https://github.com/mikesol/purescript-hyrule.git"
-      ref: "3cee644"
+      ref: "0492d5e"
       dependencies:
         - effect
         - js-timers
@@ -50,82 +51,82 @@ workspace:
     deku:
       git: "https://github.com/mikesol/purescript-deku.git"
       subdir: deku
-      ref: "aedd4dc037b9e12b344c74652188545d3ca733a5"
+      ref: "5a6222a"
       dependencies:
         - hyrule
         - untagged-union
     deku-core:
       git: "https://github.com/mikesol/purescript-deku.git"
       subdir: deku-core
-      ref: "aedd4dc037b9e12b344c74652188545d3ca733a5"
+      ref: "5a6222a"
       dependencies:
         - hyrule
         - untagged-union
     deku-dom:
       git: "https://github.com/mikesol/purescript-deku.git"
       subdir: deku-dom
-      ref: "aedd4dc037b9e12b344c74652188545d3ca733a5"
+      ref: "5a6222a"
       dependencies:
         - hyrule
         - untagged-union
-    tidy: 
+    tidy:
       repo: "https://github.com/natefaubion/purescript-tidy.git"
       version: "v0.10.0"
       dependencies:
-      - arrays
-      - dodo-printer
-      - foldable-traversable
-      - lists
-      - maybe
-      - ordered-collections
-      - partial
-      - prelude
-      - language-cst-parser
-      - strings
-      - tuples
+        - arrays
+        - dodo-printer
+        - foldable-traversable
+        - lists
+        - maybe
+        - ordered-collections
+        - partial
+        - prelude
+        - language-cst-parser
+        - strings
+        - tuples
     tidy-codegen:
       repo: "https://github.com/natefaubion/purescript-tidy-codegen"
       version: "main"
       dependencies:
-      - aff
-      - ansi
-      - arrays
-      - avar
-      - bifunctors
-      - console
-      - control
-      - dodo-printer
-      - effect
-      - either
-      - enums
-      - exceptions
-      - filterable
-      - foldable-traversable
-      - free
-      - identity
-      - integers
-      - language-cst-parser
-      - lazy
-      - lists
-      - maybe
-      - newtype
-      - node-buffer
-      - node-child-process
-      - node-fs-aff
-      - node-path
-      - node-process
-      - node-streams
-      - ordered-collections
-      - parallel
-      - partial
-      - posix-types
-      - prelude
-      - record
-      - safe-coerce
-      - st
-      - strings
-      - tidy
-      - transformers
-      - tuples
-      - type-equality
-      - unicode
+        - aff
+        - ansi
+        - arrays
+        - avar
+        - bifunctors
+        - console
+        - control
+        - dodo-printer
+        - effect
+        - either
+        - enums
+        - exceptions
+        - filterable
+        - foldable-traversable
+        - free
+        - identity
+        - integers
+        - language-cst-parser
+        - lazy
+        - lists
+        - maybe
+        - newtype
+        - node-buffer
+        - node-child-process
+        - node-fs-aff
+        - node-path
+        - node-process
+        - node-streams
+        - ordered-collections
+        - parallel
+        - partial
+        - posix-types
+        - prelude
+        - record
+        - safe-coerce
+        - st
+        - strings
+        - tidy
+        - transformers
+        - tuples
+        - type-equality
+        - unicode
