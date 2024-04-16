@@ -17,7 +17,14 @@ events = page
   { route: Events
   , topmatter: pure
       [ D.p [ DA.klass_ "lead" ]
-          [ text_ "The original FRP type. Always imitated, never duplicated."
+          [ text_ "The original FRP type. Always imitated, never duplicated.*"
+          ]
+      , D.p [ DA.klass_ "text-sm" ]
+          [ text_
+              "* Haha, get it? Because it's referentially transparent, you can't duplicate an"
+          , D.code__ "Event"
+          , text_
+              ". Oh man that's lame..."
           ]
       , D.p_
           [ text_
@@ -44,7 +51,7 @@ events = page
               "In this section, we'll look at the "
           , D.code__ "Event"
           , text_
-              " type constructor and canvas its strengths and limitations. Armed with that knowledge, you'll be able to create truly reactive sites for the ages!"
+              " type constructor and study its strengths and limitations. Armed with that knowledge, you'll be able to create truly reactive sites for the ages!"
           ]
       ]
   , sections:
