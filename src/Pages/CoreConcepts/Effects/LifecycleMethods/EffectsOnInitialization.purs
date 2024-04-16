@@ -37,22 +37,20 @@ effectsOnInitialization = subsection
                 , text_ " methods for our Actors."
                 ]
             , D.li_
-                [ text_ "We use the "
-                , D.code__ "bindToST"
-                , text_ " and "
-                , D.code__ "thankTheDriver"
-                , text_ " primitives from "
+                [ text_ "We use the combinator pattern via"
+                , D.code__ "withX"
+                , text_ " à la "
                 , D.code__ "hyrule"
                 , text_
-                    ", the FRP package on which Deku is based, to turn our little actor into a "
-                , D.code__ "Nut"
-                , text_ "."
+                    ", the FRP package on which Deku is based, to isolate the "
+                , D.code__ "Effect"
+                , text_ "s."
                 ]
             , D.li_
-                [ text_ "We make this "
+                [ text_ "We pile up our sprites as "
                 , D.code__ "Nut"
-                , text_ " the object of a "
-                , D.code__ "useDyn"
+                , text_ "s via a "
+                , D.code__ "useDynAtEnd"
                 , text_
                     ". The actors, at the end of the day, are just dynamic elements in a Deku app."
                 ]
