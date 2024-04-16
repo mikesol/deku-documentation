@@ -16,7 +16,7 @@ sampling = page
   { route: Sampling
   , topmatter: pure
       [ D.p [ DA.klass_ "lead" ]
-          [ text_ "What wouldn't we do in the name of purity? Porbably a lot of stuff... But read on!"
+          [ text_ "What wouldn't we do in the name of purity? Probably a lot of stuff... But read on!"
           ]
       , D.p_
           [ text_

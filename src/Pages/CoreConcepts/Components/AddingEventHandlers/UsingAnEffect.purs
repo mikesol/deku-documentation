@@ -29,10 +29,10 @@ usingAnEffect = subsection
                     "Functional programmers are notoriously lazy. In fact, there are entire languages, like Haskell, that are lazy. Part of our laziness is a disdain for parentheses, which not only requries two additional keystrokes, but forces us to press Shift at the same time. The gaul!"
                 , D.p_
                     [ text_
-                        "As a result, and like in the example above, we often use "
+                        "As a result, we often use "
                     , D.code__ "do"
                     , text_
-                        " to wall-off things that should be in parentheses. "
+                        " to separate blocks that would otherwise be in parentheses. "
                     , D.code__ "do"
                     , text_ " also pulls double duty (or "
                     , D.code__ "do"
