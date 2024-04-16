@@ -24,7 +24,7 @@ sampling = page
               , D.code__ "Event"
               , text_ "s and "
               , D.code__ "Poll"
-              , text_ "s. But let's get real - one day, you're gonna have to make a network call. And when you do, you'll have to decide between doing something quick and dirty or going down the rabbit hole of effect systems. We hope you choose the second option, and this section is about the many wonderful 🐇s you'll find there!"
+              , text_ "s. But let's get real - one day, you're gonna have to make a network call. And when you do, you'll have to decide between doing something quick and dirty or going down the rabbit hole of effect systems. We hope you choose the second option, and this section is about the many wonderful 🐇🐇🐇 you'll find there!"
           ]
       ]
   , sections:

@@ -26,7 +26,7 @@ theTypeAndContract = subsection
               " amongst others. There are several different implementations of "
           , D.code__ "Event"
           , text_
-              " in PureScript, but the \"average\" definition and the one we'll use going forward is similar to the original definition of "
+              " in PureScript, but the \"average\" definition is similar to the original definition of "
           , D.code__ "Event"
           , text_ " from the seminal 1997 paper "
           , D.a

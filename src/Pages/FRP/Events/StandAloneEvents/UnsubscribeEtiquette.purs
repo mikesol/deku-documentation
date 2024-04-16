@@ -3,20 +3,20 @@ module Pages.FRP.Events.StandAloneEvents.UnsubscribeEtiquette where
 import Prelude
 
 import Contracts (Subsection, subsection)
-import Deku.Control (text, text_)
+import Deku.Control (text_)
 import Deku.DOM as D
 
 unsubscribeEtiquette :: Subsection
 unsubscribeEtiquette = subsection
-  { title: "Unsubscribe etiquette"
+  { title: "Idempotency"
   , matter: pure
       [ D.p_
           [ text_
-              "In the examples we've seen so far of stand-alone events, the unsubscribe function has only been used to stop loops. However, there is nothing that stops the unsubscribe function from calling the callback as many times as it wants. Sometimes, you'll even want the callback to fire on unsubscribe - for example, if the unsubscribe needs to send instructions to the subscription to turn off a resource."
+              "In the examples we've seen so fars, the unsubscribe effect has only been used to stop loops. However, there is nothing that prevents you from running an unsubscribe effect multiple times."
           ]
       , D.p_
           [ text_
-              "That said, we recommend being very conservative when unsubscribing from events, doing the bare minimum needed to safely clean up whatever resources were acquired over the lifetime of the event. Mishandling the unsubscribe function can lead to memory leaks and performance degradation. So keep unsubscribe simple!"
+              "We've done our best to make sure that unsubscribe is idempotent, meaning that you can run it as many times as you want without wreaking havoc on your program. That said, it's still a good idea to be mindful of how you use it. For example, unsubscribe can have ", D.i__ "O(log(n))", text_ " performance in some cases, which can slow down your program if it's called over and over accidentally. So keep it simple!"
           ]
       ]
   }
