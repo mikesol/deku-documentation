@@ -36,36 +36,38 @@ workspace:
     cmd: purs-backend-es
     args:
       - build
-  package_set:
+  packageSet:
     registry: 31.0.0
-  extra_packages:
+  extraPackages:
     hyrule:
       git: "https://github.com/mikesol/purescript-hyrule.git"
-      ref: "0492d5e"
+      ref: "a2a32e0"
       dependencies:
+        - avar
         - effect
+        - free
         - js-timers
-        - unsafe-reference
         - web-html
+        - unsafe-reference
         - web-uievents
     deku:
       git: "https://github.com/mikesol/purescript-deku.git"
       subdir: deku
-      ref: "5a6222a"
+      ref: "be67ace"
       dependencies:
         - hyrule
         - untagged-union
     deku-core:
       git: "https://github.com/mikesol/purescript-deku.git"
       subdir: deku-core
-      ref: "5a6222a"
+      ref: "be67ace"
       dependencies:
         - hyrule
         - untagged-union
     deku-dom:
       git: "https://github.com/mikesol/purescript-deku.git"
       subdir: deku-dom
-      ref: "5a6222a"
+      ref: "be67ace"
       dependencies:
         - hyrule
         - untagged-union
