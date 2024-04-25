@@ -64,11 +64,11 @@ theCreateEffect = subsection
             [ DA.klass_ buttonClass
             , DL.click_ \_ -> do
                 { push, event } <- liftST create
-                u <- liftST $ subscribe event log
+                u <- subscribe event log
                 push "fee"
                 push "fi"
                 push "fo"
-                liftST u
+                u
                 push "fum"
             ]
             [ text_ "Run program" ]

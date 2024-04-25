@@ -4,7 +4,7 @@ import Prelude
 
 import Data.Array (intercalate)
 import Deku.Control (text)
-import Deku.Toplevel (runInBody')
+import Deku.Toplevel (runInBody)
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
 import FRP.Event (fold)
@@ -32,4 +32,4 @@ app runExample = do
           ]
 
 main :: Effect Unit
-main = void $ app (map (map void) runInBody')
+main = void $ app $ map pure runInBody

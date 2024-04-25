@@ -1,6 +1,6 @@
 module Examples.GlobalHandlers where
 
-import Deku.Toplevel (runInBody')
+import Deku.Toplevel (runInBody)
 import Prelude
 
 import Control.Monad.ST.Class (liftST)
@@ -37,4 +37,4 @@ app runExample = do
   pure u
 
 main :: Effect Unit
-main = void $ app (map (map void) runInBody')
+main = void $ app $ map pure runInBody

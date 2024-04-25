@@ -26,7 +26,6 @@ data Route
   | Polls
   | CustomElements
   | AccessingTheDOM
-  | SSR
   | FourOhFour
 
 derive instance Generic Route _
@@ -51,11 +50,10 @@ routeToTitle Events = "Events"
 routeToTitle Applicatives = "Applicatives"
 routeToTitle Alternatives = "Alternatives"
 routeToTitle Filtering = "Filtering"
-routeToTitle Sampling = "Sampling"
+routeToTitle Sampling = "Effect systems"
 routeToTitle OtherInstances = "Event miscellany"
 routeToTitle FixAndFold = "Fix and fold"
 routeToTitle Polls = "Polls"
 routeToTitle CustomElements = "Custom elements"
 routeToTitle AccessingTheDOM = "Accessing the DOM"
-routeToTitle SSR = "SSR"
 routeToTitle FourOhFour = "The Diamond Club Penthouse"

@@ -2,38 +2,28 @@ module Examples.TheOneOfFunction where
 
 import Prelude
 
-import Control.Alt ((<|>))
-import Data.Either (hush)
-import Data.Foldable (oneOf)
-import Data.Tuple (snd)
+import Data.Array (zipWith)
+import Data.Foldable (oneOf, sequence_)
 import Deku.Control (text)
-import Deku.Toplevel (runInBody')
+import Deku.Toplevel (runInBody)
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
-import FRP.Event (delay, filterMap)
 import FRP.Event.Time (interval)
-import FRP.Poll (dredge, sham)
+import FRP.Poll (sham)
 
 app :: ExampleSignature
 app runExample = do
-  let
-    ms = 967
-    loop = 16 * ms
-  ivl <- interval loop
-  let
-    beat w t = filterMap (hush >>> map snd)
-      $ dredge (delay (t * ms)) (pure w <|> sham (ivl.event $> w))
-  runExample do
+  head <- interval 87
+  shoulders <- interval 341
+  knees <- interval 985
+  toes <- interval 1401
+  let hskt = [ head, shoulders, knees, toes ]
+  let quit =  sequence_ (_.unsubscribe <$> hskt)
+  append <$> pure quit <*> runExample do
     text $ oneOf
-      [ beat "Work it" 0
-      , beat "Make it" 1
-      , beat "Do it" 2
-      , beat "Makes us" 3
-      , beat "Harder" 8
-      , beat "Better" 9
-      , beat "Faster" 10
-      , beat "Stronger" 11
-      ]
+      ( zipWith (\e s -> sham $ e.event $> s) hskt
+          [ "head", "shoulders", "knees", "toes" ]
+      )
 
 main :: Effect Unit
-main = void $ app (map (map void) runInBody')
+main = void $ app $ map pure runInBody

@@ -15,7 +15,7 @@ import Deku.DOM.Listeners as DL
 import Deku.DOM.Self as Self
 import Deku.Do as Deku
 import Deku.Hooks (dynOptions, useDynWith, useRef, useState, useState')
-import Deku.Toplevel (runInBody')
+import Deku.Toplevel (runInBody)
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
 import FRP.Event.Class ((<|*>))
@@ -89,7 +89,8 @@ app runExample = runExample Deku.do
     , Deku.do
         { value: t, sendTo, remove } <-
           useDynWith
-            (Tuple <$> pos <|*> item) $ dynOptions { remove = const removeAll }
+            (Tuple <$> (pure <$> pos) <|*> item) $ dynOptions
+            { remove = const removeAll }
         D.div_
           [ text_ t
           , D.button
@@ -111,4 +112,4 @@ app runExample = runExample Deku.do
     ]
 
 main :: Effect Unit
-main = void $ app (map (map void) runInBody')
+main = void $ app $ map pure runInBody

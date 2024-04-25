@@ -1,6 +1,6 @@
 module Examples.AddingSeveralAttributesToPursx where
 
-import Deku.Toplevel (runInBody')
+import Deku.Toplevel (runInBody)
 import Prelude
 import Data.Foldable (oneOf)
 import ExampleAssitant (ExampleSignature)
@@ -16,15 +16,10 @@ import Deku.Do as Deku
 import FRP.Poll (Poll)
 import Deku.Hooks (useState)
 import Deku.DOM.Listeners as DL
-import Deku.Pursx ((~~))
 import Effect (Effect)
+import Deku.Pursx (pursx)
 
-import Type.Proxy (Proxy(..))
-
-myHtml =
-  ( Proxy
-      :: Proxy
-           """<nav class="flex" aria-label="Breadcrumb">
+type MyHtml = """<nav class="flex" aria-label="Breadcrumb">
   <ol role="list" class="flex space-x-4 rounded-md bg-white px-6 shadow">
     <li ~homeAtts~>
       <div class="flex items-center">
@@ -57,7 +52,6 @@ myHtml =
     </li>
   </ol>
 </nav>"""
-  )
 
 app :: ExampleSignature
 app runExample = runExample Deku.do
@@ -91,7 +85,7 @@ app runExample = runExample Deku.do
         , D.a (akls toggleNero) [ text_ "Go to nero" ]
         ]
     , D.div_
-        [ myHtml ~~
+        [ pursx @MyHtml
             { homeAtts: oneOf [ toggleHome, DA.klass_ "flex h-12" ]
             , projectsAtts: oneOf [ toggleProjs, hideOnFalse projects ]
             , neroAtts: oneOf [ toggleNero, hideOnFalse nero ]
@@ -100,4 +94,4 @@ app runExample = runExample Deku.do
     ]
 
 main :: Effect Unit
-main = void $ app (map (map void) runInBody')
+main = void $ app $ map pure runInBody

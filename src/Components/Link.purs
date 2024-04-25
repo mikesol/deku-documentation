@@ -22,11 +22,8 @@ import Web.PointerEvent.PointerEvent (PointerEvent, toEvent)
 import Yoga.JSON as JSON
 
 link''
-  :: forall a19 a26
-   . Discard a19
-  => Discard a26
-  => (PointerEvent -> Effect a19)
-  -> (Foreign -> String -> Effect a26)
+  :: (PointerEvent -> Effect Unit)
+  -> (Foreign -> String -> Effect Unit)
   -> Route
   -> Array
        ( Poll
@@ -76,7 +73,6 @@ link
        ( Poll
            ( Attribute
                (HTMLAnchorElement ())
-
            )
        )
   -> Nut

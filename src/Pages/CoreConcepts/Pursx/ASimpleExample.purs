@@ -8,16 +8,13 @@ import Data.Symbol (reflectSymbol)
 import Deku.DOM.Attributes as DA
 import Deku.Control (text_)
 import Deku.DOM as D
-import Deku.Pursx ((~~))
+import Deku.Pursx (pursx)
 import Pages.CoreConcepts.Pursx.ASimpleExample.ClosingTagsAndTreeStructure (closingTagsAndTreeStructure)
 import Pages.CoreConcepts.Pursx.ASimpleExample.PlainOldHTML (plainOldHTML)
 import Pages.CoreConcepts.Pursx.ASimpleExample.TypeSafety (typeSafety)
 import Type.Proxy (Proxy(..))
 
-myHtml =
-  ( Proxy
-      :: Proxy
-           """<nav class="flex" aria-label="Breadcrumb">
+type MyHtml =  """<nav class="flex" aria-label="Breadcrumb">
   <ol role="list" class="flex space-x-4 rounded-md bg-white px-6 shadow">
     <li class="flex">
       <div class="flex items-center">
@@ -50,7 +47,6 @@ myHtml =
     </li>
   </ol>
 </nav>"""
-  )
 
 aSimpleExample :: Section
 aSimpleExample = section
@@ -60,13 +56,13 @@ aSimpleExample = section
           [ text_
               "Let's start with a simple example. The HTML will be a bit on the long side, but the Deku will be short and sweet! As a motivating example, we'll be developing breadcrumbs."
           ]
-      , htmlCode (reflectSymbol myHtml)
+      , htmlCode (reflectSymbol (Proxy :: _ MyHtml))
       , D.p__ "This renders in the DOM like so."
       , D.div
           [ DA.klass_
               "border-solid border-2 border-slate-200 dark:border-white-200 flex justify-center"
           ]
-          [ myHtml ~~ {} ]
+          [ pursx @MyHtml {} ]
       , D.p__
           "By the end of this page, we'll have our breadcrumbs hooked up to stateful logic. We'll start by seeing how to render the example above in Deku."
       ]

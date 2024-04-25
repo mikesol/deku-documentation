@@ -11,7 +11,7 @@ import Deku.DOM as D
 import Deku.Do as Deku
 import Deku.Hooks (guard, useState, useState')
 import Deku.DOM.Listeners as DL
-import Deku.Toplevel (runInBody')
+import Deku.Toplevel (runInBody)
 import Effect (Effect)
 import Effect.Random (random)
 import ExampleAssitant (ExampleSignature)
@@ -57,4 +57,4 @@ app runExample = do
       ]
 
 main :: Effect Unit
-main = void $ app (map (map void) runInBody')
+main = void $ app $ map pure runInBody

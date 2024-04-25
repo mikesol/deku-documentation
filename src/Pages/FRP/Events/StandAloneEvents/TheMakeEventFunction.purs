@@ -3,56 +3,43 @@ module Pages.FRP.Events.StandAloneEvents.TheMakeEventFunction where
 import Prelude
 
 import Components.Code (psCode)
-import Contracts (Subsection, subsection)
-import Deku.DOM.Attributes as DA
-
+import Contracts (Env(..), Subsection, getEnv, subsection)
 import Deku.Control (text_)
 import Deku.DOM as D
+import Router.ADT (Route(..))
 
 theMakeEventFunction :: Subsection
 theMakeEventFunction = subsection
   { title: "The makeEvent function"
-  , matter: pure
-      [ D.p_
-          [ text_ "To make a stand-alone effect, use the "
-          , D.code__ "makeEvent"
-          , text_ " function. This function has the signature of "
-          , D.code__ "Event"
-          , text_ " we saw before, namely:"
-          ]
-      , psCode
-          """makeEvent
+  , matter: do
+      Env { routeLink } <- getEnv
+      pure
+        [ D.p_
+            [ text_ "To make a stand-alone effect, use the "
+            , D.code__ "makeEvent"
+            , text_
+                " function. This function has a pretty frightening signature, so it's not for the feint of heart."
+            ]
+        , psCode
+            """makeEvent
   :: forall a
-  . ((a -> Effect Unit) -> Effect (Effect Unit))
+   . ((forall b. Event b -> (b -> EventfulProgram a) -> ST Global (ST Global Unit)) -> ST Global (ST Global Unit))
   -> Event a"""
-      , D.p_
-          [ text_ "In other words, for all intents and pursposes, "
-          , D.code__ "makeEvent"
-          , text_ " is a no-op - it takes an event and returns an event."
-          ]
-      , D.p_
-          [ text_
-              "As an example, supposed you wanted an event to fire every time the browser requested an animation frame via "
-          , D.a
-              [ DA.href_
-                  "https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame"
-              , (DA.target_ "_blank")
-              ]
-              [ D.code__ "requestAnimationFrame" ]
-          , text_ ". One way to accomplish that would be via "
-          , D.code__ "makeEvent"
-          , text_ "."
-          ]
-      , psCode
-          """animationFrame :: Event Unit
-animationFrame = makeEvent \k -> do 
-  w <- window
-  cancelled <- Ref.new false
-  let loop = void do
-        w # requestAnimationFrame do
-          k unit
-          unlessM (Ref.read cancelled) loop
-  loop
-  pure (Ref.write true cancelled)"""
-      ]
+        , D.p_
+            [ text_
+                "This is similar-ish to the definition of ", D.code__ "Event", text_" above, except that "
+            , D.code__ "EventfulProgram"
+            , text_ " is a subset of "
+            , D.code__ "Effect"
+            , text_ " that lets you do a few things, like operations in the "
+            , D.code__ "ST"
+            , text_ " monad, "
+            , D.i__ "without"
+            , text_ " triggering additional side effects. As we'll see in the "
+            , routeLink Sampling
+            , text_
+                " section, this is done so that we can push all side effects to the boundaries of our program."
+            ]
+            ,D.p__ "In theory, you should never have to use this low-level function. If you do, then chances are you're reading the source code, at which point these docs are but a memory. We miss you, come back 🥲"
+        ]
   }

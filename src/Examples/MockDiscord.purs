@@ -4,11 +4,11 @@ import Prelude
 
 import Assets (beluMomURL, belugaURL)
 import Data.Maybe (Maybe(..))
-import Deku.Attribute (Attribute, prop', unsafeAttribute)
-import Deku.Control (elementify2, text_)
-import Deku.Core (Nut)
+import Deku.Attribute (Attribute)
+import Deku.Control (elementify, text_)
+import Deku.Core (Nut, attributeAtYourOwnRisk)
 import Deku.DOM (HTMLElement)
-import Deku.Toplevel (runInBody')
+import Deku.Toplevel (runInBody)
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
 import FRP.Poll (Poll)
@@ -23,21 +23,19 @@ type HTMLDiscordMessage (r :: Row Type) =
 
 discordMessage
   :: Array (Poll (Attribute (HTMLDiscordMessage ()))) -> Array Nut -> Nut
-discordMessage = elementify2 Nothing "discord-message"
+discordMessage = elementify Nothing "discord-message"
 
 author
   :: forall r
    . Poll String
   -> Poll (Attribute (author :: String | r))
-author = map
-  (unsafeAttribute <<< { key: "author", value: _ } <<< prop')
+author = map (attributeAtYourOwnRisk "author")
 
 avatar
   :: forall r
    . Poll String
   -> Poll (Attribute (author :: String | r))
-avatar = map
-  (unsafeAttribute <<< { key: "avatar", value: _ } <<< prop')
+avatar = map (attributeAtYourOwnRisk "avatar")
 
 type HTMLDiscordMessages (r :: Row Type) =
   ( __tag :: Proxy "HTMLDiscordMessages"
@@ -46,7 +44,7 @@ type HTMLDiscordMessages (r :: Row Type) =
 
 discordMessages
   :: Array (Poll (Attribute (HTMLDiscordMessages ()))) -> Array Nut -> Nut
-discordMessages = elementify2 Nothing "discord-messages"
+discordMessages = elementify Nothing "discord-messages"
 
 app :: ExampleSignature
 app runExample = runExample do
@@ -74,4 +72,4 @@ app runExample = runExample do
     ]
 
 main :: Effect Unit
-main = void $ app (map (map void) runInBody')
+main = void $ app $ map pure runInBody

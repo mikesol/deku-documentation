@@ -23,7 +23,7 @@ startingANewProject = subsection
             , D.code_ [ text_ "npx" ]
             , text_ " from your shell of choice."
             ]
-        , shSessionCode "npx create-deku-app@0.0.8 my-awesome-app"
+        , shSessionCode "npx create-deku-app@0.0.9 my-awesome-app"
         , D.p_
             [ text_
                 "This will create a new Deku app in the directory "

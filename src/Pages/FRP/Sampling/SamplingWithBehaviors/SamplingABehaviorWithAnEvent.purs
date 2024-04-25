@@ -18,19 +18,25 @@ samplingAPollWithAnEvent = subsection
       pure
         [ D.p_
             [ text_
-                "The easiest way to sample a poll with an event is to do what the signature of "
-            , D.code__ "Poll"
-            , text_
-                " is inviting, nay enticing us to do, namely function application."
+                "Let's start by using an interval to sample an API call. We have two different types of effects here:"
             ]
-        , psCode
-            """type Poll a = forall b. Event (a -> b) -> Event b
-sample :: forall a b. Poll a -> Event (a -> b) -> Event b
-sample = ($)"""
-        , D.p_ [ D.b__ "tl;dr - sampling polls = $" ]
-        , D.p_
-            [ text_
-                "Here's an example of an event that consults a random poll every two seconds. Note that the event sampling a \"random user poll\", meaning that the conceptual model is that at any time the service is measured, there's always a random user."
+        , D.ol_
+            [ D.li_
+                [ text_
+                    "The interval is an "
+                , D.i__ "ex nihilo"
+                , text_
+                    " effect, meaning that it speaks Latin. No, just kidding, it means that it doesn't depend on any other effect. It just happens, sort of like my forgetfulness or the hummus in my fridge disappearing."
+                ]
+            , D.li_
+                [ text_
+                    "The API call is a "
+                , D.i__ "rider"
+                , text_
+                    " effect. It depends on the interval effect, because we want to poll the API every "
+                , D.i__ "n"
+                , text_ " seconds."
+                ]
             ]
         , samplePoll
         ]

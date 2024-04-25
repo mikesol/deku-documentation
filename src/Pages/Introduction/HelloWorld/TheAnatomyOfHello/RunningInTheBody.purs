@@ -7,7 +7,6 @@ import Contracts (Env(..), Subsection, getEnv, subsection)
 import Deku.DOM.Attributes as DA
 import Deku.Control (text_)
 import Deku.DOM as D
-import Router.ADT (Route(..))
 
 runningInTheBody :: Subsection
 runningInTheBody = subsection
@@ -26,13 +25,7 @@ runningInTheBody = subsection
                 ]
                 [ text_ "body" ]
             , text_
-                " of a webpage. This is not the only way, however. You can also embed a Deku app in an arbitrary element, or you could avoid embedding it entirely and instead render it as a "
-            , D.code_ [ text_ "String" ]
-            , text_
-                " of HTML, for example when doing Static Site Rendering ("
-            , routeLink SSR
-            , text_
-                "). We'll go over these techniques later in the documentation, but for now, we'll stick to presenting our app in a webpage's body."
+                " of a webpage. You can also embed a Deku app in an arbitrary element. For now, we'll stick to presenting our app in a webpage's body."
             ]
         ]
   }

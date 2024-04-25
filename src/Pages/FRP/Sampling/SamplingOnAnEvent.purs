@@ -12,11 +12,16 @@ import Pages.FRP.Sampling.SamplingOnAnEvent.FlippingTheFunctionAndArgument (flip
 
 samplingOnAnEvent :: Section
 samplingOnAnEvent = section
-  { title: "Sampling an event"
+  { title: "Sampling"
   , topmatter: pure
       [ D.p_
           [ text_
-              "This section will look at the basic mechanisms for sampling, exploring the various functions available in "
+              "Before we look at effect systems, it's important to understand sampling in FRP. It's the mildest type of effect - one that grafts the temporality of one event onto another. It's also unlike other effect systems we'll see later down the line because we can accomplish these directly with combinators over "
+          , D.code__ "Event"
+          , text_ "and"
+          , D.code__ "Poll"
+          , text_
+              ". This section will look at the basic mechanisms for sampling, exploring the various functions available in "
           , targetedLink "https://github.com/mikesol/purescript-hyrule"
               [ D.code__ "purescript-hyrule" ]
           , text_ " as well as some important corner cases to be aware of."
@@ -26,6 +31,5 @@ samplingOnAnEvent = section
       [ applicativesAndTemporality
       , flippingTheFunctionAndArgument
       , biasingASideOfSampling
-
       ]
   }

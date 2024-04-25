@@ -23,7 +23,7 @@ route = root $ sum
   , "Applicatives": "functional-reactive-programming" / "applicatives" / noArgs
   , "Alternatives": "functional-reactive-programming" / "alternatives" / noArgs
   , "Filtering": "functional-reactive-programming" / "filtering" / noArgs
-  , "Sampling": "functional-reactive-programming" / "sampling" / noArgs
+  , "Sampling": "functional-reactive-programming" / "effect-systems" / noArgs
   , "OtherInstances": "functional-reactive-programming" / "event-miscellany" /
       noArgs
   , "Busses": "functional-reactive-programming" / "busses" / noArgs
@@ -31,6 +31,5 @@ route = root $ sum
   , "Polls": "functional-reactive-programming" / "polls" / noArgs
   , "CustomElements": "advanced-usage" / "custom-elements" / noArgs
   , "AccessingTheDOM": "advanced-usage" / "accessing-the-dom" / noArgs
-  , "SSR": "advanced-usage" / "ssr" / noArgs
   , "FourOhFour": "404" / noArgs
   }

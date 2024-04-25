@@ -28,5 +28,4 @@ routeToChapter FixAndFold = frp
 routeToChapter Polls = frp
 routeToChapter CustomElements = advancedUsage
 routeToChapter AccessingTheDOM = advancedUsage
-routeToChapter SSR = advancedUsage
 routeToChapter FourOhFour = introduction

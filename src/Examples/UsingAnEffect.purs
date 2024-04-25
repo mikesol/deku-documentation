@@ -6,7 +6,7 @@ import Deku.Control (text_)
 import Deku.DOM as D
 import Deku.DOM.Attributes as DA
 import Deku.DOM.Listeners as DL
-import Deku.Toplevel (runInBody')
+import Deku.Toplevel (runInBody)
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
 import Web.HTML (window)
@@ -22,4 +22,4 @@ app runExample = runExample do
     [ text_ "Click me!" ]
 
 main :: Effect Unit
-main = void $ app (map (map void) runInBody')
+main = void $ app $ map pure runInBody

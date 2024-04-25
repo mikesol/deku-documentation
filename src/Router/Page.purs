@@ -5,7 +5,6 @@ import Prelude
 import Contracts (Page)
 import Pages.AdvancedUsage.AccessingTheDOM (accessingTheDOM)
 import Pages.AdvancedUsage.CustomElements (customElements)
-import Pages.AdvancedUsage.SSR (sSR)
 import Pages.CoreConcepts.Collections (collections)
 import Pages.CoreConcepts.Components (components)
 import Pages.CoreConcepts.Effects (effects)
@@ -48,5 +47,4 @@ routeToPage FixAndFold = fixAndFold
 routeToPage Polls = polls
 routeToPage CustomElements = customElements
 routeToPage AccessingTheDOM = accessingTheDOM
-routeToPage SSR = sSR
 routeToPage FourOhFour = fourOhFour

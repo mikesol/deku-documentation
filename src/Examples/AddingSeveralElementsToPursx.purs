@@ -1,6 +1,6 @@
 module Examples.AddingSeveralElementsToPursx where
 
-import Deku.Toplevel (runInBody')
+import Deku.Toplevel (runInBody)
 import Prelude
 import Web.PointerEvent.PointerEvent (PointerEvent)
 import FRP.Poll (Poll)
@@ -16,14 +16,9 @@ import Deku.Do as Deku
 import Deku.Hooks (useState)
 import Effect (Effect)
 import Deku.DOM.Listeners as DL
-import Deku.Pursx ((~~))
+import Deku.Pursx (pursx)
 
-import Type.Proxy (Proxy(..))
-
-liHtml =
-  ( Proxy
-      :: Proxy
-           """<li ~atts~>
+type LiHtml ="""<li ~atts~>
       <div class="flex items-center">
         <svg class="h-full w-6 flex-shrink-0 text-gray-200" viewBox="0 0 24 44" preserveAspectRatio="none" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path d="M.293 0l22 22-22 22h1.414l22-22-22-22H.293z" />
@@ -31,12 +26,8 @@ liHtml =
         <span class="cursor-pointer ml-4 text-sm font-medium text-gray-500 hover:text-gray-700" aria-current="page">~name~</span>
       </div>
     </li>"""
-  )
 
-myHtml =
-  ( Proxy
-      :: Proxy
-           """<nav class="flex" aria-label="Breadcrumb">
+type MyHtml = """<nav class="flex" aria-label="Breadcrumb">
   <ol role="list" class="flex space-x-4 rounded-md bg-white px-6 shadow">
     <li ~homeAtts~>
       <div class="flex items-center">
@@ -53,7 +44,6 @@ myHtml =
     ~lis~
   </ol>
 </nav>"""
-  )
 
 app :: ExampleSignature
 app runExample = runExample Deku.do
@@ -90,17 +80,17 @@ app runExample = runExample Deku.do
             [ text_ "Go to nero" ]
         ]
     , D.div_
-        [ myHtml ~~
+        [ pursx @MyHtml
             { homeAtts: oneOf [ toggleHome, DA.klass_ "flex h-12" ]
             , lis: fixed
-                [ liHtml ~~
+                [ pursx @LiHtml
                     { atts: oneOf
                         [ toggleProjs
                         , hideOnFalse projects
                         ]
                     , name: text_ "Projects"
                     }
-                , liHtml ~~
+                , pursx @LiHtml
                     { atts: oneOf
                         [ toggleNero, hideOnFalse nero ]
                     , name: text_ "Project Nero"
@@ -111,4 +101,4 @@ app runExample = runExample Deku.do
     ]
 
 main :: Effect Unit
-main = void $ app (map (map void) runInBody')
+main = void $ app $ map pure runInBody

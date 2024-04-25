@@ -1,18 +1,14 @@
 module Examples.PlainOldHtml where
 
-import Deku.Toplevel (runInBody')
+import Deku.Toplevel (runInBody)
 import Effect (Effect)
 import Prelude
 import ExampleAssitant (ExampleSignature)
 
-import Deku.Pursx ((~~))
+import Deku.Pursx (pursx)
 
-import Type.Proxy (Proxy(..))
 
-myHtml =
-  Proxy
-    :: Proxy
-         """<nav class="flex" aria-label="Breadcrumb">
+type MyHtml = """<nav class="flex" aria-label="Breadcrumb">
   <ol role="list" class="flex space-x-4 rounded-md bg-white px-6 shadow">
     <li class="flex">
       <div class="flex items-center">
@@ -47,7 +43,7 @@ myHtml =
 </nav>"""
 
 app :: ExampleSignature
-app runExample = runExample (myHtml ~~ {})
+app runExample = runExample (pursx @MyHtml {})
 
 main :: Effect Unit
-main = void $ app (map (map void) runInBody')
+main = void $ app $ map pure runInBody

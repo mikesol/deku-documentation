@@ -15,7 +15,7 @@ import Deku.DOM.Listeners as DL
 import Deku.DOM.Self as Self
 import Deku.Do as Deku
 import Deku.Hooks (useDyn, useRef, useState, useState')
-import Deku.Toplevel (runInBody')
+import Deku.Toplevel (runInBody)
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
 import FRP.Event.Class ((<|*>))
@@ -87,9 +87,9 @@ app runExample = runExample Deku.do
     [ top
     , Deku.do
         { value: t } <- useDyn
-          (Tuple <$> pos <|*> item)
+          (Tuple <$> (pure <$> pos) <|*> item)
         D.div_ [ text_ t ]
     ]
 
 main :: Effect Unit
-main = void $ app (map (map void) runInBody')
+main = void $ app $ map pure runInBody
