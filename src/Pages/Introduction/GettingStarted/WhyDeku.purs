@@ -31,7 +31,7 @@ whyDeku = section
               [ text_ "GitHub" ]
           , text_
               ". It was built with best practices in mind and is a useful reference for building larger applications, as is the "
-          , targetedLink "https://deku-realworld.netlify.app"
+          , targetedLink "https://purescript-deku-realworld.surge.sh"
               [ text_ "Deku Real World" ]
           , text_ " "
           , targetedLink "https://github.com/mikesol/purescript-deku-realworld"
