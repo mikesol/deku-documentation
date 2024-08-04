@@ -23,7 +23,7 @@ import Data.Generic.Rep (class Generic)
 import Data.Map as Map
 import Data.Maybe (Maybe(..), maybe)
 import Data.Show.Generic (genericShow)
-import Data.Tuple (Tuple(..), curry, fst, snd, uncurry)
+import Data.Tuple (Tuple(..), fst, snd)
 import Deku.Core (Nut)
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
@@ -207,7 +207,7 @@ main = do
       , env
       }
   dedupRoute <- liftST $ create
-  void $ subscribe (dedup dedupRoute.event) $ uncurry \_ new -> do
+  void $ subscribe (dedup dedupRoute.event) \new -> do
     join $ Ref.read cancelMe
     rightSideNav.push Nothing
     currentRouteMailbox.push new
@@ -216,7 +216,7 @@ main = do
     Ref.write toCancel cancelMe
     currentRoute.push { route: new, page, nut }
   void $ matchesWith (map (\e -> e <|> pure FourOhFour) (parse route))
-    (curry dedupRoute.push)
+    (const dedupRoute.push)
     psi
   prefersDarkMode >>= darkModePreferenceE.push
   void $ darkModeListener
