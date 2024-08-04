@@ -41,4 +41,4 @@ app runExample = do
     text $ (pure "Wait for it") <|> sham (compact dj.event)
 
 main :: Effect Unit
-main = void $ app $ map pure runInBody
+main = void $ app runInBody

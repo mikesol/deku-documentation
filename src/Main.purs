@@ -2,7 +2,9 @@ module Main
   ( ScrolledSection(..)
   , getScrolledSection
   , main
-  ) where
+  , pageToPollWithCancellers
+  )
+  where
 
 import Prelude
 
@@ -17,7 +19,6 @@ import Control.Monad.Writer (runWriterT)
 import Control.Plus (empty)
 import DarkModePreference (OnDark(..), OnLight(..), darkModeListener, prefersDarkMode)
 import Data.Compactable (compact)
-import Data.Foldable (traverse_)
 import Data.Generic.Rep (class Generic)
 import Data.Map as Map
 import Data.Maybe (Maybe(..), maybe)
@@ -104,7 +105,6 @@ main :: Effect Unit
 main = do
   clickedSection <- Ref.new Nothing
   currentRouteMailbox <- liftST create
-  previousRouteMailbox <- liftST create
   currentRoute <- liftST create
   headerElement <- liftST create
   rightSideNav <- liftST create
@@ -174,14 +174,14 @@ main = do
         Ref.write goHere currentSectionRef
         rightSideNavSelectE.push goHere
       changeListener newListener
-  rightSideLagged <-  memoizeMe (lag (dedup rightSideNavSelectE.event))
-  pageWas <-  boxMe
-    ({ address: _, payload: unit } <$> previousRouteMailbox.event)
+  rightSideLagged <- memoizeMe (lag (dedup rightSideNavSelectE.event))
+  pageWas <- boxMe
+    ({ address: _, payload: unit } <$> compact (map fst (lag currentRouteMailbox.event)))
   pageIs <- boxMe
     ({ address: _, payload: unit } <$> currentRouteMailbox.event)
   rightSideNavSelect <- boxMe
     ({ address: _, payload: unit } <$> (snd <$> rightSideLagged.event))
-  rightSideNavDeselect <-  boxMe
+  rightSideNavDeselect <- boxMe
     ({ address: _, payload: unit } <$> compact (fst <$> rightSideLagged.event))
   let
     env = Env
@@ -190,7 +190,7 @@ main = do
       , routeLinkWithNuts: \r s -> linkWithNut psi.pushState r s empty
       , setRightSideNav: Just >>> rightSideNav.push
       }
-  runInBody do
+  void $ runInBody do
     app
       { pageIs: map sham pageIs.event
       , pageWas: map sham pageWas.event
@@ -199,7 +199,8 @@ main = do
       , pushState: psi.pushState
       , curPage: sham $ _.page <$> currentRoute.event
       , curNut: sham $ _.nut <$> currentRoute.event
-      , showBanner: dedup (_.route >>> eq GettingStarted <$> sham currentRoute.event)
+      , showBanner: dedup
+          (_.route >>> eq GettingStarted <$> sham currentRoute.event)
       , setHeaderElement: headerElement.push
       , clickedSection
       , darkModePreference: sham darkModePreferenceE.event
@@ -209,7 +210,6 @@ main = do
   void $ subscribe (dedup dedupRoute.event) $ uncurry \old new -> do
     join $ Ref.read cancelMe
     rightSideNav.push Nothing
-    traverse_ previousRouteMailbox.push old
     currentRouteMailbox.push new
     let page = routeToPage new
     Tuple nut toCancel <- pageToPollWithCancellers env page

@@ -46,4 +46,4 @@ app :: ExampleSignature
 app runExample = runExample (pursx @MyHtml {})
 
 main :: Effect Unit
-main = void $ app $ map pure runInBody
+main = void $ app runInBody

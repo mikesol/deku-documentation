@@ -1,14 +1,9 @@
-import * as path from "path";
-
-const DB = process.env.NODE_ENV === "production"
-  ? path.resolve(__dirname, "output-es")
-  : path.resolve(__dirname, "output");
-
+import path from "path";
 
 export default {
   resolve: {
     alias: {
-      PureScript: DB,
+      PureScript: path.resolve(__dirname, "output"),
     },
   }
 };

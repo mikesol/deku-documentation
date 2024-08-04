@@ -84,4 +84,4 @@ app runExample = runExample Deku.do
     pure $ D.div_ [ text_ "In all honesty...", awe ]
 
 main :: Effect Unit
-main = void $ app $ map pure runInBody
+main = void $ app runInBody
