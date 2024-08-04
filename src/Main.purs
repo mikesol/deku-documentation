@@ -207,7 +207,7 @@ main = do
       , env
       }
   dedupRoute <- liftST $ create
-  void $ subscribe (dedup dedupRoute.event) $ uncurry \old new -> do
+  void $ subscribe (dedup dedupRoute.event) $ uncurry \_ new -> do
     join $ Ref.read cancelMe
     rightSideNav.push Nothing
     currentRouteMailbox.push new
