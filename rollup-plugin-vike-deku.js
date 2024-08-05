@@ -7,6 +7,7 @@ const outputDir = path.resolve(__dirname, 'output/Vike.*/index.js')
 
 const createPageFiles = () => (p) => {
   const dir = p.split('output/Vike.')[1].replace('/index.js', '')
+  if (dir === 'FourOhFour') { return; }
   fs.mkdirSync(`pages/${dir}`, { recursive: true })
   fs.writeFileSync(
     path.resolve(__dirname, `pages/${dir}/+Page.js`),
