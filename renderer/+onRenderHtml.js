@@ -1,11 +1,22 @@
 export { onRenderHtml };
 import jsdomGlobal from "jsdom-global";
 
+import postcss from 'postcss';
+import tailwindcss from 'tailwindcss';
+import autoprefixer from 'autoprefixer';
 import { escapeInject, dangerouslySkipEscape } from "vike/server";
 import { ssr } from "../output/Run";
+import cssInput from '../src/styles/tailwind.css?raw'
+
+async function processCSS(cssInput) {
+  const result = await postcss([tailwindcss, autoprefixer])
+    .process(cssInput, { from: undefined });
+  return result.css;
+}
 
 async function onRenderHtml(pageContext) {
   jsdomGlobal(undefined, { pretendToBeVisual: true });
+  
   document.getElementsByTagName("html")[0].innerHTML =
     "<head></head><body></body>";
 
@@ -14,12 +25,15 @@ async function onRenderHtml(pageContext) {
 
   pageContext.dekuHydrationData = cache;
 
+  const cssOutput = await processCSS(cssInput);
+
   return escapeInject`<!DOCTYPE html>
 <html>
   <head>
     <title>Deku documentation</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
+    <style>${dangerouslySkipEscape(cssOutput)}</style>
     <link href="/node_modules/prismjs/themes/prism-tomorrow.min.css" rel="stylesheet" />
     <script src="/node_modules/clipboard/dist/clipboard.min.js"></script>
     <script src="/node_modules/prismjs/components/prism-core.min.js" defer></script>

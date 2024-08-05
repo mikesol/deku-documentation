@@ -37,6 +37,8 @@
     "glob": "^11.0.0",
     "jsdom": "^24.1.1",
     "jsdom-global": "^3.0.2",
+    "postcss": "^8.4.40",
+    "postcss-cli": "^11.0.0",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.5",
     "purescript": "^0.15.15",

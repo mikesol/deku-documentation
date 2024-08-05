@@ -1,7 +1,6 @@
 export { onRenderClient };
 
 import { hydrate } from "../output/Run";
-import "../src/styles/tailwind.css";
 
 async function onRenderClient(pageContext) {
   if (pageContext.isHydration) {
