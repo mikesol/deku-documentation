@@ -20,7 +20,6 @@ async function processCSS(cssInput) {
 
 async function onRenderHtml(pageContext) {
   jsdomGlobal(undefined, { pretendToBeVisual: true })
-
   document.getElementsByTagName('html')[0].innerHTML =
     '<head></head><body></body>'
 
@@ -41,7 +40,6 @@ async function onRenderHtml(pageContext) {
     <style>${dangerouslySkipEscape(prismTomorrow)}</style>
     <script>${dangerouslySkipEscape(clipboard)}</script>
     <meta name="description" content="Documentation for the purescript-deku web framework">
-    <script src="https://unpkg.com/wc-discord-message@^2.0.0/dist/wc-discord-message/wc-discord-message.js"></script>
   </head>
   <body>
     ${viewHtml}
