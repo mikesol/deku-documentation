@@ -15,10 +15,13 @@ samplingWithPolls = section
   , topmatter: do
       pure
         [ D.p_
-            [ text_ "Sometimes, you'll want to sample something impure, like an API or radioactive emissions. This section will show a few strategies when purity is not an option (and let's be real, is it ever an option?)."
+            [ text_
+                "Sometimes, you'll want to sample something impure, like an API or radioactive emissions. This section will show a few strategies when purity is not an option (and let's be real, is it ever an option?)."
             ]
         ]
   , subsections:
-      [ samplingAPollWithAnEvent, gatingEventsOnPolls, multiplexing
+      [ samplingAPollWithAnEvent
+      , gatingEventsOnPolls
+      , multiplexing
       ]
   }

@@ -1,3 +1,3 @@
-import { vike } from "../../output/Vike.GettingStarted"
+import { vike } from '../../output/Vike.GettingStarted'
 
-export default vike.route;
+export default vike.route

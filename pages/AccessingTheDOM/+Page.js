@@ -1,3 +1,3 @@
-import { vike } from "../../output/Vike.AccessingTheDOM"
+import { vike } from '../../output/Vike.AccessingTheDOM'
 
-export default vike.page;
+export default vike.page

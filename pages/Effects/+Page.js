@@ -1,3 +1,3 @@
-import { vike } from "../../output/Vike.Effects"
+import { vike } from '../../output/Vike.Effects'
 
-export default vike.page;
+export default vike.page

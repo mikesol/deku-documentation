@@ -1,3 +1,3 @@
-import { vike } from "../../output/Vike.MoreHooks"
+import { vike } from '../../output/Vike.MoreHooks'
 
-export default vike.page;
+export default vike.page

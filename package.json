@@ -4,11 +4,12 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "example"  : "vite --config vite-example.config.js",
+    "example": "vite --config vite-example.config.js",
     "dev": "spago build && vite",
     "gitpod": "spago build",
     "format": "purs-tidy format-in-place src/**/*.purs && prettier --write ./src/",
-    "build": "node gen-examples.js && spago build && vite build"
+    "build": "node gen-examples.js && spago build && vite build",
+    "prepare": "husky"
   },
   "browserslist": "defaults, not ie <= 11",
   "dependencies": {
@@ -37,17 +38,23 @@
     "chokidar": "^3.6.0",
     "eslint": "^9.8.0",
     "glob": "^11.0.0",
+    "globals": "^15.9.0",
+    "husky": "^9.1.4",
     "jsdom": "^24.1.1",
     "jsdom-global": "^3.0.2",
+    "lint-staged": "^15.2.8",
     "postcss": "^8.4.40",
     "postcss-cli": "^11.0.0",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.5",
     "purescript": "^0.15.15",
     "purs-tidy": "^0.11.0",
+    "sharp": "^0.33.4",
     "spago": "^0.93.37",
+    "svgo": "^3.3.2",
     "vike": "^0.4.182",
     "vite": "^5.3.5",
+    "vite-plugin-image-optimizer": "^1.1.8",
     "vite-plugin-vercel": "^8.0.0"
   }
 }

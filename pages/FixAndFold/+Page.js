@@ -1,3 +1,3 @@
-import { vike } from "../../output/Vike.FixAndFold"
+import { vike } from '../../output/Vike.FixAndFold'
 
-export default vike.page;
+export default vike.page

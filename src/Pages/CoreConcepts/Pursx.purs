@@ -16,7 +16,8 @@ import Router.ADT (Route(..))
 import Deku.Pursx as Px
 import Type.Proxy (Proxy(..))
 
-type MyHtml =  """<div class="bg-white">
+type MyHtml =
+  """<div class="bg-white">
   <div class="mx-auto max-w-7xl py-12 px-4 text-center sm:px-6 lg:py-16 lg:px-8">
     <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
       <span class="block">Ready to dive in?</span>

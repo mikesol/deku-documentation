@@ -1,3 +1,3 @@
-import { vike } from "../../output/Vike.HelloWorld"
+import { vike } from '../../output/Vike.HelloWorld'
 
-export default vike.route;
+export default vike.route

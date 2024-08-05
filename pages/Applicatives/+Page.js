@@ -1,3 +1,3 @@
-import { vike } from "../../output/Vike.Applicatives"
+import { vike } from '../../output/Vike.Applicatives'
 
-export default vike.page;
+export default vike.page

@@ -1,3 +1,3 @@
-import { vike } from "../../output/Vike.Sampling"
+import { vike } from '../../output/Vike.Sampling'
 
-export default vike.route;
+export default vike.route

@@ -1,3 +1,3 @@
-import { vike } from "../../output/Vike.BuildingAndDeploying"
+import { vike } from '../../output/Vike.BuildingAndDeploying'
 
-export default vike.page;
+export default vike.page

@@ -1,3 +1,3 @@
-import { vike } from "../../output/Vike.CustomElements"
+import { vike } from '../../output/Vike.CustomElements'
 
-export default vike.page;
+export default vike.page

@@ -1,6 +1,6 @@
-import JSConfetti from 'js-confetti';
+import JSConfetti from 'js-confetti'
 
 export const addConfetti = () => {
-  const jsConfetti = new JSConfetti();
+  const jsConfetti = new JSConfetti()
   jsConfetti.addConfetti()
 }

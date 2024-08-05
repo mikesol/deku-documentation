@@ -27,7 +27,9 @@ theMakeEventFunction = subsection
   -> Event a"""
         , D.p_
             [ text_
-                "This is similar-ish to the definition of ", D.code__ "Event", text_" above, except that "
+                "This is similar-ish to the definition of "
+            , D.code__ "Event"
+            , text_ " above, except that "
             , D.code__ "EventfulProgram"
             , text_ " is a subset of "
             , D.code__ "Effect"
@@ -40,6 +42,7 @@ theMakeEventFunction = subsection
             , text_
                 " section, this is done so that we can push all side effects to the boundaries of our program."
             ]
-            ,D.p__ "In theory, you should never have to use this low-level function. If you do, then chances are you're reading the source code, at which point these docs are but a memory. We miss you, come back 🥲"
+        , D.p__
+            "In theory, you should never have to use this low-level function. If you do, then chances are you're reading the source code, at which point these docs are but a memory. We miss you, come back 🥲"
         ]
   }

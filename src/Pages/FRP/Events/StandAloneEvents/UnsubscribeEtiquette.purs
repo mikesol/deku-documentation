@@ -16,7 +16,10 @@ unsubscribeEtiquette = subsection
           ]
       , D.p_
           [ text_
-              "We've done our best to make sure that unsubscribe is idempotent, meaning that you can run it as many times as you want without wreaking havoc on your program. That said, it's still a good idea to be mindful of how you use it. For example, unsubscribe can have ", D.i__ "O(log(n))", text_ " performance in some cases, which can slow down your program if it's called over and over accidentally. So keep it simple!"
+              "We've done our best to make sure that unsubscribe is idempotent, meaning that you can run it as many times as you want without wreaking havoc on your program. That said, it's still a good idea to be mindful of how you use it. For example, unsubscribe can have "
+          , D.i__ "O(log(n))"
+          , text_
+              " performance in some cases, which can slow down your program if it's called over and over accidentally. So keep it simple!"
           ]
       ]
   }

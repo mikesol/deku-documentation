@@ -1,34 +1,35 @@
-export { onRenderHtml };
-import jsdomGlobal from "jsdom-global";
+export { onRenderHtml }
+import jsdomGlobal from 'jsdom-global'
 
-import postcss from 'postcss';
-import tailwindcss from 'tailwindcss';
-import autoprefixer from 'autoprefixer';
-import { escapeInject, dangerouslySkipEscape } from "vike/server";
-import { ssr } from "../output/Run";
+import postcss from 'postcss'
+import tailwindcss from 'tailwindcss'
+import autoprefixer from 'autoprefixer'
+import { escapeInject, dangerouslySkipEscape } from 'vike/server'
+import { ssr } from '../output/Run'
 import cssInput from '../src/styles/tailwind.css?raw'
-import prismTomorrow from 'prismjs/themes/prism-tomorrow.min.css?raw';
-import prismCore from 'prismjs/components/prism-core.min.js?raw';
-import clipboard from 'clipboard/dist/clipboard.min.js?raw';
+import prismTomorrow from 'prismjs/themes/prism-tomorrow.min.css?raw'
+import prismCore from 'prismjs/components/prism-core.min.js?raw'
+import clipboard from 'clipboard/dist/clipboard.min.js?raw'
 
 async function processCSS(cssInput) {
-  const result = await postcss([tailwindcss, autoprefixer])
-    .process(cssInput, { from: undefined });
-  return result.css;
+  const result = await postcss([tailwindcss, autoprefixer]).process(cssInput, {
+    from: undefined,
+  })
+  return result.css
 }
 
 async function onRenderHtml(pageContext) {
-  jsdomGlobal(undefined, { pretendToBeVisual: true });
-  
-  document.getElementsByTagName("html")[0].innerHTML =
-    "<head></head><body></body>";
+  jsdomGlobal(undefined, { pretendToBeVisual: true })
 
-  const cache = ssr(pageContext.Page)();
-  const viewHtml = dangerouslySkipEscape(cache.html);
+  document.getElementsByTagName('html')[0].innerHTML =
+    '<head></head><body></body>'
 
-  pageContext.dekuHydrationData = cache;
+  const cache = ssr(pageContext.Page)()
+  const viewHtml = dangerouslySkipEscape(cache.html)
 
-  const cssOutput = await processCSS(cssInput);
+  pageContext.dekuHydrationData = cache
+
+  const cssOutput = await processCSS(cssInput)
 
   return escapeInject`<!DOCTYPE html>
 <html>
@@ -45,5 +46,5 @@ async function onRenderHtml(pageContext) {
     ${viewHtml}
     <script>${dangerouslySkipEscape(prismCore)}</script>
   </body>
-</html>`;
+</html>`
 }

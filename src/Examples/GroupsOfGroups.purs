@@ -51,7 +51,10 @@ app runExample = runExample Deku.do
             ]
             [ text_ "Worst" ]
         ]
-    , D.div [ DA.style_ $ "background-image: url('" <> alexanderBackgroundURL <> "');" ]
+    , D.div
+        [ DA.style_ $ "background-image: url('" <> alexanderBackgroundURL <>
+            "');"
+        ]
         [ D.div [ DA.klass_ "p-3" ]
             [ D.span
                 [ DA.klass_ "font-aldine text-4xl text-alexander" ]

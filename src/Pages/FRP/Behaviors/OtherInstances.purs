@@ -12,8 +12,9 @@ otherInstances :: Section
 otherInstances = section
   { title: "Other instances"
   , topmatter: pure
-      [ pursx @"<p>Like <code>Event</code>s, <code>Poll</code>s come supercharged with several instances that make working with them easier.</p>"
-           {}
+      [ pursx
+          @"<p>Like <code>Event</code>s, <code>Poll</code>s come supercharged with several instances that make working with them easier.</p>"
+          {}
 
       ]
   , subsections:

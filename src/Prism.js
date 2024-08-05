@@ -13,7 +13,6 @@ export const addExpandButton = () => {
   for (let i = 0; i < collection.length; i++) {
     const obj = collection[i]
     const noCollapse = obj.className.includes('no-collapse')
-    const x = Node.ELEMENT_NODE
     let check = 0
     let startNode = null
     for (let i = 0; i < obj.childNodes.length; i++) {

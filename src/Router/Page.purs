@@ -1,6 +1,5 @@
 module Router.Page where
 
-
 import Contracts (Page)
 import Pages.AdvancedUsage.AccessingTheDOM (accessingTheDOM)
 import Pages.AdvancedUsage.BuildingAndDeploying (buildingAndDeploying)

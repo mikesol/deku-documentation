@@ -27,7 +27,8 @@ simpleApps = section
           , D.code__ "Main.purs"
           , text_ "."
           ]
-      , psCodeNoCollapse """module Main where
+      , psCodeNoCollapse
+          """module Main where
 
 import Prelude
 import Deku.Toplevel (runInBody)

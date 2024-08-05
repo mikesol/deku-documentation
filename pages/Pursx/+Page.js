@@ -1,3 +1,3 @@
-import { vike } from "../../output/Vike.Pursx"
+import { vike } from '../../output/Vike.Pursx'
 
-export default vike.page;
+export default vike.page

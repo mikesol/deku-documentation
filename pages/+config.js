@@ -1,4 +1,4 @@
 export default {
-    passToClient: ["dekuHydrationData"],
-    clientRouting: true
-  };
+  passToClient: ['dekuHydrationData'],
+  clientRouting: true,
+}

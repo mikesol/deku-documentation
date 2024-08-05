@@ -22,6 +22,8 @@ whenToFixAndWhenToFold = subsection
   , matter:
       pure
         [ D.p_
-            [ text_ "In short, it's up to you. They're actually isomorphic. Like a lot of fixed-pointy-thingees (for example the Y-combinator), you can do the same thing several ways. In general, fixed points are harder to read but can feel more expressive or elegant." ]
+            [ text_
+                "In short, it's up to you. They're actually isomorphic. Like a lot of fixed-pointy-thingees (for example the Y-combinator), you can do the same thing several ways. In general, fixed points are harder to read but can feel more expressive or elegant."
+            ]
         ]
   }
