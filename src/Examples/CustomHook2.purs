@@ -25,7 +25,7 @@ app runExample = runExample Deku.do
   D.div_
     [ D.p_ [ text_ "I want the ", D.code__ $ show r1, text_ "th!" ]
     , D.img
-        [ DA.ariaLabel_ "A picture of Tom Cruise in A Few Good Men"
+        [ DA.alt_ "A picture of Tom Cruise in A Few Good Men"
         , DA.src_ cruiseURL
         ]
         []
@@ -35,7 +35,7 @@ app runExample = runExample Deku.do
         , text_ "th!"
         ]
     , D.img
-        [ DA.ariaLabel_ "A picture of Jack Nicholson in A Few Good Men"
+        [ DA.alt_ "A picture of Jack Nicholson in A Few Good Men"
         , DA.src_ nicholsonURL
         ]
         []

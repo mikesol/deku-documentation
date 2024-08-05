@@ -77,7 +77,7 @@ app runExample = runExample Deku.do
         [ uiState <#~> case _ of
             Beginning -> mempty
             Image { url, watcherCount } -> D.div_
-              [ D.img [ DA.ariaLabel_ "Some lorem picsum", DA.src_ url ] []
+              [ D.img [ DA.alt_ "Some lorem picsum", DA.src_ url ] []
               , D.div_
                   [ text_ $
                       "Watcher count (including you): " <> show

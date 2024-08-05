@@ -40,7 +40,7 @@ app runExample = runExample Deku.do
     [ D.div_
         [ imageType <#~>
             case _ of
-              Image -> D.img [ DA.ariaLabel_ "Some lorem picsum", DA.src_ pic ]
+              Image -> D.img [ DA.alt_ "Some lorem picsum", DA.src_ pic ]
                 []
               Video -> D.video
                 [ DA.controls_ "controls"

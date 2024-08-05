@@ -74,7 +74,7 @@ app runExample = runExample Deku.do
             ]
         , D.div_
             [ D.img
-                [ DA.ariaLabel_
+                [ DA.alt_
                     "Cover of Alexander and the Terrible, Horrible, No Good, Very Bad Day"
                 , DA.src_ alexanderURL
                 ]
