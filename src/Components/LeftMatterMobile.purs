@@ -15,20 +15,18 @@ import Deku.DOM.Attributes as DA
 import Deku.DOM.SVG as DS
 import Deku.DOM.SVG.Attributes as DSA
 import FRP.Poll (Poll)
-import Navigation (PushState)
 import Pages.Docs (docs)
 import Router.ADT (Route(..))
 
 pageLi
   :: { pageIs :: Route -> Poll Unit
      , pageWas :: Route -> Poll Unit
-     , pushState :: PushState
      }
   -> Page
   -> Nut
-pageLi { pushState, pageIs, pageWas } (Page { route }) = D.li
+pageLi { pageIs, pageWas } (Page { route }) = D.li
   [ DA.klass_ "relative" ]
-  [ link pushState route
+  [ link route
       [ DA.klass $
           ( oneOf [ pure false, pageIs route $> true, pageWas route $> false ]
           ) <#>
@@ -43,7 +41,6 @@ pageLi { pushState, pageIs, pageWas } (Page { route }) = D.li
 chapterLi
   :: { pageIs :: Route -> Poll Unit
      , pageWas :: Route -> Poll Unit
-     , pushState :: PushState
      }
   -> Chapter
   -> Nut
@@ -66,14 +63,13 @@ leftMatterMobile
   :: { navModalOpen :: Poll Boolean
      , pageIs :: Route -> Poll Unit
      , pageWas :: Route -> Poll Unit
-     , pushState :: PushState
      , darkBoolean :: Poll Boolean
      }
   -> Nut
 leftMatterMobile
-  { navModalOpen, pushState, darkBoolean, pageIs, pageWas } =
+  { navModalOpen, darkBoolean, pageIs, pageWas } =
   do
-    let opts = { pageIs, pageWas, pushState }
+    let opts = { pageIs, pageWas }
     D.div
       [ DA.klass $ navModalOpen <#> (if _ then "" else "hidden ") >>>
           ( _ <>
@@ -109,7 +105,7 @@ leftMatterMobile
                       )
                       [ DS.path [ DSA.d_ "M5 5l14 14M19 5l-14 14" ] [] ]
                   ]
-              , link' pushState GettingStarted empty
+              , link' GettingStarted empty
                   [ D.img
                       ( [ DA.src
                             ( darkBoolean <#> \dk ->

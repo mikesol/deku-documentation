@@ -11,19 +11,13 @@ import Deku.DOM.Attributes as DA
 import Deku.DOM.Listeners as DL
 import Effect (Effect)
 import FRP.Poll (Poll)
-import Foreign (Foreign)
 import Router.ADT (Route(..))
 import Router.Chapter (routeToChapter)
 import Router.Page (routeToPage)
-import Web.Event.Event (preventDefault)
-import Web.HTML (window)
-import Web.HTML.Window (scroll)
-import Web.PointerEvent.PointerEvent (PointerEvent, toEvent)
-import Yoga.JSON as JSON
+import Web.PointerEvent.PointerEvent (PointerEvent)
 
 link''
   :: (PointerEvent -> Effect Unit)
-  -> (Foreign -> String -> Effect Unit)
   -> Route
   -> Array
        ( Poll
@@ -33,14 +27,10 @@ link''
        )
   -> Array Nut
   -> Nut
-link'' eff pushState route attributes children = D.a
+link'' eff route attributes children = D.a
   ( attributes <>
       [ DA.href_ url
-      , DL.click_ \e -> do
-          eff e
-          preventDefault (toEvent e)
-          pushState (JSON.writeImpl {}) url
-          window >>= scroll 0 0
+      , DL.click_ eff
       ]
   )
 
@@ -53,8 +43,7 @@ link'' eff pushState route attributes children = D.a
     else chapter.path <> page.path
 
 link'
-  :: (Foreign -> String -> Effect Unit)
-  -> Route
+  :: Route
   -> Array
        ( Poll
            ( Attribute
@@ -67,8 +56,7 @@ link'
 link' = link'' (const (pure unit))
 
 link
-  :: (Foreign -> String -> Effect Unit)
-  -> Route
+  :: Route
   -> Array
        ( Poll
            ( Attribute
@@ -76,14 +64,13 @@ link
            )
        )
   -> Nut
-link pushState route attributes = link' pushState route attributes
+link route attributes = link' route attributes
   [ text_ page.title ]
   where
   Page page = routeToPage route
 
 linkWithString
-  :: (Foreign -> String -> Effect Unit)
-  -> Route
+  :: Route
   -> String
   -> Array
        ( Poll
@@ -92,13 +79,12 @@ linkWithString
            )
        )
   -> Nut
-linkWithString pushState route title attributes = link' pushState route
+linkWithString route title attributes = link' route
   attributes
   [ text_ title ]
 
 linkWithNut
-  :: (Foreign -> String -> Effect Unit)
-  -> Route
+  :: Route
   -> Array Nut
   -> Array
        ( Poll
@@ -107,6 +93,6 @@ linkWithNut
            )
        )
   -> Nut
-linkWithNut pushState route title attributes = link' pushState route
+linkWithNut route title attributes = link' route
   attributes
   title

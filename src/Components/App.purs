@@ -23,7 +23,6 @@ import Deku.Hooks (cycle, useState, (<#~>))
 import Effect (Effect)
 import Effect.Ref as Ref
 import FRP.Poll (Poll)
-import Navigation (PushState)
 import Router.ADT (Route(..))
 import Router.RouteOrder (routeToNextRoute, routeToPrevRoute)
 import Web.DOM as DOM
@@ -38,7 +37,6 @@ app
      , showBanner :: Poll Boolean
      , pageIs :: Route -> Poll Unit
      , pageWas :: Route -> Poll Unit
-     , pushState :: PushState
      , clickedSection :: Ref.Ref (Maybe Int)
      , env :: Env
      }
@@ -53,7 +51,6 @@ app
   , showBanner
   , pageIs
   , pageWas
-  , pushState
   , clickedSection
   } = Deku.do
   setDark /\ dark <- useState LightMode
@@ -87,8 +84,7 @@ app
     )
     [ D.div ([ DA.klass_ "bg-white dark:bg-slate-900" ])
         [ header
-            { pushState
-            , darkBoolean
+            { darkBoolean
             , dark
             , setDark
             , setHeaderElement
@@ -101,15 +97,14 @@ app
                   "relative mx-auto flex max-w-8xl justify-center sm:px-2 lg:px-8 xl:px-12"
               ]
             )
-            [ leftMatter { pushState, pageIs, pageWas }
+            [ leftMatter { pageIs, pageWas }
             , D.div
                 [ DA.klass_
                     "min-w-0 max-w-2xl flex-auto px-4 py-16 lg:max-w-none lg:pr-0 lg:pl-8 xl:px-16"
                 ]
                 [ cycle curNut
                 , curPage <#~> \(Page cp) -> bottomNav
-                    { pushState
-                    , prevRoute: routeToPrevRoute cp.route
+                    { prevRoute: routeToPrevRoute cp.route
                     , nextRoute: routeToNextRoute cp.route
                     }
                 ]

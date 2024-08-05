@@ -670,7 +670,7 @@ workspace:
   extra_packages:
     deku-core:
       git: https://github.com/mikesol/purescript-deku.git
-      ref: b261a3ec3977e0b0822573fa62960340604cd90c
+      ref: bf89bf3c229b114e7271d7f36abaefe52fee6e92
       subdir: deku-core
       dependencies:
         - aff
@@ -711,7 +711,7 @@ workspace:
         - yoga-json
     deku-css:
       git: https://github.com/mikesol/purescript-deku.git
-      ref: b261a3ec3977e0b0822573fa62960340604cd90c
+      ref: bf89bf3c229b114e7271d7f36abaefe52fee6e92
       subdir: deku-css
       dependencies:
         - css
@@ -719,7 +719,7 @@ workspace:
         - hyrule
     deku-dom:
       git: https://github.com/mikesol/purescript-deku.git
-      ref: b261a3ec3977e0b0822573fa62960340604cd90c
+      ref: bf89bf3c229b114e7271d7f36abaefe52fee6e92
       subdir: deku-dom
       dependencies:
         - deku-core
@@ -1096,7 +1096,7 @@ packages:
   deku-core:
     type: git
     url: https://github.com/mikesol/purescript-deku.git
-    rev: b261a3ec3977e0b0822573fa62960340604cd90c
+    rev: bf89bf3c229b114e7271d7f36abaefe52fee6e92
     subdir: deku-core
     dependencies:
       - aff
@@ -1138,7 +1138,7 @@ packages:
   deku-css:
     type: git
     url: https://github.com/mikesol/purescript-deku.git
-    rev: b261a3ec3977e0b0822573fa62960340604cd90c
+    rev: bf89bf3c229b114e7271d7f36abaefe52fee6e92
     subdir: deku-css
     dependencies:
       - css
@@ -1147,7 +1147,7 @@ packages:
   deku-dom:
     type: git
     url: https://github.com/mikesol/purescript-deku.git
-    rev: b261a3ec3977e0b0822573fa62960340604cd90c
+    rev: bf89bf3c229b114e7271d7f36abaefe52fee6e92
     subdir: deku-dom
     dependencies:
       - deku-core

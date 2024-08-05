@@ -1,4 +1,4 @@
-import * as Prism from 'prismjs'
+import Prism from 'prismjs'
 import 'prismjs/components/prism-haskell'
 import 'prismjs/components/prism-purescript'
 import 'prismjs/components/prism-shell-session'

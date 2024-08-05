@@ -6,11 +6,13 @@ export const darkModeListener = (dark) => (light) => () => {
     event.matches ? dark() : light()
   }
   window
-    .matchMedia('(prefers-color-scheme: dark)')
-    .addEventListener('change', listener)
+    .matchMedia && window
+      .matchMedia('(prefers-color-scheme: dark)')
+      .addEventListener('change', listener)
   return () => {
     window
-      .matchMedia('(prefers-color-scheme: dark)')
-      .removeEventListener('change', listener)
+      .matchMedia && window
+        .matchMedia('(prefers-color-scheme: dark)')
+        .removeEventListener('change', listener)
   }
 }

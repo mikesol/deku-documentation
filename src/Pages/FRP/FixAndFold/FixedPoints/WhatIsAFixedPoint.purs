@@ -12,7 +12,7 @@ import Deku.DOM.Attributes as DA
 import Deku.Control (text_)
 import Deku.DOM as D
 import Deku.Do as Deku
-import Deku.Hooks (useDyn, useMailboxed, useState, (<#~>))
+import Deku.Hooks (useDyn, useMailboxed', useState, (<#~>))
 import Deku.DOM.Listeners as DL
 
 whatIsAFixedPoint :: Subsection
@@ -113,7 +113,7 @@ myFunction = fix (\f a -> if a > 100 then 100 else f (a + 1))
               "The reason that fixed points only make sense for unfoldable things like functions or streams or events (things that go on "
           , Deku.do
               setElt /\ elt <- useState 0
-              disactivatePreviousElt /\ previousElt <- useMailboxed
+              disactivatePreviousElt /\ previousElt <- useMailboxed'
               { value: v } <- useDyn ((\i -> pure (i + 1) /\ i) <$> elt)
               (pure true <|> (previousElt v $> false)) <#~> do
                 let

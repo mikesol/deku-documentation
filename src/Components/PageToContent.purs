@@ -2,7 +2,7 @@ module Components.PageToContent where
 
 import Prelude
 
-import Contracts (Content, Env(..), Page(..), Section(..), Subsection(..), getEnv)
+import Contracts (Content, Page(..), Section(..), Subsection(..))
 import Control.Monad.State (evalStateT, get, lift, put)
 import Data.Newtype (unwrap)
 import Data.Traversable (traverse)
@@ -12,13 +12,14 @@ import Deku.Core (Nut)
 import Deku.DOM as D
 import Deku.DOM.Attributes as DA
 import Deku.DOM.Self as Self
+import Effect (Effect)
 import Prism (forceHighlightAff)
 import Router.ADT (Route(..))
 import Router.Chapter (routeToChapter)
+import Web.DOM as Web.DOM
 
-pageToContent :: Page -> Content Nut
-pageToContent (Page cp) = do
-  Env { setRightSideNav } <- getEnv
+pageToContent ::  ((Tuple Int Web.DOM.Element) -> Effect Unit) -> Page -> Content Nut
+pageToContent setRightSideNav (Page cp) = do
   tp <- cp.topmatter
   sections <- flip evalStateT 0
     ( traverse

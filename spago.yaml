@@ -37,7 +37,7 @@ workspace:
   extraPackages:
     deku-core:
       git: "https://github.com/mikesol/purescript-deku.git"
-      ref: b261a3ec3977e0b0822573fa62960340604cd90c
+      ref: bf89bf3c229b114e7271d7f36abaefe52fee6e92
       subdir: deku-core
       dependencies:
         - aff
@@ -78,7 +78,7 @@ workspace:
         - yoga-json
     deku-dom:
       git: "https://github.com/mikesol/purescript-deku.git"
-      ref: b261a3ec3977e0b0822573fa62960340604cd90c
+      ref: bf89bf3c229b114e7271d7f36abaefe52fee6e92
       subdir: deku-dom
       dependencies:
         - deku-core
@@ -89,7 +89,7 @@ workspace:
         - web-touchevents
     deku-css:
       git: "https://github.com/mikesol/purescript-deku.git"
-      ref: b261a3ec3977e0b0822573fa62960340604cd90c
+      ref: bf89bf3c229b114e7271d7f36abaefe52fee6e92
       subdir: deku-css
       dependencies:
         - deku-core
