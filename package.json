@@ -33,7 +33,6 @@
   "devDependencies": {
     "chokidar": "^3.6.0",
     "eslint": "^9.8.0",
-    "eslint-config-next": "^14.2.5",
     "glob": "^11.0.0",
     "jsdom": "^24.1.1",
     "jsdom-global": "^3.0.2",
