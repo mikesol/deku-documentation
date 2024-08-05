@@ -26,6 +26,7 @@ data Route
   | Polls
   | CustomElements
   | AccessingTheDOM
+  | BuildingAndDeploying
   | FourOhFour
 
 derive instance Generic Route _
@@ -56,4 +57,5 @@ routeToTitle FixAndFold = "Fix and fold"
 routeToTitle Polls = "Polls"
 routeToTitle CustomElements = "Custom elements"
 routeToTitle AccessingTheDOM = "Accessing the DOM"
+routeToTitle BuildingAndDeploying = "Building and deploying"
 routeToTitle FourOhFour = "The Diamond Club Penthouse"

@@ -1,9 +1,9 @@
 module Pages.AdvancedUsage where
 
-import Prelude
 
 import Contracts (Chapter, chapter)
 import Pages.AdvancedUsage.AccessingTheDOM (accessingTheDOM)
+import Pages.AdvancedUsage.BuildingAndDeploying (buildingAndDeploying)
 import Pages.AdvancedUsage.CustomElements (customElements)
 
 advancedUsage :: Chapter
@@ -12,5 +12,6 @@ advancedUsage = chapter
   , pages:
       [ customElements
       , accessingTheDOM
+      , buildingAndDeploying
       ]
   }

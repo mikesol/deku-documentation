@@ -3,9 +3,8 @@ module Pages.AdvancedUsage.AccessingTheDOM.ToplevelConsiderations where
 import Prelude
 
 import Contracts (Section, section)
-import Deku.Control (text, text_)
+import Deku.Control (text_)
 import Pages.AdvancedUsage.AccessingTheDOM.ToplevelConsiderations.GlobalHandlers (globalHandlers)
-import Pages.AdvancedUsage.AccessingTheDOM.ToplevelConsiderations.Routing (routing)
 import Deku.DOM as D
 
 toplevelConsiderations :: Section
@@ -21,5 +20,5 @@ toplevelConsiderations = section
           ]
       ]
   , subsections:
-      [ globalHandlers, routing ]
+      [ globalHandlers ]
   }

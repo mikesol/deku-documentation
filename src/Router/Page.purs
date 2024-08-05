@@ -1,9 +1,9 @@
 module Router.Page where
 
-import Prelude
 
 import Contracts (Page)
 import Pages.AdvancedUsage.AccessingTheDOM (accessingTheDOM)
+import Pages.AdvancedUsage.BuildingAndDeploying (buildingAndDeploying)
 import Pages.AdvancedUsage.CustomElements (customElements)
 import Pages.CoreConcepts.Collections (collections)
 import Pages.CoreConcepts.Components (components)
@@ -15,11 +15,11 @@ import Pages.CoreConcepts.Pursx (pursx)
 import Pages.CoreConcepts.State (state)
 import Pages.FRP.Alternatives (alternatives)
 import Pages.FRP.Applicatives (applicatives)
-import Pages.FRP.Polls (polls)
 import Pages.FRP.Events (events)
 import Pages.FRP.Filtering (filtering)
 import Pages.FRP.FixAndFold (fixAndFold)
 import Pages.FRP.OtherInstances (otherInstances)
+import Pages.FRP.Polls (polls)
 import Pages.FRP.Sampling (sampling)
 import Pages.FourOhFour (fourOhFour)
 import Pages.Introduction.GettingStarted (gettingStarted)
@@ -47,4 +47,5 @@ routeToPage FixAndFold = fixAndFold
 routeToPage Polls = polls
 routeToPage CustomElements = customElements
 routeToPage AccessingTheDOM = accessingTheDOM
+routeToPage BuildingAndDeploying = buildingAndDeploying
 routeToPage FourOhFour = fourOhFour

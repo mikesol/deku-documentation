@@ -36,8 +36,8 @@ const examplesJsContent = examples.map(example => {
     const joined = O.join('\n')
         .replace('app :: ExampleSignature', 'main :: Effect Unit')
         .replace('app runExample =', 'main =')
-        .replace('append <$> pure quit <*> runExample', 'runInBody')
-        .replace('runExample', 'runInBody');
+        .replace('append <$> pure quit <*> runExample', 'void $ runInBody')
+        .replace('runExample', 'void $ runInBody');
 
     return `export const ${lex}URL = ${JSON.stringify(joined)};\n`;
 }).join('');
