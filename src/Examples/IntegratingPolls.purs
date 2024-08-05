@@ -59,7 +59,9 @@ app runExample = do
                       ( ( sample
                             ( integral' (pfield 0.0)
                                 (pure (Fieldable identity))
-                                (pure >>> Fieldable <$> sampleOnRight_ number (sham af.event))
+                                ( pure >>> Fieldable <$> sampleOnRight_ number
+                                    (sham af.event)
+                                )
                             )
                             ( af.event <#>
                                 _.time

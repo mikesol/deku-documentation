@@ -19,7 +19,8 @@ import Deku.DOM.Listeners as DL
 import Effect (Effect)
 import Deku.Pursx (pursx)
 
-type MyHtml = """<nav class="flex" aria-label="Breadcrumb">
+type MyHtml =
+  """<nav class="flex" aria-label="Breadcrumb">
   <ol role="list" class="flex space-x-4 rounded-md bg-white px-6 shadow">
     <li ~homeAtts~>
       <div class="flex items-center">

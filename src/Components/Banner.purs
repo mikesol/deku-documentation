@@ -142,7 +142,8 @@ banner { showBanner } = D.div
                           [ DS.path
                               [ pure
                                   ( attributeAtYourOwnRisk
-                                    "opacity" ".3"
+                                      "opacity"
+                                      ".3"
                                   )
                               , DSA.d_
                                   "M584.5 770.4v-474M484.5 770.4v-474M384.5 770.4v-474M283.5 769.4v-474M183.5 768.4v-474M83.5 767.4v-474"

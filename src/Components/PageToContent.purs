@@ -18,7 +18,8 @@ import Router.ADT (Route(..))
 import Router.Chapter (routeToChapter)
 import Web.DOM as Web.DOM
 
-pageToContent ::  ((Tuple Int Web.DOM.Element) -> Effect Unit) -> Page -> Content Nut
+pageToContent
+  :: ((Tuple Int Web.DOM.Element) -> Effect Unit) -> Page -> Content Nut
 pageToContent setRightSideNav (Page cp) = do
   tp <- cp.topmatter
   sections <- flip evalStateT 0

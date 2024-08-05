@@ -27,8 +27,7 @@ import Router.ADT (Route(..))
 import Web.DOM as DOM
 
 clipRule_ :: forall f a. Applicative f => String -> f (Attribute a)
-clipRule_ v = pure  $ attributeAtYourOwnRisk "clip-rule" v
-      
+clipRule_ v = pure $ attributeAtYourOwnRisk "clip-rule" v
 
 classBrightnessModeSelected :: String
 classBrightnessModeSelected =

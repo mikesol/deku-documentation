@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "spago build && vite dev",
+    "dev": "spago build && vite",
     "gitpod": "spago build",
     "format": "purs-tidy format-in-place src/**/*.purs && prettier --write ./src/",
     "build": "spago build && vite build"
@@ -32,13 +32,13 @@
   },
   "devDependencies": {
     "chokidar": "^3.6.0",
-    "eslint": "8.26.0",
-    "eslint-config-next": "13.0.2",
+    "eslint": "^9.8.0",
+    "eslint-config-next": "^14.2.5",
     "glob": "^11.0.0",
     "jsdom": "^24.1.1",
     "jsdom-global": "^3.0.2",
-    "prettier": "^2.7.1",
-    "prettier-plugin-tailwindcss": "^0.1.13",
+    "prettier": "^3.3.3",
+    "prettier-plugin-tailwindcss": "^0.6.5",
     "purescript": "^0.15.15",
     "purs-tidy": "^0.11.0",
     "spago": "^0.93.37",

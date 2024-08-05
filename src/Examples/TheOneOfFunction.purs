@@ -18,7 +18,7 @@ app runExample = do
   knees <- interval 985
   toes <- interval 1401
   let hskt = [ head, shoulders, knees, toes ]
-  let quit =  sequence_ (_.unsubscribe <$> hskt)
+  let quit = sequence_ (_.unsubscribe <$> hskt)
   append <$> pure quit <*> runExample do
     text $ oneOf
       ( zipWith (\e s -> sham $ e.event $> s) hskt
