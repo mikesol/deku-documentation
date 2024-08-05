@@ -20,7 +20,6 @@ async function onRenderHtml(pageContext) {
     <title>Deku documentation</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="/src/styles/tailwind.css">
     <link href="/node_modules/prismjs/themes/prism-tomorrow.min.css" rel="stylesheet" />
     <script src="/node_modules/clipboard/dist/clipboard.min.js"></script>
     <script src="/node_modules/prismjs/components/prism-core.min.js" defer></script>
