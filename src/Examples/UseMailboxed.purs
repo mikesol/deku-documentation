@@ -9,7 +9,7 @@ import Deku.DOM.Attributes as DA
 import Deku.Control (text_)
 import Deku.DOM as D
 import Deku.Do as Deku
-import Deku.Hooks (useMailboxed, useState)
+import Deku.Hooks (useMailboxed', useState)
 import Deku.DOM.Listeners as DL
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
@@ -25,7 +25,7 @@ focus:ring-indigo-500 focus:ring-offset-2 mr-6""" :: String
 app :: ExampleSignature
 app runExample = runExample Deku.do
   setInt /\ int <- useState 0
-  setMailbox /\ mailbox <- useMailboxed
+  setMailbox /\ mailbox <- useMailboxed'
   D.div_
     [ D.button
         [ DA.klass_ buttonClass
@@ -49,4 +49,4 @@ app runExample = runExample Deku.do
     ]
 
 main :: Effect Unit
-main = void $ app $ map pure runInBody
+main = void $ app runInBody

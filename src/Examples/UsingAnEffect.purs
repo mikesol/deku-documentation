@@ -22,4 +22,4 @@ app runExample = runExample do
     [ text_ "Click me!" ]
 
 main :: Effect Unit
-main = void $ app $ map pure runInBody
+main = void $ app runInBody

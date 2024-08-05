@@ -1,5 +1,5 @@
-import JSConfetti from 'js-confetti'
-
-const jsConfetti = new JSConfetti()
-
-export const addConfetti = () => jsConfetti.addConfetti()
+export const addConfetti = async () => {
+  const JSConfetti = await import('js-confetti')
+  const jsConfetti = new JSConfetti.default()
+  jsConfetti.addConfetti()
+}

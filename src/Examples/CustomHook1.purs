@@ -20,4 +20,4 @@ app runExample = runExample Deku.do
     [ text_ fortyTwo ]
 
 main :: Effect Unit
-main = void $ app $ map pure runInBody
+main = void $ app runInBody

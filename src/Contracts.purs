@@ -18,13 +18,11 @@ import Effect.Ref (new, read, write)
 import Examples (ExampleADT, exampleToApp)
 import Record (union)
 import Router.ADT (Route, routeToTitle)
-import Web.DOM as DOM
 
 newtype Env = Env
   { routeLink :: Route -> Nut
   , routeLinkWithText :: Route -> String -> Nut
   , routeLinkWithNuts :: Route -> Array Nut -> Nut
-  , setRightSideNav :: (Tuple Int DOM.Element) -> Effect Unit
   }
 
 newtype Docs = Docs (Array (Chapter))

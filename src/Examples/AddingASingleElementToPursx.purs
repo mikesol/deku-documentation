@@ -19,8 +19,8 @@ import Deku.DOM.Listeners as DL
 import Deku.Pursx (pursx)
 import Effect (Effect)
 
-
-type LiHtml = """<li ~atts~>
+type LiHtml =
+  """<li ~atts~>
       <div class="flex items-center">
         <svg class="h-full w-6 flex-shrink-0 text-gray-200" viewBox="0 0 24 44" preserveAspectRatio="none" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path d="M.293 0l22 22-22 22h1.414l22-22-22-22H.293z" />
@@ -29,7 +29,8 @@ type LiHtml = """<li ~atts~>
       </div>
     </li>"""
 
-type MyHtml = """<nav class="flex" aria-label="Breadcrumb">
+type MyHtml =
+  """<nav class="flex" aria-label="Breadcrumb">
   <ol role="list" class="flex space-x-4 rounded-md bg-white px-6 shadow">
     <li ~homeAtts~>
       <div class="flex items-center">
@@ -99,4 +100,4 @@ app runExample = runExample Deku.do
     ]
 
 main :: Effect Unit
-main = void $ app $ map pure runInBody
+main = void $ app runInBody

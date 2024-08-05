@@ -9,17 +9,15 @@ import Deku.DOM.Attributes as DA
 import Deku.Control (text_)
 import Deku.Core (Nut)
 import Deku.DOM as D
-import Navigation (PushState)
 import Router.ADT (Route)
 import Router.Page (routeToPage)
 
 bottomNav
   :: { nextRoute :: Maybe Route
      , prevRoute :: Maybe Route
-     , pushState :: PushState
      }
   -> Nut
-bottomNav { nextRoute, prevRoute, pushState } =
+bottomNav { nextRoute, prevRoute } =
   D.dl
     [ DA.klass_
         "mt-12 flex border-t border-slate-200 pt-6 dark:border-slate-800"
@@ -32,7 +30,7 @@ bottomNav { nextRoute, prevRoute, pushState } =
                   ]
                   [ text_ "Previous" ]
               , D.dd [ DA.klass_ "mt-1" ]
-                  [ link' pushState pr
+                  [ link' pr
                       [ DA.klass_
                           "text-base font-semibold text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300"
                       ]
@@ -51,7 +49,7 @@ bottomNav { nextRoute, prevRoute, pushState } =
                     ]
                     [ text_ "Next" ]
                 , D.dd [ DA.klass_ "mt-1" ]
-                    [ link' pushState nr
+                    [ link' nr
                         [ DA.klass_
                             "text-base font-semibold text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300"
                         ]

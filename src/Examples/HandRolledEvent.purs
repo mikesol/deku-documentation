@@ -65,4 +65,4 @@ app runExample = do
   pure (pure unit)
 
 main :: Effect Unit
-main = void $ app $ map pure runInBody
+main = void $ app runInBody

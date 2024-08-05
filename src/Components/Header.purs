@@ -23,13 +23,11 @@ import Effect (Effect)
 import FRP.Dedup (dedup)
 import FRP.Poll (Poll)
 import Modal (modalClick)
-import Navigation (PushState)
 import Router.ADT (Route(..))
 import Web.DOM as DOM
 
 clipRule_ :: forall f a. Applicative f => String -> f (Attribute a)
-clipRule_ v = pure  $ attributeAtYourOwnRisk "clip-rule" v
-      
+clipRule_ v = pure $ attributeAtYourOwnRisk "clip-rule" v
 
 classBrightnessModeSelected :: String
 classBrightnessModeSelected =
@@ -59,13 +57,12 @@ header
      , dark :: Poll DarkModePreference
      , setDark :: DarkModePreference -> Effect Unit
      , setHeaderElement :: DOM.Element -> Effect Unit
-     , pushState :: PushState
      , pageIs :: Route -> Poll Unit
      , pageWas :: Route -> Poll Unit
      }
   -> Nut
 header
-  { setHeaderElement, darkBoolean, dark, setDark, pageIs, pageWas, pushState } =
+  { setHeaderElement, darkBoolean, dark, setDark, pageIs, pageWas } =
   Deku.do
     setDarkModeModalOpen /\ darkModeModalOpen <- useState false
     setNavModalOpen /\ navModalOpen <- useState false
@@ -109,10 +106,10 @@ header
                   [ DS.path [ DSA.d_ "M4 7h16M4 12h16M4 17h16" ] [] ]
               ]
           , leftMatterMobile
-              { darkBoolean, navModalOpen, pageIs, pageWas, pushState }
+              { darkBoolean, navModalOpen, pageIs, pageWas }
           ]
       , D.div [ DA.klass_ "relative flex flex-grow basis-0 items-center" ]
-          [ link' pushState GettingStarted empty
+          [ link' GettingStarted empty
               [ D.img
                   ( [ DA.src
                         ( darkBoolean <#> \dk ->

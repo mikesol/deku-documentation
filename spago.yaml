@@ -12,9 +12,9 @@ package:
     - avar
     - canvas
     - debug
-    - deku
     - deku-core
     - deku-dom
+    - deku-css
     - fetch
     - filterable
     - free
@@ -32,45 +32,80 @@ package:
     - yoga-fetch
     - yoga-json
 workspace:
-  backend:
-    cmd: purs-backend-es
-    args:
-      - build
   packageSet:
-    registry: 31.0.0
+    registry: 56.4.0
   extraPackages:
-    hyrule:
-      git: "https://github.com/mikesol/purescript-hyrule.git"
-      ref: "a2a32e0"
+    deku-core:
+      git: "https://github.com/mikesol/purescript-deku.git"
+      ref: bf89bf3c229b114e7271d7f36abaefe52fee6e92
+      subdir: deku-core
       dependencies:
-        - avar
+        - aff
+        - arrays
+        - catenable-lists
+        - control
+        - debug
         - effect
+        - either
+        - fast-vect
+        - filterable
+        - foldable-traversable
+        - foreign-object
         - free
+        - heterogeneous
+        - hyrule
+        - maybe
+        - newtype
+        - nullable
+        - ordered-collections
+        - prelude
+        - profunctor
+        - quickcheck
+        - record
+        - safe-coerce
+        - st
+        - strings
+        - stringutils
+        - transformers
+        - tuples
+        - unsafe-coerce
+        - untagged-union
+        - web-dom
+        - web-dom-parser
+        - web-events
+        - web-html
+        - web-uievents
+        - yoga-json
+    deku-dom:
+      git: "https://github.com/mikesol/purescript-deku.git"
+      ref: bf89bf3c229b114e7271d7f36abaefe52fee6e92
+      subdir: deku-dom
+      dependencies:
+        - deku-core
+        - hyrule
+        - web-html
+        - web-uievents
+        - web-pointerevents
+        - web-touchevents
+    deku-css:
+      git: "https://github.com/mikesol/purescript-deku.git"
+      ref: bf89bf3c229b114e7271d7f36abaefe52fee6e92
+      subdir: deku-css
+      dependencies:
+        - deku-core
+        - hyrule
+        - css
+    hyrule:
+      repo: "https://github.com/mikesol/purescript-hyrule.git"
+      version: "v2.5.1"
+      dependencies:
+        - effect
+        - avar
         - js-timers
+        - avar
         - web-html
         - unsafe-reference
         - web-uievents
-    deku:
-      git: "https://github.com/mikesol/purescript-deku.git"
-      subdir: deku
-      ref: "be67ace"
-      dependencies:
-        - hyrule
-        - untagged-union
-    deku-core:
-      git: "https://github.com/mikesol/purescript-deku.git"
-      subdir: deku-core
-      ref: "be67ace"
-      dependencies:
-        - hyrule
-        - untagged-union
-    deku-dom:
-      git: "https://github.com/mikesol/purescript-deku.git"
-      subdir: deku-dom
-      ref: "be67ace"
-      dependencies:
-        - hyrule
-        - untagged-union
     tidy:
       repo: "https://github.com/natefaubion/purescript-tidy.git"
       version: "v0.10.0"
@@ -86,6 +121,42 @@ workspace:
         - language-cst-parser
         - strings
         - tuples
+    dodo-printer:
+      repo: "https://github.com/natefaubion/purescript-dodo-printer"
+      version: "master"
+      dependencies:
+        - aff
+        - ansi
+        - arrays
+        - avar
+        - console
+        - "ansi"
+        - "arrays"
+        - "avar"
+        - "console"
+        - "control"
+        - "effect"
+        - "either"
+        - "exceptions"
+        - "foldable-traversable"
+        - "integers"
+        - "lists"
+        - "maybe"
+        - "minibench"
+        - "newtype"
+        - "node-buffer"
+        - "node-child-process"
+        - "node-fs"
+        - "node-os"
+        - "node-path"
+        - "node-process"
+        - "node-streams"
+        - "parallel"
+        - "partial"
+        - "prelude"
+        - "safe-coerce"
+        - "strings"
+        - "tuples"
     tidy-codegen:
       repo: "https://github.com/natefaubion/purescript-tidy-codegen"
       version: "main"
@@ -114,7 +185,7 @@ workspace:
         - newtype
         - node-buffer
         - node-child-process
-        - node-fs-aff
+        - node-fs
         - node-path
         - node-process
         - node-streams

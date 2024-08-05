@@ -1,14 +1,13 @@
-import * as path from "path";
-
-const DB = process.env.NODE_ENV === "production"
-  ? path.resolve(__dirname, "output-es")
-  : path.resolve(__dirname, "output");
-
+import path from 'path';
+import vike from 'vike/plugin';
+import deku from './rollup-plugin-vike-deku';
+import vercel from 'vite-plugin-vercel';
 
 export default {
+  plugins: [deku(), vike({ prerender: true }), vercel()],
   resolve: {
     alias: {
-      PureScript: DB,
+      PureScript: path.resolve(__dirname, "output"),
     },
   }
 };

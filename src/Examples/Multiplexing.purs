@@ -15,7 +15,11 @@ import ExampleAssitant (ExampleSignature)
 import FRP.Event.Time (interval', withDelay)
 import FRP.Poll (sham)
 
-withMultiplexing :: forall a b. Array (Op (Effect Unit) b -> Op (Effect Unit) a) -> Op (Effect Unit) b -> Op (Effect Unit) a
+withMultiplexing
+  :: forall a b
+   . Array (Op (Effect Unit) b -> Op (Effect Unit) a)
+  -> Op (Effect Unit) b
+  -> Op (Effect Unit) a
 withMultiplexing l op = Op \a ->
   for_ l \f -> let Op x = f op in x a
 
@@ -41,4 +45,4 @@ app runExample = do
     text $ (pure "Wait for it") <|> sham (compact dj.event)
 
 main :: Effect Unit
-main = void $ app $ map pure runInBody
+main = void $ app runInBody

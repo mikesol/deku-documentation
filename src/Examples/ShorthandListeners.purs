@@ -15,4 +15,4 @@ app runExample = runExample
   (D.input [ DA.xtypeRange, DL.numberOn_ DL.input logShow ] [])
 
 main :: Effect Unit
-main = void $ app $ map pure runInBody
+main = void $ app runInBody

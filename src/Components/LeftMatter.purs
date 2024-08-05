@@ -12,20 +12,18 @@ import Deku.Control (text_)
 import Deku.Core (Nut)
 import Deku.DOM as D
 import FRP.Poll (Poll)
-import Navigation (PushState)
 import Pages.Docs (docs)
 import Router.ADT (Route)
 
 pageLi
   :: { pageIs :: Route -> Poll Unit
      , pageWas :: Route -> Poll Unit
-     , pushState :: PushState
      }
   -> Page
   -> Nut
-pageLi { pushState, pageIs, pageWas } (Page { route }) = D.li
+pageLi { pageIs, pageWas } (Page { route }) = D.li
   [ DA.klass_ "relative" ]
-  [ link pushState route
+  [ link route
       [ DA.klass $
           ( oneOf
               [ pure false
@@ -44,7 +42,6 @@ pageLi { pushState, pageIs, pageWas } (Page { route }) = D.li
 chapterLi
   :: { pageIs :: Route -> Poll Unit
      , pageWas :: Route -> Poll Unit
-     , pushState :: PushState
      }
   -> Chapter
   -> Nut
@@ -66,7 +63,6 @@ chapterLi opts (Chapter { title, pages }) = D.li_
 leftMatter
   :: { pageIs :: Route -> Poll Unit
      , pageWas :: Route -> Poll Unit
-     , pushState :: PushState
      }
   -> Nut
 leftMatter opts = D.div

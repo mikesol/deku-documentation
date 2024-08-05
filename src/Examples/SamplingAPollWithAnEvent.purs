@@ -50,4 +50,4 @@ app runExample = do
     Ref.write fb fiber
 
 main :: Effect Unit
-main = void $ app $ map pure runInBody
+main = void $ app runInBody
