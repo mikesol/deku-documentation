@@ -2,12 +2,14 @@ export { onRenderClient };
 
 import { hydrate } from "../output/Run";
 
+let dekuRoute;
+
 async function onRenderClient(pageContext) {
   if (pageContext.isHydration) {
     // discards unsubscribe
     const { routing } = hydrate(pageContext.dekuHydrationData)(pageContext.Page)();
-    window.__dekuRoute = routing;
+    dekuRoute = routing;
   } else {
-    window.__dekuRoute(pageContext.Page)();
+    dekuRoute(pageContext.Page)();
   }
 }
