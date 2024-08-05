@@ -122,7 +122,6 @@ fs.writeFileSync(examplesPursPath, examplesPursContent);
 // Write index.js file
 const indexPath = path.join('./src', 'index.js');
 const indexContent = [
-    "import { main } from 'PureScript/Main/index.js'",
     ...examples.map(example => {
         const lex = example[0].toLowerCase() + example.slice(1, -5);
         const bex = example.slice(0, -5);

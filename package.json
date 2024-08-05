@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "example"  : "vite --config vite-example.config.js",
     "dev": "spago build && vite",
     "gitpod": "spago build",
     "format": "purs-tidy format-in-place src/**/*.purs && prettier --write ./src/",

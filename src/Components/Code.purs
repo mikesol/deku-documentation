@@ -5,7 +5,6 @@ import Prelude
 import Clipboard (copyToClipboard)
 import Components.Toast (toast)
 import Control.Plus (empty)
-import Data.String as String
 import Deku.Control (text_)
 import Deku.Core (Nut)
 import Deku.DOM (Attribute, HTMLElement)
@@ -55,21 +54,8 @@ psCodeNoCollapse = psCode' " no-collapse" [ DA.klass_ "no-collapse" ]
 psCodeWithLink'
   :: String -> Array (Poll (Attribute (HTMLElement ()))) -> ExampleADT -> Nut
 psCodeWithLink' s e ex = D.div_
-  [ D.div_
+  [ D.div [ DA.klass_ "flex justify-between items-center" ]
       [ D.a
-          [ DA.klass_ textSize
-          , DA.href_
-              ( "https://gitpod.io/#VITE_START=" <> slug <> ",VITE_GOTO="
-                  <> gitpodGoto
-                  <>
-                    "/https://github.com/mikesol/deku-documentation"
-              )
-          , DA.target_ "_blank"
-          ]
-          [ text_ "Run on Gitpod" ]
-      , D.span [ DA.klass_ textSize ]
-          [ text_ " | " ]
-      , D.a
           [ DA.klass_ textSize
           , DA.href_
               ( "https://github.com/mikesol/deku-documentation/blob/main/src/Examples/"
@@ -78,19 +64,9 @@ psCodeWithLink' s e ex = D.div_
               )
           , DA.target_ "_blank"
           ]
-          [ text_ "View on Github" ]
-      , D.span
+          [ text_ "View on Github" ],D.span_ [D.code
           [ DA.klass_ textSize ]
-          [ text_ " | " ]
-      , D.code
-          [ DA.klass_ textSize ]
-          [ do
-              let lmt = 30
-              text_ $
-                if String.length startTxt > lmt then
-                  String.take (lmt - 2) startTxt <> "…"
-                else startTxt
-          ]
+          [  text_  startTxt ]
       , D.button
           [ DL.click_ \_ -> do
               copyToClipboard startTxt
@@ -119,7 +95,8 @@ psCodeWithLink' s e ex = D.div_
                   ]
                   []
               ]
-          ]
+          ]]
+          
       ]
   , D.pre
       [ DA.klass_ ("prism-code language-purescript" <> s) ]
@@ -129,8 +106,7 @@ psCodeWithLink' s e ex = D.div_
   where
   slug = exampleToSlug ex
   textSize = "text-sm"
-  startTxt = "VITE_START=" <> slug <> " pnpm dev"
-  gitpodGoto = ".%2Fsrc%2FExamples%2F" <> slug <> ".purs"
+  startTxt = "VITE_START=" <> slug <> " pnpm example"
 
 psCodeWithLink :: ExampleADT -> Nut
 psCodeWithLink = psCodeWithLink' "" []
