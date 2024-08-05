@@ -2,16 +2,16 @@ module Examples.GroupsOfGroups where
 
 import Prelude
 
-import Assets (alexanderURL)
+import Assets (alexanderBackgroundURL, alexanderURL)
 import Data.String (Pattern(..), Replacement(..), replaceAll)
 import Data.Tuple.Nested ((/\))
-import Deku.DOM.Attributes as DA
 import Deku.Control (text_)
 import Deku.Core (fixed)
 import Deku.DOM as D
+import Deku.DOM.Attributes as DA
+import Deku.DOM.Listeners as DL
 import Deku.Do as Deku
 import Deku.Hooks (guard, useState)
-import Deku.DOM.Listeners as DL
 import Deku.Toplevel (runInBody)
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
@@ -51,7 +51,7 @@ app runExample = runExample Deku.do
             ]
             [ text_ "Worst" ]
         ]
-    , D.div [ DA.klass_ "bg-alexander" ]
+    , D.div [ DA.style_ $ "background-image: url('" <> alexanderBackgroundURL <> "');" ]
         [ D.div [ DA.klass_ "p-3" ]
             [ D.span
                 [ DA.klass_ "font-aldine text-4xl text-alexander" ]

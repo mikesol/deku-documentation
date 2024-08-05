@@ -21,9 +21,6 @@ export default {
       '9xl': ['8rem', { lineHeight: '1' }],
     },
     extend: {
-      backgroundImage: {
-        alexander: "url('/assets/alexanderBackground.png')",
-      },
       colors: {
         alexander: {
           DEFAULT: '#d1f479',
