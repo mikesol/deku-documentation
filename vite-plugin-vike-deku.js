@@ -43,7 +43,6 @@ const dekuPlugin = () => {  let config;  return {
       watcher.on('change', createPageFiles('change'))
       watcher.on('unlink', createPageFiles('unlink'))
       watcher.on('unlinkDir', createPageFiles('unlinkDir'))
-  
     }
   },
 }}
