@@ -32,7 +32,7 @@ async function onRenderHtml(pageContext) {
   const cssOutput = await processCSS(cssInput)
 
   return escapeInject`<!DOCTYPE html>
-<html>
+<html lang="en-US">
   <head>
     <title>Deku documentation</title>
     <meta charset="UTF-8">
@@ -40,6 +40,7 @@ async function onRenderHtml(pageContext) {
     <style>${dangerouslySkipEscape(cssOutput)}</style>
     <style>${dangerouslySkipEscape(prismTomorrow)}</style>
     <script>${dangerouslySkipEscape(clipboard)}</script>
+    <meta name="description" content="Documentation for the purescript-deku web framework">
     <script src="https://unpkg.com/wc-discord-message@^2.0.0/dist/wc-discord-message/wc-discord-message.js"></script>
   </head>
   <body>
