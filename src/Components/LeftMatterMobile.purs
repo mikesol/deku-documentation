@@ -89,7 +89,8 @@ leftMatterMobile
           )
           [ D.div [ DA.klass_ "flex items-center" ]
               [ D.button
-                  ( [ DA.xtype_ "button"
+                  ( [ DA.ariaLabel_ "Show navigation menu"
+                    , DA.xtype_ "button"
                     -- , D.AriaLabel_ "Close navigation"
                     , DA.tabindex_ "0"
                     ]

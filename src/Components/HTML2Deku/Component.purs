@@ -125,7 +125,8 @@ html2deku = Deku.do
     [ D.div_
         [ D.span [ DA.klass_ "text-xl" ] [ text_ "html2deku" ]
         , D.button
-            [ DA.klass_
+            [ DA.ariaLabel_ "Convert to Deku"
+            , DA.klass_
                 "ml-2 inline-flex items-center rounded border border-transparent bg-indigo-600 px-2.5 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
             , DL.runOn DL.click $ input <#> \i -> do
                 v <- value i

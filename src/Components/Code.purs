@@ -70,7 +70,8 @@ psCodeWithLink' s e ex = D.div_
               [ DA.klass_ textSize ]
               [ text_ startTxt ]
           , D.button
-              [ DL.click_ \_ -> do
+              [ DA.ariaLabel_ "Copy to Clipboard"
+              , DL.click_ \_ -> do
                   copyToClipboard startTxt
                   r <- random
                   let

@@ -88,7 +88,8 @@ header
       )
       [ D.div [ DA.klass_ "mr-6 flex lg:hidden" ]
           [ D.button
-              ( [ DA.xtypeButton
+              ( [ DA.ariaLabel_ "Open navigation menu"
+                , DA.xtypeButton
                 , DA.klass_ "relative"
                 , DL.click_ \_ -> do
                     setNavModalOpen true
@@ -135,7 +136,8 @@ header
                   )
                   [ text_ "Theme" ]
               , D.button
-                  ( [ DA.klass_
+                  ( [ DA.ariaLabel_ "Adjust dark mode"
+                    , DA.klass_
                         "flex h-6 w-6 items-center justify-center rounded-lg shadow-md shadow-black/5 ring-1 ring-black/5 dark:bg-slate-700 dark:ring-inset dark:ring-white/5"
                     , DA.xtypeButton
                     , DL.runOn DL.click $ darkModeModalOpen <#>
