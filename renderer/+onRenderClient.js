@@ -1,8 +1,8 @@
 export { onRenderClient }
 
 import { hydrate } from '../output/Run'
-import { defineCustomElements } from 'wc-discord-message/loader/index.es2017.mjs'
-defineCustomElements(window)
+import { applyPolyfills, defineCustomElements } from 'wc-discord-message/loader'
+applyPolyfills().then(() => defineCustomElements(window))
 
 let dekuRoute
 
