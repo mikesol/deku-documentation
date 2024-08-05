@@ -27,18 +27,25 @@ export default vike.route;`
   )
 }
 
-const dekuPlugin = () => ({
+const dekuPlugin = () => {  let config;  return {
   name: 'rollup-plugin-vike-deku',
+  configResolved(resolvedConfig) {
+    // store the resolved config
+    config = resolvedConfig
+  },
   buildStart() {
     const files = globSync(outputDir)
     files.forEach(createPageFiles('start'))
 
-    const watcher = chokidar.watch(outputDir, { ignoreInitial: true })
-    watcher.on('add', createPageFiles('add'))
-    watcher.on('change', createPageFiles('change'))
-    watcher.on('unlink', createPageFiles('unlink'))
-    watcher.on('unlinkDir', createPageFiles('unlinkDir'))
+    if (config.command === 'serve') {
+      const watcher = chokidar.watch(outputDir, { ignoreInitial: true })
+      watcher.on('add', createPageFiles('add'))
+      watcher.on('change', createPageFiles('change'))
+      watcher.on('unlink', createPageFiles('unlink'))
+      watcher.on('unlinkDir', createPageFiles('unlinkDir'))
+  
+    }
   },
-})
+}}
 
 export default dekuPlugin
