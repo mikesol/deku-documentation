@@ -31,6 +31,7 @@
     "wc-discord-message": "^2.0.4"
   },
   "devDependencies": {
+    "@vite-plugin-vercel/vike": "^8.0.0",
     "chokidar": "^3.6.0",
     "eslint": "^9.8.0",
     "glob": "^11.0.0",

@@ -63,6 +63,9 @@ importers:
         specifier: ^2.0.4
         version: 2.0.4
     devDependencies:
+      '@vite-plugin-vercel/vike':
+        specifier: ^8.0.0
+        version: 8.0.0(vike@0.4.182(vite@5.3.5))(vite-plugin-vercel@8.0.0)(vite@5.3.5)
       chokidar:
         specifier: ^3.6.0
         version: 3.6.0
@@ -98,7 +101,7 @@ importers:
         version: 5.3.5
       vite-plugin-vercel:
         specifier: ^8.0.0
-        version: 8.0.0(encoding@0.1.13)(vike@0.4.182(vite@5.3.5))(vite@5.3.5)
+        version: 8.0.0(@vite-plugin-vercel/vike@8.0.0)(encoding@0.1.13)(vike@0.4.182(vite@5.3.5))(vite@5.3.5)
 
 packages:
 
@@ -781,6 +784,13 @@ packages:
 
   '@vercel/routing-utils@3.1.0':
     resolution: {integrity: sha512-Ci5xTjVTJY/JLZXpCXpLehMft97i9fH34nu9PGav6DtwkVUF6TOPX86U0W0niQjMZ5n6/ZP0BwcJK2LOozKaGw==}
+
+  '@vite-plugin-vercel/vike@8.0.0':
+    resolution: {integrity: sha512-nZgHFAdVXGWbi/t1NsM+xRhOT42CGbUnJjC3ociHDgBGgbbZ6RBh0r861PMUrlbP3yX+P9fR5tVbU4iUDcUqdA==}
+    peerDependencies:
+      vike: ^0.4.179
+      vite: ^4.4 || ^5.0.2
+      vite-plugin-vercel: '*'
 
   abbrev@1.1.1:
     resolution: {integrity: sha512-nne9/IiQ/hzIhY6pdDnbBtz7DjPTKrY00P/zvPSm5pOFkl6xuGrGnXn/VtTNNfNtAfZ9/1RtehkszU9qcTii0Q==}
@@ -1877,6 +1887,11 @@ packages:
   nanoid@3.3.7:
     resolution: {integrity: sha512-eSRppjcPIatRIMC1U6UngP8XFcz8MQWGQdt1MTBQ7NaAmvXDfvNxbvWV3x2y6CdEUciCSsDHDQZbhYaB8QEo2g==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
+    hasBin: true
+
+  nanoid@5.0.7:
+    resolution: {integrity: sha512-oLxFY2gd2IqnjcYyOXD8XGCftpGtZP2AbHbOkthDkvRywH5ayNtPVy9YlOPcHckXzbLTCHpkb7FB+yuxKV13pQ==}
+    engines: {node: ^18 || >=20}
     hasBin: true
 
   napi-build-utils@1.0.2:
@@ -3280,6 +3295,14 @@ snapshots:
     optionalDependencies:
       ajv: 6.12.6
 
+  '@vite-plugin-vercel/vike@8.0.0(vike@0.4.182(vite@5.3.5))(vite-plugin-vercel@8.0.0)(vite@5.3.5)':
+    dependencies:
+      '@brillout/libassert': 0.5.8
+      nanoid: 5.0.7
+      vike: 0.4.182(vite@5.3.5)
+      vite: 5.3.5
+      vite-plugin-vercel: 8.0.0(@vite-plugin-vercel/vike@8.0.0)(encoding@0.1.13)(vike@0.4.182(vite@5.3.5))(vite@5.3.5)
+
   abbrev@1.1.1: {}
 
   acorn-import-attributes@1.9.5(acorn@8.12.1):
@@ -4524,6 +4547,8 @@ snapshots:
 
   nanoid@3.3.7: {}
 
+  nanoid@5.0.7: {}
+
   napi-build-utils@1.0.2: {}
 
   natural-compare@1.4.0: {}
@@ -5307,7 +5332,7 @@ snapshots:
       source-map-support: 0.5.21
       vite: 5.3.5
 
-  vite-plugin-vercel@8.0.0(encoding@0.1.13)(vike@0.4.182(vite@5.3.5))(vite@5.3.5):
+  vite-plugin-vercel@8.0.0(@vite-plugin-vercel/vike@8.0.0)(encoding@0.1.13)(vike@0.4.182(vite@5.3.5))(vite@5.3.5):
     dependencies:
       '@brillout/libassert': 0.5.8
       '@manypkg/find-root': 2.2.2
@@ -5320,6 +5345,7 @@ snapshots:
       vite: 5.3.5
       zod: 3.23.8
     optionalDependencies:
+      '@vite-plugin-vercel/vike': 8.0.0(vike@0.4.182(vite@5.3.5))(vite-plugin-vercel@8.0.0)(vite@5.3.5)
       vike: 0.4.182(vite@5.3.5)
     transitivePeerDependencies:
       - encoding
