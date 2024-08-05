@@ -5,7 +5,7 @@ import { escapeInject, dangerouslySkipEscape } from "vike/server";
 import { ssr } from "../output/Run";
 
 async function onRenderHtml(pageContext) {
-  jsdomGlobal({ pretendToBeVisual: true });
+  jsdomGlobal(undefined, { pretendToBeVisual: true });
   document.getElementsByTagName("html")[0].innerHTML =
     "<head></head><body></body>";
 
