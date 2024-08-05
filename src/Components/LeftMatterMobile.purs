@@ -108,7 +108,8 @@ leftMatterMobile
                   ]
               , link' GettingStarted empty
                   [ D.img
-                      ( [ DA.src
+                      ( [ DA.ariaLabel_ "Deku logo"
+                        , DA.src
                             ( darkBoolean <#> \dk ->
                                 if dk then dekulogodarkURL else dekulogoURL
                             )

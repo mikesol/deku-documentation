@@ -61,7 +61,8 @@ banner { showBanner } = D.div
           ]
           [ D.div [ DA.klass_ "relative z-10 md:text-center lg:text-left" ]
               [ D.img
-                  [ DA.alt_ ""
+                  [ DA.ariaLabel_ "A futuristic blue-cyan background"
+                  , DA.alt_ ""
                   , DA.src_ blurCyanURL
                   , DA.width_ "530"
                   , DA.height_ "530"
@@ -364,7 +365,8 @@ banner { showBanner } = D.div
                   ]
               , D.div [ DA.klass_ "relative" ]
                   [ D.img
-                      ( [ DA.alt_ ""
+                      ( [ DA.ariaLabel_ "A futuristic blue-cyan background"
+                        , DA.alt_ ""
                         , DA.src_ blurCyanURL
                         , DA.width_ "530"
                         , DA.height_ "530"
@@ -376,7 +378,8 @@ banner { showBanner } = D.div
                       )
                       []
                   , D.img
-                      ( [ DA.alt_ ""
+                      ( [ DA.ariaLabel_ "A blur over a background"
+                        , DA.alt_ ""
                         , DA.src_ blurIndigoURL
                         , DA.width_ "567"
                         , DA.height_ "567"

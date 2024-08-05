@@ -57,6 +57,10 @@ effectsOnInitialization = subsection
             ]
         , D.p__
             "Even more improtantly, it cruises at 60fps and, on my Mac running on battery power with too many tabs open, barely eats up any of the scripting in the rendering loop, leaving ample headroom for experience (clicking around) and whatever else you wanna add to the game."
-        , D.img [ DA.src_ profileURL ] []
+        , D.img
+            [ DA.ariaLabel_ "A JS performance profile from Google Chrome"
+            , DA.src_ profileURL
+            ]
+            []
         ]
   }

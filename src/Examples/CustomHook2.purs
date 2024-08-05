@@ -24,13 +24,21 @@ app runExample = runExample Deku.do
   r2 <- hook2
   D.div_
     [ D.p_ [ text_ "I want the ", D.code__ $ show r1, text_ "th!" ]
-    , D.img [ DA.src_ cruiseURL ] []
+    , D.img
+        [ DA.ariaLabel_ "A picture of Tom Cruise in A Few Good Men"
+        , DA.src_ cruiseURL
+        ]
+        []
     , D.p_
         [ text_ "You can't handle the "
         , D.code__ $ show r2
         , text_ "th!"
         ]
-    , D.img [ DA.src_ nicholsonURL ] []
+    , D.img
+        [ DA.ariaLabel_ "A picture of Jack Nicholson in A Few Good Men"
+        , DA.src_ nicholsonURL
+        ]
+        []
     ]
 
 main :: Effect Unit
