@@ -7,7 +7,7 @@
     "dev": "spago build && vite",
     "gitpod": "spago build",
     "format": "purs-tidy format-in-place src/**/*.purs && prettier --write ./src/",
-    "build": "spago build && vite build"
+    "build": "python genExamples.py && spago build && vite build"
   },
   "browserslist": "defaults, not ie <= 11",
   "dependencies": {
