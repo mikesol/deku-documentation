@@ -7,6 +7,9 @@ import autoprefixer from 'autoprefixer';
 import { escapeInject, dangerouslySkipEscape } from "vike/server";
 import { ssr } from "../output/Run";
 import cssInput from '../src/styles/tailwind.css?raw'
+import prismTomorrow from 'prismjs/themes/prism-tomorrow.min.css?raw';
+import prismCore from 'prismjs/components/prism-core.min.js?raw';
+import clipboard from 'clipboard/dist/clipboard.min.js?raw';
 
 async function processCSS(cssInput) {
   const result = await postcss([tailwindcss, autoprefixer])
@@ -34,13 +37,13 @@ async function onRenderHtml(pageContext) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
     <style>${dangerouslySkipEscape(cssOutput)}</style>
-    <link href="/node_modules/prismjs/themes/prism-tomorrow.min.css" rel="stylesheet" />
-    <script src="/node_modules/clipboard/dist/clipboard.min.js"></script>
-    <script src="/node_modules/prismjs/components/prism-core.min.js" defer></script>
+    <style>${dangerouslySkipEscape(prismTomorrow)}</style>
+    <script>${dangerouslySkipEscape(clipboard)}</script>
     <script src="https://unpkg.com/wc-discord-message@^2.0.0/dist/wc-discord-message/wc-discord-message.js"></script>
   </head>
   <body>
     ${viewHtml}
+    <script>${dangerouslySkipEscape(prismCore)}</script>
   </body>
 </html>`;
 }

@@ -14,6 +14,7 @@
     "@sindresorhus/slugify": "^2.1.0",
     "@tailwindcss/typography": "^0.5.7",
     "autoprefixer": "^10.4.12",
+    "clipboard": "^2.0.11",
     "clsx": "^1.2.1",
     "copy-to-clipboard": "^3.3.3",
     "flowbite": "^1.5.4",
