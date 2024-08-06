@@ -4,7 +4,7 @@ import Prelude
 
 import Control.Monad.Reader (ask)
 import Data.Tuple.Nested ((/\))
-import Deku.Control (text)
+import Deku.Control (text, text_)
 import Deku.Core (Nut)
 import Deku.DOM as D
 import Deku.DOM.Attributes as DA
@@ -42,20 +42,39 @@ signIn = do
 name :: AppMonad
 name = do
   { isSignedIn } <- ask
-  pure $ D.td_ [ text $ isSignedIn <#> if _ then "Mike" else "Nobody" ]
+  pure $ D.td
+    [ DA.klass_
+        "whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0"
+    ]
+    [ text $ isSignedIn <#> if _ then "Mike" else "Nobody" ]
 
 balance :: AppMonad
 balance = do
   { isSignedIn } <- ask
-  pure $ D.td_ [ text $ isSignedIn <#> if _ then "42 bucks" else "No money" ]
+  pure $ D.td [ DA.klass_ "whitespace-nowrap px-3 py-4 text-sm text-gray-500" ]
+    [ text $ isSignedIn <#> if _ then "42 bucks" else "No money" ]
 
 table :: AppMonad
 table = do
   myName <- name
   myBalance <- balance
-  pure $ D.table_
-    [ D.tr_ [ D.th__ "Name", D.th__ "Balance" ]
-    , D.tr_ [ myName, myBalance ]
+  pure $ D.table [ DA.klass_ "divide-y divide-gray-300" ]
+    [ D.tr_
+        [ D.th
+            [ DA.scope_ "col"
+            , DA.klass_
+                "py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0"
+            ]
+            [ text_ "Name" ]
+        , D.th
+            [ DA.scope_ "col"
+            , DA.klass_
+                "px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+            ]
+            [ text_ "Balance" ]
+        ]
+    , D.tbody [ DA.klass_ "divide-y divide-gray-200" ]
+        [ D.tr_ [ myName, myBalance ] ]
     ]
 
 fullApp :: AppMonad

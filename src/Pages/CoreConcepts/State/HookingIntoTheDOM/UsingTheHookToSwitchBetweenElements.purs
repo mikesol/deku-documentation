@@ -1,4 +1,4 @@
-module Pages.CoreConcepts.State.HookingIntoTheDOM.UsingTheHookToSwitchBetweenElements where
+module Pages.CoreConcepts.State.HookingIntoTheDOM.SwitchBetweenElements where
 
 import Prelude
 
@@ -14,7 +14,7 @@ usingTheHookToSwitchBetweenElements = subsection
   { title: "Using a hook to switch between elements"
   , matter: do
       example <- getExample StartExpanded Nothing
-        Examples.UsingTheHookToSwitchBetweenElements
+        Examples.SwitchBetweenElements
       pure
         [ D.p_
             [ text_

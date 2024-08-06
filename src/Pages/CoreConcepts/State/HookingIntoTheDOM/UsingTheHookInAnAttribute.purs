@@ -1,4 +1,4 @@
-module Pages.CoreConcepts.State.HookingIntoTheDOM.UsingTheHookInAnAttribute where
+module Pages.CoreConcepts.State.HookingIntoTheDOM.HookInAnAttribute where
 
 import Prelude
 
@@ -37,7 +37,7 @@ usingTheHookInAnAttribute = subsection
   , matter: pure
       [ D.p__
           "Hooks can be used to control both attributes and listeners. In the following example, two different hooks are used to control two different attributes of the same anchor tag."
-      , psCodeWithLink Examples.UsingTheHookInAnAttribute
+      , psCodeWithLink Examples.HookInAnAttribute
       , exampleBlockquote
           [ Deku.do
               setHrefSwitch /\ hrefSwitch <- useState false

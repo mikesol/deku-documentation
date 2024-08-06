@@ -15,7 +15,7 @@ usingAHookToControlThePresenceOfElements = subsection
   { title: "Using a hook to control presence"
   , matter: do
       example <- getExample StartCollapsed Nothing
-        Examples.UsingAHookToControlPresence
+        Examples.HookControlsPresence
       pure
         [ D.p_
             [ text_

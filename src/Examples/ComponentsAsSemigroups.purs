@@ -40,42 +40,42 @@ app runExample = runExample Deku.do
             [ text_ "Pas sage" ]
         ]
     , D.div_
-        [ D.p__ "Cher ami,"
-            <> D.p__ "Je suis toute émue de vous dire que j'ai"
+        [ D.div__ "Cher ami,"
+            <> D.div__ "Je suis toute émue de vous dire que j'ai"
             <> guard astuce
-              (D.p__ "bien compris l'autre jour que vous aviez")
-            <> D.p__ "toujours une envie folle de me faire"
+              (D.div__ "bien compris l'autre jour que vous aviez")
+            <> D.div__ "toujours une envie folle de me faire"
             <> guard astuce
-              (D.p__ "danser. Je garde le souvenir de votre")
-            <> D.p__ "baiser et je voudrais bien que ce soit"
+              (D.div__ "danser. Je garde le souvenir de votre")
+            <> D.div__ "baiser et je voudrais bien que ce soit"
             <> guard astuce
-              (D.p__ "une preuve que je puisse être aimée")
-            <> D.p__ "par vous. Je suis prête à montrer mon"
+              (D.div__ "une preuve que je puisse être aimée")
+            <> D.div__ "par vous. Je suis prête à montrer mon"
             <> guard astuce
-              (D.p__ "affection toute désintéressée et sans cal-")
-            <> D.p__ "cul, et si vous voulez me voir ainsi"
+              (D.div__ "affection toute désintéressée et sans cal-")
+            <> D.div__ "cul, et si vous voulez me voir ainsi"
             <> guard astuce
-              (D.p__ "vous dévoiler, sans artifice, mon âme")
-            <> D.p__ "toute nue, daignez me faire visite,"
+              (D.div__ "vous dévoiler, sans artifice, mon âme")
+            <> D.div__ "toute nue, daignez me faire visite,"
             <> guard astuce
-              (D.p__ "nous causerons et en amis franchement")
-            <> D.p__ "je vous prouverai que je suis la femme"
+              (D.div__ "nous causerons et en amis franchement")
+            <> D.div__ "je vous prouverai que je suis la femme"
             <> guard astuce
-              (D.p__ "sincère, capable de vous offrir l'affection")
-            <> D.p__ "la plus profonde, comme la plus étroite"
+              (D.div__ "sincère, capable de vous offrir l'affection")
+            <> D.div__ "la plus profonde, comme la plus étroite"
             <> guard astuce
-              (D.p__ "amitié, en un mot : la meilleure épouse")
-            <> D.p__ "dont vous puissiez rêver. Puisque votre"
+              (D.div__ "amitié, en un mot : la meilleure épouse")
+            <> D.div__ "dont vous puissiez rêver. Puisque votre"
             <> guard astuce
-              (D.p__ "âme est libre, pensez que l'abandon ou je")
-            <> D.p__ "vis est bien long, bien dur et souvent bien"
+              (D.div__ "âme est libre, pensez que l'abandon ou je")
+            <> D.div__ "vis est bien long, bien dur et souvent bien"
             <> guard astuce
-              (D.p__ "insupportable. Mon chagrin est trop")
-            <> D.p__ "gros. Accourrez bien vite et venez me le"
+              (D.div__ "insupportable. Mon chagrin est trop")
+            <> D.div__ "gros. Accourrez bien vite et venez me le"
             <> guard astuce
-              (D.p__ "faire oublier. À vous je veux me sou-")
-            <> D.p__ "mettre entièrement."
-            <> D.p__ "Votre poupée"
+              (D.div__ "faire oublier. À vous je veux me sou-")
+            <> D.div__ "mettre entièrement."
+            <> D.div__ "Votre poupée"
         ]
     ]
 
