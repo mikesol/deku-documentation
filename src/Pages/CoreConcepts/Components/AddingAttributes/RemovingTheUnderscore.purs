@@ -31,16 +31,16 @@ removingTheUnderscore = subsection
           { header: text_ "Expand the text"
           , message: D.div_
               [ text_
-                  "When adding attributes to a double-underscored element like "
-              , D.code_ [ text_ "D.span__" ]
-              , text_ ", make sure to "
+                  "When adding attributes to a component like the "
+              , D.code__ "D.span"
+              , text_ " above, make sure to "
               , D.i_ [ text_ "also" ]
               , text_ " add an array with "
-              , D.code_ [ text_ "text" ]
+              , D.code_ [ text_ "text_" ]
               , text_ " followed by your text inside of it. This is because "
               , D.code_ [ text_ "D.span__ \"foo\"" ]
               , text_ " is shorthand for "
-              , D.code_ [ text_ "D.span_ [ text \"foo\" ]" ]
+              , D.code_ [ text_ "D.span_ [ text_ \"foo\" ]" ]
               , text_ "."
               ]
           }
