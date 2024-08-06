@@ -5,7 +5,7 @@ import Prelude
 import Components.Code (shSessionCode)
 import Components.Disclaimer (disclaimer)
 import Contracts (Subsection, subsection)
-import Deku.Control (text, text_)
+import Deku.Control (text_)
 import Deku.DOM as D
 
 usingAnExistingProject :: Subsection
@@ -29,9 +29,11 @@ usingAnExistingProject = subsection
               D.div_
                 [ text_
                     "PureScript uses package sets to make sure that a codebase has a coherent set of packages. This documentation works for Deku version "
-                , D.code__ "0.9.8"
+                , D.code__ "0.12.0"
                 , text_
-                    " onwards, so if you'd like to use most of the conventions from this documentation, make sure to work with a package set that's made on or after December 9, 2022 (AD). You can update your package set by running "
+                    " onwards, so if you'd like to use most of the conventions from this documentation, make sure to work with a package set that's made on or after August 6, 2024 (AD). We're partial to "
+                , D.code__ "56.4.0"
+                , text_ ". You can update your package set by running "
                 , D.code__ "spago upgrade-set"
                 , text_ "."
                 ]
