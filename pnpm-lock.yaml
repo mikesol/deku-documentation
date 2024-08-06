@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@mikesol/wc-discord-message':
-        specifier: ^3.0.0
-        version: 3.0.0
+        specifier: ^3.0.2
+        version: 3.0.2
       '@sindresorhus/slugify':
         specifier: ^2.1.0
         version: 2.2.1
@@ -782,8 +782,8 @@ packages:
     resolution: {integrity: sha512-Yhlar6v9WQgUp/He7BdgzOz8lqMQ8sU+jkCq7Wx8Myc5YFJLbEe7lgui/V7G1qB1DJykHSGwreceSaD60Y0PUQ==}
     hasBin: true
 
-  '@mikesol/wc-discord-message@3.0.0':
-    resolution: {integrity: sha512-F4F8EVPpM10y0Rne/6QpBTf/d62MF5n04eWkFzjqgizvsN1AXGBu6AS1ujYqlnVe98thv6Bsx5IzQPyyzUietg==}
+  '@mikesol/wc-discord-message@3.0.2':
+    resolution: {integrity: sha512-QVG4Btm8w2C633GNmUlcwAmoFAaw8/Y4dP3Gi2BJ3DIMsq6qCKl50KPvug3MCmFb7fb++j1enQtv+I+2fq6Dcg==}
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -3720,7 +3720,7 @@ snapshots:
       - encoding
       - supports-color
 
-  '@mikesol/wc-discord-message@3.0.0':
+  '@mikesol/wc-discord-message@3.0.2':
     dependencies:
       hex-to-rgba: 2.0.1
 
