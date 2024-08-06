@@ -1,6 +1,9 @@
 export { onRenderClient }
 
 import { hydrate } from '../output/Run'
+import { defineCustomElements } from '@mikesol/wc-discord-message/loader'
+
+defineCustomElements(window)
 
 let dekuRoute
 

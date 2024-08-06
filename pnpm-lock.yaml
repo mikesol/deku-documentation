@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@mikesol/wc-discord-message':
+        specifier: ^3.0.0
+        version: 3.0.0
       '@sindresorhus/slugify':
         specifier: ^2.1.0
         version: 2.2.1
@@ -62,9 +65,6 @@ importers:
       toastify-js:
         specifier: ^1.12.0
         version: 1.12.0
-      wc-discord-message:
-        specifier: ^2.0.4
-        version: 2.0.4
     devDependencies:
       '@vite-plugin-vercel/vike':
         specifier: ^8.0.0
@@ -781,6 +781,9 @@ packages:
   '@mapbox/node-pre-gyp@1.0.11':
     resolution: {integrity: sha512-Yhlar6v9WQgUp/He7BdgzOz8lqMQ8sU+jkCq7Wx8Myc5YFJLbEe7lgui/V7G1qB1DJykHSGwreceSaD60Y0PUQ==}
     hasBin: true
+
+  '@mikesol/wc-discord-message@3.0.0':
+    resolution: {integrity: sha512-F4F8EVPpM10y0Rne/6QpBTf/d62MF5n04eWkFzjqgizvsN1AXGBu6AS1ujYqlnVe98thv6Bsx5IzQPyyzUietg==}
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -3169,9 +3172,6 @@ packages:
     resolution: {integrity: sha512-o8qghlI8NZHU1lLPrpi2+Uq7abh4GGPpYANlalzWxyWteJOCsr/P+oPBA49TOLu5FTZO4d3F9MnWJfiMo4BkmA==}
     engines: {node: '>=18'}
 
-  wc-discord-message@2.0.4:
-    resolution: {integrity: sha512-Q99pFjlFe633HNHYLmEsA9e8LyoSh7be7sPBo6II9HrHIqNn9nd/pFAeqt4YxJ7jbTyKJn7dmY9HcCEQ+Vohtw==}
-
   webidl-conversions@3.0.1:
     resolution: {integrity: sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==}
 
@@ -3719,6 +3719,10 @@ snapshots:
     transitivePeerDependencies:
       - encoding
       - supports-color
+
+  '@mikesol/wc-discord-message@3.0.0':
+    dependencies:
+      hex-to-rgba: 2.0.1
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
@@ -6237,10 +6241,6 @@ snapshots:
   w3c-xmlserializer@5.0.0:
     dependencies:
       xml-name-validator: 5.0.0
-
-  wc-discord-message@2.0.4:
-    dependencies:
-      hex-to-rgba: 2.0.1
 
   webidl-conversions@3.0.1: {}
 
