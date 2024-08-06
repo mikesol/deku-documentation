@@ -15,7 +15,7 @@ import Pages.CoreConcepts.MoreHooks.UseMemoized.TransformedEvents (transformedEv
 
 useMemoized :: Section
 useMemoized = section
-  { title: "Will someone shut that guy up?!"
+  { title: "Goind on a rant"
   , topmatter: do
       example <- getExample StartCollapsed Nothing
         Examples.UnMemoizedApplication
