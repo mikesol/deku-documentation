@@ -28,7 +28,8 @@ focus:ring-COLOR-500 focus:ring-offset-2"""
 data Element = Image | Video | SVG
 
 bunny :: String
-bunny = "https://dl8.webmfiles.org/big-buck-bunny_trailer.webm"
+bunny =
+  "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
 
 pic :: String
 pic = "https://picsum.photos/150"
