@@ -11,6 +11,7 @@ import Examples as Examples
 import Pages.CoreConcepts.MoreHooks.UseMemoized.Deflecting (deflecting)
 import Pages.CoreConcepts.MoreHooks.UseMemoized.HotRants (hotRants)
 import Pages.CoreConcepts.MoreHooks.UseMemoized.InitialEvents (initialEvents)
+import Pages.CoreConcepts.MoreHooks.UseMemoized.Skimming (skimming)
 import Pages.CoreConcepts.MoreHooks.UseMemoized.TransformedEvents (transformedEvents)
 
 useMemoized :: Section
@@ -66,5 +67,5 @@ useMemoized = section
             ]
         ]
   , subsections:
-      [ transformedEvents, initialEvents, hotRants, deflecting ]
+      [ transformedEvents, initialEvents, hotRants, deflecting, skimming ]
   }

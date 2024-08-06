@@ -5,7 +5,7 @@ import Prelude
 import Components.Code (psCode)
 import Contracts (CollapseState(..), Subsection, getExample, subsection)
 import Data.Maybe (Maybe(..))
-import Deku.Control (text, text_)
+import Deku.Control (text_)
 import Deku.DOM as D
 import Examples as Examples
 
@@ -17,7 +17,7 @@ mailboxesAsFilters = subsection
       pure
         [ D.p_
             [ text_ "A mailbox hook is similar to the "
-            , D.code__ "useState'"
+            , D.code__ "useState"
             , text_
                 " hook."
             ]
