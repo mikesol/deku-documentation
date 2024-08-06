@@ -18,7 +18,7 @@ buildingAndDeploying = page
           [ text_ "Deku for fun and profit (but mostly profit)"
           ]
       , D.p__
-          "One way to make money with Deku is to ask all your developer friends to send you a dollar in the mail when they use Deku. They, they can recruit their friends, who will send them a dollar and send you a nominal commission. And so forth and so on."
+          "One way to make money with Deku is to ask all your developer friends to send you a dollar in the mail when they use Deku. Then, they can recruit their friends, who will send them a dollar and send you a nominal commission. And so forth and so on."
       , D.p__
           "Another way is building and deploying apps. This section focuses on the latter."
       ]
