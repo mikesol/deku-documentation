@@ -2,7 +2,6 @@ module Pages.FRP.Sampling where
 
 import Prelude
 
-import Components.TargetedLink (targetedLink)
 import Contracts (Page, page)
 import Deku.DOM.Attributes as DA
 import Deku.Control (text_)

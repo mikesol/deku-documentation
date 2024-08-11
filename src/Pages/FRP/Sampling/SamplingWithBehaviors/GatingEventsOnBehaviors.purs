@@ -2,19 +2,16 @@ module Pages.FRP.Sampling.SamplingWithBehaviors.GatingEventsOnPolls where
 
 import Prelude
 
-import Components.Code (psCode)
-import Contracts (CollapseState(..), Env(..), Subsection, getEnv, getExample, subsection)
+import Contracts (CollapseState(..), Subsection, getExample, subsection)
 import Data.Maybe (Maybe(..))
-import Deku.Control (text, text_)
+import Deku.Control (text_)
 import Deku.DOM as D
 import Examples as Examples
-import Router.ADT (Route(..))
 
 gatingEventsOnPolls :: Subsection
 gatingEventsOnPolls = subsection
   { title: "Gating events on polls"
   , matter: do
-      Env { routeLink } <- getEnv
       example <- getExample StartCollapsed Nothing Examples.GatingEventsOnPolls
       pure
         [ D.p_

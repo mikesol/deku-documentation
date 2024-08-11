@@ -4,7 +4,7 @@ import Prelude
 
 import Components.ProTip (proTip)
 import Contracts (Env(..), Section, getEnv, section)
-import Deku.Control (text, text_)
+import Deku.Control (text_)
 import Deku.DOM as D
 import Pages.CoreConcepts.Collections.Monoids.ComponentsAsMonoids (componentsAsMonoids)
 import Pages.CoreConcepts.Collections.Monoids.ComponentsAsSemigroups (componentsAsSemigroups)

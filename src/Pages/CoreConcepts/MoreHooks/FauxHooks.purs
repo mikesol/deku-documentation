@@ -2,8 +2,7 @@ module Pages.CoreConcepts.MoreHooks.FauxHooks where
 
 import Prelude
 
-import Contracts (CollapseState(..), Section, getExample, section)
-import Contracts (Section, section)
+import Contracts (CollapseState(..), getExample, Section, section)
 import Data.Maybe (Maybe(..))
 import Deku.Control (text_)
 import Deku.DOM as D

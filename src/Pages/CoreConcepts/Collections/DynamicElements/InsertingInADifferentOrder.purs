@@ -5,7 +5,7 @@ import Prelude
 import Components.ProTip (proTip)
 import Contracts (CollapseState(..), Env(..), Subsection, getEnv, getExample, subsection)
 import Data.Maybe (Maybe(..))
-import Deku.Control (text, text_)
+import Deku.Control (text_)
 import Deku.DOM as D
 import Examples as Examples
 import Router.ADT (Route(..))

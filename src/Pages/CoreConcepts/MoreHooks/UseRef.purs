@@ -3,7 +3,7 @@ module Pages.CoreConcepts.MoreHooks.UseRef where
 import Prelude
 
 import Contracts (Section, section)
-import Deku.Control (text, text_)
+import Deku.Control (text_)
 import Deku.DOM as D
 import Pages.CoreConcepts.MoreHooks.UseRef.TheCaseForRef (theCaseForRef)
 import Pages.CoreConcepts.MoreHooks.UseRef.PerformanceConsiderations (performanceConsiderations)

@@ -5,7 +5,7 @@ import Prelude
 import Components.Code (psCode)
 import Contracts (CollapseState(..), Subsection, getExample, subsection)
 import Data.Maybe (Maybe(..))
-import Deku.Control (text, text_)
+import Deku.Control (text_)
 import Deku.DOM as D
 import Examples as Examples
 

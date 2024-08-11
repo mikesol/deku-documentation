@@ -3,7 +3,7 @@ module Pages.CoreConcepts.Collections.DynamicElements.MovingElements where
 import Prelude
 
 import Contracts (CollapseState(..), Subsection, getExample, subsection)
-import Deku.Control (text, text_)
+import Deku.Control (text_)
 import Deku.DOM as D
 import Examples as Examples
 import Data.Maybe (Maybe(..))

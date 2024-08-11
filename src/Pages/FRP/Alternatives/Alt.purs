@@ -3,7 +3,7 @@ module Pages.FRP.Alternatives.Alt where
 import Prelude
 
 import Contracts (Section, section)
-import Deku.Control (text, text_)
+import Deku.Control (text_)
 import Deku.DOM as D
 import Pages.FRP.Alternatives.Alt.TheOneOfFunction (theOneOfFunction)
 import Pages.FRP.Alternatives.Alt.PerformanceConsiderations (performanceConsiderations)

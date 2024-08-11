@@ -3,7 +3,7 @@ module Pages.Introduction.HelloWorld.TheAnatomyOfHello.RunningInTheBody where
 import Prelude
 
 import Components.Code (psCode)
-import Contracts (Env(..), Subsection, getEnv, subsection)
+import Contracts (Subsection, subsection)
 import Deku.DOM.Attributes as DA
 import Deku.Control (text_)
 import Deku.DOM as D
@@ -12,7 +12,6 @@ runningInTheBody :: Subsection
 runningInTheBody = subsection
   { title: "Running in the body"
   , matter: do
-      Env { routeLink } <- getEnv
       pure
         [ psCode
             """runInBody (...)"""
