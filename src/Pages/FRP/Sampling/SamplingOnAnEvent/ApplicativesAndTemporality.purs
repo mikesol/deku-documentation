@@ -68,9 +68,9 @@ applicativesAndTemporality = subsection
             , text_ "."
             ]
         , psCode
-            """type Poll a = forall b. Event (a -> b) -> Event a
+            """type Poll a = forall b. Event (a -> b) -> Event b
 type SampleOnRight a =
-  Event a -> (forall b. Event (a -> b) -> Event a)"""
+  Event a -> (forall b. Event (a -> b) -> Event b)"""
         , D.p_
             [ text_ "This also allows us to write a definition for the "
             , D.code__ "step"
