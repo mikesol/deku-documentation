@@ -16,7 +16,7 @@ monadsAndFlattening = section
           [ text_ "By now, the suspense must be killing you. Is "
           , D.code__ "Event"
           , text_
-              " a monad? Is it not a monad? The answer is \"maybe\". Or even better, the answer is \"what do you think?\" Read on for a bit of information before you form an opinion!"
+              " a monad? Is it not a monad? The answer is “maybe”. Or even better, the answer is “what do you think?” Read on for a bit of information before you form an opinion!"
           ]
       ]
   , subsections:

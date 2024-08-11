@@ -15,9 +15,9 @@ typeSafety = subsection
           [ text_
               "Going back to our HTML string, you'll see that it's actually not a "
           , D.code__ "String"
-          , text_ " in the \"the type of this term is "
+          , text_ " in the “the type of this term is "
           , D.code__ "String"
-          , text_ "\" sense of the term. Instead, it's of type "
+          , text_ "” sense of the term. Instead, it's of type "
           , D.code__ "Proxy html"
           , text_ ", where "
           , D.code__ "html"
@@ -67,7 +67,7 @@ main = runInBody ((Proxy :: Proxy
 """
       , D.p_
           [ text_
-              "While the message could be better by identifying line numbers (we're working on this...), it identifies the HTML tag mismatch that needs to be corrected. Once we correct it, the program compiles!"
+              "While the message could be better by identifying line numbers (we're working on this…), it identifies the HTML tag mismatch that needs to be corrected. Once we correct it, the program compiles!"
           ]
       ]
   }

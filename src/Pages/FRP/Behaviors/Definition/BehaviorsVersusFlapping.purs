@@ -24,10 +24,10 @@ pollsVersusFlapping = subsection
         , example
         , D.p_
             [ text_
-                "Now, you may be thinking, \"wait a second, wasn't that the first example from the "
+                "Now, you may be thinking, “wait a second, wasn't that the first example from the "
             , routeLink State
             , text_
-                " section?\" And you'd be right to think that, because it is. Deku runs on "
+                " section?” And you'd be right to think that, because it is. Deku runs on "
             , D.code__ "Poll"
             , text_
                 "s! As promised earlier in these hallowed docs, I'd give a shoutout once we got to the "

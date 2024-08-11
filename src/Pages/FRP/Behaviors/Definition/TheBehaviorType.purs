@@ -22,14 +22,14 @@ thePollType = subsection
           , text_ ", "
           , D.code__ "Poll"
           , text_
-              " defines a contract. It's saying, \"If you give me any event that produces a "
+              " defines a contract. It's saying, “If you give me any event that produces a "
           , D.code__ "b"
           , text_ " in exchange for an "
           , D.code__ "a"
           , text_ ", I'll give you an event-ful of "
           , D.code__ "b"
           , text_
-              "s back.\" Importantly, to fulfill the contract, you don't know what "
+              "s back.” Importantly, to fulfill the contract, you don't know what "
           , D.code__ "b"
           , text_
               " is, and yet you have to produce one. The only way we can do this, then, is by applying our function of type "
@@ -58,12 +58,12 @@ thePollType = subsection
           ]
       , D.p_
           [ text_
-              "You may be tempted to ask, \"But isn't that just "
+              "You may be tempted to ask, “But isn't that just "
           , targetedLink
               "https://pursuit.purescript.org/packages/purescript-prelude/docs/Data.Functor#v:flap"
               [ D.code__ "flap", text_ "ping" ]
           , text_
-              " over the incoming event to produce the outgoing event?\" If so, I encourage you to give in to temptation and ask! And since you asked, the answer is "
+              " over the incoming event to produce the outgoing event?” If so, I encourage you to give in to temptation and ask! And since you asked, the answer is "
           , D.b__ "yes"
           , text_ ". This is a perfectly valid way to create a poll."
           ]

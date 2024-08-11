@@ -26,7 +26,7 @@ theTypeAndContract = subsection
               " amongst others. There are several different implementations of "
           , D.code__ "Event"
           , text_
-              " in PureScript, but the \"average\" definition is similar to the original definition of "
+              " in PureScript, but the “average” definition is similar to the original definition of "
           , D.code__ "Event"
           , text_ " from the seminal 1997 paper "
           , D.a
@@ -50,14 +50,14 @@ theTypeAndContract = subsection
               ", I'll provide you with a way to tell me to start and then stop reporting these values."
           ]
       , D.p_
-          [ text_ "The \"reporter\" is the argument to the function of type "
+          [ text_ "The “reporter” is the argument to the function of type "
           , D.code__ "(a -> Effect Unit)"
           , text_
-              ". You can think of this as a walkie-talkie or self-addressed stamped envelope. It's what the producer of values uses to \"send the values back\" to the consumer."
+              ". You can think of this as a walkie-talkie or self-addressed stamped envelope. It's what the producer of values uses to “send the values back” to the consumer."
           ]
       , D.p_
           [ text_
-              "The notion of \"sending values back\" may sound counter-intuitive, especially if you're used to seeing patterns in functional programming where values of interest are "
+              "The notion of “sending values back” may sound counter-intuitive, especially if you're used to seeing patterns in functional programming where values of interest are "
           , D.i__ "outputs"
           , text_ " of functions and not inputs. Yet our value of type "
           , D.code__ "a"
@@ -98,7 +98,7 @@ theTypeAndContract = subsection
           ]
       , D.p_
           [ text_
-              "Whether the unsubscriber actually stops the flow of events is implementation specific. For example, on unsubscribe, an event may choose to emit several \"clean up\" instructions before stopping entirely. But in general, the unsubscribe function should turn off the faucet in a reasonable timeframe."
+              "Whether the unsubscriber actually stops the flow of events is implementation specific. For example, on unsubscribe, an event may choose to emit several “clean up” instructions before stopping entirely. But in general, the unsubscribe function should turn off the faucet in a reasonable timeframe."
           ]
       ]
   }

@@ -21,7 +21,7 @@ biasingASideOfSampling = subsection
             , text_ " and "
             , D.code__ "sampleOnRight"
             , text_
-                " control the temporality of which side to sample from, there's an important corner case to consider: when the events are \"cotemporal.\""
+                " control the temporality of which side to sample from, there's an important corner case to consider: when the events are “cotemporal”."
             ]
         , D.p_
             [ text_

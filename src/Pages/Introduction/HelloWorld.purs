@@ -19,7 +19,7 @@ helloWorld = page
           ]
       , D.p_
           [ text_
-              "Hello world in Deku is a one-liner... after imports, and type declarations, and newlines... But even with all of that stuff, it's a ten-liner. "
+              "Hello world in Deku is a one-liner... after imports, and type declarations, and newlines… But even with all of that stuff, it's a ten-liner. "
           , D.i__ "And oh what lines!"
           , text_ " Let's see them in action."
           ]

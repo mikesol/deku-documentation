@@ -132,7 +132,7 @@ html2deku = Deku.do
                 v <- value i
                 let parsed = HalogenParser.parse v
                 case parsed of
-                  Left err -> swal { title: "Uh oh...", text: show err }
+                  Left err -> swal { title: "Uh oh…", text: show err }
                   Right res -> setPurs (toDeku res)
             ]
 

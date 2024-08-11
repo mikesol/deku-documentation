@@ -101,7 +101,7 @@ timeLeaks = subsection
             , text_ " section, "
             , D.code__ "bindToEffect"
             , text_
-                " \"swallows\" an effect into its event. This works more like a monadic bind or join, which does not accumulate effects but rather tacks on effects to a sequence."
+                " “swallows” an effect into its event. This works more like a monadic bind or join, which does not accumulate effects but rather tacks on effects to a sequence."
             ]
         , D.p_
             [ text_

@@ -13,7 +13,7 @@ anAlternativeEffectModel = subsection
   , matter: pure
       [ D.p_
           [ text_
-              "First, a note on why Deku ❤️ hydration. Deku was originally developed to build games and musical instruments. Because of that, the contributors developed a culture of components being as \"dumb\" as possible. This means that, when a component mounts or unmounts from an application, the act of appearing or disappearing should have minimal impact on the UI."
+              "First, a note on why Deku ❤️ hydration. Deku was originally developed to build games and musical instruments. Because of that, the contributors developed a culture of components being as “dumb” as possible. This means that, when a component mounts or unmounts from an application, the act of appearing or disappearing should have minimal impact on the UI."
           ]
       , D.p_
           [ text_

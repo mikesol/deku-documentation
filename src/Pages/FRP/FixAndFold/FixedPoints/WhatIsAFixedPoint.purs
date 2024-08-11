@@ -132,9 +132,9 @@ myFunction = fix (\f a -> if a > 100 then 100 else f (a + 1))
                             disactivatePreviousElt
                               { address: v, payload: unit }
                         ]
-                        [ text_ "..." ]
+                        [ text_ "…" ]
                     ]
-                else text_ $ t <> "... "
+                else text_ $ t <> "… "
           , text_
               ") is because the fixed point needs repeated application. A function "
           , D.code__ "(a -> b)"

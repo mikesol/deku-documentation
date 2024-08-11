@@ -27,7 +27,7 @@ theAnatomyOfAHook = subsection
       pure
         [ D.p_
             [ text_
-                "The first step on your journey to a custom hook is saying to yourself \"I need a custom hook.\" Now that you've gotten that out of the way, Deku provides a type "
+                "The first step on your journey to a custom hook is saying to yourself “I need a custom hook.” Now that you've gotten that out of the way, Deku provides a type "
             , D.code__ "Hook a"
             , text_ " that allows you to construct a hook of type "
             , D.code__ "a"

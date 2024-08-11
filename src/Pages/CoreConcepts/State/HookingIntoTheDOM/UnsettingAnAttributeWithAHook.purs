@@ -28,7 +28,7 @@ unsettingAnAttributeWithAHook = subsection
             , D.code__
                 "removeAttribute"
             , text_
-                " function, so it'll be as if the attribute were never there. What attribute? Exactly..."
+                " function, so it'll be as if the attribute were never there. What attribute? Exactly…"
             ]
         ]
   }

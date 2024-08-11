@@ -26,7 +26,7 @@ state = page
           , D.li__
               "Those who quickly rushed to implement hooks into their frameworks to ride on the coattail's of Facebook's success."
           , D.li__
-              "Those who rebranded some feature of their framework as \"hooks\" so as not to miss out on the craze without needing to expend much effort."
+              "Those who rebranded some feature of their framework as “hooks” so as not to miss out on the craze without needing to expend much effort."
           ]
       , D.p_
           [ text_

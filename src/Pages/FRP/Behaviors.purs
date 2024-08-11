@@ -31,7 +31,7 @@ polls = page
               , D.li_
                   [ D.input [ DA.xtypeCheckbox ] []
                   , D.span [ DA.klass_ "ml-2" ]
-                      [ text_ "Ok wait, this is an example of a \"poll\". Ha!" ]
+                      [ text_ "Ok wait, this is an example of a “poll”. Ha!" ]
                   ]
               ]
           ]

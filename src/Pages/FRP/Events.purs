@@ -24,7 +24,7 @@ events = page
               "* Haha, get it? Because it's referentially transparent, you can't duplicate an"
           , D.code__ "Event"
           , text_
-              ". Oh man that's lame..."
+              ". Oh man that's lame…"
           ]
       , D.p_
           [ text_

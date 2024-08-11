@@ -24,7 +24,7 @@ altAsAMuxer = subsection
             , text_ ", and whose definition is "
             , D.code__ "Event a -> Event a -> Event a"
             , text_
-                " to mux together two streams controlling the background of a div. The result will be a rave in your browser... sort of..."
+                " to mux together two streams controlling the background of a div. The result will be a rave in your browser… sort of…"
             ]
         , example
         , D.p__ "The alternating of the two streams creates the strobe effect."

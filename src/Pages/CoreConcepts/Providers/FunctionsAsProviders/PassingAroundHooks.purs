@@ -29,7 +29,7 @@ passingAroundHooks = subsection
             ]
         , D.p_
             [ text_
-                "The following example is slightly contrived (to be fair, they all are...), but we'll create a small UI where you have to follow the following steps in order."
+                "The following example is slightly contrived (to be fair, they all are…), but we'll create a small UI where you have to follow the following steps in order."
             ]
         , D.ol_
             [ D.li_ [ text_ "Click ", D.b__ "Cede control." ]
