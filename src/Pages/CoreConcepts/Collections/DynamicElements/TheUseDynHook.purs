@@ -30,20 +30,20 @@ theUseDynHook = subsection
             [ text_ "As we learned in "
             , routeLink State
             , text_ ", the right side of a state hook is of type "
-            , D.code__ "Event a"
+            , D.code__ "Poll a"
             , text_ ", where "
             , D.code__ "a"
             , text_ " is whatever's being pushed to the pusher. Because "
-            , D.code__ "Event"
+            , D.code__ "Poll"
             , text_ " is a functor, we can "
             , D.code__ "map"
             , text_
                 " over it. So far, we've been doing simple transformations like mapping over "
-            , D.code__ "Event Int"
+            , D.code__ "Poll Int"
             , text_ " to turn it into "
-            , D.code__ "Event String"
+            , D.code__ "Poll String"
             , text_ ". Here, we're mapping over an "
-            , D.code__ "Event"
+            , D.code__ "Poll"
             , text_
                 " to transform it into a Deku component. So instead of streaming text to a text node, we're streaming components to the DOM, but it's the same pattern!"
             ]
