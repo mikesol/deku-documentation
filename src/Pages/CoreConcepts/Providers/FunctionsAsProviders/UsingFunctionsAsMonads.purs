@@ -18,7 +18,7 @@ usingFunctionsAsMonads = subsection
       pure
         [ D.p_
             [ text_
-                "As a motivating example, let's create a Deku app that simulates a pre- and post-authentication UI. In React, this would be accomplished with an authentication context and provider. In Deku, we'll just use a function! And we'll treat the function as a monad to make the flow more ergonomic."
+                "As a motivating example, let's create a Deku app that simulates a pre- and post-authentication UI. In React, this would be accomplished with an authentication context and provider. In Deku, we’ll just use a function! And we’ll treat the function as a monad to make the flow more ergonomic."
             ]
         , D.p__ "Our basic authentication app is written thusly."
         , example
@@ -59,7 +59,7 @@ app = do
             ]
         , D.p_
             [ text_
-                "If you're a seasoned functional programmer, you've likely used this pattern in many applications. It's also called the "
+                "If you’re a seasoned functional programmer, you've likely used this pattern in many applications. It's also called the "
             , D.code__ "Reader"
             , text_
                 " monad. Many functional UI frameworks (including React) have special mechanics to achieve this, but in Deku, the framework is set up in such a way to encourage time-tested functional patterns."

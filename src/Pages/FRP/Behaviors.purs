@@ -41,7 +41,7 @@ polls = page
               " are discrete functions of time that are initiated by other discrete functions of time. "
           , D.code__ "Events"
           , text_
-              " are discrete functions of time. Sounds like a marriage made in heaven! Or at least in PureScript. On this page, we'll start by defining the "
+              " are discrete functions of time. Sounds like a marriage made in heaven! Or at least in PureScript. On this page, we’ll start by defining the "
           , D.code__ "Poll"
           , text_
               ", exploring some of its useful typeclass instances and using it to model various time-domain equations."

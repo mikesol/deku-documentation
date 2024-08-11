@@ -45,7 +45,7 @@ startingANewProject = subsection
             , text_
                 ") to see your site in action. It should bear an uncanny resemblance to the "
             , routeLink HelloWorld
-            , text_ " we'll see on the next page."
+            , text_ " we’ll see on the next page."
             ]
 
         ]

@@ -55,7 +55,7 @@ aSimpleExample = section
   , topmatter: pure
       [ D.p_
           [ text_
-              "Let's start with a simple example. The HTML will be a bit on the long side, but the Deku will be short and sweet! As a motivating example, we'll be developing breadcrumbs."
+              "Let's start with a simple example. The HTML will be a bit on the long side, but the Deku will be short and sweet! As a motivating example, we’ll be developing breadcrumbs."
           ]
       , htmlCode (reflectSymbol (Proxy :: _ MyHtml))
       , D.p__ "This renders in the DOM like so."
@@ -65,7 +65,7 @@ aSimpleExample = section
           ]
           [ pursx @MyHtml {} ]
       , D.p__
-          "By the end of this page, we'll have our breadcrumbs hooked up to stateful logic. We'll start by seeing how to render the example above in Deku."
+          "By the end of this page, we’ll have our breadcrumbs hooked up to stateful logic. We'll start by seeing how to render the example above in Deku."
       ]
   , subsections:
       [ plainOldHTML, typeSafety, closingTagsAndTreeStructure ]

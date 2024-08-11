@@ -23,7 +23,7 @@ useRef = section
           , text_ " is used to reduce the number of subscriptions to an event. "
           , D.code__ "useRef"
           , text_
-              " takes this one step further, reducing the number of subscriptions to one. If you can get the number lower, I'll eat my hat!"
+              " takes this one step further, reducing the number of subscriptions to one. If you can get the number lower, I’ll eat my hat!"
           ]
       ]
   , subsections:

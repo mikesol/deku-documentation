@@ -25,7 +25,7 @@ addingAnAttribute = subsection
             , text_ " list element is "
             , D.code__ "~neroHidden~"
             , text_
-                ". Then, when creating the Pursx, we add a field to the record with the name of that identifier followed by whatever attribute we wish to add. In this case, we're adding a class that hides or shows the breadcrumb."
+                ". Then, when creating the Pursx, we add a field to the record with the name of that identifier followed by whatever attribute we wish to add. In this case, we’re adding a class that hides or shows the breadcrumb."
             ]
         ]
 

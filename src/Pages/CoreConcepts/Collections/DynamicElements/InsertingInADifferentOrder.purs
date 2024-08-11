@@ -24,7 +24,7 @@ insertingInADifferentOrder = subsection
             , D.code__ "useDynAtBeginning"
             , text_ " or its homologue "
             , D.code__ "useDynAtEnd"
-            , text_ ", we'll use plain old "
+            , text_ ", we’ll use plain old "
             , D.code__ "useDyn"
             , text_
                 ". This hook expects an event of type "
@@ -46,7 +46,7 @@ insertingInADifferentOrder = subsection
                 , text_
                     ". We need to use it here because otherwise we'd add a todo item whenever we change the number in the input. This operator is part of a larger collection of operators used for "
                 , routeLink Sampling
-                , text_ ", which we'll go over later."
+                , text_ ", which we’ll go over later."
                 ]
             }
         , D.p_

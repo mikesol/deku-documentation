@@ -37,7 +37,7 @@ events = page
           """Deku.do
   pusher /\ event <- useState 42"""
       , D.p_
-          [ text_ "As we'll see later, the "
+          [ text_ "As we’ll see later, the "
           , D.code__ "Poll"
           , text_
               " type is defined in terms of events. You have to understand the Tao of "
@@ -48,10 +48,10 @@ events = page
           ]
       , D.p_
           [ text_
-              "In this section, we'll look at the "
+              "In this section, we’ll look at the "
           , D.code__ "Event"
           , text_
-              " type constructor and study its strengths and limitations. Armed with that knowledge, you'll be able to create truly reactive sites for the ages!"
+              " type constructor and study its strengths and limitations. Armed with that knowledge, you’ll be able to create truly reactive sites for the ages!"
           ]
       ]
   , sections:

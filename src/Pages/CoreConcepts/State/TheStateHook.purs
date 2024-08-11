@@ -37,7 +37,7 @@ theStateHook = section
                 , text_ ". Different types of instructions use different "
                 , D.code__ "do"
                 , text_
-                    " blocks, and when you're working with Deku hooks, that block is "
+                    " blocks, and when you’re working with Deku hooks, that block is "
                 , D.code__ "Deku.do"
                 , text_ "."
                 ]

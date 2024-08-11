@@ -19,7 +19,7 @@ pollsVersusFlapping = subsection
       pure
         [ D.p_
             [ text_
-                "Let's see a poll in the wild! It'll be a little random number generator controlled by Deku, that framework you learned about a few lessons ago that you're probably already using."
+                "Let's see a poll in the wild! It'll be a little random number generator controlled by Deku, that framework you learned about a few lessons ago that you’re probably already using."
             ]
         , example
         , D.p_
@@ -51,7 +51,7 @@ pollsVersusFlapping = subsection
             , D.i__ "can"
             , text_ " do this with a "
             , D.code__ "Poll"
-            , text_ ", and we'll see how and why presently."
+            , text_ ", and we’ll see how and why presently."
             ]
         ]
   }

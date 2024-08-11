@@ -22,7 +22,7 @@ aSimpleComponent = section
       pure
         [ D.p_
             [ text_
-                "Let's start by making a simple comonent. It will result in a few different DOM elements being rendered, and we'll build upon it throughout this page. Here's the code."
+                "Let's start by making a simple comonent. It will result in a few different DOM elements being rendered, and we’ll build upon it throughout this page. Here's the code."
             ]
         , example
         , D.p_
@@ -64,9 +64,9 @@ aSimpleComponent = section
                     " is broader than a one-to-one relationship with DOM elements - it can also represent the absence of DOM elements using "
                 , D.code__ "mempty"
                 , text_
-                    " (which we'll learn about later) or multiple DOM elements using "
+                    " (which we’ll learn about later) or multiple DOM elements using "
                 , D.code__ "useDyn"
-                , text_ " (which we'll also learn about later)."
+                , text_ " (which we’ll also learn about later)."
                 ]
             ]
         ]

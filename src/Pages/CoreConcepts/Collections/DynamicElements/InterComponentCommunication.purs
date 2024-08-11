@@ -30,7 +30,7 @@ interComponentCommunication = subsection
             , text_
                 "s, we can only use them in a listener. If we want to use them in conjunction with a hook, like for example using a hook to delete all items, we need to use the "
             , D.code__ "useEffect"
-            , text_ " hook that you'll learn about a bit later."
+            , text_ " hook that you’ll learn about a bit later."
             ]
         , example
         , D.p_

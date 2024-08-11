@@ -19,7 +19,7 @@ foldingEvents = section
           , D.code__ "fix"
           , text_ "ing is "
           , D.code__ "fold"
-          , text_ "ing. In this section, we'll define the "
+          , text_ "ing. In this section, we’ll define the "
           , D.code__ "fold"
           , text_ " function from "
           , D.code__ "fix"

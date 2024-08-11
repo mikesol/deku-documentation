@@ -59,7 +59,7 @@ applicativesAndTemporality = subsection
             , text_ " that we learned in "
             , routeLink Polls
             , text_
-                ", you'll see an interesting similarity. When an argument of type "
+                ", you’ll see an interesting similarity. When an argument of type "
             , D.code__ "Event a"
             , text_ " is applied to "
             , D.code__ "sampleOnRight"

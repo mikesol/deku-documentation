@@ -19,7 +19,7 @@ sayingHello = section
           , text_ " and then presents the "
           , D.b_ [ text_ "result" ]
           , text_
-              " of the code rendered in a blockquote. In some cases, we may present code without rendering or vice versa. But for the most part, we'll try to always pair up code with a working example."
+              " of the code rendered in a blockquote. In some cases, we may present code without rendering or vice versa. But for the most part, we’ll try to always pair up code with a working example."
           ]
       ]
   , subsections:

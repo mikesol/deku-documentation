@@ -23,7 +23,7 @@ fixedPoints = section
           , text_ " in various libraries. One of the most magical aspects of "
           , D.code__ "Event"
           , text_
-              " is the unique and intuitive way fixed points relate to events. In this section, we'll define what fixed points are in general before delving into their "
+              " is the unique and intuitive way fixed points relate to events. In this section, we’ll define what fixed points are in general before delving into their "
           , D.code__ "Event"
           , text_ "-specific representation."
           ]

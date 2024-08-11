@@ -17,7 +17,7 @@ lifecycleMethods = section
       pure
         [ D.p_
             [ text_
-                "If you're building a game with Deku, you're likely used to a different effect model than than the webapp-y one described above. Engines like Unity and Unreal provide two basic functions for "
+                "If you’re building a game with Deku, you’re likely used to a different effect model than than the webapp-y one described above. Engines like Unity and Unreal provide two basic functions for "
             , D.code__ "GameObject"
             , text_ "s (Unity) or "
             , D.code__ "Actor"
@@ -52,7 +52,7 @@ lifecycleMethods = section
                 " section. Providers are a category of effects. The specific effect is that of "
             , D.i__ "providing"
             , text_
-                " information to an otherwise pure component. In this section, we'll expand upon that notion to create an effect system with a "
+                " information to an otherwise pure component. In this section, we’ll expand upon that notion to create an effect system with a "
             , D.code__ "BeginPlay"
             , text_ " function. "
             , D.i__ "In anger"

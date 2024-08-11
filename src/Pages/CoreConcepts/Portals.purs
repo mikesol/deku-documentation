@@ -63,7 +63,7 @@ portals = page
           ]
       , D.p_
           [ text_
-              "You've read the Deku docs, you're itching to create your first game, and you decide to make a game that involves moving a video sprite from tile to tile. Nice!"
+              "You've read the Deku docs, you’re itching to create your first game, and you decide to make a game that involves moving a video sprite from tile to tile. Nice!"
           ]
       , Deku.do
           setSquare /\ square <- useState TL
@@ -89,7 +89,7 @@ portals = page
           ]
       , D.p_
           [ text_
-              "Let's redo the example above with portals. As you click on the squares, you'll see that the video continues uninterrupted."
+              "Let's redo the example above with portals. As you click on the squares, you’ll see that the video continues uninterrupted."
           ]
       , Deku.do
           ifr <- portal myIframe

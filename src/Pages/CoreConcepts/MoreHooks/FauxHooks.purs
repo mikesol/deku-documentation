@@ -17,7 +17,7 @@ fauxHooks = section
       pure
         [ D.p_
             [ text_
-                "They look like hooks, they feel like hooks, but they're not hooks! Deku has a "
+                "They look like hooks, they feel like hooks, but they’re not hooks! Deku has a "
             , D.code__ "Deku.Effect"
             , text_ " module that, in general, has API parity with"
             , D.code__ "Deku.Hooks"

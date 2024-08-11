@@ -20,7 +20,7 @@ import Deku.Toplevel (runInBody)
 import Effect (Effect)"""
       , D.p_
           [ text_
-              "PureScript, like Java and Haskell, has a pretty tiny core language. That means that, to get most things done, you'll need to import a few types and terms from various libraries."
+              "PureScript, like Java and Haskell, has a pretty tiny core language. That means that, to get most things done, you’ll need to import a few types and terms from various libraries."
           ]
       , D.p_
           [ text_
@@ -32,7 +32,7 @@ import Effect (Effect)"""
               " from the Prelude winds up getting imported. This is because the Prelude's content is a veritable "
           , D.i_ [ text_ "Greatest Hits of Functional Programming" ]
           , text_
-              " and you'll likely need much of it to get stuff done."
+              " and you’ll likely need much of it to get stuff done."
           ]
       , proTip
           { header: text_ "Prelude etiquette"

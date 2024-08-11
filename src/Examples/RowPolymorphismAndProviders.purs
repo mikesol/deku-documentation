@@ -74,11 +74,11 @@ app runExample = runExample Deku.do
   Env
     { interjection: "Oh and..."
     , libAwesome:
-        { s1: "I'm awesome!"
+        { s1: "I’m awesome!"
         , s2: "Heck yeah!"
         , cont
         }
-    , libGreat: { x1: "I'm great!" }
+    , libGreat: { x1: "I’m great!" }
     } # do
     awe <- libAwesome
     pure $ D.div_ [ text_ "In all honesty...", awe ]

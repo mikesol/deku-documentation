@@ -39,16 +39,16 @@ import Deku.Control (text_)
 import Deku.Toplevel (ssrInBody)
 
 main :: Effect Unit
-main = void $ ssrInBody (text_ "I'm main!")
+main = void $ ssrInBody (text_ "I’m main!")
 """
       , D.p_
           [ text_ "This needs a server-side DOM polyfill like "
           , D.code__ "jsdom"
           , text_
-              " to work. The docs you're reading are built this way. Check out the source code for this page and be bedazzled by the magic of its pre-rendered HTML."
+              " to work. The docs you’re reading are built this way. Check out the source code for this page and be bedazzled by the magic of its pre-rendered HTML."
           ]
       , D.p_
-          [ text_ "If you're just building a static site, you can use "
+          [ text_ "If you’re just building a static site, you can use "
           , D.code__ "ssrInBody"
           , text_
               " and ignore the return value. However, most sites, including this one, have interactive bits. In that case, stash the output of "
@@ -61,7 +61,7 @@ main = void $ ssrInBody (text_ "I'm main!")
           """
 module MyAwesomeApp where
 
-myAwesomeApp = text_ "I'm awesome!"
+myAwesomeApp = text_ "I’m awesome!"
 
 -- after which one does ...
 

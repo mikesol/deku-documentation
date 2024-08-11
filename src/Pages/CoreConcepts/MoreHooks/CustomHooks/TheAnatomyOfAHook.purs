@@ -38,7 +38,7 @@ theAnatomyOfAHook = subsection
             [ text_ "Note that the "
             , D.code__ "Hook"
             , text_
-                " type constructor is actually a function that takes the hook creator as an argument and returns whatever is in your hook passed through that creator. The flow may seem a bit odd at first, but you'll get the hang of it! Just remember: to make a hook, make sure to accept a "
+                " type constructor is actually a function that takes the hook creator as an argument and returns whatever is in your hook passed through that creator. The flow may seem a bit odd at first, but you’ll get the hang of it! Just remember: to make a hook, make sure to accept a "
             , D.i__ "function"
             , text_
                 " as the first parameter and, as the last step, apply that function to the content of your hook. In the example above, we call the function "

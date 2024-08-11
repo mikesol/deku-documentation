@@ -11,7 +11,7 @@ safetyWithSelf = subsection
   { title: "Safety with Self"
   , matter: pure
       [ D.p_
-          [ text_ "Because you're working with the raw DOM when you use "
+          [ text_ "Because you’re working with the raw DOM when you use "
           , D.code__ "Self"
           , text_ " and "
           , D.code__ "SelfT"

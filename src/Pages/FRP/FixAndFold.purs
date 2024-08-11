@@ -25,7 +25,7 @@ fixAndFold = page
               " function over and over in this documentation, and yet we haven't been able to define it yet. To get there, we needed a thorough understanding of "
           , D.code__ "Event"
           , text_
-              "s, their instances, and how sampling works. Armed with that knowledge, we'll be able to precisely define what "
+              "s, their instances, and how sampling works. Armed with that knowledge, we’ll be able to precisely define what "
           , D.code__ "fold"
           , text_ " is, and even more generally, what "
           , D.code__ "fix"

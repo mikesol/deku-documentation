@@ -108,7 +108,7 @@ shorthandListeners = subsection
             ]
         , D.p_
             [ text_
-                " As an example, consider the following slider. If you open your Developer Console and move the slider below, you'll see it light up with numbers!"
+                " As an example, consider the following slider. If you open your Developer Console and move the slider below, you’ll see it light up with numbers!"
             ]
         , example
         , D.p__

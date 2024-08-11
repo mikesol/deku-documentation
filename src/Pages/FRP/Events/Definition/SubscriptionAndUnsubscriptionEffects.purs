@@ -32,7 +32,7 @@ subscriptionAndUnsubscriptionEffects = subsection
   , matter: pure
       [ D.p_
           [ text_
-              "To get a better sense of how these subscription and unsubscription effects work in practice, let's create a small PureScript program that uses an event to update the DOM. The program uses the raw DOM API without any frameworks. In doing so, we'll see how the event contract plays out step by step."
+              "To get a better sense of how these subscription and unsubscription effects work in practice, let's create a small PureScript program that uses an event to update the DOM. The program uses the raw DOM API without any frameworks. In doing so, we’ll see how the event contract plays out step by step."
           ]
       , psCodeWithLink Examples.HandRolledEvent
       , D.blockquote
@@ -143,7 +143,7 @@ u"""
           ]
       , D.p_
           [ text_
-              "You may be wondering: Why have such a backwards control flow just to update stuff in the DOM? Good question! The reason is because, as we'll learn in the following sections, "
+              "You may be wondering: Why have such a backwards control flow just to update stuff in the DOM? Good question! The reason is because, as we’ll learn in the following sections, "
           , D.code__ "Event"
           , text_
               " can now act as a killer abstraction for which we will define all sorts of typeclass instances and functions to supercharge our application writing while benefiting from the fast performance of this example."

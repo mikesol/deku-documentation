@@ -24,7 +24,7 @@ main = ..."""
             , text_
                 " is where the main action happens. If you take a peek in the Deku starter app you created in the "
             , routeLink GettingStarted
-            , text_ " section, you'll see that "
+            , text_ " section, you’ll see that "
             , D.code__ "main"
             , text_ " is called from "
             , D.code_ [ text_ "index.js" ]

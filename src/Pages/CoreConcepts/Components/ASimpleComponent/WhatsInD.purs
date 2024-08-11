@@ -36,7 +36,7 @@ whatsInD = subsection
         , text_ " and the pugnacious "
         , D.code_ [ text_ "D.noscript_" ]
         , text_
-            ". Basically, if it's in the DOM, it's in Deku, and if you can't find what you're looking for, you'll learn to add it in the "
+            ". Basically, if it's in the DOM, it's in Deku, and if you can't find what you’re looking for, you’ll learn to add it in the "
         , routeLink CustomElements
         , text_ " section."
         ]

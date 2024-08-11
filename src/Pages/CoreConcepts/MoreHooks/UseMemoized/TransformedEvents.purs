@@ -24,7 +24,7 @@ transformedEvents = subsection
                 "? Because it works off of a prefabbed script, aka the incoming,"
             , D.code__ "Poll"
             , text_
-                ", not unlike a rant. This is subtly different than memoization (we'll see why later) but for now, you can think of it like memoization."
+                ", not unlike a rant. This is subtly different than memoization (we’ll see why later) but for now, you can think of it like memoization."
             ]
         , example
         , D.p_

@@ -16,7 +16,7 @@ timeLeaks = subsection
       pure
         [ D.p_
             [ text_
-                "We've seen that fixed points can be dangerous because they lead to potentially infinite loops. But there's another, even more devious way that they're dangerous - "
+                "We've seen that fixed points can be dangerous because they lead to potentially infinite loops. But there's another, even more devious way that they’re dangerous - "
             , D.i__ "time leaks"
             , text_ " ⌛😵‍💫."
             ]
@@ -74,10 +74,10 @@ timeLeaks = subsection
             ]
         , D.p_
             [ text_
-                "There's an important semantic distinction between the first and second examples that leads to this outcome. In the first example, we're creating a fixed point for a type of "
+                "There's an important semantic distinction between the first and second examples that leads to this outcome. In the first example, we’re creating a fixed point for a type of "
             , D.code__ "Effect b"
             , text_
-                ". This is all well and good, but look at how we're using it. We're left binding it, then running an effectful computation "
+                ". This is all well and good, but look at how we’re using it. We're left binding it, then running an effectful computation "
             , D.code__ "f"
             , text_
                 ", and then emitting the result. But as monads are just blueprints for programs yet to be executed, by continuously building off of the incoming "
@@ -105,7 +105,7 @@ timeLeaks = subsection
             ]
         , D.p_
             [ text_
-                "This difference is subtle, and unless you're an experienced FRP-er, it is difficult to repair time leaks, let alone spot them. And when you do, while you may get the eternal admiration of your FRP community, you will probably spend hours obsessively pouring over the problem that you could have spent doing other things. So, here's a list of ways to avoid time leaks:"
+                "This difference is subtle, and unless you’re an experienced FRP-er, it is difficult to repair time leaks, let alone spot them. And when you do, while you may get the eternal admiration of your FRP community, you will probably spend hours obsessively pouring over the problem that you could have spent doing other things. So, here's a list of ways to avoid time leaks:"
             ]
         , D.ul_
             [ D.li__
@@ -121,7 +121,7 @@ timeLeaks = subsection
                 ]
             , D.li_
                 [ text_
-                    "If (when) you're using Deku, do all of the effectful work in listeners like "
+                    "If (when) you’re using Deku, do all of the effectful work in listeners like "
                 , D.code__ "click"
                 , text_ " or "
                 , D.code__ "slider"

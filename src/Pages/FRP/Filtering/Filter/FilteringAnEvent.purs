@@ -54,12 +54,12 @@ filteringAnEvent = subsection
                         , text_ " and "
                         , D.code__ "dredge"
                         , text_
-                            " and we've put up with it, but now you're not even pretending anymore. You're calling "
+                            " and we've put up with it, but now you’re not even pretending anymore. You're calling "
                         , D.code__ "filter"
                         , text_ " on an "
                         , D.code__ "Poll"
                         , text_
-                            " in the example above and you're passing it off as an event? What gives?"
+                            " in the example above and you’re passing it off as an event? What gives?"
                         ]
                     ]
                 , D.p_

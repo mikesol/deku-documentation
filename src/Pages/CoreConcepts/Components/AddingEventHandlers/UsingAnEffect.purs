@@ -37,7 +37,7 @@ usingAnEffect = subsection
                     , text_ " also pulls double duty (or "
                     , D.code__ "do"
                     , text_
-                        "ty if you're into puns) and is used to write sequential computations. But when there's only one computation, like in the example above, it acts like parentheses. If you think it's unfair that one linguistic construct can "
+                        "ty if you’re into puns) and is used to write sequential computations. But when there's only one computation, like in the example above, it acts like parentheses. If you think it's unfair that one linguistic construct can "
                     , D.code__ "do"
                     , text_
                         " multiple things at the same time, try learning how many things the word "

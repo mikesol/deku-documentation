@@ -20,7 +20,7 @@ movingElements = subsection
                 "The "
             , D.code__ "useDyn"
             , text_
-                " hook can be destructured to get some useful methods. In this section, we'll see how the "
+                " hook can be destructured to get some useful methods. In this section, we’ll see how the "
             , D.code__ "sendTo"
             , text_
                 " function moves an element of a dynamic list to a different position."

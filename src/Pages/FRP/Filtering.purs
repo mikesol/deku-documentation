@@ -19,7 +19,7 @@ filtering = page
           ]
       , D.p_
           [ text_
-              "If you're implementing any sort of client-side search bar or content-picker, filtering is a must. This section will show you how to filter events."
+              "If you’re implementing any sort of client-side search bar or content-picker, filtering is a must. This section will show you how to filter events."
           ]
       ]
   , sections:

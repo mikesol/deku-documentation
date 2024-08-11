@@ -26,7 +26,7 @@ thePollType = subsection
           , D.code__ "b"
           , text_ " in exchange for an "
           , D.code__ "a"
-          , text_ ", I'll give you an event-ful of "
+          , text_ ", I’ll give you an event-ful of "
           , D.code__ "b"
           , text_
               "s back.” Importantly, to fulfill the contract, you don't know what "

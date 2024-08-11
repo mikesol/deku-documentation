@@ -61,7 +61,7 @@ theTemporalityOfPure = subsection
             ]
         , D.p_
             [ text_
-                "Let's walk through the laws to verify that they're satisfied by our implementations of "
+                "Let's walk through the laws to verify that they’re satisfied by our implementations of "
             , D.code__ "apply"
             , text_ " and "
             , D.code__ "pure"
@@ -134,7 +134,7 @@ theTemporalityOfPure = subsection
         , D.div [ DA.klass_ "text-right" ] [ text_ "∎" ]
         , D.p_
             [ text_
-                "Now that we've gotten that out of the way, let's do what y'all came here for - a giant fizz-bang using applicatives! Specifically, we'll use the fact that "
+                "Now that we've gotten that out of the way, let's do what y'all came here for - a giant fizz-bang using applicatives! Specifically, we’ll use the fact that "
             , D.code__ "Event"
             , text_ "'s instance of "
             , D.code__ "Semigroup"
@@ -172,7 +172,7 @@ theTemporalityOfPure = subsection
                     "s are closely related to "
                 , D.code__ "Event"
                 , text_
-                    "s, however, and have been since the dawn of FRP. As promised, we'll learn more about them later in the docs."
+                    "s, however, and have been since the dawn of FRP. As promised, we’ll learn more about them later in the docs."
                 ]
             }
         ]

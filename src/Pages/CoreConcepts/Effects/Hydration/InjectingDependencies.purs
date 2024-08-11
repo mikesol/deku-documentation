@@ -25,7 +25,7 @@ injectingDependencies = subsection
                 " that reports its own presence or absence via a REST API call on mount and dismount."
             ]
         , D.p__
-            "In the following application, we'll implement a miniature version of Image Roulette with dummy functions for the following API calls:"
+            "In the following application, we’ll implement a miniature version of Image Roulette with dummy functions for the following API calls:"
         , D.ul_
             [ D.li_
                 [ D.code__ "fetchNewRandomImage"

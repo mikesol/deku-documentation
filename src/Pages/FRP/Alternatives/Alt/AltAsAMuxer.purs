@@ -17,7 +17,7 @@ altAsAMuxer = subsection
         Examples.AltAsAMuxer
       pure
         [ D.p_
-            [ text_ "In the example below, we'll use "
+            [ text_ "In the example below, we’ll use "
             , D.code__ "alt"
             , text_ ", aka "
             , D.code__ "<|>"

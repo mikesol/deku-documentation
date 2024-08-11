@@ -14,7 +14,7 @@ quickStart = section
   , topmatter: pure
       [ D.p_
           [ text_
-              "Whether you're creating a greenfield project or integrating Deku into an existing application, we've got you covered!"
+              "Whether you’re creating a greenfield project or integrating Deku into an existing application, we've got you covered!"
           ]
       ]
   , subsections:

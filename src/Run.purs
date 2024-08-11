@@ -54,7 +54,7 @@ instance Show ScrolledSection where
 
 -- it's impossible to prevent this function from entering into an infinite loop
 -- so the best we can do is cap it at a reasonable level
--- it seems like it will never go beyond 3 iterations, so we'll set 7 as the upper bound
+-- it seems like it will never go beyond 3 iterations, so we’ll set 7 as the upper bound
 getScrolledSection :: Int -> (Int -> Effect ScrolledSection) -> Effect Int
 getScrolledSection startingAt f = go 0 ScrollCheckStart startingAt startingAt
   where

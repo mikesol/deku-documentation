@@ -24,7 +24,7 @@ theFixFunction = subsection
                 "If we consider events as streams of values, one way to build intuition about "
             , D.code__ "fix"
             , text_
-                " with respect to events is to think of streams that feed into each other in the natural world. Imagine you're at a sunny, warm beach. You dig a little canal from the sand down into the ocean and create a small loop for water to feed back into itself. Assuming that the water you pour into the canal has enough force when it reaches the loop, some particles will go around, rejoin the stream, and even potentially go around again before they empty into the ocean."
+                " with respect to events is to think of streams that feed into each other in the natural world. Imagine you’re at a sunny, warm beach. You dig a little canal from the sand down into the ocean and create a small loop for water to feed back into itself. Assuming that the water you pour into the canal has enough force when it reaches the loop, some particles will go around, rejoin the stream, and even potentially go around again before they empty into the ocean."
             ]
         , D.p_
             [ text_

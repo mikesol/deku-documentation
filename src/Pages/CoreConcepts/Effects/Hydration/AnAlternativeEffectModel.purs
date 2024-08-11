@@ -17,7 +17,7 @@ anAlternativeEffectModel = subsection
           ]
       , D.p_
           [ text_
-              "Why the austerity? Because if you're writing a game and aiming for 60 FPS, you can't mess around. Random side-effects here and there add up and tank performance. If you're reading this documentation, it's likely because you too are obsessively anti-jank. Deku wages this crusade against jank at every level of a project, and the docs below will give you helpful hints on how to do it."
+              "Why the austerity? Because if you’re writing a game and aiming for 60 FPS, you can't mess around. Random side-effects here and there add up and tank performance. If you’re reading this documentation, it's likely because you too are obsessively anti-jank. Deku wages this crusade against jank at every level of a project, and the docs below will give you helpful hints on how to do it."
           ]
       ]
   }

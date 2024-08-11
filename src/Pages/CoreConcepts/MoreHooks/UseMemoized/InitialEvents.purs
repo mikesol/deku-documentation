@@ -16,7 +16,7 @@ initialEvents = subsection
       pure
         [ D.p_
             [ text_
-                "Sometimes, rants just come outta nowhere. For example, if you're building a question-answer app that needs to perform a computation and compute the response. In these cases, you can use "
+                "Sometimes, rants just come outta nowhere. For example, if you’re building a question-answer app that needs to perform a computation and compute the response. In these cases, you can use "
             , D.code__ "useRant'"
             , text_
                 ". This hook provides the opportunity to map over the internal event, and it is the result of the mapped computation that is memoized."

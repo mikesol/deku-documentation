@@ -30,7 +30,7 @@ usingTheHookInText = subsection
             { header: text_ "Raw values versus polls"
             , message: D.div_
                 [ text_
-                    "If you're coming from React, the fact that Deku hooks do not contain raw values like "
+                    "If you’re coming from React, the fact that Deku hooks do not contain raw values like "
                 , D.code__ "Number"
                 , text_ " or "
                 , D.code__ "String"
@@ -39,11 +39,11 @@ usingTheHookInText = subsection
                 , text_ " and "
                 , D.code__ "Poll String"
                 , text_
-                    " will be a big change. Even though they're not raw values, though, they can "
+                    " will be a big change. Even though they’re not raw values, though, they can "
                 , D.i__ "almost"
                 , text_ " be used as such. In the "
                 , routeLink Applicatives
-                , text_ " section we'll learn how to do this."
+                , text_ " section we’ll learn how to do this."
                 ]
             }
         , D.p_
@@ -58,7 +58,7 @@ usingTheHookInText = subsection
         , D.p_
             [ text_ "To use this "
             , D.code__ "Poll"
-            , text_ " as DOM text, we'll use the "
+            , text_ " as DOM text, we’ll use the "
             , D.code__ "text"
             , text_ " function."
             , D.code__ "text"

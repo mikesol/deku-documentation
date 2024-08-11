@@ -37,6 +37,6 @@ solvingDifferentialEquations = subsection
             ]
         , example
         , D.p__
-            "Granted, these methods may not be immediately useful if you're using Deku to build a SaaS dashboard or documentation site. But the day you're hired by the American Calculus Lovers' Association to build their website, you'll have a nice head start!"
+            "Granted, these methods may not be immediately useful if you’re using Deku to build a SaaS dashboard or documentation site. But the day you’re hired by the American Calculus Lovers' Association to build their website, you’ll have a nice head start!"
         ]
   }

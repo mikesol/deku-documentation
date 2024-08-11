@@ -35,7 +35,7 @@ triggerAff = subsection
             ]
         , D.p_
             [ text_
-                "The following example will emit an aff on each event and the affs will execute one after the other. It does no cancellation, so if affs pile up, they will keep going until the element leaves the screen. If you're a glutton for punishment, click the link really fast ~20 times while watching your network tab."
+                "The following example will emit an aff on each event and the affs will execute one after the other. It does no cancellation, so if affs pile up, they will keep going until the element leaves the screen. If you’re a glutton for punishment, click the link really fast ~20 times while watching your network tab."
             ]
         , example
         , proTip

@@ -38,7 +38,7 @@ import Deku.Control (text_)
 import Deku.Toplevel (runInBody)
 
 main :: Effect Unit
-main = void $ runInBody (text_ "I'm main!")
+main = void $ runInBody (text_ "I’m main!")
 """
       , D.p_
           [ text_ "You would then define your "

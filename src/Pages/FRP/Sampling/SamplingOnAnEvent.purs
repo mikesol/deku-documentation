@@ -16,7 +16,7 @@ samplingOnAnEvent = section
   , topmatter: pure
       [ D.p_
           [ text_
-              "Before we look at effect systems, it's important to understand sampling in FRP. It's the mildest type of effect - one that grafts the temporality of one event onto another. It's also unlike other effect systems we'll see later down the line because we can accomplish these directly with combinators over "
+              "Before we look at effect systems, it's important to understand sampling in FRP. It's the mildest type of effect - one that grafts the temporality of one event onto another. It's also unlike other effect systems we’ll see later down the line because we can accomplish these directly with combinators over "
           , D.code__ "Event"
           , text_ "and"
           , D.code__ "Poll"

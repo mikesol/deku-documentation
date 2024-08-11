@@ -13,7 +13,7 @@ typeSafety = subsection
   , matter: pure
       [ D.p_
           [ text_
-              "Going back to our HTML string, you'll see that it's actually not a "
+              "Going back to our HTML string, you’ll see that it's actually not a "
           , D.code__ "String"
           , text_ " in the “the type of this term is "
           , D.code__ "String"
@@ -45,7 +45,7 @@ typeSafety = subsection
               " instead of at runtime. That means you do not need to eat up precious CPU cycles in the browser "
           , D.i__ "and"
           , text_
-              " you'll weed out errors earlier. If the HTML isn't valid, your program won't compile."
+              " you’ll weed out errors earlier. If the HTML isn't valid, your program won't compile."
           ]
       , D.p_
           [ text_
@@ -67,7 +67,7 @@ main = runInBody ((Proxy :: Proxy
 """
       , D.p_
           [ text_
-              "While the message could be better by identifying line numbers (we're working on this…), it identifies the HTML tag mismatch that needs to be corrected. Once we correct it, the program compiles!"
+              "While the message could be better by identifying line numbers (we’re working on this…), it identifies the HTML tag mismatch that needs to be corrected. Once we correct it, the program compiles!"
           ]
       ]
   }

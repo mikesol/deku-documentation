@@ -33,7 +33,7 @@ monoids = section
                 , text_ " and "
                 , D.code__ "Monoid"
                 , text_
-                    " instances for Deku components, we're referring to components as defined in the "
+                    " instances for Deku components, we’re referring to components as defined in the "
                 , routeLink Components
                 , text_
                     " section. That is, they are PureScript terms with type "

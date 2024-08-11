@@ -42,10 +42,10 @@ theUseDynHook = subsection
             , D.code__ "Poll Int"
             , text_ " to turn it into "
             , D.code__ "Poll String"
-            , text_ ". Here, we're mapping over an "
+            , text_ ". Here, we’re mapping over an "
             , D.code__ "Poll"
             , text_
-                " to transform it into a Deku component. So instead of streaming text to a text node, we're streaming components to the DOM, but it's the same pattern!"
+                " to transform it into a Deku component. So instead of streaming text to a text node, we’re streaming components to the DOM, but it's the same pattern!"
             ]
         ]
   }

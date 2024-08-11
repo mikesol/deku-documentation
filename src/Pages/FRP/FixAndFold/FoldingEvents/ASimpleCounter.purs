@@ -23,7 +23,7 @@ aSimpleCounter = subsection
                 "-based methods we learned early in this documentation and one using folding. They'll both do the same thing, but the "
             , D.code__ "fold"
             , text_
-                " method is a little classier, as you'll be able to brag to your friends that you're using fixed points. Your friends may appear indifferent, but they'll secretly envy you."
+                " method is a little classier, as you’ll be able to brag to your friends that you’re using fixed points. Your friends may appear indifferent, but they’ll secretly envy you."
             ]
         , example
         ]

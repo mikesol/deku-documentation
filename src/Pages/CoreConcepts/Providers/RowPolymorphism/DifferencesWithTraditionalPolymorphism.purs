@@ -40,6 +40,6 @@ differencesWithTraditionalPolymorphism = subsection
           , text_ "."
           ]
       , D.p__
-          "Thinking back to our goal of writing Deku libraries, if we encode a provider as a polymorphic row, we're able to construct an API where we specify our dependencies but allow for a row that's larger than what we need. That way, multiple libraries can be blended together, where each one is an index in a row."
+          "Thinking back to our goal of writing Deku libraries, if we encode a provider as a polymorphic row, we’re able to construct an API where we specify our dependencies but allow for a row that's larger than what we need. That way, multiple libraries can be blended together, where each one is an index in a row."
       ]
   }

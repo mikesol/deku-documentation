@@ -37,12 +37,12 @@ theMakeEventFunction = subsection
             , D.code__ "ST"
             , text_ " monad, "
             , D.i__ "without"
-            , text_ " triggering additional side effects. As we'll see in the "
+            , text_ " triggering additional side effects. As we’ll see in the "
             , routeLink Sampling
             , text_
                 " section, this is done so that we can push all side effects to the boundaries of our program."
             ]
         , D.p__
-            "In theory, you should never have to use this low-level function. If you do, then chances are you're reading the source code, at which point these docs are but a memory. We miss you, come back 🥲"
+            "In theory, you should never have to use this low-level function. If you do, then chances are you’re reading the source code, at which point these docs are but a memory. We miss you, come back 🥲"
         ]
   }

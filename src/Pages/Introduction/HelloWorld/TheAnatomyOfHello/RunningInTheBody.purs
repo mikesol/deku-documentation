@@ -25,7 +25,7 @@ runningInTheBody = subsection
                 ]
                 [ text_ "body" ]
             , text_
-                " of a webpage. You can also embed a Deku app in an arbitrary element. For now, we'll stick to presenting our app in a webpage's body."
+                " of a webpage. You can also embed a Deku app in an arbitrary element. For now, we’ll stick to presenting our app in a webpage's body."
             ]
         ]
   }

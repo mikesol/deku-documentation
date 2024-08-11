@@ -20,7 +20,7 @@ usingAnExistingProject = subsection
           "$ npm install -D purescript spago@next purs-tidy && npx spago init"
       , D.p_
           [ text_
-              "Once PureScript is installed, or if you're working from a project with PureScript already installed, you can install Deku with the following command."
+              "Once PureScript is installed, or if you’re working from a project with PureScript already installed, you can install Deku with the following command."
           ]
       , shSessionCode "$ npx spago install deku"
       , disclaimer

@@ -90,7 +90,7 @@ myFunction = fix (\f a -> if a > 100 then 100 else f (a + 1))
           ]
       , D.p_
           [ text_
-              "If your brain isn't hurting yet, you either have studied this stuff before, you're a genius, or you're not thinking hard enough. In the above example, "
+              "If your brain isn't hurting yet, you either have studied this stuff before, you’re a genius, or you’re not thinking hard enough. In the above example, "
           , D.code__ "f"
           , text_ " "
           , D.i__ "is"
@@ -145,7 +145,7 @@ myFunction = fix (\f a -> if a > 100 then 100 else f (a + 1))
           ]
       , D.p_
           [ text_
-              "This power comes at a price, however. Repeated application of anything in computing runs the risk of going into an infinite loop if you're not careful. So, to avoid overflow, there has to be some reasonable end condition that applies in all cases."
+              "This power comes at a price, however. Repeated application of anything in computing runs the risk of going into an infinite loop if you’re not careful. So, to avoid overflow, there has to be some reasonable end condition that applies in all cases."
           ]
       ]
   }

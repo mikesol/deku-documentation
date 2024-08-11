@@ -19,7 +19,7 @@ whyDeku = section
           ]
       , D.p_
           [ text_
-              "If you're building a game or a complex web app and would like to create it using a functional style of programming, Deku is a great fit! It is fast, accurate, and encourages the use of expressive and efficient patterns for building web apps."
+              "If you’re building a game or a complex web app and would like to create it using a functional style of programming, Deku is a great fit! It is fast, accurate, and encourages the use of expressive and efficient patterns for building web apps."
           ]
       , D.p_
           [ text_

@@ -14,7 +14,7 @@ arraysAllTheWayDown = subsection
   , matter: pure
       [ D.p_
           [ text_
-              "Let's revisit the previous example, but we'll expand it array-by-array to show how the Deku DOM is organized. The example starts with a single enclosing "
+              "Let's revisit the previous example, but we’ll expand it array-by-array to show how the Deku DOM is organized. The example starts with a single enclosing "
           , D.code_ [ text_ "div" ]
           , text_ " created by the instruction "
           , D.code_ [ text_ "D.div_" ]
@@ -92,7 +92,7 @@ main = runInBody
       , psCode """D.ul_ $ map D.li__ [ "A", "B", "C" ]"""
       , D.p_
           [ text_
-              "Deku is designed to allow you to use garden-variety functional programming patterns, like mapping over arrays, to build your DOM. In fact, that's how this documentation is built: all of the text you're reading is stored in structures that Deku marshalls into the DOM."
+              "Deku is designed to allow you to use garden-variety functional programming patterns, like mapping over arrays, to build your DOM. In fact, that's how this documentation is built: all of the text you’re reading is stored in structures that Deku marshalls into the DOM."
           ]
       ]
   }

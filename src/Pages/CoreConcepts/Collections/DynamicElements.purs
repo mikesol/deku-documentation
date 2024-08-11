@@ -20,7 +20,7 @@ dynamicElements = section
               "Sometimes, instead of dealing with a fixed collection of components, you have a dynamic collection. Classic examples of this include todo lists and contact lists in a chat app. Deku provides the "
           , D.code__ "useDyn"
           , text_
-              " hook to facilitate the rendering of dynamic collections. In the following section, we'll build intuition for "
+              " hook to facilitate the rendering of dynamic collections. In the following section, we’ll build intuition for "
           , D.code__ "useDyn"
           , text_ " through a small Todo app."
           ]

@@ -17,7 +17,7 @@ usingIonic = section
           [ text_
               "You can also use this method to work with components created by libraries like "
           , targetedLink "https://stenciljs.com/" [ text_ "Stencil.js" ]
-          , text_ ". In this section, we'll bring stencil components from "
+          , text_ ". In this section, we’ll bring stencil components from "
           , targetedLink "https://github.com/Danktuary/wc-discord-message"
               [ D.code__ "wc-discord-message" ]
           , text_ " into Deku."

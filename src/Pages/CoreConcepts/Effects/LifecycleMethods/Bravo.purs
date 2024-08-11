@@ -32,10 +32,10 @@ bravo = subsection
             ]
         , D.p_
             [ text_
-                "Now that you've meticulously poured over and internalized all of the text and examples in this section, you're pretty far down the FRP rabbit hole. As the light of day recedes, you see that a cranny that may give way to a whole new chapter of this adventure. Against all reason, and certainly against the objections of your colleagues, friends, and family, you decide to keep going."
+                "Now that you've meticulously poured over and internalized all of the text and examples in this section, you’re pretty far down the FRP rabbit hole. As the light of day recedes, you see that a cranny that may give way to a whole new chapter of this adventure. Against all reason, and certainly against the objections of your colleagues, friends, and family, you decide to keep going."
             ]
         , D.p_
-            [ text_ "In the next section, you're going to learn about "
+            [ text_ "In the next section, you’re going to learn about "
             , routeLinkWithText Events "Functional Reactive Programming"
             , text_
                 ". It will elevate you from Deku Grand Master to an echelon of Deku prowess that is incomprehensible for those who have not attained it. Along the way, you will bend space-time, defy gravity, quantum-entangle and solve a Saturday NYT crossword puzzle. Read on!"

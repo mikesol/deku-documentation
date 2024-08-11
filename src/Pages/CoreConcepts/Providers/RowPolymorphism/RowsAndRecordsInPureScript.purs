@@ -14,7 +14,7 @@ rowsAndRecordsInPureScript = subsection
   , matter: pure
       [ D.p_
           [ text_
-              "Rows and records are incredibly powerful concepts in PureScript. Many texts about functional programming and dependent types treat rows as an advanced concept, but PureScript has made them first-class citizens of the language to the point where working with them feels natural and easier than many other language features. If you're comfortable writing JSON, you should feel at home with rows and records!"
+              "Rows and records are incredibly powerful concepts in PureScript. Many texts about functional programming and dependent types treat rows as an advanced concept, but PureScript has made them first-class citizens of the language to the point where working with them feels natural and easier than many other language features. If you’re comfortable writing JSON, you should feel at home with rows and records!"
           ]
       , D.p_
           [ text_ "A "
@@ -51,6 +51,6 @@ rowsAndRecordsInPureScript = subsection
 ...
 )"""
       , D.p__
-          "I'm not going to write them all out because it would take ∞ minutes, but convince yourself that one could build a monster row containing every type in a language."
+          "I’m not going to write them all out because it would take ∞ minutes, but convince yourself that one could build a monster row containing every type in a language."
       ]
   }

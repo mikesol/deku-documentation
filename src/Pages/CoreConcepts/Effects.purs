@@ -22,7 +22,7 @@ effects = page
           ]
       , D.p_
           [ text_
-              "If you're familiar with React or Halogen, the word "
+              "If you’re familiar with React or Halogen, the word "
           , D.i__ "effect"
           , text_ " is often used to refer to one of two related concepts:"
           ]
@@ -88,7 +88,7 @@ effects = page
           ]
       , D.p_
           [ text_
-              "This section will explore Deku's effect philosophy and also present some strategies to use when you just can't shake those old React/Halogen effectful habits (we've all been there, you're not alone)."
+              "This section will explore Deku's effect philosophy and also present some strategies to use when you just can't shake those old React/Halogen effectful habits (we've all been there, you’re not alone)."
           ]
       ]
   , sections:

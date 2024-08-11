@@ -47,7 +47,7 @@ theTypeAndContract = subsection
           [ text_ "If you provide me with a way to report values of type "
           , D.code__ "a"
           , text_
-              ", I'll provide you with a way to tell me to start and then stop reporting these values."
+              ", I’ll provide you with a way to tell me to start and then stop reporting these values."
           ]
       , D.p_
           [ text_ "The “reporter” is the argument to the function of type "
@@ -57,7 +57,7 @@ theTypeAndContract = subsection
           ]
       , D.p_
           [ text_
-              "The notion of “sending values back” may sound counter-intuitive, especially if you're used to seeing patterns in functional programming where values of interest are "
+              "The notion of “sending values back” may sound counter-intuitive, especially if you’re used to seeing patterns in functional programming where values of interest are "
           , D.i__ "outputs"
           , text_ " of functions and not inputs. Yet our value of type "
           , D.code__ "a"
@@ -82,7 +82,7 @@ theTypeAndContract = subsection
           , text_
               " the emission of events to the callback. When I left-bind on "
           , D.code__ "Effect (Effect Unit)"
-          , text_ ", I'll get back an "
+          , text_ ", I’ll get back an "
           , D.code__ "Effect Unit"
           , text_ " that's called an "
           , D.i__ "unsubscriber"

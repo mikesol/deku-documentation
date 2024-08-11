@@ -13,7 +13,7 @@ definingIonicCustomElements = subsection
   , matter: pure
       [ D.p_
           [ text_
-              "Before using custom elements, make sure to import them using whatever instructions are given in the README.md of the library you're using. In the case of "
+              "Before using custom elements, make sure to import them using whatever instructions are given in the README.md of the library you’re using. In the case of "
           , D.code__ "wc-discord-message"
           , text_ ", that'd be:"
           ]
@@ -24,6 +24,6 @@ definingIonicCustomElements = subsection
 
 applyPolyfills().then(() => defineCustomElements(window))"""
       , D.p__
-          "You can also import the package via unpkg, which is what this documentation does. It's important to note that Deku can't help you with this. To initialize your components, you'll still need to write some JavaScript or hire a consultant to."
+          "You can also import the package via unpkg, which is what this documentation does. It's important to note that Deku can't help you with this. To initialize your components, you’ll still need to write some JavaScript or hire a consultant to."
       ]
   }

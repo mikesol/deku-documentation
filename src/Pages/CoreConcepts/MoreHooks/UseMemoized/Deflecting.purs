@@ -57,7 +57,7 @@ deflecting = subsection
             [ text_ "Usually, this feature of "
             , D.code__ "useRant"
             , text_
-                " is not an issue because we're dealing with some sort of stream like clicks and the initial value is context specific, so purity doesn't enter the equation. However, sometimes we want to find "
+                " is not an issue because we’re dealing with some sort of stream like clicks and the initial value is context specific, so purity doesn't enter the equation. However, sometimes we want to find "
             , D.i__ "only"
             , text_ " the pure values of a "
             , D.code__ "Poll"
