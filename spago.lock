@@ -137,6 +137,7 @@ workspace:
         - these
         - tidy
         - tidy-codegen
+        - tldr
         - transformers
         - tuples
         - type-equality
@@ -670,7 +671,7 @@ workspace:
   extra_packages:
     deku-core:
       git: https://github.com/mikesol/purescript-deku.git
-      ref: 276f48adde3d9354f61917f7e9ae2ae7b43df6b2
+      ref: 06a06a2908b2a400a0ab9224c8128aa5988e674d
       subdir: deku-core
       dependencies:
         - aff
@@ -699,6 +700,7 @@ workspace:
         - st
         - strings
         - stringutils
+        - tldr
         - transformers
         - tuples
         - unsafe-coerce
@@ -711,7 +713,7 @@ workspace:
         - yoga-json
     deku-css:
       git: https://github.com/mikesol/purescript-deku.git
-      ref: 276f48adde3d9354f61917f7e9ae2ae7b43df6b2
+      ref: 06a06a2908b2a400a0ab9224c8128aa5988e674d
       subdir: deku-css
       dependencies:
         - css
@@ -719,7 +721,7 @@ workspace:
         - hyrule
     deku-dom:
       git: https://github.com/mikesol/purescript-deku.git
-      ref: 276f48adde3d9354f61917f7e9ae2ae7b43df6b2
+      ref: 06a06a2908b2a400a0ab9224c8128aa5988e674d
       subdir: deku-dom
       dependencies:
         - deku-core
@@ -836,6 +838,11 @@ workspace:
         - tuples
         - type-equality
         - unicode
+    tldr:
+      git: https://github.com/mikesol/purescript-tldr.git
+      ref: 7945d3f
+      dependencies:
+        - prelude
 packages:
   aff:
     type: registry
@@ -1096,7 +1103,7 @@ packages:
   deku-core:
     type: git
     url: https://github.com/mikesol/purescript-deku.git
-    rev: 276f48adde3d9354f61917f7e9ae2ae7b43df6b2
+    rev: 06a06a2908b2a400a0ab9224c8128aa5988e674d
     subdir: deku-core
     dependencies:
       - aff
@@ -1125,6 +1132,7 @@ packages:
       - st
       - strings
       - stringutils
+      - tldr
       - transformers
       - tuples
       - unsafe-coerce
@@ -1138,7 +1146,7 @@ packages:
   deku-css:
     type: git
     url: https://github.com/mikesol/purescript-deku.git
-    rev: 276f48adde3d9354f61917f7e9ae2ae7b43df6b2
+    rev: 06a06a2908b2a400a0ab9224c8128aa5988e674d
     subdir: deku-css
     dependencies:
       - css
@@ -1147,7 +1155,7 @@ packages:
   deku-dom:
     type: git
     url: https://github.com/mikesol/purescript-deku.git
-    rev: 276f48adde3d9354f61917f7e9ae2ae7b43df6b2
+    rev: 06a06a2908b2a400a0ab9224c8128aa5988e674d
     subdir: deku-dom
     dependencies:
       - deku-core
@@ -2192,6 +2200,12 @@ packages:
       - tuples
       - type-equality
       - unicode
+  tldr:
+    type: git
+    url: https://github.com/mikesol/purescript-tldr.git
+    rev: 7945d3f41d16035774e1eedd1a239aaeccc9fbab
+    dependencies:
+      - prelude
   transformers:
     type: registry
     version: 6.1.0

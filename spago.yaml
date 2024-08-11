@@ -35,9 +35,13 @@ workspace:
   packageSet:
     registry: 56.4.0
   extraPackages:
+    tldr:
+      git: "https://github.com/mikesol/purescript-tldr.git"
+      ref: "7945d3f"
+      dependencies: [prelude]
     deku-core:
       git: "https://github.com/mikesol/purescript-deku.git"
-      ref: 276f48adde3d9354f61917f7e9ae2ae7b43df6b2
+      ref: 06a06a2908b2a400a0ab9224c8128aa5988e674d
       subdir: deku-core
       dependencies:
         - aff
@@ -66,6 +70,7 @@ workspace:
         - st
         - strings
         - stringutils
+        - tldr
         - transformers
         - tuples
         - unsafe-coerce
@@ -78,7 +83,7 @@ workspace:
         - yoga-json
     deku-dom:
       git: "https://github.com/mikesol/purescript-deku.git"
-      ref: 276f48adde3d9354f61917f7e9ae2ae7b43df6b2
+      ref: 06a06a2908b2a400a0ab9224c8128aa5988e674d
       subdir: deku-dom
       dependencies:
         - deku-core
@@ -89,7 +94,7 @@ workspace:
         - web-touchevents
     deku-css:
       git: "https://github.com/mikesol/purescript-deku.git"
-      ref: 276f48adde3d9354f61917f7e9ae2ae7b43df6b2
+      ref: 06a06a2908b2a400a0ab9224c8128aa5988e674d
       subdir: deku-css
       dependencies:
         - deku-core
