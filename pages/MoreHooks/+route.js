@@ -1,3 +1,1 @@
-import { vike } from '../../output/Vike.MoreHooks'
-
-export default vike.route
+export default '/core-concepts/more-hooks'

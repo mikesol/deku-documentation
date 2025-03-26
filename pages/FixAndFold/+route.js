@@ -1,3 +1,1 @@
-import { vike } from '../../output/Vike.FixAndFold'
-
-export default vike.route
+export default '/functional-reactive-programming/fix-and-fold'

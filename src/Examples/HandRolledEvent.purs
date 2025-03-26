@@ -1,6 +1,6 @@
 module Examples.HandRolledEvent where
 
-import Deku.Toplevel (runInBody)
+import Deku.SPA (runInBody)
 import Prelude
 
 import Control.Monad.Error.Class (throwError)

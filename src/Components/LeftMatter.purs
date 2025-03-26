@@ -74,7 +74,7 @@ leftMatter opts = D.div
       []
   , D.div
       [ DA.klass_
-          "absolute top-16 bottom-0 right-0 hidden h-12 w-px bg-gradient-to-t from-slate-800 dark:block"
+          "absolute top-16 bottom-0 right-0 hidden h-12 w-px bg-linear-to-t from-slate-800 dark:block"
       ]
       []
   , D.div

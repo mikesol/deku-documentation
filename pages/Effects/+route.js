@@ -1,3 +1,1 @@
-import { vike } from '../../output/Vike.Effects'
-
-export default vike.route
+export default '/core-concepts/effects'

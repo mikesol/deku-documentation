@@ -16,7 +16,7 @@ imports = subsection
           """import Prelude
 
 import Deku.Control (text, text_)
-import Deku.Toplevel (runInBody)
+import Deku.SPA (runInBody)
 import Effect (Effect)"""
       , D.p_
           [ text_

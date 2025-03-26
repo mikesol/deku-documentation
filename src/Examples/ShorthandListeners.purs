@@ -5,7 +5,7 @@ import Prelude
 import Deku.DOM as D
 import Deku.DOM.Attributes as DA
 import Deku.DOM.Listeners as DL
-import Deku.Toplevel (runInBody)
+import Deku.SPA (runInBody)
 import Effect (Effect)
 import Effect.Class.Console (logShow)
 import ExampleAssitant (ExampleSignature)

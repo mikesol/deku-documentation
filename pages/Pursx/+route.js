@@ -1,3 +1,1 @@
-import { vike } from '../../output/Vike.Pursx'
-
-export default vike.route
+export default '/core-concepts/pursx'

@@ -1,3 +1,1 @@
-import { vike } from '../../output/Vike.BuildingAndDeploying'
-
-export default vike.route
+export default '/advanced-usage/building-and-deploying'

@@ -24,7 +24,7 @@ type MyHtml =
       <span class="block">Start your free trial today.</span>
     </h2>
     <div class="mt-8 flex justify-center">
-      <div class="inline-flex rounded-md shadow">
+      <div class="inline-flex rounded-md shadow-sm">
         <button class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-5 py-3 text-base font-medium text-white hover:bg-indigo-700">Get started</button>
       </div>
       <div class="ml-3 inline-flex">

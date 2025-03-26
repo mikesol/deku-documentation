@@ -1,3 +1,1 @@
-import { vike } from '../../output/Vike.Providers'
-
-export default vike.route
+export default '/core-concepts/providers'

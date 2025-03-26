@@ -6,7 +6,7 @@ import Deku.Control (text_)
 import Deku.Core (Hook)
 import Deku.DOM as D
 import Deku.Do as Deku
-import Deku.Toplevel (runInBody)
+import Deku.SPA (runInBody)
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
 

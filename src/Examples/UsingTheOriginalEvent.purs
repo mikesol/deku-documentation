@@ -7,7 +7,7 @@ import Deku.Control (text_)
 import Deku.DOM as D
 import Deku.DOM.Attributes as DA
 import Deku.DOM.Listeners as DL
-import Deku.Toplevel (runInBody)
+import Deku.SPA (runInBody)
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
 import Web.Event.Event (type_)

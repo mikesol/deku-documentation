@@ -31,11 +31,11 @@ simpleApps = section
           """module Main where
 
 import Prelude
-import Deku.Toplevel (runInBody)
+import Deku.SPA (runInBody)
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
 import Deku.Control (text_)
-import Deku.Toplevel (runInBody)
+import Deku.SPA (runInBody)
 
 main :: Effect Unit
 main = void $ runInBody (text_ "I’m main!")

@@ -7,7 +7,7 @@ import Data.Newtype (class Newtype, unwrap)
 import Deku.Control (text_)
 import Deku.Core (Nut)
 import Deku.DOM as D
-import Deku.Toplevel (runInBody)
+import Deku.SPA (runInBody)
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
 

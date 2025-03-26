@@ -15,7 +15,7 @@ import Deku.DOM.Listeners as DL
 import Deku.DOM.Self as Self
 import Deku.Do as Deku
 import Deku.Hooks (dynOptions, useDynWith, useRef, useState, useState')
-import Deku.Toplevel (runInBody)
+import Deku.SPA (runInBody)
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
 import FRP.Event.Class ((<|*>))
@@ -40,7 +40,7 @@ buttonClass color =
     """mb-3 inline-flex items-center rounded-md
 border border-transparent bg-COLOR-600 px-3 py-2
 text-sm font-medium leading-4 text-white shadow-sm
-hover:bg-COLOR-700 focus:outline-none focus:ring-2
+hover:bg-COLOR-700 focus:outline-hidden focus:ring-2
 focus:ring-COLOR-500 focus:ring-offset-2"""
 
 app :: ExampleSignature

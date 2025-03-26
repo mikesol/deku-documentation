@@ -29,7 +29,7 @@ derive instance Eq BannerExample
 
 bannerExampleOuterSelected :: String
 bannerExampleOuterSelected =
-  "cursor-pointer flex h-6 rounded-full bg-gradient-to-r from-sky-400/30 via-sky-400 to-sky-400/30 p-px font-medium text-sky-300"
+  "cursor-pointer flex h-6 rounded-full bg-linear-to-r from-sky-400/30 via-sky-400 to-sky-400/30 p-px font-medium text-sky-300"
 
 bannerExampleInnerSelected :: String
 bannerExampleInnerSelected =
@@ -76,7 +76,7 @@ banner { showBanner } = D.div
               , D.div [ DA.klass_ "relative" ]
                   [ D.p
                       [ DA.klass_
-                          "inline bg-gradient-to-r from-indigo-200 via-sky-400 to-indigo-200 bg-clip-text font-display text-5xl tracking-tight text-transparent"
+                          "inline bg-linear-to-r from-indigo-200 via-sky-400 to-indigo-200 bg-clip-text font-display text-5xl tracking-tight text-transparent"
                       ]
                       [ text_ "Introducing Deku." ]
                   , D.p
@@ -92,14 +92,14 @@ banner { showBanner } = D.div
                       ]
                       [ D.a
                           [ DA.klass_
-                              "rounded-full bg-sky-300 py-2 px-4 text-sm font-semibold text-slate-900 hover:bg-sky-200 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-300/50 active:bg-sky-500"
+                              "rounded-full bg-sky-300 py-2 px-4 text-sm font-semibold text-slate-900 hover:bg-sky-200 focus:outline-hidden focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-300/50 active:bg-sky-500"
                           , DA.href_ "/#getting-started"
                           ]
                           [ text_ "Get started" ]
                       , D.a
                           [ DA.target_ "_blank"
                           , DA.klass_
-                              "rounded-full bg-slate-800 py-2 px-4 text-sm font-medium text-white hover:bg-slate-700 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/50 active:text-slate-400"
+                              "rounded-full bg-slate-800 py-2 px-4 text-sm font-medium text-white hover:bg-slate-700 focus:outline-hidden focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/50 active:text-slate-400"
                           , DA.href_
                               "https://github.com/mikesol/purescript-deku"
                           ]
@@ -378,7 +378,7 @@ banner { showBanner } = D.div
                       )
                       []
                   , D.img
-                      ( [ DA.alt_ "A blur over a background"
+                      ( [ DA.alt_ "A blur-sm over a background"
                         , DA.alt_ ""
                         , DA.src_ blurIndigoURL
                         , DA.width_ "567"
@@ -392,26 +392,26 @@ banner { showBanner } = D.div
                       []
                   , D.div
                       [ DA.klass_
-                          "absolute inset-0 rounded-2xl bg-gradient-to-tr from-sky-300 via-sky-300/70 to-blue-300 opacity-10 blur-lg"
+                          "absolute inset-0 rounded-2xl bg-linear-to-tr from-sky-300 via-sky-300/70 to-blue-300 opacity-10 blur-lg"
                       ]
                       []
                   , D.div
                       [ DA.klass_
-                          "absolute inset-0 rounded-2xl bg-gradient-to-tr from-sky-300 via-sky-300/70 to-blue-300 opacity-10"
+                          "absolute inset-0 rounded-2xl bg-linear-to-tr from-sky-300 via-sky-300/70 to-blue-300 opacity-10"
                       ]
                       []
                   , D.div
                       [ DA.klass_
-                          "relative rounded-2xl bg-[#0A101F]/80 ring-1 ring-white/10 backdrop-blur"
+                          "relative rounded-2xl bg-[#0A101F]/80 ring-1 ring-white/10 backdrop-blur-sm"
                       ]
                       [ D.div
                           [ DA.klass_
-                              "absolute -top-px left-20 right-11 h-px bg-gradient-to-r from-sky-300/0 via-sky-300/70 to-sky-300/0"
+                              "absolute -top-px left-20 right-11 h-px bg-linear-to-r from-sky-300/0 via-sky-300/70 to-sky-300/0"
                           ]
                           []
                       , D.div
                           [ DA.klass_
-                              "absolute -bottom-px left-11 right-20 h-px bg-gradient-to-r from-blue-400/0 via-blue-400 to-blue-400/0"
+                              "absolute -bottom-px left-11 right-20 h-px bg-linear-to-r from-blue-400/0 via-blue-400 to-blue-400/0"
                           ]
                           []
                       , Deku.do
@@ -528,7 +528,7 @@ banner { showBanner } = D.div
                                       ]
                                       [ D.button
                                           ( [ DA.klass_
-                                                "mt-8 rounded-full bg-sky-300 py-2 px-4 text-sm font-semibold text-slate-900 hover:bg-sky-200 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-300/50 active:bg-sky-500"
+                                                "mt-8 rounded-full bg-sky-300 py-2 px-4 text-sm font-semibold text-slate-900 hover:bg-sky-200 focus:outline-hidden focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-300/50 active:bg-sky-500"
                                             , DL.click_ \_ -> addConfetti
                                             , DA.ariaLabel_ "Confetti button"
                                             ]

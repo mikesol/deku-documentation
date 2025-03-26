@@ -69,7 +69,7 @@ header
     let
       keepDarkModeMenuOption = (if _ then "" else "hidden ") >>>
         ( _ <>
-            "h-4 w-4 fill-sky-400 [[data-theme=light]_&]:block"
+            "h-4 w-4 fill-sky-400 in-data-[theme=light]:block"
         )
       isLightMode = dark <#> case _ of
         LightMode -> true
@@ -83,7 +83,7 @@ header
     D.header
       ( [ Self.self_ setHeaderElement
         , DA.klass_
-            "sticky top-0 z-50 flex flex-wrap items-center justify-between bg-white px-4 py-5 shadow-md shadow-slate-900/5 transition duration-500 dark:shadow-none sm:px-6 lg:px-8 dark:bg-slate-900/95 dark:backdrop-blur dark:[@supports(backdrop-filter:blur(0))]:bg-slate-900/75"
+            "sticky top-0 z-50 flex flex-wrap items-center justify-between bg-white px-4 py-5 shadow-md shadow-slate-900/5 transition duration-500 dark:shadow-none sm:px-6 lg:px-8 dark:bg-slate-900/95 dark:backdrop-blur-sm dark:[@supports(backdrop-filter:blur(0))]:bg-slate-900/75"
         ]
       )
       [ D.div [ DA.klass_ "mr-6 flex lg:hidden" ]
@@ -109,7 +109,7 @@ header
           , leftMatterMobile
               { darkBoolean, navModalOpen, pageIs, pageWas }
           ]
-      , D.div [ DA.klass_ "relative flex flex-grow basis-0 items-center" ]
+      , D.div [ DA.klass_ "relative flex grow basis-0 items-center" ]
           [ link' GettingStarted empty
               [ D.img
                   ( [ DA.alt_ "Deku logo"
@@ -125,7 +125,7 @@ header
           ]
       , D.div
           [ DA.klass_
-              "relative flex basis-0 justify-end gap-6 sm:gap-8 md:flex-grow"
+              "relative flex basis-0 justify-end gap-6 sm:gap-8 md:grow"
           ]
           [ D.div
               ( [ DA.klass_ "relative z-10"
@@ -227,7 +227,7 @@ header
                       )
                       [ D.div
                           [ DA.klass_
-                              "rounded-md bg-white p-1 shadow ring-1 ring-slate-900/5 dark:bg-slate-700 dark:ring-inset dark:ring-white/5"
+                              "rounded-md bg-white p-1 shadow-sm ring-1 ring-slate-900/5 dark:bg-slate-700 dark:ring-inset dark:ring-white/5"
                           ]
                           [ DS.svg
                               ( [ DSA.viewBox_ "0 0 16 16"
@@ -255,7 +255,7 @@ header
                       )
                       [ D.div
                           [ DA.klass_
-                              "rounded-md bg-white p-1 shadow ring-1 ring-slate-900/5 dark:bg-slate-700 dark:ring-inset dark:ring-white/5"
+                              "rounded-md bg-white p-1 shadow-sm ring-1 ring-slate-900/5 dark:bg-slate-700 dark:ring-inset dark:ring-white/5"
                           ]
                           [ DS.svg
                               ( [ DSA.viewBox_ "0 0 16 16"
@@ -284,7 +284,7 @@ header
                       )
                       [ D.div
                           [ DA.klass_
-                              "rounded-md bg-white p-1 shadow ring-1 ring-slate-900/5 dark:bg-slate-700 dark:ring-inset dark:ring-white/5"
+                              "rounded-md bg-white p-1 shadow-sm ring-1 ring-slate-900/5 dark:bg-slate-700 dark:ring-inset dark:ring-white/5"
                           ]
                           [ DS.svg
                               ( [ DSA.viewBox_ "0 0 16 16"

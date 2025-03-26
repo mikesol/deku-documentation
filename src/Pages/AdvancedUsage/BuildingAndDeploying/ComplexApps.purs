@@ -32,7 +32,7 @@ complexApps = section
           """module Main where
 
 import Prelude
-import Deku.Toplevel (runInBody)
+import Deku.SPA (runInBody)
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
 import Deku.Control (text_)
@@ -68,7 +68,7 @@ myAwesomeApp = text_ "I’m awesome!"
 module SSR where
 
 import Prelude
-import Deku.Toplevel (runInBody)
+import Deku.SPA (runInBody)
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
 import Deku.Control (text_)
@@ -83,7 +83,7 @@ ssr = ssrInBody myAwesomeApp
 module Hydrate where
 
 import Prelude
-import Deku.Toplevel (runInBody)
+import Deku.SPA (runInBody)
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
 import Deku.Control (text_)

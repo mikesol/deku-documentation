@@ -23,7 +23,7 @@ disclaimer { header, message } = D.div
       [ DSA.viewBox_ "0 0 32 32"
       , DSA.fill_ "none"
       , DSA.klass_
-          "h-8 w-8 flex-none [--icon-foreground:theme(colors.amber.900)] [--icon-background:theme(colors.amber.100)]"
+          "h-8 w-8 flex-none [--icon-foreground:var(--color-amber-900)] [--icon-background:var(--color-amber-100)]"
       ]
       [ DS.defs_
           [ DS.radialGradient
@@ -135,7 +135,7 @@ disclaimer { header, message } = D.div
           [ header ]
       , D.div
           [ DSA.klass_
-              "prose mt-2.5 text-amber-800 [--tw-prose-underline:theme(colors.amber.400)] [--tw-prose-background:theme(colors.amber.50)] prose-a:text-amber-900 prose-code:text-amber-900 dark:text-slate-300 dark:[--tw-prose-underline:theme(colors.sky.700)] dark:prose-code:text-slate-300"
+              "prose mt-2.5 text-amber-800 [--tw-prose-underline:var(--color-amber-400)] [--tw-prose-background:var(--color-amber-50)] prose-a:text-amber-900 prose-code:text-amber-900 dark:text-slate-300 dark:[--tw-prose-underline:var(--color-sky-700)] dark:prose-code:text-slate-300"
           ]
           [ message
           ]

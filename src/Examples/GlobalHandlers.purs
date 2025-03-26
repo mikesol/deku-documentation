@@ -1,6 +1,6 @@
 module Examples.GlobalHandlers where
 
-import Deku.Toplevel (runInBody)
+import Deku.SPA (runInBody)
 import Prelude
 
 import Control.Monad.ST.Class (liftST)

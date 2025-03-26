@@ -1,7 +1,7 @@
 module Examples.HelloWorldCode where
 
 import Prelude
-import Deku.Toplevel (runInBody)
+import Deku.SPA (runInBody)
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
 import Deku.Control (text_)

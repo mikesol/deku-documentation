@@ -1,3 +1,1 @@
-import { vike } from '../../output/Vike.Filtering'
-
-export default vike.route
+export default '/functional-reactive-programming/filtering'

@@ -22,7 +22,7 @@ proTip { header, message } = D.div
       [ DSA.viewBox_ "0 0 32 32"
       , DSA.fill_ "none"
       , DSA.klass_
-          "h-8 w-8 flex-none [--icon-foreground:theme(colors.slate.900)] [--icon-background:theme(colors.white)]"
+          "h-8 w-8 flex-none [--icon-foreground:var(--color-slate-900)] [--icon-background:var(--color-white)]"
       ]
       [ DS.defs_
           [ DS.radialGradient
@@ -123,7 +123,7 @@ proTip { header, message } = D.div
           [ header ]
       , D.div
           [ DA.klass_
-              "prose mt-2.5 text-sky-800 [--tw-prose-background:theme(colors.sky.50)] prose-a:text-sky-900 prose-code:text-sky-900 dark:text-slate-300 dark:prose-code:text-slate-300"
+              "prose mt-2.5 text-sky-800 [--tw-prose-background:var(--color-sky-50)] prose-a:text-sky-900 prose-code:text-sky-900 dark:text-slate-300 dark:prose-code:text-slate-300"
           ]
           [ message ]
       ]

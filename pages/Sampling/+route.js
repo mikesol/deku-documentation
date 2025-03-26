@@ -1,3 +1,1 @@
-import { vike } from '../../output/Vike.Sampling'
-
-export default vike.route
+export default '/functional-reactive-programming/effect-systems'

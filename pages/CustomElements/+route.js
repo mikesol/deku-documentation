@@ -1,3 +1,1 @@
-import { vike } from '../../output/Vike.CustomElements'
-
-export default vike.route
+export default '/advanced-usage/custom-elements'

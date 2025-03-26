@@ -2,18 +2,21 @@ export { onRenderHtml }
 import jsdomGlobal from 'jsdom-global'
 
 import postcss from 'postcss'
-import tailwindcss from 'tailwindcss'
-import autoprefixer from 'autoprefixer'
+// import loadConfig from 'postcss-load-config'
 import { escapeInject, dangerouslySkipEscape } from 'vike/server'
 import { ssr } from '../output/Run'
 import cssInput from '../src/styles/tailwind.css?raw'
 import prismTomorrow from 'prismjs/themes/prism-tomorrow.min.css?raw'
 import prismCore from 'prismjs/components/prism-core.min.js?raw'
 import clipboard from 'clipboard/dist/clipboard.min.js?raw'
+import tailwindcss from '@tailwindcss/postcss'
 
 async function processCSS(cssInput) {
-  const result = await postcss([tailwindcss, autoprefixer]).process(cssInput, {
+  // const { plugins, options } = await loadConfig({}, 'postcss.config.js') // Load from config
+  const result = await postcss([tailwindcss]).process(cssInput, {
+    // plugins
     from: undefined,
+    // ...options,
   })
   return result.css
 }

@@ -73,7 +73,7 @@ leftMatterMobile
     D.div
       [ DA.klass $ navModalOpen <#> (if _ then "" else "hidden ") >>>
           ( _ <>
-              "fixed inset-0 z-50 flex items-start overflow-y-auto bg-slate-900/50 pr-10 backdrop-blur lg:hidden"
+              "fixed inset-0 z-50 flex items-start overflow-y-auto bg-slate-900/50 pr-10 backdrop-blur-sm lg:hidden"
           )
       -- , D.AriaLabel_ "Navigation"
       , DA.id_ "headlessui-dialog-:R4b6:"

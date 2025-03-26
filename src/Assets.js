@@ -21,3 +21,15 @@ export const nicholsonURL = nicholson
 export const belugaURL = beluga
 export const beluMomURL = beluMom
 export const profileURL = profile
+
+// export const blurCyanURL = undefined
+// export const blurIndigoURL = undefined
+// export const dekulogoURL = undefined
+// export const dekulogodarkURL = undefined
+// export const alexanderURL = undefined
+// export const alexanderBackgroundURL = undefined
+// export const cruiseURL = undefined
+// export const nicholsonURL = undefined
+// export const belugaURL = undefined
+// export const beluMomURL = undefined
+// export const profileURL = undefined

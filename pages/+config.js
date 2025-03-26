@@ -1,4 +1,1 @@
-export default {
-  passToClient: ['dekuHydrationData'],
-  clientRouting: true,
-}
+export default { prerender: true }

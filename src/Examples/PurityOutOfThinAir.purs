@@ -4,7 +4,7 @@ import Prelude
 
 import Data.Array (intercalate)
 import Deku.Control (text)
-import Deku.Toplevel (runInBody)
+import Deku.SPA (runInBody)
 import Effect (Effect)
 import ExampleAssitant (ExampleSignature)
 import FRP.Event (fold)

@@ -1,3 +1,1 @@
-import { vike } from '../../output/Vike.Applicatives'
-
-export default vike.route
+export default '/functional-reactive-programming/applicatives'

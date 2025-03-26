@@ -9,7 +9,7 @@ import Deku.DOM as D
 import Deku.DOM.Self as Self
 import Deku.Do as Deku
 import Deku.Hooks (useState')
-import Deku.Toplevel (runInBody)
+import Deku.SPA (runInBody)
 import Effect (Effect)
 import Effect.Aff (Milliseconds(..), delay, launchAff_)
 import Effect.Class (liftEffect)

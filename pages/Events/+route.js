@@ -1,3 +1,1 @@
-import { vike } from '../../output/Vike.Events'
-
-export default vike.route
+export default '/functional-reactive-programming/events'
